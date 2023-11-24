@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -22,9 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function contactUS()
     {
-        //
+        return view('pages.contact-us');
     }
 
     /**
@@ -33,9 +33,12 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function getContentAllPages(Request $request, $slug)
     {
-        //
+
+        $title_name= 'Our Objective';
+
+        return view('master-page',['title_name'=> $title_name  ]);
     }
 
     /**

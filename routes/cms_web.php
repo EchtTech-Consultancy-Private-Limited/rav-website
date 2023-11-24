@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CMSControllers\API\CommonAPIController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\CMSControllers\DashboardController;
 use App\Http\Controllers\CMSControllers\DeveloperTeamController;
 use App\Http\Controllers\CMSControllers\UserManagementController;
@@ -40,6 +43,20 @@ use App\Http\Controllers\CMSControllers\RtiAssetsController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('forget-user', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget-user');
+Route::post('forget-change', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forgetuser');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset-password');
+Route::get('update-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('update-password');
+Route::get('/reload-captcha', [LoginController::class, 'reloadCaptcha']);
+
+Route::post('mimeimagecheck', [CommonAPIController::class, 'imageMimeCheck'])->name('mimeimagecheck');
+Route::post('mimepdfcheck', [CommonAPIController::class, 'pdfMimeCheck'])->name('mimepdfcheck');
+// capture analytics
+Route::post('analytics', [AnalyticsController::class, 'store'])->name('store-analytics');
+
 Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(function () {
     
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
