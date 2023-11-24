@@ -1,0 +1,54 @@
+body, .header-top, .site-header .navbar, .bg-grey, .bg-purple, .site-footer, .message-tab, .btn-wrap .btn-org, .btns div, .common-tab .nav-link.active, .btn-wrap .btn-org-bdr:hover {
+  background-color: #000;
+  border-color: #000 !important;
+}
+
+a, .nav-link, .nav-link.active {
+  color: #ffff00 !important;
+}
+
+h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav-link.active {
+  color: #fff !important;
+}
+
+.message-tab .nav, .common-video-img .video-icon, .header-top-right ul li .text-increment-btn, .site-footer .sociallink-wrap ul li a, .our-journey-card {
+  background-color: #000;
+}
+
+.our-journey-card img {
+  filter: invert(1);
+  height: 50px;
+}
+
+.logo-wrap img {
+  background-color: #fff !important;
+}
+
+.latest-update-wrap {
+  background: #000;
+  overflow: hidden;
+}
+
+.master .side-tab1 .nav .nav-item {
+  background: #292626;
+}
+
+.site-header .navbar-nav .nav-item .dropdown-menu li a {
+  background-color: #000;
+}
+
+.our-journey-card img {
+  filter: inherit;
+}
+
+.activity-slider-content {
+  background: #000;
+}
+
+.heading-red {
+  color: #000 !important;
+}
+
+.hero-slider-content .title-black {
+  color: #232323 !important;
+}/*# sourceMappingURL=dark-mode.css.map */
