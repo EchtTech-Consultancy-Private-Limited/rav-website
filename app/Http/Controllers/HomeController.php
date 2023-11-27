@@ -47,9 +47,9 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function feedbackSubmit(Request $request)
     {
-        //
+        return view('pages.feedback');
     }
 
     /**

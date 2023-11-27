@@ -41,7 +41,7 @@
                 <a href="#">Additional Links</a>
             </li>
             <li>
-                <a title="link" href="./feedback.html">Feedback</a>
+                <a title="link" href="{{ route('feedback') }}">Feedback</a>
             </li>
             <li>
                 <a title="link" href="./sitemap.html">Site Map</a>

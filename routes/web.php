@@ -36,8 +36,9 @@ Artisan::call('route:clear');
 Artisan::call('config:clear');
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
-Route::get('/{slug}', [HomeController::class, 'getContentAllPages']);
 Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-us');
+Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');
+Route::get('/{slug}', [HomeController::class, 'getContentAllPages']);
 
 
 //default behaviour, always keep as last entry
