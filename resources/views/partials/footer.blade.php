@@ -44,7 +44,7 @@
                 <a title="link" href="{{ route('feedback') }}">Feedback</a>
             </li>
             <li>
-                <a title="link" href="./sitemap.html">Site Map</a>
+                <a title="link" href="{{ route('site-map') }}">Site Map</a>
             </li>
             <li>
                 <a title="link" href="./terms-conditions.html">Terms and Conditions</a>

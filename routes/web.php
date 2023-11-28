@@ -38,6 +38,8 @@ Artisan::call('config:clear');
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-us');
 Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');
+Route::get('/sitemap', [HomeController::class, 'siteMap'])->name('site-map');
+Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
 Route::get('/{slug}', [HomeController::class, 'getContentAllPages']);
 
 
