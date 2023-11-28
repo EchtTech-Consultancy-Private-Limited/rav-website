@@ -2,14 +2,32 @@
                   <div class="header-top-left">
                      <ul>
                         <li>
-                           <a href="{{ route('site-map') }}">Sitemap</a>
-                        </li>
-                        <li>
-                           <a href="#about-us">Skip to main content</a>
-                        </li>
-                        <li>
-                           <a href="{{ route('screen-reader-access') }}">Screen Reader Access</a>
-                        </li>
+                           <a href="{{ route('site-map') }}">
+                               @if (Session::get('locale') == 'en')
+                                   {{ __('messages.sitemap') }}
+                               @else
+                                   {{ __('messages.sitemap') }}
+                               @endif
+                           </a>
+                       </li>
+                       <li>
+                           <a href="#about-us">
+                               @if (Session::get('locale') == 'en')
+                                   {{ __('messages.Skip-content') }}
+                               @else
+                                   {{ __('messages.Skip-content') }}
+                               @endif
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{{ route('screen-reader-access') }}">
+                               @if (Session::get('locale') == 'en')
+                                   {{ __('messages.Screen-Access') }}
+                               @else
+                                   {{ __('messages.Screen-Access') }}
+                               @endif
+                           </a>
+                       </li>
                      </ul>
                   </div>
                   <div class="header-top-right">
@@ -22,13 +40,16 @@
                            </div>
                         </li>
                         <li>
+                           
                            <div class="select-wrap">
                               <img src="assets/images/globe.svg" alt="globe" class="img-fluid">
-                              <select class="form-select language" id="language-eng">
-                                 <option value="en" >English</option>
-                                 <option value="hi">हिन्दी</option>
+                              <select class="form-select language" id="language-eng" onchange="setlang(value);">
+                                  <option value="en" @if (Session::get('locale') == 'en') selected @endif>
+                                      English</option>
+                                  <option value="hi" @if (Session::get('locale') == 'hi') selected @endif>
+                                      हिन्दी</option>
                               </select>
-                           </div>
+                          </div>
                         </li>
                         <li>
                            <div class="theme-toggle">

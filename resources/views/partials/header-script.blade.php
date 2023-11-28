@@ -13,3 +13,5 @@
 <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="theme-style">
+
+       
