@@ -35,6 +35,8 @@ Artisan::call('view:clear');
 Artisan::call('route:clear');
 Artisan::call('config:clear');
 
+Route::get('/set-language',[HomeController::class,'SetLang']);
+
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-us');
 Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');

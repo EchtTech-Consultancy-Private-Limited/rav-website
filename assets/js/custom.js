@@ -442,35 +442,6 @@ function increaseFontSize() {
   }
 
 
-
-  $(document).ready(function(){
-
-    if(localStorage.getItem('lang') == null){
-      var make = 'en';
-    }
-    else{
-      var make = localStorage.getItem('lang');
-    }
-
-    $("#language option[value='" + make + "']").attr("selected","selected");
-
-    $("#hindi-lang").hide();
-    $('.language').on('change', function(){
-    var lang = $(this).val(); 
-    
-      if(lang == 'hi'){
-        localStorage.setItem('lang', 'hi');
-        $("#english-lang").hide();
-        $("#hindi-lang").show();
-      }else{
-        localStorage.setItem('lang', 'en');
-        $("#hindi-lang").hide();
-        $("#english-lang").show();        
-      }
-    });
-
-  });
-
 // LightBox Image Gallery Code
   function openGallery(id) {
     closeAll();
@@ -494,6 +465,19 @@ function increaseFontSize() {
 
      loop: true
       });
+
+
+//language change
+function setlang(value) {
+   //alert(value)
+  $.ajax({
+    url:  "set-language",
+    data: { data: value },
+    success: function (result) {
+        location.reload();
+    }
+  });
+}
 
   
 
