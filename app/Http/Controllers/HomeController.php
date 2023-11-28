@@ -47,9 +47,9 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function feedbackSubmit(Request $request)
     {
-        //
+        return view('pages.feedback');
     }
 
     /**
@@ -58,9 +58,9 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function siteMap(Request $request)
     {
-        //
+        return view('pages.sitemap');
     }
 
     /**
@@ -70,9 +70,9 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function screenReaderAccess(Request $request)
     {
-        //
+        return view('pages.screen-reader-access');
     }
 
     /**

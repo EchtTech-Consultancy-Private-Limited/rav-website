@@ -2,13 +2,13 @@
                   <div class="header-top-left">
                      <ul>
                         <li>
-                           <a href="./sitemap.html">Sitemap</a>
+                           <a href="{{ route('site-map') }}">Sitemap</a>
                         </li>
                         <li>
                            <a href="#about-us">Skip to main content</a>
                         </li>
                         <li>
-                           <a href="./screen-reader-access.html">Screen Reader Access</a>
+                           <a href="{{ route('screen-reader-access') }}">Screen Reader Access</a>
                         </li>
                      </ul>
                   </div>
