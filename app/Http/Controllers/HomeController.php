@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -84,5 +85,12 @@ class HomeController extends Controller
     public function destroy(Home $home)
     {
         //
+    }
+
+    public function SetLang(Request $request){
+        session()->put('locale', $request->data);
+        $locale = $request->data;
+        App::setLocale($locale);
+        return response()->json(['data' => $request->data, True]);
     }
 }
