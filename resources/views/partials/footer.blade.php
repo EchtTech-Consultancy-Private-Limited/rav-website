@@ -50,7 +50,7 @@
                 <a title="link" href="./terms-conditions.html">Terms and Conditions</a>
             </li>
             <li>
-                <a title="link" href="{{ route('contact-us') }}">Contact Us</a>
+                <a title="link" href="{{route('contact-us')}}">Contact Us</a>
             </li>
         </ul>
     </div>
