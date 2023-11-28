@@ -50,7 +50,7 @@
                 <a title="link" href="./terms-conditions.html">Terms and Conditions</a>
             </li>
             <li>
-                <a title="link" href="{{ route('contact-us') }}">Contact Us</a>
+                <a title="link" href="{{route('contact-us')}}">Contact Us</a>
             </li>
         </ul>
     </div>
@@ -59,5 +59,45 @@
     <div class="copyright-wrap">
         <p>© 2023 Rashtriya Ayurveda Vidyapeeth</p>
     </div>
+    </div>
+    <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+    >
+        <div class="offcanvas-header">
+            <span data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="fa fa-times rotate-icon" aria-hidden="true"></i>
+            </span>
+        </div>
+        <div class="offcanvas-body">
+            <ul>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../awards.html"> Awards</a>
+                </li>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../gallery.html"> Gallery</a>
+                </li>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../annualreport.html"> Annual Report</a>
+                </li>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../e-newsletter.html"> E-News Letter</a>
+                </li>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../covid-19-helpline.html"> Ayush Covid-19</a>
+                </li>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../endorsement-overseas-ayurveda-professionals.html"> Overseas Ayurveda Professionals</a>
+                </li>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../almuni-corner.html"> Alumni Corner</a>
+                </li>
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="../contact.html"> Contact Us</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
