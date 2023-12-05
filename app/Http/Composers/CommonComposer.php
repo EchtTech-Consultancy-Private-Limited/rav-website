@@ -51,10 +51,12 @@ class CommonComposer
             $news_management = DB::table('news_management')->where('soft_delete', 0)->latest('created_at')->take(3)->get();
             $tender_management = DB::table('tender_management')->where('soft_delete', 0)->latest('created_at')->get();
 
+            $social_links = DB::table('social_links')->where('soft_delete', 0)->first();
+
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 
              'banner' => $banner, 'news_management' => $news_management, 
-             'tender_management' => $tender_management,
+             'tender_management' => $tender_management,'social_links'=>$social_links,
              'alertMessage' =>$this->checkLanguage()
             
             ]);
@@ -81,7 +83,7 @@ class CommonComposer
     }
 
     function checkLanguage(){
-        if (Session::get('Lang') == 'hi')
+        if (Session::get('locale') == 'hi')
         {
             return 'यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।';
         }else{

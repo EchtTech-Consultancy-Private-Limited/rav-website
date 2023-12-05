@@ -10,9 +10,12 @@
                 <div class="owl-carousel owl-theme" id="heroSlider">
             
                     @if (isset($banner) && count($banner) > 0)
+                    
                         @foreach ($banner as $banners)
+                          
                             <div class="item">
                                 <div class="row">
+                                    @if($banners->description_en  != '' )
                                     <div class="col-md-6 mobile-width-80">
                                         <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
                                             <h2 class="heading-red">
@@ -44,7 +47,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mobile-width-30">
+                                    @endif
+                                    <div class="col mobile-width-30">
                                         <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
                                             @if ($banners->public_url != '')
                                                 <img src="{{ asset('resources/uploads/banner/' . $banners->public_url) }}"
@@ -54,7 +58,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         @endforeach
                     @else
                         <h5>No banner available.</h5>
@@ -80,135 +84,6 @@
         </div>
     </section>
     {{-- banner end --}}
-
-
-    {{-- <section class="hero-banner">
-      <div class="container-fluid">
-          <div class="hero-slider">
-              <div class="owl-carousel owl-theme" id="heroSlider">
-                  <div class="item">
-                      <div class="row">
-                          <div class="col-md-6 mobile-width-80">
-                              <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
-                                  <h2 class="heading-red">
-                                      Unlocking Wellness
-                                      <br>
-                                      Through Ancient Wisdom
-                                  </h2>
-                                  <p class="title-black">
-                                      <span>Explore the Synergy</span>
-                                      of Rashtriya Ayurveda Vidyapeeth and Yoga for
-                                      Holistic Health!
-                                  </p>
-                                  <div class="btn-wrap d-flex align-items-center">
-                                      <button class="btn btn-org me-4">
-                                          Know More
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6 mobile-width-30">
-                              <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
-                                  <img src="{{ asset('assets/images/banner-image.png') }}" alt="hero-image"
-                                      class="img-fluid">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="item">
-                      <div class="row">
-                          <div class="col-md-6 mobile-width-80">
-                              <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
-                                  <h2 class="heading-red">
-                                      Unlocking Wellness
-                                      <br>
-                                      Through Ancient Wisdom
-                                  </h2>
-                                  <p class="title-black">
-                                      <span>Explore the Synergy</span>
-                                      of Rashtriya Ayurveda Vidyapeeth and Yoga for
-                                      Holistic Health! Many ancient works on Ayurvedic medicine are lost to posterity, but
-                                      manuscripts of three principal early texts on Ayurveda have survived to the present
-                                      day. These works are the Charaka Samhita, the Sushruta Samhita and the Bhela
-                                      Samhita. but manuscripts of three principal early texts on Ayurveda have survived to
-                                      the present day.
-                                  </p>
-                                  <div class="btn-wrap d-flex align-items-center">
-                                      <button class="btn btn-org me-4">
-                                          Know More
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6 mobile-width-30">
-                              <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
-                                  <img src="{{ asset('assets/images/banner1.jpg') }}" alt="hero-image" class="img-fluid">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="item">
-                      <div class="row">
-                          <div class="col-md-6 mobile-width-80">
-                              <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
-                                  <h2 class="heading-red">
-                                      Unlocking Wellness
-                                      <br>
-                                      Through Ancient Wisdom
-                                  </h2>
-                                  <p class="title-black">
-                                      <span>Explore the Synergy</span>
-                                      of Rashtriya Ayurveda Vidyapeeth and Yoga for
-                                      Holistic Health! Many ancient works on Ayurvedic medicine are lost to posterity, but
-                                      manuscripts of three principal early texts on Ayurveda have survived to the present
-                                      day. These works are the Charaka Samhita, the Sushruta Samhita and the Bhela
-                                      Samhita. but manuscripts of three principal early texts on Ayurveda have survived to
-                                      the present day.
-                                  </p>
-                                  <div class="btn-wrap d-flex align-items-center">
-                                      <button class="btn btn-org me-4">
-                                          Know More
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6 mobile-width-30">
-                              <!-- <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
-                             <img src="{{ asset('assets/images/banner2.jpg" alt') }}="hero-image" class="img-fluid">
-                             </div> -->
-                              <div class="shape-outer rhombus">
-                                  <div class="shape-inner rhombus"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- <div class="item">
-                    <img src="{{ asset('assets/images/banner2.jpg" alt') }}="hero-image" class="img-fluid">
-                    </div>
-                    <div class="item">
-                    <img src="{{ asset('assets/images/banner3.jpg" alt') }}="hero-image" class="img-fluid">
-                    </div> -->
-              </div>
-
-
-              <div class="btns">
-                  <div id="customPreviousBtn">
-                      <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  </div>
-                  <div id="customPause">
-                      <i class="fa fa-pause" aria-hidden="true"></i>
-                  </div>
-                  <div id="customPlay">
-                      <i class="fa fa-play" aria-hidden="true"></i>
-                  </div>
-                  <div id="customNextBtn">
-                      <i class="fa fa-angle-right" aria-hidden="true"></i>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section> --}}
-
 
     <section class="latest-update-wrap">
         <div class="container-fluid p-0">
