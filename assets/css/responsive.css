@@ -1,3 +1,8 @@
+@media(min-width:991px){
+    .master table{
+        display: table !important;
+    }
+}
 @media(min-width:1300px){
     .news-content-list ul li a .desc{
         font-size: 15px !important;
@@ -6,8 +11,31 @@
         padding: 0 11% !important;
     }
 }
+
+@media(max-width:1366px){
+    .master .tab-content h1 {
+        padding: 0px 20px 0px !important;
+    }
+    .master .news-content-list {
+        padding: 0px 17px !important;
+    }
+    .btn-wrap .btn-org-bdr {
+        padding: 7px 18px !important;
+    }
+    .master .button {
+        padding: 7px 18px !important;
+    }
+    .master .accordion-item {
+        padding: 0px 10px !important;
+    }
+    .master .accordion-header {
+        font-size: 22px;
+        padding: 0 0 !important;
+    }
+}
+
 @media(max-width:768px){
-    
+
     .hero-slider .owl-carousel .owl-item img{
         height: auto !important;
     }
@@ -26,7 +54,7 @@
         flex-direction: column;
     }
 
-    .Grid 
+    .Grid
     {
         width: unset !important;
     }
@@ -38,7 +66,7 @@
         width: unset !important;
     }
 
-    .img-filter-sec-right 
+    .img-filter-sec-right
     {
     margin: 20px 0px;
     }
@@ -140,7 +168,7 @@
     section.client-wrap.ptb-100 .owl-carousel{
        height: auto;
     }
-    
+
 
     .master .side-tab1 h1 {
         padding: 30px 40px;
@@ -311,7 +339,7 @@
     .news-content-list ul li a .date-wrap .date{
         font-size: 17px !important;
     }
-   
+
     .activity-slider-content .desc{
         font-size: 13px !important;
     }
@@ -335,7 +363,7 @@
         height: 5px;
     }
     .about-us-card .title-org {
-        
+
         text-align: center;
     }
     #latestMassage-tab-pane h2.heading-black.heading-black-md {
@@ -348,36 +376,40 @@
         padding-left: 1.2rem !important;
     }
     .sitemap .master h2 {
-        
+
         padding: 0;
     }
     .master .side-tab1 .nav .nav-link {
         font-size: 13px;
     }
-     
-    .nav-item-qm a 
+
+    .nav-item-qm a
     {
         border: unset;
         margin-bottom: 0px !important;
     }
 
-    .nav-item-for-mob 
+    .nav-item-for-mob
     {
     display: block !important;
     }
-    .side-mn-icn 
+    .side-mn-icn
     {
         display: none;
     }
-    .an-hove-sidemenu 
+    .an-hove-sidemenu
     {
         line-height: 8px !important;
         border-bottom: none !important;
     }
-    
+
 }
 
 @media(min-width:991px) and (max-width:1366px){
+    .master .lightbox-photo-gallery img {
+        width: 100%;
+        height: auto !important;
+    }
     .mtb-100 {
         margin: 85px 0;
     }

@@ -4,29 +4,35 @@
             <img src="assets/images/rav-logo-white.png" alt="logo" class="img-fluid">
         </div>
     </div>
-    <div class="col-md-8 d-flex justify-content-end align-items-end">
-        <div class="sociallink-wrap">
-            <ul>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                </li>
-            </ul>
+    @if (isset($social_links) && $social_links != '')
+        <div class="col-md-8 d-flex justify-content-end align-items-end">
+            <div class="sociallink-wrap">
+                <ul>
+                    @if ($social_links->facebook != '' && $social_links->facebook != 0)
+                        <a href="{{ url($social_links->facebook) ?? '' }}" onclick="return confirm('{{ $alertMessage }}')"
+                            target="_blank" class="Facebook" title="Facebook"><i class="fa fa-facebook"
+                                aria-hidden="true"></i>
+                        </a>
+                    @endif
+
+                    @if ($social_links->twitter != '' && $social_links->twitter != 0)
+                        <a href="{{ url($social_links->twitter) ?? '' }}" class="Twitter"
+                            onclick="return confirm('{{ $alertMessage }}')" target="_blank" title="Twitter">
+                            <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                    @endif
+
+                    @if ($social_links->instagram != '' && $social_links->instagram != 0)
+                        <a href="{{ url($social_links->instagram) ?? '' }}"
+                            onclick="return confirm('{{ $alertMessage }}')" class="Instagram" target="_blank"
+                            title="Instagram"> <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    @endif
+                </ul>
+            </div>
         </div>
-    </div>
+    @endif
     <div class="col-md-12">
-       
+
         <div class="footer-nav">
             <ul>
 
@@ -65,18 +71,6 @@
                     <h5>No menu available.</h5>
                 @endif
 
-                {{-- <li>
-                <a title="link" href="{{ route('feedback') }}">Feedback</a>
-            </li>
-            <li>
-                <a title="link" href="{{ route('site-map') }}">Site Map</a>
-            </li>
-            <li>
-                <a title="link" href="./terms-conditions.html">Terms and Conditions</a>
-            </li>
-            <li>
-                <a title="link" href="{{route('contact-us')}}">Contact Us</a>
-            </li> --}}
             </ul>
         </div>
     </div>
@@ -92,33 +86,24 @@
             </span>
         </div>
         <div class="offcanvas-body">
-            <ul>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../awards.html"> Awards</a>
-                </li>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../gallery.html"> Gallery</a>
-                </li>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../annualreport.html"> Annual Report</a>
-                </li>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../e-newsletter.html"> E-News Letter</a>
-                </li>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../covid-19-helpline.html"> Ayush Covid-19</a>
-                </li>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../endorsement-overseas-ayurveda-professionals.html">
-                        Overseas Ayurveda Professionals</a>
-                </li>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../almuni-corner.html"> Alumni Corner</a>
-                </li>
-                <li class="nav-item my-2">
-                    <a class="nav-link an-hove-sidemenu" href="../contact.html"> Contact Us</a>
-                </li>
-            </ul>
+            @if (isset($toogleMenu) && count($toogleMenu) > 0)
+                <ul>
+                    @foreach ($toogleMenu as $toogleMenus)
+                    @php
+                        $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
+                    @endphp
+                        <li class="nav-item my-2">
+                            <a class="nav-link an-hove-sidemenu" href="{{ url($toogleMenuurl) ?? '' }}">
+                                @if (Session::get('locale') == 'hi')
+                                    {{ $toogleMenus->name_hi ?? '' }}
+                                @else
+                                    {{ $toogleMenus->name_en ?? '' }}
+                                @endif
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
     </div>
 </div>

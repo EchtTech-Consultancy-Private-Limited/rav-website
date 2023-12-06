@@ -6,6 +6,7 @@ use App\Models\Home;
 use App;
 use DB;
 use Exception;
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -97,42 +98,30 @@ class HomeController extends Controller
     
     public function getContentAllPages(Request $request, $slug)
     {
+        // dd($slug);
         try {
-            $validator = Validator::make(['slug' => $slug], [
-                'slug' => 'required|string|max:255', // Adjust the validation rules as needed
-            ]);
-    
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
-
             $menus = DB::table('website_menu_management')->whereurl($slug)->first();
-            if($menus->parent_id != 0 ){
-                $sideMenu = DB::table('website_menu_management')->wherename_en($menus->name_en)->first('parent_id');
-                $sideMenuParent = DB::table('website_menu_management')->whereuid($sideMenu->parent_id)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->first();
-                $sideMenuChild = DB::table('website_menu_management')->whereparent_id($sideMenuParent->uid)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
-            }else{
-                
-                $sideMenuParent = "";
-                $sideMenuChild =[];
-            }
-           
-        
+
             if($menus != ''){
-            $title_name = $menus->name_en  ;    
+
+            if (Session::get('locale') == 'hi'){
+                $title_name = $menus->name_hi;    
+            }else{
+                $title_name = $menus->name_en;    
+            }
 
             $dynamic_content_page_metatag = DB::table('dynamic_content_page_metatag')
                 ->where('soft_delete', 0)
                 ->where('menu_uid', $menus->uid)
                 ->orderBy('sort_order', 'ASC')
                 ->get();
+              
+            if(count($dynamic_content_page_metatag) > 0){   
 
             $organizedData = [];
     
             foreach ($dynamic_content_page_metatag as $dynamic_content_page_metatags) {
-                // $name = $dynamic_content_page_metatags->page_title_en;
-    
-                // Fetch related records from other tables using uid
+                
                 $dynamic_content_page_pdf = DB::table('dynamic_content_page_pdf')
                     ->wheredcpm_id($dynamic_content_page_metatags->uid)
                     ->where('soft_delete', 0)
@@ -162,14 +151,31 @@ class HomeController extends Controller
                     'banner' => $dynamic_page_banner,
                 ];
             }
-
+            if($menus?->parent_id != 0 ){
+                $sideMenu = DB::table('website_menu_management')->wherename_en($menus->name_en)->first('parent_id');
+                $sideMenuParent = DB::table('website_menu_management')->whereuid($sideMenu->parent_id)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->first();
+                $sideMenuChild = DB::table('website_menu_management')->whereparent_id($sideMenuParent->uid)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
+            }else{
+                $sideMenuParent = "";
+                $sideMenuChild =[];
+            }
+            $quickLink = DB::table('website_menu_management')->where('menu_place',4)->where('soft_delete',0)->orderBy('sort_order','ASC')->get();
+      
+            return view('master-page',['quickLink'=>$quickLink,'title_name' => $title_name,'organizedData'=>$organizedData,'sideMenuChild'=>$sideMenuChild,'sideMenuParent'=>$sideMenuParent]);
+      
+        }else{
           
-            return view('master-page',['title_name' => $title_name,'organizedData'=>$organizedData,'sideMenuChild'=>$sideMenuChild,'sideMenuParent'=>$sideMenuParent]);
-            
+            if (Session::get('locale') == 'hi'){
+                $content = "पेज अभी उपलब्ध नहीं है हम इस पर काम कर रहे हैं ";   
+            }else{
+                $content = "page is not available yet we are working on it";   
+            }
+          return view('master-page',['content'=>$content,'title_name'=>$title_name]);
+        }
         }else{
             return redirect('/');
         }
-             
+        
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
         } catch (\PDOException $e) {
