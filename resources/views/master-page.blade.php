@@ -31,7 +31,7 @@
                     <li>
                         <a class="active" href="" tabindex="0">
                             @if (Session::get('locale') == 'hi')
-                                घर
+                               होम पेज
                             @else
                                 Home
                             @endif
