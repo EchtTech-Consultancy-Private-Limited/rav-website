@@ -1,8 +1,3 @@
-@media(min-width:991px){
-    .master table{
-        display: table !important;
-    }
-}
 @media(min-width:1300px){
     .news-content-list ul li a .desc{
         font-size: 15px !important;
@@ -13,6 +8,10 @@
 }
 
 @media(max-width:1366px){
+    .common-tab .nav-link{
+        font-size: 13px !important;
+        padding: 10px !important;
+    }
     .master .tab-content h1 {
         padding: 0px 20px 0px !important;
     }
@@ -35,6 +34,21 @@
 }
 
 @media(max-width:768px){
+    .header-top-content li {
+        font-size: 14px;
+        background: #fff;
+        margin: 2px;
+        border: 1px solid #ddd;
+        padding: 0 8px;
+        border-radius: 5px;
+    }
+    .course-wrap {
+        padding: 20px;
+    }
+    .course-list ul li {
+        font-size: 14px;
+        padding: 8px 0;
+    }
 
     .hero-slider .owl-carousel .owl-item img{
         height: auto !important;
@@ -406,6 +420,28 @@
 }
 
 @media(min-width:991px) and (max-width:1366px){
+    .course-wrap {
+        padding: 14px 25px;
+    }
+    .course-list ul li {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+    .photo-gallery-img img {
+        height: 200px;
+    }
+    .common-tab .nav-item:first-child .nav-link {
+        margin-left: 0;
+   }
+    .common-tab .nav-item:last-child .nav-link {
+        margin-right: 0;
+   }
+    .common-tab .nav-item .nav-link {
+        border: 1px solid #ff5200;
+        margin: 0 5px;
+   }
+
+
     .master .lightbox-photo-gallery img {
         width: 100%;
         height: auto !important;
@@ -414,7 +450,7 @@
         margin: 85px 0;
     }
     .common-tab .nav-link {
-        padding: 10px 12px !important;
+        padding: 6px 14px !important
     }
     .news-content-list ul li a .desc {
         font-size: 0.9em !important;
@@ -466,7 +502,7 @@
         margin: 0;
     }
     .event-list-content .address-wrap .address {
-        font-size: 14px;
+        font-size: 12px;
 
     }
     .our-journey-card .total-no {
@@ -519,4 +555,108 @@
 
     }
 
+}
+
+
+@media(min-width:480px) and (max-width:768px){
+
+}
+
+@media(max-width:480px){
+    .site-header .logo-right .search-wrap form .btn-search {
+        top: 33%;
+    }
+    .latest-update-wrap .title-white {
+        font-size: 15px;
+        text-align: center !important;
+    }
+    .latest-update-wrap .title-white::after{
+        width: 0px ;
+    }
+
+    .heading-black-lg {
+        font-size: 20px !important;
+        text-align: left !important;
+        margin-bottom: 0px;
+        padding-bottom: 12px !important;
+    }
+    .ptb-100 {
+        padding: 11px 0 !important;
+    }
+
+    .about-us-card-front {
+        display: flex;
+        align-items: center;
+    }
+    .about-us-card .img {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        margin: 0;
+    }
+
+    .about-us-card .title {
+        margin: 0;
+        padding: 3px 0;
+        text-align: left;
+    }
+    .about-us-card .desc{
+        text-align: left !important;
+    }
+    .about-us-card{
+        min-height: auto;
+    }
+
+    .about-us-card .desc br{
+        display: none;
+    }
+
+    .about-us-card .text-item{
+        width: calc(100% - 70px);
+        margin-left: 10px;
+    }
+
+    .news-wrap {
+        padding: 10px 8px;
+    }
+
+    .common-tab .nav-link {
+        font-size: 13px !important;
+        padding: 3px 8px !important;
+    }
+
+    .common-tab .nav-item .nav-link {
+        margin: 0 5px 8px;
+    }
+
+    section.activity-wrap.bg-purple.ptb-100 {
+        height: 59px !important;
+    }
+    .activity-tab .title-white{
+        text-align: left;
+    }
+
+    .activity-tab .title-white br{
+        display: none;
+    }
+
+    .mt-neg-18 {
+        margin-top: -16rem;
+    }
+    .photo-gallery-img img{
+        height: auto;
+    }
+
+    .site-footer .footer-nav ul {
+        display: inline-flex;
+        -moz-column-count: 2;
+        /* column-count: 2; */
+        padding: 15px 10px;
+        justify-content: flex-start;
+    }
+
+    .site-footer .footer-nav ul li a {
+        margin-right: 31px;
+        font-size: 12px;
+    }
 }

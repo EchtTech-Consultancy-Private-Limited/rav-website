@@ -8,11 +8,11 @@
         <div class="container-fluid">
             <div class="hero-slider">
                 <div class="owl-carousel owl-theme" id="heroSlider">
-            
+
                     @if (isset($banner) && count($banner) > 0)
-                    
+
                         @foreach ($banner as $banners)
-                          
+
                             <div class="item">
                                 <div class="row">
                                     @if($banners->description_en  != '' )
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         @endforeach
                     @else
                         <h5>No banner available.</h5>
@@ -168,6 +168,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister1.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Shri Sarbananda Sonowal
                             </h3>
@@ -175,6 +176,8 @@
                                 <b>Hon’ble Cabinet minister</b>
                                 of AYUSH, Government of India
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -192,6 +195,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister2.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Dr. Munjapara Mahendrabhai
                             </h3>
@@ -204,6 +208,8 @@
                                 and Child
                                 Developement
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -221,6 +227,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister3.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Padmashree Vaidya Rajesh Kotecha
                             </h3>
@@ -228,6 +235,8 @@
                                 <b>Secretary</b>
                                 Ministry of AYUSH
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -245,6 +254,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister4.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Dr. Vandana Siroha
                             </h3>
@@ -255,6 +265,8 @@
                             <p class="title-org">
                                 Message from Director
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -296,14 +308,14 @@
                                         <div class="news-content-list">
                                             <ul>
                                                 @if (isset($news_management) && count($news_management) > 0)
-                                                    @foreach ($news_management as $news_managements) 
+                                                    @foreach ($news_management as $news_managements)
 
                                                     @php
                                                     $url = $news_managements->public_url ?? 'javascript:void(0)';
                                                     @endphp
                                                         <li>
-                                                            <a    
-                                                            @if($news_managements->tab_type == 1)    
+                                                            <a
+                                                            @if($news_managements->tab_type == 1)
                                                                 target="_blank"
                                                                 onclick="return confirm('{{ $alertMessage }}')"
                                                                 href="{{ url($url)  }}"
@@ -347,7 +359,7 @@
                                 <div class="tab-pane fade" id="cme-tab-pane" role="tabpanel" aria-labelledby="cme-tab"
                                     tabindex="0">
                                     <div class="row">
-                                        <div class="news-content-list">
+                                        <div class="news-content-list scrollbar-style">
                                             <div class="new-content-list-content">
                                                 <p class="desc">
                                                     CME (Continuing Medical Education) scheme is a central sector scheme
@@ -523,7 +535,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="event-card">
-                        <h2 class="heading-white">
+                        <h2 class="heading-white mb-2">
                             Our Events
                         </h2>
                         <div class="event-slider">
@@ -534,7 +546,7 @@
                                             Two days Interactive Training Programme on Agni Karma & Rakta Mokshana with
                                             organization of free health camp
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -547,7 +559,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -567,7 +579,7 @@
                                             5 workshops of one day training of AYUSH doctors on Patient Trauma Care
                                             (PTC) (Total Programme -5)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -584,7 +596,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -604,7 +616,7 @@
                                             6 Days Complete Residential Samhita based Training programme for
                                             undergraduate/postgraduate (Total Programme- 3)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -616,7 +628,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -638,7 +650,7 @@
                                             Products, Food fortification based on Ayurveda”
                                             (Total Programme- 3)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -652,7 +664,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -672,7 +684,7 @@
                                             One Day Sensitization programme of Ayurvedic Training Accreditation
                                             Programme(ATAB) (Total Programme- 4)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -687,7 +699,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -708,7 +720,7 @@
                                             and Asthi Marma
                                             (Total Programme- 6)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -724,7 +736,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -746,6 +758,7 @@
                     <div class="course-wrap">
                         <div class="course-list">
                             <ul>
+
                                 <li>
                                     Courses Under Guru Shishya Parampara
                                     <a href="#" class="read-more">
@@ -769,6 +782,20 @@
                                 </li>
                                 <li>
                                     E-Newsletters
+                                    <a href="#" class="read-more">
+                                        <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                                <li>
+                                   Awards
+                                    <a href="#" class="read-more">
+                                        <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                                <li>
+                                    Admission to Courses
                                     <a href="#" class="read-more">
                                         <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                             class="img-fluid">
@@ -881,6 +908,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="message-tab-content">
+
                                             <h2 class="heading-black heading-black-md">
                                                 Shri Sarbananda Sonowal
                                             </h2>
@@ -940,7 +968,7 @@
                                 tabindex="0">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
-                                        <div class="table">
+                                        <div class="table scrollbar-style">
                                             <table>
                                                 <thead>
                                                     <tr>
@@ -3229,7 +3257,7 @@
                                 tabindex="0">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="table">
+                                        <div class="table scrollbar-style">
                                             <table>
                                                 <thead>
                                                     <tr>
@@ -4247,28 +4275,28 @@
                                 aria-labelledby="photo-tab" tabindex="0">
                                 <div class="photo-gallery-wrap">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo1.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo2.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img img-auto">
                                                 <img src="{{ asset('assets/images/photo3.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo4.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo5.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
@@ -4284,28 +4312,28 @@
                                 aria-labelledby="twitter-tab" tabindex="0">
                                 <div class="photo-gallery-wrap">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0 ">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo1.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo2.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img img-auto">
                                                 <img src="{{ asset('assets/images/photo3.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0 ">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo4.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo5.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>

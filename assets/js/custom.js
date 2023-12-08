@@ -156,6 +156,7 @@ $('#eventSlider').owlCarousel({
   nav: true,
   dots: false,
   items: 1,
+  navText:["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"],
 });
 
 $('#eventSlider-hindi').owlCarousel({
@@ -461,10 +462,10 @@ function closeAll() {
   }
 }
 
-var lightbox = GLightbox({
+// var lightbox = GLightbox({
 
-  loop: true
-});
+//   loop: true
+// });
 
 
 
@@ -480,6 +481,34 @@ function setlang(value) {
   });
 }
 
+// Tabindex js
+
+$(document).ready(function(){
+    $("p, h1, h2, h3, h4, h5, h6,.dropdown, button,.about-t,h2.title,.desc-text-title,.desc, .copyright-text").attr('tabindex' , '0');
+
+    // $('.dropdown').on('focus',()=>{
+    //     $('.dropdown').addClass('show-dropdown');
+    //     $('.dropdown.show-dropdown > .dropdown-menu').css({'display':'block'})
+    // });
+
+//    $("li.nav-item").on('focus',()=>{
+//     $('li.nav-item').removeClass('show-dropdown');
+//     $(this).addClass('show-dropdown');
+
+// });
+
+let navItemList = $('.nav-item');
+
+// Using jQuery.each()
+$.each(navItemList, function(index, element) {
+  $(element).on('focus', () => {
+    $('.nav-item').not(element).removeClass('show-dropdown');;
+    if ($(element).hasClass('nav-item') && $(element).hasClass('dropdown')) {
+      $(element).addClass('show-dropdown');
+      console.log('added class');
+    }
+  });
+});
 
 
 
@@ -487,5 +516,4 @@ function setlang(value) {
 
 
 
-
-
+});
