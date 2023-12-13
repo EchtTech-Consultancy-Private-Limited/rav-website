@@ -540,6 +540,7 @@ a {
   color: #FFFFFF;
   display: flex;
   align-items: center;
+  padding: 14px 0;
 }
 
 @media (max-width: 1440px) {
@@ -2279,10 +2280,11 @@ div.dt-buttons>.dt-button, div.dt-buttons>div.dt-button-split .dt-button{
 }
 
 .btns div {
-  padding: 2px 13px;
+  padding: 0px 13px;
   cursor: pointer;
   font-size: 25px;
   background: #ff5200;
+  border-radius: 6px 
 }
 
 #customPlay {

@@ -437,7 +437,7 @@
         margin-right: 0;
    }
     .common-tab .nav-item .nav-link {
-        border: 1px solid #ff5200;
+        /* border: 1px solid #ff5200; */
         margin: 0 5px;
    }
 
