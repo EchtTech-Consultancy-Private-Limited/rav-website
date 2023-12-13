@@ -5,8 +5,7 @@
 @section('content')
 
     <section class="hero-banner">
-        <div class="container-fluid">
-            <div class="hero-slider">
+    <div class="hero-slider">
                 <div class="owl-carousel owl-theme" id="heroSlider">
 
                     @if (isset($banner) && count($banner) > 0)
@@ -35,20 +34,20 @@
 
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <button class="btn btn-org me-4">
+                                                <button class="btn btn-org border-0 p-0 me-4">
 
                                                     @if (Session::get('locale') == 'hi')
                                                         {{ __('messages.know_more') }}
                                                     @else
                                                         {{ __('messages.know_more') }}
                                                     @endif
-
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     @endif
-                                    <div class="col mobile-width-30">
+                                    <div class="col mobile-width-30 ps-0">
                                         <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
                                             @if ($banners->public_url != '')
                                                 <img src="{{ asset('resources/uploads/banner/' . $banners->public_url) }}"
@@ -81,7 +80,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     {{-- banner end --}}
 
