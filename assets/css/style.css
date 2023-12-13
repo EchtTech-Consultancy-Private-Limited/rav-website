@@ -1078,6 +1078,7 @@ a {
 .message-tab-img .video-wrap .video-img {
   overflow: hidden;
   border-radius: 15px;
+  border: 1px solid #ddd;
 }
 
 .message-tab-img .video-wrap .video-img:hover img {
@@ -1682,6 +1683,7 @@ section.client-wrap.ptb-100 {
   padding: 10px 20px;
   background-color: #630F43;
   color: #fff;
+  white-space: nowrap;
 }
 
 .message-tab {
@@ -3397,4 +3399,8 @@ button.btn.side-mn-icn:hover {
 
 .dropdown.show-dropdown > .dropdown-menu {
   display: block;
+}
+
+.hero-slider .fa-arrow-right {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
