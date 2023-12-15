@@ -18,8 +18,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         return view('home');
     }
 
@@ -28,8 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function contactUS()
-    {
+    public function contactUS(){
         return view('pages.contact-us');
     }
 
@@ -47,8 +45,7 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function feedbackSubmit(Request $request)
-    {
+    public function feedbackSubmit(Request $request){
         return view('pages.feedback');
     }
 
@@ -58,8 +55,7 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function siteMap(Request $request)
-    {
+    public function siteMap(Request $request){
         return view('pages.sitemap');
     }
 
@@ -116,7 +112,7 @@ class HomeController extends Controller
             if(count($dynamic_content_page_metatag) > 0){   
 
             $organizedData = [];
-    
+            
             foreach ($dynamic_content_page_metatag as $dynamic_content_page_metatags) {
                 
                 $dynamic_content_page_pdf = DB::table('dynamic_content_page_pdf')
@@ -138,8 +134,7 @@ class HomeController extends Controller
                     ->wheredcpm_id($dynamic_content_page_metatags->uid)
                     ->where('soft_delete', 0)
                     ->first();
-    
-                // Organize data in the associative array based on name
+                    
                 $organizedData = [
                     'metatag' => $dynamic_content_page_metatags,
                     'content' => $dynamic_page_content,
@@ -180,8 +175,6 @@ class HomeController extends Controller
             \Log::error('A PDOException occurred: ' . $e->getMessage());
             return abort(404);
         }
-    
-       
     }
     
 }

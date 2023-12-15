@@ -142,7 +142,13 @@
             <div class="row">
                 <div class="col-md-12" data-aos="fade-up" data-aos-duration="3000">
                     <h2 class="heading-black heading-black-lg text-center pb-4">
-                        About Us
+                       
+                        @if (Session::get('locale') == 'hi')
+                            {{ __('messages.About_Us') }}
+                        @else
+                            {{ __('messages.About_Us') }}
+                        @endif
+
                     </h2>
                     <p class="desc-grey text-justify">
                         <span class="desc-grey-bold"> Rashtriya Ayurveda Vidyapeeth</span>
@@ -157,8 +163,12 @@
                         of time and many subjects to learn.
                     </p>
                     <div class="btn-wrap d-flex justify-content-center align-items-center">
-                        <a href="#" class="btn btn-org-bdr">
-                            Read More
+                        <a href="javascript:void();" class="btn btn-org-bdr">
+                            @if (Session::get('locale') == 'hi')
+                             {{ __('messages.Read_More') }}
+                            @else
+                             {{ __('messages.Read_More') }}
+                            @endif 
                         </a>
                     </div>
                 </div>
@@ -3801,7 +3811,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="heading-black heading-black-lg text-center pb-5">
-                        Our Successful Journey
+                        @if (Session::get('locale') == 'hi')
+                        {{ __('messages.Our_Successful_Journey') }}
+                       @else
+                        {{ __('messages.Our_Successful_Journey') }}
+                       @endif
                     </h2>
                 </div>
                 <div class="col-md-3">
@@ -3811,7 +3825,11 @@
                             12,458
                         </span>
                         <p class="title">
-                            Number of Graduates
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Number_of_Graduates') }}
+                           @else
+                            {{ __('messages.Number_of_Graduates') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3822,7 +3840,11 @@
                             24
                         </span>
                         <p class="title">
-                            Programme Offerings
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Programme_Offerings') }}
+                           @else
+                            {{ __('messages.Programme_Offerings') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3833,7 +3855,11 @@
                             1213
                         </span>
                         <p class="title">
-                            Research Initiatives
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Research_Initiatives') }}
+                           @else
+                            {{ __('messages.Research_Initiatives') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3844,7 +3870,11 @@
                             686
                         </span>
                         <p class="title">
-                            Online Presence
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Online_Presence') }}
+                           @else
+                            {{ __('messages.Online_Presence') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3860,12 +3890,28 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="activity-tab" data-bs-toggle="tab"
                                     data-bs-target="#activity-tab-pane" type="button" role="tab"
-                                    aria-controls="activity-tab-pane" aria-selected="true">Our Activities</button>
+                                    aria-controls="activity-tab-pane" aria-selected="true">
+                                    
+                                    @if (Session::get('locale') == 'hi')
+                                    {{ __('messages.Online_Presence') }}
+                                   @else
+                                    {{ __('messages.Online_Presence') }}
+                                   @endif
+                                
+                                
+                                </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="crav-tab" data-bs-toggle="tab"
                                     data-bs-target="#crav-tab-pane" type="button" role="tab"
-                                    aria-controls="crav-tab-pane" aria-selected="false">CRAV Gurus</button>
+                                    aria-controls="crav-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                    {{ __('messages.CRAV_Gurus') }}
+                                   @else
+                                    {{ __('messages.CRAV_Gurus') }}
+                                   @endif
+                                
+                                </button>
                             </li>
                         </ul>
                         <p class="title-white py-4">
