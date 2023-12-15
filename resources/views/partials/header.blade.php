@@ -47,8 +47,8 @@
     <div class="container-fluid">
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}">
+                <li class="nav-item" tabindex="0">
+                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}" tabindex="-1">
                         <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 22" width="25"
                             height="22">
                             <g>
@@ -65,8 +65,8 @@
                             $url = $headerMenus->url ?? 'javascript:void(0)';
                         @endphp
                         @if (isset($headerMenus->children) && count($headerMenus->children) > 0)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link an-hove" href="javascript:void(0)" aria-expanded="false">
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link an-hove" href="javascript:void(0)" aria-expanded="false" tabindex = "-1">
                                     @if (Session::get('locale') == 'hi')
                                         {{ $headerMenus->name_hi ?? '' }}
                                     @else
@@ -74,7 +74,7 @@
                                     @endif
                                     <img src="./assets/images/arrow-down.png" alt="arrow" class="img-fluid">
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" tabindex = "0">
                                     @if (isset($headerMenus->children) && count($headerMenus->children) > 0)
                                         @foreach ($headerMenus->children as $subMenus)
                                             @php
@@ -110,10 +110,10 @@
                                 </ul>
                             </li>
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item " tabindex= "0">
                                 @if ($headerMenus->tab_type == 1)
                                     <a class="nav-link an-hove" onclick="return confirm('{{ $alertMessage }}')"
-                                        target="_blank" href="{{ url($url) ??"" }}" aria-expanded="false">
+                                        target="_blank" href="{{ url($url) ??"" }}" aria-expanded="false" tabindex= "-1">
                                         @if (Session::get('locale') == 'hi')
                                             {{ $headerMenus->name_hi ?? '' }}
                                         @else
