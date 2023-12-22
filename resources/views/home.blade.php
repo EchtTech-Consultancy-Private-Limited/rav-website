@@ -5,14 +5,16 @@
 @section('content')
 
     <section class="hero-banner">
-        <div class="container-fluid">
-            <div class="hero-slider">
+    <div class="hero-slider">
                 <div class="owl-carousel owl-theme" id="heroSlider">
-            
+
                     @if (isset($banner) && count($banner) > 0)
+
                         @foreach ($banner as $banners)
+
                             <div class="item">
                                 <div class="row">
+                                    @if($banners->description_en  != '' )
                                     <div class="col-md-6 mobile-width-80">
                                         <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
                                             <h2 class="heading-red">
@@ -32,19 +34,20 @@
 
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <button class="btn btn-org me-4">
+                                                <button class="btn btn-org border-0 p-0 me-4">
 
                                                     @if (Session::get('locale') == 'hi')
                                                         {{ __('messages.know_more') }}
                                                     @else
                                                         {{ __('messages.know_more') }}
                                                     @endif
-
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mobile-width-30">
+                                    @endif
+                                    <div class="col mobile-width-30 ps-0">
                                         <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
                                             @if ($banners->public_url != '')
                                                 <img src="{{ asset('resources/uploads/banner/' . $banners->public_url) }}"
@@ -77,138 +80,8 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     {{-- banner end --}}
-
-
-    {{-- <section class="hero-banner">
-      <div class="container-fluid">
-          <div class="hero-slider">
-              <div class="owl-carousel owl-theme" id="heroSlider">
-                  <div class="item">
-                      <div class="row">
-                          <div class="col-md-6 mobile-width-80">
-                              <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
-                                  <h2 class="heading-red">
-                                      Unlocking Wellness
-                                      <br>
-                                      Through Ancient Wisdom
-                                  </h2>
-                                  <p class="title-black">
-                                      <span>Explore the Synergy</span>
-                                      of Rashtriya Ayurveda Vidyapeeth and Yoga for
-                                      Holistic Health!
-                                  </p>
-                                  <div class="btn-wrap d-flex align-items-center">
-                                      <button class="btn btn-org me-4">
-                                          Know More
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6 mobile-width-30">
-                              <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
-                                  <img src="{{ asset('assets/images/banner-image.png') }}" alt="hero-image"
-                                      class="img-fluid">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="item">
-                      <div class="row">
-                          <div class="col-md-6 mobile-width-80">
-                              <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
-                                  <h2 class="heading-red">
-                                      Unlocking Wellness
-                                      <br>
-                                      Through Ancient Wisdom
-                                  </h2>
-                                  <p class="title-black">
-                                      <span>Explore the Synergy</span>
-                                      of Rashtriya Ayurveda Vidyapeeth and Yoga for
-                                      Holistic Health! Many ancient works on Ayurvedic medicine are lost to posterity, but
-                                      manuscripts of three principal early texts on Ayurveda have survived to the present
-                                      day. These works are the Charaka Samhita, the Sushruta Samhita and the Bhela
-                                      Samhita. but manuscripts of three principal early texts on Ayurveda have survived to
-                                      the present day.
-                                  </p>
-                                  <div class="btn-wrap d-flex align-items-center">
-                                      <button class="btn btn-org me-4">
-                                          Know More
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6 mobile-width-30">
-                              <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
-                                  <img src="{{ asset('assets/images/banner1.jpg') }}" alt="hero-image" class="img-fluid">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="item">
-                      <div class="row">
-                          <div class="col-md-6 mobile-width-80">
-                              <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
-                                  <h2 class="heading-red">
-                                      Unlocking Wellness
-                                      <br>
-                                      Through Ancient Wisdom
-                                  </h2>
-                                  <p class="title-black">
-                                      <span>Explore the Synergy</span>
-                                      of Rashtriya Ayurveda Vidyapeeth and Yoga for
-                                      Holistic Health! Many ancient works on Ayurvedic medicine are lost to posterity, but
-                                      manuscripts of three principal early texts on Ayurveda have survived to the present
-                                      day. These works are the Charaka Samhita, the Sushruta Samhita and the Bhela
-                                      Samhita. but manuscripts of three principal early texts on Ayurveda have survived to
-                                      the present day.
-                                  </p>
-                                  <div class="btn-wrap d-flex align-items-center">
-                                      <button class="btn btn-org me-4">
-                                          Know More
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6 mobile-width-30">
-                              <!-- <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
-                             <img src="{{ asset('assets/images/banner2.jpg" alt') }}="hero-image" class="img-fluid">
-                             </div> -->
-                              <div class="shape-outer rhombus">
-                                  <div class="shape-inner rhombus"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- <div class="item">
-                    <img src="{{ asset('assets/images/banner2.jpg" alt') }}="hero-image" class="img-fluid">
-                    </div>
-                    <div class="item">
-                    <img src="{{ asset('assets/images/banner3.jpg" alt') }}="hero-image" class="img-fluid">
-                    </div> -->
-              </div>
-
-
-              <div class="btns">
-                  <div id="customPreviousBtn">
-                      <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  </div>
-                  <div id="customPause">
-                      <i class="fa fa-pause" aria-hidden="true"></i>
-                  </div>
-                  <div id="customPlay">
-                      <i class="fa fa-play" aria-hidden="true"></i>
-                  </div>
-                  <div id="customNextBtn">
-                      <i class="fa fa-angle-right" aria-hidden="true"></i>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section> --}}
-
 
     <section class="latest-update-wrap">
         <div class="container-fluid p-0">
@@ -267,7 +140,13 @@
             <div class="row">
                 <div class="col-md-12" data-aos="fade-up" data-aos-duration="3000">
                     <h2 class="heading-black heading-black-lg text-center pb-4">
-                        About Us
+                       
+                        @if (Session::get('locale') == 'hi')
+                            {{ __('messages.About_Us') }}
+                        @else
+                            {{ __('messages.About_Us') }}
+                        @endif
+
                     </h2>
                     <p class="desc-grey text-justify">
                         <span class="desc-grey-bold"> Rashtriya Ayurveda Vidyapeeth</span>
@@ -282,8 +161,12 @@
                         of time and many subjects to learn.
                     </p>
                     <div class="btn-wrap d-flex justify-content-center align-items-center">
-                        <a href="#" class="btn btn-org-bdr">
-                            Read More
+                        <a href="javascript:void();" class="btn btn-org-bdr">
+                            @if (Session::get('locale') == 'hi')
+                             {{ __('messages.Read_More') }}
+                            @else
+                             {{ __('messages.Read_More') }}
+                            @endif 
                         </a>
                     </div>
                 </div>
@@ -293,6 +176,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister1.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Shri Sarbananda Sonowal
                             </h3>
@@ -300,6 +184,8 @@
                                 <b>Hon’ble Cabinet minister</b>
                                 of AYUSH, Government of India
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -317,6 +203,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister2.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Dr. Munjapara Mahendrabhai
                             </h3>
@@ -329,6 +216,8 @@
                                 and Child
                                 Developement
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -346,6 +235,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister3.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Padmashree Vaidya Rajesh Kotecha
                             </h3>
@@ -353,6 +243,8 @@
                                 <b>Secretary</b>
                                 Ministry of AYUSH
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -370,6 +262,7 @@
                             <div class="img">
                                 <img src="{{ asset('assets/images/minister4.png') }}" alt="minister" class="img-fluid">
                             </div>
+                            <div class="text-item">
                             <h3 class="title">
                                 Dr. Vandana Siroha
                             </h3>
@@ -380,6 +273,8 @@
                             <p class="title-org">
                                 Message from Director
                             </p>
+                            </div>
+
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -421,14 +316,14 @@
                                         <div class="news-content-list">
                                             <ul>
                                                 @if (isset($news_management) && count($news_management) > 0)
-                                                    @foreach ($news_management as $news_managements) 
+                                                    @foreach ($news_management as $news_managements)
 
                                                     @php
                                                     $url = $news_managements->public_url ?? 'javascript:void(0)';
                                                     @endphp
                                                         <li>
-                                                            <a    
-                                                            @if($news_managements->tab_type == 1)    
+                                                            <a
+                                                            @if($news_managements->tab_type == 1)
                                                                 target="_blank"
                                                                 onclick="return confirm('{{ $alertMessage }}')"
                                                                 href="{{ url($url)  }}"
@@ -472,7 +367,7 @@
                                 <div class="tab-pane fade" id="cme-tab-pane" role="tabpanel" aria-labelledby="cme-tab"
                                     tabindex="0">
                                     <div class="row">
-                                        <div class="news-content-list">
+                                        <div class="news-content-list scrollbar-style">
                                             <div class="new-content-list-content">
                                                 <p class="desc">
                                                     CME (Continuing Medical Education) scheme is a central sector scheme
@@ -648,7 +543,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="event-card">
-                        <h2 class="heading-white">
+                        <h2 class="heading-white mb-2">
                             Our Events
                         </h2>
                         <div class="event-slider">
@@ -659,7 +554,7 @@
                                             Two days Interactive Training Programme on Agni Karma & Rakta Mokshana with
                                             organization of free health camp
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -672,7 +567,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -692,7 +587,7 @@
                                             5 workshops of one day training of AYUSH doctors on Patient Trauma Care
                                             (PTC) (Total Programme -5)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -709,7 +604,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -729,7 +624,7 @@
                                             6 Days Complete Residential Samhita based Training programme for
                                             undergraduate/postgraduate (Total Programme- 3)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -741,7 +636,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -763,7 +658,7 @@
                                             Products, Food fortification based on Ayurveda”
                                             (Total Programme- 3)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -777,7 +672,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -797,7 +692,7 @@
                                             One Day Sensitization programme of Ayurvedic Training Accreditation
                                             Programme(ATAB) (Total Programme- 4)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -812,7 +707,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -833,7 +728,7 @@
                                             and Asthi Marma
                                             (Total Programme- 6)
                                         </p>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
                                             </div>
@@ -849,7 +744,7 @@
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div class="event-list-content my-3">
+                                        <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Venue</span>
                                             </div>
@@ -871,6 +766,7 @@
                     <div class="course-wrap">
                         <div class="course-list">
                             <ul>
+
                                 <li>
                                     Courses Under Guru Shishya Parampara
                                     <a href="#" class="read-more">
@@ -894,6 +790,20 @@
                                 </li>
                                 <li>
                                     E-Newsletters
+                                    <a href="#" class="read-more">
+                                        <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                                <li>
+                                   Awards
+                                    <a href="#" class="read-more">
+                                        <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                                <li>
+                                    Admission to Courses
                                     <a href="#" class="read-more">
                                         <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                             class="img-fluid">
@@ -1006,6 +916,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="message-tab-content">
+
                                             <h2 class="heading-black heading-black-md">
                                                 Shri Sarbananda Sonowal
                                             </h2>
@@ -1065,7 +976,7 @@
                                 tabindex="0">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
-                                        <div class="table">
+                                        <div class="table scrollbar-style">
                                             <table>
                                                 <thead>
                                                     <tr>
@@ -3354,7 +3265,7 @@
                                 tabindex="0">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="table">
+                                        <div class="table scrollbar-style">
                                             <table>
                                                 <thead>
                                                     <tr>
@@ -3926,7 +3837,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="heading-black heading-black-lg text-center pb-5">
-                        Our Successful Journey
+                        @if (Session::get('locale') == 'hi')
+                        {{ __('messages.Our_Successful_Journey') }}
+                       @else
+                        {{ __('messages.Our_Successful_Journey') }}
+                       @endif
                     </h2>
                 </div>
                 <div class="col-md-3">
@@ -3936,7 +3851,11 @@
                             12,458
                         </span>
                         <p class="title">
-                            Number of Graduates
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Number_of_Graduates') }}
+                           @else
+                            {{ __('messages.Number_of_Graduates') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3947,7 +3866,11 @@
                             24
                         </span>
                         <p class="title">
-                            Programme Offerings
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Programme_Offerings') }}
+                           @else
+                            {{ __('messages.Programme_Offerings') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3958,7 +3881,11 @@
                             1213
                         </span>
                         <p class="title">
-                            Research Initiatives
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Research_Initiatives') }}
+                           @else
+                            {{ __('messages.Research_Initiatives') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3969,7 +3896,11 @@
                             686
                         </span>
                         <p class="title">
-                            Online Presence
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Online_Presence') }}
+                           @else
+                            {{ __('messages.Online_Presence') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3985,12 +3916,28 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="activity-tab" data-bs-toggle="tab"
                                     data-bs-target="#activity-tab-pane" type="button" role="tab"
-                                    aria-controls="activity-tab-pane" aria-selected="true">Our Activities</button>
+                                    aria-controls="activity-tab-pane" aria-selected="true">
+                                    
+                                    @if (Session::get('locale') == 'hi')
+                                    {{ __('messages.Online_Presence') }}
+                                   @else
+                                    {{ __('messages.Online_Presence') }}
+                                   @endif
+                                
+                                
+                                </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="crav-tab" data-bs-toggle="tab"
                                     data-bs-target="#crav-tab-pane" type="button" role="tab"
-                                    aria-controls="crav-tab-pane" aria-selected="false">CRAV Gurus</button>
+                                    aria-controls="crav-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                    {{ __('messages.CRAV_Gurus') }}
+                                   @else
+                                    {{ __('messages.CRAV_Gurus') }}
+                                   @endif
+                                
+                                </button>
                             </li>
                         </ul>
                         <p class="title-white py-4">
@@ -4372,28 +4319,28 @@
                                 aria-labelledby="photo-tab" tabindex="0">
                                 <div class="photo-gallery-wrap">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo1.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo2.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img img-auto">
                                                 <img src="{{ asset('assets/images/photo3.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo4.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo5.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
@@ -4409,28 +4356,28 @@
                                 aria-labelledby="twitter-tab" tabindex="0">
                                 <div class="photo-gallery-wrap">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0 ">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo1.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img me-2">
                                                 <img src="{{ asset('assets/images/photo2.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0">
+                                            <div class="photo-gallery-img img-auto">
                                                 <img src="{{ asset('assets/images/photo3.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="photo-gallery-img">
+                                        <div class="col-md-4 p-0 ">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo4.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
-                                            <div class="photo-gallery-img">
+                                            <div class="photo-gallery-img ms-2">
                                                 <img src="{{ asset('assets/images/photo5.png') }}" alt="photo"
                                                     class="img-fluid">
                                             </div>
