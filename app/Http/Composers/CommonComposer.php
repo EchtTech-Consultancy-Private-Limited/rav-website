@@ -5,7 +5,7 @@ namespace App\Http\Composers;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
-use App, Route, DB, Session;
+use App, Route, DB,Session;
 use Exception;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
@@ -50,13 +50,18 @@ class CommonComposer
             $menuName = $this->getMenuTree($menus, 0);
             $news_management = DB::table('news_management')->where('soft_delete', 0)->latest('created_at')->take(3)->get();
             $tender_management = DB::table('tender_management')->where('soft_delete', 0)->latest('created_at')->get();
+            $social_links = DB::table('social_links')->where('soft_delete', 0)->first();
+            $toogleMenu = DB::table('website_menu_management')->where('menu_place','2')->where('soft_delete','0')->orderby('sort_order','Asc')->get();   
+            $website_core_settings = DB::table('website_core_settings')->where('soft_delete', 0)->first();
+           // dd($toogleMenu);
 
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 
              'banner' => $banner, 'news_management' => $news_management, 
-             'tender_management' => $tender_management,
-             'alertMessage' =>$this->checkLanguage()
-            
+             'tender_management' => $tender_management,'social_links'=>$social_links,
+             'alertMessage' =>$this->checkLanguage(),
+             'website_core_settings'=>$website_core_settings,
+             'toogleMenu'=>$toogleMenu
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
@@ -81,7 +86,7 @@ class CommonComposer
     }
 
     function checkLanguage(){
-        if (Session::get('Lang') == 'hi')
+        if (Session::get('locale') == 'hi')
         {
             return 'यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।';
         }else{

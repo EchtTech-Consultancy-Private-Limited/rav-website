@@ -1,180 +1,198 @@
 @extends('layout.master')
+
 @section('title')
     {{ __('RAV') }}
 @endsection
 @section('content')
- <section class="breadcrumb">
-    <div class="page-breadcrumb">
-      <div class="breadcrumb-img">
-        <img src="{{ asset('assets/images/bredcrumb.jpg') }}" alt="" />
-      </div>
-      <div class="breadcrumb-title">
-        <h3 class="title">Our Objective</h3>
-      </div>
-    </div>
-  </section>
-  <div class="main-body">
-    <div class="container breadcrumbs-link">
-      <div class="breadcrumbs-link-text">
-        <ul>
-          <li>
-            <a class="active" href="" tabindex="0"> Home </a>
-          </li>
-          <li>{{ $title_name }}</li>
-        </ul>
-      </div>
-    </div>
-    <section class="master bg-grey">
-      <div class="container">
-        <div class="news-tab common-tab side-tab1">
-          <div class="row">
-            <div class="col-lg-3 col-md-3">
-              <ul class="nav nav-tabs" id="newsTab" role="tablist">
-                <h3 class="heading-txt-styl" >About Us</h3>
-                <li class="nav-item" role="presentation">
-                  <a href="./our-objective.html" class="nav-link active">Our Objective</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a href="./citizens-charter.html" class="nav-link ">Citizens Charter</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a href="./fellows-vidyapeeth-1.html" class="nav-link">Fellows of Vidyapeeth</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a href="./governing-body.html" class="nav-link">Governing Body</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a href="./publication-vidyapeeth.html" class="nav-link">Publication of Vidyapeeth</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a href="./standing-finance-committee.html" class="nav-link">Standing Finance Committee</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a href="./crav-gurus.html" class="nav-link">CRAV Gurus</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a href="./who-who.html" class="nav-link">Who's Who</a>
-                </li>
+    <section class="breadcrumb">
 
-              </ul>
-              <ul class="nav-qm nav-tabs mt-3" id="newsTab" role="tablist">
-                <h3 class=" quick-menu-head-stl text-center mt-1" >Quick Menu</h3>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>                 <a title="link" href="../pages/message-presidentgb.html" class="nav-link">Message From President, G.B</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/cme-scheme.html" class="nav-link">CME Scheme</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/guru-shishya-parampara.html" class="nav-link "> Courses Under Guru Shishya Parampara</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/tender.html" class="nav-link"> Tenders</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/vacancy.html" class="nav-link"> Vacancy</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/thesis-submit-rav-student.html" class="nav-link"> Thesis Submitted by RAV Studnts</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/right-information.html" class="nav-link"> Right to Information Act(RTI)</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/admission-courses.html" class="nav-link"> Admission to courses</a>
-                </li>
-                <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  <a title="link" href="../pages/publication-of-vidyapeeth.html" class="nav-link"> Publication of vidyapeeth</a>
-                </li>
-
-
-              </ul>
+        {{-- banner start --}}
+        @if (isset($organizedData['banner']) && $organizedData['banner'] != '')
+            <div class="breadcrumb-img">
+                <img src="{{ asset('resources/uploads/pagebanner/' . $organizedData['banner']->public_url) ??"" }}"
+                    alt="{{ $organizedData['banner']->image_title ?? '' }}" title="{{ $organizedData['banner']->image_title ?? '' }}" />
             </div>
-            <div class="col-md-8 col-lg-8 ">
-              <div class="about">
-                <h1>
-                  Our Objective
-                </h1>
-
-                <table title="Our Objective">
-                  <tbody>
-                    <tr>
-                      <th>S.No</th>
-                      <th>Title</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>To promote the knowledge of Ayurveda.</td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>To formulate schemes for continuing education and conducting examinations for the purpose in
-                        various disciplines of Ayurveda.</td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>To institute due recognition to successful candidates.</td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>To recognize and encourage merit in various branches of Ayurveda.</td>
-                    </tr>
-                    <tr>
-                      <td>5.</td>
-                      <td>To undertake academic work in Ayurveda of National &amp; International importance.</td>
-                    </tr>
-                    <tr>
-                      <td>6.</td>
-                      <td>To organize workshops and seminars in various branches of Ayurveda.</td>
-                    </tr>
-                    <tr>
-                      <td>7.</td>
-                      <td>To maintain liaison with professional associations, Societies, Colleges and Universities for
-                        raising standards of Ayurvedic Education.</td>
-                    </tr>
-                    <tr>
-                      <td>8.</td>
-                      <td>To secure and manage funds and endowments for the promotion of Ayurveda and implementation of
-                        continuing education in Ayurveda.</td>
-                    </tr>
-                    <tr>
-                      <td>9.</td>
-                      <td>To conduct experiments of new methods of Ayurvedic education in order to arrive at
-                        satisfactory standards of education.</td>
-                    </tr>
-                    <tr>
-                      <td>10.</td>
-                      <td>To institute professorships, other faculty position fellowships, research cadre positions and
-                        scholarships etc. for realizing the objectives of the Vidyapeeth.&nbsp;</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <h2>VISION OF THE RAV
-                </h2>
-                <p class="desc">
-                  Vision, mission long term design: be a global Centre of excellence for exploration and dissemination of the knowledge of traditional as well as emerging Ayurvedic clinical practices for safe and effective treatment in lifestyle and chronic diseases
-                </p>
-                <h2>MISSION OF THE RAV</h2>
-                <p class="desc">
-                  To established RAV as a formally recognized Institute for carrying out the training and research in traditional and emerging Ayurvedic clinical practice.
-                </p>
-
-              </div>
-
+        @else
+            <div class="breadcrumb-img">
+                <img src="{{ asset('assets/images/bredcrumb.jpg') ??'' }}" alt="" />
             </div>
-          </div>
+        @endif
+        {{-- banner end --}}
+        <div class="breadcrumb-title">
+            <h3 class="title">{{ $title_name ?? '' }}</h3>
         </div>
-      </div>
+
+        </div>
     </section>
-  </div>
+    <div class="main-body">
+        <div class="container breadcrumbs-link">
+            <div class="breadcrumbs-link-text">
+                <ul>
+                    <li>
+                        <a class="active" href="" tabindex="0">
+                            @if (Session::get('locale') == 'hi')
+                                होम पेज
+                            @else
+                                Home
+                            @endif
+                        </a>
+                    </li>
+                    <li>{{ $title_name ?? '' }}</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <section class="master bg-grey">
+            <div class="container">
+                <div class="news-tab common-tab side-tab1">
+                    <div class="row">
+                        {{-- side menu start --}}
+                        <div class="col-lg-3 col-md-3">
+                            @if (isset($sideMenuParent) && $sideMenuParent != '')
+                                <ul class="nav nav-tabs" id="newsTab" role="tablist">
+                                    @if ($sideMenuParent != '' && isset($sideMenuParent))
+                                        <h3 class="heading-txt-styl">
+                                            @if (Session::get('locale') == 'hi')
+                                                {{ $sideMenuParent->name_hi ?? '' }}
+                                            @else
+                                                {{ $sideMenuParent->name_en ?? '' }}
+                                            @endif
+                                        </h3>
+                                    @endif
+
+                                    @if (isset($sideMenuChild) && count($sideMenuChild) > 0)
+                                        @foreach ($sideMenuChild as $sideMenuChilds)
+                                            @php
+                                                $sideMenuChildsurl = $sideMenuChilds->url ?? 'javascript:void(0)';
+                                            @endphp
+                                            <li class="nav-item" role="presentation">
+                                                <a href="{{ url($sideMenuChildsurl) }}"
+                                                    class="nav-link @if (request()->is($sideMenuChildsurl)) active @endif">
+                                                    @if (Session::get('locale') == 'hi')
+                                                        {{ $sideMenuChilds->name_hi ?? '' }}
+                                                    @else
+                                                        {{ $sideMenuChilds->name_en ?? '' }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            @endif
+
+                            @if (isset($quickLink) && count($quickLink) > 0)
+                                <ul class="nav-qm nav-tabs mt-3" id="newsTab" role="tablist">
+                                    <h3 class=" quick-menu-head-stl text-center mt-1">
+                                        @if (Session::get('locale') == 'hi')
+                                            जल्दी तैयार होने वाला मेनू
+                                        @else
+                                            Quick Menu
+                                        @endif
+                                    </h3>
+
+                                    @foreach ($quickLink as $quickLinks)
+                                        @php
+                                            $quickLinksurl = $quickLinks->url ?? 'javascript:void(0)';
+                                        @endphp
+
+                                        <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i> <a title="link"
+                                                href="{{ url($quickLinksurl) ?? '' }}"
+                                                class="nav-link @if (request()->is($quickLinksurl)) active @endif">
+                                                @if (Session::get('locale') == 'hi')
+                                                    {{ $quickLinks->name_hi ?? '' }}
+                                                @else
+                                                    {{ $quickLinks->name_en ?? '' }}
+                                                @endif
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                        {{-- side menu end --}}
+                        <div class="col-md-8 col-lg-8 ">
+                            <div class="about">
+
+                                @if (isset($content))
+                                    <h1>{{ $content }}</h1>
+                                @endif
+
+                                <h1>
+                                    @if (isset($organizedData['metatag']->page_title_en) && !blank($organizedData['metatag']->page_title_en))
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $organizedData['metatag']->page_title_hi ?? '' }}
+                                        @else
+                                            {{ $organizedData['metatag']->page_title_en ?? '' }}
+                                        @endif
+                                    @endif
+                                </h1>
+
+                                @if (isset($organizedData['content']->page_content_en) && !blank($organizedData['content']->page_content_en))
+                                    <p>
+                                        @if (Session::get('locale') == 'hi')
+                                            {!! $organizedData['content']->page_content_hi ?? '' !!}
+                                        @else
+                                            {!! $organizedData['content']->page_content_en ?? '' !!}
+                                        @endif
+                                    </p>
+                                @endif
+
+
+
+                                {{-- Photo Gallery start --}}
+                                @if (isset($organizedData['gallery']) && count($organizedData['gallery']) > 0)
+                                    <div class="lightbox-photo-gallery">
+                                        <div class="gallery">
+                                            <div class="row">
+                                                <h1>Photo Gallery</h1>
+                                                @foreach ($organizedData['gallery'] as $data)
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <div class="images__item"><a class="images__link" name="img3"
+                                                                href="{{ asset('resources/uploads/PageContentGallery/' . $data->public_url) }}">
+                                                                <img src="{{ asset('resources/uploads/PageContentGallery/' . $data->public_url) }}"
+                                                                    alt="{{ $data->image_title ?? '' }}"
+                                                                    title="{{ $data->image_title ?? '' }}" /></a></div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                {{-- Photo Gallery end --}}
+
+
+                                {{-- pdf content start --}}
+                                @if (isset($organizedData['pdf']) && count($organizedData['pdf']) > 0)
+                                    <table class="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th> Title</th>
+                                                <th> Date</th>
+                                                <th> View/Download</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($organizedData['pdf']  as  $data)
+                                            <tr>
+                                                <td>{{ $data->pdf_title  ??'' }}</td>
+                                                <td>{{ date('d F Y', strtotime($data->start_date ??'')) }}</td>
+                                                <td><a href="{{ asset('resources/uploads/PageContentPdf/'.$data->public_url) }}" download>View</a> <i class="fa fa-file-pdf-o"> ({{ $data->pdfimage_size  ??"" }})</i>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                        </thead>
+                                    </table>
+                                @endif
+                                {{-- pdf content end --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
 @endsection
