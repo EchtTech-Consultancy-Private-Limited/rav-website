@@ -514,6 +514,7 @@ a {
   color: #FFFFFF;
   display: flex;
   align-items: center;
+  padding: 14px 0;
 }
 
 @media (max-width: 1440px) {
@@ -543,7 +544,7 @@ a {
 }
 
 .site-header .navbar-nav .nav-item .dropdown-menu {
-  top: 37px;
+  top: 51px;
   border-radius: 0;
   padding: 0;
   border: none;
@@ -1439,7 +1440,7 @@ section.client-wrap.ptb-100 {
   align-items: center;
   justify-content: center;
   flex-flow: wrap;
-  margin: 20px 0;
+  margin: 35px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
@@ -1516,9 +1517,6 @@ section.client-wrap.ptb-100 {
   }
   .site-header .logo-right {
     margin-top: 16px;
-  }
-  .hero-slider-img {
-    padding: 22px 0 34px;
   }
   .latest-update-wrap .title-white {
     text-align: left !important;
@@ -1833,7 +1831,7 @@ section.client-wrap.ptb-100 {
 }
 
 .news-content-list {
-  max-height: 347px;
+  max-height: 327px;
   overflow: auto;
   text-align: center;
 }
@@ -2089,10 +2087,11 @@ div.dt-buttons > .dt-button, div.dt-buttons > div.dt-button-split .dt-button {
 }
 
 .btns div {
-  padding: 2px 13px;
+  padding: 0px 13px;
   cursor: pointer;
   font-size: 25px;
   background: #ff5200;
+  border-radius: 6px;
 }
 
 #customPlay {
@@ -3403,4 +3402,8 @@ button.btn.side-mn-icn:hover {
 
 .hero-slider .fa-arrow-right {
   display: none;
+}
+
+.header-top .header-top-left ul li {
+  position: relative;
 }/*# sourceMappingURL=style.css.map */
