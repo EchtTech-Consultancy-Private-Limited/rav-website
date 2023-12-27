@@ -12,17 +12,27 @@
   .header-top .header-top-left ul li {
     position: relative;
   }
-  .header-top .header-top-left ul li:not(:last-child):after {
-    content: "";
-    width: 1px;
-    height: 10px;
-    background: #6c6c6c;
-    position: absolute;
-    right: 8px;
-    top: 8px;
-  }
+ 
 }
 
+@media (max-width:1299px){
+    .news-content-list {
+        max-height: 269px;
+        overflow: auto;
+        text-align: center;
+    }
+}
+@media (min-width:991px){
+    .header-top .header-top-left ul li:not(:last-child):after {
+        content: "";
+        width: 1px;
+        height: 10px;
+        background: #6c6c6c;
+        position: absolute;
+        right: 8px;
+        top: 8px;
+      }
+}
 @media (max-width: 1366px) {
     .common-tab .nav-link {
         font-size: 13px !important;

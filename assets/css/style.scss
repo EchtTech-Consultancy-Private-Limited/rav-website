@@ -572,7 +572,7 @@ a {
 }
 
 .site-header .navbar-nav .nav-item .dropdown-menu {
-  top: 37px;
+  top: 51px;
   border-radius: 0;
   padding: 0;
   border: none;
@@ -1935,7 +1935,7 @@ section.client-wrap.ptb-100 {
 }
 
 .news-content-list {
-  max-height: 347px;
+  max-height: 327px;
   overflow: auto;
   text-align: center;
 }
@@ -3620,3 +3620,8 @@ button.btn.side-mn-icn:hover {
     //     }
     //   }
     // }
+
+
+    .header-top .header-top-left ul li {
+      position: relative;
+  }
