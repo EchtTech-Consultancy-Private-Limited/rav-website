@@ -1440,7 +1440,7 @@ section.client-wrap.ptb-100 {
   align-items: center;
   justify-content: center;
   flex-flow: wrap;
-  margin: 20px 0;
+  margin: 35px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
@@ -1517,9 +1517,6 @@ section.client-wrap.ptb-100 {
   }
   .site-header .logo-right {
     margin-top: 16px;
-  }
-  .hero-slider-img {
-    padding: 22px 0 34px;
   }
   .latest-update-wrap .title-white {
     text-align: left !important;

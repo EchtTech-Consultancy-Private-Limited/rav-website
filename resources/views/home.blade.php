@@ -34,14 +34,14 @@
 
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <button class="btn btn-org border-0 p-0 me-4">
+                                                <button class="btn btn-org border-0  me-4">
 
                                                     @if (Session::get('locale') == 'hi')
                                                         {{ __('messages.know_more') }}
                                                     @else
                                                         {{ __('messages.know_more') }}
                                                     @endif
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -179,7 +179,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
@@ -211,7 +211,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
@@ -238,7 +238,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
@@ -268,7 +268,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
