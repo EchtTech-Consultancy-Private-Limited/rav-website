@@ -18,8 +18,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         return view('home');
     }
 
@@ -28,8 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function contactUS()
-    {
+    public function contactUS(){
         return view('pages.contact-us');
     }
 
@@ -47,8 +45,7 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function feedbackSubmit(Request $request)
-    {
+    public function feedbackSubmit(Request $request){
         return view('pages.feedback');
     }
 
@@ -58,8 +55,7 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function siteMap(Request $request)
-    {
+    public function siteMap(Request $request){
         return view('pages.sitemap');
     }
 
@@ -93,9 +89,6 @@ class HomeController extends Controller
         return response()->json(['data' => $request->data, True]);
     }
 
-
-  
-    
     public function getContentAllPages(Request $request, $slug)
     {
         // dd($slug);
@@ -119,7 +112,7 @@ class HomeController extends Controller
             if(count($dynamic_content_page_metatag) > 0){   
 
             $organizedData = [];
-    
+            
             foreach ($dynamic_content_page_metatag as $dynamic_content_page_metatags) {
                 
                 $dynamic_content_page_pdf = DB::table('dynamic_content_page_pdf')
@@ -141,8 +134,7 @@ class HomeController extends Controller
                     ->wheredcpm_id($dynamic_content_page_metatags->uid)
                     ->where('soft_delete', 0)
                     ->first();
-    
-                // Organize data in the associative array based on name
+                    
                 $organizedData = [
                     'metatag' => $dynamic_content_page_metatags,
                     'content' => $dynamic_page_content,
@@ -166,23 +158,23 @@ class HomeController extends Controller
         }else{
           
             if (Session::get('locale') == 'hi'){
-                $content = "पेज अभी उपलब्ध नहीं है हम इस पर काम कर रहे हैं ";   
+                $content = "पेज अभी उपलब्ध नहीं है हम इस पर काम कर रहे हैं";   
             }else{
-                $content = "page is not available yet we are working on it";   
+                $content = "Page is not Available Yet.We are Working on it.";   
             }
           return view('master-page',['content'=>$content,'title_name'=>$title_name]);
         }
         }else{
-            return redirect('/');
+            return abort(404);
         }
         
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
+            return abort(404);
         } catch (\PDOException $e) {
             \Log::error('A PDOException occurred: ' . $e->getMessage());
+            return abort(404);
         }
-    
-       
     }
     
 }

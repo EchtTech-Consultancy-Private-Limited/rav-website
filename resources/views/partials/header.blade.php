@@ -78,14 +78,14 @@
                                     @if (isset($headerMenus->children) && count($headerMenus->children) > 0)
                                         @foreach ($headerMenus->children as $subMenus)
                                             @php
-                                                $suburl = $subMenus->url ?? 'javascript:void(0)';
+                                                $subMenusurl = $subMenus->url ?? 'javascript:void(0)';
                                             @endphp
 
                                             <li>
                                                 @if ($subMenus->tab_type == 1)
                                                     <a class="nav-link an-hove"
                                                         onclick="return confirm('{{ $alertMessage }}')" target="_blank"
-                                                        href="{{ url($suburl) }}" aria-expanded="false">
+                                                        href="{{ url($subMenusurl) ??"" }}" aria-expanded="false">
                                                         @if (Session::get('locale') == 'hi')
                                                             {{ $subMenus->name_hi ?? '' }}
                                                         @else
@@ -93,7 +93,7 @@
                                                         @endif
                                                     </a>
                                                 @else
-                                                    <a class="dropdown-item" href="{{ url($suburl) }}">
+                                                    <a class="dropdown-item" href="{{ url($subMenusurl) ??"" }}">
 
                                                         @if (Session::get('locale') == 'hi')
                                                             {{ $subMenus->name_hi ?? '' }}
@@ -113,7 +113,7 @@
                             <li class="nav-item " tabindex= "0">
                                 @if ($headerMenus->tab_type == 1)
                                     <a class="nav-link an-hove" onclick="return confirm('{{ $alertMessage }}')"
-                                        target="_blank" href="{{ url($url) }}" aria-expanded="false" tabindex= "-1">
+                                        target="_blank" href="{{ url($url) ??"" }}" aria-expanded="false" tabindex= "-1">
                                         @if (Session::get('locale') == 'hi')
                                             {{ $headerMenus->name_hi ?? '' }}
                                         @else
@@ -121,7 +121,7 @@
                                         @endif
                                     </a>
                                 @else
-                                    <a class="nav-link an-hove" href="{{ url($url) }}" aria-expanded="false">
+                                    <a class="nav-link an-hove" href="{{ url($url) ??''}}" aria-expanded="false">
                                         @if (Session::get('locale') == 'hi')
                                             {{ $headerMenus->name_hi ?? '' }}
                                         @else

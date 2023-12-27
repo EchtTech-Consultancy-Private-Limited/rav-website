@@ -5,8 +5,7 @@
 @section('content')
 
     <section class="hero-banner">
-        <div class="container-fluid">
-            <div class="hero-slider">
+    <div class="hero-slider">
                 <div class="owl-carousel owl-theme" id="heroSlider">
 
                     @if (isset($banner) && count($banner) > 0)
@@ -35,20 +34,20 @@
 
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <button class="btn btn-org me-4">
+                                                <button class="btn btn-org border-0  me-4">
 
                                                     @if (Session::get('locale') == 'hi')
                                                         {{ __('messages.know_more') }}
                                                     @else
                                                         {{ __('messages.know_more') }}
                                                     @endif
-
+                                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     @endif
-                                    <div class="col mobile-width-30">
+                                    <div class="col mobile-width-30 ps-0">
                                         <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
                                             @if ($banners->public_url != '')
                                                 <img src="{{ asset('resources/uploads/banner/' . $banners->public_url) }}"
@@ -81,7 +80,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     {{-- banner end --}}
 
@@ -142,7 +140,13 @@
             <div class="row">
                 <div class="col-md-12" data-aos="fade-up" data-aos-duration="3000">
                     <h2 class="heading-black heading-black-lg text-center pb-4">
-                        About Us
+                       
+                        @if (Session::get('locale') == 'hi')
+                            {{ __('messages.About_Us') }}
+                        @else
+                            {{ __('messages.About_Us') }}
+                        @endif
+
                     </h2>
                     <p class="desc-grey text-justify">
                         <span class="desc-grey-bold"> Rashtriya Ayurveda Vidyapeeth</span>
@@ -157,8 +161,12 @@
                         of time and many subjects to learn.
                     </p>
                     <div class="btn-wrap d-flex justify-content-center align-items-center">
-                        <a href="#" class="btn btn-org-bdr">
-                            Read More
+                        <a href="javascript:void();" class="btn btn-org-bdr">
+                            @if (Session::get('locale') == 'hi')
+                             {{ __('messages.Read_More') }}
+                            @else
+                             {{ __('messages.Read_More') }}
+                            @endif 
                         </a>
                     </div>
                 </div>
@@ -181,7 +189,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
@@ -213,7 +221,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
@@ -240,7 +248,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
@@ -270,7 +278,7 @@
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
-                                this is the title
+                                What is Lorem Ipsum?
                             </h3>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
@@ -3829,7 +3837,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="heading-black heading-black-lg text-center pb-5">
-                        Our Successful Journey
+                        @if (Session::get('locale') == 'hi')
+                        {{ __('messages.Our_Successful_Journey') }}
+                       @else
+                        {{ __('messages.Our_Successful_Journey') }}
+                       @endif
                     </h2>
                 </div>
                 <div class="col-md-3">
@@ -3839,7 +3851,11 @@
                             12,458
                         </span>
                         <p class="title">
-                            Number of Graduates
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Number_of_Graduates') }}
+                           @else
+                            {{ __('messages.Number_of_Graduates') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3850,7 +3866,11 @@
                             24
                         </span>
                         <p class="title">
-                            Programme Offerings
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Programme_Offerings') }}
+                           @else
+                            {{ __('messages.Programme_Offerings') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3861,7 +3881,11 @@
                             1213
                         </span>
                         <p class="title">
-                            Research Initiatives
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Research_Initiatives') }}
+                           @else
+                            {{ __('messages.Research_Initiatives') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3872,7 +3896,11 @@
                             686
                         </span>
                         <p class="title">
-                            Online Presence
+                            @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Online_Presence') }}
+                           @else
+                            {{ __('messages.Online_Presence') }}
+                           @endif
                         </p>
                     </div>
                 </div>
@@ -3888,12 +3916,28 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="activity-tab" data-bs-toggle="tab"
                                     data-bs-target="#activity-tab-pane" type="button" role="tab"
-                                    aria-controls="activity-tab-pane" aria-selected="true">Our Activities</button>
+                                    aria-controls="activity-tab-pane" aria-selected="true">
+                                    
+                                    @if (Session::get('locale') == 'hi')
+                                    {{ __('messages.Online_Presence') }}
+                                   @else
+                                    {{ __('messages.Online_Presence') }}
+                                   @endif
+                                
+                                
+                                </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="crav-tab" data-bs-toggle="tab"
                                     data-bs-target="#crav-tab-pane" type="button" role="tab"
-                                    aria-controls="crav-tab-pane" aria-selected="false">CRAV Gurus</button>
+                                    aria-controls="crav-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                    {{ __('messages.CRAV_Gurus') }}
+                                   @else
+                                    {{ __('messages.CRAV_Gurus') }}
+                                   @endif
+                                
+                                </button>
                             </li>
                         </ul>
                         <p class="title-white py-4">

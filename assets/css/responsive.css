@@ -1,14 +1,40 @@
-@media(min-width:1300px){
-    .news-content-list ul li a .desc{
+@media (min-width: 1300px) {
+    .news-content-list ul li a .desc {
         font-size: 15px !important;
     }
     .hero-slider-content {
         padding: 0 11% !important;
     }
+    
+.header-top .header-top-left {
+    position: relative;
+  }
+  .header-top .header-top-left ul li {
+    position: relative;
+  }
+ 
 }
 
-@media(max-width:1366px){
-    .common-tab .nav-link{
+@media (max-width:1299px){
+    .news-content-list {
+        max-height: 269px;
+        overflow: auto;
+        text-align: center;
+    }
+}
+@media (min-width:991px){
+    .header-top .header-top-left ul li:not(:last-child):after {
+        content: "";
+        width: 1px;
+        height: 10px;
+        background: #6c6c6c;
+        position: absolute;
+        right: 8px;
+        top: 8px;
+      }
+}
+@media (max-width: 1366px) {
+    .common-tab .nav-link {
         font-size: 13px !important;
         padding: 10px !important;
     }
@@ -33,7 +59,114 @@
     }
 }
 
-@media(max-width:768px){
+@media (max-width: 768px) {
+    .header-top {
+        padding: 3px 0;
+    }
+    .header-top-left ul li a {
+        margin-right: 0px;
+    }
+    .accessbility-nav-link{
+        display: none;
+    }
+    .btns div {
+        padding: 0px 13px;
+        font-size: 25px;
+        border-radius: 6px;
+      }
+    .event-list-content .date-wrap img {
+        margin: 6px 0;
+    }
+    .about-us-card{
+        padding: 0;
+        border: 0;
+    }
+    .text-content {
+        padding: 0 15px;
+    }
+    .about-us-card-back {
+        position: relative;
+        display: block;
+        border: 1px solid #ddd;
+    border-top: 0;
+    border-radius: 0px 0px 10px 10px;
+    padding: 12px 15px;
+}
+    
+    .hero-slider .fa-arrow-right {
+        display: inline-block;
+    }
+    .hero-slider .btn-wrap .btn-org {
+        border: none;
+        border-radius: 20px;
+        letter-spacing: 0px;
+        background: none;
+        color: blue;
+        font-size: 12px !important;
+        font-weight: 500;
+        padding: 0 !important;
+    }
+    .hero-slider-content {
+        height: auto;
+        padding: 0px 5px;
+    }
+    .btns div {
+        padding: 0px 5px;
+        font-size: 25px;
+        background: #ff5200;
+        border-radius: 5px;
+    }
+    .site-header .logo-right {
+        align-items: self-start;
+    }
+    .site-header .logo-wrap {
+        padding: 20px 0 0;
+    }
+    .hero-slider-img {
+        padding: 0px;
+    }
+    section.our-journey .our-journey-card {
+        padding: 11px 14px;
+    }
+    .activity-slider .owl-nav .owl-next span,
+    .activity-slider .owl-nav .owl-prev span {
+        height: 9px;
+    }
+    .activity-slider .owl-carousel .owl-item img {
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+    }
+    .photo-gallery-wrap .text-content {
+        padding: 0 0px 8px;
+    }
+    .activity-slider .owl-nav .owl-next,
+    .activity-slider .owl-nav .owl-prev {
+        width: 22px;
+        height: 22px;
+    }
+    .activity-slider .owl-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: absolute;
+        top: -43px;
+        right: 0;
+    }
+    .activity-tab .owl-carousel .owl-nav {
+        display: block !important;
+    }
+    .photo-tab {
+        padding: 6rem 0;
+        margin: 10px 0 20px;
+    }
+    .activity-slider .owl-carousel {
+        height: auto;
+        z-index: 1;
+    }
+    .about-us-card:hover {
+        padding: 15px 15px 20px;
+    }
     .header-top-content li {
         font-size: 14px;
         background: #fff;
@@ -50,83 +183,74 @@
         padding: 8px 0;
     }
 
-    .hero-slider .owl-carousel .owl-item img{
+    .hero-slider .owl-carousel .owl-item img {
         height: auto !important;
     }
     .hero-slider {
         height: auto !important;
     }
-    .owl-carousel {
-        display: none;
+    .hero-slider .owl-carousel {
         width: 100%;
-        height: 135px;
+        height: auto;
         z-index: 1;
     }
 
-    .Grid-row
-    {
+    .Grid-row {
         flex-direction: column;
     }
 
-    .Grid
-    {
+    .Grid {
         width: unset !important;
     }
-    .Card-thumb
-    {
+    .Card-thumb {
         display: flex;
         justify-content: center;
         margin: 26px 0px 0px 0px;
         width: unset !important;
     }
 
-    .img-filter-sec-right
-    {
-    margin: 20px 0px;
+    .img-filter-sec-right {
+        margin: 20px 0px;
     }
 
-    .hero-slider #heroSlider .owl-nav{
+    .hero-slider #heroSlider .owl-nav {
         display: none !important;
     }
     .btns div {
-
         font-size: 14px !important;
-
     }
-    .latest-news-slider .owl-carousel{
+    .latest-news-slider .owl-carousel {
         height: auto;
     }
 
-    .mobile-width-50{
+    .mobile-width-50 {
         width: 50%;
     }
 
-    .mobile-width-80{
-        width: 65%;
+    .mobile-width-80 {
+        width: 38%;
     }
 
-    .mobile-width-30{
-        width: 30%;
+    .mobile-width-30 {
+        width: auto;
     }
 
-
-    .hero-slider-content .heading-red{
+    .hero-slider-content .heading-red {
         font-size: 12px;
     }
-    .hero-slider-content .title-black span{
+    .hero-slider-content .title-black span {
         font-size: 12px;
     }
     .hero-slider-content .title-black {
         padding: 5px 0 !important;
         font-size: 11px;
-
     }
 
     .btn-wrap .btn-org {
-        border: 1px solid #FF5200;
+        border: 1px solid #ff5200;
         border-radius: 20px;
         letter-spacing: 0px;
-        background: #FF5200;
+        background: #ff5200;
         color: #ffffff;
         font-size: 12px !important;
         font-weight: 500;
@@ -140,17 +264,15 @@
         text-align: center;
         border-radius: 100%;
         color: #fff;
-
-
     }
-    .hero-slider #heroSlider .owl-dots{
+    .hero-slider #heroSlider .owl-dots {
         display: none !important;
     }
-    .common-video-img .video-wave .waves-block .waves{
+    .common-video-img .video-wave .waves-block .waves {
         height: 126px;
         width: 126px;
     }
-    .hero-slider-content .btn-wrap.d-flex.align-items-center{
+    .hero-slider-content .btn-wrap.d-flex.align-items-center {
         height: 25px;
     }
 
@@ -165,51 +287,49 @@
     .ptb-100 {
         padding: 20px 0 !important;
     }
-    .event-slider .owl-carousel{
+    .event-slider .owl-carousel {
         height: auto;
     }
-    .activity-tab .title-white{
+    .activity-tab .title-white {
         /* margin: -18px !important; */
-        color: #000000 !important;
+        color: #fff !important;
         font-size: 13px !important;
     }
-
 
     section.client-wrap.ptb-100 {
         padding: 15px 0;
     }
 
-    section.client-wrap.ptb-100 .owl-carousel{
-       height: auto;
+    section.client-wrap.ptb-100 .owl-carousel {
+        height: auto;
     }
-
 
     .master .side-tab1 h1 {
         padding: 30px 40px;
     }
     .breadcrumb .breadcrumb-img img {
-       height: auto;
+        height: auto;
     }
-    .master{
-     padding: 40px 0;
+    .master {
+        padding: 40px 0;
     }
-    .master h1{
+    .master h1 {
         padding: 15px 0px 15px !important;
         font-size: 20px !important;
     }
-    p, .desc{
+    p,
+    .desc {
         text-align: justify;
         font-size: 13px !important;
-    line-height: 1.7;
+        line-height: 1.7;
+        margin-bottom: 10px;
     }
     .message-tab .nav {
-
         border-radius: 20px;
         padding: 15px;
     }
     .master .message-tab .common-tab .nav-link {
-
-        padding:10px 12px;
+        padding: 10px 12px;
 
         font-size: 12px;
         background: #e8e8e8;
@@ -218,6 +338,8 @@
     h2.heading-black.heading-black-md {
         font-size: 19px !important;
         padding: 20px 0 10px;
+        margin-top: 10px;
+
     }
     .message-tab-content .desc {
         font-size: 14px !important;
@@ -225,25 +347,22 @@
         line-height: 1.5;
     }
     .btn-wrap .btn-org-bdr {
-       font-size: 14px !important;
+        font-size: 14px !important;
         padding: 7px 20px !important;
     }
     .master .accordion-item {
         margin: 10px 0;
-
     }
     .master .accordion1 {
         padding: 20px 0;
     }
-    h2{
+    h2 {
         font-size: 18px;
     }
     .master .button {
-
         font-size: 14px;
 
         padding: 6px 15px;
-
     }
     .main-title h2 {
         padding: 5px 0 10px !important;
@@ -270,22 +389,24 @@
         padding: 23px 0 !important;
     }
     .master .contact-form .master-input {
-
         padding: 0 0 11px 0;
-
     }
     .accordion-body {
         font-size: 14px;
     }
-    tbody, td, tfoot, th, thead, tr {
-       padding: 5px;
+    tbody,
+    td,
+    tfoot,
+    th,
+    thead,
+    tr {
+        padding: 5px;
         font-size: 13px !important;
     }
     .message-tab-content .title {
         font-size: 14px !important;
-
     }
-    li{
+    li {
         font-size: 14px;
     }
     .master .news-content-list {
@@ -295,22 +416,20 @@
         font-size: 20px;
     }
     .master {
-        padding: 20px 0 30px!important;
+        padding: 20px 0 30px !important;
     }
     .master .about {
         padding: 0 0px 0 0 !important;
     }
     .breadcrumb h3 {
-
         font-size: 18px;
         padding: 0;
         text-align: center;
     }
     .breadcrumb .breadcrumb-title {
-
         width: 80%;
     }
-    .breadcrumb .breadcrumb-img img{
+    .breadcrumb .breadcrumb-img img {
         height: auto !important;
     }
     .main-body .breadcrumbs-link-text ul li {
@@ -318,108 +437,96 @@
     }
     .master table {
         margin: 15px 0px !important;
-
     }
     .mtb-100 {
         margin: 85px 0;
     }
     .common-tab .nav-link {
-
         padding: 10px 12px;
     }
     .common-video-img .video-wave .waves-block .waves {
-
         width: 123px !important;
         height: 123px !important;
-
     }
     .latest-news-slider .btns {
         right: 2%;
         top: 9px;
     }
     .pb-4 {
-        padding-bottom: 1rem!important;
+        padding-bottom: 1rem !important;
     }
     .heading-black-lg {
-
         font-size: 20px !important;
     }
     .desc-grey {
         font-size: 12px !important;
     }
-    .news-content-list ul li a .date-wrap{
+    .news-content-list ul li a .date-wrap {
         flex-direction: column !important;
     }
-    .news-content-list ul li a .date-wrap .date{
+    .news-content-list ul li a .date-wrap .date {
         font-size: 17px !important;
     }
 
-    .activity-slider-content .desc{
+    .activity-slider-content .desc {
         font-size: 13px !important;
     }
-    .activity-slider-content .title-black-sm{
+    .activity-slider-content .title-black-sm {
         font-size: 16px;
     }
-    section.activity-wrap.bg-purple.ptb-100{
+    section.activity-wrap.bg-purple.ptb-100 {
         height: 98px !important;
-     }
-     .site-header .navbar-nav .nav-item {
+    }
+    .site-header .navbar-nav .nav-item {
         padding: 8px 23px;
     }
     .site-header .navbar-nav .nav-item:not(:last-child) {
         border-bottom: 1px solid #fff;
     }
     .site-header .navbar-nav .nav-item:last-child {
-        border-bottom:unset !important;
+        border-bottom: unset !important;
     }
     .nav-link img {
         padding: 0 10px;
         height: 5px;
     }
     .about-us-card .title-org {
-
         text-align: center;
     }
     #latestMassage-tab-pane h2.heading-black.heading-black-md {
         margin: 8px 0;
     }
-    .latest-update-wrap .title-white{
+    .latest-update-wrap .title-white {
         font-size: 1.1em;
     }
-    .latest-update-wrap .px-5{
+    .latest-update-wrap .px-5 {
         padding-left: 1.2rem !important;
     }
     .sitemap .master h2 {
-
         padding: 0;
     }
     .master .side-tab1 .nav .nav-link {
         font-size: 13px;
     }
 
-    .nav-item-qm a
-    {
+    .nav-item-qm a {
         border: unset;
         margin-bottom: 0px !important;
     }
 
-    .nav-item-for-mob
-    {
-    display: block !important;
+    .nav-item-for-mob {
+        display: block !important;
     }
-    .side-mn-icn
-    {
+    .side-mn-icn {
         display: none;
     }
-    .an-hove-sidemenu
-    {
+    .an-hove-sidemenu {
         line-height: 8px !important;
         border-bottom: none !important;
     }
-
 }
 
-@media(min-width:991px) and (max-width:1366px){
+@media (min-width: 991px) and (max-width: 1366px) {
     .course-wrap {
         padding: 14px 25px;
     }
@@ -432,15 +539,14 @@
     }
     .common-tab .nav-item:first-child .nav-link {
         margin-left: 0;
-   }
+    }
     .common-tab .nav-item:last-child .nav-link {
         margin-right: 0;
-   }
+    }
     .common-tab .nav-item .nav-link {
-        border: 1px solid #ff5200;
+        /* border: 1px solid #ff5200; */
         margin: 0 5px;
-   }
-
+    }
 
     .master .lightbox-photo-gallery img {
         width: 100%;
@@ -450,46 +556,37 @@
         margin: 85px 0;
     }
     .common-tab .nav-link {
-        padding: 6px 14px !important
+        padding: 6px 14px !important;
     }
     .news-content-list ul li a .desc {
         font-size: 0.9em !important;
     }
     .news-content-list ul li a .date-wrap .date {
         font-size: 1.8em !important;
-
     }
     .event-card .title-white {
         font-size: 12px !important;
-
     }
     .our-journey-card .total-no {
         font-size: 2.125em !important;
-
     }
     .our-journey-card .title {
         font-size: 1em;
-
     }
     .photo-tab .nav {
-
         margin: 10px auto 21px !important;
     }
     .activity-slider-content .desc {
         font-size: 15px !important;
-
     }
     .activity-slider-content .title-black-sm {
         font-size: 1em !important;
-
     }
     .site-footer .footer-nav ul li a {
-
         font-size: 15px !important;
     }
     .activity-tab .title-white {
         font-size: 1em;
-
     }
     .hero-slider-content {
         padding: 0px 0px 0px 67px !important;
@@ -503,26 +600,23 @@
     }
     .event-list-content .address-wrap .address {
         font-size: 12px;
-
     }
     .our-journey-card .total-no {
         font-size: 2.125em;
-
     }
     .master .side-tab1 .nav .nav-link {
-
         font-size: 15px;
     }
 }
 
-@media (min-width: 992px){
-.master .col-lg-3 {
-    flex: 0 0 auto;
-    width: 30%;
-}
+@media (min-width: 992px) {
+    .master .col-lg-3 {
+        flex: 0 0 auto;
+        width: 30%;
+    }
 }
 
-@media(min-width:768px) and (max-width:991px){
+@media (min-width: 768px) and (max-width: 991px) {
     .master .about {
         padding: 0 0px 0 0px !important;
     }
@@ -531,16 +625,14 @@
         width: 33% !important;
     }
     .master .side-tab1 .nav .nav-link {
-
         font-size: 14px;
     }
     .breadcrumb .breadcrumb-img img {
         width: 100%;
         height: 170px !important;
-
     }
 
-    .our-journey .section.our-journey .col-md-3{
+    .our-journey .section.our-journey .col-md-3 {
         margin: 5px 0;
     }
     .activity-slider-card {
@@ -552,17 +644,21 @@
     }
     .event-card {
         margin-bottom: 0px !important;
-
     }
-
 }
 
-
-@media(min-width:480px) and (max-width:768px){
-
+@media (min-width: 480px) and (max-width: 768px) {
 }
 
-@media(max-width:480px){
+@media (max-width: 480px) {
+    .our-journey-card .title {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: inherit;
+        white-space: normal;
+        overflow: visible;
+        text-align: center;
+    }
     .site-header .logo-right .search-wrap form .btn-search {
         top: 33%;
     }
@@ -570,13 +666,13 @@
         font-size: 15px;
         text-align: center !important;
     }
-    .latest-update-wrap .title-white::after{
-        width: 0px ;
+    .latest-update-wrap .title-white::after {
+        width: 0px;
     }
 
     .heading-black-lg {
         font-size: 20px !important;
-        text-align: left !important;
+        /* text-align: left !important; */
         margin-bottom: 0px;
         padding-bottom: 12px !important;
     }
@@ -587,10 +683,14 @@
     .about-us-card-front {
         display: flex;
         align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 10px 10px 0px 0px;
+        padding: 12px 5px;
+        border-bottom: 0;
     }
     .about-us-card .img {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
         display: flex;
         margin: 0;
     }
@@ -600,18 +700,18 @@
         padding: 3px 0;
         text-align: left;
     }
-    .about-us-card .desc{
+    .about-us-card .desc {
         text-align: left !important;
     }
-    .about-us-card{
+    .about-us-card {
         min-height: auto;
     }
 
-    .about-us-card .desc br{
+    .about-us-card .desc br {
         display: none;
     }
 
-    .about-us-card .text-item{
+    .about-us-card .text-item {
         width: calc(100% - 70px);
         margin-left: 10px;
     }
@@ -622,28 +722,28 @@
 
     .common-tab .nav-link {
         font-size: 13px !important;
-        padding: 3px 8px !important;
+        padding: 3px 6px !important;
     }
 
     .common-tab .nav-item .nav-link {
-        margin: 0 5px 8px;
+        margin: 0 2px 8px;
     }
 
     section.activity-wrap.bg-purple.ptb-100 {
-        height: 59px !important;
+        height: 100% !important;
     }
-    .activity-tab .title-white{
+    .activity-tab .title-white {
         text-align: left;
     }
 
-    .activity-tab .title-white br{
+    .activity-tab .title-white br {
         display: none;
     }
 
     .mt-neg-18 {
         margin-top: -16rem;
     }
-    .photo-gallery-img img{
+    .photo-gallery-img img {
         height: auto;
     }
 
@@ -653,6 +753,7 @@
         /* column-count: 2; */
         padding: 15px 10px;
         justify-content: flex-start;
+        margin: 9px 0;
     }
 
     .site-footer .footer-nav ul li a {
