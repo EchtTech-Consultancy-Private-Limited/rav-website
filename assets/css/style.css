@@ -242,6 +242,24 @@ a {
   align-items: center;
   justify-content: space-between;
 }
+.header-top-content .header-top-right li a {
+  color: #000;
+}
+.header-top-content .header-top-right .acees-style1 {
+  font-size: 19px;
+  border: 1px solid #AAA3A7;
+  border-radius: 4px;
+  margin: 0 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+}
+.header-top-content .header-top-right img {
+  height: 20px;
+}
 
 @media (min-width: 991.98px) {
   .header-top-content .navbar-toggler {
@@ -294,7 +312,6 @@ a {
 }
 
 .header-top-right ul {
-  display: flex;
   align-items: center;
 }
 
@@ -302,14 +319,16 @@ a {
   font-size: 0.813em;
   letter-spacing: 0px;
   color: #000000;
-  border: 1px solid #AAA3A7;
   border-radius: 4px;
   margin: 0 4px;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2px 0;
+  border-bottom: 1px solid #000;
+  border-radius: 0;
 }
 
 .header-top-right ul li .text-increment-btn:hover {
@@ -319,7 +338,7 @@ a {
 .header-top-right ul li .select-wrap {
   display: flex;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 5px;
 }
 
 .header-top-right ul li .select-wrap .form-select {
@@ -1406,7 +1425,7 @@ section.client-wrap.ptb-100 {
 
 .site-footer {
   background: #6B2952;
-  padding: 40px 0 20px 0;
+  padding: 40px 0 0px 0;
 }
 
 .site-footer .sociallink-wrap ul {
@@ -1467,12 +1486,11 @@ section.client-wrap.ptb-100 {
 }
 
 .site-footer .copyright-wrap p {
-  font-size: 0.875em;
+  font-size: 14px;
   letter-spacing: 0px;
   color: #FFFFFF;
-  opacity: 0.7;
+  opacity: 0.9;
   margin: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -3340,7 +3358,7 @@ Image Section Css */
 
 .photo-wrap .tab-content {
   box-shadow: 0px 0px 22px #ddd;
-  padding: 10px 22px;
+  padding: 10px 22px 0;
   border-radius: 12px;
   background-color: #fff;
 }
@@ -3406,4 +3424,69 @@ button.btn.side-mn-icn:hover {
 
 .header-top .header-top-left ul li {
   position: relative;
+}
+
+.footer-bottom {
+  background: #660040;
+  padding: 9px 3px;
+}
+.footer-bottom ul {
+  display: flex;
+  justify-content: end;
+}
+.footer-bottom ul li {
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  padding: 0px 10px;
+}
+.footer-bottom ul li:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 12px;
+  background: #bfbfbf;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+}
+.footer-bottom ul li a {
+  color: #dfdfdf;
+}
+.footer-bottom ul li a:hover {
+  color: #fff;
+}
+
+.acees-style2 .dropdown-menu {
+  position: absolute !important;
+  top: 30px;
+  left: 0px;
+  border: none;
+  min-width: auto !important;
+  width: 30px;
+  padding: 0;
+  min-height: auto !important;
+  margin: 0;
+  height: 91px;
+  background: #d7d1d1;
+  padding: 0px 0px;
+  border-radius: 3px;
+}
+.acees-style2 .dropdown-menu li {
+  border-bottom: none;
+  width: 24px;
+}
+.acees-style2 .dropdown-toggle::after {
+  display: none;
+}
+.acees-style2 button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.policy li {
+  padding: 0 7px;
+}
+.policy li a {
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */
