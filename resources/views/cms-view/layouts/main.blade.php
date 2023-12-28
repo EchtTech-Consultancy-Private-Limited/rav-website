@@ -76,7 +76,7 @@
                            <!--begin::Item-->
                            <li class="breadcrumb-item text-muted">
                               <a href="{{ route('dashboard') }}" class="text-muted text-hover-primary">
-                              Home                           
+                                 Dashboard                           
                               </a>
                            </li>
                            <!--end::Item-->
