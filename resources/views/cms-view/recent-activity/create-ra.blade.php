@@ -1,6 +1,6 @@
 @extends('cms-view.layouts.main')
 @section('title')
-    {{__('Recent Activity Create')}}
+    {{__('Recent Activity')}}
 @endsection
 @section('pageTitle')
  {{ __('Recent Activity') }}
@@ -116,7 +116,7 @@
                                     <div class="col-md-3 fv-row">
                                         <input class="form-check-input" type="radio" placeholder="" name="notification_others" value="1" checked />
                                          <!--begin::Label-->
-                                         <label class=" fs-6 fw-semibold mb-2">Notification (Recent Activity)</label>
+                                         <label class=" fs-6 fw-semibold mb-2">{{config('FormRadioText.radio1')}}</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
                                         <!--end::Input-->
@@ -128,7 +128,7 @@
                                         <input class="form-check-input" type="radio" placeholder="" name="notification_others" value="2" />
                                         <!--end::Input-->
                                         <!--begin::Label-->
-                                        <label class=" fs-6 fw-semibold mb-2">Others (Press Release)</label>
+                                        <label class=" fs-6 fw-semibold mb-2">{{config('FormRadioText.radio2')}}</label>
                                         <!--end::Label-->
                                     </div>
                                     <!--end::Col-->
@@ -216,13 +216,13 @@
             <div class="d-flex justify-content-end">
                <!--begin::Button-->
                <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
-               Cancel
+               {{config('FormField.cancel_button')}}
                </a>
                <!--end::Button-->
                <!--begin::Button-->
                <button type="submit" id="kt_add_recentActivity_submit" class="btn btn-primary submit-recentActivity-btn">
                <span class="indicator-label">
-               Save Changes
+               {{config('FormField.save_button')}}
                </span>
                <span class="indicator-progress">
                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

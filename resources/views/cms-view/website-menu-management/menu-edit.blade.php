@@ -1,13 +1,13 @@
 @extends('cms-view.layouts.main')
 @section('title')
 @parent
-| {{__('Website Menu Setting')}}
+| {{__('Menu')}}
 @endsection
 @section('pageTitle')
-{{ __('Menu Setting') }}
+{{ __('Menu') }}
 @endsection
 @section('breadcrumbs')
-{{ __('Edit') }}
+{{ __('Menu Edit') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/menu-edit.js') }}"></script>
@@ -85,6 +85,18 @@
                      <input type="number" class="form-control form-control-solid shortorder" name="shortorder" id="shortorder" value="{{$Editmenu->sort_order}}" />
                   </div>
                </div>
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                     <span class="required">Footer URL</span>
+                     <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for Listing." >
+                     <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                  </div>
+                  <div class="col-md-7">
+                     <input type="text" class="form-control form-control-solid footer_url" name="footer_url" id="footer_url" value="{{$Editmenu->footer_url}}" />
+                  </div>
+               </div>
                   <!-- /**** */ -->
                   <div class="fv-row mb-7 d-flex flex-wrap align-items-center text-gray-600 gap-5 mb-7">
                      <div class="col-md-3 text-md-end">
@@ -143,6 +155,14 @@
                         </label>
                      </div>
                      <!--end::Radio-->
+                     <!--begin::Radio-->
+                     <div class="form-check form-check-custom form-check-solid">
+                        <input class="form-check-input menu_place" type="radio" name="menu_place" value="6" id="menu_place" <?php if($Editmenu->menu_place =='6'){ echo 'checked'; }else{ echo ''; } ?> />
+                        <label class="form-check-label" for="any_conditions">
+                        {{ config('menucreatetext.none') }}
+                        </label>
+                     </div>
+                     <!--end::Radio-->
                   </div>
                   <!-- /**** */ -->
                   <div class="fv-row mb-7 d-flex flex-wrap align-items-center text-gray-600 gap-5 mb-7">
@@ -174,9 +194,9 @@
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">
-                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">{{config('FormField.cancel_button')}}</button>
                         <button type="submit" data-kt-settings-type="submit" id="kt_menu_submit" class="btn btn-primary submit-add-menu-btn">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{config('FormField.save_button')}}</span>
                         <span class="indicator-progress">
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>

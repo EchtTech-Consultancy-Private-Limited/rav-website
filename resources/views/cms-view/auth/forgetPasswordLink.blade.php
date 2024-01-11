@@ -68,7 +68,7 @@
     <div class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
         <div class="bg-body d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
             <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
-            <form class="form w-100" novalidate="novalidate" id="kt_newSet_password_form" data-kt-redirect-url="{{ route('login') }}" action="{{ route('update_password') }}">
+                <form class="form w-100" novalidate="novalidate" id="kt_newSet_password_form" data-kt-redirect-url="{{ route('login') }}" action="{{ route('update_password') }}">
                     <div class="text-center mb-10">
                         <input type="hidden" name="token" value="{{ Request::segment(2) }}"> 
                         <h1 class="text-dark fw-bolder mb-3">
@@ -88,7 +88,7 @@
                     <div class="fv-row mb-8" data-kt-password-meter="true">
                         <div class="mb-1">
                             <div class="position-relative mb-3">    
-                                <input class="form-control bg-transparent" type="password" placeholder="Password" name="password" autocomplete="off"/>
+                                <input class="form-control bg-transparent password" type="password" placeholder="Password" name="password" autocomplete="off"/>
                                 <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
                                     <i class="ki-outline ki-eye-slash fs-2"></i>                    
                                     <i class="ki-outline ki-eye fs-2 d-none"></i>                
@@ -108,7 +108,7 @@
                         <!--end::Hint-->
                     </div>
                     <div class="fv-row mb-8">    
-                        <input type="password" placeholder="Repeat Password" name="passwordconfirmation" autocomplete="off" class="form-control bg-transparent"/>
+                        <input type="password" placeholder="Repeat Password" name="passwordconfirmation" autocomplete="off" class="form-control bg-transparent passwordconfirmation"/>
                     </div>
                     <div class="fv-row mb-8">
                         <label class="form-check form-check-inline">

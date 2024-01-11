@@ -14,7 +14,7 @@
                      <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                         <a href="{{ route('dashboard') }}" class="d-lg-none">
                         @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
-                           <img alt="Logo" src="{{ asset(config('constants.default.logo_image_trans')) }}" class="h-25px"/>
+                           <img alt="Logo" src="{{ asset('assets-cms/logo-light.png') }}" class="h-25px"/>
                         @else
                         <p>{{ env('COMPANY_NAME') }}</p>
                         @endif
@@ -44,7 +44,7 @@
                                  data-kt-menu="true">
                                  <!--begin:Menu item-->
                                  <div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"  class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2" >
-                                    <!--begin:Menu link--><span class="menu-link py-3" ><span  class="menu-title" >Dashboards</span><span  class="menu-arrow d-lg-none" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
+                                    <!--begin:Menu link--><span class="menu-link py-3" ><span  class="menu-title" >Dashboard</span><span  class="menu-arrow d-lg-none" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
                                  </div>
                                  <!--end:Menu item-->
                               </div>

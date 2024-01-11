@@ -4,10 +4,10 @@
     | {{__('Home Banner Edit')}}
 @endsection
 @section('pageTitle')
- {{ __('Home Page Banner Management') }}
+ {{ __('Home Page Banner') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Edit') }}
+ {{ __('Home Page Banner Edit') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/homepagebanner-edit.js') }}"></script>
@@ -210,13 +210,13 @@
             <div class="d-flex justify-content-end">
                <!--begin::Button-->
                <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
-               Cancel
+               {{config('FormField.cancel_button')}}
                </a>
                <!--end::Button-->
                <!--begin::Button-->
                <button type="submit" id="kt_update_banner_submit" class="btn btn-primary submit-banner-btn">
                <span class="indicator-label">
-               Save Changes
+               {{config('FormField.save_button')}}
                </span>
                <span class="indicator-progress">
                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
