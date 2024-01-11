@@ -1,10 +1,10 @@
-var KTAppEventSave = function () {
+var KTAppCareerSave = function () {
     var jsonURL = $('#urlListData').attr('data-info');
     var crudUrlTemplate = JSON.parse(jsonURL);
     var _officeAdd;
     var _handleOfficeAddForm = function(e) {
     var validation;
-    var form = document.getElementById('kt_event_add_form');
+    var form = document.getElementById('kt_career_add_form');
        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
        validation = FormValidation.formValidation(
              form,
@@ -21,13 +21,6 @@ var KTAppEventSave = function () {
                             },
                          },
                    },
-                   title_name_hi: {
-                         validators: {
-                            notEmpty: {
-                               message: 'This field is required'
-                            },
-                         },
-                   },
                 },
                 plugins: {
                    trigger: new FormValidation.plugins.Trigger(),
@@ -35,36 +28,33 @@ var KTAppEventSave = function () {
                 }
              }
        );
-       $('.submit-event-btn').click( function(e) {
+       $('.submit-career-btn').click( function(e) {
              e.preventDefault();
              validation.validate().then(function(status) {
                 if (status == 'Valid') {
                    submitButton.setAttribute('data-kt-indicator', 'on');
                    submitButton.disabled = true;
                    //$('#examAddModal').modal('hide');
-                   $('#loading').addClass('loading');
-                   $('#loading-content').addClass('loading-content');
-                  var formData= new FormData(form);
-                  formData.append("kt_description_en", $('#kt_summernote_en').summernote('code'));
-                  formData.append("kt_description_hi", $('#kt_summernote_hi').summernote('code'));
-                  formData.append("tabtype", $("input[type='radio'][name='tabtype']:checked").val());
-                  formData.append("eventtype", $("input[type='radio'][name='eventtype']:checked").val());
-                axios.post(crudUrlTemplate.create_event,
-                            formData, {
+                    $('#loading').addClass('loading');
+                    $('#loading-content').addClass('loading-content');
+                   var formData= new FormData(form);
+                   formData.append("kt_description_en", $('#kt_summernote_en').summernote('code'));
+                   formData.append("kt_description_hi", $('#kt_summernote_hi').summernote('code'));
+                axios.post(crudUrlTemplate.create_career,formData, {
                    }).then(function (response) {
                    if (response.data.status ==200) {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                       toastr.success(
-                         "New Event added successfully!", 
-                         "New Event!", 
+                         "New Career added successfully!", 
+                         "New Career!", 
                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
                             history.scrollRestoration = 'manual';
                          }
-                         location.href = 'event-create'; // reload page
+                         location.href = 'careers-create'; // reload page
                       }, 1500);
                       
                    } else {
@@ -104,9 +94,8 @@ var KTAppEventSave = function () {
              tabsize: 2
          });
      }
-   
  const initFormRepeater = () => {
-         $('#kt_event_add_multiple_options').repeater({
+         $('#kt_career_add_multiple_options').repeater({
              initEmpty: false,
              // defaultValues: {
              //     'text-input': 'foo'
@@ -125,14 +114,14 @@ var KTAppEventSave = function () {
          init: function () {
              demos();
              initFormRepeater();
-             _officeAdd = $('#kt_event_add_form');
+             _officeAdd = $('#kt_career_add_form');
              _handleOfficeAddForm();
-             submitButton = document.querySelector('#kt_add_event_submit');
+             submitButton = document.querySelector('#kt_add_career_submit');
              // Handle forms
          }
      };
  }();
  // On document ready
  jQuery(document).ready(function() {
-    KTAppEventSave.init();
+    KTAppCareerSave.init();
  });

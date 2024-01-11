@@ -4,10 +4,10 @@
     | {{__('Department & Designation')}}
 @endsection
 @section('pageTitle')
- {{ __('Setting') }}
+ {{ __('Department & Designation') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Listing') }}
+ {{ __('Department & Designation Listing') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/js/department-designation-list.js') }}"></script>

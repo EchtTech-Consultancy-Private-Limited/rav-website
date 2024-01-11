@@ -4,10 +4,10 @@
     | {{__('Recent Activity')}}
 @endsection
 @section('pageTitle')
- {{ __('Setting') }}
+ {{ __('Recent Activity') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Listing') }}
+ {{ __('Recent Activity Listing') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/js/recent-activity-datatable-list.js') }}"></script>

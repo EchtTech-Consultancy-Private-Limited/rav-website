@@ -6,7 +6,7 @@
  {{ __('Recent Activity') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Recent Activity Create') }}
+ {{ __('Recent Activity Edit') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/recent-activity-edit.js') }}"></script>
@@ -115,7 +115,7 @@
                                     <div class="col-md-3 fv-row">
                                         <input class="form-check-input" type="radio" placeholder="" name="notification_others" value="1" <?php if($data->notification_others =='1'){ echo 'checked'; }else{ echo ''; } ?> />
                                          <!--begin::Label-->
-                                         <label class="required fs-6 fw-semibold mb-2">Notification</label>
+                                         <label class="required fs-6 fw-semibold mb-2">{{config('FormRadioText.radio1')}}</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
                                         <!--end::Input-->
@@ -127,7 +127,7 @@
                                         <input class="form-check-input" type="radio" placeholder="" name="notification_others" value="2" <?php if($data->notification_others =='2'){ echo 'checked'; }else{ echo ''; } ?> />
                                         <!--end::Input-->
                                         <!--begin::Label-->
-                                        <label class="required fs-6 fw-semibold mb-2">Others (Press Release)</label>
+                                        <label class="required fs-6 fw-semibold mb-2">{{config('FormRadioText.radio2')}}</label>
                                         <!--end::Label-->
                                     </div>
                                     <!--end::Col-->
@@ -214,13 +214,13 @@
             <div class="d-flex justify-content-end">
                <!--begin::Button-->
                <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
-               Cancel
+               {{config('FormField.cancel_button')}}
                </a>
                <!--end::Button-->
                <!--begin::Button-->
                <button type="submit" id="kt_edit_recentActivity_submit" class="btn btn-primary submit-recentActivityEdit-btn">
                <span class="indicator-label">
-               Save Changes
+               {{config('FormField.save_button')}}
                </span>
                <span class="indicator-progress">
                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CMSControllers\API\CommonAPIController;
+use App\Http\Controllers\CMSControllers\ImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\CMSControllers\DashboardController;
@@ -56,6 +57,11 @@ Route::post('mimeimagecheck', [CommonAPIController::class, 'imageMimeCheck'])->n
 Route::post('mimepdfcheck', [CommonAPIController::class, 'pdfMimeCheck'])->name('mimepdfcheck');
 // capture analytics
 Route::post('analytics', [AnalyticsController::class, 'store'])->name('store-analytics');
+Route::post('fetch-designation', [EmpDepartDesignationController::class, 'fetchDesignation'])->name('fetch-designation');
+
+//,->middleware('throttle:custom_Limit')
+
+Route::get('/image/{path}', [ImageController::class, 'encryptPath']);
 
 Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(function () {
     
@@ -177,9 +183,9 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         });
     
     Route::prefix('careers')->group(function(){
-        Route::get('/careers-create', [EmpDepartDesignationController::class, 'create'])->name('careers.create');
-        Route::get('/careers-list', [EmpDepartDesignationController::class, 'index'])->name('careers.list');
-        Route::get('/careers-edit', [EmpDepartDesignationController::class, 'edit'])->name('careers.edit');
+        Route::get('/careers-create', [CareerManagementController::class, 'create'])->name('careers.create');
+        Route::get('/careers-list', [CareerManagementController::class, 'index'])->name('careers.list');
+        Route::get('/careers-edit', [CareerManagementController::class, 'edit'])->name('careers.edit');
         });
     
     Route::prefix('rtiassets')->group(function(){

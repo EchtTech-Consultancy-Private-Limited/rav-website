@@ -1,12 +1,12 @@
 @extends('cms-view.layouts.main')
 @section('title')
-    {{__('News Create')}}
+    {{__('News')}}
 @endsection
 @section('pageTitle')
- {{ __('News Management') }}
+ {{ __('News') }}
 @endsection
 @section('breadcrumbs')
- {{ __('News Create') }}
+ {{ __('News Edit') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/news-edit.js') }}"></script>
@@ -115,7 +115,7 @@
                            <!--end::Label-->
                            <!--begin::Input-->
                            <div class="col-md-12">
-                              <input type="text" name="title_name_en" id="title_name_en" class="form-control mb-2 title_name_en" id="title_name_en" placeholder="Title name" value="{{ $data->title_name_en }}" />
+                              <input type="text" name="title_name_en" id="title_name_en" class="form-control mb-2 title_name_en" id="title_name_en" placeholder="{{config('FormField.placeholder_title_en')}}" value="{{ $data->title_name_en }}" />
                            </div>
                            <!--end::Input-->
                            <!--begin::Description-->
@@ -130,7 +130,7 @@
                            <!--end::Label-->
                            <!--begin::Input-->
                            <div class="col-md-12">
-                           <input type="text" name="title_name_hi" id="title_name_hi" class="form-control mb-2 title_name_hi" placeholder="Title name" value="{{ $data->title_name_hi }}" />
+                           <input type="text" name="title_name_hi" id="title_name_hi" class="form-control mb-2 title_name_hi" placeholder="{{config('FormField.placeholder_title_hi')}}" value="{{ $data->title_name_hi }}" />
                            </div>
                            <!--end::Input-->
                            <!--begin::Description-->
@@ -265,13 +265,13 @@
          <div class="d-flex justify-content-end">
             <!--begin::Button-->
             <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
-             Cancel
+            {{config('FormField.cancel_button')}}
             </a>
             <!--end::Button-->
             <!--begin::Button-->
             <button type="submit" id="kt_update_news_submit" class="btn btn-primary submit-news-btn">
             <span class="indicator-label">
-               Save Changes
+            {{config('FormField.save_button')}}
             </span>
             <span class="indicator-progress">
                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

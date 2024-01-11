@@ -4,10 +4,10 @@
     | {{__('Dashboard')}}
 @endsection
 @section('pageTitle')
- {{ __('Dashboard Management') }}
+ {{ __('Dashboard') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Dashboard List') }}
+ {{ __('Dashboard') }}
 @endsection
 @section('content')
 <div class="post d-flex flex-column-fluid" id="kt_post">

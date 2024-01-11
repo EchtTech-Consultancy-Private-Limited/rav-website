@@ -5,9 +5,12 @@ use App\Http\Controllers\Controller;
 
 use App\Models\CMSModels\CareerManagement;
 use Illuminate\Http\Request;
+use App\Http\Traits\AccessModelTrait;
+use DB;
 
 class CareerManagementController extends Controller
 {
+    use AccessModelTrait;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,24 @@ class CareerManagementController extends Controller
      */
     public function index()
     {
-        //
+        $crudUrlTemplate = array();
+        // xxxx to be replaced with ext_id to create valid endpoint
+        if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
+            $crudUrlTemplate['list'] = route('career-list');
+        }
+        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['edit'] = route('careers.edit', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('career-delete', ['id' => 'xxxx']);
+        }
+        
+        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
+
+        return view('cms-view.career-management.career_list',
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+        
+        ]);
     }
 
     /**
@@ -25,7 +45,18 @@ class CareerManagementController extends Controller
      */
     public function create()
     {
-        //
+        $crudUrlTemplate = array();
+        if(isset($this->abortIfAccessNotAllowed()['create']) && $this->abortIfAccessNotAllowed()['create'] !=''){
+            $crudUrlTemplate['create_career'] = route('career-save');
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+
+        return view('cms-view.career-management.career_add',
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
+            'textMessage' =>$accessPermission??''
+        
+        ]);
     }
 
     /**
@@ -56,9 +87,26 @@ class CareerManagementController extends Controller
      * @param  \App\Models\CareerManagement  $careerManagement
      * @return \Illuminate\Http\Response
      */
-    public function edit(CareerManagement $careerManagement)
+    public function edit(CareerManagement $careerManagement, Request $request)
     {
-        //
+        $crudUrlTemplate = array();
+        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['update_career'] = route('career-update');
+            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete');
+        }
+
+        $results=DB::table('career_management')->where('uid',$request->id)->where([['soft_delete','=','0']])->first();
+        $pdfData = DB::table('career_management_details')->where('career_management_id',$results->uid)->where([['soft_delete','=','0']])->get();
+        if($results){
+            $result = $results;
+        }else{
+            abort(404);
+        }
+        return view('cms-view.career-management.career_edit',
+        ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
+        'data'=> $result,
+        'pdfData' => isset($pdfData)?$pdfData:'',
+    ]);
     }
 
     /**

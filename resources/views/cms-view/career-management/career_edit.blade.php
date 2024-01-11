@@ -1,27 +1,25 @@
 @extends('cms-view.layouts.main')
 @section('title')
-    @parent
-    | {{__('Home Banner Create')}}
+    {{__('Career')}}
 @endsection
 @section('pageTitle')
- {{ __('Home Page Banner') }}
+ {{ __('Career') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Home Page Banner Create') }}
+ {{ __('Career Edit') }}
 @endsection
 @push('post-scripts')
-<script src="{{ asset('public/form-js/homepagebanner-add.js') }}"></script>
+<script src="{{ asset('public/form-js/career-edit.js') }}"></script>
 @endpush
 @section('content')
 <input type="hidden" id="urlListData" data-info="{{ $crudUrlTemplate }}">
 <div class="post d-flex flex-column-fluid" id="kt_post">
 <div id="kt_content_container" class="container-xxl">
 <div class="card card-flush">
-   @if($textMessage =='')
    <!--begin::Card body-->
    <div class="card-body">
       <!--begin::Form-->
-      <form id="kt_banner_add_form" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
+      <form id="kt_career_update_form" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
          <!--begin::Main column-->
          <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
             <!--end:::Tabs-->
@@ -50,7 +48,7 @@
                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary active d-flex text-start p-6" data-kt-button="true">
                                        <!--begin::Radio-->
                                        <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                       <input class="form-check-input" type="radio" name="tabtype" value="0" checked="checked" />
+                                          <input class="form-check-input" type="radio" name="tabtype" value="0" checked="checked" />
                                        </span>
                                        <!--end::Radio-->
                                        <!--begin::Info-->
@@ -90,13 +88,15 @@
                            <!--begin::Input group-->
                            <div class="mb-10 fv-row">
                               <!--begin::Label-->
-                              <label class="required form-label required">Title Name (In English)</label>
-                              <!--end::Label-->
+                              <div class="col-md-12">
+                                 <label class="required form-label required">Title Name (In English)</label>
+                              </div>
+                                 <!--end::Label-->
                               <!--begin::Input-->
                               <div class="col-md-12">
-                                 <input type="text" name="title_name_en" class="form-control mb-2 title_name_en" id="title_name_en" placeholder="Title name" value="" />
+                                 <input type="text" name="title_name_en" class="form-control mb-2 title_name_en" id="title_name_en" placeholder="{{config('FormField.placeholder_title_en')}}" value="{{ $data->title_name_en  }}" />
                               </div>
-                                 <!--end::Input-->
+                              <!--end::Input-->
                               <!--begin::Description-->
                               <div class="text-muted fs-7">A title name is required and recommended to be unique.</div>
                               <!--end::Description-->
@@ -106,9 +106,7 @@
                               <label class="required form-label">शीर्षक नाम (हिन्दी में)</label>
                               <!--end::Label-->
                               <!--begin::Input-->
-                              <div class="col-md-12">
-                              <input type="text" name="title_name_hi" class="form-control mb-2 title_name_hi" id="title_name_hi" placeholder="Title name" value="" />
-                           </div>
+                              <input type="text" name="title_name_hi" class="form-control mb-2 title_name_hi" id="title_name_hi" placeholder="{{config('FormField.placeholder_title_hi')}}" value="{{ $data->title_name_hi }}" />
                               <!--end::Input-->
                               <!--begin::Description-->
                               <div class="text-muted fs-7">A title name is required and recommended to be unique.</div>
@@ -121,7 +119,7 @@
                               <label class="form-label required">Description (English)</label>
                               <!--end::Label-->
                               <!--begin::Editor-->
-                                 <div class="min-h-200px mb-2 summernote kt_summernote_en" id="kt_summernote_en"></div>
+                                 <div class="min-h-200px mb-2 summernote kt_summernote_en" id="kt_summernote_en">{!! $data->description_en   !!}</div>
                               <!--end::Editor-->
                               <!--begin::Description-->
                               <div class="text-muted fs-7">Set a description to the news for better visibility.</div>
@@ -134,7 +132,7 @@
                               <label class="form-label mt-8">विवरण (हिन्दी में)</label>
                               <!--end::Label-->
                               <!--begin::Editor-->
-                                 <div class="min-h-200px mb-2 summernote kt_summernote_hi" id="kt_summernote_hi"></div>
+                                 <div class="min-h-200px mb-2 summernote kt_summernote_hi" id="kt_summernote_hi">{!! $data->description_hi  !!}</div>
                               <!--end::Editor-->
                               <!--begin::Description-->
                               <div class="text-muted fs-7">Set a description to the news for better visibility.</div>
@@ -153,7 +151,7 @@
                         <!--begin::News-->
                         <div class="card-header">
                            <div class="card-title">
-                              <h2>Add New Banner</h2>
+                              <h2>Add New Careers</h2>
                            </div>
                         </div>
                         <!--end::Card header-->
@@ -162,40 +160,57 @@
                            <!--begin::Input group-->
                            <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
                               <!--begin::Repeater-->
-                              <div id="kt_tender_add_multiple_options">
+                              <div id="kt_career_add_multiple_options">
                                  <!--begin::Form group-->
                                  <div class="form-group">
-                                   
-                                   
-                                    
-                                    <div data-repeater-list="kt_tender_add_multiple_options" class="d-flex flex-column gap-3">
-                                       <div data-repeater-item class="form-group row">
+                                    <label class="required form-label mw-100 w-175px">Pdf Title</label>
+                                    <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">career Description</label> -->
+                                    <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Start Date</label>
+                                    <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Date</label>
+                                    <label class="required form-label mw-100 w-175px">PDF Format</label>
+                                    <div data-repeater-list="kt_career_add_multiple_options" class="d-flex flex-column gap-3">
+                                       @if(isset($pdfData))
+                                       @foreach($pdfData as $pdfDatas)
+                                       <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
-                                          <div class="col-md-4">
-                                          <label class="required form-label mw-100 w-100">Banner Title</label>
-                                             <input type="text" class="form-control mw-100 w-100 is-invalid" name="bannertitle" placeholder="banner title Name" />
-                                          </div>
-                                          <div class="col-md-4">
-                                          <label class="required form-label mw-100 w-100">Sort Order</label>
-                                          <input type="number" class="form-control mw-100 w-100 is-invalid" name="sort_order" placeholder="sort order" />
-                                          </div>
-                                          <div class="col-md-4">
-                                          <label class="required form-label mw-100 w-100">Image Format</label>
-                                          <input type="file" class="form-control mw-100 w-100 image is-invalid" id="image" name="image" accept="image/*" />
+                                          <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
+                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
+                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
+                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
+                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
                                           <!--end::Input-->
-                                          <!-- <button type="button" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                             <i class="ki-outline ki-cross fs-1"></i> </button> -->
-                                          </div>
+                                          <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                             <i class="ki-outline ki-cross fs-1"></i> 
+                                          </button>
+                                          <a href="{{ asset('resources/uploads/CareerManagement/'.$pdfDatas->public_url) }}" target="_blank" download>
+                                             <i class="ki-outline ki-file fs-1"></i>
+                                          </a>
+                                        <button type="button" data-id="{{ $pdfDatas->uid }}" class="btn btn-sm btn-icon btn-light-danger delete-single-record" title="Data Delete">
+                                          <i class="ki-outline ki-trash fs-1"></i>
+                                        </button>
                                        </div>
+                                       @endforeach
+                                       @else
+                                       <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                          <!--begin::Input-->
+                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" />
+                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="career Description" />
+                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="career Description" />
+                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          <!--end::Input-->
+                                          <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                             <i class="ki-outline ki-cross fs-1"></i> </button>
+                                       </div>
+                                       @endif
                                     </div>
                                  </div>
                                  <!--end::Form group-->
                                  <!--begin::Form group-->
-                                 <!-- <div class="form-group mt-5">
+                                 <div class="form-group mt-5">
                                     <button type="button" data-repeater-create class="btn btn-sm btn-light-primary">
-                                    <i class="ki-outline ki-plus fs-2"></i> Add Another Tender
+                                    <i class="ki-outline ki-plus fs-2"></i> Add More
                                     </button>
-                                 </div> -->
+                                 </div>
                                  <!--end::Form group-->
                               </div>
                               <!--end::Repeater-->
@@ -222,7 +237,7 @@
                </a>
                <!--end::Button-->
                <!--begin::Button-->
-               <button type="submit" id="kt_add_banner_submit" class="btn btn-primary submit-banner-btn">
+               <button type="submit" id="kt_update_career_submit" class="btn btn-primary submit-career-btn">
                <span class="indicator-label">
                {{config('FormField.save_button')}}
                </span>
@@ -237,9 +252,5 @@
       </form>
       <!--end::Form-->
    </div>
-   @else
-      {!! $textMessage !!}
-     <div class="symbol symbol-100px text-center"> <img class="" src='{{ asset(config("constants.error.error_image")) }}' /></div>
-   @endif
 </div>
 @endsection

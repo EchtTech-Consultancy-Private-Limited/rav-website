@@ -1,13 +1,13 @@
 @extends('cms-view.layouts.main')
 @section('title')
 @parent
-| {{__('Website Menu Setting')}}
+| {{__('Menu')}}
 @endsection
 @section('pageTitle')
-{{ __('Menu Setting') }}
+{{ __('Menu') }}
 @endsection
 @section('breadcrumbs')
-{{ __('Add') }}
+{{ __('Menu Create') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/menu-add.js') }}"></script>
@@ -53,11 +53,11 @@
             <!--begin::Form-->
             <form id="kt_settings_menu_form" class="form" method="post">
                @csrf
-               <div class="row mb-7">
+               <!-- <div class="row mb-7">
                   <div class="col-md-9 offset-md-3">
                      <h2>Create Menu</h2>
                   </div>
-               </div>
+               </div> -->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
                      <label class="fs-6 fw-semibold form-label mt-3">
@@ -104,6 +104,18 @@
                   </div>
                   <div class="col-md-7">
                      <input type="number" class="form-control form-control-solid shortorder" name="shortorder" id="shortorder" value="" />
+                  </div>
+               </div>
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                     <span class="required">Footer URL</span>
+                     <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for Listing." >
+                     <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                  </div>
+                  <div class="col-md-7">
+                     <input type="text" class="form-control form-control-solid footer_url" name="footer_url" id="footer_url" value="" />
                   </div>
                </div>
                   <!-- /**** */ -->
@@ -164,6 +176,14 @@
                         </label>
                      </div>
                      <!--end::Radio-->
+                     <!--begin::Radio-->
+                     <div class="form-check form-check-custom form-check-solid">
+                        <input class="form-check-input menu_place" type="radio" name="menu_place" value="6" id="menu_place" />
+                        <label class="form-check-label" for="any_conditions">
+                        {{ config('menucreatetext.none') }}
+                        </label>
+                     </div>
+                     <!--end::Radio-->
                   </div>
                   <!-- /**** */ -->
                   <div class="fv-row mb-7 d-flex flex-wrap align-items-center text-gray-600 gap-5 mb-7">
@@ -195,9 +215,9 @@
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">
-                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">{{config('FormField.cancel_button')}}</button>
                         <button type="submit" data-kt-settings-type="submit" id="kt_menu_submit" class="btn btn-primary submit-add-menu-btn">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{config('FormField.save_button')}}</span>
                         <span class="indicator-progress">
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
@@ -213,11 +233,11 @@
             <!--begin::Form-->
             <form  id="kt_settings_menu_form2" method="post" class="form">
                @csrf
-               <div class="row mb-7">
+               <!-- <div class="row mb-7">
                   <div class="col-md-9 offset-md-3">
                      <h2>Create Sub Menu</h2>
                   </div>
-               </div>
+               </div> -->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
                      <label class="fs-6 fw-semibold form-label mt-3"><span>Menu Name</span>
@@ -311,9 +331,9 @@
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">
-                     <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+                     <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">{{config('FormField.cancel_button')}}</button>
                         <button type="submit" data-kt-settings-type="submit" id="kt_menu_submit2" class="btn btn-primary submit-add-menu-btn2">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{config('FormField.save_button')}}</span>
                         <span class="indicator-progress">
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
@@ -333,11 +353,11 @@
             <form id="kt_settings_menu_form3" method="post" class="form">
                @csrf
                <!--begin::Heading-->
-               <div class="row mb-7">
+               <!-- <div class="row mb-7">
                   <div class="col-md-9 offset-md-3">
                      <h2>Create Sub Sub Menu</h2>
                   </div>
-               </div>
+               </div> -->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
                      <!--begin::Label-->
@@ -433,9 +453,9 @@
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">
-                     <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+                     <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">{{config('FormField.cancel_button')}}</button>
                         <button type="submit" data-kt-settings-type="submit" id="kt_menu_submit3" class="btn btn-primary submit-add-menu-btn3">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{config('FormField.save_button')}}</span>
                         <span class="indicator-progress">
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
@@ -455,11 +475,11 @@
             <form id="kt_settings_menu_form4" method="post" class="form">
                @csrf
                <!--begin::Heading-->
-               <div class="row mb-7">
+               <!-- <div class="row mb-7">
                   <div class="col-md-9 offset-md-3">
                      <h2>Create Sub Sub Sub Menu</h2>
                   </div>
-               </div>
+               </div> -->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
                      <!--begin::Label-->
@@ -525,6 +545,7 @@
                      <input type="number" class="form-control form-control-solid shortorder3" name="shortorder" id="shortorder" value="" />
                   </div>
                </div>
+               
                <!-- /**** */ -->
                <div class="fv-row mb-7 d-flex flex-wrap align-items-center text-gray-600 gap-5 mb-7">
                      <div class="col-md-3 text-md-end">
@@ -555,9 +576,9 @@
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">
-                     <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+                     <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">{{config('FormField.cancel_button')}}</button>
                         <button type="submit" data-kt-settings-type="submit" id="kt_menu_submit4" class="btn btn-primary submit-add-menu-btn4">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{config('FormField.save_button')}}</span>
                         <span class="indicator-progress">
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>

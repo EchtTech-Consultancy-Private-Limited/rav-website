@@ -1,13 +1,13 @@
 @extends('cms-view.layouts.main')
 @section('title')
     @parent
-    | {{__('Dashboard')}}
+    | {{__('Gallery')}}
 @endsection
 @section('pageTitle')
- {{ __('Setting') }}
+ {{ __('Gallery') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Listing') }}
+ {{ __('Gallery Listing') }}
 @endsection
 @push('post-scripts')>
 <script src="{{ asset('public/js/photoGalleryVideo_list_datatable.js') }}"></script>

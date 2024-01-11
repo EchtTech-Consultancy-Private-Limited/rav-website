@@ -4,10 +4,10 @@
 | {{__('Department & Designation')}}
 @endsection
 @section('pageTitle')
-{{ __('Setting') }}
+{{ __('Department & Designation') }}
 @endsection
 @section('breadcrumbs')
-{{ __('Add') }}
+{{ __('Department & Designation Create') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/department-designation-page-add.js') }}"></script>
@@ -46,11 +46,11 @@
             <form class="forms-sample row col-md-12" id="kt_department_settings_general" enctype="multipart/form-data">
                @csrf
                <!--begin::Heading-->
-               <div class="row mb-7">
+               <!-- <div class="row mb-7">
                   <div class="col-md-9 offset-md-3">
                      <h2>Department Settings</h2>
                   </div>
-               </div>
+               </div> -->
                <div id="co"></div>
                <!--end::Heading-->
                <!--begin::Input group-->
@@ -75,9 +75,9 @@
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">
-                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">{{config('FormField.cancel_button')}}</button>
                         <button type="submit" data-kt-settings-type="submit" id="kt_department_submit" class="btn btn-primary submit-department-btn">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{config('FormField.save_button')}}</span>
                         <span class="indicator-progress">
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
@@ -97,11 +97,11 @@
             <form class="forms-sample row col-md-12" id="kt_designation_content_settings" enctype="multipart/form-data">
                @csrf
                <!--begin::Heading-->
-               <div class="row mb-7">
+               <!-- <div class="row mb-7">
                   <div class="col-md-9 offset-md-3">
                      <h2>Designation Settings</h2>
                   </div>
-               </div>
+               </div> -->
                <div id="co"></div>
                <!--end::Heading-->
                <!--begin::Input group-->
@@ -147,9 +147,9 @@
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">
-                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+                        <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">{{config('FormField.cancel_button')}}</button>
                         <button type="submit" data-kt-settings-type="submit" id="kt_designation_submit" class="btn btn-primary submit-designation-btn">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{config('FormField.save_button')}}</span>
                         <span class="indicator-progress">
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
