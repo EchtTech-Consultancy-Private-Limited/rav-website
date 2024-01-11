@@ -16,10 +16,31 @@
 }
 
 @media (max-width:1299px){
+    .activity-slider-content {
+        padding: 7px 25px;
+        height: 100%;
+    }
+    .footer-bottom ul li:not(:last-child)::after {
+        content: "";
+        width: 1px;
+        height: 10px;
+        background: #bfbfbf;
+        position: absolute;
+        right: -1px;
+        top: 6px;
+    }
+    .site-footer .copyright-wrap p {
+        font-size: 13px;
+    }
     .news-content-list {
         max-height: 269px;
         overflow: auto;
         text-align: center;
+    }
+    .footer-bottom ul li {
+        color: #fff;
+        font-size: 13px;
+        padding: 0px 3px;
     }
 }
 @media (min-width:991px){
@@ -527,6 +548,10 @@
 }
 
 @media (min-width: 991px) and (max-width: 1366px) {
+    .photo-gallery-img.img-auto img {
+        height: 385px;
+        width: 100%;
+    }
     .course-wrap {
         padding: 14px 25px;
     }
@@ -535,7 +560,7 @@
         padding: 12px 0;
     }
     .photo-gallery-img img {
-        height: 200px;
+        height: 188px;
     }
     .common-tab .nav-item:first-child .nav-link {
         margin-left: 0;
