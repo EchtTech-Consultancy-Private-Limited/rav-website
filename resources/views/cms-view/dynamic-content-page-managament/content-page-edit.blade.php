@@ -199,6 +199,38 @@
                      <!--end::Input-->
                   </div>
                </div>
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="required">Short Order</span>
+                        <span class="ms-1"  data-bs-toggle="tooltip" title="Set keywords for the store separated by a comma." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>           
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-9">
+                     <!--begin::Input-->
+                     <input type="number" class="form-control form-control-solid" name="sort_order" value="{{$data->pageContent[0]->pageTitle->sort_order}}" data-kt-ecommerce-settings-type="tagify" />
+                     <!--end::Input-->
+                  </div>
+               </div>
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="">Custom URL</span>
+                        <span class="ms-1"  data-bs-toggle="tooltip" title="Set keywords for the store separated by a comma." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>           
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-9">
+                     <!--begin::Input-->
+                     <input type="text" class="form-control form-control-solid" name="custom_url" value="{{$data->pageContent[0]->pageTitle->custom_slug}}" data-kt-ecommerce-settings-type="tagify" />
+                     <!--end::Input-->
+                  </div>
+               </div>
                <div class="row py-5">
                   <div class="col-md-9 offset-md-3">
                      <div class="d-flex">

@@ -100,6 +100,8 @@ class TenderManagementAPIController extends Controller
                                 'file_extension' => $extension??'',
                                 'public_url' => $name,
                                 'private_url' => $name,
+                                'opening_date' => $value['openingdate']??'NULL',
+                                'apply_url' => $value['applyurl']??'NULL',
                                 'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                             ]);
                         }
@@ -200,6 +202,8 @@ class TenderManagementAPIController extends Controller
                             'private_url' => isset($name)?$name:$uid->public_url,
                             'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                             'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                            'opening_date' => $value['openingdate']??'NULL',
+                            'apply_url' => $value['applyurl']??'NULL',
                             'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                         ]);
                     }   
@@ -211,6 +215,8 @@ class TenderManagementAPIController extends Controller
                             // 'private_url' => isset($name)?$name:$uid->public_url,
                             // 'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                             // 'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                            'opening_date' => $value['openingdate']??'NULL',
+                            'apply_url' => $value['applyurl']??'NULL',
                             'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                         ]);
                     }else{
@@ -230,6 +236,8 @@ class TenderManagementAPIController extends Controller
                                 'file_extension' => $extension??'',
                                 'public_url' => $name,
                                 'private_url' => $name,
+                                'opening_date' => $value['openingdate']??'NULL',
+                                'apply_url' => $value['applyurl']??'NULL',
                                 'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                             ]);
                         }

@@ -33,7 +33,7 @@
                      <div class="card card-flush py-4">
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
-                        <div class="fv-row mb-10">
+                           <div class="fv-row mb-10">
                               <!--begin::Label-->
                               <label class="fs-6 fw-semibold mb-2">
                                  Tab Type
@@ -86,6 +86,8 @@
                               </div>
                               <!--end::Row-->
                            </div>
+                          
+                           
                            <!--begin::Input group-->
                            <div class="mb-10 fv-row">
                               <!--begin::Label-->
@@ -164,18 +166,35 @@
                               <div id="kt_tender_add_multiple_options">
                                  <!--begin::Form group-->
                                  <div class="form-group">
-                                    <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                    
                                     <!-- <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Tender Description</label> -->
-                                    <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
-                                    <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
-                                    <label class="required form-label mw-100 w-200px">PDF Format</label>
                                     <div data-repeater-list="kt_tender_add_multiple_options" class="d-flex flex-column gap-3">
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
-                                          <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
-                                          <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="Tender Description" />
-                                          <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="Tender Description" />
-                                          <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                             <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
+                                             <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
+                                             <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="Tender Description" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">PDF Format</label>
+                                             <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Opening Date</label>
+                                             <input type="date" class="form-control mw-100 w-200px" name="openingdate" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Apply URL</label>
+                                             <input type="url" class="form-control mw-100 w-200px" name="applyurl" />
+                                          </div>
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> </button>

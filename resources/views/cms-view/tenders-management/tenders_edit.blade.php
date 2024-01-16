@@ -48,7 +48,7 @@
                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary active d-flex text-start p-6" data-kt-button="true">
                                        <!--begin::Radio-->
                                        <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                          <input class="form-check-input" type="radio" name="tabtype" value="0" checked="checked" />
+                                          <input class="form-check-input" type="radio" name="tabtype" value="0" <?php if($data->tab_type =='0'){ echo 'checked'; }else{ echo ''; } ?> />
                                        </span>
                                        <!--end::Radio-->
                                        <!--begin::Info-->
@@ -68,7 +68,7 @@
                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
                                        <!--begin::Radio-->
                                        <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                       <input class="form-check-input" type="radio" name="tabtype" value="1" />
+                                       <input class="form-check-input" type="radio" name="tabtype" value="1" <?php if($data->tab_type =='1'){ echo 'checked'; }else{ echo ''; } ?> />
                                        </span>
                                        <!--end::Radio-->
                                        <!--begin::Info-->
@@ -163,21 +163,37 @@
                               <div id="kt_tender_add_multiple_options">
                                  <!--begin::Form group-->
                                  <div class="form-group">
-                                    <label class="required form-label mw-100 w-175px">Pdf Title</label>
-                                    <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Tender Description</label> -->
-                                    <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Start Date</label>
-                                    <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Date</label>
-                                    <label class="required form-label mw-100 w-175px">PDF Format</label>
                                     <div data-repeater-list="kt_tender_add_multiple_options" class="d-flex flex-column gap-3">
                                        @if(isset($pdfData))
                                        @foreach($pdfData as $pdfDatas)
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
-                                          <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
-                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
-                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          <div>
+                                             <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
+                                             <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                             <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
+                                             <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
+                                             <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">PDF Format</label>
+                                             <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          </div>
+                                          
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Opening Date</label>
+                                             <input type="date" class="form-control mw-100 w-200px" name="openingdate" value="{{$pdfDatas->opening_date }}" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Apply URL</label>
+                                             <input type="url" class="form-control mw-100 w-200px" name="applyurl" value="{{$pdfDatas->apply_url }}" />
+                                          </div>
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> 
@@ -188,15 +204,36 @@
                                         <button type="button" data-id="{{ $pdfDatas->uid }}" class="btn btn-sm btn-icon btn-light-danger delete-single-record" title="Data Delete">
                                           <i class="ki-outline ki-trash fs-1"></i>
                                         </button>
+                                          <!--end::Input-->
                                        </div>
                                        @endforeach
                                        @else
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
-                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="Tender Description" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="Tender Description" />
-                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                             <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
+                                             <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
+                                             <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="Tender Description" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">PDF Format</label>
+                                             <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Opening Date</label>
+                                             <input type="date" class="form-control mw-100 w-200px" name="openingdate" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Apply URL</label>
+                                             <input type="url" class="form-control mw-100 w-200px" name="applyurl" />
+                                          </div>
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> </button>
