@@ -112,7 +112,7 @@ class EmployeeDirectoryAPIController extends Controller
                              'department_id' =>$request->deprt_id??'',
                              'designation_id' => $request->designation_id??'',
                              'public_url' => $newname,
-                             'short_order' => $request->name_en,
+                             'short_order' => $request->short_order,
                              //Social Link
                              //'google_link' => $request->linkedin,
                              'linked_in' => $request->linkedin,
@@ -222,7 +222,7 @@ class EmployeeDirectoryAPIController extends Controller
                             'department_id' =>$request->deprt_id??'',
                             'designation_id' => $request->designation_id??'',
                             'public_url' => $newname,
-                            'short_order' => $request->name_en,
+                            'short_order' => $request->short_order,
                             //Social Link
                             //'google_link' => $request->linkedin,
                             'linked_in' => $request->linkedin,

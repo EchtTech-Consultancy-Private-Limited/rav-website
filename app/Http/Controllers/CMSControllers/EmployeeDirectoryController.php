@@ -105,6 +105,7 @@ class EmployeeDirectoryController extends Controller
     public function edit(Request $request)
     {
         $datas=EmpDepartDesignation::where([['soft_delete','0'],['parent_id','0']])->get(); 
+        $designation=EmpDepartDesignation::where([['soft_delete','0'],['parent_id','!=','0']])->get(); 
         $crudUrlTemplate = array();
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['update'] = route('employeedirectory-update');
@@ -119,7 +120,9 @@ class EmployeeDirectoryController extends Controller
         return view('cms-view.employee-directory.edit-employee',
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
-            'department'=>$datas]
+            'department'=>$datas,
+            'designation'=>$designation
+            ]
         );
     }
 
