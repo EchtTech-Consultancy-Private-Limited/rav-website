@@ -85,6 +85,30 @@
                               </div>
                               <!--end::Row-->
                            </div>
+                           <div class="fv-row mb-10">
+                              <div class="row g-9 mb-7">
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">Start Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="startdate" value="{{$data->start_date}}" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">End Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="enddate" value="{{$data->end_date}}" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                              </div>
+                           </div>
                            <!--begin::Input group-->
                            <div class="mb-10 fv-row">
                               <!--begin::Label-->
@@ -175,8 +199,8 @@
                                           <!--begin::Input-->
                                           <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
                                           <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
+                                          <!-- <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
+                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" /> -->
                                           <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
@@ -194,8 +218,8 @@
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
                                           <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="career Description" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="career Description" />
+                                          <!-- <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="career Description" />
+                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="career Description" /> -->
                                           <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">

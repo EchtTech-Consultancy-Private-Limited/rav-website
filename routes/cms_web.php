@@ -29,6 +29,8 @@ use App\Http\Controllers\CMSControllers\EmployeeDirectoryController;
 use App\Http\Controllers\CMSControllers\PopupAdvertisingController;
 use App\Http\Controllers\CMSControllers\RecentActivityController;
 use App\Http\Controllers\CMSControllers\RtiAssetsController;
+use App\Http\Controllers\CMSControllers\RtiApplicationResponsesController;
+use App\Http\Controllers\CMSControllers\PurchaseWorksCommitteeController;
 
 
 /*
@@ -193,6 +195,16 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/rtiassets-list', [RtiAssetsController::class, 'index'])->name('rtiassets.list');
         Route::get('/rtiassets-edit', [RtiAssetsController::class, 'edit'])->name('rtiassets.edit');
         });
+    });
+    Route::prefix('rtiapplicationresponses')->group(function(){
+        Route::get('/rtiapplicationresponses-create', [RtiApplicationResponsesController::class, 'create'])->name('rtiapplicationresponses.create');
+        Route::get('/rtiapplicationresponses-list', [RtiApplicationResponsesController::class, 'index'])->name('rtiapplicationresponses.list');
+        Route::get('/rtiapplicationresponses-edit', [RtiApplicationResponsesController::class, 'edit'])->name('rtiapplicationresponses.edit');
+    });
+    Route::prefix('purchaseworkscommittee')->group(function(){
+        Route::get('/purchaseworkscommittee-create', [PurchaseWorksCommitteeController::class, 'create'])->name('purchaseworkscommittee.create');
+        Route::get('/purchaseworkscommittee-list', [PurchaseWorksCommitteeController::class, 'index'])->name('purchaseworkscommittee.list');
+        Route::get('/purchaseworkscommittee-edit', [PurchaseWorksCommitteeController::class, 'edit'])->name('purchaseworkscommittee.edit');
     });
 
 require __DIR__ .'/api_route.php';

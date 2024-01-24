@@ -85,6 +85,56 @@
                               </div>
                               <!--end::Row-->
                            </div>
+                           <div class="fv-row mb-10">
+                              <div class="row g-9 mb-7">
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">Start Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="startdate" value="{{$data->start_date}}" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">End Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="enddate" value="{{$data->end_date}}" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">Opening Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid openingdate" type="date" placeholder="" name="openingdate" value="{{$data->opening_date}}" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                              </div>
+                           </div>
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row">
+                              <!--begin::Label-->
+                              <div class="col-md-12">
+                                 <label class="required form-label required">Apply URL</label>
+                              </div>
+                                 <!--end::Label-->
+                              <!--begin::Input-->
+                              <div class="col-md-12">
+                                 <input type="url" name="applyurl" class="form-control mb-2 applyurl" id="applyurl" placeholder="Apply URL.." value="{{$data->apply_url}}" />
+                              </div>
+                              <!--end::Input-->
+                              <!--begin::Description-->
+                              <div class="text-muted fs-7">A title name is required and recommended to be unique.</div>
+                              <!--end::Description-->
+                           </div>
                            <!--begin::Input group-->
                            <div class="mb-10 fv-row">
                               <!--begin::Label-->
@@ -173,27 +223,27 @@
                                              <label class="required form-label mw-100 w-200px">Pdf Title</label>
                                              <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
                                           </div>
-                                          <div>
+                                          <!-- <div>
                                              <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
                                              <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
                                           </div>
                                           <div>
                                              <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
                                              <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
-                                          </div>
+                                          </div> -->
                                           <div>
                                              <label class="required form-label mw-100 w-200px">PDF Format</label>
                                              <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
                                           </div>
                                           
-                                          <div>
+                                          <!-- <div>
                                              <label class="required form-label mw-100 w-200px">Opening Date</label>
-                                             <input type="date" class="form-control mw-100 w-200px" name="openingdate" value="{{$pdfDatas->opening_date }}" />
+                                             <input class="form-control mw-100 w-200px form-control-solid ps-12 flatpickr-input" name="openingdate" value="{{$pdfDatas->opening_date }}" />
                                           </div>
                                           <div>
                                              <label class="required form-label mw-100 w-200px">Apply URL</label>
                                              <input type="url" class="form-control mw-100 w-200px" name="applyurl" value="{{$pdfDatas->apply_url }}" />
-                                          </div>
+                                          </div> -->
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> 

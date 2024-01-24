@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 use App\Models\CMSModels\EmpDepartDesignation;
+use App\Http\Requests\DepartmentDesignation\AddDepartmentValidation;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use DB, Validator;
@@ -53,7 +54,7 @@ class EmpDepartDesignationAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddDepartmentValidation $request)
     {
         $exitValue = EmpDepartDesignation::where('name_en', $request->name_en)->count() > 0;
        // $max_size = $document->getMaxFileSize() / 1024 / 1024;
@@ -65,26 +66,12 @@ class EmpDepartDesignationAPIController extends Controller
             ];
         }else{
             try{
-                $validator=Validator::make($request->all(),
-                    [
-                    'name_en'=>'required',
-                    //'sort_order'=>'required',
-                    // 'url'=>'required'
-                ]);
-                if($validator->fails())
-                {
-                    $notification =[
-                        'status'=>201,
-                        'message'=> $validator->errors()
-                    ];
-                }
-                else{
-                    $result= EmpDepartDesignation::insert([
-                            'uid' => Uuid::uuid4(),
-                            'name_en' => $request->name_en,
-                            'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
-                        ]);
-                    
+                $result= EmpDepartDesignation::insert([
+                        'uid' => Uuid::uuid4(),
+                        'name_en' => $request->name_en,
+                        'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
+                    ]);
+                
                 if($result == true)
                 {
                     $notification =[
@@ -99,7 +86,6 @@ class EmpDepartDesignationAPIController extends Controller
                             'message'=>'some error accoured.'
                         ];
                     } 
-                }      
             }catch(Throwable $e)
             {
                 report($e);

@@ -86,8 +86,62 @@
                               </div>
                               <!--end::Row-->
                            </div>
-                          
-                           
+                           <div class="fv-row mb-10">
+                              <div class="row g-9 mb-7">
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">Start Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="startdate" value="" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">End Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="enddate" value="" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">Opening Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <div class="position-relative d-flex align-items-center">
+                                       <!--begin::Icon-->
+                                       <i class="ki-outline ki-calendar-8 fs-2 position-absolute mx-4"></i>                                <!--end::Icon-->
+                                       <!--begin::Datepicker-->
+                                       <input class="form-control form-control-solid ps-12 flatpickr-input" placeholder="Select a date" name="due_date" type="text" readonly="readonly">
+                                       <!--end::Datepicker-->
+                                    </div>
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                              </div>
+                           </div>
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row">
+                              <!--begin::Label-->
+                              <div class="col-md-12">
+                                 <label class="required form-label required">Apply URL</label>
+                              </div>
+                                 <!--end::Label-->
+                              <!--begin::Input-->
+                              <div class="col-md-12">
+                                 <input type="url" name="applyurl" class="form-control mb-2 applyurl" id="applyurl" placeholder="Apply URL.." value="" />
+                              </div>
+                              <!--end::Input-->
+                              <!--begin::Description-->
+                              <div class="text-muted fs-7">A title name is required and recommended to be unique.</div>
+                              <!--end::Description-->
+                           </div>
                            <!--begin::Input group-->
                            <div class="mb-10 fv-row">
                               <!--begin::Label-->
@@ -175,26 +229,26 @@
                                              <label class="required form-label mw-100 w-200px">Pdf Title</label>
                                              <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
                                           </div>
-                                          <div>
+                                          <!-- <div>
                                              <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
                                              <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
                                           </div>
                                           <div>
                                              <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
                                              <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="Tender Description" />
-                                          </div>
+                                          </div> -->
                                           <div>
                                              <label class="required form-label mw-100 w-200px">PDF Format</label>
                                              <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
                                           </div>
-                                          <div>
+                                          <!-- <div>
                                              <label class="required form-label mw-100 w-200px">Opening Date</label>
-                                             <input type="date" class="form-control mw-100 w-200px" name="openingdate" />
-                                          </div>
-                                          <div>
+                                             <input type="datetime" class="form-control mw-100 w-200px" name="openingdate" />
+                                          </div> -->
+                                          <!-- <div>
                                              <label class="required form-label mw-100 w-200px">Apply URL</label>
                                              <input type="url" class="form-control mw-100 w-200px" name="applyurl" />
-                                          </div>
+                                          </div> -->
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> </button>

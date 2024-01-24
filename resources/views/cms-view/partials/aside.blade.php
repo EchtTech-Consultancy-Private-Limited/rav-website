@@ -79,13 +79,16 @@
                </div>
             </div>
          </div>
-         <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['rtiassets/rtiassets-create','rtiassets/rtiassets-list']) }}{{ (request()->is('rtiassets/rtiassets-create/*')) ? 'hover show' : '' }} {{ (request()->is('rtiassets/rtiassets-list/*')) ? 'hover show' : '' }}" >
+         <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['rtiassets/rtiassets-create','rtiassets/rtiassets-list','rtiapplicationresponses/rtiapplicationresponses-list']) }}{{ (request()->is('rtiassets/rtiassets-create/*')) ? 'hover show' : '' }} {{ (request()->is('rtiassets/rtiassets-list/*')) ? 'hover show' : '' }}{{ (request()->is('rtiapplicationresponses/rtiapplicationresponses-list/*')) ? 'hover show' : '' }}" >
             <span class="menu-link" ><span class="menu-icon" ><i class="ki-outline ki-abstract-26 fs-2"></i></span>
             <span class="menu-title" >{{ config('menu.RTIassets') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div class="menu-sub menu-sub-accordion {{ set_active(['rtiassets/rtiassets-list','rtiassets/rtiassets-create']) }}{{ (request()->is('rtiassets/rtiassets-create/*')) ? 'show' : '' }} {{ (request()->is('rtiassets/rtiassets-list/*')) ? 'show' : '' }}" >
+            <div class="menu-sub menu-sub-accordion {{ set_active(['rtiassets/rtiassets-list','rtiassets/rtiassets-create','rtiapplicationresponses/rtiapplicationresponses-list']) }}{{ (request()->is('rtiassets/rtiassets-create/*')) ? 'show' : '' }} {{ (request()->is('rtiassets/rtiassets-list/*')) ? 'show' : '' }}{{ (request()->is('rtiapplicationresponses/rtiapplicationresponses-list/*')) ? 'show' : '' }}" >
                <div class="menu-item">
                   <a class="menu-link {{ set_active1(['rtiassets/rtiassets-create']) }} {{ (request()->is('rtiassets/rtiassets-create/*')) ? 'active' : '' }}"  href="{{ route('rtiassets.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Create</span></a><!--end:Menu link-->
                   <a class="menu-link {{ set_active1(['rtiassets/rtiassets-list']) }} {{ (request()->is('rtiassets/rtiassets-list/*')) ? 'active' : '' }}"  href="{{ route('rtiassets.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >List</span></a><!--end:Menu link-->
+                  @if(config('particularAssets.rtiapplicationresponses') == 'true')
+                  <a class="menu-link {{ set_active1(['rtiapplicationresponses/rtiapplicationresponses-list']) }} {{ (request()->is('rtiapplicationresponses/rtiapplicationresponses-list/*')) ? 'active' : '' }}"  href="{{ route('rtiapplicationresponses.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >RTI Application & Responses</span></a><!--end:Menu link-->
+                  @endif
                </div>
             </div>
          </div>
@@ -162,7 +165,7 @@
                </div>
             </div>
          </div>
-         <div  data-kt-menu-trigger="click"  class="menu-item menu-accordion {{ set_active(['news/news-create','news/news-list']) }} {{ (request()->is('careers/careers-create/*')) ? 'hover show' : '' }}{{ (request()->is('careers/careers-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click"  class="menu-item menu-accordion {{ set_active(['careers/careers-create','careers/careers-list']) }} {{ (request()->is('careers/careers-create/*')) ? 'hover show' : '' }}{{ (request()->is('careers/careers-list/*')) ? 'hover show' : '' }}" >
             <span class="menu-link" ><span  class="menu-icon" ><i class="ki-outline ki-element-7 fs-2"></i></span><span  class="menu-title" >{{ config('menu.careermanagement') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
             <div  class="menu-sub menu-sub-accordion {{ set_active(['careers/careers-create','careers/careers-list']) }} {{ (request()->is('careers/careers-create/*')) ? 'hover show' : '' }}{{ (request()->is('careers/careers-list/*')) ? 'hover show' : '' }}" >
                <div  class="menu-item" >
@@ -184,15 +187,20 @@
                </div>
             </div>
          </div>
-         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['tender/tender-create','tender/tender-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'hover show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'hover show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'hover show' : '' }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'hover show' : '' }}" >
             <span class="menu-link" ><span class="menu-icon" ><i class="ki-outline ki-element-7 fs-2"></i></span><span  class="menu-title" >{{ config('menu.tendersmanagement') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion {{ set_active(['tender/tender-create','tender/tender-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'show' : '' }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'show' : '' }}" >
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['tender/tender-create']) }} {{ (request()->is('tender/tender-create/*')) ? 'active' : '' }}" href="{{ route('tender.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Create</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['tender/tender-list']) }} {{ (request()->is('tender/tender-list/*')) ? 'active' : '' }}" href="{{ route('tender.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >List</span></a><!--end:Menu link-->
                </div>
+               @if(config('particularAssets.purchaseworkscommittee') == 'true')
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['purchaseworkscommittee/purchaseworkscommittee-list']) }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'active' : '' }}" href="{{ route('purchaseworkscommittee.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Purchase / Works / Committee</span></a><!--end:Menu link-->
+               </div>
+               @endif
             </div>
          </div>
          <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['event/event-create','event/event-list']) }} {{ (request()->is('event/event-create/*')) ? 'hover show' : '' }}{{ (request()->is('event/event-list/*')) ? 'hover show' : '' }}" >
@@ -218,9 +226,7 @@
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['datamanagement/list-feedback']) }} {{ (request()->is('datamanagement/list-feedback/*')) ? 'active' : '' }}" href="{{ route('datamanagement.list-feedback') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Feedback List</span></a><!--end:Menu link-->
                </div>
-               <div  class="menu-item" >
-                  <a class="menu-link" href="#" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Text</span></a><!--end:Menu link-->
-               </div>
+               
             </div>
          </div>
          @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')

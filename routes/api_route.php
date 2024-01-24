@@ -23,6 +23,8 @@ use App\Http\Controllers\CMSControllers\Api\EmployeeDirectoryAPIController;
 use App\Http\Controllers\CMSControllers\Api\PopupAdvertisingAPIController;
 use App\Http\Controllers\CMSControllers\Api\RecentActivityAPIController;
 use App\Http\Controllers\CMSControllers\Api\RtiAssetsAPIController;
+use App\Http\Controllers\CMSControllers\Api\PurchaseWorksCommitteeAPIController;
+use App\Http\Controllers\CMSControllers\Api\RtiApplicationResponsesAPIController;
 
 
 /***************************** API URL Use For Data Migrate With DB*************************************** */
@@ -214,6 +216,20 @@ use App\Http\Controllers\CMSControllers\Api\RtiAssetsAPIController;
             Route::get('/edit-rtia/{id}',[RtiAssetsAPIController::class,'edit'])->name('rtiassets-edit');
             Route::post('/update-rtia',[RtiAssetsAPIController::class,'update'])->name('rtiassets-update');
             Route::delete('/delete-rtia/{id}',[RtiAssetsAPIController::class,'destroy'])->name('rtiassets-delete');
+
+            /****** RTI Application Responses Setting rtiapplicationresponses:RTI Application Responses*/
+            Route::post('/create-rtiapplicationresponses',[RtiApplicationResponsesAPIController::class,'store'])->name('rtiapplicationresponses-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-rtiapplicationresponses',[RtiApplicationResponsesAPIController::class,'index'])->name('rtiapplicationresponses-list');
+            Route::get('/edit-rtiapplicationresponses/{id}',[RtiApplicationResponsesAPIController::class,'edit'])->name('rtiapplicationresponses-edit');
+            Route::post('/update-rtiapplicationresponses',[RtiApplicationResponsesAPIController::class,'update'])->name('rtiapplicationresponses-update');
+            Route::delete('/delete-rtiapplicationresponses/{id}',[RtiApplicationResponsesAPIController::class,'destroy'])->name('rtiapplicationresponses-delete');
+
+            /****** purchase works committee Setting purchaseworkscommittee:purchase works committee*/
+            Route::post('/create-purchaseworkscommittee',[PurchaseWorksCommitteeAPIController::class,'store'])->name('purchaseworkscommittee-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-purchaseworkscommittee',[PurchaseWorksCommitteeAPIController::class,'index'])->name('purchaseworkscommittee-list');
+            Route::get('/edit-purchaseworkscommittee/{id}',[PurchaseWorksCommitteeAPIController::class,'edit'])->name('purchaseworkscommittee-edit');
+            Route::post('/update-purchaseworkscommittee',[PurchaseWorksCommitteeAPIController::class,'update'])->name('purchaseworkscommittee-update');
+            Route::delete('/delete-purchaseworkscommittee/{id}',[PurchaseWorksCommitteeAPIController::class,'destroy'])->name('purchaseworkscommittee-delete');
     
             
             /****** Asset Approver Route*/

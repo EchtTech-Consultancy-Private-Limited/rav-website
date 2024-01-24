@@ -77,6 +77,10 @@ class TenderManagementAPIController extends Controller
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
                         'title_name_hi' => $request->title_name_hi,
+                        'start_date'=> $request->startdate,
+                        'end_date' => $request->enddate,
+                        'opening_date' => $request->openingdate??'NULL',
+                        'apply_url' => $request->applyurl??'NULL',
                         'description_en' => $request->kt_description_en,
                         'description_hi' => $request->kt_description_hi,
                         
@@ -94,15 +98,15 @@ class TenderManagementAPIController extends Controller
                                 'uid' => Uuid::uuid4(),
                                 'tender_id' => $extId,
                                 'pdf_title' => $value['pdftitle'],
-                                'start_date'=> $value['startdate'],
-                                'end_date' => $value['enddate'],
+                                // 'start_date'=> $value['startdate']??'NULL',
+                                // 'end_date' => $value['enddate']??'NULL',
                                 'pdfimage_size' => $size,
                                 'file_extension' => $extension??'',
                                 'public_url' => $name,
                                 'private_url' => $name,
-                                'opening_date' => $value['openingdate']??'NULL',
-                                'apply_url' => $value['applyurl']??'NULL',
-                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+                                // 'opening_date' => $value['openingdate']??'NULL',
+                                // 'apply_url' => $value['applyurl']??'NULL',
+                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate??'')->addDays(env('TENDER_ARCHIVEL')),
                             ]);
                         }
                     }
@@ -179,6 +183,10 @@ class TenderManagementAPIController extends Controller
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
                         'title_name_hi' => $request->title_name_hi,
+                        'start_date'=> $request->startdate,
+                        'end_date' => $request->enddate,
+                        'opening_date' => $request->openingdate??'NULL',
+                        'apply_url' => $request->applyurl??'NULL',
                         'description_en' => $request->kt_description_en,
                         'description_hi' => $request->kt_description_hi,
                     ]);
@@ -196,28 +204,28 @@ class TenderManagementAPIController extends Controller
 
                         $result= DB::table('tender_details')->where('uid',$value['uid'])->update([
                             'pdf_title' => $value['pdftitle'],
-                            'start_date'=> $value['startdate'],
-                            'end_date' => $value['enddate'],
+                            // 'start_date'=> $value['startdate']??'NULL',
+                            // 'end_date' => $value['enddate']??'NULL',
                             'public_url' => isset($name)?$name:$uid->public_url,
                             'private_url' => isset($name)?$name:$uid->public_url,
                             'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                             'file_extension' => isset($extension)?$extension:$uid->file_extension,
-                            'opening_date' => $value['openingdate']??'NULL',
-                            'apply_url' => $value['applyurl']??'NULL',
+                            // 'opening_date' => $value['openingdate']??'NULL',
+                            // 'apply_url' => $value['applyurl']??'NULL',
                             'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                         ]);
                     }   
                     $result= DB::table('tender_details')->where('uid',$value['uid'])->update([
                             'pdf_title' => $value['pdftitle'],
-                            'start_date'=> $value['startdate'],
-                            'end_date' => $value['enddate'],
-                            // 'public_url' => isset($name)?$name:$uid->public_url,
-                            // 'private_url' => isset($name)?$name:$uid->public_url,
-                            // 'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
-                            // 'file_extension' => isset($extension)?$extension:$uid->file_extension,
-                            'opening_date' => $value['openingdate']??'NULL',
-                            'apply_url' => $value['applyurl']??'NULL',
-                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+                            // 'start_date'=> $value['startdate']??'NULL',
+                            // 'end_date' => $value['enddate']??'NULL',
+                            'public_url' => isset($name)?$name:$uid->public_url,
+                            'private_url' => isset($name)?$name:$uid->public_url,
+                            'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
+                            'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                            // 'opening_date' => $value['openingdate']??'NULL',
+                            // 'apply_url' => $value['applyurl']??'NULL',
+                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                         ]);
                     }else{
                         if(!empty($value['pdfname'])){
@@ -230,15 +238,15 @@ class TenderManagementAPIController extends Controller
                                 'uid' => Uuid::uuid4(),
                                 'tender_id' => $request->id,
                                 'pdf_title' => $value['pdftitle'],
-                                'start_date'=> $value['startdate'],
-                                'end_date' => $value['enddate'],
+                                // 'start_date'=> $value['startdate']??'NULL',
+                                // 'end_date' => $value['enddate']??'NULL',
                                 'pdfimage_size' => $size,
                                 'file_extension' => $extension??'',
                                 'public_url' => $name,
                                 'private_url' => $name,
-                                'opening_date' => $value['openingdate']??'NULL',
-                                'apply_url' => $value['applyurl']??'NULL',
-                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+                                // 'opening_date' => $value['openingdate']??'NULL',
+                                // 'apply_url' => $value['applyurl']??'NULL',
+                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                             ]);
                         }
                     }

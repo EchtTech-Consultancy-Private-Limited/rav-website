@@ -55,11 +55,15 @@ class UserManagementAPIController extends Controller
             return response()->json(['email' => 'This email address already exists in our system']);
          }else{
             try{
+                // if($request->hasFile('avatar')){
+                //     $request['avatar'] = $request->hasFile('avatar');
+                // }
                 $validator=Validator::make($request->all(),
                     [
                     'user_name'=>'required|string',
                     'user_email'=>'required',
                     'user_role'=>'required',
+                    //'avatar' => 'required|mimes:jpeg,png,jpg|max:10000'
                 ]);
                 if($validator->fails())
                 {
