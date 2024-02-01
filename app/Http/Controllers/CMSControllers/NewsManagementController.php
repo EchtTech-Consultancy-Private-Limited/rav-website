@@ -29,6 +29,12 @@ class NewsManagementController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('news-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('news-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('news-approve', ['id' => 'xxxx']);
+        }
         
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 

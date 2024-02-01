@@ -28,7 +28,13 @@ class SystemLogsController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('aut-delete', ['id' => 'xxxx']);
         }
-        
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('aut-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('aut-approve', ['id' => 'xxxx']);
+        }
+
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
         return view('cms-view.audit-trail.list',

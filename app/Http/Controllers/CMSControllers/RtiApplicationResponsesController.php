@@ -42,6 +42,12 @@ class RtiApplicationResponsesController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('rtiapplicationresponses-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('rtiapplicationresponses-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('rtiapplicationresponses-approve', ['id' => 'xxxx']);
+        }
         
         $createURL = route('rtiapplicationresponses.create');
 

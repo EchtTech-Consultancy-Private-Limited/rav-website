@@ -25,6 +25,7 @@ use App\Http\Controllers\CMSControllers\Api\RecentActivityAPIController;
 use App\Http\Controllers\CMSControllers\Api\RtiAssetsAPIController;
 use App\Http\Controllers\CMSControllers\Api\PurchaseWorksCommitteeAPIController;
 use App\Http\Controllers\CMSControllers\Api\RtiApplicationResponsesAPIController;
+use App\Http\Controllers\CMSControllers\Api\CommonApprovalAPIController;
 
 
 /***************************** API URL Use For Data Migrate With DB*************************************** */
@@ -233,7 +234,27 @@ use App\Http\Controllers\CMSControllers\Api\RtiApplicationResponsesAPIController
     
             
             /****** Asset Approver Route*/
-            Route::delete('/delete-rtia/{id}',[RtiAssetsAPIController::class,'destroy'])->name('rtiassets-delete');
+            /****** Recent Activity rc:Recent Activity*/
+            Route::post('/approve-rcta/{id}',[CommonApprovalAPIController::class,'recentActivityApprovePublish'])->name('recentactivity-approve');
+            Route::post('/approve-bn/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('banner-approve');
+            Route::post('/approve-caree/{id}',[CommonApprovalAPIController::class,'careerApprovePublish'])->name('careers-approve');
+            Route::post('/approve-page/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('pagemetatag-approve');
+            Route::post('/approve-faq/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('faq-approve');
+            Route::post('/approve-dept/{id}',[CommonApprovalAPIController::class,'departmentDesignationApprovePublish'])->name('departmentdesignation-approve');
+            Route::post('/approve-emp/{id}',[CommonApprovalAPIController::class,'employeeDirectoryApprovePublish'])->name('employeedirectory-approve');
+            Route::post('/approve-event/{id}',[CommonApprovalAPIController::class,'eventApprovePublish'])->name('event-approve');
+            Route::post('/approve-wc/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('websitecoresetting-approve');
+            Route::post('/approve-gall/{id}',[CommonApprovalAPIController::class,'galleryApprovePublish'])->name('photovideo-approve');
+            Route::post('/approve-module/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('module-approve');
+            Route::post('/approve-news/{id}',[CommonApprovalAPIController::class,'newsApprovePublish'])->name('news-approve');
+            Route::post('/approve-pwc/{id}',[CommonApprovalAPIController::class,'purchaseWorksCommitteeApprovePublish'])->name('purchaseworkscommittee-approve');
+            Route::post('/approve-rar/{id}',[CommonApprovalAPIController::class,'rtiApplicationResponseApprovePublish'])->name('rtiapplicationresponses-approve');
+            Route::post('/approve-rti/{id}',[CommonApprovalAPIController::class,'rtiAssetsApprovePublish'])->name('rtiassets-approve');
+            Route::post('/approve-aut/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('aut-approve');
+            Route::post('/approve-tender/{id}',[CommonApprovalAPIController::class,'tenderApprovePublish'])->name('tender-approve');
+            Route::post('/approve-ue/{id}',[CommonApprovalAPIController::class,'userManagementApprovePublish'])->name('user-approve');
+            Route::post('/approve-cws/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsApprovePublish'])->name('cws-approve');
+            Route::post('/approve-menu/{id}',[CommonApprovalAPIController::class,'websiteMenuApprovePublish'])->name('menu-approve');
     
         });
     });

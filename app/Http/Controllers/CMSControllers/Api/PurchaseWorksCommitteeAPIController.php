@@ -79,7 +79,7 @@ class PurchaseWorksCommitteeAPIController extends Controller
                      'name_of_supplier_party_en'=>'required|string',
                      'order_contract_no'=>'required|string',
                      'startdate'=>'required',
-                     'related_document'=>'required|mimes:pdf|max:10000',
+                    //'related_document'=>'required|mimes:pdf|max:10000',
                      'amount' => 'required|numeric'
                  ]);
                  if($validator->fails())
@@ -111,11 +111,11 @@ class PurchaseWorksCommitteeAPIController extends Controller
                              'quality_supplied_hi' => $request->quality_supplied_hi,
                              'order_contract_no' =>$request->order_contract_no??'',
                              'amount' => $request->amount??'',
-                             'public_url' => $newname,
+                             'public_url' => $newname??'',
                              'short_order' => $request->short_order,
                              'start_date' => $request->startdate,
-                             'pdfimage_size' => $request->size,
-                             'file_extension' => $request->extension,
+                             'pdfimage_size' => $request->size??'',
+                             'file_extension' => $request->extension??'',
                              'asset_type' => $request->type_id
                          ]);
                      

@@ -40,6 +40,12 @@ class DynamicFormManagementController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('faq-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('faq-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('faq-approve', ['id' => 'xxxx']);
+        }
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
         return view('cms-view.dynamic-form-management.faq-list',

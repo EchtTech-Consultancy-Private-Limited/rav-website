@@ -36,6 +36,12 @@ class DataManagementController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
              // $crudUrlTemplate['delete'] = route('');
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }
         
         return view('cms-view.commonPages.feedback-list',
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)

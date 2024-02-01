@@ -32,6 +32,13 @@ class EmployeeDirectoryController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('employeedirectory-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('employeedirectory-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('employeedirectory-approve', ['id' => 'xxxx']);
+        }
+
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
         return view('cms-view.employee-directory.list-employee',
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)

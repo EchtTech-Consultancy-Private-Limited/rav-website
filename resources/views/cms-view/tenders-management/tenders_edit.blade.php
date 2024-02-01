@@ -113,7 +113,7 @@
                                     <label class="required fs-6 fw-semibold mb-2">Opening Date</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input class="form-control form-control-solid openingdate" type="date" placeholder="" name="openingdate" value="{{$data->opening_date}}" />
+                                    <input class="form-control form-control-solid openingdate" type="datetime-local" placeholder="" name="openingdate" value="{{$data->opening_date}}" />
                                     <!--end::Input-->
                                  </div>
                                  <!--end::Col-->

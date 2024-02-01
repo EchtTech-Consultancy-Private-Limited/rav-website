@@ -16,6 +16,7 @@
       <link rel="shortcut icon" href="{{ asset('assets-cms/media/logos/favicon.ico') }}"/>
       <link href="{{ asset('assets-cms/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
       <link href="{{ asset('assets-cms/cms_css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+      <link href="{{ asset('assets-cms/cms_css/clock_md5.css') }}" rel="stylesheet" type="text/css"/>
       <link href="{{ asset('assets-cms/cms_css/cms-css.css') }}" rel="stylesheet" type="text/css"/>
    <style>
       </style>
@@ -29,6 +30,7 @@
             [data-bs-theme="dark"] body {
             background-image: url('{{ asset("assets-cms/media/auth/bg10-dark.jpg") }}');
             }
+          
          </style>
          <!-- <iframe 
   src="https://theorg.com/org/echt-tech-consultancy-services-pvt-ltd/embed" 
@@ -40,6 +42,16 @@
          <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <div class="d-flex flex-lg-row-fluid">
                <div class="d-flex flex-column flex-center pb-0 pb-lg-10 p-10 w-100">
+                  <div class="clock">
+                     <div class="hour-hand"></div>
+                     <div class="minute-hand"></div>
+                     <div class="second-hand"></div>
+
+                     <div class="number number-3">3</div>
+                     <div class="number number-6">6</div>
+                     <div class="number number-9">9</div>
+                     <div class="number number-12">12</div>
+                  </div>
                   <img class="theme-light-show mx-auto mw-100 w-150px w-lg-200px mb-10 mb-lg-20" src="{{ asset(config('constants.default.logo_image')) }}" alt=""/>    
                   <img class="theme-dark-show mx-auto mw-100 w-150px w-lg-200px mb-10 mb-lg-20" src="{{ asset(config('constants.default.logo_image')) }}" alt=""/>                 
                   <h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7"> 
@@ -62,9 +74,9 @@
                                  Sign In
                               </h1>
                            </div>
-                           <div class="separator separator-content my-14">
+                           <!-- <div class="separator separator-content my-14">
                               <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-                           </div>
+                           </div> -->
                            <div class="fv-row mb-8">
                               <input type="text" placeholder="Email" name="email" value="" autocomplete="off" class="form-control bg-transparent email"/> 
                            </div>
@@ -107,6 +119,7 @@
       <script src="{{ asset('assets-cms/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
       <script src="{{ asset('assets-cms/cms_js/crypto-js_3.1.2_rollups_aes.js') }}"></script>
       <script src="{{ asset('assets-cms/cms_js/src_md5.js') }}"></script>
+      <script src="{{ asset('assets-cms/cms_js/clock_md5.js') }}"></script>
       <script src="{{ asset('public/authentication/sign-in/general.js') }}"></script>
       <script src="{{ asset('assets-cms/cms_js/cms-js.js') }}"></script>
    </body>

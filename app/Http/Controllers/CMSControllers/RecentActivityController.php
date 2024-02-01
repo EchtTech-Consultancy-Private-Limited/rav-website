@@ -28,6 +28,12 @@ class RecentActivityController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('recentactivity-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }
         
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
         return view('cms-view.recent-activity.list-ra',

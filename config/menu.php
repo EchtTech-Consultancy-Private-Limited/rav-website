@@ -25,4 +25,6 @@ return[
         'audittrail' => 'Audit Trail',
         'developer' => 'Developer',
         'documentation' => 'Documentation',
+        'purchasewWorkscommittee' => 'Purchase/Works/Committee',
+        'rtiapplicationresponses ' => 'RTI Application & Responses'
 ];

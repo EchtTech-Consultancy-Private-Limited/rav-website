@@ -30,6 +30,12 @@ class DynamicContentPageManagamentController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('pagemetatag-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('pagemetatag-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('pagemetatag-approve', ['id' => 'xxxx']);
+        }
         //$crudUrlTemplate['view'] = route('pagemetatag-list');
         //dd($crudUrlTemplate);
         return view('cms-view.dynamic-content-page-managament.content-page-list',

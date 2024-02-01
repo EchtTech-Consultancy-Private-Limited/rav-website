@@ -40,6 +40,13 @@ class WebsiteCoreSettingsController extends Controller
        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('cws-delete', ['id' => 'xxxx']);
        }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('cws-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('cws-approve', ['id' => 'xxxx']);
+        }
+        
        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
        return view('cms-view.website-core-settings.websitelogo_list',

@@ -16,7 +16,7 @@ var KTvalidationCoreWebsiteSetting1= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[A-Za-z0-9-' ]*$/,
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                 message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                         },
@@ -122,7 +122,7 @@ var KTvalidationCoreWebsiteSetting2= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[A-Za-z0-9-' ]*$/,
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                 message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                         },

@@ -22,6 +22,12 @@ class GalleryManagementController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
             $crudUrlTemplate['list'] = route('photovideo-list');
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('photovideo-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('photovideo-approve', ['id' => 'xxxx']);
+        }
        // $crudUrlTemplate['edit'] = route('event.edit', ['id' => 'xxxx']);
         //$crudUrlTemplate['delete'] = route('event-delete', ['id' => 'xxxx']);
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');

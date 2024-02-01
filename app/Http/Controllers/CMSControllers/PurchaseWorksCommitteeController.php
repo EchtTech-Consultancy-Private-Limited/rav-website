@@ -43,6 +43,12 @@ class PurchaseWorksCommitteeController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('purchaseworkscommittee-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('purchaseworkscommittee-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('purchaseworkscommittee-approve', ['id' => 'xxxx']);
+        }
         $createURL = route('purchaseworkscommittee.create');
         
         return view('cms-view.'.$this->list,

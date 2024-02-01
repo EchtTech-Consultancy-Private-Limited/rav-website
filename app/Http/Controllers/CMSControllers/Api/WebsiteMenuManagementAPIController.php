@@ -17,7 +17,7 @@ class WebsiteMenuManagementAPIController extends Controller
 
     public function index()
     {
-        $data=WebsiteMenuManagement::where('soft_delete','0')->get();
+        $data=WebsiteMenuManagement::where('soft_delete','0')->orderby('sort_order','asc')->get();
         $totalRecords = WebsiteMenuManagement::where('soft_delete','0')->count();
         $resp = new \stdClass;
         $resp->iTotalRecords = $totalRecords;

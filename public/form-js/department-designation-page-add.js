@@ -10,13 +10,13 @@ var KTvalidationDepartment= function() {
             form,
             {
                 fields: {
-                    departmentName: {
+                    departmentNames: {
                         validators: {
                             notEmpty: {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[A-Za-z0-9-' ]*$/,
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                 message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                         },
@@ -57,19 +57,27 @@ var KTvalidationDepartment= function() {
                        }, 1500);
                       
                     } else {
-                       toastr.error(
-                          response.data.message,
-                          "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                       );
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                        console.log('Brijesh '+response.data.errors)
+                        for (var field in errors) {
+                            if (errors.hasOwnProperty(field)) {
+                                errors[field].forEach(function (errorMessage) {
+                                    toastr.error(
+                                        errorMessage,
+                                        "Something went wrong!", 
+                                        {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                     );
+                                });
+                            }
+                        }
                        }
                     })
-                    .catch(function (error) {
-                          toastr.error(
-                             "Sorry, looks like there are some errors detected, please try again B.", 
-                             "Something went wrong!", 
-                             {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                          );
+                    .catch(function (errors) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                       
+                        
                        }).then(() => {
                              // Hide loading indication
                              submitButton.removeAttribute('data-kt-indicator');
@@ -113,7 +121,7 @@ var KTvalidationDesignation= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[A-Za-z0-9-' ]*$/,
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                 message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                         },
