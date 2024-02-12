@@ -733,7 +733,7 @@ class DynamicContentPageManagamentAPIController extends Controller
      * @param  \App\Models\DynamicContentPageManagament  $dynamicContentPageManagament
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DynamicContentPageManagament $dynamicContentPageManagament)
+    public function destroy(DynamicContentPageManagament $dynamicContentPageManagament, $id)
     {
         $data=DB::table('dynamic_content_page_metatag')->where('uid',$id)->first();
         if($data)

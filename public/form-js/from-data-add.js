@@ -1,17 +1,16 @@
-var KTAppFAQUpdate = function () {
-   var jsonURL = $('#urlListData').attr('data-info');
-   var crudUrlTemplate = JSON.parse(jsonURL);
-   var id = new URLSearchParams(window.location.search).get('id');
+var KTFormDataSave = function () {
+    var jsonURL = $('#urlListData').attr('data-info');
+    var crudUrlTemplate = JSON.parse(jsonURL);
     var _officeAdd;
     var _handleOfficeAddForm = function(e) {
     var validation;
-    var form = document.getElementById('kt_faq_update_form');
+    var form = document.getElementById('kt_formData_add_form');
        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
        validation = FormValidation.formValidation(
              form,
              {
                 fields: {
-                 question_en: {
+                  order_contract_no: {
                          validators: {
                             notEmpty: {
                                message: 'This field is required'
@@ -22,13 +21,6 @@ var KTAppFAQUpdate = function () {
                             },
                          },
                    },
-                   question_hi: {
-                         validators: {
-                            notEmpty: {
-                               message: 'This field is required'
-                            },
-                         },
-                   },
                 },
                 plugins: {
                    trigger: new FormValidation.plugins.Trigger(),
@@ -36,39 +28,35 @@ var KTAppFAQUpdate = function () {
                 }
              }
        );
-       $('.submit-faq-btn').click( function(e) {
+       $('.submit-purchaseworkscommittee-btn').click( function(e) {
              e.preventDefault();
              validation.validate().then(function(status) {
                 if (status == 'Valid') {
                    submitButton.setAttribute('data-kt-indicator', 'on');
                    submitButton.disabled = true;
                    //$('#examAddModal').modal('hide');
-                   $('#loading').addClass('loading');
-                   $('#loading-content').addClass('loading-content');
                   var formData= new FormData(form);
                   formData.append("kt_description_en", $('#kt_summernote_en').summernote('code'));
                   formData.append("kt_description_hi", $('#kt_summernote_hi').summernote('code'));
-                axios.post(crudUrlTemplate.update+'?id='+id,
-                            formData, {
+                axios.post(crudUrlTemplate.create,
+                           formData, {
                    }).then(function (response) {
                    if (response.data.status ==200) {
-                     $('#loading').removeClass('loading');
-                     $('#loading-content').removeClass('loading-content');
                       toastr.success(
-                         "updated FAQ update successfully!", 
-                         "updated FAQ!", 
+                         "New purchase works committee successfully!", 
+                         "New Tender!", 
                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
                             history.scrollRestoration = 'manual';
                          }
-                         location.href = 'faq-list'; // reload page
+                         location.href = 'purchaseworkscommittee-create'; // reload page
                       }, 1500);
                       
                    } else {
                       toastr.error(
-                         "Sorry, the information is incorrect, please try again.", 
+                          response.data.message, 
                          "Something went wrong!", 
                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
@@ -96,59 +84,25 @@ var KTAppFAQUpdate = function () {
                 })
              });
        }
-       // Cancel button handler
-       
-     
-    var demos = function () {
+       var demos = function () {
          $('.summernote').summernote({
              placeholder: 'Description...',
              height: 200,
              tabsize: 2
          });
      }
-     const cancelButton = document.getElementById('kt_modal_add_faq').querySelector('[data-kt-users-modal-action="cancel"]');
-         cancelButton.addEventListener('click', e => {
-             e.preventDefault();
- 
-             Swal.fire({
-                 text: "Are you sure you would like to cancel?",
-                 icon: "warning",
-                 showCancelButton: true,
-                 buttonsStyling: false,
-                 confirmButtonText: "Yes, cancel it!",
-                 cancelButtonText: "No, return",
-                 customClass: {
-                     confirmButton: "btn btn-primary",
-                     cancelButton: "btn btn-active-light"
-                 }
-             }).then(function (result) {
-                 if (result.value) {
-                     document.getElementById('kt_faq_add_form').reset(); // Reset form			
-                     $('#kt_modal_add_faq').modal('hide');
-                 } else if (result.dismiss === 'cancel') {
-                     Swal.fire({
-                         text: "Your form has not been cancelled!.",
-                         icon: "error",
-                         buttonsStyling: false,
-                         confirmButtonText: "Ok, got it!",
-                         customClass: {
-                             confirmButton: "btn btn-primary",
-                         }
-                     });
-                 }
-             });
-         });
+   
  return {
          init: function () {
-              demos();
-             _officeAdd = $('#kt_faq_update_form');
+            demos();
+             _officeAdd = $('#kt_formData_add_form');
              _handleOfficeAddForm();
-             submitButton = document.querySelector('#kt_update_faq_submit');
+             submitButton = document.querySelector('#kt_add_purchaseworkscommittee_submit');
              // Handle forms
          }
      };
  }();
- // On document ready
+ 
  jQuery(document).ready(function() {
-     KTAppFAQUpdate.init();
+    KTFormDataSave.init();
  });

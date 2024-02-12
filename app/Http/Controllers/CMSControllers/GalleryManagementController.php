@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CMSModels\GalleryManagement;
 use Illuminate\Http\Request;
 use App\Http\Traits\AccessModelTrait;
+use DB;
 
 class GalleryManagementController extends Controller
 {
@@ -15,12 +16,23 @@ class GalleryManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'photo-video-gallery-management.gallery-management-add';
+    protected $edit = 'photo-video-gallery-management.gallery-management-edit';
+    protected $editVideo = 'photo-video-gallery-management.gallery-video-edit';
+    protected $list = 'photo-video-gallery-management.list';
+
     public function index()
     {
         $crudUrlTemplate = array();
         // xxxx to be replaced with ext_id to create valid endpoint
         if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
             $crudUrlTemplate['list'] = route('photovideo-list');
+        }
+        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['edit'] = route('photovideo.edit', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('photovideo-delete', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('photovideo-approve', ['id' => 'xxxx']);
@@ -33,7 +45,7 @@ class GalleryManagementController extends Controller
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
         //$data=GalleryManagement::where('')->where()->get();
 
-        return view('cms-view.photo-video-gallery-management.list',
+        return view('cms-view.'.$this->list,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
         
         ]);
@@ -54,7 +66,7 @@ class GalleryManagementController extends Controller
             $accessPermission = $this->checkAccessMessage();
         }
 
-        return view('cms-view.photo-video-gallery-management.gallery-management-add',
+        return view('cms-view.'.$this->create,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
             'textMessage' =>$accessPermission??''
          ]);
@@ -144,9 +156,35 @@ class GalleryManagementController extends Controller
      * @param  \App\Models\GalleryManagement  $galleryManagement
      * @return \Illuminate\Http\Response
      */
-    public function edit(GalleryManagement $galleryManagement)
+    public function edit(GalleryManagement $galleryManagement,Request $request)
     {
-        //
+        $crudUrlTemplate = array();
+        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['update_photo'] = route('photo-update');
+            $crudUrlTemplate['update_video'] = route('photo-update');
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+
+        $results = GalleryManagement::where('uid', $request->id)->first();
+        $pdfimagesData = DB::table('gallery_details')->where('gallery_id', $results->uid)->where([['soft_delete','=','0']])->get();
+        if($results){
+            $result = $results;
+        }else{
+            abort(404);
+        }
+        if($results->type == 1){
+            $fileName = $this->editVideo;
+        }else{
+            $fileName = $this->edit;
+        }
+        //dd($result);
+        return view('cms-view.'.$fileName,
+        ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
+            'data'=> $result,
+            'pdfData' => isset($pdfimagesData)?$pdfimagesData:'',
+            'textMessage' =>$accessPermission??''
+        ]);
     }
 
     /**

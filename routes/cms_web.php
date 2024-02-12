@@ -31,6 +31,8 @@ use App\Http\Controllers\CMSControllers\RecentActivityController;
 use App\Http\Controllers\CMSControllers\RtiAssetsController;
 use App\Http\Controllers\CMSControllers\RtiApplicationResponsesController;
 use App\Http\Controllers\CMSControllers\PurchaseWorksCommitteeController;
+use App\Http\Controllers\CMSControllers\FormBuilderController;
+use App\Http\Controllers\CMSControllers\ManualFileUploadController;
 
 
 /*
@@ -115,6 +117,7 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
     
     Route::prefix('gallerymanagement')->group(function(){
         Route::get('/gallerymanagement-create', [GalleryManagementController::class, 'create'])->name('gallerymanagement.create');
+        Route::get('/gallerymanagement-edit', [GalleryManagementController::class, 'edit'])->name('photovideo.edit');
         Route::get('/gallerymanagement-list', [GalleryManagementController::class, 'index'])->name('gallerymanagement.list');
     });
     
@@ -134,68 +137,68 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/event-create', [EventsManagementController::class, 'create'])->name('event.create');
         Route::get('/event-edit', [EventsManagementController::class, 'edit'])->name('event.edit');
         Route::get('/event-list', [EventsManagementController::class, 'index'])->name('event.list');
-        });
+    });
     
     Route::prefix('module')->group(function(){
         Route::get('/module-create', [ModuleManagementController::class, 'create'])->name('module.create');
         Route::get('/module-list', [ModuleManagementController::class, 'index'])->name('module.list');
         Route::get('/module-edit', [ModuleManagementController::class, 'edit'])->name('module.edit');
-        });
+    });
     
     Route::prefix('faq')->group(function(){
         Route::get('/faq-create', [DynamicFormManagementController::class, 'faqCreate'])->name('faq.create');
         Route::get('/faq-list', [DynamicFormManagementController::class, 'faqIndex'])->name('faq.list');
         Route::get('/faq-edit', [DynamicFormManagementController::class, 'faqEdit'])->name('faq.edit');
-        });
+    });
     
     Route::prefix('audittrail')->group(function(){
         Route::get('/audittrail-create', [SystemLogsController::class, 'create'])->name('audittrail.create');
         Route::get('/audittrail-list', [SystemLogsController::class, 'index'])->name('audittrail.list');
         Route::get('/audittrail-edit', [SystemLogsController::class, 'edit'])->name('audittrail.edit');
-        });
+    });
     
     Route::prefix('datamanagement')->group(function(){
         //Route::get('/audittrail-create', [SystemLogsController::class, 'create'])->name('audittrail.create');
         Route::get('/contactus-list', [DataManagementController::class, 'contactUSIndex'])->name('datamanagement.list-contact');
         Route::get('/feedback-list', [DataManagementController::class, 'FeedbackIndex'])->name('datamanagement.list-feedback');
         //Route::get('/audittrail-edit', [SystemLogsController::class, 'edit'])->name('audittrail.edit');
-        });
+    });
     
     Route::prefix('recentactivity')->group(function(){
         Route::get('/recentactivity-create', [RecentActivityController::class, 'create'])->name('recentactivity.create');
         Route::get('/recentactivity-list', [RecentActivityController::class, 'index'])->name('recentactivity.list');
         Route::get('/recentactivity-edit', [RecentActivityController::class, 'edit'])->name('recentactivity.edit');
-        });
+    });
     Route::prefix('popupadvertising')->group(function(){
         Route::get('/popupadvertising-create', [PopupAdvertisingController::class, 'create'])->name('popupadvertising.create');
         Route::get('/popupadvertising-list', [PopupAdvertisingController::class, 'index'])->name('popupadvertising.list');
         Route::get('/popupadvertising-edit', [PopupAdvertisingController::class, 'edit'])->name('popupadvertising.edit');
-        });
+    });
     
     Route::prefix('employeedirectory')->group(function(){
         Route::get('/employeedirectory-create', [EmployeeDirectoryController::class, 'create'])->name('employeedirectory.create');
         Route::get('/employeedirectory-list', [EmployeeDirectoryController::class, 'index'])->name('employeedirectory.list');
         Route::get('/employeedirectory-edit', [EmployeeDirectoryController::class, 'edit'])->name('employeedirectory.edit');
-        });
+    });
     
     Route::prefix('departmentdesignation')->group(function(){
         Route::get('/departmentdesignation-create', [EmpDepartDesignationController::class, 'create'])->name('departmentdesignation.create');
         Route::get('/departmentdesignation-list', [EmpDepartDesignationController::class, 'index'])->name('departmentdesignation.list');
         Route::get('/departmentdesignation-edit', [EmpDepartDesignationController::class, 'edit'])->name('departmentdesignation.edit');
-        });
+    });
     
     Route::prefix('careers')->group(function(){
         Route::get('/careers-create', [CareerManagementController::class, 'create'])->name('careers.create');
         Route::get('/careers-list', [CareerManagementController::class, 'index'])->name('careers.list');
         Route::get('/careers-edit', [CareerManagementController::class, 'edit'])->name('careers.edit');
-        });
+    });
     
     Route::prefix('rtiassets')->group(function(){
         Route::get('/rtiassets-create', [RtiAssetsController::class, 'create'])->name('rtiassets.create');
         Route::get('/rtiassets-list', [RtiAssetsController::class, 'index'])->name('rtiassets.list');
         Route::get('/rtiassets-edit', [RtiAssetsController::class, 'edit'])->name('rtiassets.edit');
         });
-    });
+
     Route::prefix('rtiapplicationresponses')->group(function(){
         Route::get('/rtiapplicationresponses-create', [RtiApplicationResponsesController::class, 'create'])->name('rtiapplicationresponses.create');
         Route::get('/rtiapplicationresponses-list', [RtiApplicationResponsesController::class, 'index'])->name('rtiapplicationresponses.list');
@@ -206,8 +209,24 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/purchaseworkscommittee-list', [PurchaseWorksCommitteeController::class, 'index'])->name('purchaseworkscommittee.list');
         Route::get('/purchaseworkscommittee-edit', [PurchaseWorksCommitteeController::class, 'edit'])->name('purchaseworkscommittee.edit');
     });
+    Route::prefix('formbuilder')->group(function(){
+        Route::get('/formbuilder-create', [FormBuilderController::class, 'create'])->name('formbuilder.create');
+        Route::get('/formbuilder-list', [FormBuilderController::class, 'index'])->name('formbuilder.list');
+        Route::get('/formbuilder-edit', [FormBuilderController::class, 'edit'])->name('formbuilder.edit');
+        Route::get('/formbuilder-show', [FormBuilderController::class, 'show'])->name('formbuilder.show');
+        Route::post('/formdata-save',[FormBuilderController::class,'saveFormData'])->name('formbuilder-saveformData');
+    });
 
+    Route::prefix('maunalfileupload')->group(function(){
+        Route::get('/maunalfileupload-create', [ManualFileUploadController::class, 'create'])->name('mfu.create');
+        Route::get('/maunalfileupload-edit', [ManualFileUploadController::class, 'edit'])->name('mfu.edit');
+        Route::get('/maunalfileupload-list', [ManualFileUploadController::class, 'index'])->name('mfu.list');
+    });
+
+
+
+});
+    
 require __DIR__ .'/api_route.php';
-//include_once('api_route.php');
 
 

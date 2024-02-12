@@ -1,9 +1,8 @@
 "use strict";
 var KTDatatablesBasicPaginations = function() {
 	var initTable1 = function() {
-		var table = $('#kt_datatable_headerlogo');
+		var table = $('#kt_datatable_fileuploadPath_list');
 		var $i=1;
-		// var columnList = JSON.parse(table.data('columnListData'));
 		var jsonURL = $('#urlListData').attr('data-info');
 		var crudUrlTemplate = JSON.parse(jsonURL);
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -24,8 +23,8 @@ var KTDatatablesBasicPaginations = function() {
 			},
 			columns: [
 				{ "data": "uid" },
-				{ "data": "logo_title" },
-				{ "data": "header_logo" },
+				{ "data": "title_name" },
+				{ "data": "file_path" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -96,7 +95,7 @@ var KTDatatablesBasicPaginations = function() {
 						return dropdownHtml;
 					},
 				},
-                {
+				{
 					targets: 0,
 					title: 'ID',
 					orderable: true,
@@ -105,37 +104,6 @@ var KTDatatablesBasicPaginations = function() {
 					render: function (data, type, full, meta) {
 						return $i++;
 					},
-				},
-				{
-					targets: -3,
-					orderable: true,
-					render: function (data, type, full, meta) {
-						if(full.header_logo != '')
-						{    
-							return '<span style="width: 250px;">\
-								<div class="d-flex align-items-center">\
-									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
-										<img class="" src="'+'../resources/uploads/WebsiteCoreSettings/'+full.header_logo+'" alt="photo"></img>\
-									</div>\
-								</div>\
-							</span>';
-						}
-						else
-						{
-							return '<span style="width: 250px;">\
-								<div class="d-flex align-items-center">\
-									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
-										<div class="symbol symbol-light-success mr-3">\
-											<span class="symbol-label font-size-h5">'+ full.no_photo +'</span>\
-										</div>\
-									</div>\
-									<div class="ml-4">\
-										<div class="text-dark-75 font-weight-bolder font-size-lg mb-0">'+data+'</div>\
-									</div>\
-								</div>\
-							</span>';
-						}
-					}
 				},
                 {
 					targets: -2,
@@ -183,6 +151,29 @@ var KTDatatablesBasicPaginations = function() {
 								</span></a>';
 					}
 				},
+				{
+					targets: -3,
+					orderable: true,
+					responsivePriority: -3,
+					render: function (data, type, full, meta) {
+						var file_path = {
+							"0": { 'title': 'Active/Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
+												},
+						};
+						if (typeof file_path[data] === 'undefined') {
+							return '<button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"><i class="ki-outline ki-fasten fs-5 m-0"></i></button>';
+						}
+						return '<a href="'+ file_path[data].url +'" class="' + file_path[data].classApprove + '" data-attr="' + file_path[data].btncustomtext + '"><span style="width: 250px;">\
+									<div class="d-flex align-items-center">\
+										<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
+											<div class="symbol symbol-light-success mr-3">\
+												<span class="' + file_path[data].class + '">' + file_path[data].title +'   '+'<i class="ki-outline fs-0.5 '+' '+ file_path[data].icontext + '"></i></span>\
+											</div>\
+										</div>\
+									</div>\
+								</span></a>';
+					}
+				},
 			],
 
 			"drawCallback": function (settings) {
@@ -216,7 +207,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									history.scrollRestoration = 'manual';
 									}
-									location.href = 'logo-list'; // reload page
+									location.href = 'maunalfileupload-list'; // reload page
 								}, 1500);
 
 							})
@@ -266,7 +257,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									   history.scrollRestoration = 'manual';
 									}
-									location.href = 'logo-list'; // reload page
+									location.href = 'maunalfileupload-list'; // reload page
 								 }, 1500);
 
 							})

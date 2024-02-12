@@ -50,7 +50,7 @@ var KTAppFAQSave = function () {
                 axios.post(crudUrlTemplate.create,
                             formData, {
                    }).then(function (response) {
-                   if (response) {
+                   if (response.data.status ==200) {
                     $('#loading').removeClass('loading');
                     $('#loading-content').removeClass('loading-content');
                       toastr.success(

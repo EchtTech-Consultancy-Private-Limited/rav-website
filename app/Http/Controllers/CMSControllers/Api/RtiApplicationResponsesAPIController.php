@@ -105,7 +105,7 @@ class RtiApplicationResponsesAPIController extends Controller
                         $file=$request->file('reply_document');
                         $newname2=time().rand(10,99).'.'.$file->getClientOriginalExtension();
                         $path=resource_path(env('IMAGE_FILE_FOLDER_CMS').'/RtiApplicationResponses');
-                        $file->move($path,$newname);
+                        $file->move($path,$newname2);
                     }
                      $result= RtiApplicationResponses::insert([
                              'uid' => Uuid::uuid4(),
@@ -220,7 +220,7 @@ class RtiApplicationResponsesAPIController extends Controller
                 $file=$request->file('reply_document');
                 $newname2=time().rand(10,99).'.'.$file->getClientOriginalExtension();
                 $path=resource_path(env('IMAGE_FILE_FOLDER_CMS').'/RtiApplicationResponses');
-                $file->move($path,$newname);
+                $file->move($path,$newname2);
             }else{
                 $imag=RtiApplicationResponses::where('uid',$request->id)->first();
                 $newname2=$imag->reply_document;
