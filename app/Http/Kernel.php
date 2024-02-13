@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
-        \Fruitcake\Cors\HandleCors::class,
+        // \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
@@ -39,24 +39,6 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\LanguageManager::class,
         ],
-        // 'cms_web' => [
-        //     \App\Http\Middleware\EncryptCookies::class,
-        //     \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        //     \Illuminate\Session\Middleware\StartSession::class,
-        //     \Illuminate\Session\Middleware\AuthenticateSession::class,
-        //     \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        //     \App\Http\Middleware\VerifyCsrfToken::class,
-        //     \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        // ],
-        // 'api_route' => [
-        //     \App\Http\Middleware\EncryptCookies::class,
-        //     \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        //     \Illuminate\Session\Middleware\StartSession::class,
-        //     \Illuminate\Session\Middleware\AuthenticateSession::class,
-        //     \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        //     \App\Http\Middleware\VerifyCsrfToken::class,
-        //     \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        // ],
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
@@ -84,6 +66,7 @@ class Kernel extends HttpKernel
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
         'logs' => \App\Http\Middleware\AdminLogs::class,
         'apithrottle' => \App\Http\Middleware\ThrottleMiddleware::class,
+        'visitingcounter' => \App\Http\Middleware\VisitCounters::class,
         'EnsureTokenIsValid' => \App\Http\Middleware\EnsureTokenIsValid::class,
         //'checklogin' => \App\Http\Middleware\checklogin::class,
         // 'jwt.auth' => \Tymon\JWTAuth\middleware\GetUserFromToken::class,
