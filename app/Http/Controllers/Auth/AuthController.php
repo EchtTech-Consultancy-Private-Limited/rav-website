@@ -27,12 +27,12 @@ class AuthController extends Controller
 
    public function landing()
    {
-    return view('auth.landingpage');
+    return view('cms-view.auth.landingpage');
    }
 
    public function login()
    {
-    return view('auth.login');
+    return view('cms-view.auth.login');
    }
 
 
