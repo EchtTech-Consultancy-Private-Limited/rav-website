@@ -9,7 +9,7 @@
 @section('breadcrumbs')
  {{ __('Gallery Listing') }}
 @endsection
-@push('post-scripts')>
+@push('post-scripts')
 <script src="{{ asset('public/js/photoGalleryVideo_list_datatable.js') }}"></script>
 @endpush
 @section('content')

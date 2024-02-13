@@ -148,7 +148,8 @@ var KTSigninGeneral = function () {
                     axios.post(submitButton.closest('form').getAttribute('action'), {
                         email: $('.email').val(),
                         password: pas,
-                        captcha: $('.SecurityCode').val()
+                        captcha: $('.SecurityCode').val(),
+                        _token:$("meta[name='csrf-token']").attr("content")
                      }).then(function (response) {
                         if (response.status == 200) {
                             form.reset();

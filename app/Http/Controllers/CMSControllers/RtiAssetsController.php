@@ -31,6 +31,13 @@ class RtiAssetsController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('rtiassets-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('rtiassets-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('rtiassets-approve', ['id' => 'xxxx']);
+        }
+
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
         return view('cms-view.rti-management.rti-list',
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)

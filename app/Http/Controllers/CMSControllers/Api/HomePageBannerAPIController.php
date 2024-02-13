@@ -63,7 +63,7 @@ class HomePageBannerAPIController extends Controller
                 [
                 'tabtype'=>'required',
                 'title_name_en'=>'required',
-                'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:10000"
+                'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:max_width=1900,max_height=500"
             ]);
             if($validator->fails())
             {

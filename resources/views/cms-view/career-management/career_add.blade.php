@@ -86,6 +86,30 @@
                               </div>
                               <!--end::Row-->
                            </div>
+                           <div class="fv-row mb-10">
+                              <div class="row g-9 mb-7">
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">Start Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="startdate" value="" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-semibold mb-2">End Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid" type="date" placeholder="" name="enddate" value="" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                              </div>
+                           </div>
                            <!--begin::Input group-->
                            <div class="mb-10 fv-row">
                               <!--begin::Label-->
@@ -166,15 +190,15 @@
                                  <div class="form-group">
                                     <label class="required form-label mw-100 w-200px">Pdf Title</label>
                                     <!-- <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">career Description</label> -->
-                                    <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
-                                    <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
+                                    <!-- <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label> -->
+                                    <!-- <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label> -->
                                     <label class="required form-label mw-100 w-200px">PDF Format</label>
                                     <div data-repeater-list="kt_career_add_multiple_options" class="d-flex flex-column gap-3">
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
                                           <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
-                                          <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="career Description" />
-                                          <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="career Description" />
+                                          <!-- <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="career Description" /> -->
+                                          <!-- <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="career Description" /> -->
                                           <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">

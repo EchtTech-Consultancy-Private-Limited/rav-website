@@ -24,7 +24,10 @@ var KTDatatablesBasicPaginations = function() {
 			columns: [
 				{ "data": "uid" },
 				{ "data": "title_name_en" },
-				{ "data": "images" },
+				{ "data": "start_date" },
+				{ "data": "end_date" },
+				{ "data": "event_type" },
+				{ "data": "status" },
 				{ "data": "action" }
 			],
 			columnDefs: [
@@ -104,58 +107,119 @@ var KTDatatablesBasicPaginations = function() {
 						return $i++;
 					},
 				},
-                {
-					targets: -2,
+				{
+					targets: -3,
 					orderable: false,
-					responsivePriority: -2,
+					responsivePriority: -3,
 					render: function(data, type, full ,meta){
+						var event_type = {
+							"1": { 'title': 'State Event', 'class': 'badge badge-light-success fw-bold' },
+							"2": { 'title': 'National Event', 'class': 'badge badge-light-success fw-bold' }
+						};
+						if (typeof event_type[data] === 'undefined') {
+							return data;
+						}
+						return '<span class="' + event_type[data].class + '">' + event_type[data].title + '</span>';
+                    }
+				},
+				{
+					targets: -2,
+					orderable: true,
+					responsivePriority: -2,
+					render: function (data, type, full, meta) {
+						if(crudUrlTemplate.publisher != undefined)
+						{
+							var url_publisher = crudUrlTemplate.publisher.replace("xxxx", full.uid)
+							var classApproved_publisher = 'approve-single-record';
+						}else{
+							var url_publisher ='javascript:void(0);'
+							var classApproved_publisher ='error';
+						}
+						if(crudUrlTemplate.approver != undefined)
+						{
+							var url_approver = crudUrlTemplate.approver.replace("xxxx", full.uid)
+							var classApproved = 'approve-single-record';
+						}else{
+							var url_publisher ='javascript:void(0);'
+							var classApproved ='error';
+						}
 						var status = {
-							"0": { 'title': 'Inactive', 'class': 'badge badge-light-danger fw-bold' },
-							"1": { 'title': 'Active', 'class': 'badge badge-light-success fw-bold' }
+							"0": { 'title': 'Active/Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
+												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross'},
+							"1": { 'title': 'Active/Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
+												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross' },
+							"2": { 'title': 'Ready For Publisher', 'class': 'badge badge-light-warning fw-bold px-3 py-2 btn btn-warning border-radius-10',
+												'classApprove':classApproved_publisher,'btncustomtext':'Ready For Publisher',
+												'icontext':'ki-cross','url':url_publisher, },
+							"3": { 'title': 'Published', 'class': 'badge badge-light-success fw-bold px-4 py-3',
+							                 'url':'javascript:void(0);','icontext':'ki-check text-success' }
 						};
 						if (typeof status[data] === 'undefined') {
 							return data;
 						}
-						return '<span class="' + status[data].class + '">' + status[data].title + '</span>';
-                    }
-				},
-                {
-					targets: 3,
-					orderable: true,
-					render: function (data, type, full, meta) {
-						if(full.images != '')
-						{    
-							return '<span style="width: 250px;">\
-								<div class="d-flex align-items-center">\
-									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
-										<img class="" src="'+'uploads/websitesetting_logo/'+full.images+'" alt="photo"></img>\
-									</div>\
-									<div class="ml-4">\
-										<div class="text-dark-75 font-weight-bolder font-size-lg mb-0">'+data+'</div>\
-									</div>\
-								</div>\
-							</span>';
-						}
-						else
-						{
-							return '<span style="width: 250px;">\
-								<div class="d-flex align-items-center">\
-									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
-										<div class="symbol symbol-light-success mr-3">\
-											<span class="symbol-label font-size-h5">'+ full.no_photo +'</span>\
+						return '<a href="'+ status[data].url +'" class="' + status[data].classApprove + '" data-attr="' + status[data].btncustomtext + '"><span style="width: 250px;">\
+									<div class="d-flex align-items-center">\
+										<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
+											<div class="symbol symbol-light-success mr-3">\
+												<span class="' + status[data].class + '">' + status[data].title +'   '+'<i class="ki-outline fs-0.5 '+' '+ status[data].icontext + '"></i></span>\
+											</div>\
 										</div>\
 									</div>\
-									<div class="ml-4">\
-										<div class="text-dark-75 font-weight-bolder font-size-lg mb-0">'+data+'</div>\
-									</div>\
-								</div>\
-							</span>';
-						}
+								</span></a>';
 					}
 				},
 			],
 
 			"drawCallback": function (settings) {
+				// bind Approve link to click event
+				$(".approve-single-record").click(function (event) {
+					event.preventDefault();
+					var approveUrl = $(this).attr('href');
+					var rowId = $(this).data('rowid');
+					var textset = $(this).attr('data-attr');
+					swal.fire({
+						title: 'Are you sure?',
+						text: "You won't be able to revert this!",
+						type: 'success',
+						showCancelButton: true,
+						confirmButtonText: 'Yes, '+textset+' it!'
+					}).then(function (result) {
+						if (result.value) {
+							axios.post(approveUrl)
+							.then(function (response) {
+								// remove record row from DOM
+								tableObject
+									.row(rowId)
+									.remove()
+									.draw();
+								toastr.success(
+									"Record has been "+textset+"!", 
+									textset+"!", 
+									{timeOut: 0,showProgressbar: true, extendedTimeOut: 0,allow_dismiss: false, closeButton: true, closeDuration: 0}
+								);
+								setTimeout(function() {
+									if (history.scrollRestoration) {
+									history.scrollRestoration = 'manual';
+									}
+									location.href = 'event-list'; // reload page
+								}, 1500);
+
+							})
+							.catch(function (error) {
+								var errorMsg = 'Could not '+textset+' record. Try later.';
+								
+								if (error.response.status >= 400 && error.response.status <= 499)
+									errorMsg = error.response.data.message;
+
+								swal.fire(
+									'Error!',
+									errorMsg,
+									'error'
+								)
+							});     
+						}
+					});
+				});
 
 				// bind delete link to click event
 				$(".delete-single-record").click(function (event) {

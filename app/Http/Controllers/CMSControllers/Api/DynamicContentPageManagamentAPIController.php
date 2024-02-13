@@ -99,6 +99,8 @@ class DynamicContentPageManagamentAPIController extends Controller
                         'meta_tag' => $request->meta_tag,
                         'meta_tag_description' => $request->meta_description,
                         'meta_keywords' => $request->meta_keywords,
+                        'sort_order' => $request->sort_order??'0',
+                        'custom_slug' => $request->custom_url??'NULL',
                     ]);
                 
             if($result == true)
@@ -373,6 +375,8 @@ class DynamicContentPageManagamentAPIController extends Controller
                         'meta_tag' => $request->meta_tag,
                         'meta_tag_description' => $request->meta_description,
                         'meta_keywords' => $request->meta_keywords,
+                        'sort_order' => $request->sort_order??'0',
+                        'custom_slug' => $request->custom_url??'NULL',
                     ]);
                 
             if($result == true)
@@ -729,7 +733,7 @@ class DynamicContentPageManagamentAPIController extends Controller
      * @param  \App\Models\DynamicContentPageManagament  $dynamicContentPageManagament
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DynamicContentPageManagament $dynamicContentPageManagament)
+    public function destroy(DynamicContentPageManagament $dynamicContentPageManagament, $id)
     {
         $data=DB::table('dynamic_content_page_metatag')->where('uid',$id)->first();
         if($data)

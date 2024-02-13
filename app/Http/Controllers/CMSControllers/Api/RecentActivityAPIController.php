@@ -207,6 +207,7 @@ class RecentActivityAPIController extends Controller
      * @param  \App\Models\RecentActivity  $recentActivity
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($id)
     {
         $data=RecentActivity::where('uid',$id)->first();

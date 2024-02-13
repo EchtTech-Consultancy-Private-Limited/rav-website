@@ -50,6 +50,12 @@ class SocialLinkController extends Controller
        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('websitecoresetting-list');
        }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }
 
        return view('cms-view.website-core-settings.websitecoresetting_list',
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)

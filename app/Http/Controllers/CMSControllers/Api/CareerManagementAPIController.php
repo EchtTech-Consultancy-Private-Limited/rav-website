@@ -86,6 +86,8 @@ class CareerManagementAPIController extends Controller
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
                         'title_name_hi' => $request->title_name_hi,
+                        'start_date'=> $request->startdate,
+                        'end_date' => $request->enddate,
                         'description_en' => $request->kt_description_en,
                         'description_hi' => $request->kt_description_hi,
                         
@@ -103,13 +105,13 @@ class CareerManagementAPIController extends Controller
                                 'uid' => Uuid::uuid4(),
                                 'career_management_id' => $extId,
                                 'pdf_title' => $value['pdftitle'],
-                                'start_date'=> $value['startdate'],
-                                'end_date' => $value['enddate'],
+                                // 'start_date'=> $value['startdate'],
+                                // 'end_date' => $value['enddate'],
                                 'pdfimage_size' => $size,
                                 'file_extension' => $extension??'',
                                 'public_url' => $name,
                                 'private_url' => $name,
-                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('CAREER_ARCHIVEL')),
+                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('CAREER_ARCHIVEL')),
                             ]);
                         }
                     }
@@ -195,6 +197,8 @@ class CareerManagementAPIController extends Controller
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
                         'title_name_hi' => $request->title_name_hi,
+                        'start_date'=> $request->startdate,
+                        'end_date' => $request->enddate,
                         'description_en' => $request->kt_description_en,
                         'description_hi' => $request->kt_description_hi,
                     ]);
@@ -212,24 +216,24 @@ class CareerManagementAPIController extends Controller
 
                         $result= DB::table('career_management_details')->where('uid',$value['uid'])->update([
                             'pdf_title' => $value['pdftitle'],
-                            'start_date'=> $value['startdate'],
-                            'end_date' => $value['enddate'],
+                            // 'start_date'=> $value['startdate'],
+                            // 'end_date' => $value['enddate'],
                             'public_url' => isset($name)?$name:$uid->public_url,
                             'private_url' => isset($name)?$name:$uid->public_url,
                             'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                             'file_extension' => isset($extension)?$extension:$uid->file_extension,
-                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('CAREER_ARCHIVEL')),
+                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('CAREER_ARCHIVEL')),
                         ]);
                     }   
                     $result= DB::table('career_management_details')->where('uid',$value['uid'])->update([
                             'pdf_title' => $value['pdftitle'],
-                            'start_date'=> $value['startdate'],
-                            'end_date' => $value['enddate'],
-                            // 'public_url' => isset($name)?$name:$uid->public_url,
-                            // 'private_url' => isset($name)?$name:$uid->public_url,
-                            // 'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
-                            // 'file_extension' => isset($extension)?$extension:$uid->file_extension,
-                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('CAREER_ARCHIVEL')),
+                            // 'start_date'=> $value['startdate'],
+                            // 'end_date' => $value['enddate'],
+                            'public_url' => isset($name)?$name:$uid->public_url,
+                            'private_url' => isset($name)?$name:$uid->public_url,
+                            'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
+                            'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('CAREER_ARCHIVEL')),
                         ]);
                     }else{
                         if(!empty($value['pdfname'])){
@@ -242,13 +246,13 @@ class CareerManagementAPIController extends Controller
                                 'uid' => Uuid::uuid4(),
                                 'tender_id' => $request->id,
                                 'pdf_title' => $value['pdftitle'],
-                                'start_date'=> $value['startdate'],
-                                'end_date' => $value['enddate'],
+                                // 'start_date'=> $value['startdate'],
+                                // 'end_date' => $value['enddate'],
                                 'pdfimage_size' => $size,
                                 'file_extension' => $extension??'',
                                 'public_url' => $name,
                                 'private_url' => $name,
-                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('CAREER_ARCHIVEL')),
+                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('CAREER_ARCHIVEL')),
                             ]);
                         }
                     }

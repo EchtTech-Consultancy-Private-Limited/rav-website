@@ -40,6 +40,13 @@ class WebsiteCoreSettingsController extends Controller
        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('cws-delete', ['id' => 'xxxx']);
        }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('logo-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('logo-approve', ['id' => 'xxxx']);
+        }
+        
        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
        return view('cms-view.website-core-settings.websitelogo_list',
@@ -63,6 +70,13 @@ class WebsiteCoreSettingsController extends Controller
        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
              $crudUrlTemplate['delete'] = route('cws-delete', ['id' => 'xxxx']);
        }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('footercontent-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('footercontent-approve', ['id' => 'xxxx']);
+        }
+        
        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
        return view('cms-view.website-core-settings.footercontent_list',
@@ -86,6 +100,13 @@ class WebsiteCoreSettingsController extends Controller
        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('cws-delete', ['id' => 'xxxx']);
        }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('socialLink-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('socialLink-approve', ['id' => 'xxxx']);
+        }
+        
        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
        return view('cms-view.website-core-settings.sociallink_list',

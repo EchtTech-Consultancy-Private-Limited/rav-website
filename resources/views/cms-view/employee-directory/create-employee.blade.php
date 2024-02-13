@@ -239,6 +239,14 @@
                                         <input class="form-control mb-2 instagram" type="url" placeholder="https?://.*" pattern="https?://.*" name="instagram" value="" />
                                         <!--end::Input-->
                                     </div>
+                                    <div class="col-md-3 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2">Sort Order</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input class="form-control mb-2 short_order" type="number" placeholder="Number..." name="short_order" value="" />
+                                        <!--end::Input-->
+                                    </div>
                                     <div class="fv-row mb-7">
                                         <!--begin::Label-->
                                         <label class="d-block fw-semibold fs-6 mb-5">Profile</label>

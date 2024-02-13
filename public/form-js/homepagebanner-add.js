@@ -16,7 +16,7 @@ var KTAppBannerSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[A-Za-z0-9-' ]*$/,
+                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                          },
@@ -27,7 +27,7 @@ var KTAppBannerSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[A-Za-z0-9-' ]*$/,
+                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                          },
@@ -38,7 +38,7 @@ var KTAppBannerSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[A-Za-z0-9-' ]*$/,
+                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                          },
@@ -91,6 +91,8 @@ var KTAppBannerSave = function () {
                       }, 1500);
                       
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                       toastr.error(
                          response.data.message.image, 
                          "Something went wrong!", 
@@ -99,6 +101,8 @@ var KTAppBannerSave = function () {
                       }
                    })
                    .catch(function (error) {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                             "Sorry, looks like there are some errors detected, please try again B.", 
                             "Something went wrong!", 
@@ -111,6 +115,8 @@ var KTAppBannerSave = function () {
                             submitButton.disabled = false;
                       });
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                                "Sorry, looks like there are some errors detected, please try again K.", 
                                "Something went wrong!", 

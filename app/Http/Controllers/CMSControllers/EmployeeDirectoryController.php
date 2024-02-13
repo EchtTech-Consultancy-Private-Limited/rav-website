@@ -32,6 +32,13 @@ class EmployeeDirectoryController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('employeedirectory-delete', ['id' => 'xxxx']);
         }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('employeedirectory-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('employeedirectory-approve', ['id' => 'xxxx']);
+        }
+
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
         return view('cms-view.employee-directory.list-employee',
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
@@ -105,6 +112,7 @@ class EmployeeDirectoryController extends Controller
     public function edit(Request $request)
     {
         $datas=EmpDepartDesignation::where([['soft_delete','0'],['parent_id','0']])->get(); 
+        $designation=EmpDepartDesignation::where([['soft_delete','0'],['parent_id','!=','0']])->get(); 
         $crudUrlTemplate = array();
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['update'] = route('employeedirectory-update');
@@ -119,7 +127,9 @@ class EmployeeDirectoryController extends Controller
         return view('cms-view.employee-directory.edit-employee',
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
-            'department'=>$datas]
+            'department'=>$datas,
+            'designation'=>$designation
+            ]
         );
     }
 

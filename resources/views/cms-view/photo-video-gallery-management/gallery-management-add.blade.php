@@ -25,14 +25,14 @@
          <!--begin:::Tab item-->
          <li class="nav-item">
             <a class="nav-link text-active-primary d-flex align-items-center pb-5 active" data-bs-toggle="tab" href="#kt_settings_pagePhotoGallery">
-            <i class="ki-outline ki-home fs-2 me-2"></i> Page Photo Gallery
+            <i class="ki-outline ki-picture fs-2 me-2"></i> Photo Gallery
             </a>
          </li>
          <!--end:::Tab item-->
          <!--begin:::Tab item-->
          <li class="nav-item">
             <a class="nav-link text-active-primary d-flex align-items-center pb-5" data-bs-toggle="tab" href="#kt_settings_pageVideoGallery">
-            <i class="ki-outline ki-package fs-2 me-2"></i> Page Video Gallery
+            <i class="ki-outline ki-youtube fs-2 me-2"></i> Video Gallery
             </a>
          </li>
          <!--end:::Tab item-->
@@ -212,18 +212,26 @@
                            <div id="kt_video_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Video Title</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Video Link</label>
                                  <div data-repeater-list="kt_video_add_multiple_options" class="d-flex flex-column gap-3">
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
-                                       <input type="text" class="form-control mw-100 w-200px" name="videotitle" placeholder="video title Name" />
+                                       <div>
+                                          <label class="required form-label">Video Title</label>
+                                          <input type="text" class="form-control mw-100 w-200px" name="videotitle" placeholder="video title Name" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label">Start Date</label>
                                        <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
-                                       <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
-                                       <input type="input" id="Video" class="form-control mw-100 w-200px" name="Video"  placeholder="video Link Name"  />
-                                       <!--end::Input-->
+                                       </div>
+                                       <div>
+                                          <label class="required form-label">End Date</label>
+                                          <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
+                                       </div>
+                                       <div>
+                                          <label class="required form-label">Video Link</label>
+                                          <input type="input" id="Video" class="form-control mw-100 w-200px" name="Video"  placeholder="video Link Name"  />
+                                       </div>
+                                          <!--end::Input-->
                                        <button type="button" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i>
                                         </button>
@@ -255,13 +263,13 @@
                <div class="d-flex justify-content-end">
                     <!--begin::Button-->
                     <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
-                    Cancel
+                    {{config('FormField.cancel_button')}}
                     </a>
                     <!--end::Button-->
                     <!--begin::Button-->
                     <button type="submit" id="kt_add_video_submit" class="btn btn-primary submit-video-btn">
                     <span class="indicator-label">
-                    Save
+                    {{config('FormField.save_button')}}
                     </span>
                     <span class="indicator-progress">
                     Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

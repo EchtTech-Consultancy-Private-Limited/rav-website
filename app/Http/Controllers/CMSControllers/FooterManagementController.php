@@ -36,6 +36,12 @@ class FooterManagementController extends Controller
             $crudUrlTemplate['delete'] = route('websitecoresetting-list');
             $crudUrlTemplate['view'] = route('websitecoresetting-list');
        }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }
        
        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
        

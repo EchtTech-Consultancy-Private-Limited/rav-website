@@ -62,11 +62,11 @@
                                         <!--begin::Input-->
                                         <select class="form-control mb-2 designation_id" name="designation_id" id="designation_id" data-control="select2" data-placeholder="Select an option">
                                             <option></option>
-                                            @foreach($department as $departments)
-                                            @if($departments->uid == $data->designation_id)
-                                                <option value="{{ $departments->uid }}" selected>{{ $departments->name_en  }}</option>
+                                            @foreach($designation as $designations)
+                                            @if($designations->uid == $data->designation_id)
+                                                <option value="{{ $designations->uid }}" selected>{{ $designations->name_en  }}</option>
                                             @else
-                                                <option value="{{ $departments->uid }}">{{ $departments->name_en  }}</option>
+                                                <option value="{{ $designations->uid }}">{{ $designations->name_en  }}</option>
                                             @endif
                                             @endforeach
                                         </select><!--end::Input-->
@@ -239,6 +239,14 @@
                                         <!--end::Label-->
                                         <!--begin::Input-->
                                         <input class="form-control mb-2 instagram" type="url" placeholder="https?://.*" pattern="https?://.*" name="instagram" value="{{ $data->instagram }}" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <div class="col-md-3 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2">Sort Order</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input class="form-control mb-2 short_order" type="number" placeholder="Number..." name="short_order" value="{{ $data->short_order }}" />
                                         <!--end::Input-->
                                     </div>
                                     <div class="col-md-3 fv-row mb-7">

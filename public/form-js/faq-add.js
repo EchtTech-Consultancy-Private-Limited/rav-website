@@ -16,7 +16,7 @@ var KTAppFAQSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[A-Za-z0-9-' ]*$/,
+                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
                                message: 'This field can consist of alphabetical characters, spaces, digits only'
                             },
                          },
@@ -50,7 +50,7 @@ var KTAppFAQSave = function () {
                 axios.post(crudUrlTemplate.create,
                             formData, {
                    }).then(function (response) {
-                   if (response) {
+                   if (response.data.status ==200) {
                     $('#loading').removeClass('loading');
                     $('#loading-content').removeClass('loading-content');
                       toastr.success(
