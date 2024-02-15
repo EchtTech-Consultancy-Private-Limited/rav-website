@@ -201,7 +201,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									history.scrollRestoration = 'manual';
 									}
-									location.href = 'websitecoresetting-list'; // reload page
+									location.href = 'sociallink-list'; // reload page
 								}, 1500);
 
 							})
@@ -251,7 +251,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									   history.scrollRestoration = 'manual';
 									}
-									location.href = 'websitecoresetting-list'; // reload page
+									location.href = 'sociallink-list'; // reload page
 								 }, 1500);
 
 							})

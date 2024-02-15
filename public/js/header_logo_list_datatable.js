@@ -26,6 +26,7 @@ var KTDatatablesBasicPaginations = function() {
 				{ "data": "uid" },
 				{ "data": "logo_title" },
 				{ "data": "header_logo" },
+				{ "data": "status" },
 				{ "data": "action" }
 			],
 			columnDefs: [
@@ -104,6 +105,37 @@ var KTDatatablesBasicPaginations = function() {
 					render: function (data, type, full, meta) {
 						return $i++;
 					},
+				},
+				{
+					targets: -3,
+					orderable: true,
+					render: function (data, type, full, meta) {
+						if(full.header_logo != '')
+						{    
+							return '<span style="width: 250px;">\
+								<div class="d-flex align-items-center">\
+									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
+										<img class="" src="'+'../resources/uploads/WebsiteCoreSettings/'+full.header_logo+'" alt="photo"></img>\
+									</div>\
+								</div>\
+							</span>';
+						}
+						else
+						{
+							return '<span style="width: 250px;">\
+								<div class="d-flex align-items-center">\
+									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
+										<div class="symbol symbol-light-success mr-3">\
+											<span class="symbol-label font-size-h5">'+ full.no_photo +'</span>\
+										</div>\
+									</div>\
+									<div class="ml-4">\
+										<div class="text-dark-75 font-weight-bolder font-size-lg mb-0">'+data+'</div>\
+									</div>\
+								</div>\
+							</span>';
+						}
+					}
 				},
                 {
 					targets: -2,
@@ -184,7 +216,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									history.scrollRestoration = 'manual';
 									}
-									location.href = 'websitecoresetting-list'; // reload page
+									location.href = 'logo-list'; // reload page
 								}, 1500);
 
 							})
@@ -234,7 +266,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									   history.scrollRestoration = 'manual';
 									}
-									location.href = 'websitecoresetting-list'; // reload page
+									location.href = 'logo-list'; // reload page
 								 }, 1500);
 
 							})

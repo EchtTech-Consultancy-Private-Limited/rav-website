@@ -25,6 +25,7 @@
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_headerlogo" rowspan="1" colspan="1">{{__('ID')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_headerlogo" rowspan="1" colspan="1">{{__('Title')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_headerlogo" rowspan="1" colspan="1">{{__('Logo')}}</th>
+                    <th class="sorting" tabindex="0" aria-controls="kt_datatable_headerlogo" rowspan="1" colspan="1">{{__('Status')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_headerlogo" rowspan="1" colspan="1">{{__('Action')}}</th>
                 </tr>
             </thead>

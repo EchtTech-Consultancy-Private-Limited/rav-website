@@ -162,12 +162,12 @@ class GalleryManagementAPIController extends Controller
                         if(!empty($request->kt_video_add_multiple_options)){
                             foreach($request->kt_video_add_multiple_options as $key=>$value)
                             {
-                                if(!empty($value['image'])){
-                                    $size = $this->getFileSize($value['Video']->getSize());
-                                    $extension = $value['Video']->getClientOriginalExtension();
-                                    $name = time().rand(10,99).'.'.$value['Video']->getClientOriginalExtension();
-                                    $value['Video']->move(resource_path().'/uploads/GalleryManagement', $name);
-                                    $imgData[] = $name;
+                                // if(!empty($value['Video'])){
+                                //     $size = $this->getFileSize($value['Video']->getSize());
+                                //     $extension = $value['Video']->getClientOriginalExtension();
+                                //     $name = time().rand(10,99).'.'.$value['Video']->getClientOriginalExtension();
+                                //     $value['Video']->move(resource_path().'/uploads/GalleryManagement', $name);
+                                //     $imgData[] = $name;
                                 
                                 $result= DB::table('gallery_details')->insert([
                                     'uid' => Uuid::uuid4(),
@@ -175,13 +175,13 @@ class GalleryManagementAPIController extends Controller
                                     'title' => $value['videotitle'],
                                     'start_date'=> $value['startdate']??'',
                                     'end_date' => $value['enddate']??'',
-                                    'pdfimage_size' => $size??'',
-                                    'file_extension' => $extension??'',
-                                    'public_url' => $name,
-                                    'private_url' => $name,
+                                    'pdfimage_size' => '',
+                                    'file_extension' => '',
+                                    'public_url' => $value['Video'],
+                                    'private_url' => $value['Video'],
                                     'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                                 ]);
-                            }
+                           // }
                         }
                     }
                     if($result == true)
@@ -234,52 +234,188 @@ class GalleryManagementAPIController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
-        $data=GalleryManagement::where('uid',$id)->first();
-        if($data)
-        {
-         $validator=Validator::make($request->all(),
-            [
-            'title'=>'required','type'=>'required','public_url'=>'required'
-            ]);
-        if($validator->fails()){
-            $notification =[
-                'status'=>201,
-                'message'=> $validator->errors()
-            ];
-        }
-        else{
-            if($request->hasFile('public_url')){    
-                $file=$request->file('public_url');
-                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $path=resource_path('uploads/GalleryManagement');
-                $file->move($path,$newname);
-            }
-            $data=new GalleryManagement();
-            $result= GalleryManagement::where('uid',$id)->update([
-                    'uid' => Uuid::uuid4(),
-                    'title' => $request->title,
-                    'type' => $request->type,
-                    'public_url' => $newname,
-                    'private_url' => $newname
+    public function update(Request $request)
+    {  
+        if($request->type == 1){
+            try{
+                $validator=Validator::make($request->all(),
+                    [
+                    //'title_name_en'=>'required',
                 ]);
-        if($result == true)
-        {
-            $notification =[
-                'status'=>200,
-                'message'=>'Added successfully.'
-            ];
-        }
-        else{
-            $notification = [
-                    'status'=>201,
-                    'message'=>'some error accoured.'
-                ];
-            } 
-        }
-        return response()->json($notification);
+                if($validator->fails())
+                {
+                    $notification =[
+                        'status'=>201,
+                        'message'=> $validator->errors()
+                    ];
+                }
+                else{
+                    $result=GalleryManagement::where('uid',$request->id)->update([
+                    //$lastInsertID= TenderManagement::insertGetId([
+                        'title_name_en' => $request->title_name_en1,
+                        'title_name_hi' => $request->title_name_hi1,
+                        'type' => isset($request->type)?$request->type:'1',
+                    ]);
+
+                    if(!empty($request->kt_video_add_multiple_options)){
+                    foreach($request->kt_video_add_multiple_options as $key=>$value)
+                    {
+                    if(!empty($value['uid'])){
+                        $uid=DB::table('gallery_details')->where('uid',$value['uid'])->first();
+                        if(!empty($value['uid']) && !empty($value['Video'])){
+                            $result= DB::table('gallery_details')->where('uid',$value['uid'])->update([
+                                'title' => $value['videotitle'],
+                                'start_date'=> $value['startdate']??'',
+                                'end_date' => $value['enddate']??'',
+                                'public_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
+                                'private_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
+                                //'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
+                                //'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+
+                            ]);
+                        }   
+                        $result= DB::table('gallery_details')->where('uid',$value['uid'])->update([
+                            'title' => $value['videotitle'],
+                            'start_date'=> $value['startdate']??'',
+                            'end_date' => $value['enddate']??'',
+                            'public_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
+                            'private_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
+                            //'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
+                            //'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+                            ]);
+                        }else{
+                            if(!empty($value['Video'])){
+                            $result= DB::table('gallery_details')->insert([
+                                    'uid' => Uuid::uuid4(),
+                                    'gallery_id' => $request->id,
+                                    'title' => $value['videotitle'],
+                                    'start_date'=> $value['startdate']??'',
+                                    'end_date' => $value['enddate']??'',
+                                    //'pdfimage_size' => $size??'',
+                                    //'file_extension' => $extension??'',
+                                    'public_url' => $value['Video'],
+                                    'private_url' =>$value['Video'],
+                                    'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+                                ]);
+                            }
+                        }
+                    }
+                    }
+                if($result == true)
+                {
+                    $notification =[
+                        'status'=>200,
+                        'message'=>'Added successfully.'
+                    ];
+                }
+                else{
+                    $notification = [
+                            'status'=>201,
+                            'message'=>'some error accoured.'
+                        ];
+                    } 
+                }
+            }catch(Throwable $e){report($e);
+                return false;
             }
+        }else{
+            try{
+                $validator=Validator::make($request->all(),
+                    [
+                    'title_name_en'=>'required',
+                ]);
+                if($validator->fails())
+                {
+                    $notification =[
+                        'status'=>201,
+                        'message'=> $validator->errors()
+                    ];
+                }
+                else{
+                    $result=GalleryManagement::where('uid',$request->id)->update([
+                // $lastInsertID= TenderManagement::insertGetId([
+                            'title_name_en' => $request->title_name_en,
+                            'title_name_hi' => $request->title_name_hi,
+                            'type' => isset($request->type)?$request->type:'1',
+                        ]);
+
+                    if(!empty($request->kt_photo_add_multiple_options)){
+                    foreach($request->kt_photo_add_multiple_options as $key=>$value)
+                        {
+                        if(!empty($value['uid'])){
+                            $uid=DB::table('gallery_details')->where('uid',$value['uid'])->first();
+                            if(!empty($value['uid']) && !empty($value['image'])){
+                                $size = $this->getFileSize($value['image']->getSize());
+                                $extension = $value['image']->getClientOriginalExtension();
+                                $name = time().rand(10,99).'.'.$value['image']->getClientOriginalExtension();
+                                $value['image']->move(resource_path().'/uploads/GalleryManagement', $name);
+        
+                                $result= DB::table('gallery_details')->where('uid',$value['uid'])->update([
+                                    'title' => $value['imagetitle'],
+                                    'start_date'=> $value['startdate']??'',
+                                    'end_date' => $value['enddate']??'',
+                                    'public_url' => isset($name)?$name:$uid->public_url,
+                                    'private_url' => isset($name)?$name:$uid->public_url,
+                                    'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
+                                    'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                                    'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+
+                                ]);
+                            }   
+                            $result= DB::table('gallery_details')->where('uid',$value['uid'])->update([
+                                'title' => $value['imagetitle'],
+                                'start_date'=> $value['startdate']??'',
+                                'end_date' => $value['enddate']??'',
+                                'public_url' => isset($name)?$name:$uid->public_url,
+                                'private_url' => isset($name)?$name:$uid->public_url,
+                                'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
+                                'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                                'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+                                ]);
+                            }else{
+                                if(!empty($value['image'])){
+                                    $size = $this->getFileSize($value['image']->getSize());
+                                    $extension = $value['image']->getClientOriginalExtension();
+                                    $name = time().rand(10,99).'.'.$value['image']->getClientOriginalExtension();
+                                    $value['image']->move(resource_path().'/uploads/GalleryManagement', $name);
+                                    
+                                $result= DB::table('gallery_details')->insert([
+                                        'uid' => Uuid::uuid4(),
+                                        'gallery_id' => $request->id,
+                                        'title' => $value['imagetitle'],
+                                        'start_date'=> $value['startdate']??'',
+                                        'end_date' => $value['enddate']??'',
+                                        'pdfimage_size' => $size??'',
+                                        'file_extension' => $extension??'',
+                                        'public_url' => $name,
+                                        'private_url' => $name,
+                                        'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
+                                    ]);
+                                }
+                            }
+                        }
+                    }
+                if($result == true)
+                {
+                    $notification =[
+                        'status'=>200,
+                        'message'=>'Added successfully.'
+                    ];
+                }
+                else{
+                    $notification = [
+                            'status'=>201,
+                            'message'=>'some error accoured.'
+                        ];
+                    } 
+                }
+            }catch(Throwable $e){report($e);
+                return false;
+            }
+        }
+            return response()->json($notification);
     }
 
     /**

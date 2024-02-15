@@ -9,7 +9,8 @@
 <script src="{{ asset('assets-cms/cms_js/xy.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/percent.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/radar.js') }}"></script>
-<!-- <script src="{{ asset('assets-cms/js/themes/Animated.js') }}"></script> -->
+<script src="{{ asset('assets-cms/cms_js/form-builder/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets-cms/cms_js/form-builder/form-builder.min.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/map.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/worldLow.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/continentsLow.js') }}"></script>
