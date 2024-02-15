@@ -15,8 +15,8 @@ class ModuleManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $create = 'module-management.module-edit';
-    protected $edit = 'module-management.module-add';
+    protected $create = 'module-management.module-add';
+    protected $edit = 'module-management.module-edit';
     protected $list = 'module-management.module-list';
     
     public function index()
