@@ -37,6 +37,17 @@
                             @endif
                         </a>
                     </li>
+                    @if (isset($finalBred))
+                        <li><a>{{ ucfirst(strtolower($finalBred)) ?? '' }}</a></li>
+                    @endif
+
+                    @if (isset($lastBred))
+                        <li><a>{{ ucfirst(strtolower($lastBred)) ?? '' }}</a></li>
+                    @endif
+
+                    @if (isset($middelBred))
+                        <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
+                    @endif
                     <li>{{ $title_name ?? '' }}</li>
                 </ul>
             </div>
@@ -49,33 +60,39 @@
                     <div class="row">
                         {{-- side menu start --}}
                         <div class="col-lg-3 col-md-3">
-                            @if (isset($sideMenuParent) && $sideMenuParent != '')
+                            {{-- @dd($tree); --}}
+                            @if (isset($parentMenut) && $parentMenut != '')
                                 <ul class="nav nav-tabs" id="newsTab" role="tablist">
-                                    @if ($sideMenuParent != '' && isset($sideMenuParent))
+                                    @if ($parentMenut != '' && isset($parentMenut))
                                         <h3 class="heading-txt-styl">
                                             @if (Session::get('locale') == 'hi')
-                                                {{ $sideMenuParent->name_hi ?? '' }}
+                                                {{ $parentMenut->name_hi ?? '' }}
                                             @else
-                                                {{ $sideMenuParent->name_en ?? '' }}
+                                                {{ $parentMenut->name_en ?? '' }}
                                             @endif
                                         </h3>
                                     @endif
 
-                                    @if (isset($sideMenuChild) && count($sideMenuChild) > 0)
-                                        @foreach ($sideMenuChild as $sideMenuChilds)
+                                    @if (isset($tree) && count($tree) > 0)
+                                        @foreach ($tree as $index => $trees)
                                             @php
-                                                $sideMenuChildsurl = $sideMenuChilds->url ?? 'javascript:void(0)';
+                                                $parentMenuUrl = $parentMenut->url ?? '';
+                                                $treesUrl = $trees->url ?? '';
                                             @endphp
-                                            <li class="nav-item" role="presentation">
-                                                <a href="{{ url($sideMenuChildsurl) }}"
-                                                    class="nav-link @if (request()->is($sideMenuChildsurl)) active @endif">
-                                                    @if (Session::get('locale') == 'hi')
-                                                        {{ $sideMenuChilds->name_hi ?? '' }}
-                                                    @else
-                                                        {{ $sideMenuChilds->name_en ?? '' }}
-                                                    @endif
-                                                </a>
-                                            </li>
+                                            @if (count($trees->children) > 0)
+                                                <p>Child Menu Design Pendind</p>
+                                            @else
+                                                <li class="nav-item" role="presentation">
+                                                    <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"
+                                                        class="nav-link @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif">
+                                                        @if (Session::get('locale') == 'hi')
+                                                            {{ $trees->name_hi ?? '' }}
+                                                        @else
+                                                            {{ $trees->name_en ?? '' }}
+                                                        @endif
+                                                    </a>
+                                                </li>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </ul>

@@ -1,3 +1,54 @@
+
+$(document).ready(function(){
+  function printCurrentDateTime() {
+    // Get the current date and time
+    var currentDate = new Date();
+
+    // Extract components of the date
+    var year = currentDate.getFullYear();
+    var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
+    var day = currentDate.getDate();
+    var hours = currentDate.getHours();
+    var minutes = currentDate.getMinutes();
+    var seconds = currentDate.getSeconds();
+
+    // Format the date and time
+    var formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+
+    // Print the formatted date and time
+  let date = $('.dateTime');
+  date.html(formattedDateTime);
+}
+
+// Print the current date and time initially
+printCurrentDateTime();
+
+
+// Update and print the current date and time every second
+setInterval(printCurrentDateTime, 1000);
+
+function printCurrentDate() {
+  // Get the current date and time
+  var currentDate = new Date();
+
+  // Extract components of the date
+  var year = currentDate.getFullYear();
+  var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
+  var day = currentDate.getDate();
+  var hours = currentDate.getHours();
+  var minutes = currentDate.getMinutes();
+  var seconds = currentDate.getSeconds();
+
+  // Format the date and time
+  var formattedDateTime = `${day}-${month}-${year}`;
+
+  // Print the formatted date and time
+let date = $('.date');
+date.html(formattedDateTime);
+}
+printCurrentDate()
+})
+
 $('#heroSlider').owlCarousel({
   loop: true,
   nav: true,
@@ -512,54 +563,3 @@ $.each(navItemList, function(index, element) {
 
 
 });
-
-
-$(document).ready(function(){
-  function printCurrentDateTime() {
-    // Get the current date and time
-    var currentDate = new Date();
-
-    // Extract components of the date
-    var year = currentDate.getFullYear();
-    var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
-    var day = currentDate.getDate();
-    var hours = currentDate.getHours();
-    var minutes = currentDate.getMinutes();
-    var seconds = currentDate.getSeconds();
-
-    // Format the date and time
-    var formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
-
-    // Print the formatted date and time
-  let date = $('.dateTime');
-  date.html(formattedDateTime);
-}
-
-// Print the current date and time initially
-printCurrentDateTime();
-
-
-// Update and print the current date and time every second
-setInterval(printCurrentDateTime, 1000);
-
-function printCurrentDate() {
-  // Get the current date and time
-  var currentDate = new Date();
-
-  // Extract components of the date
-  var year = currentDate.getFullYear();
-  var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
-  var day = currentDate.getDate();
-  var hours = currentDate.getHours();
-  var minutes = currentDate.getMinutes();
-  var seconds = currentDate.getSeconds();
-
-  // Format the date and time
-  var formattedDateTime = `${day}-${month}-${year}`;
-
-  // Print the formatted date and time
-let date = $('.date');
-date.html(formattedDateTime);
-}
-printCurrentDate()
-})
