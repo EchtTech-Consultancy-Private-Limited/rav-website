@@ -16,6 +16,10 @@ class SocialLinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = '';
+    protected $edit = '';
+    protected $list = '';
+    
     public function index(Request $request,$id=null)
     {
         // if(websiteCoreSettings::where('id',$request->websiteCoreSettings_id)->exists())
@@ -51,10 +55,15 @@ class SocialLinkController extends Controller
             $crudUrlTemplate['delete'] = route('websitecoresetting-list');
        }
        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
-        $crudUrlTemplate['approver'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+             $crudUrlTemplate['approver'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
 
        return view('cms-view.website-core-settings.websitecoresetting_list',

@@ -16,6 +16,10 @@ class EventsManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'events-management.event_add';
+    protected $edit = 'events-management.event-edit';
+    protected $list = 'events-management.event_list';
+
     public function index()
     {
         $crudUrlTemplate = array();
@@ -31,14 +35,19 @@ class EventsManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('event-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('event-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
 
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
-        return view('cms-view.events-management.event_list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
         
         ]);
@@ -57,7 +66,7 @@ class EventsManagementController extends Controller
         }else{
             $accessPermission = $this->checkAccessMessage();
         }
-        return view('cms-view.events-management.event_add',
+        return view('cms-view.'.$this->create,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
         'textMessage' =>$accessPermission??''
     
@@ -108,7 +117,7 @@ class EventsManagementController extends Controller
             abort(404);
         }
         //dd($result);
-        return view('cms-view.events-management.event-edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
             'pdfData' => isset($pdfimagesData)?$pdfimagesData:'',

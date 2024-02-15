@@ -9,7 +9,6 @@
  {{ __('Form Builder Create') }}
 @endsection
 @push('post-scripts')
-<script src="{{ asset('public/form-js/form-builder-js.js') }}"></script>
 @endpush
 @section('content')
 <input type="hidden" id="urlListData" data-info="{{ $crudUrlTemplate }}">

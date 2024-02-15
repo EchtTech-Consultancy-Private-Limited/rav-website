@@ -34,6 +34,25 @@ class RolesAndPermissionAPIController extends Controller
         }
     }
 
+    public function indexNewRole()
+    {
+        $data=DB::table('role_type_users')->where('soft_delete','0')->get();
+        $totalRecords = DB::table('role_type_users')->where('soft_delete','0')->count();
+        $resp = new \stdClass;
+        $resp->iTotalRecords = $totalRecords;
+        $resp->iTotalDisplayRecords = $totalRecords;
+        $resp->aaData = $data;
+        if($resp)
+            {
+                return response()->json($resp,200);
+            }
+            else{
+                return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
     public function index()
     {
         $data=RolesAndPermission::where('soft_delete','0')->get();
@@ -121,7 +140,56 @@ class RolesAndPermissionAPIController extends Controller
         }
         return response()->json($notification);
     }
-
+    public function newRoleAdd(Request $request)
+    {
+       // dd($request->all());
+        $exitValue = DB::table('role_type_users')->where('role_type', $request->role_type)->count() > 0;
+        // $max_size = $document->getMaxFileSize() / 1024 / 1024;
+         if($exitValue == 'false'){
+             $notification =[
+                 'status'=>201,
+                 'message'=>'This is duplicate value.'
+             ];
+         }else{
+            try{
+                $validator=Validator::make($request->all(),
+                    [
+                    'role_type'=>'required|unique:role_type_users',
+                ]);
+                if($validator->fails())
+                {
+                    //$status = 201;
+                    $notification =[
+                        'status'=>201,
+                        'message'=> $validator->errors()
+                    ];
+                }
+                else{
+                    $result= DB::table('role_type_users')->insert([
+                            'uid' => Uuid::uuid4(),
+                            'role_type' => $request->role_type,
+                            'sort_order' => $request->sort_order,
+                        ]);
+                if($result == true)
+                {
+                    $notification =[
+                        'status'=>200,
+                        'message'=>'Added successfully.'
+                    ];
+                }
+                else{
+                    $notification = [
+                            'status'=>201,
+                            'message'=>'some error accoured.'
+                        ];
+                    } 
+                }      
+            }catch(Throwable $e){report($e);
+                return false;
+            }
+        }
+        return response()->json($notification);
+    }
     /**
      * Display the specified resource.
      */
@@ -199,6 +267,52 @@ class RolesAndPermissionAPIController extends Controller
         return response()->json($notification);
        }
     }
+    public function newRoleUpdate(Request $request)
+    {   
+        $data= DB::table('role_type_users')->where('uid',$request->id)->first();
+        if($data)
+         {
+        try{
+            $validator=Validator::make($request->all(),
+                [
+                'role_type'=>'required',
+                //'eventtype'=>'required',
+                //'title_name_en'=>'required',
+            ]);
+            if($validator->fails())
+            {
+                $notification =[
+                    'status'=>201,
+                    'message'=> $validator->errors()
+                ];
+            }
+            else{
+                 
+                $result= DB::table('role_type_users')->where('uid',$request->id)->update([
+                        'role_type' => $request->role_type,
+                        'sort_order' => $request->sort_order
+                    ]);
+                
+            if($result == true)
+            {
+                $notification =[
+                    'status'=>200,
+                    'message'=>'Added successfully.'
+                ];
+            }
+            else{
+                $notification = [
+                        'status'=>201,
+                        'message'=>'some error accoured.'
+                    ];
+                 } 
+            }
+           }catch(Throwable $e){report($e);
+            return false;
+           }
+            return response()->json($notification);
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -221,7 +335,24 @@ class RolesAndPermissionAPIController extends Controller
             ],201);
         }
     }
-
+    public function newRoleDestroy($id)
+    {
+        $data=DB::table('role_type_users')->where('uid',$id)->first();
+        if($data)
+        {
+            DB::table('role_type_users')->where('uid',$id)->update(['soft_delete'=>1]);
+            return response()->json([
+                'status'=>200,
+                'message'=>'deleted successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
 
     public function permissionAdd(Request $request){
 		$data=$request->all();

@@ -49,12 +49,19 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/update-ues',[UserManagementAPIController::class,'update'])->name('user-update');
             Route::delete('/delete-ues/{id}',[UserManagementAPIController::class,'destroy'])->name('user-delete');
     
-            /****** Roles Setting role:Role */
+            /****** Roles Permission Setting role:Role */
             Route::post('/create-role',[RolesAndPermissionAPIController::class,'permissionAdd'])->name('role-save');
             Route::get('/list-role',[RolesAndPermissionAPIController::class,'index'])->name('role-list');
             Route::get('/edit-role/{id}',[RolesAndPermissionAPIController::class,'edit'])->name('role-edit');
             Route::post('/update-role',[RolesAndPermissionAPIController::class,'permissionAdd'])->name('role-update');
             Route::delete('/delete-role/{id}',[RolesAndPermissionAPIController::class,'destroy'])->name('role-delete');
+
+            /****** New Roles role:Role */
+            Route::post('/create-new-role',[RolesAndPermissionAPIController::class,'newRoleAdd'])->name('new-role-save');
+            Route::get('/list-new-role',[RolesAndPermissionAPIController::class,'indexNewRole'])->name('new-role-list');
+            Route::get('/edit-new-role/{id}',[RolesAndPermissionAPIController::class,'editNewRole'])->name('new-role-edit');
+            Route::post('/update-new-role',[RolesAndPermissionAPIController::class,'newRoleUpdate'])->name('new-role-update');
+            Route::delete('/delete-new-role/{id}',[RolesAndPermissionAPIController::class,'newRoleDestroy'])->name('new-role-delete');
             
             /****** Permission Setting per:Permission */
             Route::post('/create-per',[HomePageBannerAPIController::class,'store'])->name('permission-save');
@@ -260,20 +267,21 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/approve-bn/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('banner-approve');
             Route::post('/approve-caree/{id}',[CommonApprovalAPIController::class,'careerApprovePublish'])->name('careers-approve');
             Route::post('/approve-page/{id}',[CommonApprovalAPIController::class,'dynamicContentApprovePublish'])->name('pagemetatag-approve');
-            Route::post('/approve-faq/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('faq-approve');
+            Route::post('/approve-faq/{id}',[CommonApprovalAPIController::class,'FAQApprovePublish'])->name('faq-approve');
             Route::post('/approve-dept/{id}',[CommonApprovalAPIController::class,'departmentDesignationApprovePublish'])->name('departmentdesignation-approve');
             Route::post('/approve-emp/{id}',[CommonApprovalAPIController::class,'employeeDirectoryApprovePublish'])->name('employeedirectory-approve');
             Route::post('/approve-event/{id}',[CommonApprovalAPIController::class,'eventApprovePublish'])->name('event-approve');
             Route::post('/approve-wc/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('websitecoresetting-approve');
             Route::post('/approve-gall/{id}',[CommonApprovalAPIController::class,'galleryApprovePublish'])->name('photovideo-approve');
-            Route::post('/approve-module/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('module-approve');
+            Route::post('/approve-module/{id}',[CommonApprovalAPIController::class,'dashboardModuleApprovePublish'])->name('module-approve');
             Route::post('/approve-news/{id}',[CommonApprovalAPIController::class,'newsApprovePublish'])->name('news-approve');
             Route::post('/approve-pwc/{id}',[CommonApprovalAPIController::class,'purchaseWorksCommitteeApprovePublish'])->name('purchaseworkscommittee-approve');
             Route::post('/approve-rar/{id}',[CommonApprovalAPIController::class,'rtiApplicationResponseApprovePublish'])->name('rtiapplicationresponses-approve');
             Route::post('/approve-rti/{id}',[CommonApprovalAPIController::class,'rtiAssetsApprovePublish'])->name('rtiassets-approve');
-            Route::post('/approve-aut/{id}',[CommonApprovalAPIController::class,'homePageBannerApprovePublish'])->name('aut-approve');
+            Route::post('/approve-aut/{id}',[CommonApprovalAPIController::class,'auditReportApprovePublish'])->name('aut-approve');
             Route::post('/approve-tender/{id}',[CommonApprovalAPIController::class,'tenderApprovePublish'])->name('tender-approve');
             Route::post('/approve-ue/{id}',[CommonApprovalAPIController::class,'userManagementApprovePublish'])->name('user-approve');
+            Route::post('/approve-loginue/{id}',[CommonApprovalAPIController::class,'loginUserApprovePublish'])->name('loginuser-approve');
             Route::post('/approve-sociallink/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsSocialLinkApprovePublish'])->name('socialLink-approve');
             Route::post('/approve-logo/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsLogoApprovePublish'])->name('logo-approve');
             Route::post('/approve-footercontent/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsFooterContentApprovePublish'])->name('footercontent-approve');
@@ -281,6 +289,7 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/approve-menu/{id}',[CommonApprovalAPIController::class,'websiteMenuApprovePublish'])->name('menu-approve');
             Route::post('/approve-formbuilding/{id}',[CommonApprovalAPIController::class,'formBuildingApprovePublish'])->name('formbuilder-approve');
             Route::post('/approve-mfu/{id}',[CommonApprovalAPIController::class,'manualFileUploadApprovePublish'])->name('mfu-approve');
+            Route::post('/approve-newrole/{id}',[CommonApprovalAPIController::class,'newRoleApprovePublish'])->name('newrole-approve');
     
         });
     });

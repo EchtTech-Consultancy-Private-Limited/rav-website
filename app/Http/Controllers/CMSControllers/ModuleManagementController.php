@@ -15,6 +15,10 @@ class ModuleManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'module-management.module-edit';
+    protected $edit = 'module-management.module-add';
+    protected $list = 'module-management.module-list';
+    
     public function index()
     {
         $crudUrlTemplate = array();
@@ -30,14 +34,19 @@ class ModuleManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('module-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('module-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
 
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
-        return view('cms-view.module-management.module-list',
+        return view('cms-view.'.$this->list,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate) ]);
     }
 
@@ -55,7 +64,7 @@ class ModuleManagementController extends Controller
             $accessPermission = $this->checkAccessMessage();
         }
         
-        return view('cms-view.module-management.module-add',
+        return view('cms-view.'.$this->create,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
             'textMessage' =>$accessPermission??''
          ]);
@@ -102,7 +111,7 @@ class ModuleManagementController extends Controller
         }else{
             abort(404);
         }
-        return view('cms-view.module-management.module-edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),'data'=> $result]);
     }
 

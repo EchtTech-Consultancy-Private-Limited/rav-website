@@ -16,6 +16,10 @@ class RtiAssetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'rti-management.rti-add';
+    protected $edit = 'rti-management.rti-edit';
+    protected $list = 'rti-management.rti-list';
+    
     public function index()
     {
         $crudUrlTemplate = array();
@@ -33,13 +37,18 @@ class RtiAssetsController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('rtiassets-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('rtiassets-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
 
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
-        return view('cms-view.rti-management.rti-list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
     
         ]);
@@ -61,7 +70,7 @@ class RtiAssetsController extends Controller
             $accessPermission = $this->checkAccessMessage();
         }
 
-       return view('cms-view.rti-management.rti-add',
+       return view('cms-view.'.$this->create,
        ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
         'textMessage' =>$accessPermission??''
     
@@ -111,7 +120,7 @@ class RtiAssetsController extends Controller
         }else{
             abort(404);
         }
-        return view('cms-view.rti-management.rti-edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
         'data'=> $result,
         'pdfData' => isset($pdfData)?$pdfData:'',

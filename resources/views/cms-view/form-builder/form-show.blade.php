@@ -9,13 +9,12 @@
  {{ __('Form Show') }}
 @endsection
 @push('post-scripts')
-<script src="{{ asset('public/form-js/form-render-js.js') }}"></script>
 @endpush
 @section('content')
 <input type="hidden" id="urlListData" data-info="{{ $crudUrlTemplate }}">
 <div class="post d-flex flex-column-fluid" id="kt_post">
 <!--begin::Container-->
-<div id="kt_content_container" class=" container-xxl ">
+<div id="kt_content_container" class="container-xxl">
    <!--begin::Layout-->
         <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
             <!--begin::Content-->

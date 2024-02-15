@@ -21,9 +21,9 @@
          <div  class="menu-item pt-5" >
             <div  class="menu-content" ><span class="menu-heading fw-bold text-uppercase fs-7">{{ config('menu.usermanagement') }}</span></div>
          </div>
-         <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['user/user-list','role/role-create','role/role-list','permission/permission-list']) }} {{ (request()->is('role/role-create/*')) ? 'hover show' : '' }}{{ (request()->is('role/role-list/*')) ? 'hover show' : '' }}{{ (request()->is('user/user-list/*')) ? 'hover show' : '' }}{{ (request()->is('permission/permission-list/*')) ? 'hover show' : '' }}" >
+         <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['user/user-list','role/role-create','role/role-list','permission/permission-list','newrole/new-role-list']) }} {{ (request()->is('role/role-create/*')) ? 'hover show' : '' }}{{ (request()->is('role/role-list/*')) ? 'hover show' : '' }}{{ (request()->is('user/user-list/*')) ? 'hover show' : '' }}{{ (request()->is('permission/permission-list/*')) ? 'hover show' : '' }}{{ (request()->is('newrole/new-role-list/*')) ? 'hover show' : '' }}" >
             <span class="menu-link" ><span class="menu-icon" ><i class="ki-outline ki-address-book fs-2"></i></span><span  class="menu-title" >{{ config('menu.usermanagement') }}</span><span class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion {{ set_active(['role/role-create','role/role-list','user/role-list']) }} {{ (request()->is('role/role-create/*')) ? 'show' : '' }}{{ (request()->is('role/role-list/*')) ? 'show' : '' }}{{ (request()->is('user/role-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion {{ set_active(['role/role-create','role/role-list','user/role-list','newrole/new-role-list']) }} {{ (request()->is('role/role-create/*')) ? 'show' : '' }}{{ (request()->is('role/role-list/*')) ? 'show' : '' }}{{ (request()->is('user/role-list/*')) ? 'show' : '' }}{{ (request()->is('newrole/new-role-list/*')) ? 'show' : '' }}" >
                <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['user/list']) }}{{ (request()->is('user/list/*')) ? 'hover show' : '' }} mb-1" >
                   <span class="menu-link" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Users</span><span class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
                   <div  class="menu-sub menu-sub-accordion {{ set_active(['user/user-list']) }} {{ (request()->is('user/user-list/*')) ? 'show' : '' }}{{ (request()->is('user/user-list/*')) ? 'show' : '' }}" >
@@ -33,19 +33,20 @@
                   </div>
                </div>
                @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
-               <div data-kt-menu-trigger="click"  class="menu-item menu-accordion {{ set_active(['role/role-create','role/role-list']) }} {{ (request()->is('role/role-create/*')) ? 'hover show' : '' }}{{ (request()->is('role/role-list/*')) ? 'hover show' : '' }}" >
+               <div data-kt-menu-trigger="click"  class="menu-item menu-accordion {{ set_active(['role/role-create','role/role-list','newrole/new-role-list']) }} {{ (request()->is('role/role-create/*')) ? 'hover show' : '' }}{{ (request()->is('role/role-list/*')) ? 'hover show' : '' }}{{ (request()->is('newrole/new-role-list/*')) ? 'hover show' : '' }}" >
                   <span class="menu-link" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span>
-                  <span  class="menu-title" >Roles</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                  <div class="menu-sub menu-sub-accordion {{ set_active(['role/role-create','role/role-list']) }} {{ (request()->is('role/role-create/*')) ? 'show' : '' }}{{ (request()->is('role/role-list/*')) ? 'show' : '' }}" >
+                  <span  class="menu-title" >Roles & Permissions</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
+                  <div class="menu-sub menu-sub-accordion {{ set_active(['role/role-create','role/role-list','newrole/new-role-list']) }} {{ (request()->is('role/role-create/*')) ? 'show' : '' }}{{ (request()->is('role/role-list/*')) ? 'show' : '' }}{{ (request()->is('newrole/new-role-list/*')) ? 'show' : '' }}" >
                      <div class="menu-item" >
-                        <a class="menu-link {{ set_active1(['role/role-create']) }} {{ (request()->is('role/role-create/*')) ? 'active' : '' }}" href="{{ route('role.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Roles Create</span></a><!--end:Menu link-->
-                        <a class="menu-link {{ set_active1(['role/role-list']) }} {{ (request()->is('role/role-list/*')) ? 'active' : '' }}" href="{{ route('role.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Roles List</span></a><!--end:Menu link-->
+                        <a class="menu-link {{ set_active1(['role/role-create']) }} {{ (request()->is('role/role-create/*')) ? 'active' : '' }}" href="{{ route('role.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Permission Create</span></a><!--end:Menu link-->
+                        <a class="menu-link {{ set_active1(['role/role-list']) }} {{ (request()->is('role/role-list/*')) ? 'active' : '' }}" href="{{ route('role.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Permission List</span></a><!--end:Menu link-->
+                        <a class="menu-link {{ set_active1(['newrole/new-role-list']) }} {{ (request()->is('newrole/new-role-list/*')) ? 'active' : '' }}" href="{{ route('newrole.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Roles List</span></a><!--end:Menu link-->
                      </div>
                   </div>
                </div>
-               <div  class="menu-item" >
-                  <a class="menu-link {{ set_active1(['permission/permission-list']) }} {{ (request()->is('permission/permission-list/*')) ? 'active' : '' }}"  href="{{ route('permission.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >{{ config('menu.permissions') }}</span></a><!--end:Menu link-->
-               </div>
+               <!-- <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['permission/permission-list']) }} {{ (request()->is('permission/permission-list/*')) ? 'active' : '' }}"  href="{{ route('permission.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >{{ config('menu.permissions') }}</span></a>
+               </div> -->
                @endif
             </div>
          </div>
@@ -226,7 +227,6 @@
          <div  class="menu-item pt-5" >
             <div  class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">{{ config('menu.FB_title') }}</span></div>
          </div>
-         @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
          <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['formbuilder/formbuilder-create','formbuilder/formbuilder-list']) }} {{ (request()->is('formbuilder/formbuilder-create/*')) ? 'hover show' : '' }}{{ (request()->is('formbuilder/formbuilder-list/*')) ? 'hover show' : '' }}" >
             <span class="menu-link" ><span  class="menu-icon" ><i class="ki-outline ki-abstract-9 fs-2"></i></span><span  class="menu-title" >{{ config('menu.FB_title') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
             <div  class="menu-sub menu-sub-accordion {{ set_active(['formbuilder/formbuilder-create','formbuilder/formbuilder-list']) }} {{ (request()->is('formbuilder/formbuilder-create/*')) ? 'show' : '' }}{{ (request()->is('formbuilder/formbuilder-list/*')) ? 'show' : '' }}" >
@@ -238,7 +238,6 @@
                </div>
             </div>
          </div>
-         @endif
          <div  class="menu-item pt-5" >
             <div  class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Apps</span></div>
          </div>

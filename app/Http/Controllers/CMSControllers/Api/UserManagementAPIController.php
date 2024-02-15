@@ -167,15 +167,22 @@ class UserManagementAPIController extends Controller
                 $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
                 $path=resource_path('uploads/userImage');
                 $file->move($path,$newname);
+            }else{
+                $newname=DB::table('users')->where('id',$request->id)->first()->avatar;
             }
-            $result= where('uid',$request->id)->update([
+            if($request->password !=''){
+                $password= Hash::make(isset($request->password)?$request->password:'welcome@123');
+            }else{
+                $password=DB::table('users')->where('id',$request->id)->first()->password;
+            }
+            $result= DB::table('users')->where('id',$request->id)->update([
                     'name' => $request->user_name,
                     'email' => $request->user_email,
                     'role_id' => explode(',',$request->user_role)[0],
                     'role_name' => explode(',',$request->user_role)[1],
                     'email_verified_at' => now(),
                     'avatar' => $newname,
-                    'password' => Hash::make(isset($request->password)?$request->password:'welcome@123'),
+                    'password' => $password,
                 ]);
             
         if($result == true)
