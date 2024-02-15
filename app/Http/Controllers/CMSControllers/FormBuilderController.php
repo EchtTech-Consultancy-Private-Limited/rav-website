@@ -51,9 +51,14 @@ class FormBuilderController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('formbuilder-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('formbuilder-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
 
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');

@@ -17,6 +17,10 @@ class DynamicContentPageManagamentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'dynamic-content-page-managament.content-page-add';
+    protected $edit = 'dynamic-content-page-managament.content-page-edit';
+    protected $list = 'dynamic-content-page-managament.content-page-list';
+    
     public function index()
     {
         $crudUrlTemplate = array();
@@ -32,13 +36,18 @@ class DynamicContentPageManagamentController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('pagemetatag-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('pagemetatag-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
         //$crudUrlTemplate['view'] = route('pagemetatag-list');
         //dd($crudUrlTemplate);
-        return view('cms-view.dynamic-content-page-managament.content-page-list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
         
         ]);
@@ -68,7 +77,7 @@ class DynamicContentPageManagamentController extends Controller
         $pageTitle = DB::table('dynamic_content_page_metatag')->select('uid','page_title_en','page_title_hi','menu_slug')->where([['soft_delete','=','0']])->get();
         $menu=WebsiteMenuManagement::select('name_en','name_hi','url','uid')->where([['soft_delete','=','0']])->get();
         
-        return view('cms-view.dynamic-content-page-managament.content-page-add',
+        return view('cms-view.'.$this->create,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate), 
         'pageTitle'=>$pageTitle,
         'menuName'=>$menu,
@@ -154,7 +163,7 @@ class DynamicContentPageManagamentController extends Controller
         $objectpass = new \stdclass;
         $objectpass->pageContent = $datas1;
         //dd($objectpass);
-        return view('cms-view.dynamic-content-page-managament.content-page-edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),'data'=> $objectpass,'pageTitle'=>$pageTitle,'menuName'=>$menu]);
     }
 

@@ -15,6 +15,10 @@ class WebsiteMenuManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'website-menu-management.menu-add';
+    protected $edit = 'website-menu-management.menu-edit';
+    protected $list = 'website-menu-management.menu-list';
+
     public function index()
     {
         $crudUrlTemplate = array();
@@ -32,15 +36,21 @@ class WebsiteMenuManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('menu-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('menu-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
+        
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
-
+        //dd($crudUrlTemplate);
         $data=WebsiteMenuManagement::all();
 
-        return view('cms-view.website-menu-management.menu-list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate) ],compact('data'));
     }
 
@@ -60,7 +70,7 @@ class WebsiteMenuManagementController extends Controller
         
         $menu=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0']])->where('parent_id','0')->get();
         $Submenu=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0']])->whereNot('parent_id', '0')->get();
-        return view('cms-view.website-menu-management.menu-add',
+        return view('cms-view.'.$this->create,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'menuList'=>$menu, 
             'Submenu'=>$Submenu,    
@@ -117,7 +127,7 @@ class WebsiteMenuManagementController extends Controller
        $crudUrlTemplate['view'] = route('websitecoresetting-list');
        
 
-        return view('cms-view.website-menu-management.menu-list', 
+        return view('cms-view.'.$this->list, 
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
         
     ]);
@@ -146,7 +156,7 @@ class WebsiteMenuManagementController extends Controller
         }else{
             abort(404);
         }
-        return view('cms-view.website-menu-management.menu-edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'menu'=> $menu,
             'Submenu'=>$Submenu,

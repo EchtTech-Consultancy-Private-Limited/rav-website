@@ -20,6 +20,10 @@ class HomePageBannerManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'home-page-banner-management.homepagebanner-add';
+    protected $edit = 'home-page-banner-management.homepagebanner-edit';
+    protected $list = 'home-page-banner-management.homepagebanner-list';
+    
     public function index()
     {
         $crudUrlTemplate = array();
@@ -35,13 +39,18 @@ class HomePageBannerManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('banner-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('banner-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
-        return view('cms-view.home-page-banner-management.homepagebanner-list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' => json_encode($crudUrlTemplate)
         
         ]);
@@ -61,7 +70,7 @@ class HomePageBannerManagementController extends Controller
             $accessPermission = $this->checkAccessMessage();
         }
         
-        return view('cms-view.home-page-banner-management.homepagebanner-add',
+        return view('cms-view.'.$this->create,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
             'textMessage' =>$accessPermission??''
         
@@ -109,7 +118,7 @@ class HomePageBannerManagementController extends Controller
         }else{
             abort(404);
         }
-        return view('cms-view.home-page-banner-management.homepagebanner-edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
         ]);

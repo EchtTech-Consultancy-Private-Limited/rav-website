@@ -1,17 +1,17 @@
-var KTAppUserEdit = function () {
+var KTAppNewRoleEdit = function () {
     var jsonURL = $('#urlListData').attr('data-info');
     var crudUrlTemplate = JSON.parse(jsonURL);
     var id = new URLSearchParams(window.location.search).get('id');
     var _officeAdd;
     var _handleOfficeAddForm = function(e) {
     var validation;
-    var form = document.getElementById('kt_modal_edit_user_form');
+    var form = document.getElementById('kt_modal_edit_newrole_form');
        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
        validation = FormValidation.formValidation(
              form,
              {
                 fields: {
-                 user_name: {
+                    role_type: {
                          validators: {
                             notEmpty: {
                                message: 'This field is required'
@@ -22,31 +22,6 @@ var KTAppUserEdit = function () {
                             },
                          },
                    },
-                   user_email: {
-                         validators: {
-                            notEmpty: {
-                               message: 'This field is required'
-                            },
-                            emailAddress: {
-                                 message: 'The value is not a valid email address'
-                             }
-                         },
-                   },
-                   user_role: {
-                         validators: {
-                            notEmpty: {
-                               message: 'This field is required'
-                            },
-                         },
-                   },
-                 //   password: {
-                 //         validators: {
-                 //            notEmpty: {
-                 //               message: 'This field is required'
-                 //            },
-                 //         },
-                 //   },
-                  
                 },
                 plugins: {
                    trigger: new FormValidation.plugins.Trigger(),
@@ -54,7 +29,7 @@ var KTAppUserEdit = function () {
                 }
              }
        );
-       $('.submit-edit-btn').click( function(e) {
+       $('.submit-newrole-btn').click( function(e) {
              e.preventDefault();
              validation.validate().then(function(status) {
                 if (status == 'Valid') {
@@ -63,31 +38,29 @@ var KTAppUserEdit = function () {
                    //$('#examAddModal').modal('hide');
                     $('#loading').addClass('loading');
                     $('#loading-content').addClass('loading-content');
-                   var formData= new FormData(form);
-                     formData.append("user_email", $('#user_email').val());
                 axios.post(crudUrlTemplate.update+'?id='+id,
-                        formData,{
+                        new FormData(form),{
                    }).then(function (response) {
                    if (response.data.status == 200) {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                       toastr.success(
-                         "New User Edit successfully!", 
-                         "New User!", 
+                         "New Role Edit successfully!", 
+                         "New Role!", 
                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
                             history.scrollRestoration = 'manual';
                          }
-                         location.href = 'user-list'; // reload page
+                         location.href = 'new-role-list'; // reload page
                       }, 1500);
                       
                    } else {
                       toastr.error(
-                         response.data.email,
+                        response.data.message, 
                         $('#loading').removeClass('loading'),
-                        $('#loading-content').removeClass('loading-content'), 
+                        $('#loading-content').removeClass('loading-content'),
                          "Something went wrong!", 
                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
@@ -123,14 +96,14 @@ var KTAppUserEdit = function () {
  // Cancel button handler
  return {
          init: function () {
-             _officeAdd = $('#kt_modal_edit_user_form');
+             _officeAdd = $('#kt_modal_edit_newrole_form');
              _handleOfficeAddForm();
-             submitButton = document.querySelector('#kt_edit_user_submit');
+             submitButton = document.querySelector('#kt_edit_newrole_submit');
              // Handle forms
          }
      };
  }();
  // On document ready
  jQuery(document).ready(function() {
-     KTAppUserEdit.init();
+     KTAppNewRoleEdit.init();
  });

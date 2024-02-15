@@ -16,6 +16,10 @@ class NewsManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'news-management.news_add';
+    protected $edit = 'news-management.news_edit';
+    protected $list = 'news-management.news_list';
+    
     public function index()
     {
         $crudUrlTemplate = array();
@@ -31,14 +35,19 @@ class NewsManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('news-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('news-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
         
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
-        return view('cms-view.news-management.news_list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
         
         ]);
@@ -58,7 +67,7 @@ class NewsManagementController extends Controller
             $accessPermission = $this->checkAccessMessage();
         }
 
-        return view('cms-view.news-management.news_add',
+        return view('cms-view.'.$this->create,
           ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
           'textMessage' =>$accessPermission??''
     
@@ -109,7 +118,7 @@ class NewsManagementController extends Controller
             abort(404);
         }
         //dd($result);
-        return view('cms-view.news-management.news_edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
         'data'=> $result,
         'pdfData' => isset($pdfimagesData)?$pdfimagesData:'',

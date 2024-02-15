@@ -18,6 +18,10 @@ class UserManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'user-management.user-add';
+    protected $edit = 'user-management.user-edit';
+    protected $list = 'user-management.user-list';
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -42,19 +46,23 @@ class UserManagementController extends Controller
             $crudUrlTemplate['delete'] = route('user-delete', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
-            $crudUrlTemplate['approver'] = route('user-approve', ['id' => 'xxxx']);
+            $crudUrlTemplate['approver'] = route('loginuser-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
-            $crudUrlTemplate['publisher'] = route('user-approve', ['id' => 'xxxx']);
+            $crudUrlTemplate['publisher'] = route('loginuser-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
         }
         
+       
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
         $roleType=DB::table('role_type_users')->select('role_type','uid')->where([['soft_delete','=','0']])->orderby('sort_order','asc')->get();
         
-        return view('cms-view.user-management.user-list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'roleType' =>$roleType
-        
         ]);
     }
 
@@ -65,7 +73,7 @@ class UserManagementController extends Controller
      */
     public function create()
     {
-        return view('cms-view.user-management.user-add');
+        return view('cms-view.'.$this->create);
     }
 
     /**
@@ -110,7 +118,7 @@ class UserManagementController extends Controller
         }else{
             abort(404);
         }
-        return view('cms-view.user-management.user-edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
         'data'=> $result,
         'roleType' =>$roleType

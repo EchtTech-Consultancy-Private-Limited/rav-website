@@ -18,6 +18,10 @@ class DataManagementController extends Controller
      *
      * @return void
      */
+    protected $create = '';
+    protected $edit = '';
+    protected $list = '';
+
     public function __construct()
     {
 
@@ -38,9 +42,14 @@ class DataManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
         
         return view('cms-view.commonPages.feedback-list',
