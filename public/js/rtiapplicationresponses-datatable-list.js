@@ -112,7 +112,7 @@ var KTDatatablesBasicPaginations = function() {
 					orderable: true,
 					responsivePriority: -2,
 					render: function (data, type, full, meta) {
-						if(crudUrlTemplate.publisher != undefined)
+						if(crudUrlTemplate.publisher != undefined && crudUrlTemplate.publisher != '0')
 						{
 							var url_publisher = crudUrlTemplate.publisher.replace("xxxx", full.uid)
 							var classApproved_publisher = 'approve-single-record';
@@ -120,12 +120,12 @@ var KTDatatablesBasicPaginations = function() {
 							var url_publisher ='javascript:void(0);'
 							var classApproved_publisher ='error';
 						}
-						if(crudUrlTemplate.approver != undefined)
+						if(crudUrlTemplate.approver != undefined && crudUrlTemplate.approver != '0')
 						{
 							var url_approver = crudUrlTemplate.approver.replace("xxxx", full.uid)
 							var classApproved = 'approve-single-record';
 						}else{
-							var url_publisher ='javascript:void(0);'
+							var url_approver ='javascript:void(0);'
 							var classApproved ='error';
 						}
 						var status = {

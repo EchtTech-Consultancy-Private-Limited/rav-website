@@ -1,8 +1,8 @@
 "use strict";
 var KTDatatablesBasicPaginations = function() {
 	var initTable1 = function() {
-		var table = $('#kt_datatable_employee_directory');
-		var $i=1;
+		var table = $('#kt_datatable_newrole_list');
+        var $i=1;
 		// var columnList = JSON.parse(table.data('columnListData'));
 		var jsonURL = $('#urlListData').attr('data-info');
 		var crudUrlTemplate = JSON.parse(jsonURL);
@@ -24,9 +24,8 @@ var KTDatatablesBasicPaginations = function() {
 			},
 			columns: [
 				{ "data": "uid" },
-				{ "data": "fname_en" },
-				{ "data": "email" },
-				{ "data": "public_url" },
+				{ "data": "role_type" },
+				{ "data": "sort_order" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -88,6 +87,7 @@ var KTDatatablesBasicPaginations = function() {
 								</span>\
 							</a>';
                         }
+                        
                         dropdownHtml = '' +
                             viewLinkHtml + ' &nbsp;'+
                             editLinkHtml + '&nbsp;'+
@@ -96,7 +96,7 @@ var KTDatatablesBasicPaginations = function() {
 						return dropdownHtml;
 					},
 				},
-				{
+                {
 					targets: 0,
 					title: 'ID',
 					orderable: true,
@@ -105,46 +105,6 @@ var KTDatatablesBasicPaginations = function() {
 					render: function (data, type, full, meta) {
 						return $i++;
 					},
-				},
-                
-				{
-					targets: -5,
-					orderable: false,
-					responsivePriority: -2,
-					render: function(data, type, full ,meta){
-						return '<span>' + full.fname_en +' '+full.mname_en+' '+full.lname_en+ '</span>';
-                    }
-				},
-				{
-					targets: -3,
-					orderable: true,
-					render: function (data, type, full, meta) {
-						if(full.public_url != '')
-						{    
-							return '<span style="width: 250px;">\
-								<div class="d-flex align-items-center">\
-									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
-										<img class="" src="'+'../resources/uploads/empDirectory/'+full.public_url+'" alt="photo"></img>\
-									</div>\
-								</div>\
-							</span>';
-						}
-						else
-						{
-							return '<span style="width: 250px;">\
-								<div class="d-flex align-items-center">\
-									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
-										<div class="symbol symbol-light-success mr-3">\
-											<span class="symbol-label font-size-h5">'+ full.no_photo +'</span>\
-										</div>\
-									</div>\
-									<div class="ml-4">\
-										<div class="text-dark-75 font-weight-bolder font-size-lg mb-0">'+data+'</div>\
-									</div>\
-								</div>\
-							</span>';
-						}
-					}
 				},
 				{
 					targets: -2,
@@ -225,7 +185,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									history.scrollRestoration = 'manual';
 									}
-									location.href = 'employeedirectory-list'; // reload page
+									location.href = 'new-role-list'; // reload page
 								}, 1500);
 
 							})
@@ -275,7 +235,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									   history.scrollRestoration = 'manual';
 									}
-									location.href = 'employeedirectory-list'; // reload page
+									location.href = 'new-role-list'; // reload page
 								 }, 1500);
 
 							})

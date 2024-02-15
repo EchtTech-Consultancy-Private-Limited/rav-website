@@ -45,7 +45,7 @@
                      <!--begin::Image input-->
                      <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
                         <!--begin::Preview existing avatar-->
-                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('assets-cms/media/avatars/300-6.jpg') }});"></div>
+                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('resources/uploads/userImage/'.$data->avatar) }});"></div>
                         <!--end::Preview existing avatar-->
                         <!--begin::Label-->
                         <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -120,7 +120,11 @@
                            <!--begin::Radio-->
                               <div class="form-check form-check-custom form-check-solid">
                                  <!--begin::Input-->
-                                 <input class="form-check-input me-3" name="user_role" type="radio" value="{{ $data->role_id }},{{ $data->role_name }}" id="kt_modal_update_role_option_{{ $roleTypes->uid }}" />
+                                 @if($data->role_id == $roleTypes->uid)
+                                    <input class="form-check-input me-3" name="user_role" type="radio" value="{{ $data->role_id }},{{ $data->role_name }}" id="kt_modal_update_role_option_{{ $roleTypes->uid }}" checked />
+                                 @else
+                                    <input class="form-check-input me-3" name="user_role" type="radio" value="{{ $roleTypes->uid }},{{ $roleTypes->role_type }}" id="kt_modal_update_role_option_{{ $roleTypes->uid }}" />
+                                 @endif
                                  <!--end::Input-->
                                  <!--begin::Label-->
                                  <label class="form-check-label" for="kt_modal_update_role_option_{{ $roleTypes->uid }}">

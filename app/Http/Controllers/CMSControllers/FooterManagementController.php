@@ -16,6 +16,10 @@ class FooterManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = '';
+    protected $edit = '';
+    protected $list = '';
+    
     public function index()
     {
         //
@@ -38,9 +42,15 @@ class FooterManagementController extends Controller
        }
        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
         $crudUrlTemplate['approver'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('websitecoresetting-approve', ['id' => 'xxxx']);
+        }
+        else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
        
        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){

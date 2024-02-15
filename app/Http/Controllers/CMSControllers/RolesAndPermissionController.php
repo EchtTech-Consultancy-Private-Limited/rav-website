@@ -16,6 +16,10 @@ class RolesAndPermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = '';
+    protected $edit = '';
+    protected $list = '';
+    
     public function permissionIndex()
     {
         $crudUrlTemplate = array();
@@ -31,9 +35,14 @@ class RolesAndPermissionController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('news-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('news-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
 
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
@@ -80,6 +89,45 @@ class RolesAndPermissionController extends Controller
         $objectpass->permissionAllows = $datas;
 
         return view('cms-view.roles-and-permission.role-list',['permissionAllow' =>$objectpass ]);
+    }
+
+    public function newRoleIndex()
+    {
+        $crudUrlTemplate = array();
+        // xxxx to be replaced with ext_id to create valid endpoint
+        if(isset($this->abortIfAccessNotAllowed()['create']) && $this->abortIfAccessNotAllowed()['create'] !=''){
+            $crudUrlTemplate['create'] = route('new-role-save');
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+        if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
+            $crudUrlTemplate['list'] = route('new-role-list');
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['edit'] = route('newrole.edit', ['id' => 'xxxx']);
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('new-role-delete', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('newrole-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('newrole-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
+        }
+        
+        return view('cms-view.roles-and-permission.new-role-list',[
+            'crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+        ]);
     }
 
     /**
@@ -166,7 +214,29 @@ class RolesAndPermissionController extends Controller
             'roleType' =>$roleType
         ]);
     }
+    public function newRoleEdit(Request $request)
+    {
 
+        $crudUrlTemplate = array();
+        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['update'] = route('new-role-update');
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+
+       $datas = DB::table('role_type_users')->where('uid',$request->id)->first();
+        if(isset($datas)){
+            $data = $datas;
+        }else{
+            abort(404);
+        }
+        //dd($datas);
+        return view('cms-view.roles-and-permission.new-role-edit',
+        [
+            'crudUrlTemplate' =>  json_encode($crudUrlTemplate),
+            'data' => $datas,
+        ]);
+    }
     /**
      * Update the specified resource in storage.
      *

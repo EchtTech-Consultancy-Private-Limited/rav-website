@@ -15,6 +15,10 @@ class RecentActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'recent-activity.create-ra';
+    protected $edit = 'recent-activity.edit-ra';
+    protected $list = 'recent-activity.list-ra';
+    
     public function index()
     {
         $crudUrlTemplate = array();
@@ -30,13 +34,18 @@ class RecentActivityController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('recentactivity-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
         
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
-        return view('cms-view.recent-activity.list-ra',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
     
         ]);
@@ -58,7 +67,7 @@ class RecentActivityController extends Controller
             $accessPermission = $this->checkAccessMessage();
         }
 
-       return view('cms-view.recent-activity.create-ra',
+       return view('cms-view.'.$this->create,
        ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),   
         'textMessage' =>$accessPermission??''
         //'department'=>$data
@@ -110,7 +119,7 @@ class RecentActivityController extends Controller
             abort(404);
         }
         //dd($result);
-        return view('cms-view.recent-activity.edit-ra',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
         ]);

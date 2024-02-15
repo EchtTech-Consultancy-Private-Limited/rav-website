@@ -17,6 +17,10 @@ class EmployeeDirectoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'employee-directory.create-employee';
+    protected $edit = 'employee-directory.edit-employee';
+    protected $list = 'employee-directory.list-employee';
+    
     public function index()
     {
         //dd(config('checkduplicate.mobile'));
@@ -34,13 +38,18 @@ class EmployeeDirectoryController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('employeedirectory-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('employeedirectory-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
 
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
-        return view('cms-view.employee-directory.list-employee',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
     
         ]);
@@ -65,7 +74,7 @@ class EmployeeDirectoryController extends Controller
            // $accessPermission = "You don't have permission to perform this action!";
         }
 
-       return view('cms-view.employee-directory.create-employee',
+       return view('cms-view.'.$this->create,
        ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
         'department'=>$department,
         'designation'=> $designation,
@@ -124,7 +133,7 @@ class EmployeeDirectoryController extends Controller
         }else{
             abort(404);
         }
-        return view('cms-view.employee-directory.edit-employee',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
             'department'=>$datas,

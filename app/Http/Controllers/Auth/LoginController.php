@@ -87,7 +87,7 @@ class LoginController extends Controller
         $request->validate(
           [
               'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-              'password'=> 'required|min:5|max:15',//|alpha_num|min:6
+              'password'=> 'required',//|alpha_num|min:6
           ],
         );
         

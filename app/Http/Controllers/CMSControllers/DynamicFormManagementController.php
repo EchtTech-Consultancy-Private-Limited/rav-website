@@ -16,6 +16,10 @@ class DynamicFormManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = '';
+    protected $edit = '';
+    protected $list = '';
+
     public function index()
     {
         $data=DynamicFormManagement::all();
@@ -42,9 +46,14 @@ class DynamicFormManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('faq-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('faq-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 

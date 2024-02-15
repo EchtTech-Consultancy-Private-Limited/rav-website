@@ -15,6 +15,7 @@ use App\Models\CMSModels\FooterManagement;
 use App\Models\CMSModels\UserManagement;
 use App\Models\CMSModels\TenderManagement;
 use App\Models\CMSModels\SocialLink;
+use App\Models\User;
 use App\Models\CMSModels\RtiAssets;
 use App\Models\CMSModels\RtiApplicationResponses;
 use App\Models\CMSModels\RolesAndPermission;
@@ -46,6 +47,30 @@ class CommonApprovalAPIController extends Controller
         $this->middleware('auth')->except('logout');
     }
 
+    public function loginUserApprovePublish($id)
+    {
+        $data=User::where('id',$id)->first()->status;
+        if($data ==0 || $data ==1)
+        {
+            User::where('id',$id)->update(['status'=>'2']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }else if($data ==2){
+            User::where('id',$id)->update(['status'=>'3']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
     public function recentActivityApprovePublish($id)
     {
         $data=RecentActivity::where('uid',$id)->first()->status;
@@ -562,6 +587,102 @@ class CommonApprovalAPIController extends Controller
             ],200);
         }else if($data ==2){
             ManualFileUpload::where('uid',$id)->update(['status'=>'3']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
+    public function FAQApprovePublish($id)
+    {
+        $data=DB::table('faq')->where('uid',$id)->first()->status;
+        if($data ==0 || $data ==1)
+        {
+            DB::table('faq')->where('uid',$id)->update(['status'=>'2']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }else if($data ==2){
+            DB::table('faq')->where('uid',$id)->update(['status'=>'3']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
+    public function dashboardModuleApprovePublish($id)
+    {
+        $data=ModuleManagement::where('uid',$id)->first()->status;
+        if($data ==0 || $data ==1)
+        {
+            ModuleManagement::where('uid',$id)->update(['status'=>'2']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }else if($data ==2){
+            ModuleManagement::where('uid',$id)->update(['status'=>'3']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
+    public function auditReportApprovePublish($id)
+    {
+        $data=ModuleManagement::where('uid',$id)->first()->status;
+        if($data ==0 || $data ==1)
+        {
+            ModuleManagement::where('uid',$id)->update(['status'=>'2']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }else if($data ==2){
+            ModuleManagement::where('uid',$id)->update(['status'=>'3']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
+    public function newRoleApprovePublish($id)
+    {
+        $data=DB::table('role_type_users')->where('uid',$id)->first()->status;
+        if($data ==0 || $data ==1)
+        {
+            DB::table('role_type_users')->where('uid',$id)->update(['status'=>'2']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }else if($data ==2){
+            DB::table('role_type_users')->where('uid',$id)->update(['status'=>'3']);
             return response()->json([
                 'status'=>200,
                 'message'=>'Approve successfully.'

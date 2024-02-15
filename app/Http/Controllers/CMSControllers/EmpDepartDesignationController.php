@@ -16,6 +16,10 @@ class EmpDepartDesignationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $create = 'department-designation.create-deptDesg';
+    protected $edit = 'department-designation.edit';
+    protected $list = 'department-designation.list';
+    
     public function index()
     {
        
@@ -33,12 +37,17 @@ class EmpDepartDesignationController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
             $crudUrlTemplate['approver'] = route('departmentdesignation-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
         }
         if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
             $crudUrlTemplate['publisher'] = route('departmentdesignation-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
         }
         //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
-        return view('cms-view.department-designation.list',
+        return view('cms-view.'.$this->list,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
     
         ]);
@@ -60,7 +69,7 @@ class EmpDepartDesignationController extends Controller
         else{
             $accessPermission = $this->checkAccessMessage();
         }
-       return view('cms-view.department-designation.create-deptDesg',
+       return view('cms-view.'.$this->create,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
                 'department'=>$data,    
                 'textMessage' =>$accessPermission??''
@@ -107,7 +116,7 @@ class EmpDepartDesignationController extends Controller
             abort(404);
         }
         //dd($result);
-        return view('cms-view.department-designation.edit',
+        return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
         ]);

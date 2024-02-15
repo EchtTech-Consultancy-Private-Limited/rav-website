@@ -20,9 +20,11 @@
 <div class="card card-flush">
     <div class="card-body">
         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+        @if(isset(auth::user()->role_name) && auth::user()->role_name=='Admin' || isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
                 <i class="ki-outline ki-plus fs-2"></i>Add User
             </button>
+        @endif
         </div>
         <!--start: Datatable -->
         <table class="table table-separate table-head-custom table-checkable dataTable no-footer dtr-inline collapsed" id="kt_datatable_user_list" role="grid" aria-describedby="kt_datatable_info" style="width: 924px;">

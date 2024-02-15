@@ -9,8 +9,6 @@
 <script src="{{ asset('assets-cms/cms_js/xy.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/percent.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/radar.js') }}"></script>
-<script src="{{ asset('assets-cms/cms_js/form-builder/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('assets-cms/cms_js/form-builder/form-builder.min.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/map.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/worldLow.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/continentsLow.js') }}"></script>
@@ -23,4 +21,8 @@
 <script src="{{ asset('assets-cms/cms_js/summernote_0.8.2_summernote.js') }}"></script>
 <script src="{{ asset('public/form-js/file-getmime-image.js') }}"></script>
 <script src="{{ asset('public/form-js/file-getmime-pdf.js') }}"></script>
+<script src="{{ asset('assets-cms/cms_js/form-builder/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets-cms/cms_js/form-builder/form-builder.min.js') }}"></script>
+<script src="{{ asset('assets-cms/cms_js/form-builder/form-render.min.js') }}"></script>
+<script src="{{ asset('public/form-js/form-builder-js.js') }}"></script>
 @stack('post-scripts')
