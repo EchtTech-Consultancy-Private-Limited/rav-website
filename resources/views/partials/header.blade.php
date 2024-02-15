@@ -5,10 +5,10 @@
                 <div class="logo-left">
                     <a href="{{ route('/') }}">
                         @if (isset($website_core_settings) && $website_core_settings->header_logo != '')
-                            <img src="{{ asset('resources/uploads/WebsiteCoreSettings/'.$website_core_settings->header_logo) }}"
+                            <img src="{{ asset('resources/uploads/WebsiteCoreSettings/' . $website_core_settings->header_logo) }}"
                                 alt="logo" class="img-fluid">
                         @else
-                            <img src="./assets/images/rav-logo.png" alt="logo" class="img-fluid">
+                            <img src="{{ asset('/assets/images/rav-logo.png') }}" alt="logo" class="img-fluid">
                         @endif
                     </a>
                 </div>
@@ -16,26 +16,30 @@
             <div class="col-md-7">
                 <div class="logo-right">
                     <div class="search-wrap me-4">
-                        <form class="d-flex" role="search">
+                        <form name="searchForm" action="{{ url('search') }}" method="get">
                             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                             <button class="btn btn-search" type="submit">
-                                <img src="./assets/images/search.png" alt="search" class="img-fluid">
+                                <img src="{{ asset('assets/images/search.png') }}" alt="search" class="img-fluid">
                             </button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
-                        <a href="https://www.india.gov.in/" class="me-4">
-                            <img src="./assets/images/emblem.svg" alt="emblem" class="img-fluid">
+                        <a href="https://www.india.gov.in/" onclick="return confirm('{{ $alertMessage }}')"
+                            target="_blank" class="me-4">
+                            <img src="{{ asset('assets/images/emblem.svg') }}" alt="emblem" class="img-fluid">
                         </a>
-                        <a href="https://yoga.ayush.gov.in/" class="me-4">
-                            <img src="./assets/images/international-yoga.svg" alt="international-yoga"
+                        <a href="https://yoga.ayush.gov.in/" onclick="return confirm('{{ $alertMessage }}')"
+                            target="_blank" class="me-4">
+                            <img src="{{ asset('assets/images/international-yoga.svg') }}" alt="international-yoga"
                                 class="img-fluid">
                         </a>
-                        <a href="https://amritmahotsav.nic.in/" class="me-4">
-                            <img src="./assets/images/aazadi.svg" alt="aazadi" class="img-fluid">
+                        <a href="https://amritmahotsav.nic.in/" onclick="return confirm('{{ $alertMessage }}')"
+                            target="_blank" class="me-4">
+                            <img src="{{ asset('assets/images/aazadi.svg') }}" alt="aazadi" class="img-fluid">
                         </a>
-                        <a href="https://www.g20.org/en/">
-                            <img src="./assets/images/g20-india.svg" alt="g20-india" class="img-fluid">
+                        <a href="https://www.g20.org/en/" onclick="return confirm('{{ $alertMessage }}')"
+                            target="_blank">
+                            <img src="{{ asset('assets/images/g20-india.svg') }}" alt="g20-india" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -58,7 +62,6 @@
                         </svg>
                     </a>
                 </li>
-
                 @if (isset($headerMenu) && count($headerMenu) > 0)
                     @foreach ($headerMenu as $headerMenus)
                         @php
@@ -72,38 +75,119 @@
                                     @else
                                         {{ $headerMenus->name_en ?? '' }}
                                     @endif
-                                    <img src="./assets/images/arrow-down.png" alt="arrow" class="img-fluid">
+                                    <img src="{{ asset('/assets/images/arrow-down.png') }}" alt="arrow" class="img-fluid">
                                 </a>
                                 <ul class="dropdown-menu" tabindex = "0">
                                     @if (isset($headerMenus->children) && count($headerMenus->children) > 0)
                                         @foreach ($headerMenus->children as $subMenus)
-                                            @php
-                                                $subMenusurl = $subMenus->url ?? 'javascript:void(0)';
-                                            @endphp
+                                    @php
+                                        $subMenusurl = $subMenus->url ?? 'javascript:void(0)';
+                                    @endphp
 
-                                            <li>
-                                                @if ($subMenus->tab_type == 1)
-                                                    <a class="nav-link an-hove"
-                                                        onclick="return confirm('{{ $alertMessage }}')" target="_blank"
-                                                        href="{{ url($subMenusurl) ??"" }}" aria-expanded="false">
-                                                        @if (Session::get('locale') == 'hi')
-                                                            {{ $subMenus->name_hi ?? '' }}
+                                    @if (isset($subMenus->children) && count($subMenus->children) > 0)
+                                        @if ($subMenus->tab_type == 1)
+                                            <li class="env">
+                                                <a href="javascript:void(0)"
+                                                    onclick="return confirm('{{ $alertMessage }}')" target="_blank">
+                                                    @if (Session::get('Lang') == 'hi')
+                                                        {{ $subMenus->name_hi ?? '' }}
+                                                    @else
+                                                        {{ $subMenus->name_en ?? '' }}
+                                                    @endif
+                                                </a>
+                                        @else
+                                            <li class="dropdown nav-item menu-subdropdown">
+                                                <a href="javascript:void();" class="dropdown-item">
+                                                    @if (Session::get('Lang') == 'hi')
+                                                        {{ $subMenus->name_hi ?? '' }}
+                                                    @else
+                                                        {{ $subMenus->name_en ?? '' }}
+                                                    @endif
+                                                </a>
+                                        @endif
+                                        <ul class="submenu dropdown-menu">
+                                            @foreach ($subMenus->children as $ChildMenus)
+                                                @php
+                                                    $ChildMenusurl = $ChildMenus->url ?? 'javascript:void(0)';
+                                                    $ChildMenusurlfixed = $ChildMenus->footer_url ?? 'javascript:void(0)';
+                                                @endphp
+
+                                                @if (isset($ChildMenus->children) && count($ChildMenus->children) > 0)
+                                                    @if ($ChildMenus->tab_type == 1)
+                                                        <li class="env sub-menu-drop-g">
+                                                            <a class="dropdown-item" href="{{ url($ChildMenusurlfixed) }}"
+                                                                onclick="return confirm('{{ $alertMessage }}')"
+                                                                target="_blank">
+                                                                @if (Session::get('Lang') == 'hi')
+                                                                    {{ $ChildMenus->name_hi ?? '' }}
+                                                                @else
+                                                                    {{ $ChildMenus->name_en ?? '' }}
+                                                                @endif
+                                                            </a>
                                                         @else
-                                                            {{ $subMenus->name_en ?? '' }}
-                                                        @endif
-                                                    </a>
+                                                        <li class="env sub-menu-drop-g">
+                                                            <a href="{{ url($ChildMenusurlfixed) }}" class="sub-menu-drop-f dropdown-item">
+                                                                @if (Session::get('Lang') == 'hi')
+                                                                    {{ $ChildMenus->name_hi ?? '' }}
+                                                                @else
+                                                                    {{ $ChildMenus->name_en ?? '' }}
+                                                                @endif
+                                                            </a>
+                                                    @endif
+                                                    </li>
                                                 @else
-                                                    <a class="dropdown-item" href="{{ url($subMenusurl) ??"" }}">
-
-                                                        @if (Session::get('locale') == 'hi')
-                                                            {{ $subMenus->name_hi ?? '' }}
-                                                        @else
-                                                            {{ $subMenus->name_en ?? '' }}
-                                                        @endif
-                                                    </a>
+                                                    @if ($ChildMenus->tab_type == 1)
+                                                        <li>
+                                                            <a class="dropdown-item" onclick="return confirm('{{ $alertMessage }}')"
+                                                                target="_blank" href="{{ $ChildMenusurl ?? '' }}">
+                                                                @if (Session::get('Lang') == 'hi')
+                                                                    {{ $ChildMenus->name_hi ?? '' }}
+                                                                @else
+                                                                    {{ $ChildMenus->name_en ?? '' }}
+                                                                @endif
+                                                            </a>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ url($url . '/' . $subMenusurl . '/' . $ChildMenusurl) ?? '' }}">
+                                                                @if (Session::get('Lang') == 'hi')
+                                                                    {{ $ChildMenus->name_hi ?? '' }}
+                                                                @else
+                                                                    {{ $ChildMenus->name_en ?? '' }}
+                                                                @endif
+                                                            </a>
+                                                        </li>
+                                                    @endif
                                                 @endif
+                                            @endforeach
+                                        </ul>
+                                        </li>
+                                    @else
+                                    
+                                        @if ($subMenus->tab_type == 1)                                            
+                                            <li>
+                                                <a onclick="return confirm('{{ $alertMessage }}')" target="_blank"
+                                                    href="{{ $subMenusurl ?? '' }}">
+                                                    @if (Session::get('Lang') == 'hi')
+                                                        {{ $subMenus->name_hi ?? '' }}
+                                                    @else
+                                                        {{ $subMenus->name_en ?? '' }}
+                                                    @endif
+                                                </a>
                                             </li>
-                                        @endforeach
+                                        @else                                       
+                                            <li><a class="dropdown-item"
+                                                    href="{{ url($url . '/' . $subMenusurl) ?? '' }}">
+                                                    @if (Session::get('Lang') == 'hi')
+                                                        {{ $subMenus->name_hi ?? '' }}
+                                                    @else
+                                                        {{ $subMenus->name_en ?? '' }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                @endforeach
                                     @else
                                         <h5>No menu available.</h5>
                                     @endif
@@ -136,11 +220,11 @@
                     <h5>No menu available.</h5>
                 @endif
 
-                @if( isset($toogleMenu) &&  count($toogleMenu) > 0 )
-                <button class="btn side-mn-icn" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="fa fa-bars fa-bars-m" aria-hidden="true"></i>
-                </button>
+                @if (isset($toogleMenu) && count($toogleMenu) > 0)
+                    <button class="btn side-mn-icn" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <i class="fa fa-bars fa-bars-m" aria-hidden="true"></i>
+                    </button>
                 @endif
             </ul>
         </div>
