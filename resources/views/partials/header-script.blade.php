@@ -12,7 +12,8 @@
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/style.css') }}" id="theme-style">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="theme-style">
+<link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}" id="theme-style">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.dataTables.min.css') }}">
 <!-- DataTables Buttons CSS -->

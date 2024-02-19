@@ -1,3 +1,4 @@
+
 $('#heroSlider').owlCarousel({
     loop:true,
     nav:true,
@@ -506,3 +507,5 @@ function setlang(value) {
    }
  });
 }
+
+
