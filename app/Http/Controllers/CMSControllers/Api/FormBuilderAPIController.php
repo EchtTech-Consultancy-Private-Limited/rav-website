@@ -37,6 +37,9 @@ class FormBuilderAPIController extends Controller
         }
     }
 
+    public function formMappingIndex(){
+            
+    }
     /**
      * Show the form for creating a new resource.
      *

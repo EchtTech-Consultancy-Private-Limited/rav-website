@@ -161,7 +161,10 @@ var KTDatatablesBasicPaginations = function() {
 												},
 						};
 						if (typeof file_path[data] === 'undefined') {
-							return '<button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"><i class="ki-outline ki-fasten fs-5 m-0"></i></button>';
+							return '<div class="ms-2" data-kt-filemanger-table="copy_link">\
+							<button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">\
+							<i class="ki-outline ki-fasten fs-5 m-0"></i>\
+							</button></div>';
 						}
 						return '<a href="'+ file_path[data].url +'" class="' + file_path[data].classApprove + '" data-attr="' + file_path[data].btncustomtext + '"><span style="width: 250px;">\
 									<div class="d-flex align-items-center">\
@@ -276,6 +279,55 @@ var KTDatatablesBasicPaginations = function() {
 						}
 					});
 				});
+
+				$(".file-path-copy").click(function (event) {
+					event.preventDefault();
+					var deleteUrl = $(this).attr('href');
+					var rowId = $(this).data('rowid');
+					
+					swal.fire({
+						title: 'Are you sure?',
+						text: "You won't be able to revert this!",
+						type: 'success',
+						showCancelButton: true,
+						confirmButtonText: 'Yes, delete it!'
+					}).then(function (result) {
+						if (result.value) {
+							axios.delete(deleteUrl)
+							.then(function (response) {
+								// remove record row from DOM
+								tableObject
+									.row(rowId)
+									.remove()
+									.draw();
+								toastr.success(
+									"Record has been deleted!", 
+									"deleted!", 
+									{timeOut: 0,showProgressbar: true, extendedTimeOut: 0,allow_dismiss: false, closeButton: true, closeDuration: 0}
+								 );
+								 setTimeout(function() {
+									if (history.scrollRestoration) {
+									   history.scrollRestoration = 'manual';
+									}
+									location.href = 'maunalfileupload-list'; // reload page
+								 }, 1500);
+
+							})
+							.catch(function (error) {
+								var errorMsg = 'Could not delete record. Try later.';
+								
+								if (error.response.status >= 400 && error.response.status <= 499)
+									errorMsg = error.response.data.message;
+
+								swal.fire(
+									'Error!',
+									errorMsg,
+									'error'
+								)
+							});     
+						}
+					});
+				});
             }
 		});
 	};
@@ -290,4 +342,27 @@ jQuery(document).ready(function() {
 	KTDatatablesBasicPaginations.init();
 	// errors in table will be logged in console
 	$.fn.dataTable.ext.errMode = 'throw'; 
+});
+document.getElementById('copyButton').addEventListener('click', function() {
+    // Get the image path
+    var imagePath = '/path/to/your/image.jpg';
+
+    // Create a temporary input element
+    var inputElement = document.createElement('input');
+    inputElement.setAttribute('value', imagePath);
+
+    // Append the input element to the document
+    document.body.appendChild(inputElement);
+
+    // Select the input element's content
+    inputElement.select();
+
+    // Copy the selected content to the clipboard
+    document.execCommand('copy');
+
+    // Remove the temporary input element
+    document.body.removeChild(inputElement);
+
+    // Display a message (optional)
+    alert('Image path copied to clipboard: ' + imagePath);
 });
