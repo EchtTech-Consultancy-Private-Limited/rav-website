@@ -49,6 +49,7 @@ use App\Http\Controllers\CMSControllers\ManualFileUploadController;
 //     return view('welcome');
 // });
 
+Route::get('/captcha', [LoginController::class, 'generateCaptcha'])->name('captcha');
 Route::get('dev/login', [LoginController::class, 'showLoginForm'])->name('dev/login');
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login-dev', [LoginController::class, 'authenticateDev'])->name('authenticate-dev');
@@ -232,10 +233,16 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/maunalfileupload-list', [ManualFileUploadController::class, 'index'])->name('mfu.list');
     });
 
+    Route::prefix('formmappingmenu')->group(function(){
+        Route::get('/formmappingmenu-create', [FormBuilderController::class, 'create'])->name('formmappingmenu.create');
+        Route::get('/formmappingmenu-edit', [FormBuilderController::class, 'edit'])->name('formmappingmenu.edit');
+        Route::get('/formmappingmenu-list', [FormBuilderController::class, 'formMappingIndex'])->name('formmappingmenu.list');
+    });
+
 
 
 });
-    
+
 require __DIR__ .'/api_route.php';
 
 
