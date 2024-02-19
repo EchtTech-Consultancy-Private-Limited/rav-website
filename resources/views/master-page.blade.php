@@ -98,6 +98,251 @@
                                 </ul>
                             @endif
 
+
+                            <!-- side menu start  -->
+                            <div class="main-sidebar" id="main-sidebar">
+                        <ul>
+                            <li class="accordion accordion-flush position-relative sl-accordion menu-active" id="sidebarDropdown_0">
+                                <div class="accordion-item">
+                                    <div class="list-start" id="flush-headingOne_0">
+                                        <a
+                                            class="nav-link collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne_0"
+                                            aria-expanded="false"
+                                            aria-controls="flush-collapseOne"
+                                            tabindex="0"
+                                        >
+                                            Pulping &amp;&nbsp;Bleaching
+                                        </a>
+                                    </div>
+                                    <div
+                                        id="flush-collapseOne_0"
+                                        class="accordion-collapse collapse show"
+                                        aria-labelledby="flush-headingOne_0"
+                                        data-bs-parent="#sidebarDropdown_0"
+                                    >
+                                        <div class="accordion-body p-0">
+                                            <ul class="p-0 m-0 mt-3">
+                                                <li class=" qm-active ">
+                                                    <a href="https://dev.cppri.staggings.in/division/pulping-&amp;-bleaching/objectives-of-pulping-&amp;-bleaching" class="" tabindex="0">
+                                                        Objectives of Pulping &amp; Bleaching
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/pulping-&amp;-bleaching/services-offered-in-pulping-&amp;-bleaching" class="" tabindex="0">
+                                                        Services Offered in Pulping &amp; Bleaching
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/pulping-&amp;-bleaching/facilities-available-in-pulping-and-bleaching" class="" tabindex="0">
+                                                        Facilities Available in Pulping &amp; Bleaching
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/pulping-&amp;-bleaching/achievements-of-pulping-&amp;-bleaching" class="" tabindex="0">
+                                                        Achievements of Pulping &amp; Bleaching
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_1">
+                                <div class="accordion-item">
+                                    <div class="list-start" id="flush-headingOne_1">
+                                        <a
+                                            class="nav-link collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne_1"
+                                            aria-expanded="false"
+                                            aria-controls="flush-collapseOne"
+                                            tabindex="0"
+                                        >
+                                            Paper Testing
+                                        </a>
+                                    </div>
+                                    <div
+                                        id="flush-collapseOne_1"
+                                        class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne_1"
+                                        data-bs-parent="#sidebarDropdown_1"
+                                    >
+                                        <div class="accordion-body p-0">
+                                            <ul class="p-0 m-0 mt-3">
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/introduction-of-paper-testing" class="" tabindex="0">
+                                                        Introduction of Paper Testing
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/objectives-of-paper-testing" class="" tabindex="0">
+                                                        Objectives of Paper Testing
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/services-offered-in-paper-testing" class="" tabindex="0">
+                                                        Services Offered in Paper Testing
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/facilities-available-in-paper-testing" class="" tabindex="0">
+                                                        Facilities Available in Paper Testing
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/achievements-of-paper-testing" class="" tabindex="0">
+                                                        Achievements of Paper Testing
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_2">
+                                <div class="accordion-item">
+                                    <div class="list-start" id="flush-headingOne_2">
+                                        <a
+                                            class="nav-link collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne_2"
+                                            aria-expanded="false"
+                                            aria-controls="flush-collapseOne"
+                                            tabindex="0"
+                                        >
+                                            Environmental Management
+                                        </a>
+                                    </div>
+                                    <div
+                                        id="flush-collapseOne_2"
+                                        class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne_2"
+                                        data-bs-parent="#sidebarDropdown_2"
+                                    >
+                                        <div class="accordion-body p-0">
+                                            <ul class="p-0 m-0 mt-3">
+                                                <li class="accordion accordion-flush position-relative fl-accordion" id="fl_sidebarDropdown_0">
+                                                    <div class="accordion-item">
+                                                        <div class="list-start" id="fl_flush_headingOne_0">
+                                                            <a
+                                                                class="nav-link collapsed"
+                                                                type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#fl_flush_collapseOne_0"
+                                                                aria-expanded="false"
+                                                                aria-controls="fl_flush_collapseOne_0"
+                                                                tabindex="0"
+                                                            >
+                                                                Air Pollution
+                                                            </a>
+                                                        </div>
+                                                        <div
+                                                            id="fl_flush_collapseOne_0"
+                                                            class="accordion-collapse collapse"
+                                                            aria-labelledby="fl_flush_headingOne_0"
+                                                            data-bs-parent="#fl_sidebarDropdown_0"
+                                                        >
+                                                            <div class="accordion-body p-0">
+                                                                <ul class="p-0 m-0 mt-3">
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/air-pollution/objectives-of-air-pollution" tabindex="0">
+                                                                            Objectives of Air Pollution
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/air-pollution/services-offered-in-air-polluition" tabindex="0">
+                                                                            Services Offered in Air Pollution
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/air-pollution/facilities-available-in-air-pollution" tabindex="0">
+                                                                            Facilities Available in Air Pollution
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/air-pollution/achievements-of-air-pollution" tabindex="0">
+                                                                            Achievements of Air Pollution
+                                                                        </a>
+                                                                    </li>
+                                                                    <!-- nested layer -->
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion accordion-flush position-relative fl-accordion" id="fl_sidebarDropdown_1">
+                                                    <div class="accordion-item">
+                                                        <div class="list-start" id="fl_flush_headingOne_1">
+                                                            <a
+                                                                class="nav-link collapsed"
+                                                                type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#fl_flush_collapseOne_1"
+                                                                aria-expanded="false"
+                                                                aria-controls="fl_flush_collapseOne_1"
+                                                                tabindex="0"
+                                                            >
+                                                                Effluent Treatment and Solid Waste Management
+                                                            </a>
+                                                        </div>
+                                                        <div
+                                                            id="fl_flush_collapseOne_1"
+                                                            class="accordion-collapse collapse"
+                                                            aria-labelledby="fl_flush_headingOne_1"
+                                                            data-bs-parent="#fl_sidebarDropdown_1"
+                                                        >
+                                                            <div class="accordion-body p-0">
+                                                                <ul class="p-0 m-0 mt-3">
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/effluent-treatment-and-solid-waste-management/objectives-of-effluent-treatment" tabindex="0">
+                                                                            Objectives of Effluent Treatment
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/effluent-treatment-and-solid-waste-management/services-offered-in-effluent-treatment" tabindex="0">
+                                                                            Services Offered in Effluent Treatment
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/effluent-treatment-and-solid-waste-management/facilities-available-in-effluent-treatment" tabindex="0">
+                                                                            Facilities Available Effluent Treatment
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="">
+                                                                        <a href="https://dev.cppri.staggings.in/division/environmental-management/effluent-treatment-and-solid-waste-management/achievements-of-effluent-treatment" tabindex="0">
+                                                                            Achievements of Effluent Treatment
+                                                                        </a>
+                                                                    </li>
+                                                                    <!-- nested layer -->
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="">
+                                <div class="list-start">
+                                    <a href="https://dev.cppri.staggings.in/division/industry-coordination-&amp;-international-cooperation" class="" tabindex="0">
+                                        Industry Coordination &amp;  International Cooperation
+                                    </a>
+                                </div>
+                            </li>
+                           
+                          
+                        </ul>
+                    </div>
+                            <!-- side menu end -->
+
+
                             @if (isset($quickLink) && count($quickLink) > 0)
                                 <ul class="nav-qm nav-tabs mt-3" id="newsTab" role="tablist">
                                     <h3 class=" quick-menu-head-stl text-center mt-1">
