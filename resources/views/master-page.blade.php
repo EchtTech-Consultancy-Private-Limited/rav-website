@@ -64,7 +64,7 @@
                             <div class="main-sidebar" id="main-sidebar">
                             {{-- @dd($tree); --}}
                             @if (isset($parentMenut) && $parentMenut != '')
-                                <ul class="nav nav-tabs" id="newsTab" role="tablist">
+                                <ul class="" id="newsTab" role="tablist">
                                     @if ($parentMenut != '' && isset($parentMenut))
                                         <h3 class="heading-txt-styl">
                                             @if (Session::get('locale') == 'hi')
@@ -189,9 +189,9 @@
                                                     
                                                
                                             @else
-                                                <li class="nav-item" role="presentation">
+                                                <li class="nav-item @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif" role="presentation">
                                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"
-                                                        class="nav-link @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif">
+                                                        class="nav-link ">
                                                         @if (Session::get('locale') == 'hi')
                                                             {{ $trees->name_hi ?? '' }}
                                                         @else
