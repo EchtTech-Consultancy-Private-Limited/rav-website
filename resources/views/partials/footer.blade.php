@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-4">
         <div class="footer-logo">
-            <img src="assets/images/rav-logo-white.png" alt="logo" class="img-fluid">
+            <img src="{{ asset('assets/images/rav-logo-white.png') }}" alt="logo" class="img-fluid">
         </div>
     </div>
     <!-- <div class="col-md-8 d-flex align-items-center justify-content-end">

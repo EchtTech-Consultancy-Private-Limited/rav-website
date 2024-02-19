@@ -3489,4 +3489,79 @@ button.btn.side-mn-icn:hover {
 }
 .policy li a {
   color: #fff;
+}
+
+/* search result css  */
+.search-page nav[role=navigation] svg {
+  width: 25px;
+  height: 25px;
+}
+
+.search-page nav[role=navigation] div:nth-child(1) {
+  visibility: hidden;
+}
+
+.search-page nav[role=navigation] div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 20px; */
+}
+
+.search-page nav[role=navigation] div:nth-child(2) div {
+  display: inline-block;
+  margin: 0;
+  visibility: visible;
+}
+
+.search-page nav[role=navigation] div:nth-child(2) div p {
+  background: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 5px 20px;
+  margin: 0;
+}
+
+.search-page nav[role=navigation] div:nth-child(2) div span[aria-current=page] span {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 8px !important;
+  margin: 0 2px;
+  background: #1a4f91 !important;
+  color: #fff !important;
+}
+
+.search-page nav[role=navigation] div:nth-child(2) div span a, .search-page nav[role=navigation] div:nth-child(2) div span .text-sm {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 8px !important;
+  margin: 0 2px;
+}
+
+.search-box input {
+  border-radius: 5px 0px 0px 5px;
+  height: 40px;
+  padding-left: 14px;
+  margin: 6px 0px;
+  border: 1px solid #ccc;
+}
+
+.search-box button {
+  border-radius: 0px 5px 5px 0px;
+  padding: 9px 21px !important;
+  font-size: 14px;
+  border-color: #ddd;
+  border: 1px solid #ddd;
+  margin-left: -5px;
+  background-color: #FF5200;
+  color: #fff;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.site-header .navbar-nav .nav-item.dropdown.menu-subdropdown .dropdown-menu {
+  left: 100%;
+  top: 0;
 }/*# sourceMappingURL=style.css.map */

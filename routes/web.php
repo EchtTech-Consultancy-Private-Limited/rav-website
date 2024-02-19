@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 
 
 /*
@@ -40,9 +41,10 @@ Route::get('/set-language',[HomeController::class,'SetLang']);
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-us');
 Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');
-Route::get('/sitemap', [HomeController::class, 'siteMap'])->name('site-map');
+Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
+Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
-Route::get('/{slug}', [HomeController::class, 'getContentAllPages']);
+Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
 
 
 //default behaviour, always keep as last entry
