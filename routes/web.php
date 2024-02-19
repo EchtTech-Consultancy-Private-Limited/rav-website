@@ -46,6 +46,7 @@ Route::get('/search', [SearchController::class, 'getSearchData'])->name('search'
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
 Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
 
+
 //default behaviour, always keep as last entry
 Route::any('{url}', function(){
     return redirect('login');

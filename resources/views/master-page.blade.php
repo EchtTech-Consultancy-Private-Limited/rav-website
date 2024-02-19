@@ -61,7 +61,9 @@
                     <div class="row">
                         {{-- side menu start --}}
                         <div class="col-lg-3 col-md-3">
+
                             <div class="main-sidebar" id="main-sidebar">
+
                             {{-- @dd($tree); --}}
                             @if (isset($parentMenut) && $parentMenut != '')
                                 <ul class="" id="newsTab" role="tablist">
@@ -82,6 +84,7 @@
                                                 $treesUrl = $trees->url ?? '';
                                             @endphp
                                             @if (count($trees->children) > 0)
+
                                                
                                                  
                                                         <li class="accordion accordion-flush position-relative sl-accordion"
@@ -188,6 +191,9 @@
                                                         </li>
                                                     
                                                
+
+                                                <p>Child Menu Design Pendind</p>
+
                                             @else
                                                 <li class="nav-item @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif" role="presentation">
                                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"

@@ -1,8 +1,4 @@
-<title>
-@section('title')
-    {{ config('app.name') }}
-@show
-</title>
+<title>@section('title'){{ config('app.name') }}@show</title>
 <meta http-equiv="cache-control" content="private, max-age=0, no-cache">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,9 +18,4 @@
 <link href="{{ asset('assets-cms/cms_css/summernote-bs4.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets-cms/cms_css/cms-css.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets-cms/cms_css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-
-<script>
-    if (window.top != window.self) {
-        window.top.location.replace(window.self.location.href);
-    }
-</script>
+<script>if (window.top != window.self) { window.top.location.replace(window.self.location.href);}</script>
