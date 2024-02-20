@@ -1,13 +1,13 @@
 @extends('cms-view.layouts.main')
 @section('title')
     @parent
-    | {{__('Role')}}
+    | {{__('Permission')}}
 @endsection
 @section('pageTitle')
- {{ __('Role') }}
+ {{ __('Permission') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Role Create') }}
+ {{ __('Permission Create') }}
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/role-add.js') }}"></script>

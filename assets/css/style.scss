@@ -1116,7 +1116,7 @@ a {
   border: none;
   outline: none;
   box-shadow: none;
-  padding: 7px 21px;
+  // padding: 7px 21px;
 
 }
 
@@ -1126,6 +1126,14 @@ a {
   color: #000000;
 }
 
+.common-tab .nav-item.active {
+  background-color: #FF5200 !important;
+  color: #fff !important;
+  border: none;
+  a{
+    color: #fff;
+  }
+}
 .common-tab .nav-link.active {
   background-color: #FF5200 !important;
   color: #fff !important;
@@ -2506,6 +2514,7 @@ p.desc {
   padding: 5px;
   display: block;
   transition: 0.2s;
+  background-color: #fff;
 }
 .nav-item-qm
 {
@@ -2513,6 +2522,7 @@ p.desc {
   border-radius: 0;
   margin: 4px 0px;
   border-bottom: 1px solid #ddd;
+  padding: 14px 7px;
   &:last-child{
     border: 0;
   }
@@ -2524,7 +2534,7 @@ p.desc {
 }
 .nav-item-qm i
 {
-  margin-left: 16px;
+  margin-right: 10px;
   color:#630f43;
   font-size: 12px;
 }

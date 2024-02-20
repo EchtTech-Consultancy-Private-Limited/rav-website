@@ -82,6 +82,7 @@
                                                 $treesUrl = $trees->url ?? '';
                                             @endphp
                                             @if (count($trees->children) > 0)
+
                                                
                                                  
                                                         <li class="accordion accordion-flush position-relative sl-accordion"
@@ -188,10 +189,13 @@
                                                         </li>
                                                     
                                                
+
+                                                <p>Child Menu Design Pendind</p>
+
                                             @else
-                                                <li class="nav-item" role="presentation">
+                                                <li class="nav-item @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif" role="presentation">
                                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"
-                                                        class="nav-link @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif">
+                                                        class="nav-link ">
                                                         @if (Session::get('locale') == 'hi')
                                                             {{ $trees->name_hi ?? '' }}
                                                         @else

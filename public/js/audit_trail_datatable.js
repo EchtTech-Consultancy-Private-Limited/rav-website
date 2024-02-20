@@ -188,7 +188,7 @@ var KTDatatablesBasicPaginations = function() {
 		},
 	};
 }();
-jQuery(document).ready(function() {
+$(document).ready(function() {
 	KTDatatablesBasicPaginations.init();
 	// errors in table will be logged in console
 	$.fn.dataTable.ext.errMode = 'throw'; 
