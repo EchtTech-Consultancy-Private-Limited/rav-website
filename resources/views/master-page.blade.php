@@ -64,7 +64,7 @@
                             {{-- @dd($tree); --}}
                             @if (isset($parentMenut) && $parentMenut != '')
                             <div class="main-sidebar" id="main-sidebar">
-                                <ul class="nav nav-tabs" id="newsTab" role="tablist">
+                                <ul class="" id="newsTab" role="tablist">
                                     @if ($parentMenut != '' && isset($parentMenut))
                                         <h3 class="heading-txt-styl">
                                             @if (Session::get('locale') == 'hi')
@@ -187,10 +187,6 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                    
-                                               
-
-                                                <p>Child Menu Design Pendind</p>
 
                                             @else
                                                 <li class="nav-item @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif" role="presentation">
