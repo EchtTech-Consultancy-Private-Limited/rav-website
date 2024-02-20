@@ -53,15 +53,56 @@ class CommonComposer
             $social_links = DB::table('social_links')->where('soft_delete', 0)->first();
             $toogleMenu = DB::table('website_menu_management')->where('menu_place','2')->where('soft_delete','0')->orderby('sort_order','Asc')->get();   
             $website_core_settings = DB::table('website_core_settings')->where('soft_delete', 0)->first();
-           // dd($toogleMenu);
+            $events_management = DB::table('events_management')->where('status', 3)->where('soft_delete', 0)->latest('created_at')->get();
 
+            $dynamic_content_page_metatag = DB::table('dynamic_content_page_metatag')
+                    ->where('soft_delete', 0)
+                    ->where('status', 3)
+                    ->get();
+            $organizedData = [];
+            if (count($dynamic_content_page_metatag) > 0) {
+                foreach ($dynamic_content_page_metatag as $dynamic_content_page_metatags) {
+                    $dynamic_content_page_pdf = DB::table('dynamic_content_page_pdf')
+                        ->wheredcpm_id($dynamic_content_page_metatags->uid)
+                        ->take(10)
+                        ->where('soft_delete', 0)
+                        ->get();
+
+                    $dynamic_page_banner = DB::table('dynamic_page_banner')
+                        ->where('soft_delete', 0)
+                        ->wheredcpm_id($dynamic_content_page_metatags->uid)
+                        ->first();
+
+                    $dynamic_content_page_gallery = DB::table('dynamic_content_page_gallery')
+                        ->wheredcpm_id($dynamic_content_page_metatags->uid)
+                        ->where('soft_delete', 0)
+                        ->get();
+
+                    $dynamic_page_content = DB::table('dynamic_page_content')
+                        ->wheredcpm_id($dynamic_content_page_metatags->uid)
+                        ->where('soft_delete', 0)
+                        ->first();
+
+                    $organizedData[] = [
+                        'metatag' => $dynamic_content_page_metatags,
+                        'content' => $dynamic_page_content,
+                        'pdf' => $dynamic_content_page_pdf,
+                        'gallery' => $dynamic_content_page_gallery,
+                        'banner' => $dynamic_page_banner,
+                    ];
+                }
+                
+            }
+            // dd($organizedData);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 
              'banner' => $banner, 'news_management' => $news_management, 
              'tender_management' => $tender_management,'social_links'=>$social_links,
              'alertMessage' =>$this->checkLanguage(),
              'website_core_settings'=>$website_core_settings,
-             'toogleMenu'=>$toogleMenu
+             'toogleMenu'=>$toogleMenu,
+             'organizedDatas' => $organizedData,
+             'events_managements' => $events_management
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());

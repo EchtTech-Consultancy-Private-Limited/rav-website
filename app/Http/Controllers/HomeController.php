@@ -309,7 +309,7 @@ class HomeController extends Controller
 
                         $dynamic_content_page_pdf = DB::table('dynamic_content_page_pdf')
                             ->wheredcpm_id($dynamic_content_page_metatags->uid)
-                            ->where('status', 3)
+                            // ->where('status', 3)
                             ->orderBy('created_at', 'asc')
                             ->where('soft_delete', 0)
                             ->get();
