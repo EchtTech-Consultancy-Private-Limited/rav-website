@@ -147,21 +147,26 @@
                             {{ __('messages.About_Us') }}
                         @endif
 
-                    </h2>
-                    <p class="desc-grey text-justify">
-                        <span class="desc-grey-bold"> Rashtriya Ayurveda Vidyapeeth</span>
-                        was established on 11th
-                        Feb., 1988 with one of the objectives of promoting knowledge of Ayurveda and started functioning
-                        since 1991. The Vidyapeeth initiated the course of Member of RAV with an effort to revive the
-                        traditional method of Gurukula system of informal education of India i.e., Guru Shishya
-                        Parampara to Ayurvedic graduates after formal education. As people are aware, the present
-                        classical texts of Ayurveda, Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya etc. are
-                        believed to be the outcome of such informal education. This kind of study is lacking at present
-                        in the modern educational institutions where the courses are bound by fixed syllabus, duration
-                        of time and many subjects to learn.
-                    </p>
+                    </h2>                    
+                    @if($organizedDatas)
+                        <p class="desc-grey text-justify">
+                        @foreach($organizedDatas as $organizedData)
+                            @if($organizedData['metatag']->menu_slug == 'about-us')
+                                @if($organizedData['content'])
+                                    @if (Session::get('locale') == 'hi')
+                                        {!! $organizedData['content']->page_content_hi !!}
+                                    @else
+                                        {!! $organizedData['content']->page_content_en !!}
+                                    @endif
+                                @else
+                                    <span>Content not available ..</span>
+                                @endif
+                            @endif                            
+                        @endforeach
+                        </p>                   
+                    @endif
                     <div class="btn-wrap d-flex justify-content-center align-items-center">
-                        <a href="javascript:void();" class="btn btn-org-bdr">
+                        <a href="{{ url('about-us') }}" class="btn btn-org-bdr">
                             @if (Session::get('locale') == 'hi')
                              {{ __('messages.Read_More') }}
                             @else
@@ -360,7 +365,23 @@
                                     aria-labelledby="courses-tab" tabindex="0">
                                     <div class="row">
                                         <div class="news-content-list">
-                                            <ul></ul>
+                                            <ul>
+                                                @if($organizedDatas)
+                                                    @foreach($organizedDatas as $organizedData)
+                                                        @if($organizedData['metatag']->menu_slug == 'admission-to-courses')
+                                                            @if($organizedData['content'])
+                                                                @if (Session::get('locale') == 'hi')
+                                                                    {!! $organizedData['content']->page_content_hi !!}
+                                                                @else
+                                                                    {!! $organizedData['content']->page_content_en !!}
+                                                                @endif
+                                                            @else
+                                                                <span>Content not available ..</span>
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -369,170 +390,31 @@
                                     <div class="row">
                                         <div class="news-content-list scrollbar-style">
                                             <div class="new-content-list-content">
-                                                <p class="desc">
-                                                    CME (Continuing Medical Education) scheme is a central sector scheme
-                                                    implemented in 11th Plan to give training to AYUSH personnel for
-                                                    upgrading their professional competence & skills and their capacity
-                                                    building. The Scheme is run by Ministry of AYUSH, Government of
-                                                    India.
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    Proposals for CME program under capacity building and CME component
-                                                    of Ayurgyan scheme will be accepted through NGO portal i.e
-                                                    <a href="http://www.ngo.ayush.gov.in/" target="_blank">
-                                                        www.ngo.ayush.gov.in(link is external)
-                                                    </a>
-                                                    <span class="text-primary">
-                                                        <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                                                    </span>
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="http://ravdelhi.nic.in/sites/default/files/AYURGYAN-Scheme-CME-Guidelines-07.4.2021.pdf "
-                                                        target="_blank">
-                                                        Revised Guidelines of CME (For fresh proposals)
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    ( 978.98 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="http://ravdelhi.nic.in/sites/default/files/Hindi-AYURGYAN-Scheme-CME.pdf"
-                                                        target="_blank">
-                                                        Ayurgyan Scheme CME in Hindi
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (761.09 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href=" http://ravdelhi.nic.in/sites/default/files/AYUSH%20CME%20GUIDELINES.pdf"
-                                                        target="_blank">
-                                                        CME Scheme Guidelines
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (575.93 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href=" http://ravdelhi.nic.in/sites/default/files/Upcoming%20CME%20program%202023-24%20%281%29%20%281%29.pdf"
-                                                        target="_blank">
-                                                        Upcoming CME Programmes 2023-24
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (84.84 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href=" http://www.ravdelhi.nic.in/en/circulars-orders-cme"
-                                                        target="_blank">
-                                                        Circulars/ Orders
-                                                    </a>
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="Modules of Ayurveda " target="_blank">
-                                                        Modules of Ayurveda
-                                                    </a>
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="http://www.ravdelhi.nic.in/en/old-modules-ayurveda "
-                                                        target="_blank">
-                                                        Modules
-                                                    </a>
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="{{ asset('assets/pdf/home-page/cme-scheme/AYURGYAN-Scheme-CME-Guidelines-07.4.2021.pdf') }}"
-                                                        target="_blank">
-                                                        Revised Feedback Form of CME
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (166.02 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="{{ asset('assets/pdf/home-page/cme-scheme/Instruction%20for%20Air%20travel.pdf') }}"
-                                                        target="_blank">
-                                                        Instructions for Air Travel
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (35.58 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="{{ asset('assets/pdf/home-page/cme-scheme/CME%20Calendar%20for%202023-24%20%281%29.pdf') }} "
-                                                        target="_blank">
-                                                        Calender of the programme of CME for the year 2023-24
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (138.59 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="{{ asset('assets/pdf/home-page/cme-schem/CME%20Calendar%202022-23_%20.pdf') }}"
-                                                        target="_blank">
-                                                        Calender of the programme of CME for the year 2022-23
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (476.93 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="./{{ asset('assets/pdf/home-page/cme-schem/CME%20Calendar%20for%202021-22_0.pdf') }}"
-                                                        target="_blank">
-                                                        Calender of the programme of CME for the year 2021-22
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (483.65 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href="./{{ asset('assets/pdf/home-page/cme-schem/CME%20Calender%202%20%202020-21.pdf') }} "
-                                                        target="_blank">
-                                                        Calender of the programme of CME for the year 2020-21
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (12.4 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href=" ./{{ asset('assets/pdf/home-page/cme-schem/Calndar%20for%20CME%202019-20-converted.pdf') }}"
-                                                        target="_blank">
-                                                        Calender of the programme of CME for the year 2019-20
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (87.37 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href=" ./{{ asset('assets/pdf/home-page/cme-schem/Calendar%20for%20CME%20%202018-19_2.pdf') }}"
-                                                        target="_blank">
-                                                        Calender of the programme of CME for the year 2018-19
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (68.63 KB)
-                                                </p>
-                                                <p class="right-angle-arrow">
-                                                    <a href=" ./{{ asset('assets/pdf/home-page/cme-schem/CME%20calender%20%2017-18.pdf') }}"
-                                                        target="_blank">
-                                                        Calendar of the programme of CME for the year 2017-18
-                                                        <span class="text-danger">
-                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                    (219.07 KB)
-                                                </p>
+                                                @foreach($organizedDatas as $organizedData)
+                                                    @if($organizedData['metatag']->menu_slug == 'cme-scheme')
+                                                        @if($organizedData['content'])
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {!! $organizedData['content']->page_content_hi !!}
+                                                            @else
+                                                                {!! $organizedData['content']->page_content_en !!}
+                                                            @endif
+                                                        @else
+                                                            <span>Content not available ..</span>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                                @if($organizedData['metatag']->menu_slug == 'cme-scheme')
+                                                    @if($organizedData['pdf'])
+                                                        @foreach($organizedData['pdf'] as $pdf)
+                                                        <p class="right-angle-arrow">
+                                                            <a href="{{ asset('resources/uploads/PageContentPdf/' . $pdf->public_url) }}" target="_blank">{{ $pdf->pdf_title }}</a>
+                                                            <span class="text-primary">
+                                                                <i class="fa fa-file-pdf-o" aria-hidden="true"> {{ $pdf->pdfimage_size }}</i>
+                                                            </span>
+                                                        </p>
+                                                        @endforeach
+                                                    @endif
+                                                @endif                                             
                                             </div>
                                         </div>
                                     </div>
@@ -548,12 +430,16 @@
                         </h2>
                         <div class="event-slider">
                             <div class="owl-carousel owl-theme" id="eventSlider">
+                                @if(isset($events_managements) && count($events_managements) > 0)
+                                @foreach($events_managements as $events_management)
                                 <div class="item">
                                     <div class="event-list">
-                                        <p class="title-white">
-                                            Two days Interactive Training Programme on Agni Karma & Rakta Mokshana with
-                                            organization of free health camp
-                                        </p>
+                                        @if (Session::get('locale') == 'hi')
+                                            <p class="title-white">{!! $events_management->description_hi  !!}</p>
+                                        @else
+                                        <p class="title-white">{!! $events_management->description_en  !!}</p>
+                                        @endif
+                                        
                                         <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
@@ -561,10 +447,7 @@
                                             <div class="date-wrap">
                                                 <img src="{{ asset('assets/images/calendar.svg') }}" alt="calendar"
                                                     class="img-fluid me-3">
-                                                <h3 class="date">
-                                                    8-9
-                                                    <span>June 2023</span>
-                                                </h3>
+                                                <h5>{{ date('d-m-Y',strtotime($events_management->start_date))  }}</h5>
                                             </div>
                                         </div>
                                         <div class="event-list-content my-2">
@@ -581,183 +464,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="event-list">
-                                        <p class="title-white">
-                                            5 workshops of one day training of AYUSH doctors on Patient Trauma Care
-                                            (PTC) (Total Programme -5)
-                                        </p>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Event Date</span>
-                                            </div>
-                                            <div class="date-wrap">
-                                                <img src="{{ asset('assets/images/calendar.svg') }}" alt="calendar"
-                                                    class="img-fluid me-3">
-                                                <h3 class="date">
-                                                    26
-                                                    <span>June, 2023</span>
-                                                </h3>
-                                                <h3 class="date">
-                                                    1
-                                                    <span>July, 2023</span>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Venue</span>
-                                            </div>
-                                            <div class="address-wrap">
-                                                <img src="{{ asset('assets/images/location.svg') }}" alt="location"
-                                                    class="img-fluid me-3">
-                                                <h3 class="address">
-                                                    AIAC Hall, Punjabi Bagh, New Delhi
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="event-list">
-                                        <p class="title-white">
-                                            6 Days Complete Residential Samhita based Training programme for
-                                            undergraduate/postgraduate (Total Programme- 3)
-                                        </p>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Event Date</span>
-                                            </div>
-                                            <div class="date-wrap">
-                                                <img src="{{ asset('assets/images/calendar.svg') }}" alt="calendar"
-                                                    class="img-fluid me-3">
-                                                <h3 class="date">
-                                                    <span>July, 2023</span>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Venue</span>
-                                            </div>
-                                            <div class="address-wrap">
-                                                <img src="{{ asset('assets/images/location.svg') }}" alt="location"
-                                                    class="img-fluid me-3">
-                                                <h3 class="address">
-                                                    Deendayal Research Institute, Arogyadham, Chitrakoot, Satna, Madhya
-                                                    Pradesh -485331
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="event-list">
-                                        <p class="title-white">
-                                            5 Days Hands on Training Programme on “Ready to eat (RTE), Ayurveda Bakery
-                                            Products, Food fortification based on Ayurveda”
-                                            (Total Programme- 3)
-                                        </p>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Event Date</span>
-                                            </div>
-                                            <div class="date-wrap">
-                                                <img src="{{ asset('assets/images/calendar.svg') }}" alt="calendar"
-                                                    class="img-fluid me-3">
-                                                <h3 class="date">
-                                                    <span>September, 2023/</span>
-                                                    <span>December , 2023/</span>
-                                                    <span>January , 2023/</span>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Venue</span>
-                                            </div>
-                                            <div class="address-wrap">
-                                                <img src="{{ asset('assets/images/location.svg') }}" alt="location"
-                                                    class="img-fluid me-3">
-                                                <h3 class="address">
-                                                    NIFTEM, Kundali, Sonipat
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="event-list">
-                                        <p class="title-white">
-                                            One Day Sensitization programme of Ayurvedic Training Accreditation
-                                            Programme(ATAB) (Total Programme- 4)
-                                        </p>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Event Date</span>
-                                            </div>
-                                            <div class="date-wrap">
-                                                <img src="{{ asset('assets/images/calendar.svg') }}" alt="calendar"
-                                                    class="img-fluid me-3">
-                                                <h3 class="date">
-                                                    <span>July, 2023/</span>
-                                                    <span>July, 2023</span>
-                                                    <span>November, 2023/</span>
-                                                    <span>November, 2023/</span>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Venue</span>
-                                            </div>
-                                            <div class="address-wrap">
-                                                <img src="{{ asset('assets/images/location.svg') }}" alt="location"
-                                                    class="img-fluid me-3">
-                                                <h3 class="address">
-                                                    New Delhi, Pune, Chitrakoot, Pune, Thrissur, Kerala
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="event-list">
-                                        <p class="title-white">
-                                            Two day Training Programme for Teachers of Kaya Chikitsa, Shalakya Tantra
-                                            and Asthi Marma
-                                            (Total Programme- 6)
-                                        </p>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Event Date</span>
-                                            </div>
-                                            <div class="date-wrap">
-                                                <img src="{{ asset('assets/images/calendar.svg') }}" alt="calendar"
-                                                    class="img-fluid me-3">
-                                                <h3 class="date">
-                                                    <span>July, 2023/</span>
-                                                    <span>August, 2023/</span>
-                                                    <span>September, 2023/</span>
-                                                    <span>December, 2023/</span>
-                                                    <span>February, 2023</span>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <div class="event-list-content my-2">
-                                            <div class="d-flex align-items-center">
-                                                <span class="tag">Venue</span>
-                                            </div>
-                                            <div class="address-wrap">
-                                                <img src="{{ asset('assets/images/location.svg') }}" alt="location"
-                                                    class="img-fluid me-3">
-                                                <h3 class="address">
-                                                    New Delhi, Pune, Chitrakoot, Pune, Thrissur, Kerala
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @else
+                                    <p>No events available..</p>
+                                @endif
                             </div>
                         </div>
                     </div>

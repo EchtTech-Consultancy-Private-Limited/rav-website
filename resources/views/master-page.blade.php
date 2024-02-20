@@ -60,12 +60,10 @@
                 <div class="news-tab common-tab side-tab1">
                     <div class="row">
                         {{-- side menu start --}}
-                        <div class="col-lg-3 col-md-3">
-
-                            <div class="main-sidebar" id="main-sidebar">
-
+                        <div class="col-lg-3 col-md-3">                            
                             {{-- @dd($tree); --}}
                             @if (isset($parentMenut) && $parentMenut != '')
+                            <div class="main-sidebar" id="main-sidebar">
                                 <ul class="nav nav-tabs" id="newsTab" role="tablist">
                                     @if ($parentMenut != '' && isset($parentMenut))
                                         <h3 class="heading-txt-styl">
@@ -195,9 +193,9 @@
                                                 <p>Child Menu Design Pendind</p>
 
                                             @else
-                                                <li class="nav-item" role="presentation">
+                                                <li class="nav-item @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif" role="presentation">
                                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"
-                                                        class="nav-link @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif">
+                                                        class="nav-link ">
                                                         @if (Session::get('locale') == 'hi')
                                                             {{ $trees->name_hi ?? '' }}
                                                         @else
@@ -209,8 +207,8 @@
                                         @endforeach
                                     @endif
                                 </ul>
-                            @endif
-                        </div>
+                            </div>
+                            @endif                    
 
 
                             @if (isset($quickLink) && count($quickLink) > 0)
