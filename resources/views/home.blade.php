@@ -320,6 +320,7 @@
                                     <div class="row">
                                         <div class="news-content-list">
                                             <ul>
+                                                
                                                 @if (isset($news_management) && count($news_management) > 0)
                                                     @foreach ($news_management as $news_managements)
 
@@ -327,6 +328,7 @@
                                                     $url = $news_managements->public_url ?? 'javascript:void(0)';
                                                     @endphp
                                                         <li>
+                                                            
                                                             <a
                                                             @if($news_managements->tab_type == 1)
                                                                 target="_blank"
@@ -337,11 +339,12 @@
                                                             @endif
                                                                 >
                                                                 <div class="date-wrap">
-                                                                    <h3 class="date">
+                                                                    <h3 class="ln_date">
                                                                         {{ date('d', strtotime($news_managements->start_date ?? now())) }}
                                                                     </h3>
                                                                     <span class="month">
-                                                                        {{ $news_managements->start_date ? date('M Y', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                        {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }} <br>
+                                                                        {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
                                                                     </span>
                                                                 </div>
                                                                 <p class="desc">
@@ -365,7 +368,7 @@
                                     aria-labelledby="courses-tab" tabindex="0">
                                     <div class="row">
                                         <div class="news-content-list">
-                                            <ul>
+                                           
                                                 @if($organizedDatas)
                                                     @foreach($organizedDatas as $organizedData)
                                                         @if($organizedData['metatag']->menu_slug == 'admission-to-courses')
@@ -381,15 +384,17 @@
                                                         @endif
                                                     @endforeach
                                                 @endif
-                                            </ul>
+                                            
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="cme-tab-pane" role="tabpanel" aria-labelledby="cme-tab"
                                     tabindex="0">
                                     <div class="row">
-                                        <div class="news-content-list scrollbar-style">
-                                            <div class="new-content-list-content">
+                                        <!-- removed classs news-content-list -->
+                                        <div class=" scrollbar-style">
+                                                                                    <!-- removed classs news-content-list -->
+                                            <div class="">
                                                 @foreach($organizedDatas as $organizedData)
                                                     @if($organizedData['metatag']->menu_slug == 'cme-scheme')
                                                         @if($organizedData['content'])
@@ -447,7 +452,7 @@
                                             <div class="date-wrap">
                                                 <img src="{{ asset('assets/images/calendar.svg') }}" alt="calendar"
                                                     class="img-fluid me-3">
-                                                <h5>{{ date('d-m-Y',strtotime($events_management->start_date))  }}</h5>
+                                                <h3 class= "ln_date">{{ date('d-m-Y',strtotime($events_management->start_date))  }}</h3>
                                             </div>
                                         </div>
                                         <div class="event-list-content my-2">
