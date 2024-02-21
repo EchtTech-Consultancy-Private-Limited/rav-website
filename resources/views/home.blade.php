@@ -189,6 +189,9 @@
                                 <b>Hon’ble Cabinet minister</b>
                                 of AYUSH, Government of India
                             </p>
+                            <p class="title-org">
+                                <a href="#">  Know More</a>
+                            </p>
                             </div>
 
                         </div>
@@ -215,11 +218,14 @@
                             <p class="desc">
                                 <b>Hon'ble Minister of State Ministry</b>
                                 of AYUSH & Ministry of
-                                <br>
+                                
                                 Women
-                                <br>
+                               
                                 and Child
                                 Developement
+                            </p>
+                            <p class="title-org">
+                                <a href="#">  Know More</a>
                             </p>
                             </div>
 
@@ -248,6 +254,7 @@
                                 <b>Secretary</b>
                                 Ministry of AYUSH
                             </p>
+                           
                             </div>
 
                         </div>
@@ -276,7 +283,7 @@
                                 AIIA, New Delhi
                             </p>
                             <p class="title-org">
-                                Message from Director
+                                <a href="#">  Know More</a>
                             </p>
                             </div>
 
