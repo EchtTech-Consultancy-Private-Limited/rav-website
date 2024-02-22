@@ -5,6 +5,10 @@
         {{ config('app.name') }}
     @show
 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="{{ $metaDetails->meta_tag_description ?? 'NRCP' }}">
+<meta name="keywords" content="{{ $metaDetails->meta_keywords ?? 'NRCP' }}">
+<meta name="tag" content="{{ $metaDetails->meta_tag ?? 'NRCP' }}">
 <link rel="stylesheet" href="{{ asset('assets/font-awesome-master/css/font-awesome.min.css') }}">
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet">
