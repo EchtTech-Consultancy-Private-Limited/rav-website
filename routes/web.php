@@ -15,9 +15,6 @@ use App\Http\Controllers\SearchController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 function set_active($route) {
     if( is_array( $route ) ){
         return in_array(Request::path(), $route) ? 'hover show' : '';
@@ -37,7 +34,6 @@ Artisan::call('route:clear');
 Artisan::call('config:clear');
 
 Route::get('/set-language',[HomeController::class,'SetLang']);
-
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-us');
 Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');

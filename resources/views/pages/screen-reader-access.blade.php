@@ -3,7 +3,7 @@
     {{ __('Screen Reader Access') }}
 @endsection
 @section('content')
-<section class="breadcrumb">
+    <section class="breadcrumb">
         <div class="page-breadcrumb">
             <div class="breadcrumb-img">
                 <img src="{{ asset('assets/images/bredcrumb.jpg') }}" alt="" />
@@ -45,7 +45,7 @@
                                     Following table lists the information about different screen readers:</p>
                                 </p>
 
-                                <table  title="Information related to the various screen readers">
+                                <table title="Information related to the various screen readers">
                                     <tbody>
                                         <tr>
                                             <th>Screen Reader</th>
@@ -139,4 +139,4 @@
                 </div>
             </div>
         </section>
-@endsection
+    @endsection
