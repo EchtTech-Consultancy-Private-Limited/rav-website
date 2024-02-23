@@ -1,53 +1,50 @@
-
-$(document).ready(function(){
+$(document).ready(function() {
+  $('.dataTable').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+          'copy', 'excelFlash', 'excel', 'pdf', 'print'
+      ]
+  });
+});
+$(document).ready(function () {
   function printCurrentDateTime() {
-    // Get the current date and time
     var currentDate = new Date();
+    var months = [
+      "JANUARY", "FEBRUARY", "MARCH", "APRIL",
+      "MAY", "JUNE", "JULY", "AUGUST",
+      "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
+    ];
 
-    // Extract components of the date
     var year = currentDate.getFullYear();
-    var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
+    var month = months[currentDate.getMonth()]; 
     var day = currentDate.getDate();
     var hours = currentDate.getHours();
     var minutes = currentDate.getMinutes();
     var seconds = currentDate.getSeconds();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var formattedDateTime = `${day} ${month} ${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+    let date = $('.dateTime');
+    date.html(formattedDateTime);
+  }
+  printCurrentDateTime();
+  setInterval(printCurrentDateTime, 1000);
 
-    // Format the date and time
-    var formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+  function printCurrentDate() {
+    var currentDate = new Date();
+    var year = currentDate.getFullYear();
+    var month = currentDate.getMonth() + 1;
+    var day = currentDate.getDate();
+    var formattedDateTime = `${day}-${month}-${year}`;
+    let date = $('.date');
+    date.html(formattedDateTime);
+  }
 
-    // Print the formatted date and time
-  let date = $('.dateTime');
-  date.html(formattedDateTime);
-}
+  printCurrentDate();
+});
 
-// Print the current date and time initially
-printCurrentDateTime();
-
-
-// Update and print the current date and time every second
-setInterval(printCurrentDateTime, 1000);
-
-function printCurrentDate() {
-  // Get the current date and time
-  var currentDate = new Date();
-
-  // Extract components of the date
-  var year = currentDate.getFullYear();
-  var month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
-  var day = currentDate.getDate();
-  var hours = currentDate.getHours();
-  var minutes = currentDate.getMinutes();
-  var seconds = currentDate.getSeconds();
-
-  // Format the date and time
-  var formattedDateTime = `${day}-${month}-${year}`;
-
-  // Print the formatted date and time
-let date = $('.date');
-date.html(formattedDateTime);
-}
-printCurrentDate()
-})
 
 $('#heroSlider').owlCarousel({
   loop: true,
