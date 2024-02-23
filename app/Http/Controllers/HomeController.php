@@ -18,7 +18,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         return view('home');
     }
 
@@ -27,7 +28,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function contactUS(){
+    public function contactUS()
+    {
         return view('pages.contact-us');
     }
 
@@ -37,7 +39,7 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-  
+
 
     /**
      * Display the specified resource.
@@ -45,7 +47,8 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function feedbackSubmit(Request $request){
+    public function feedbackSubmit(Request $request)
+    {
         return view('pages.feedback');
     }
 
@@ -55,7 +58,8 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function siteMap(Request $request){
+    public function siteMap(Request $request)
+    {
         return view('pages.sitemap');
     }
 
@@ -82,7 +86,8 @@ class HomeController extends Controller
         //
     }
 
-    public function SetLang(Request $request){
+    public function SetLang(Request $request)
+    {
         session()->put('locale', $request->data);
         $locale = $request->data;
         App::setLocale($locale);
@@ -91,7 +96,7 @@ class HomeController extends Controller
 
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
-        
+
         // dd('hii');
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
 
@@ -110,19 +115,18 @@ class HomeController extends Controller
                 $lastUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($lastSlugs)->first();
                 $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middelSlug)->first();
                 $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($finalSlug)->first();
-                
+
                 if ($menus != '') {
                     $allmenus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
                     $firstParent = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', $lastUrl->parent_id)->first();
                     $metaDetails = DB::table('dynamic_content_page_metatag')
-                    ->where('soft_delete', 0)
-                    ->where('status', 3)
-                    ->where('menu_uid', $menus->uid)
-                    ->first();
+                        ->where('soft_delete', 0)
+                        ->where('status', 3)
+                        ->where('menu_uid', $menus->uid)
+                        ->first();
                     //dd($firstParent);
                     if (!empty($firstParent)) {
                         $parentMenut = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', optional($firstParent)->parent_id)->first();
-                        //dd($parentMenut);
                         if (!empty($parentMenut)) {
                             foreach ($allmenus as $menu) {
                                 if ($parentMenut && $menu->parent_id == $parentMenut->uid) {
@@ -271,8 +275,6 @@ class HomeController extends Controller
                     } else {
                         $lastBred = $lastUrl->name_en;
                     }
-
-
                     if (Session::get('Lang') == 'hi') {
                         $middelBred = $middelUrl->name_hi;
                     } else {
@@ -317,19 +319,14 @@ class HomeController extends Controller
                     ->get();
 
                 // dd($dynamic_content_page_metatag); 
-                if (count($dynamic_content_page_metatag) > 0) {                   
+                if (count($dynamic_content_page_metatag) > 0) {
                     $organizedData = [];
-
                     foreach ($dynamic_content_page_metatag as $dynamic_content_page_metatags) {
-
                         $dynamic_content_page_pdf = DB::table('dynamic_content_page_pdf')
                             ->wheredcpm_id($dynamic_content_page_metatags->uid)
-                            // ->where('status', 3)
                             ->orderBy('created_at', 'asc')
                             ->where('soft_delete', 0)
                             ->get();
-
-                        //  dd($dynamic_content_page_pdf);
 
                         $dynamic_page_banner = DB::table('dynamic_page_banner')
                             ->where('status', 3)
@@ -355,18 +352,18 @@ class HomeController extends Controller
                             'gallery' => $dynamic_content_page_gallery,
                             'banner' => $dynamic_page_banner,
                         ];
-                    }                    
+                    }
                     if ($finalSlug != null) {
-                        return view('master-page', ['finalBred' => $finalBred, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData,'metaDetails' => $metaDetails]);
+                        return view('master-page', ['finalBred' => $finalBred, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else if ($lastSlugs != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData,'metaDetails' => $metaDetails]);
+                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } elseif ($middelSlug != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData,'metaDetails' => $metaDetails]);
+                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
-                        return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData,'metaDetails' => $metaDetails]);
+                        return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'director-desk') {
-                    
+
                     $designation = DB::table('emp_depart_designations')
                         ->where('name_en', 'LIKE', 'Director')
                         ->where('status', 3)
@@ -387,9 +384,7 @@ class HomeController extends Controller
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'Director' => $Director]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'employee-directory') {
-                    //dd('hii');
                     $designationData = [];
-
                     $department = DB::table('emp_depart_designations')
                         ->where('status', 3)
                         ->where('soft_delete', 0)
@@ -398,7 +393,6 @@ class HomeController extends Controller
                         ->where('publice_status', 1)
                         ->get();
 
-                    //dd($department);
                     if (Count($department) > 0) {
 
                         foreach ($department as $designation) {
@@ -419,7 +413,6 @@ class HomeController extends Controller
                                 'data' => $data,
                             ];
                         }
-                        //dd($designationData);
 
                         $sortedDesignationData = collect($designationData)->sortBy('department.short_order')->values()->all();
 
@@ -436,14 +429,14 @@ class HomeController extends Controller
 
                     if ($finalSlug != null) {
 
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink,'finalBred' => $finalBred, 'lastBred' => $lastBred, 'content' => $content, 'title_name' => $title_name,'metaDetails' => $metaDetails]);
+                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'finalBred' => $finalBred, 'lastBred' => $lastBred, 'content' => $content, 'title_name' => $title_name, 'metaDetails' => $metaDetails]);
                     } else if ($lastSlugs != null) {
 
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink,'lastBred' => $lastBred, 'content' => $content, 'middelBred' => $middelBred, 'title_name' => $title_name]);
+                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'lastBred' => $lastBred, 'content' => $content, 'middelBred' => $middelBred, 'title_name' => $title_name]);
                     } elseif ($middelSlug != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink,'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name]);
+                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name]);
                     } else {
-                        return view('master-page', ['quickLink' => $quickLink,'title_name' => $title_name, 'content' => $content,]);
+                        return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {
@@ -461,5 +454,4 @@ class HomeController extends Controller
             return view('pages.error');
         }
     }
-    
 }

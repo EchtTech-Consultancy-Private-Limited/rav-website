@@ -4,34 +4,6 @@
             <li> <a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://www.india.gov.in/" >Goverment of India</a></li>
             <li><a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://ayushmanbharat.mp.gov.in/">Ayushman Bharat</a></li>
             <li><span class="dateTime"></span></li>
-            <!-- <li>
-                <a href="#about-us">
-                    <span class="">
-                        @if (Session::get('locale') == 'en')
-                        {{ __('messages.Skip-content') }}
-                        @else
-                        {{ __('messages.Skip-content') }}
-                        @endif
-                    </span>
-                    <span class="accessbility-nav-link-icon">
-                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('screen-reader-access') }}">
-                    <span class="accessbility-nav-link">
-                        @if (Session::get('locale') == 'en')
-                        {{ __('messages.Screen-Access') }}
-                        @else
-                        {{ __('messages.Screen-Access') }}
-                        @endif
-                    </span>
-                    <span class="accessbility-nav-link-icon">
-                        <i class="fa fa-volume-up" aria-hidden="true"></i>
-                    </span>
-                </a>
-            </li> -->
         </ul>
     </div>
     <div class="header-top-right">
@@ -49,15 +21,7 @@
                     <li><button class="text-increment-btn" onclick="increaseFontSize()">A+</button></li>
                 </ul>
             </li>
- 
-            <!-- <li>
-                <div class="d-flex">
-                    <button class="text-increment-btn" onclick="decreaseFontSize()">A-</button>
-                    <button class="text-increment-btn" onclick="normaltext()">A</button>
-                    <button class="text-increment-btn" onclick="increaseFontSize()">A+</button>
-                </div>
-            </li> -->
-            <li>
+             <li>
 
                 <div class="select-wrap">
                     <img src="{{ asset('assets/images/globe.svg') }}" alt="globe" class="img-fluid">

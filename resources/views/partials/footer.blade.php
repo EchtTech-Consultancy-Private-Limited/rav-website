@@ -4,20 +4,6 @@
             <img src="{{ asset('assets/images/rav-logo-white.png') }}" alt="logo" class="img-fluid">
         </div>
     </div>
-    <!-- <div class="col-md-8 d-flex align-items-center justify-content-end">
-        <div class="policy">
-            <ul class="d-flex justify-content-between">
-                <li> <a href="#"> Linking Policy </a></li>
-                <li> <a href="#"> Privacy Policy </a></li>
-                <li> <a href="#"> Disclaimer </a></li>
-                <li> <a href="#"> Help </a></li>
-                <li> <a href="#"> Cookies Policy </a></li>
-                <li> <a href="#"> Terms & Conditions </a></li>
-
-            </ul>
-        </div>
-    </div> -->
-
     @if (isset($social_links) && $social_links != '')
     <div class="col-md-8 d-flex justify-content-end align-items-end">
         <div class="sociallink-wrap">
@@ -138,12 +124,6 @@
 
             <div class="col-md-7 justify-content-end">
                 <ul>
-                    <!-- <li> <a href="#"> Linking Policy </a></li>
-                            <li> <a href="#"> Privacy Policy </a></li>
-                            <li> <a href="#"> Disclaimer </a></li>
-                            <li> <a href="#"> Help </a></li>
-                            <li> <a href="#"> Cookies Policy  </a></li>
-                            <li> <a href="#"> Terms & Conditions </a></li> -->
                     <li>Last Updated - <span class="date"></span></li>
                     <li class="visitors"> Total Visitors: <span id="visitors">10</span> </a></li>
                 </ul>
