@@ -83,7 +83,6 @@ class HomeController extends Controller
     }
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
-        // dd('hii');
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
@@ -106,7 +105,6 @@ class HomeController extends Controller
                         ->where('status', 3)
                         ->where('menu_uid', $menus->uid)
                         ->first();
-                    //dd($firstParent);
                     if (!empty($firstParent)) {
                         $parentMenut = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', optional($firstParent)->parent_id)->first();
                         if (!empty($parentMenut)) {
@@ -318,7 +316,7 @@ class HomeController extends Controller
                     } elseif ($middelSlug != null) {
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
-                        return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'director-desk') {
                     $designation = DB::table('emp_depart_designations')
