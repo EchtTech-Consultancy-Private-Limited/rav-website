@@ -13,13 +13,11 @@
                     target="_blank" class="Facebook" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
                 @endif
-
                 @if ($social_links->twitter != '' && $social_links->twitter != 0)
                 <a href="{{ url($social_links->twitter) ?? '' }}" class="Twitter"
                     onclick="return confirm('{{ $alertMessage }}')" target="_blank" title="Twitter">
                     <i class="fa fa-twitter" aria-hidden="true"></i> </a>
                 @endif
-
                 @if ($social_links->instagram != '' && $social_links->instagram != 0)
                 <a href="{{ url($social_links->instagram) ?? '' }}" onclick="return confirm('{{ $alertMessage }}')"
                     class="Instagram" target="_blank" title="Instagram"> <i class="fa fa-instagram"
@@ -31,17 +29,14 @@
     </div>
     @endif
     <div class="col-md-12">
-
         <div class="footer-nav">
             <ul>
-
                 @if (isset($footerMenu) && count($footerMenu) > 0)
                 <ul>
                     @foreach ($footerMenu->slice(0, 8) as $footerMenus)
                     @php
                     $footerMenusurl = $footerMenus->url ?? 'javascript:void(0)';
                     @endphp
-
                     @if ($footerMenus->tab_type == 1)
                     <li>
                         <a onclick="return confirm('{{ $alertMessage }}')" target="_blank"
@@ -55,7 +50,6 @@
                     </li>
                     @else
                     <li><a href="{{ url($footerMenusurl) ?? '' }}">
-
                             @if (Session::get('locale') == 'hi')
                             {{ $footerMenus->name_hi ?? '' }}
                             @else
@@ -75,12 +69,9 @@
                 @else
                 <h5>No menu available.</h5>
                 @endif
-
             </ul>
         </div>
     </div>
-
-
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             <span data-bs-dismiss="offcanvas" aria-label="Close">
@@ -109,19 +100,15 @@
         </div>
     </div>
 </div>
-
 </div>
-
 <div class="footer-bottom">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-5 px-0">
                 <div class="copyright-wrap">
-
                     <p> © Copyright 2023 <b>Rashtriya Ayurveda Vidyapeeth.</b> All Rights Reserved.</p>
                 </div>
             </div>
-
             <div class="col-md-7 justify-content-end">
                 <ul>
                     <li>Last Updated - <span class="date"></span></li>

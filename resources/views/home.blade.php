@@ -3,15 +3,11 @@
     {{ __('RAV') }}
 @endsection
 @section('content')
-
     <section class="hero-banner">
     <div class="hero-slider">
                 <div class="owl-carousel owl-theme" id="heroSlider">
-
                     @if (isset($banner) && count($banner) > 0)
-
                         @foreach ($banner as $banners)
-
                             <div class="item">
                                 <div class="row">
                                     @if($banners->description_en  != '' )
@@ -25,17 +21,14 @@
                                                 @endif
                                             </h2>
                                             <p class="title-black">
-
                                                 @if (Session::get('locale') == 'hi')
                                                     {!! $banners->description_hi ?? '' !!}
                                                 @else
                                                     {!! $banners->description_en ?? '' !!}
                                                 @endif
-
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
                                                 <button class="btn btn-org border-0  me-4">
-
                                                     @if (Session::get('locale') == 'hi')
                                                         {{ __('messages.know_more') }}
                                                     @else
@@ -62,9 +55,7 @@
                     @else
                         <h5>No banner available.</h5>
                     @endif
-
                 </div>
-
                 <div class="btns">
                     <div id="customPreviousBtn">
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -82,7 +73,6 @@
             </div>
     </section>
     {{-- banner end --}}
-
     <section class="latest-update-wrap">
         <div class="container-fluid p-0">
             <div class="row">
@@ -95,7 +85,6 @@
                         @endif
                     </h3>
                 </div>
-
                 <div class="col-md-9 p-0">
                     <div class="latest-news-slider">
                         <div class="owl-carousel owl-theme" id="latest-news-slider">
@@ -114,7 +103,6 @@
                             @else
                                 <h6>No News available.</h6>
                             @endif
-
                         </div>
                         <div class="btns">
                             <div id="customPreviousBtn1">
@@ -140,13 +128,11 @@
             <div class="row">
                 <div class="col-md-12" data-aos="fade-up" data-aos-duration="3000">
                     <h2 class="heading-black heading-black-lg text-center pb-4">
-                       
                         @if (Session::get('locale') == 'hi')
                             {{ __('messages.About_Us') }}
                         @else
                             {{ __('messages.About_Us') }}
                         @endif
-
                     </h2>                    
                     @if($organizedDatas)
                         <p class="desc-grey text-justify">
@@ -193,7 +179,6 @@
                                 <a href="#">  Know More</a>
                             </p>
                             </div>
-
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -218,9 +203,7 @@
                             <p class="desc">
                                 <b>Hon'ble Minister of State Ministry</b>
                                 of AYUSH & Ministry of
-                                
                                 Women
-                               
                                 and Child
                                 Developement
                             </p>
@@ -228,7 +211,6 @@
                                 <a href="#">  Know More</a>
                             </p>
                             </div>
-
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -254,9 +236,7 @@
                                 <b>Secretary</b>
                                 Ministry of AYUSH
                             </p>
-                           
                             </div>
-
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -286,7 +266,6 @@
                                 <a href="#">  Know More</a>
                             </p>
                             </div>
-
                         </div>
                         <div class="about-us-card-back">
                             <h3 class="title-black-sm">
@@ -327,15 +306,12 @@
                                     <div class="row">
                                         <div class="news-content-list">
                                             <ul>
-                                                
                                                 @if (isset($news_management) && count($news_management) > 0)
                                                     @foreach ($news_management as $news_managements)
-
                                                     @php
                                                     $url = $news_managements->public_url ?? 'javascript:void(0)';
                                                     @endphp
                                                         <li>
-                                                            
                                                             <a
                                                             @if($news_managements->tab_type == 1)
                                                                 target="_blank"
@@ -375,7 +351,6 @@
                                     aria-labelledby="courses-tab" tabindex="0">
                                     <div class="row">
                                         <div class="news-content-list">
-                                           
                                                 @if($organizedDatas)
                                                     @foreach($organizedDatas as $organizedData)
                                                         @if($organizedData['metatag']->menu_slug == 'admission-to-courses')
@@ -391,7 +366,6 @@
                                                         @endif
                                                     @endforeach
                                                 @endif
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -451,7 +425,6 @@
                                         @else
                                         <p class="title-white">{!! $events_management->description_en  !!}</p>
                                         @endif
-                                        
                                         <div class="event-list-content my-2">
                                             <div class="d-flex align-items-center">
                                                 <span class="tag">Event Date</span>
@@ -488,7 +461,6 @@
                     <div class="course-wrap">
                         <div class="course-list">
                             <ul>
-
                                 <li>
                                     Courses Under Guru Shishya Parampara
                                     <a href="#" class="read-more">
@@ -638,7 +610,6 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="message-tab-content">
-
                                             <h2 class="heading-black heading-black-md">
                                                 Shri Sarbananda Sonowal
                                             </h2>
@@ -3639,14 +3610,11 @@
                                 <button class="nav-link active" id="activity-tab" data-bs-toggle="tab"
                                     data-bs-target="#activity-tab-pane" type="button" role="tab"
                                     aria-controls="activity-tab-pane" aria-selected="true">
-                                    
                                     @if (Session::get('locale') == 'hi')
                                     {{ __('messages.Online_Presence') }}
                                    @else
                                     {{ __('messages.Online_Presence') }}
                                    @endif
-                                
-                                
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -3658,7 +3626,6 @@
                                    @else
                                     {{ __('messages.CRAV_Gurus') }}
                                    @endif
-                                
                                 </button>
                             </li>
                         </ul>

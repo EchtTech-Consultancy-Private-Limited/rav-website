@@ -10,7 +10,6 @@
         <ul class="d-flex align-items-center">
             <li class="acees-style1"> <a href="#about-us" title="Skip to main Content" ><i class="fa fa-arrow-up"></i> </a></li>
             <li class="acees-style1"> <a href="{{route('screen-reader-access')}}" title="Screen Reader Access"> <i class="fa fa-volume-up"></i></a></li>
-           
             <li class="dropdown acees-style1 acees-style2">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <a href="#" title="accessbility" > <b>T</b><sub><b>T</b></sub></a>
@@ -22,7 +21,6 @@
                 </ul>
             </li>
              <li>
-
                 <div class="select-wrap">
                     <img src="{{ asset('assets/images/globe.svg') }}" alt="globe" class="img-fluid">
                     <select class="form-select language" id="language-eng" onchange="setlang(value);">

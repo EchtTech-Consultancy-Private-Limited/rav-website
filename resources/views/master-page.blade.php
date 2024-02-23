@@ -1,11 +1,9 @@
 @extends('layout.master')
-
 @section('title')
     {{ __('RAV') }}
 @endsection
 @section('content')
     <section class="breadcrumb">
-
         {{-- banner start --}}
         @if (isset($organizedData['banner']) && $organizedData['banner'] != '')
             <div class="breadcrumb-img">
@@ -22,7 +20,6 @@
         <div class="breadcrumb-title">
             <h3 class="title">{{ $title_name ?? '' }}</h3>
         </div>
-
         </div>
     </section>
     <div class="main-body">
@@ -41,11 +38,9 @@
                     @if (isset($finalBred))
                         <li><a>{{ ucfirst(strtolower($finalBred)) ?? '' }}</a></li>
                     @endif
-
                     @if (isset($lastBred))
                         <li><a>{{ ucfirst(strtolower($lastBred)) ?? '' }}</a></li>
                     @endif
-
                     @if (isset($middelBred))
                         <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
                     @endif
@@ -53,8 +48,6 @@
                 </ul>
             </div>
         </div>
-
-
         <section class="master bg-grey">
             <div class="container">
                 <div class="news-tab common-tab side-tab1">
@@ -74,7 +67,6 @@
                                                 @endif
                                             </h3>
                                         @endif
-
                                         @if (isset($tree) && count($tree) > 0)
                                             @foreach ($tree as $index => $trees)
                                                 @php
@@ -99,7 +91,6 @@
                                                                     @endif
                                                                 </a>
                                                             </div>
-
                                                             <div id="flush-collapseOne_{{ $index }}"
                                                                 class="accordion-collapse collapse"
                                                                 aria-labelledby="flush-headingOne_{{ $index }}"
@@ -130,7 +121,6 @@
                                                                                                 @endif
                                                                                             </a>
                                                                                         </div>
-
                                                                                         <div id="fl_flush_collapseOne_{{ $k }}"
                                                                                             class="accordion-collapse collapse"
                                                                                             aria-labelledby="fl_flush_headingOne_{{ $k }}"
@@ -141,10 +131,8 @@
                                                                                                         @php
                                                                                                             $finalChildUrl = $finalChild->url ?? '';
                                                                                                         @endphp
-
                                                                                                         <li
                                                                                                             class="@if (request()->is($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl . '/' . $finalChildUrl)) qm-active @endif">
-
                                                                                                             <a
                                                                                                                 href="{{ url($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl . '/' . $finalChildUrl) }}">
                                                                                                                 @if (Session::get('Lang') == 'hi')
@@ -155,7 +143,6 @@
                                                                                                             </a>
                                                                                                         </li>
                                                                                                     @endforeach
-
                                                                                                     <!-- nested layer -->
                                                                                                 </ul>
                                                                                             </div>
@@ -167,7 +154,6 @@
                                                                                     class="@if (request()->is($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl)) qm-active @endif">
                                                                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl) }}"
                                                                                         class="">
-
                                                                                         @if (Session::get('Lang') == 'hi')
                                                                                             {{ $childTree->name_hi ?? '' }}
                                                                                         @else
@@ -200,8 +186,6 @@
                                     </ul>
                                 </div>
                             @endif
-
-
                             @if (isset($quickLink) && count($quickLink) > 0)
                                 <ul class="nav-qm nav-tabs mt-3" id="newsTab" role="tablist">
                                     <h3 class=" quick-menu-head-stl text-center mt-1">
@@ -211,12 +195,10 @@
                                             Quick Menu
                                         @endif
                                     </h3>
-
                                     @foreach ($quickLink as $quickLinks)
                                         @php
                                             $quickLinksurl = $quickLinks->url ?? 'javascript:void(0)';
                                         @endphp
-
                                         <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
                                             <i class="fa fa-chevron-right" aria-hidden="true"></i> <a title="link"
                                                 href="{{ url($quickLinksurl) ?? '' }}"
@@ -235,11 +217,9 @@
                         {{-- side menu end --}}
                         <div class="col-md-8 col-lg-8 ">
                             <div class="about">
-
                                 @if (isset($content))
                                     <h1>{{ $content }}</h1>
                                 @endif
-
                                 <h1>
                                     @if (isset($organizedData['metatag']->page_title_en) && !blank($organizedData['metatag']->page_title_en))
                                         @if (Session::get('locale') == 'hi')
@@ -249,7 +229,6 @@
                                         @endif
                                     @endif
                                 </h1>
-
                                 @if (isset($organizedData['content']->page_content_en) && !blank($organizedData['content']->page_content_en))
                                     <p>
                                         @if (Session::get('locale') == 'hi')
@@ -259,9 +238,6 @@
                                         @endif
                                     </p>
                                 @endif
-
-
-
                                 {{-- Photo Gallery start --}}
                                 @if (isset($organizedData['gallery']) && count($organizedData['gallery']) > 0)
                                     <div class="lightbox-photo-gallery">
@@ -282,8 +258,6 @@
                                     </div>
                                 @endif
                                 {{-- Photo Gallery end --}}
-
-
                                 {{-- pdf content start --}}
                                 @if (isset($organizedData['pdf']) && count($organizedData['pdf']) > 0)
                                     <table class="dataTable">
@@ -318,5 +292,4 @@
             </div>
         </section>
     </div>
-
 @endsection

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Home;
 use App;
 use DB;
@@ -9,8 +7,6 @@ use Exception;
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
-
 class HomeController extends Controller
 {
     /**
@@ -22,7 +18,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,15 +27,12 @@ class HomeController extends Controller
     {
         return view('pages.contact-us');
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
     /**
      * Display the specified resource.
      *
@@ -51,7 +43,6 @@ class HomeController extends Controller
     {
         return view('pages.feedback');
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -62,7 +53,6 @@ class HomeController extends Controller
     {
         return view('pages.sitemap');
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -74,7 +64,6 @@ class HomeController extends Controller
     {
         return view('pages.screen-reader-access');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -85,7 +74,6 @@ class HomeController extends Controller
     {
         //
     }
-
     public function SetLang(Request $request)
     {
         session()->put('locale', $request->data);
@@ -93,13 +81,10 @@ class HomeController extends Controller
         App::setLocale($locale);
         return response()->json(['data' => $request->data, True]);
     }
-
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
-
         // dd('hii');
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
-
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
             App::setLocale($request->data);
@@ -107,15 +92,12 @@ class HomeController extends Controller
         } else {
             // Handle the case when none of the slugs match
         }
-
         try {
-
             if ($finalSlug != null) {
                 $finalUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
                 $lastUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($lastSlugs)->first();
                 $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middelSlug)->first();
                 $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($finalSlug)->first();
-
                 if ($menus != '') {
                     $allmenus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
                     $firstParent = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', $lastUrl->parent_id)->first();
@@ -131,21 +113,17 @@ class HomeController extends Controller
                             foreach ($allmenus as $menu) {
                                 if ($parentMenut && $menu->parent_id == $parentMenut->uid) {
                                     $menu->children = [];
-
                                     foreach ($allmenus as $childMenu) {
                                         if ($childMenu->parent_id == $menu->uid) {
                                             $childMenu->children = [];
-
                                             foreach ($allmenus as $grandchildMenu) {
                                                 if ($grandchildMenu->parent_id == $childMenu->uid) {
                                                     $childMenu->children[] = $grandchildMenu;
                                                 }
                                             }
-
                                             $menu->children[] = $childMenu;
                                         }
                                     }
-
                                     $tree[] = $menu;
                                 }
                             }
@@ -175,19 +153,16 @@ class HomeController extends Controller
                         $parentMenut = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', optional($firstParent)->parent_id)->first();
                         if (!empty($parentMenut)) {
                             foreach ($allmenus as $menu) {
-
                                 if ($parentMenut && $menu->parent_id == $parentMenut->uid) {
                                     $menu->children = [];
                                     foreach ($allmenus as $childMenu) {
                                         if ($childMenu->parent_id == $menu->uid) {
                                             $childMenu->children = [];
-
                                             foreach ($allmenus as $grandchildMenu) {
                                                 if ($grandchildMenu->parent_id == $childMenu->uid) {
                                                     $childMenu->children[] = $grandchildMenu;
                                                 }
                                             }
-
                                             $menu->children[] = $childMenu;
                                         }
                                     }
@@ -221,13 +196,11 @@ class HomeController extends Controller
                                 foreach ($allmenus as $childMenu) {
                                     if ($childMenu->parent_id == $menu->uid) {
                                         $childMenu->children = [];
-
                                         foreach ($allmenus as $grandchildMenu) {
                                             if ($grandchildMenu->parent_id == $childMenu->uid) {
                                                 $childMenu->children[] = $grandchildMenu;
                                             }
                                         }
-
                                         $menu->children[] = $childMenu;
                                     }
                                 }
@@ -243,9 +216,7 @@ class HomeController extends Controller
                 $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
             }
             if ($menus != '') {
-
                 if ($finalSlug != null) {
-
                     if (Session::get('Lang') == 'hi') {
                         $finalBred = $finalUrl->name_hi;
                     } else {
@@ -256,20 +227,17 @@ class HomeController extends Controller
                     } else {
                         $lastBred = $middelUrl->name_en;
                     }
-
                     if (Session::get('Lang') == 'hi') {
                         $middelBred = $lastUrl->name_hi;
                     } else {
                         $middelBred = $lastUrl->name_en;
                     }
-
                     if (Session::get('Lang') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } else if ($lastSlugs != null) {
-
                     if (Session::get('Lang') == 'hi') {
                         $lastBred = $lastUrl->name_hi;
                     } else {
@@ -280,28 +248,24 @@ class HomeController extends Controller
                     } else {
                         $middelBred = $middelUrl->name_en;
                     }
-
                     if (Session::get('Lang') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } elseif ($middelSlug != null) {
-
                     if (Session::get('Lang') == 'hi') {
                         $middelBred = $middelUrl->name_hi;
                     } else {
                         $middelBred = $middelUrl->name_en;
                         // dd($middelBred);
                     }
-
                     if (Session::get('Lang') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } else {
-
                     if (Session::get('Lang') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
@@ -309,7 +273,6 @@ class HomeController extends Controller
                     }
                 }
                 $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
-
                 $dynamic_content_page_metatag = DB::table('dynamic_content_page_metatag')
                     ->where('soft_delete', 0)
                     ->where('status', 3)
@@ -317,7 +280,6 @@ class HomeController extends Controller
                     ->orderBy('created_at', 'asc')
                     ->orderBy('sort_order', 'ASC')
                     ->get();
-
                 // dd($dynamic_content_page_metatag); 
                 if (count($dynamic_content_page_metatag) > 0) {
                     $organizedData = [];
@@ -327,24 +289,20 @@ class HomeController extends Controller
                             ->orderBy('created_at', 'asc')
                             ->where('soft_delete', 0)
                             ->get();
-
                         $dynamic_page_banner = DB::table('dynamic_page_banner')
                             ->where('status', 3)
                             ->where('soft_delete', 0)
                             ->wheredcpm_id($dynamic_content_page_metatags->uid)
                             ->first();
-
                         $dynamic_content_page_gallery = DB::table('dynamic_content_page_gallery')
                             ->wheredcpm_id($dynamic_content_page_metatags->uid)
                             ->where('status', 3)
                             ->where('soft_delete', 0)
                             ->get();
-
                         $dynamic_page_content = DB::table('dynamic_page_content')
                             ->wheredcpm_id($dynamic_content_page_metatags->uid)
                             ->where('soft_delete', 0)
                             ->first();
-
                         $organizedData = [
                             'metatag' => $dynamic_content_page_metatags,
                             'content' => $dynamic_page_content,
@@ -363,7 +321,6 @@ class HomeController extends Controller
                         return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'director-desk') {
-
                     $designation = DB::table('emp_depart_designations')
                         ->where('name_en', 'LIKE', 'Director')
                         ->where('status', 3)
@@ -371,9 +328,7 @@ class HomeController extends Controller
                         ->orderBy('short_order', 'ASC')
                         ->where('publice_status', 1)
                         ->first();
-
                     if ($designation != '') {
-
                         $Director = DB::table('employee_directories')
                             ->where('designation_id', $designation->uid)
                             ->where('status', 3)
@@ -392,11 +347,8 @@ class HomeController extends Controller
                         ->whereparent_id(0)
                         ->where('publice_status', 1)
                         ->get();
-
                     if (Count($department) > 0) {
-
                         foreach ($department as $designation) {
-
                             $data = DB::table('employee_directories as emp')
                                 ->select('emp.*', 'desi.name_en as desi_name_en', 'desi.name_hi as desi_name_hi')
                                 ->join('emp_depart_designations as desi', 'emp.designation_id', '=', 'desi.uid')
@@ -407,17 +359,13 @@ class HomeController extends Controller
                                 ->where('emp.publice_status', 1)
                                 ->get();
                             //  dd( $data);
-
                             $designationData[] = [
                                 'department' => $designation,
                                 'data' => $data,
                             ];
                         }
-
                         $sortedDesignationData = collect($designationData)->sortBy('department.short_order')->values()->all();
-
                         // return view('pages.employeeDirectory', ['sortedDesignationData' => $sortedDesignationData]);
-
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'sortedDesignationData' => $sortedDesignationData]);
                     }
                 } else {
@@ -426,12 +374,9 @@ class HomeController extends Controller
                     } else {
                         $content = "Coming Soon...";
                     }
-
                     if ($finalSlug != null) {
-
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'finalBred' => $finalBred, 'lastBred' => $lastBred, 'content' => $content, 'title_name' => $title_name, 'metaDetails' => $metaDetails]);
                     } else if ($lastSlugs != null) {
-
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'lastBred' => $lastBred, 'content' => $content, 'middelBred' => $middelBred, 'title_name' => $title_name]);
                     } elseif ($middelSlug != null) {
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name]);
