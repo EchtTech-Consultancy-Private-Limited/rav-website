@@ -187,21 +187,27 @@
                               <div id="kt_career_add_multiple_options">
                                  <!--begin::Form group-->
                                  <div class="form-group">
-                                    <label class="required form-label mw-100 w-175px">Pdf Title</label>
+                                    
                                     <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">career Description</label> -->
-                                    <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Start Date</label>
-                                    <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Date</label>
-                                    <label class="required form-label mw-100 w-175px">PDF Format</label>
+                                    <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Start Date</label> -->
+                                    <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Date</label> -->
+                                    
                                     <div data-repeater-list="kt_career_add_multiple_options" class="d-flex flex-column gap-3">
                                        @if(isset($pdfData))
                                        @foreach($pdfData as $pdfDatas)
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
                                           <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
-                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
+                                          <div>
+                                             <label class="required form-label mw-100 w-175px">Pdf Title</label>
+                                             <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
+                                          </div>
                                           <!-- <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
                                           <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" /> -->
-                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          <div>
+                                             <label class="required form-label mw-100 w-175px">PDF Format</label>
+                                             <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          </div>
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> 
@@ -256,9 +262,9 @@
             <!--end::Tab content-->
             <div class="d-flex justify-content-end">
                <!--begin::Button-->
-               <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
+               <button type="reset" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
                {{config('FormField.cancel_button')}}
-               </a>
+               </button>
                <!--end::Button-->
                <!--begin::Button-->
                <button type="submit" id="kt_update_career_submit" class="btn btn-primary submit-career-btn">

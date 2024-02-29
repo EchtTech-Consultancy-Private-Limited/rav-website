@@ -47,7 +47,7 @@ var KTAppTenderSave = function () {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                       toastr.success(
-                         "Update Tender Update successfully!", 
+                         "Tender Update successfully!", 
                          "Update Tender!", 
                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );

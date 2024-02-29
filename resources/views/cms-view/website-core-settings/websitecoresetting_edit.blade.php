@@ -83,6 +83,48 @@
                      <!--end::Input-->
                   </div>
                </div>
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span>Old Logo</span>
+                        <span class="ms-1"  data-bs-toggle="tooltip" title="Set keywords for the store separated by a comma." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>           
+                      </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-9">
+                     <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
+                              <!--begin::Preview existing avatar-->
+                              <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('resources/uploads/WebsiteCoreSettings/') }}/<?php echo $data->header_logo ?>);"></div>
+                              <!--end::Preview existing avatar-->
+                              <!--begin::Label-->
+                              <!-- <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar"> -->
+                              <!-- <i class="ki-outline ki-pencil fs-7"></i> -->
+                              <!--begin::Inputs-->
+                              <!-- <input type="file" name="avatar" accept=".png, .jpg, .jpeg" /> -->
+                              <input type="hidden" name="avatar_remove" />
+                              <!--end::Inputs-->
+                              </label>
+                              <!--end::Label-->
+                              <!--begin::Cancel-->
+                              <!-- <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar"> -->
+                              <!-- <i class="ki-outline ki-cross fs-2"></i>  -->
+                              </span>
+                              <!--end::Cancel-->
+                              <!--begin::Remove-->
+                              <!-- <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar"> -->
+                              <!-- <i class="ki-outline ki-cross fs-2"></i>                                 -->
+                              </span>
+                              <!--end::Remove-->
+                           </div>
+                           <!--end::Image input-->
+                           <!--begin::Hint-->
+                           <!-- <div class="form-text">Allowed file types: png, jpg, jpeg.</div> -->
+                           <!--end::Hint-->
+                     </div>
+                  </div>
+               </div>
                <!--end::Input group-->
                <!--begin::Input group-->
                <div class="row py-5">

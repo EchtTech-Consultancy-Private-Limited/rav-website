@@ -32,17 +32,10 @@
             }
           
          </style>
-         <!-- <iframe 
-  src="https://theorg.com/org/echt-tech-consultancy-services-pvt-ltd/embed" 
-  width="100%" 
-  height="550px" 
-  frameBorder="0" 
-  style="border: 1px solid #eaeaeb; border-radius: 4px;"> 
-</iframe> -->
          <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <div class="d-flex flex-lg-row-fluid">
                <div class="d-flex flex-column flex-center pb-0 pb-lg-10 p-10 w-100">
-                  <!-- <div class="clock">
+                  <div class="clock">
                      <div class="hour-hand"></div>
                      <div class="minute-hand"></div>
                      <div class="second-hand"></div>
@@ -51,7 +44,7 @@
                      <div class="number number-6">6</div>
                      <div class="number number-9">9</div>
                      <div class="number number-12">12</div>
-                  </div> -->
+                  </div>
                   <img class="theme-light-show mx-auto mw-100 w-150px w-lg-200px mb-10 mb-lg-20" src="{{ asset(config('constants.default.logo_image')) }}" alt=""/>    
                   <img class="theme-dark-show mx-auto mw-100 w-150px w-lg-200px mb-10 mb-lg-20" src="{{ asset(config('constants.default.logo_image')) }}" alt=""/>                 
                   <h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7"> 
@@ -80,12 +73,12 @@
                            <div class="fv-row mb-8">
                               <input type="text" placeholder="Email" name="email" value="" autocomplete="off" class="form-control bg-transparent email"/> 
                            </div>
-                           <div class="fv-row mb-3">
-                              <input type="password" placeholder="Password" name="password" autocomplete="off" class="form-control bg-transparent password"/>
-                              <!-- <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
-                                 <i class="ki-outline ki-eye-slash fs-2 d-none"></i>                   
-                                 <i class="ki-outline ki-eye fs-2"></i>                
-                              </span> -->
+                           <div class="fv-row mb-3" data-kt-password-meter="true">
+                              <input class="form-control bg-transparent password" type="password" placeholder="Password" name="password" autocomplete="off"/>
+                              <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                 <i class="ki-outline ki-eye-slash fs-2"></i>                    
+                                 <i class="ki-outline ki-eye fs-2 d-none"></i>                
+                              </span>
                            </div>
                            <div class="d-flex flex-stack flex-wrap gap-6 fs-base fw-semibold mb-8">
                               <div></div>
@@ -116,8 +109,6 @@
       <script src="{{ asset('assets-cms/cms_js/jquery_3.7.1_jquery.min.js') }}"></script>
       <script src="{{ asset('assets-cms/plugins/global/plugins.bundle.js') }}"></script>
       <script src="{{ asset('assets-cms/cms_js/scripts.bundle.js') }}"></script>
-      <script src="{{ asset('assets-cms/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
-      <script src="{{ asset('assets-cms/cms_js/crypto-js_3.1.2_rollups_aes.js') }}"></script>
       <script src="{{ asset('assets-cms/cms_js/src_md5.js') }}"></script>
       <script src="{{ asset('assets-cms/cms_js/clock_md5.js') }}"></script>
       <script src="{{ asset('public/authentication/sign-in/general.js') }}"></script>

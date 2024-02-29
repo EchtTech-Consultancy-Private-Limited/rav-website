@@ -165,23 +165,20 @@
                               <div id="kt_tender_add_multiple_options">
                                  <!--begin::Form group-->
                                  <div class="form-group">
-                                   
-                                   
-                                    
                                     <div data-repeater-list="kt_tender_add_multiple_options" class="d-flex flex-column gap-3">
                                        <div data-repeater-item class="form-group row">
                                           <!--begin::Input-->
                                           <div class="col-md-4">
                                           <label class="required form-label mw-100 w-100">Banner Title</label>
-                                             <input type="text" class="form-control mw-100 w-100 is-invalid" name="bannertitle" placeholder="banner title Name" />
+                                             <input type="text" class="form-control mw-100 w-100" name="bannertitle" placeholder="banner title Name" />
                                           </div>
                                           <div class="col-md-4">
                                           <label class="required form-label mw-100 w-100">Sort Order</label>
-                                          <input type="number" class="form-control mw-100 w-100 is-invalid" name="sort_order" placeholder="sort order" />
+                                          <input type="number" class="form-control mw-100 w-100" name="sort_order" placeholder="sort order" />
                                           </div>
                                           <div class="col-md-4">
                                           <label class="required form-label mw-100 w-100">Image Format (1900px * 500px)</label>
-                                          <input type="file" class="form-control mw-100 w-100 image is-invalid" id="image" name="image" accept="image/*" />
+                                          <input type="file" class="form-control mw-100 w-100 image" id="image" name="image" accept="image/*" />
                                           <!--end::Input-->
                                           <!-- <button type="button" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> </button> -->
@@ -217,9 +214,9 @@
             <!--end::Tab content-->
             <div class="d-flex justify-content-end">
                <!--begin::Button-->
-               <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
-               {{config('FormField.cancel_button')}}
-               </a>
+               <button type="reset" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
+                  {{config('FormField.cancel_button')}}
+               </button>
                <!--end::Button-->
                <!--begin::Button-->
                <button type="submit" id="kt_add_banner_submit" class="btn btn-primary submit-banner-btn">

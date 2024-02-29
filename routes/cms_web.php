@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CMSControllers\API\CommonAPIController;
+use App\Http\Controllers\CMSControllers\Api\CommonAPIController;
 use App\Http\Controllers\CMSControllers\ImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;

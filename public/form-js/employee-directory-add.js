@@ -87,6 +87,28 @@ var KTAppEmployeeDirectorySave = function () {
                         },
                      },
                   },
+                  landlineNo: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                           regexp: /^[0-9]{10,15}$/,
+                           message: 'The value is require minimum 10 and maximum 15 Number'
+                        },
+                     },
+                  },
+                  extentionNo: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                           regexp: /^[0-9]{2,8}$/,
+                           message: 'The value is require minimum 2 and maximum 8 Number'
+                        },
+                     },
+                  },
                   email: {
                      validators: {
                         notEmpty: {
@@ -145,6 +167,8 @@ var KTAppEmployeeDirectorySave = function () {
                       }
                    })
                    .catch(function (error) {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                             "Sorry, looks like there are some errors detected, please try again B.", 
                             "Something went wrong!", 
@@ -157,6 +181,8 @@ var KTAppEmployeeDirectorySave = function () {
                             submitButton.disabled = false;
                       });
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                                "Sorry, looks like there are some errors detected, please try again K.", 
                                "Something went wrong!", 
