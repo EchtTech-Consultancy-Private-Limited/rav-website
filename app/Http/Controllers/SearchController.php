@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
-
 class SearchController extends Controller
 {
     /**
@@ -23,7 +20,6 @@ class SearchController extends Controller
         foreach ($tables as $table) {
             $tableName = current($table);
             $searchResults = [];
-
             if (Schema::hasColumns($tableName, ['title_name_en', 'title_name_hi', 'description_en', 'description_hi'])) {
                 $searchResults = array_merge($searchResults, DB::table($tableName)->where('title_name_en', 'like', '%' . $keyword . '%')
                     ->orWhere('title_name_hi', 'like', '%' . $keyword . '%')
@@ -36,14 +32,12 @@ class SearchController extends Controller
                     ->orWhere('title_name_hi', 'like', '%' . $keyword . '%')
                     ->get()->toArray());
             }
-
             if (Schema::hasColumns('dynamic_content_page_metatag', ['page_title_en', 'page_title_hi', 'meta_tag_description'])) {
                 $searchResults = array_merge($searchResults, DB::table('dynamic_content_page_metatag')->where('page_title_en', 'like', '%' . $keyword . '%')
                     ->orWhere('page_title_hi', 'like', '%' . $keyword . '%')
                     ->orWhere('meta_tag_description', 'like', '%' . $keyword . '%')
                     ->get()->toArray());
             }
-
             if (Schema::hasColumns('website_menu_management', ['name_en', 'name_hi'])) {
                 $searchResults = array_merge($searchResults, DB::table('website_menu_management')->where('name_en', 'like', '%' . $keyword . '%')
                     ->orWhere('name_hi', 'like', '%' . $keyword . '%')
@@ -72,7 +66,6 @@ class SearchController extends Controller
                     }elseif(isset($item->parent_id)){                      
                         $mainMenu = DB::table('website_menu_management')->where('parent_id',$item->parent_id)->first();  
                         if(isset($mainMenu->parent_id) && $mainMenu->parent_id != 0){
-                            
                             $parentMenu = DB::table('website_menu_management')->where('uid',$mainMenu->parent_id)->first();
                             $link = $parentMenu->url?$parentMenu->url.'/'.$mainMenu->url: '';
                             $finalArray->push([
@@ -111,7 +104,6 @@ class SearchController extends Controller
                             'description' => $item->description_en ?? $item->meta_tag_description ?? '',
                         ]);
                     }
-                    
                 } elseif (isset($item->title_name_hi) || isset($item->page_title_hi) || isset($item->name_hi)) {
                     $finalArray->push([
                         'link' => $item->menu_uid ?? '',
@@ -136,5 +128,4 @@ class SearchController extends Controller
         // dd($paginatedItems);
         return view('pages.search', ['data' => $paginatedItems]);
     }
-
 }

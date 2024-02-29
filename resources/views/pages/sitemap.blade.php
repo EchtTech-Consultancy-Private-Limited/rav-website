@@ -103,33 +103,7 @@
                         @else
                             <h5>No menu available.</h5>
                         @endif
-                    </ul>
-
-                    {{-- <h2>
-                        Left Side Menu
-                    </h2> --}}
-
-                    {{-- <ul class="site-map-menu">
-                        <li class="first leaf"><a href="/en/message-presidentgb" title="Message From President,G.B">Message
-                                From
-                                President,G.B</a></li>
-                        <li class="leaf"><a href="/en/cme-scheme" title="CME Scheme">CME Scheme</a></li>
-                        <li class="leaf"><a href="/en/guru-shishya-parampara"
-                                title="Courses Under Guru Shishya Parampara">Courses
-                                Under Guru Shishya Parampara</a></li>
-                        <li class="leaf"><a href="/en/tender" title="">Tenders</a></li>
-                        <li class="leaf"><a href="/en/vacancy" title="">Vacancy</a></li>
-                        <li class="leaf"><a href="/en/theses-submitted-rav-students" title="RAV Students">Thesis Submitted
-                                by RAV
-                                Students</a></li>
-                        <li class="leaf"><a href="/en/right-information" title="Right to Information Act (RTI)">Right to
-                                Information
-                                Act (RTI)</a></li>
-                        <li class="leaf"><a href="/en/admission-courses" title="Admission to Courses">Admission to
-                                Courses</a></li>
-                        <li class="last leaf"><a href="/en/publication-vidyapeeth" title="">Publication of
-                                Vidyapeeth</a></li>
-                    </ul> --}}
+                    </ul>                    
                     <h2>
                         Footer Menu
                     </h2>
