@@ -88,6 +88,28 @@ var KTAppEmployeeDirectoryEdit = function () {
                         },
                      },
                   },
+                  landlineNo: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                           regexp: /^[0-9]{10,15}$/,
+                           message: 'The value is require minimum 10 and maximum 15 Number'
+                        },
+                     },
+                  },
+                  extentionNo: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                           regexp: /^[0-9]{2,8}$/,
+                           message: 'The value is require minimum 2 and maximum 8 Number'
+                        },
+                     },
+                  },
                   email: {
                      validators: {
                         notEmpty: {

@@ -196,9 +196,9 @@
          <!--end::Tab content-->
          <div class="d-flex justify-content-end">
             <!--begin::Button-->
-            <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
+            <button type="reset" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
             {{config('FormField.cancel_button')}}
-            </a>
+            </button>
             <!--end::Button-->
             <!--begin::Button-->
             <button type="submit" id="kt_rtiApplicationResponse_rti_submit" class="btn btn-primary submit-rtiApplicationResponse-btn">

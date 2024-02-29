@@ -378,17 +378,25 @@
                            <div id="kt_Pagegallery_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Image Title</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Start</label>
-                                 <label class="required form-label mw-100 w-200px">Image Format</label>
                                  <div data-repeater-list="kt_Pagegallery_add_multiple_options" class="d-flex flex-column gap-3">
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Image Title</label>
                                        <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Start Date</label>
                                        <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">End Start</label>
                                        <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Image Format</label>
                                        <input type="file" class="form-control mw-100 w-200px checkmime" name="image" accept="image/*" />
+                                       </div>
                                        <!--end::Input-->
                                        <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i>
@@ -478,17 +486,25 @@
                            <div id="kt_PagePdf_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Pdf Title</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Start</label>
-                                 <label class="required form-label mw-100 w-200px">Pdf Format</label>
                                  <div data-repeater-list="kt_PagePdf_add_multiple_options" class="d-flex flex-column gap-3">
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Pdf Title</label>
                                        <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Start Date</label>
                                        <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">End Start</label>
                                        <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Pdf Format (.PDF)</label> 
                                        <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="image" accept=".pdf" />
+                                       </div>
                                        <!--end::Input-->
                                        <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i>
@@ -578,13 +594,17 @@
                            <div id="">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Banner Title</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 13px;">Banner image Format</label>
                                  <div class="d-flex flex-column gap-3">
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Banner Title</label>
                                        <input type="text" class="form-control mw-100 w-200px" name="bannertitle" placeholder="Banner title Name" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Banner image Format</label>
                                        <input type="file" class="form-control mw-100 w-200px" name="image" accept="image/*" />
+                                       </div>
                                        <!--end::Input-->
                                        <!-- <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i>

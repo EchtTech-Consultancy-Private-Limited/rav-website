@@ -128,12 +128,12 @@ var KTDatatablesBasicPaginations = function() {
 							var classApproved ='error';
 						}
 						var status = {
-							"0": { 'title': 'Active/Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
+							"0": { 'title': 'Waiting For Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
 												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross'},
-							"1": { 'title': 'Active/Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
+							"1": { 'title': 'Waiting For Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
 												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross' },
-							"2": { 'title': 'Ready For Publisher', 'class': 'badge badge-light-warning fw-bold px-3 py-2 btn btn-warning border-radius-10',
-												'classApprove':classApproved_publisher,'btncustomtext':'Ready For Publisher',
+							"2": { 'title': 'Waiting For Publisher', 'class': 'badge badge-light-warning fw-bold px-3 py-2 btn btn-warning border-radius-10',
+												'classApprove':classApproved_publisher,'btncustomtext':'Waiting For Publisher',
 												'icontext':'ki-cross','url':url_publisher, },
 							"3": { 'title': 'Published', 'class': 'badge badge-light-success fw-bold px-4 py-3',
 							                 'url':'javascript:void(0);','icontext':'ki-check text-success' }

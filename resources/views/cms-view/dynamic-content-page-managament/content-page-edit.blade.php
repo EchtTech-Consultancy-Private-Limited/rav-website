@@ -391,20 +391,32 @@
                            <div id="kt_Pagegallery_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-175px">Image Title</label>
-                                 <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Start Date</label>
-                                 <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Start</label>
-                                 <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Image Format</label>
+                                 
+                                
+                                 
+                                 
                                  <div data-repeater-list="kt_Pagegallery_add_multiple_options" class="d-flex flex-column gap-2">
                                     @if(count($data->pageContent[0]->content_gallery)>0)
                                     @foreach($data->pageContent[0]->content_gallery as $gallery)
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-4">
                                        <!--begin::Input-->
                                        <input type="hidden" class="form-control mw-100 w-200px" name="uid" value="{{ $gallery->uid }}" />
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Image Title</label>
                                        <input type="text" class="form-control mw-100 w-175px" name="imagetitle" placeholder="image title Name" value="{{ $gallery->image_title ?? '' }}" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Start Date</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value="{{ $gallery->start_date ?? '' }}" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">End Start</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value="{{ $gallery->end_date ?? '' }}" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Image Format</label>
                                        <input type="file" class="form-control mw-100 w-175px checkmime" name="image" accept="image/*" />
+                                       </div>
                                        <!--end::Input-->
                                        
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
@@ -421,10 +433,22 @@
                                     @else
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-4">
                                        <!--begin::Input-->
-                                       <input type="text" class="form-control mw-100 w-175px" name="imagetitle" placeholder="image title Name" value="" />
-                                       <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value="" />
-                                       <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value="" />
-                                       <input type="file" class="form-control mw-100 w-175px checkmime" name="image"  accept="image/*" />
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Image Title</label>
+                                       <input type="text" class="form-control mw-100 w-175px" name="imagetitle" placeholder="image title Name" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Start Date</label>
+                                       <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">End Start</label>
+                                       <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Image Format</label>
+                                       <input type="file" class="form-control mw-100 w-175px checkmime" name="image" accept="image/*" />
+                                       </div>
                                        <!--end::Input-->
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i>
@@ -519,20 +543,28 @@
                            <div id="kt_PagePdf_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-175px">Pdf Title</label>
-                                 <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Start Date</label>
-                                 <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Start</label>
-                                 <label class="required form-label mw-100 w-175px">Pdf Format</label>
                                  <div data-repeater-list="kt_PagePdf_add_multiple_options" class="d-flex flex-column gap-3">
                                  @if(count($data->pageContent[0]->content_pdf)>0)
                                  @foreach($data->pageContent[0]->content_pdf as $contentPdf)
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
                                        <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{ $contentPdf->uid }}" />
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Pdf Title</label>
                                        <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" value="{{ $contentPdf->pdf_title }}" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Start Date</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value="{{ $contentPdf->start_date }}"  />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">End Start</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value="{{ $contentPdf->end_date }}"  />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Pdf Format</label>
                                        <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="image" accept=".pdf" />
+                                       </div>
                                        <!--end::Input-->
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i>
@@ -548,10 +580,22 @@
                                     @else
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Pdf Title</label>
                                        <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" value="" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Start Date</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value=""  />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">End Start</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value=""  />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-175px">Pdf Format</label>
                                        <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="image" accept=".pdf" />
+                                       </div>
                                        <!--end::Input-->
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i>
@@ -646,13 +690,19 @@
                            <div id="">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Banner Title</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 13px;">Banner image Format</label>
+                                 
+                                 
                                  <div class="d-flex flex-column gap-3">
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Banner Title</label>
                                        <input type="text" class="form-control mw-100 w-200px" name="bannertitle" value="{{ $data->pageContent[0]->content_banner->banner_title_en ??''  }}" placeholder="Banner title Name" />
+                                       </div>
+                                       <div>
+                                       <label class="required form-label mw-100 w-200px">Banner image Format</label>
                                        <input type="file" class="form-control mw-100 w-200px" name="image" accept="image/*" />
+                                       </div>
                                        @if($data->pageContent[0]->content_banner !='')
                                        <img src="{{ asset('resources/uploads/pagebanner/'. $data->pageContent[0]->content_banner->public_url)  }}" width="50px" />
                                        @endif
