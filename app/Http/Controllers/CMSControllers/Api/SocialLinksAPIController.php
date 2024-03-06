@@ -47,7 +47,7 @@ class SocialLinksAPIController extends Controller
      */
     public function store(Request $request)
     {
-        $exitValue = SocialLink::where('google_link', $request->google_link)->count() > 0;
+        $exitValue = SocialLink::where([['google_link', $request->google_link],['soft_delete',0]])->count() > 0;
         // $max_size = $document->getMaxFileSize() / 1024 / 1024;
          if($exitValue == 'false'){
              $notification =[

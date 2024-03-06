@@ -55,7 +55,7 @@ class RecentActivityAPIController extends Controller
      */
     public function store(Request $request)
     {
-        $exitValue = RecentActivity::where('recent_activities_en', $request->title_name_en)->count() > 0;
+        $exitValue = RecentActivity::where([['recent_activities_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
         if($exitValue == 'false'){
             $notification =[
                 'status'=>201,

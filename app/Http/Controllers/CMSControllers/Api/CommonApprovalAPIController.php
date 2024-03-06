@@ -695,4 +695,28 @@ class CommonApprovalAPIController extends Controller
             ],201);
         }
     }
+    public function popupAdvertisingApprovePublish($id)
+    {
+        $data=PopupAdvertising::where('uid',$id)->first()->status;
+        if($data ==0 || $data ==1)
+        {
+            PopupAdvertising::where('uid',$id)->update(['status'=>'2']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }else if($data ==2){
+            PopupAdvertising::where('uid',$id)->update(['status'=>'3']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
 }

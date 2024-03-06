@@ -124,6 +124,35 @@ class WebsiteCoreSettingsController extends Controller
         ]);
     }
 
+
+    public function indexAdvertisingPopup(){
+        $crudUrlTemplate = array();
+       // xxxx to be replaced with ext_id to create valid endpoint
+       if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
+            $crudUrlTemplate['list'] = route('popupadvertising-list');
+       }
+       
+       if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['edit'] = route('websitecoresetting.edit', ['id' => 'xxxx']);
+       }
+       
+       if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('popupadvertising-delete', ['id' => 'xxxx']);
+       }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('popupadvertising-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('popupadvertising-approve', ['id' => 'xxxx']);
+        }
+        
+       //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
+
+       return view('cms-view.website-core-settings.advertising_popup_list',
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+        
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -194,11 +223,13 @@ class WebsiteCoreSettingsController extends Controller
             $crudUrlTemplate['update_headerlogo'] = route('headerLogo-update');
             $crudUrlTemplate['update_footerContent'] = route('footer-update');
             $crudUrlTemplate['update_sociallink'] = route('socialLink-update');
+            $crudUrlTemplate['update_popupAdvertisings'] = route('popupadvertising-update');
         }
 
        $datas = WebsiteCoreSettings::where('uid',$request->id)->first();
        $footerdatas = FooterManagement::where('uid',$request->id)->first();
        $sociallinkDatas = DB::table('social_links')->where('uid',$request->id)->first();
+       $popupAdvertisings = DB::table('popup_advertisings')->where('uid',$request->id)->first();
         if(isset($datas)){
             $Logodata = $datas;
             $formCall = 'websitecoresetting_edit';
@@ -208,6 +239,9 @@ class WebsiteCoreSettingsController extends Controller
         }elseif(isset($sociallinkDatas)){
             $sociallinkData = $sociallinkDatas;
             $formCall = 'sociallink_edit';
+        }elseif(isset($popupAdvertisings)){
+            $popupAdvertising = $popupAdvertisings;
+            $formCall = 'advertising_popup_edit';
         }else{
             abort(404);
         }
@@ -217,6 +251,7 @@ class WebsiteCoreSettingsController extends Controller
             'data'=> isset($Logodata)?$Logodata:'',
             'footerdata'=> isset($footerdata)?$footerdata:'',
             'sociallinkData'=> isset($sociallinkData)?$sociallinkData:'',
+            'popupAdvertising'=> isset($popupAdvertising)?$popupAdvertising:'',
         ]);
     }
 

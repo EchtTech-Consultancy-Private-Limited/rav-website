@@ -57,7 +57,7 @@ class PopupAdvertisingAPIController extends Controller
      */
     public function store(Request $request)
     {
-        $exitValue = PopupAdvertising::where('title_name_en', $request->popupadvertising_title)->count() > 0;
+        $exitValue = PopupAdvertising::where([['title_name_en', $request->popupadvertising_title],['soft_delete',0]])->count() > 0;
         // $max_size = $document->getMaxFileSize() / 1024 / 1024;
          if($exitValue == 'false'){
              $notification =[
@@ -156,11 +156,8 @@ class PopupAdvertisingAPIController extends Controller
         {
          $validator=Validator::make($request->all(),
             [
-            'google_link'=>'required',
-            'linkedin'=>'required',
-            'facebook'=>'required',
-            'twitter'=>'required',
-            'github'=>'required'
+                'popupadvertising_title'=>'required',
+                //'linkedin'=>'required',
         ]);
         if($validator->fails())
         {
@@ -170,14 +167,26 @@ class PopupAdvertisingAPIController extends Controller
             ]);
         }
         else{
+            if($request->hasFile('popupadvertising_file')){    
+                $size = $this->getFileSize($request->file('popupadvertising_file')->getSize());
+                $extension = $request->file('popupadvertising_file')->getClientOriginalExtension();
+                $file=$request->file('popupadvertising_file');
+                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $path=resource_path(env('IMAGE_FILE_FOLDER_CMS').'/popupadvertising');
+                $file->move($path,$newname);
+            }else{
+                $olddata=PopupAdvertising::where('uid',$request->id)->first();
+                $newname = $olddata->images;
+                $size = $olddata->pdfimage_size;
+                $extension = $olddata->file_extension;
+            }
             $result= PopupAdvertising::where('uid',$request->id)->update([
-                    'uid' => Uuid::uuid4(),
-                    'google_link' => $request->google_link,
-                    'linkedin' => $request->linkedin,
-                    'facebook' => $request->facebook,
-                    'twitter' => $request->twitter,
-                    'instagram' => $request->instagram,
-                    'github' => $request->github,
+                    'title_name_en' => $request->popupadvertising_title,
+                    'images' => $newname,
+                    "pdfimage_size" => isset($size)?$size:'0',
+                    "file_extension" => isset($extension)?$extension:'0',
+                    'start_date' => $request->popupadvertising_from,
+                    'end_date' => $request->popupadvertising_to,
                 ]);
             
         if($result == true)

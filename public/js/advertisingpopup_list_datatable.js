@@ -1,11 +1,11 @@
 "use strict";
 var KTDatatablesBasicPaginations = function() {
 	var initTable1 = function() {
-		var table = $('#kt_datatable_fileuploadPath_list');
-		var $i=1;
+		var table = $('#kt_datatable_advertisingpopup');
+        var $i=1;
+		// var columnList = JSON.parse(table.data('columnListData'));
 		var jsonURL = $('#urlListData').attr('data-info');
 		var crudUrlTemplate = JSON.parse(jsonURL);
-		var baseURL = new URLSearchParams(window.location);
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 		// begin first table
 		var tableObject = table.DataTable({
@@ -24,8 +24,8 @@ var KTDatatablesBasicPaginations = function() {
 			},
 			columns: [
 				{ "data": "uid" },
-				{ "data": "title_name" },
-				{ "data": "file_path" },
+				{ "data": "title_name_en" },
+				{ "data": "images" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -96,15 +96,46 @@ var KTDatatablesBasicPaginations = function() {
 						return dropdownHtml;
 					},
 				},
-				{
+                {
 					targets: 0,
 					title: 'ID',
-					orderable: true,
+					orderable: false,
 					visible: true,
 					responsivePriority: -2,
 					render: function (data, type, full, meta) {
 						return $i++;
 					},
+				},
+				{
+					targets: -3,
+					orderable: true,
+					render: function (data, type, full, meta) {
+						if(full.images != '')
+						{    
+							return '<span style="width: 250px;">\
+								<div class="d-flex align-items-center">\
+									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
+										<img class="" src="'+'../resources/uploads/popupadvertising/'+full.images+'" alt="photo"></img>\
+									</div>\
+								</div>\
+							</span>';
+						}
+						else
+						{
+							return '<span style="width: 250px;">\
+								<div class="d-flex align-items-center">\
+									<div class="symbol symbol-40 symbol-sm flex-shrink-0">\
+										<div class="symbol symbol-light-success mr-3">\
+											<span class="symbol-label font-size-h5">'+ full.no_photo +'</span>\
+										</div>\
+									</div>\
+									<div class="ml-4">\
+										<div class="text-dark-75 font-weight-bolder font-size-lg mb-0">'+data+'</div>\
+									</div>\
+								</div>\
+							</span>';
+						}
+					}
 				},
                 {
 					targets: -2,
@@ -128,12 +159,12 @@ var KTDatatablesBasicPaginations = function() {
 							var classApproved ='error';
 						}
 						var status = {
-							"0": { 'title': 'Active/Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
+							"0": { 'title': 'Waiting For Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
 												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross'},
-							"1": { 'title': 'Active/Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
+							"1": { 'title': 'Waiting For Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
 												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross' },
-							"2": { 'title': 'Ready For Publisher', 'class': 'badge badge-light-warning fw-bold px-3 py-2 btn btn-warning border-radius-10',
-												'classApprove':classApproved_publisher,'btncustomtext':'Ready For Publisher',
+							"2": { 'title': 'Waiting For Publisher', 'class': 'badge badge-light-warning fw-bold px-3 py-2 btn btn-warning border-radius-10',
+												'classApprove':classApproved_publisher,'btncustomtext':'Waiting For Publisher',
 												'icontext':'ki-cross','url':url_publisher, },
 							"3": { 'title': 'Published', 'class': 'badge badge-light-success fw-bold px-4 py-3',
 							                 'url':'javascript:void(0);','icontext':'ki-check text-success' }
@@ -150,20 +181,6 @@ var KTDatatablesBasicPaginations = function() {
 										</div>\
 									</div>\
 								</span></a>';
-					}
-				},
-				{
-					targets: -3,
-					orderable: true,
-					responsivePriority: -3,
-					render: function (data, type, full, meta) {
-						console.log(data);
-						if (typeof file_path[data] === 'undefined') {
-							return '<div class="ms-2" data-kt-filemanger-table="copy_link">\
-							<button type="button" data-attr="'+window.location.origin+'/resources/uploads/uploadManualfile/'+data+'" class="btn btn-sm btn-icon btn-light btn-active-light-primary copyButton" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">\
-							<i class="ki-outline ki-fasten fs-5 m-0"></i>\
-							</button></div>';
-						}
 					}
 				},
 			],
@@ -199,7 +216,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									history.scrollRestoration = 'manual';
 									}
-									location.href = 'maunalfileupload-list'; // reload page
+									location.href = 'advertisingpopup-list'; // reload page
 								}, 1500);
 
 							})
@@ -249,7 +266,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									   history.scrollRestoration = 'manual';
 									}
-									location.href = 'maunalfileupload-list'; // reload page
+									location.href = 'advertisingpopup-list'; // reload page
 								 }, 1500);
 
 							})
@@ -267,32 +284,6 @@ var KTDatatablesBasicPaginations = function() {
 							});     
 						}
 					});
-				});
-
-				//document.getElementById('copyButton').addEventListener('click', function() {
-					$(".copyButton").click(function (event) {
-					// Get the image path
-					var imagePath = $(this).attr('data-attr');
-					// Create a temporary input element
-					var inputElement = document.createElement('input');
-					inputElement.setAttribute('value', imagePath);
-					// Append the input element to the document
-					document.body.appendChild(inputElement);
-					// Select the input element's content
-					inputElement.select();
-					// Copy the selected content to the clipboard
-					document.execCommand('copy');
-					// Remove the temporary input element
-					document.body.removeChild(inputElement);
-					if(imagePath){
-						toastr.success(
-							"Path copied to clipboard!", 
-							"Path copied!", 
-							{timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-						 );
-					}
-					// Display a message (optional)
-					//alert('Image path copied to clipboard: ' + imagePath);
 				});
             }
 		});

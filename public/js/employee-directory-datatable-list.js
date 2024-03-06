@@ -9,7 +9,7 @@ var KTDatatablesBasicPaginations = function() {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 		// begin first table
 		var tableObject = table.DataTable({
-			order: [[1, 'asc']],
+			//order: [[1, 'asc']],
 			responsive: true,
 			pagingType: 'full_numbers',
 			searchDelay: 500,

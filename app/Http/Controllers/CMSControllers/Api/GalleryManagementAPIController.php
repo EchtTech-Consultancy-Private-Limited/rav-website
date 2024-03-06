@@ -50,18 +50,19 @@ class GalleryManagementAPIController extends Controller
      */
     public function storePhoto(Request $request)
     {
-        $exitValue = GalleryManagement::where('title_name_en', $request->title_name_en)->count() > 0;
+        $exitValue = GalleryManagement::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
        // $max_size = $document->getMaxFileSize() / 1024 / 1024;
         if($exitValue == 'false'){
             $notification =[
                 'status'=>201,
                 'message'=>'This is duplicate value.'
             ];
-        }else{
+            }else{
                 try{
                 $validator=Validator::make($request->all(),
                         [
-                        'title_name_en'=>'required|unique:gallery_management',
+                        //'title_name_en'=>'required|unique:gallery_management',
+                        'title_name_en'=>'required',
                         //'type'=>'required',
                         //'public_url'=>'required'
                         ]);
@@ -129,7 +130,7 @@ class GalleryManagementAPIController extends Controller
 
     public function storeVideo(Request $request)
     {
-        $exitValue = GalleryManagement::where('title_name_en', $request->title_name_en1)->count() > 0;
+        $exitValue = GalleryManagement::where([['title_name_en', $request->title_name_en1],['soft_delete',0]])->count() > 0;
        // $max_size = $document->getMaxFileSize() / 1024 / 1024;
         if($exitValue == 'false'){
             $notification =[

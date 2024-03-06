@@ -59,11 +59,7 @@ class RtiApplicationResponsesAPIController extends Controller
     public function store(Request $request)
     {
         
-        //if(config('checkduplicate.mobile') == 'ON'){
-            $exitValue = RtiApplicationResponses::where('registration_number', $request->registration_number)->count() > 0;
-        //}else{
-           // $exitValue ='true';
-       // }
+        $exitValue = RtiApplicationResponses::where([['registration_number', $request->registration_number],['soft_delete',0]])->count() > 0;
         // $max_size = $document->getMaxFileSize() / 1024 / 1024;
          if($exitValue == 'false'){
              DB::rollback();

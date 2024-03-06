@@ -410,7 +410,7 @@
                                        <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value="{{ $gallery->start_date ?? '' }}" />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">End Start</label>
+                                       <label class="required form-label mw-100 w-175px">End Date</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value="{{ $gallery->end_date ?? '' }}" />
                                        </div>
                                        <div>
@@ -442,7 +442,7 @@
                                        <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">End Start</label>
+                                       <label class="required form-label mw-100 w-175px">End Date</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" />
                                        </div>
                                        <div>
@@ -558,7 +558,7 @@
                                        <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value="{{ $contentPdf->start_date }}"  />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">End Start</label>
+                                       <label class="required form-label mw-100 w-175px">End Date</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value="{{ $contentPdf->end_date }}"  />
                                        </div>
                                        <div>
@@ -589,7 +589,7 @@
                                        <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value=""  />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">End Start</label>
+                                       <label class="required form-label mw-100 w-175px">End Date</label>
                                        <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value=""  />
                                        </div>
                                        <div>

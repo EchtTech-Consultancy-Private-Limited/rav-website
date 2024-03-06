@@ -67,48 +67,56 @@ class DynamicPagesAPIController extends Controller
      */
     public function faqStore(Request $request)
     {
-        try{
-        $validator=Validator::make($request->all(),
-            [
-            'question_en'=>'required',
-            //'eventtype'=>'required',
-            //'title_name_en'=>'required',
-        ]);
-        if($validator->fails())
-        {
+        $exitValue = DB::table('faq')->where([['question_en', $request->question_en],['soft_delete',0]])->count() > 0;
+        if($exitValue == 'false'){
             $notification =[
                 'status'=>201,
-                'message'=> $validator->errors()
+                'message'=>'This is duplicate value.'
             ];
-        }
-        else{
-             
-            $result= DB::table('faq')->insert([
-                    'uid' => Uuid::uuid4(),
-                    'question_en' => $request->question_en,
-                    'question_hi' => $request->question_hi,
-                    'answer_en' => $request->kt_description_en,
-                    'answer_hi' => $request->kt_description_hi,
-                   // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
-                ]);
-            
-        if($result == true)
-        {
-            $notification =[
-                'status'=>200,
-                'message'=>'Added successfully.'
-            ];
-        }
-        else{
-            $notification = [
+        }else{
+            try{
+            $validator=Validator::make($request->all(),
+                [
+                'question_en'=>'required',
+                //'eventtype'=>'required',
+                //'title_name_en'=>'required',
+            ]);
+            if($validator->fails())
+            {
+                $notification =[
                     'status'=>201,
-                    'message'=>'some error accoured.'
+                    'message'=> $validator->errors()
                 ];
-             } 
+            }
+            else{
+                
+                $result= DB::table('faq')->insert([
+                        'uid' => Uuid::uuid4(),
+                        'question_en' => $request->question_en,
+                        'question_hi' => $request->question_hi,
+                        'answer_en' => $request->kt_description_en,
+                        'answer_hi' => $request->kt_description_hi,
+                    // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
+                    ]);
+                
+            if($result == true)
+            {
+                $notification =[
+                    'status'=>200,
+                    'message'=>'Added successfully.'
+                ];
+            }
+            else{
+                $notification = [
+                        'status'=>201,
+                        'message'=>'some error accoured.'
+                    ];
+                } 
+            }
+        }catch(Throwable $e){report($e);
+            return false;
         }
-       }catch(Throwable $e){report($e);
-        return false;
-       }
+        }
         return response()->json($notification);
     }
     public function faqUpdate(Request $request)

@@ -390,7 +390,7 @@
                                        <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-200px">End Start</label>
+                                       <label class="required form-label mw-100 w-200px">End Date</label>
                                        <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
                                        </div>
                                        <div>
@@ -498,7 +498,7 @@
                                        <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-200px">End Start</label>
+                                       <label class="required form-label mw-100 w-200px">End Date</label>
                                        <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
                                        </div>
                                        <div>
