@@ -38,7 +38,22 @@ class FormBuilderAPIController extends Controller
     }
 
     public function formMappingIndex(){
-            
+        $data=DB::table('form_designs_management')->where('soft_delete','0')->get();
+        $totalRecords = DB::table('form_designs_management')->where('soft_delete','0')->count();
+        $resp = new \stdClass;
+        $resp->iTotalRecords = $totalRecords;
+        $resp->iTotalDisplayRecords = $totalRecords;
+        $resp->aaData = $data;
+        if($resp)
+            {
+                return response()->json($resp,200);
+            }
+            else{
+                return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
     }
     /**
      * Show the form for creating a new resource.

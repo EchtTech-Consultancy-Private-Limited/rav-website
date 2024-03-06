@@ -251,8 +251,10 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/delete-pdf-mfu',[ManualFileUploadAPIController::class,'deletePDFIMG'])->name('mfu-pdf-delete');
 
             /****** Form Building fbd:formbuilding*/
+            Route::post('/create-map',[FormBuilderAPIController::class,'storeMapping'])->name('formMap-save')->middleware('throttle:custom_Limit');
             Route::post('/create-fbd',[FormBuilderAPIController::class,'store'])->name('formbuilder-save')->middleware('throttle:custom_Limit');
             Route::get('/list-fbd',[FormBuilderAPIController::class,'index'])->name('formbuilder-list');
+            Route::get('/list-fmap',[FormBuilderAPIController::class,'formMappingIndex'])->name('formmap-list');
             Route::get('/edit-fbd/{id}',[FormBuilderAPIController::class,'edit'])->name('formbuilder-edit');
             Route::post('/update-fbd',[FormBuilderAPIController::class,'update'])->name('formbuilder-update');
             Route::delete('/delete-fbd/{id}',[FormBuilderAPIController::class,'destroy'])->name('formbuilder-delete');
@@ -290,6 +292,7 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/approve-formbuilding/{id}',[CommonApprovalAPIController::class,'formBuildingApprovePublish'])->name('formbuilder-approve');
             Route::post('/approve-mfu/{id}',[CommonApprovalAPIController::class,'manualFileUploadApprovePublish'])->name('mfu-approve');
             Route::post('/approve-newrole/{id}',[CommonApprovalAPIController::class,'newRoleApprovePublish'])->name('newrole-approve');
+            Route::post('/approve-popupadvertising/{id}',[CommonApprovalAPIController::class,'popupAdvertisingApprovePublish'])->name('popupadvertising-approve');
     
         });
     });

@@ -85,13 +85,27 @@
                </div>
             </div>
          </div>
-         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['websitecoresetting/websitecoresetting-create','websitecoresetting/logo-list','websitecoresetting/footercontent-list','websitecoresetting/sociallink-list']) }} {{ (request()->is('websitecoresetting/websitecoresetting-create/*')) ? 'hover show' : '' }}{{ (request()->is('websitecoresetting/logo-list/*')) ? 'hover show' : '' }}
-         {{ (request()->is('websitecoresetting/footercontent-list/*')) ? 'hover show' : '' }}{{ (request()->is('websitecoresetting/sociallink-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['websitecoresetting/websitecoresetting-create','websitecoresetting/logo-list','websitecoresetting/footercontent-list'
+            ,'websitecoresetting/sociallink-list','websitecoresetting/advertisingpopup-list']) }} 
+         {{ (request()->is('websitecoresetting/websitecoresetting-create/*')) ? 'hover show' : '' }}{{ (request()->is('websitecoresetting/logo-list/*')) ? 'hover show' : '' }}
+         {{ (request()->is('websitecoresetting/footercontent-list/*')) ? 'hover show' : '' }}
+         {{ (request()->is('websitecoresetting/sociallink-list/*')) ? 'hover show' : '' }}
+         {{ (request()->is('websitecoresetting/advertisingpopup-list/*')) ? 'hover show' : '' }}
+         " >
             <span class="menu-link" ><span  class="menu-icon" ><i class="ki-outline ki-setting-2 fs-2"></i></span><span  class="menu-title" >{{ config('menu.websitecoresettings') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion menu-active-bg {{ set_active(['websitecoresetting/websitecoresetting-create','websitecoresetting/logo-list','websitecoresetting/footercontent-list','websitecoresetting/sociallink-list']) }} {{ (request()->is('websitecoresetting/websitecoresetting-create/*')) ? 'show' : '' }}{{ (request()->is('websitecoresetting/logo-list/*')) ? 'show' : '' }}
-            {{ (request()->is('websitecoresetting/footercontent-list/*')) ? 'show' : '' }}{{ (request()->is('websitecoresetting/sociallink-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion menu-active-bg 
+            {{ set_active(['websitecoresetting/websitecoresetting-create','websitecoresetting/logo-list',
+               'websitecoresetting/footercontent-list','websitecoresetting/sociallink-list','websitecoresetting/advertisingpopup-list']) }}
+             {{ (request()->is('websitecoresetting/websitecoresetting-create/*')) ? 'show' : '' }}{{ (request()->is('websitecoresetting/logo-list/*')) ? 'show' : '' }}
+            {{ (request()->is('websitecoresetting/footercontent-list/*')) ? 'show' : '' }}
+            {{ (request()->is('websitecoresetting/sociallink-list/*')) ? 'show' : '' }}
+            {{ (request()->is('websitecoresetting/advertisingpopup-list/*')) ? 'show' : '' }}
+            " >
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['websitecoresetting/websitecoresetting-create']) }} {{ (request()->is('websitecoresetting/websitecoresetting-create/*')) ? 'active' : '' }}"  href="{{ route('websitecoresetting.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Setting</span></a><!--end:Menu link-->
+               </div>
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['websitecoresetting/advertisingpopup-list']) }} {{ (request()->is('websitecoresetting/advertisingpopup-list/*')) ? 'active' : '' }}"  href="{{ route('advertisingpopup.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Advertising Popup Listing</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['websitecoresetting/logo-list']) }} {{ (request()->is('websitecoresetting/logo-list/*')) ? 'active' : '' }}"  href="{{ route('logo.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Logo Listing</span></a><!--end:Menu link-->

@@ -92,54 +92,63 @@ class WebsiteCoreSettingsAPIController extends Controller
     public function store(Request $request)
     {
          //dd($request->logo_title);
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'logo_title'=>'required|unique:website_core_settings',
-                'header_logo' => "required|mimes:jpeg,bmp,png,gif,svg|max:10000"
-                //'position_check'=>'required',
-            // 'footer_check'=>'required'
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                if($request->hasFile('header_logo')){    
-                    $file=$request->file('header_logo');
-                    $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                    $path=resource_path('uploads/WebsiteCoreSettings');
-                    $file->move($path,$newname);
-                }
-                $result= WebsiteCoreSettings::insert([
-                        'uid' => Uuid::uuid4(),
-                        'logo_title' => $request->logo_title,
-                        'header_logo' => $newname,
-                        'footer_logo' => $newname,
-                        'position_check' => isset($request->position_check)?$request->position_check:'0',
-                        'footer_check' => isset($request->footer_check)?$request->footer_check:'0',
-                    ]);
-                
-            if($result == true)
-            {
-                $notification =[
-                    'status'=>200,
-                    'message'=>'New Logo Added successfully.'
-                ];
-            }
-            else{
-                $notification = [
+        $exitValue = WebsiteCoreSettings::where([['logo_title',$request->logo_title],['soft_delete',0]])->count() > 0;
+        if($exitValue == 'false'){
+            $notification =[
+                'status'=>201,
+                'message'=>'This is duplicate value.'
+            ];
+        }else{
+            try{
+                $validator=Validator::make($request->all(),
+                    [
+                    //'logo_title'=>'required|unique:website_core_settings',
+                    'logo_title'=>'required',
+                    'header_logo' => "required|mimes:jpeg,bmp,png,gif,svg|max:10000"
+                    //'position_check'=>'required',
+                // 'footer_check'=>'required'
+                ]);
+                if($validator->fails())
+                {
+                    $notification =[
                         'status'=>201,
-                        'message'=>'some error accoured.'
+                        'message'=> $validator->errors()
                     ];
-                } 
-            }      
-        }catch(Throwable $e){report($e);
-        return false;
-       }
+                }
+                else{
+                    if($request->hasFile('header_logo')){    
+                        $file=$request->file('header_logo');
+                        $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                        $path=resource_path('uploads/WebsiteCoreSettings');
+                        $file->move($path,$newname);
+                    }
+                    $result= WebsiteCoreSettings::insert([
+                            'uid' => Uuid::uuid4(),
+                            'logo_title' => $request->logo_title,
+                            'header_logo' => $newname,
+                            'footer_logo' => $newname,
+                            'position_check' => isset($request->position_check)?$request->position_check:'0',
+                            'footer_check' => isset($request->footer_check)?$request->footer_check:'0',
+                        ]);
+                    
+                if($result == true)
+                {
+                    $notification =[
+                        'status'=>200,
+                        'message'=>'New Logo Added successfully.'
+                    ];
+                }
+                else{
+                    $notification = [
+                            'status'=>201,
+                            'message'=>'some error accoured.'
+                        ];
+                    } 
+                }      
+            }catch(Throwable $e){report($e);
+            return false;
+        }
+        }
         return response()->json($notification);
     }
     public function storeFooterContent(Request $request)
@@ -200,6 +209,8 @@ class WebsiteCoreSettingsAPIController extends Controller
                 $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
                 $path=resource_path('uploads/WebsiteCoreSettings');
                 $file->move($path,$newname);
+            }else{
+                $newname = WebsiteCoreSettings::where('uid',$request->id)->first()->header_logo;
             }
             $result= WebsiteCoreSettings::where('uid',$request->id)->update([
                     'logo_title' => $request->logo_title,

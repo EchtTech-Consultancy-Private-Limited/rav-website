@@ -22,6 +22,7 @@ class FormBuilderController extends Controller
     protected $update = 'form-builder.form-edit';
     protected $show = 'form-builder.form-show';
     protected $list = 'form-builder.form-list';
+    protected $list_mapping = 'form-builder.form-list-mapping';
 
     public function __construct()
     {
@@ -89,6 +90,46 @@ class FormBuilderController extends Controller
          ]);
     }
 
+
+    public function mappingForm(){
+        $crudUrlTemplate = array();
+        // xxxx to be replaced with ext_id to create valid endpoint
+        if(isset($this->abortIfAccessNotAllowed()['create']) && $this->abortIfAccessNotAllowed()['create'] !=''){
+            $crudUrlTemplate['create'] = route('formMap-save');
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['list'] = route('formmap-list');
+        }
+        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['edit'] = route('formbuilder.edit', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['view'] = route('formbuilder.show', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('formbuilder-delete', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('formbuilder-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('formbuilder-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
+        }
+
+        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
+
+        return view('cms-view.'.$this->list_mapping,
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+        
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      *

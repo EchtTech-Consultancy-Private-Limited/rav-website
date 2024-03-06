@@ -87,7 +87,7 @@ class RolesAndPermissionAPIController extends Controller
     public function store(Request $request)
     {
        // dd($request->all());
-        $exitValue = RolesAndPermission::where('google_link', $request->google_link)->count() > 0;
+        $exitValue = RolesAndPermission::where([['google_link', $request->google_link],['soft_delete',0]])->count() > 0;
         // $max_size = $document->getMaxFileSize() / 1024 / 1024;
          if($exitValue == 'false'){
              $notification =[
@@ -98,7 +98,7 @@ class RolesAndPermissionAPIController extends Controller
             try{
                 $validator=Validator::make($request->all(),
                     [
-                    'google_link'=>'required|unique:RolesAndPermission',
+                    'google_link'=>'required',
                     'linkedin'=>'required',
                     'facebook'=>'required',
                 ]);
@@ -143,7 +143,7 @@ class RolesAndPermissionAPIController extends Controller
     public function newRoleAdd(Request $request)
     {
        // dd($request->all());
-        $exitValue = DB::table('role_type_users')->where('role_type', $request->role_type)->count() > 0;
+        $exitValue = DB::table('role_type_users')->where([['role_type', $request->role_type],['soft_delete',0]])->count() > 0;
         // $max_size = $document->getMaxFileSize() / 1024 / 1024;
          if($exitValue == 'false'){
              $notification =[

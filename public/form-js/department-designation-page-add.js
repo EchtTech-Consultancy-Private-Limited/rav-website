@@ -59,7 +59,7 @@ var KTvalidationDepartment= function() {
                     } else {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                        console.log('Brijesh '+response.data.errors)
+                        console.log('Brijesh '+message)
                         for (var field in errors) {
                             if (errors.hasOwnProperty(field)) {
                                 errors[field].forEach(function (errorMessage) {
@@ -73,18 +73,27 @@ var KTvalidationDepartment= function() {
                         }
                        }
                     })
-                    .catch(function (errors) {
+                    .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                       
-                        
-                       }).then(() => {
-                             // Hide loading indication
-                             submitButton.removeAttribute('data-kt-indicator');
-                             // Enable button
-                             submitButton.disabled = false;
-                       });
+                        for (var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                                error.response.data.errors[field].forEach(function (errorMessage) {
+                                    toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                     );
+                                });
+                            }
+                        }
+                         }).then(() => {
+                               // Hide loading indication
+                               submitButton.removeAttribute('data-kt-indicator');
+                               // Enable button
+                               submitButton.disabled = false;
+                         });
                     } else {
+
                           toastr.error(
                                 "Sorry, looks like there are some errors detected, please try again K.", 
                                 "Something went wrong!", 

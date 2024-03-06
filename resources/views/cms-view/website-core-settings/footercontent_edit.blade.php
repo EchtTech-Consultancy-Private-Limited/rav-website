@@ -25,7 +25,7 @@
          @if(isset($footerdata) && $footerdata !='')
          <li class="nav-item">
             <a class="nav-link text-active-primary d-flex align-items-center pb-5 active" data-bs-toggle="tab" href="#kt_header_settings_general" id="edit">
-            <i class="ki-outline ki-home fs-2 me-2"></i> Header Footer Logo
+            <i class="ki-outline ki-home fs-2 me-2"></i> Footer Content
             </a>
          </li>
          @endif
