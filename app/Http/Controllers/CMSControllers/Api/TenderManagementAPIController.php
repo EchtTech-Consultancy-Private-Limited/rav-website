@@ -72,7 +72,7 @@ class TenderManagementAPIController extends Controller
             }
             else{
                 $extId =  Uuid::uuid4();
-                $lastInsertID= TenderManagement::insertGetId([
+                $result= TenderManagement::insertGetId([
                         'uid' => $extId,
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
@@ -135,9 +135,26 @@ class TenderManagementAPIController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TenderManagement $tenderManagement)
+    public function show(TenderManagement $tenderManagement,$id)
     {
-        //
+        $data=TenderManagement::where([['soft_delete','0'],['uid',$id]])->get();
+        $dataDetail=DB::table('tender_details')->where([['tender_id',$id]])->get();
+        $totalRecords = TenderManagement::where([['soft_delete','0'],['uid',$id]])->count();
+        $resp = new \stdClass;
+        //$resp->iTotalRecords = $totalRecords;
+       // $resp->iTotalDisplayRecords = $totalRecords;
+        $resp->aaDataDetails = $dataDetail;
+        $resp->aaData = $data;
+        if($resp)
+            {
+                return response()->json($resp,200);
+            }
+            else{
+                return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
     }
 
     /**
@@ -189,10 +206,11 @@ class TenderManagementAPIController extends Controller
                         'apply_url' => $request->applyurl??'NULL',
                         'description_en' => $request->kt_description_en,
                         'description_hi' => $request->kt_description_hi,
+                        'status' => 1,
                     ]);
 
-                if(!empty($request->kt_tender_add_multiple_options)){
-                foreach($request->kt_tender_add_multiple_options as $key=>$value)
+                if(!empty($request->kt_news_edit_multiple_options)){
+                foreach($request->kt_news_edit_multiple_options as $key=>$value)
                 {
                 if(!empty($value['uid'])){
                     $uid=DB::table('tender_details')->where('uid',$value['uid'])->first();
@@ -299,7 +317,7 @@ class TenderManagementAPIController extends Controller
         //dd($request->id);
         $data=DB::table('tender_details')->where('uid',$request->id)->first();
         //dd($data);
-        if($data !='null')
+        if($data)
         {
             DB::table('tender_details')->where('uid',$request->id)->update(['soft_delete'=>1]);
             return response()->json([

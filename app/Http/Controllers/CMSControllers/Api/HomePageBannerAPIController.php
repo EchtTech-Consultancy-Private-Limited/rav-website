@@ -194,6 +194,7 @@ class HomePageBannerAPIController extends Controller
                         'end_date' => $request->enddate,
                         'public_url' => $newname,
                         'private_url' => $newname,
+                        'status' => 1,
                     // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                     ]);
                 

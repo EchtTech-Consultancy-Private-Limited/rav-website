@@ -238,6 +238,7 @@ class RtiApplicationResponsesAPIController extends Controller
                         'request_doc_file_extension' => $extension1,
                         'reply_doc_pdfimage_size' => $size2,
                         'reply_doc_file_extension' => $extension2,
+                        'status' => 1,
                     ]);
             
         if($result == true)

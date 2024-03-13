@@ -199,12 +199,13 @@ class CareerManagementAPIController extends Controller
                         'title_name_hi' => $request->title_name_hi,
                         'start_date'=> $request->startdate,
                         'end_date' => $request->enddate,
+                        'status' => 1,
                         'description_en' => $request->kt_description_en,
                         'description_hi' => $request->kt_description_hi,
                     ]);
 
-                if(!empty($request->kt_tender_add_multiple_options)){
-                foreach($request->kt_tender_add_multiple_options as $key=>$value)
+                if(!empty($request->kt_career_edit_multiple_options)){
+                foreach($request->kt_career_edit_multiple_options as $key=>$value)
                 {
                 if(!empty($value['uid'])){
                     $uid=DB::table('career_management_details')->where('uid',$value['uid'])->first();
@@ -244,7 +245,7 @@ class CareerManagementAPIController extends Controller
                             
                         $result= DB::table('career_management_details')->insert([
                                 'uid' => Uuid::uuid4(),
-                                'tender_id' => $request->id,
+                                'career_management_id' => $request->id,
                                 'pdf_title' => $value['pdftitle'],
                                 // 'start_date'=> $value['startdate'],
                                 // 'end_date' => $value['enddate'],
@@ -306,7 +307,7 @@ class CareerManagementAPIController extends Controller
         //dd($request->id);
         $data=DB::table('career_management_details')->where('uid',$request->id)->first();
         //dd($data);
-        if($data !='null')
+        if($data)
         {
             DB::table('career_management_details')->where('uid',$request->id)->update(['soft_delete'=>1]);
             return response()->json([

@@ -39,6 +39,9 @@ class UserManagementController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
             $crudUrlTemplate['list'] = route('user-list');
         }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['view'] = route('user-list');
+        }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('user.edit', ['id' => 'xxxx']);
         }

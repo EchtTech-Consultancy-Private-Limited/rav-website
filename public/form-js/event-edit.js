@@ -111,7 +111,7 @@ var KTAppEventSave = function () {
      }
    
  const initFormRepeater = () => {
-         $('#kt_event_add_multiple_options').repeater({
+         $('#kt_event_edit_multiple_options').repeater({
              initEmpty: false,
              // defaultValues: {
              //     'text-input': 'foo'
@@ -119,7 +119,7 @@ var KTAppEventSave = function () {
              show: function () {
                  $(this).slideDown();
                  // Init select2 on new repeated items
-                 initConditionsSelect2();
+                 //initConditionsSelect2();
              },
              hide: function (deleteElement) {
                  $(this).slideUp(deleteElement);

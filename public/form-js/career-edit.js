@@ -96,7 +96,7 @@ var KTAppCareerSave = function () {
          });
      }
  const initFormRepeater = () => {
-         $('#kt_career_add_multiple_options').repeater({
+         $('#kt_career_edit_multiple_options').repeater({
              initEmpty: false,
              // defaultValues: {
              //     'text-input': 'foo'

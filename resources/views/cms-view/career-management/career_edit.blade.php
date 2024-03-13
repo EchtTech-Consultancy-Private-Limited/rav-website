@@ -184,16 +184,11 @@
                            <!--begin::Input group-->
                            <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
                               <!--begin::Repeater-->
-                              <div id="kt_career_add_multiple_options">
+                              <div id="kt_career_edit_multiple_options">
                                  <!--begin::Form group-->
                                  <div class="form-group">
-                                    
-                                    <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">career Description</label> -->
-                                    <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">Start Date</label> -->
-                                    <!-- <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Date</label> -->
-                                    
-                                    <div data-repeater-list="kt_career_add_multiple_options" class="d-flex flex-column gap-3">
-                                       @if(isset($pdfData))
+                                 @if(count($pdfData) > 0)
+                                    <div data-repeater-list="kt_career_edit_multiple_options" class="d-flex flex-column gap-3">
                                        @foreach($pdfData as $pdfDatas)
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
@@ -221,12 +216,19 @@
                                        </div>
                                        @endforeach
                                        @else
+                                       <div data-repeater-list="kt_career_edit_multiple_options" class="d-flex flex-column gap-3">
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
-                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" />
+                                          <div>
+                                             <label class="required form-label mw-100 w-175px">Pdf Title</label>
+                                             <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" />
+                                          </div>
                                           <!-- <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="career Description" />
                                           <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="career Description" /> -->
-                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          <div>
+                                             <label class="required form-label mw-100 w-175px">PDF Format</label>
+                                             <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                          </div>
                                           <!--end::Input-->
                                           <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                              <i class="ki-outline ki-cross fs-1"></i> </button>

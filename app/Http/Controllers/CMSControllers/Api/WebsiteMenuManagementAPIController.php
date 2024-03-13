@@ -166,6 +166,7 @@ class WebsiteMenuManagementAPIController extends Controller
                         'footer_url' => preg_replace('/\s+/', '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),
                         //'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
                         //'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
+                        'status' => 1,
                     ]);
                 
             if($result == true)

@@ -106,7 +106,7 @@ var KTAppNewsSave = function () {
      }
    
  const initFormRepeater = () => {
-         $('#kt_news_add_multiple_options').repeater({
+         $('#kt_news_edit_multiple_options').repeater({
              initEmpty: false,
              // defaultValues: {
              //     'text-input': 'foo'

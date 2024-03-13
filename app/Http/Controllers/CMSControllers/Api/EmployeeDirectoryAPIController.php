@@ -229,6 +229,7 @@ class EmployeeDirectoryAPIController extends Controller
                             'facebook' => $request->facebook,
                             'twitter' => $request->twitter,
                             'instagram' => $request->instagram,
+                            'status' => 1,
                     ]);
             
         if($result == true)

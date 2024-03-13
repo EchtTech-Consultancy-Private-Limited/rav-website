@@ -107,7 +107,7 @@ class NewsManagementController extends Controller
         $crudUrlTemplate = array();
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['update'] = route('news-update');
-            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete');
+            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete-news');
         }
 
         $results = NewsManagement::where('uid', $request->id)->first();

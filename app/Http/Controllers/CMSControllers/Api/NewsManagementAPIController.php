@@ -186,10 +186,11 @@ class NewsManagementAPIController extends Controller
                         'public_url' => $request->url,
                         'start_date'=> $request->startdate,
                         'end_date' => $request->enddate,
+                        'status' => 1,
                         'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                     ]);
-            if(!empty($request->kt_news_add_multiple_options)){
-                foreach($request->kt_news_add_multiple_options as $key=>$value)
+            if(!empty($request->kt_news_edit_multiple_options)){
+                foreach($request->kt_news_edit_multiple_options as $key=>$value)
                 {   
                     //dd($value['image']);
                     if(!empty($value['uid'])){

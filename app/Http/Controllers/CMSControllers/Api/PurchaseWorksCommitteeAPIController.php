@@ -220,7 +220,8 @@ class PurchaseWorksCommitteeAPIController extends Controller
                         'start_date' => $request->startdate,
                         'pdfimage_size' => $request->size,
                         'file_extension' => $request->extension,
-                        'asset_type' => $request->type_id
+                        'asset_type' => $request->type_id,
+                        'status' => 1,
                     ]);
             
         if($result == true)

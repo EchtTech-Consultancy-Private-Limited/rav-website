@@ -111,9 +111,10 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/create-ten',[TenderManagementAPIController::class,'store'])->name('tender-save')->middleware('throttle:custom_Limit');
             Route::get('/list-ten',[TenderManagementAPIController::class,'index'])->name('tender-list');
             Route::get('/edit-ten/{id}',[TenderManagementAPIController::class,'edit'])->name('tender-edit');
+            Route::get('/show/{id}',[TenderManagementAPIController::class,'show'])->name('tender-show');
             Route::post('/update-ten',[TenderManagementAPIController::class,'update'])->name('tender-update');
             Route::delete('/delete-ten/{id}',[TenderManagementAPIController::class,'destroy'])->name('tender-delete');
-            Route::post('/delete-pdf',[TenderManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete');
+            Route::post('/delete-pdf-tender',[TenderManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete-tender');
     
     
             /****** Content Page Setting cpi: content page information */
@@ -138,7 +139,7 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::get('/edit-eve/{id}',[EventsManagementAPIController::class,'edit'])->name('event-edit');
             Route::post('/update-eve',[EventsManagementAPIController::class,'update'])->name('event-update');
             Route::delete('/delete-eve/{id}',[EventsManagementAPIController::class,'destroy'])->name('event-delete');
-            Route::post('/delete-pdf',[EventsManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete');
+            Route::post('/delete-pdf-event',[EventsManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete-event');
     
             /****** News Setting nw:News */
             Route::post('/create-nw',[NewsManagementAPIController::class,'store'])->name('news-save')->middleware('throttle:custom_Limit');
@@ -146,7 +147,7 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::get('/edit-nw/{id}',[NewsManagementAPIController::class,'edit'])->name('news-edit');
             Route::post('/update-nw',[NewsManagementAPIController::class,'update'])->name('news-update');
             Route::delete('/delete-nw/{id}',[NewsManagementAPIController::class,'destroy'])->name('news-delete');
-            Route::post('/delete-pdf',[NewsManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete');
+            Route::post('/delete-pdf-news',[NewsManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete-news');
     
             /****** Gallery Setting pgl:photo Gallery vgl:video gallery*/
             Route::post('/create-pgl',[GalleryManagementAPIController::class,'storePhoto'])->name('photo-save')->middleware('throttle:custom_Limit');
@@ -156,7 +157,8 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             // Route::get('/edit-gl-video/{id}',[GalleryManagementAPIController::class,'editVideo'])->name('video-save');
             Route::post('/update-gl',[GalleryManagementAPIController::class,'update'])->name('photo-update');
             Route::delete('/delete-gl/{id}',[GalleryManagementAPIController::class,'destroy'])->name('photovideo-delete');
-    
+            /* multiple row delete!!!*/
+            Route::post('/gallery-multiple',[GalleryManagementAPIController::class,'deleteMutiData'])->name('gallery-multiple');
             /****** Banner Setting bn:Banner*/
             Route::post('/create-bn',[HomePageBannerAPIController::class,'store'])->name('banner-save')->middleware('throttle:custom_Limit');
             Route::get('/list-bn',[HomePageBannerAPIController::class,'index'])->name('banner-list');
@@ -220,6 +222,7 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::get('/edit-career/{id}',[CareerManagementAPIController::class,'edit'])->name('career-edit');
             Route::post('/update-career',[CareerManagementAPIController::class,'update'])->name('career-update');
             Route::delete('/delete-career/{id}',[CareerManagementAPIController::class,'destroy'])->name('career-delete');
+            Route::post('/delete-pdf-career',[CareerManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete-career');
     
             /****** RTI Assets Setting rtia:RTI Assets*/
             Route::post('/create-rtia',[RtiAssetsAPIController::class,'store'])->name('rtiassets-save')->middleware('throttle:custom_Limit');

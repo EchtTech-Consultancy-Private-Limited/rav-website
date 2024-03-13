@@ -106,7 +106,7 @@ class EventsManagementController extends Controller
         $crudUrlTemplate = array();
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['update'] = route('event-update');
-            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete');
+            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete-event');
         }
 
         $results = EventsManagement::where('uid', $request->id)->first();

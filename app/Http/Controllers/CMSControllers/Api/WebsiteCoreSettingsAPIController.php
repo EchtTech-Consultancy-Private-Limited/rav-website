@@ -218,6 +218,7 @@ class WebsiteCoreSettingsAPIController extends Controller
                     'footer_logo' => $request->newname,
                     'position_check' => $request->position_check,
                     'footer_check' => $request->footer_check,
+                    'status' => 1,
                 ]);
             
         if($result == true)

@@ -58,6 +58,8 @@ var KTAppTenderSave = function () {
                       }, 1500);
                       
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
@@ -66,6 +68,8 @@ var KTAppTenderSave = function () {
                       }
                    })
                    .catch(function (error) {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                             "Sorry, looks like there are some errors detected, please try again B.", 
                             "Something went wrong!", 
@@ -78,6 +82,8 @@ var KTAppTenderSave = function () {
                             submitButton.disabled = false;
                       });
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                                "Sorry, looks like there are some errors detected, please try again K.", 
                                "Something went wrong!", 

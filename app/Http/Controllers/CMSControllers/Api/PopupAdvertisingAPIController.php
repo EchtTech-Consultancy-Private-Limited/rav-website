@@ -187,6 +187,7 @@ class PopupAdvertisingAPIController extends Controller
                     "file_extension" => isset($extension)?$extension:'0',
                     'start_date' => $request->popupadvertising_from,
                     'end_date' => $request->popupadvertising_to,
+                    'status' => 1,
                 ]);
             
         if($result == true)
