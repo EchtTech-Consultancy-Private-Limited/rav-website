@@ -188,9 +188,10 @@ class EventsManagementAPIController extends Controller
                 'end_date' => $request->enddate,
                 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                 'event_type' => $request->eventtype,
+                'status' => 1,
             ]);
-            if(!empty($request->kt_event_add_multiple_options)){
-            foreach($request->kt_event_add_multiple_options as $key=>$value)
+            if(!empty($request->kt_event_edit_multiple_options)){
+            foreach($request->kt_event_edit_multiple_options as $key=>$value)
             {
                 if(!empty($value['uid'])){
                     $uid=DB::table('events_details')->where('uid',$value['uid'])->first();

@@ -161,6 +161,7 @@ class ModuleManagementAPIController extends Controller
                     'url' => preg_replace('/\s+/', '-', isset($request->url)?$request->url:'#'),
                     'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
                     'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
+                    'status' => 1,
                 ]);
             
         if($result == true)

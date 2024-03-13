@@ -153,6 +153,7 @@ class EmpDepartDesignationAPIController extends Controller
             else{
                 $result= EmpDepartDesignation::where('uid',$request->id)->update([
                     'name_en' => $request->name_en,
+                    'status' => 1,
                 ]);
                 
             if($result == true)

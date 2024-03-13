@@ -207,13 +207,17 @@
                            <div id="kt_news_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Image Title</label>
-                                 <label class="required form-label mw-100 w-200px">Image Format</label>
                                  <div data-repeater-list="kt_news_add_multiple_options" class="d-flex flex-column gap-3">
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
-                                       <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
-                                       <input type="file" id="checkmime" class="form-control mw-100 w-200px checkmime" name="image" accept="image/*" />
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px">Image Title</label>
+                                          <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
+                                       </div>
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px">Image Format</label>
+                                          <input type="file" id="checkmime" class="form-control mw-100 w-200px checkmime" name="image" accept="image/*" />
+                                       </div>
                                        <!--end::Input-->
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i> </button>

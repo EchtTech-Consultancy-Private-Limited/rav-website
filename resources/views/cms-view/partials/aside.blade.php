@@ -32,7 +32,7 @@
                      </div>
                   </div>
                </div>
-               @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
+               @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1' || isset(Auth::user()->role_id) == '2' && Auth::user()->role_id == '2')
                <div data-kt-menu-trigger="click"  class="menu-item menu-accordion {{ set_active(['role/role-create','role/role-list','newrole/new-role-list']) }} {{ (request()->is('role/role-create/*')) ? 'hover show' : '' }}{{ (request()->is('role/role-list/*')) ? 'hover show' : '' }}{{ (request()->is('newrole/new-role-list/*')) ? 'hover show' : '' }}" >
                   <span class="menu-link" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span>
                   <span  class="menu-title" >Roles & Permissions</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->

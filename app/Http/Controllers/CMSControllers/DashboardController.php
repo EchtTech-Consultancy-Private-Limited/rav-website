@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CMSModels\Dashboard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -20,9 +21,16 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   $segment = $request->segment(1);
+    {   $data['segment'] = $request->segment(1);
 
-        return view('cms-view.dashboard');
+        $data['users'] = DB::table('users')->where('status',3)->count();
+        $data['menu'] = DB::table('website_menu_management')->where('status',3)->count();
+        $data['event'] = DB::table('events_management')->where('status',3)->count();
+        $data['tender'] = DB::table('tender_management')->where('status',3)->count();
+        $data['news'] = DB::table('news_management')->where('status',3)->count();
+        $data['employee'] = DB::table('employee_directories')->where('status',3)->count();
+
+        return view('cms-view.dashboard',['total'=>$data]);
     }
 
     /**

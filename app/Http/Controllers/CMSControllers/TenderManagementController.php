@@ -27,6 +27,9 @@ class TenderManagementController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
             $crudUrlTemplate['list'] = route('tender-list');
         }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['view'] = route('tender-show', ['id' => 'xxxx']);
+        }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('tender.edit', ['id' => 'xxxx']);
         }
@@ -107,7 +110,7 @@ class TenderManagementController extends Controller
         $crudUrlTemplate = array();
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['update_tender'] = route('tender-update');
-            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete');
+            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete-tender');
         }
 
         $results=DB::table('tender_management')->where('uid',$request->id)->where([['soft_delete','=','0']])->first();

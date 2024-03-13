@@ -201,19 +201,23 @@
                         <!--begin::Input group-->
                         <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
                            <!--begin::Repeater-->
-                           <div id="kt_news_add_multiple_options">
+                           <div id="kt_news_edit_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Image Title</label>
-                                 <label class="required form-label mw-100 w-200px">Image Format</label>
-                                 <div data-repeater-list="kt_news_add_multiple_options" class="d-flex flex-column gap-3">
-                                 @if(isset($pdfData))
+                              @if(count($pdfData) > 0)
+                                 <div data-repeater-list="kt_news_edit_multiple_options" class="d-flex flex-column gap-3">
                                     @foreach($pdfData as $pdfDatas)
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
                                        <input type="hidden" class="form-control mw-100 w-200px" name="uid" value="{{$pdfDatas->uid}}" />
-                                       <input type="text" class="form-control mw-100 w-200px" name="imagetitle" value="{{$pdfDatas->title}}" />
-                                       <input type="file" class="form-control mw-100 w-200px" name="image" />
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px">Image Title</label>
+                                          <input type="text" class="form-control mw-100 w-200px" name="imagetitle" value="{{$pdfDatas->title}}" />
+                                       </div>
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px">Image Format</label>
+                                          <input type="file" class="form-control mw-100 w-200px" name="image" />
+                                       </div>
                                        <!--end::Input-->
                                        <button type="button" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
                                           <i class="ki-outline ki-cross fs-1"></i> 
@@ -225,15 +229,22 @@
                                     </div>
                                     @endforeach
                                     @else
-                                    <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
-                                       <!--begin::Input-->
-                                       <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
-                                       <input type="file" class="form-control mw-100 w-200px checkmime" name="image" accept="image/*" />
-                                       <!--end::Input-->
-                                       <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                          <i class="ki-outline ki-cross fs-1"></i> 
-                                       </button>
-                                    </div>
+                                    <div data-repeater-list="kt_news_edit_multiple_options" class="d-flex flex-column gap-3">
+                                       <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                          <!--begin::Input-->
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Image Title</label>
+                                             <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
+                                          </div>
+                                          <div>
+                                             <label class="required form-label mw-100 w-200px">Image Format</label>
+                                             <input type="file" class="form-control mw-100 w-200px checkmime" name="image" accept="image/*" />
+                                          </div>
+                                          <!--end::Input-->
+                                          <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                             <i class="ki-outline ki-cross fs-1"></i> 
+                                          </button>
+                                       </div>
                                     @endif
                                  </div>
                               </div>

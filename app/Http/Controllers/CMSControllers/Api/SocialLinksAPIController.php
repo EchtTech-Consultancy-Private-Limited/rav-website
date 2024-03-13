@@ -152,13 +152,13 @@ class SocialLinksAPIController extends Controller
         }
         else{
             $result= SocialLink::where('uid',$request->id)->update([
-                    'uid' => Uuid::uuid4(),
                     'google_link' => $request->google_link,
                     'linkedin' => $request->linkedin,
                     'facebook' => $request->facebook,
                     'twitter' => $request->twitter,
                     'instagram' => $request->instagram,
                     'github' => $request->github,
+                    'status' => 1,
                 ]);
             
         if($result == true)

@@ -178,6 +178,7 @@ class ManualFileUploadAPIController extends Controller
                 $result= ManualFileUpload::where('uid',$request->id)->update([
                         'title_name' => $request->title_name,
                         'file_path' => $newname,
+                        'status' => 1,
                     // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                     ]);
                 

@@ -178,6 +178,7 @@ class RecentActivityAPIController extends Controller
                     'notification_others' => $request->notification_others,
                     'start_date'=> $request->startdate,
                     'end_date' => $request->enddate,
+                    'status' => 1,
                     'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('RECENT_ACTIVITY_ARCHIVEL')),
                 ]);
                 

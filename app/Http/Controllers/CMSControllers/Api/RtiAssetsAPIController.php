@@ -186,6 +186,7 @@ class RtiAssetsAPIController extends Controller
                         'title_name_hi' => $request->title_name_hi,
                         'description_en' => $request->kt_description_en,
                         'description_hi' => $request->kt_description_hi,
+                        'status' => 1,
                     ]);
 
                 if(!empty($request->kt_tender_add_multiple_options)){

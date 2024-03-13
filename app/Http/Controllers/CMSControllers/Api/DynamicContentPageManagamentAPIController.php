@@ -377,6 +377,7 @@ class DynamicContentPageManagamentAPIController extends Controller
                         'meta_keywords' => $request->meta_keywords,
                         'sort_order' => $request->sort_order??'0',
                         'custom_slug' => $request->custom_url??'NULL',
+                        'status' => 1,
                     ]);
                 
             if($result == true)

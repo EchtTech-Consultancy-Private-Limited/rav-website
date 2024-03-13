@@ -256,6 +256,7 @@ class GalleryManagementAPIController extends Controller
                         'title_name_en' => $request->title_name_en1,
                         'title_name_hi' => $request->title_name_hi1,
                         'type' => isset($request->type)?$request->type:'1',
+                        'status' => 1,
                     ]);
 
                     if(!empty($request->kt_video_add_multiple_options)){
@@ -340,6 +341,7 @@ class GalleryManagementAPIController extends Controller
                             'title_name_en' => $request->title_name_en,
                             'title_name_hi' => $request->title_name_hi,
                             'type' => isset($request->type)?$request->type:'1',
+                            'status' => 1,
                         ]);
 
                     if(!empty($request->kt_photo_add_multiple_options)){
@@ -428,6 +430,24 @@ class GalleryManagementAPIController extends Controller
         if($data)
         {
          GalleryManagement::where('id',$id)->update(['soft_delete'=>1]);
+            return response()->json([
+                'status'=>200,
+                'message'=>'deleted successfully.'
+            ],200);
+        }
+        else{
+                return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        } 
+    }
+    public function deleteMutiData(Request $request){
+        //dd($request->id);
+        $data=DB::table('gallery_details')->where('uid',$request->id)->first();
+        if($data)
+        {
+         DB::table('gallery_details')->where('uid',$request->id)->update(['soft_delete'=>1]);
             return response()->json([
                 'status'=>200,
                 'message'=>'deleted successfully.'
