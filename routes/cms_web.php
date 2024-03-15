@@ -80,8 +80,9 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/user-create', [UserManagementController::class, 'create'])->name('user.create');
         Route::get('/user-list', [UserManagementController::class, 'index'])->name('user.list');
         Route::get('/user-edit', [UserManagementController::class, 'edit'])->name('user.edit');
+        Route::get('/account-view', [UserManagementController::class, 'accountSettingsEdit'])->name('accountsettings.edit');
     });
-    
+
     Route::prefix('role')->group(function(){
         Route::get('/role-create', [RolesAndPermissionController::class, 'createRoles'])->name('role.create');
         Route::get('/role-edit', [RolesAndPermissionController::class, 'edit'])->name('role.edit');
@@ -225,14 +226,8 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/formbuilder-list', [FormBuilderController::class, 'index'])->name('formbuilder.list');
         Route::get('/formbuilder-edit', [FormBuilderController::class, 'edit'])->name('formbuilder.edit');
         Route::get('/formbuilder-show', [FormBuilderController::class, 'show'])->name('formbuilder.show');
-        Route::get('/formbuilder-mapping', [FormBuilderController::class, 'mappingForm'])->name('formbuilder.mapping');
+        //Route::get('/formbuilder-mapping', [FormBuilderController::class, 'formMappingIndex'])->name('formbuilder.mapping');
         Route::post('/formdata-save',[FormBuilderController::class,'saveFormData'])->name('formbuilder-saveformData');
-    });
-
-    Route::prefix('maunalfileupload')->group(function(){
-        Route::get('/maunalfileupload-create', [ManualFileUploadController::class, 'create'])->name('mfu.create');
-        Route::get('/maunalfileupload-edit', [ManualFileUploadController::class, 'edit'])->name('mfu.edit');
-        Route::get('/maunalfileupload-list', [ManualFileUploadController::class, 'index'])->name('mfu.list');
     });
 
     Route::prefix('formmappingmenu')->group(function(){
@@ -241,7 +236,11 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/formmappingmenu-list', [FormBuilderController::class, 'formMappingIndex'])->name('formmappingmenu.list');
     });
 
-
+    Route::prefix('maunalfileupload')->group(function(){
+        Route::get('/maunalfileupload-create', [ManualFileUploadController::class, 'create'])->name('mfu.create');
+        Route::get('/maunalfileupload-edit', [ManualFileUploadController::class, 'edit'])->name('mfu.edit');
+        Route::get('/maunalfileupload-list', [ManualFileUploadController::class, 'index'])->name('mfu.list');
+    });
 
 });
 

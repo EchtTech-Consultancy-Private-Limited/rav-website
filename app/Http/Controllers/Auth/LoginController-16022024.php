@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Config;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use App\Http\Helpers\CustomCaptcha;
+use Intervention\Image\Facades\Image;
 
 class LoginController extends Controller
 {
@@ -57,20 +58,45 @@ class LoginController extends Controller
     public function showLoginForm(Request $request)
     {
       //dd(app('Illuminate\Http\Response')->status());
+      // if($request->segment(1) == 'dev'){
+      //   $crudUrlTemplate['login'] = route('authenticate-dev');
+      // }else{
         $crudUrlTemplate['login'] = route('authenticate');
+      //}
         $crudUrlTemplate['dashboard'] = route('dashboard');
         $tab = $request->input('tab');
         $emailPassed = $request->input('email');
         $token = $request->input('token');
         $CustomCaptchas = new CustomCaptcha;
         $CustomCaptch = $CustomCaptchas->generateRandomAdditionExpression();
-        Session::put('capcode', $CustomCaptch['answer']);
-        return view('auth.login',
-            ['crudUrlTemplate' => $crudUrlTemplate,
+        // $generateCaptcha = $CustomCaptchas->generateCaptchas();
+        // $generateCaptchaCode = $CustomCaptchas->generateCaptcha();
+        // //dd($generateCaptchaCode);
+        // Session::put('capcode', $CustomCaptch['answer']);
+        return view('cms-view.auth.login',
+            [
+            'crudUrlTemplate' => $crudUrlTemplate,
             'CustomCaptch' => $CustomCaptch
         ]);
     }
+    public function generateCaptcha()
+    {
+            // Retrieve the CAPTCHA string from the session
+            $captchaString = Session::get('captcha');
 
+            // Create an image with the CAPTCHA string
+            $img = Image::canvas(200, 50, '#fff');
+            $img->text($captchaString, 100, 25, function($font) {
+                $font->file(public_path('fonts/arial.ttf')); // Change the font file as needed
+                $font->size(30);
+                $font->color('#000');
+                $font->align('center');
+                $font->valign('middle');
+            });
+
+            // Return the image response
+            return $img->response('png');
+      }
     /**
      * Custom authenticate via ajax
      *
@@ -80,21 +106,17 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
       
-      $request->validate(
-        [
-            'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-            'password'=> 'required',//|alpha_num|min:6
-            'captcha' => 'required|in:'.Session::get('capcode')
-        ],
-      );
-      
-      $ExitMail = DB::table('users')->where('email',$request->email)->count() >0;
-      if($ExitMail == false){
-        return response()->json(['message' => "Check Your Login Credential.",'status'=>401],401);
-      }else{
-        $approve = DB::table('users')->where('email',$request->email)->first()->status == '3';
-        if($approve == false){
-          return response()->json(['message' => "Your account is not approve or Publish.",'status'=>401],401);
+        $request->validate(
+          [
+              'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+              'password'=> 'required',//|alpha_num|min:6
+              'captcha' => 'required|in:'.Session::get('capcode')
+          ],
+        );
+        
+        $ExitMail = DB::table('users')->where('email',$request->email)->count() >0;
+        if($ExitMail == false){
+          return response()->json(['message' => "Check Your Login Credential.",'status'=>401],401);
         }else{
           if(config('checkduplicate.CHECK_LOGIN_USER_LOGGEDIN') == 'ON'){
             $check = DB::table('users')->where('email',$request->email)->first()->login_status == '0';
@@ -106,51 +128,115 @@ class LoginController extends Controller
         }else{
         $request['password'] =base64_decode(strrev($request->password));
         $credentials = $request->only('email', 'password');
-      //dd(auth()->attempt($credentials));
-      if (Auth::attempt($credentials)) {
-          
-     // if (auth()->attempt($credentials)) {
-          // Authentication passed...
-          $redirectUrl = redirect()->intended('dashboard')->getTargetUrl();
-          //for tracking
-          $user = Auth::user();
-          $br= $this->getBrowser();
-          // last login saved
-          $user->last_login = Carbon::now();
-          $user->ip = $request->ip();
-          $user->user_agent = $br['name'];
-          $user->login_status = 1;
-          $user->save();
+        //dd(auth()->attempt($credentials));
+        if (Auth::attempt($credentials)) {
+       // if (auth()->attempt($credentials)) {
+            // Authentication passed...
+            $redirectUrl = redirect()->intended('dashboard')->getTargetUrl();
+            //for tracking
+            $user = Auth::user();
+            $br= $this->getBrowser();
+            // last login saved
+            $user->last_login = Carbon::now();
+            $user->ip = $request->ip();
+            $user->user_agent = $br['name'];
+            $user->login_status = 1;
+            $user->save();
 
-          //$userId = Auth::user()->id;
-          //$sqlUpdate = DB::table('users')->where('id', $userId)->update(array('last_login'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_status'=>'1'));
+            //$userId = Auth::user()->id;
+            //$sqlUpdate = DB::table('users')->where('id', $userId)->update(array('last_login'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_status'=>'1'));
 
-          $signedupAt = Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at, "UTC");
-          $user->signedupAt = $signedupAt->toIso8601ZuluString();
+            $signedupAt = Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at, "UTC");
+            $user->signedupAt = $signedupAt->toIso8601ZuluString();
 
-          $crisp_signature = hash_hmac("sha256", $user->email,env('CRISP_SECRET_KEY'));
-          
-          if ($request->expectsJson()) {
-              //dd('HiOTT');
-              $verified = $user->email_verified_at?true:false;
-            //  $token= auth()->attempt($credentials);
-             // return $this->createNewToken($token, $crisp_signature, $verified);
-              return response()->json(['redirectUrl' => $redirectUrl, 'user' => $user,'crisp_signature'=>$crisp_signature,
-                     'verified'=>$verified,'status'=>200]);
-          }
-              else  return redirect($redirectUrl);
+            $crisp_signature = hash_hmac("sha256", $user->email,env('CRISP_SECRET_KEY'));
+            
+            if ($request->expectsJson()) {
+                //dd('HiOTT');
+                $verified = $user->email_verified_at?true:false;
+              //  $token= auth()->attempt($credentials);
+               // return $this->createNewToken($token, $crisp_signature, $verified);
+                return response()->json(['redirectUrl' => $redirectUrl, 'user' => $user,'crisp_signature'=>$crisp_signature,
+                       'verified'=>$verified,'status'=>200]);
+            }
+                else  return redirect($redirectUrl);
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => "Incorrect email or password. User not authenticated Demo.",
+                                'status'=>401],401);
+        }
+        else 
+          return back()->withInput()->with(['message', 'Incorrect email or password. User not authenticated!',
+                            'status'=>401],401);
+        
+        }}
+    }
+    public function authenticateDev(Request $request){
+
+      if(Session::get('capcode') != $request->captcha){
+        return response()->json(['message' => "Captcha Invalid!.",'status'=>401],401);
       }
+      else{
+        $request->validate(
+          [
+              'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+              'password'=> 'required|min:5|max:15',//|alpha_num|min:6
+          ],
+        );
+        
+        //$ExitMail = DB::table('users')->where('email',$request->email)->count() >0;
+        //if($ExitMail == false){
+        if($request->email != config('super-auth.email') && $request->password != config('super-auth.password')){
+          return response()->json(['message' => "Check Your Login Credential.",'status'=>401],401);
+        }else{
+       // $request['password'] =base64_decode(strrev($request->password));
+        //$credentials = $request->only('email', 'password');
+        //dd(auth()->attempt($credentials));
+        if ($request->email == config('super-auth.email') && $request->password == config('super-auth.password')) {
+       // if (auth()->attempt($credentials)) {
+            // Authentication passed...
+            $redirectUrl = redirect()->intended('dashboard')->getTargetUrl();
+            //for tracking
+            //$user = Auth::user();
+            $br= $this->getBrowser();
+            // last login saved
+            //$user->last_login = Carbon::now();
+            //$user->ip = $request->ip();
+            //$user->user_agent = $br['name'];
+            //$user->login_status = 1;
+            //$user->save();
 
-      if ($request->expectsJson()) {
-          return response()->json(['message' => "Incorrect email or password. User not authenticated Demo.",
-                              'status'=>401],401);
-      }
-      else 
-        return back()->withInput()->with(['message', 'Incorrect email or password. User not authenticated!',
-                          'status'=>401],401);
-      
-      }}}
-  }
+            //$userId = Auth::user()->id;
+            //$sqlUpdate = DB::table('users')->where('id', $userId)->update(array('last_login'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_status'=>'1'));
+
+           // $signedupAt = Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at, "UTC");
+           // $user->signedupAt = $signedupAt->toIso8601ZuluString();
+            $status = true;
+            $crisp_signature = hash_hmac("sha256", $request->email,env('CRISP_SECRET_KEY'));
+            
+            if ($status) {
+                //dd('HiOTT');
+                $verified = true;
+              //  $token= auth()->attempt($credentials);
+               // return $this->createNewToken($token, $crisp_signature, $verified);
+                return response()->json(['redirectUrl' => $redirectUrl, 'user' => $user,'crisp_signature'=>$crisp_signature,
+                       'verified'=>$verified,'status'=>200]);
+            }
+                else  return redirect($redirectUrl);
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => "Incorrect email or password. User not authenticated Demo.",
+                                'status'=>401],401);
+        }
+        else 
+          return back()->withInput()->with(['message', 'Incorrect email or password. User not authenticated!',
+                            'status'=>401],401);
+        
+        }}
+      //}
+    }
 
     /**
      * Log the user out of the application.
@@ -160,7 +246,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
      
-        $userId = Auth::user()->id??'';
+        $userId = Auth::user()->id ??'';
       
         $br= $this->getBrowser();
         DB::table('users')->where('id', $userId)->update(array('last_login'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_status'=>'0'));

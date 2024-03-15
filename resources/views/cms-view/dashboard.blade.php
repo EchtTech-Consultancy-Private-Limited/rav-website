@@ -24,7 +24,7 @@
             <div class="card-body d-flex justify-content-between align-items-start flex-column">
                <!--begin::Icon--> 
                <div class="m-0">
-                  <i class="ki-outline ki-compass fs-2hx text-gray-600"></i>                     
+                  <i class="ki-outline ki-address-book fs-2hx text-gray-600"></i>                     
                </div>
                <!--end::Icon-->
                <!--begin::Section--> 
@@ -59,7 +59,7 @@
             <div class="card-body d-flex justify-content-between align-items-start flex-column">
                <!--begin::Icon--> 
                <div class="m-0">
-                  <i class="ki-outline ki-chart-simple fs-2hx text-gray-600"></i>                     
+                  <i class="ki-outline ki-menu fs-2hx text-gray-600"></i>                     
                </div>
                <!--end::Icon-->
                <!--begin::Section--> 
@@ -94,7 +94,7 @@
             <div class="card-body d-flex justify-content-between align-items-start flex-column">
                <!--begin::Icon--> 
                <div class="m-0">
-                  <i class="ki-outline ki-abstract-39 fs-2hx text-gray-600"></i>                     
+                  <i class="ki-outline ki-abstract-25 fs-2hx text-gray-600"></i>                     
                </div>
                <!--end::Icon-->
                <!--begin::Section--> 
@@ -129,7 +129,7 @@
             <div class="card-body d-flex justify-content-between align-items-start flex-column">
                <!--begin::Icon--> 
                <div class="m-0">
-                  <i class="ki-outline ki-map fs-2hx text-gray-600"></i>                     
+                  <i class="ki-outline ki-element-12 fs-2hx text-gray-600"></i>                     
                </div>
                <!--end::Icon-->
                <!--begin::Section--> 
@@ -164,7 +164,7 @@
             <div class="card-body d-flex justify-content-between align-items-start flex-column">
                <!--begin::Icon--> 
                <div class="m-0">
-                  <i class="ki-outline ki-abstract-35 fs-2hx text-gray-600"></i>                     
+                  <i class="ki-outline ki-element-6 fs-2hx text-gray-600"></i>                     
                </div>
                <!--end::Icon-->
                <!--begin::Section--> 
@@ -199,7 +199,7 @@
             <div class="card-body d-flex justify-content-between align-items-start flex-column">
                <!--begin::Icon--> 
                <div class="m-0">
-                  <i class="ki-outline ki-abstract-26 fs-2hx text-gray-600"></i>                     
+                  <i class="ki-outline ki-people fs-2hx text-gray-600"></i>                     
                </div>
                <!--end::Icon-->
                <!--begin::Section--> 

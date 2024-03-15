@@ -192,6 +192,55 @@ class FormBuilderAPIController extends Controller
         
             return response()->json($notification); 
     }
+
+    public function storeMapping(Request $request){
+        //dd(explode(',',$request->menu_name)[0]);
+        try{
+           
+            $validator=Validator::make($request->all(),
+                [
+                'form_name'=>'required',
+                //"website_menu_uid"=> "required|in:".explode(',',$request->menu_name)[0],
+                //"menu_name"=> "required|in:".explode(',',$request->menu_name)[1],
+            ]);
+            if($validator->fails())
+            {
+                $notification =[
+                    'status'=>201,
+                    'message'=> $validator->errors()
+                ];
+            }
+            else{
+                // $check = explode(',',$request->menu_name)[0];
+                // if($check != ''){
+                //     return response()->json(['message' => "Website Menu Require.",'status'=>401],401);
+                // }else{
+                $result= DB::table('form_designs_management')->where('uid',$request->form_name)->update([
+                        'website_menu_uid' => explode(',',$request->menu_name)[0],
+                        'menu_name' => explode(',',$request->menu_name)[1],
+                        
+                    ]);
+                //}
+            if($result == true)
+            {
+                $notification =[
+                    'status'=>200,
+                    'message'=>'Added successfully.'
+                ];
+            }
+            else{
+                $notification = [
+                        'status'=>201,
+                        'message'=>'some error accoured.'
+                    ];
+                 } 
+            }
+           }catch(Throwable $e){report($e);
+            return false;
+           }
+        
+            return response()->json($notification); 
+    }
     /**
      * Show the form for editing the specified resource.
      *
