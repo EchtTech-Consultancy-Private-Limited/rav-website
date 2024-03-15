@@ -237,21 +237,35 @@
                </div>
             </div>
          </div>
-
+         @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
          <div  class="menu-item pt-5" >
             <div  class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">{{ config('menu.FB_title') }}</span></div>
          </div>
-         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['formbuilder/formbuilder-create','formbuilder/formbuilder-list']) }} {{ (request()->is('formbuilder/formbuilder-create/*')) ? 'hover show' : '' }}{{ (request()->is('formbuilder/formbuilder-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion 
+            {{ set_active(['formbuilder/formbuilder-create','formbuilder/formbuilder-list','formmappingmenu/formmappingmenu-list']) }} 
+            {{ (request()->is('formbuilder/formbuilder-create/*')) ? 'hover show' : '' }}
+            {{ (request()->is('formbuilder/formbuilder-list/*')) ? 'hover show' : '' }}
+            {{ (request()->is('formmappingmenu/formmappingmenu-list/*')) ? 'hover show' : '' }}
+            ">
             <span class="menu-link" ><span  class="menu-icon" ><i class="ki-outline ki-abstract-9 fs-2"></i></span><span  class="menu-title" >{{ config('menu.FB_title') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion {{ set_active(['formbuilder/formbuilder-create','formbuilder/formbuilder-list']) }} {{ (request()->is('formbuilder/formbuilder-create/*')) ? 'show' : '' }}{{ (request()->is('formbuilder/formbuilder-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion 
+            {{ set_active(['formbuilder/formbuilder-create','formbuilder/formbuilder-list','formmappingmenu/formmappingmenu-list']) }} 
+            {{ (request()->is('formbuilder/formbuilder-create/*')) ? 'show' : '' }}
+            {{ (request()->is('formbuilder/formbuilder-list/*')) ? 'show' : '' }}
+            {{ (request()->is('formmappingmenu/formmappingmenu-list/*')) ? 'show' : '' }}
+            ">
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['formbuilder/formbuilder-create']) }} {{ (request()->is('formbuilder/formbuilder-create/*')) ? 'active' : '' }}"  href="{{ route('formbuilder.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Create</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['formbuilder/formbuilder-list']) }} {{ (request()->is('formbuilder/formbuilder-list/*')) ? 'active' : '' }}"  href="{{ route('formbuilder.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >List</span></a><!--end:Menu link-->
                </div>
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['formmappingmenu/formmappingmenu-list']) }} {{ (request()->is('formmappingmenu/formmappingmenu-list/*')) ? 'active' : '' }}"  href="{{ route('formmappingmenu.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Menu Mapping</span></a><!--end:Menu link-->
+               </div>
             </div>
          </div>
+         @endif
          <div  class="menu-item pt-5" >
             <div  class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Apps</span></div>
          </div>

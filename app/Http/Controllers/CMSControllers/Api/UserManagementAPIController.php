@@ -17,8 +17,8 @@ class UserManagementAPIController extends Controller
      */
     public function index()
     {
-        $data=DB::table('users')->where('soft_delete','0')->where('role_id','!=','1')->orderby('id','asc')->get();
-        $totalRecords = DB::table('users')->where('soft_delete','0')->where('role_id','!=','1')->count();
+        $data=DB::table('users')->where('soft_delete','0')->whereNotIn('role_id', ['1','2'])->orderby('id','asc')->get();
+        $totalRecords = DB::table('users')->where('soft_delete','0')->whereNotIn('role_id', ['1','2'])->count();
         $resp = new \stdClass;
         $resp->iTotalRecords = $totalRecords;
         $resp->iTotalDisplayRecords = $totalRecords;

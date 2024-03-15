@@ -21,6 +21,7 @@ class UserManagementController extends Controller
     protected $create = 'user-management.user-add';
     protected $edit = 'user-management.user-edit';
     protected $list = 'user-management.user-list';
+    protected $accountSetting = 'account-setting.account-update';
 
     public function __construct()
     {
@@ -109,25 +110,40 @@ class UserManagementController extends Controller
      */
     public function edit(Request $request)
     {
-        $crudUrlTemplate = array();
-        if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
-            $crudUrlTemplate['update'] = route('user-update');
-        }
+            $crudUrlTemplate = array();
+            if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+                $crudUrlTemplate['update'] = route('user-update');
+            }
 
-        $results = DB::table('users')->where('id', $request->id)->first();
-        $roleType=DB::table('role_type_users')->select('role_type','uid')->where([['soft_delete','=','0']])->orderby('sort_order','asc')->get();
-        if($results){
-            $result = $results;
-        }else{
-            abort(404);
-        }
-        return view('cms-view.'.$this->edit,
-        ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
-        'data'=> $result,
-        'roleType' =>$roleType
-    ]);
+            $results = DB::table('users')->where('id', $request->id)->first();
+            $roleType=DB::table('role_type_users')->select('role_type','uid')->where([['soft_delete','=','0']])->orderby('sort_order','asc')->get();
+            if($results){
+                $result = $results;
+            }else{
+                abort(404);
+            }
+            return view('cms-view.'.$this->edit,
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
+            'data'=> $result,
+            'roleType' =>$roleType
+        ]);
     }
-
+    
+    public function accountSettingsEdit(Request $request){
+            $crudUrlTemplate = array();
+            // if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            //     $crudUrlTemplate['update'] = route('user-update');
+            // }
+            $crudUrlTemplate['update'] = route('user-update');
+            $results = DB::table('users')->where('id', $request->id)->first();
+            $roleType=DB::table('role_type_users')->select('role_type','uid')->where([['soft_delete','=','0']])->orderby('sort_order','asc')->get();
+            
+            return view('cms-view.'.$this->accountSetting,
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
+            'data'=> $results,
+            'roleType' =>$roleType
+        ]);
+    }
     /**
      * Update the specified resource in storage.
      *
