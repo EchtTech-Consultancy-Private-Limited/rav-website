@@ -33,7 +33,7 @@ class CommonComposer
      */
     public function compose(View $view)
     {
-       
+
         try {
             $menuData = array('Home', 'Contact US');
             $userLogin = Auth()->user();
@@ -43,7 +43,7 @@ class CommonComposer
             } else {
                 $modelName = DB::table('module_management')->where('soft_delete', '0')->orderBy('sort_order', 'asc')->get();
             }
-         
+
             $banner = DB::table('home_page_banner_management')->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
             $footerMenu = DB::table('website_menu_management')->whereIn('menu_place', [1, 3])->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
             $menus = DB::table('website_menu_management')->whereIn('menu_place', [0,3])->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
@@ -51,7 +51,7 @@ class CommonComposer
             $news_management = DB::table('news_management')->where('soft_delete', 0)->latest('created_at')->take(3)->get();
             $tender_management = DB::table('tender_management')->where('soft_delete', 0)->latest('created_at')->get();
             $social_links = DB::table('social_links')->where('soft_delete', 0)->first();
-            $toogleMenu = DB::table('website_menu_management')->where('menu_place','2')->where('soft_delete','0')->orderby('sort_order','Asc')->get();   
+            $toogleMenu = DB::table('website_menu_management')->where('menu_place','2')->where('soft_delete','0')->orderby('sort_order','Asc')->get();
             $website_core_settings = DB::table('website_core_settings')->where('soft_delete', 0)->first();
             $events_management = DB::table('events_management')->where('status', 3)->where('soft_delete', 0)->latest('created_at')->get();
 
@@ -91,18 +91,59 @@ class CommonComposer
                         'banner' => $dynamic_page_banner,
                     ];
                 }
-                
+
             }
+
+
+            // quick links
+            $quickLinks = DB::table('website_menu_management')
+                ->where('menu_place', 4)
+                ->whereIn('name_en', [
+                    'Courses Under Guru Shishya Parampara',
+                    'Vacancy',
+                    'Publications of Vidyapeeth'
+                ])
+                ->get();
+            $newsLetter = DB::table('website_menu_management')->where('menu_place',2)
+                ->where('name_en','E-News Letter')->first();
+
+
+            $dynamicContents = DB::table('website_menu_management')->where('name_en','Alumni Corner')
+                                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+
+            $thesisContents = DB::table('website_menu_management')->where('name_en','Thesis Submitted by RAV Student')
+                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+
+            $rightToInfoContents = DB::table('website_menu_management')->where('name_en','Right to Information Act RTI')
+                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+            $awardsContents = DB::table('website_menu_management')->where('name_en','Awards')
+                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+
+
             // dd($organizedData);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
-             'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 
-             'banner' => $banner, 'news_management' => $news_management, 
+             'headerMenu' => $menuName, 'footerMenu' => $footerMenu,
+             'banner' => $banner, 'news_management' => $news_management,
              'tender_management' => $tender_management,'social_links'=>$social_links,
              'alertMessage' =>$this->checkLanguage(),
              'website_core_settings'=>$website_core_settings,
              'toogleMenu'=>$toogleMenu,
              'organizedDatas' => $organizedData,
-             'events_managements' => $events_management
+             'events_managements' => $events_management,
+                'quickLinks' => $quickLinks,
+                'newsLetter' => $newsLetter,
+                'dynamicContents' => $dynamicContents,
+                'thesisContents' => $thesisContents,
+                'rightToInfoContents' => $rightToInfoContents,
+                'awardsContents' => $awardsContents
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
@@ -134,5 +175,5 @@ class CommonComposer
             return 'This link will take you to an external web site.';
         }
     }
-    
+
 }
