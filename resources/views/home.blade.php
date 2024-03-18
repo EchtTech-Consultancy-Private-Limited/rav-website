@@ -429,9 +429,9 @@
                                         <div class="item">
                                             <div class="event-list">
                                                 @if (Session::get('locale') == 'hi')
-                                                    <p class="title-white">{!! $events_management->description_hi  !!}</p>
+                                                    <p class="title-white">{!! $events_management->title_name_hi  !!}</p>
                                                 @else
-                                                    <p class="title-white">{!! $events_management->description_en  !!}</p>
+                                                    <p class="title-white">{!! $events_management->title_name_en  !!}</p>
                                                 @endif
                                                 <div class="event-list-content my-2">
                                                     <div class="d-flex align-items-center">
