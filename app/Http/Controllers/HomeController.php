@@ -377,7 +377,7 @@ class HomeController extends Controller
                     if (Session::get('Lang') == 'hi') {
                         $content = "जल्द आ रहा है";
                     } else {
-                        $content = "Coming Soon...";
+                        $content = "<h1>Coming Soon...</h1>";
                     }
                     if ($finalSlug != null) {
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'finalBred' => $finalBred, 'lastBred' => $lastBred, 'content' => $content, 'title_name' => $title_name, 'metaDetails' => $metaDetails]);
