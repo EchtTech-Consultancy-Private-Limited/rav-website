@@ -237,7 +237,7 @@
                </div>
             </div>
          </div>
-         @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
+         @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1' || isset(Auth::user()->role_id) == '2' && Auth::user()->role_id == '2')
          <div  class="menu-item pt-5" >
             <div  class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">{{ config('menu.FB_title') }}</span></div>
          </div>
