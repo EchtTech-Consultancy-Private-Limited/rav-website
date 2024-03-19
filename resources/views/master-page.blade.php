@@ -220,31 +220,34 @@
                             <div class="about">
                                 @if (isset($content))
                                     <h1>{{$formName??''}}</h1>
-                                    @if($dynamicFormData == 1)
-                                        <table style="width: 100%;">
-                                            <thead>
-                                            <tr>
-                                                <th>Sr.No.</th>
-                                                <th>Name</th>
-                                                <th>Designation</th>
-                                                <th>Email</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach ($content as $item)
-                                                @php
-                                                    $data = json_decode($item->content, true);
-                                                @endphp
+                                    @if(isset($dynamicFormData))
+                                        @if($dynamicFormData == 1)
+                                            <table style="width: 100%;">
+                                                <thead>
                                                 <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{ $data['name'] }}</td>
-                                                    <td>{{ $data['designation'] }}</td>
-                                                    <td>{{ $data['email'] }}</td>
-
+                                                    <th>Sr.No.</th>
+                                                    <th>Name</th>
+                                                    <th>Designation</th>
+                                                    <th>Email</th>
                                                 </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                @foreach ($content as $item)
+                                                    @php
+                                                        $data = json_decode($item->content, true);
+                                                    @endphp
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{ $data['name'] }}</td>
+                                                        <td>{{ $data['designation'] }}</td>
+                                                        <td>{{ $data['email'] }}</td>
+
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        @endif
+
                                     @else
                                         {!! $content !!}
                                     @endif
