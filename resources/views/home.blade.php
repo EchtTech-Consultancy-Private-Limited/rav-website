@@ -10,37 +10,7 @@
                     @foreach ($banner as $banners)
                         <div class="item">
                             <div class="row">
-                                @if($banners->description_en  != '' )
-                                    <div class="col-md-6 mobile-width-80">
-                                        <div class="hero-slider-content" data-aos="fade-right" data-aos-duration="3000">
-                                            <h2 class="heading-red">
-                                                @if (Session::get('locale') == 'hi')
-                                                    {{ $banners->title_name_hi ?? '' }}
-                                                @else
-                                                    {{ $banners->title_name_en ?? '' }}
-                                                @endif
-                                            </h2>
-                                            <p class="title-black">
-                                                @if (Session::get('locale') == 'hi')
-                                                    {!! $banners->description_hi ?? '' !!}
-                                                @else
-                                                    {!! $banners->description_en ?? '' !!}
-                                                @endif
-                                            </p>
-                                            <div class="btn-wrap d-flex align-items-center">
-                                                <button class="btn btn-org border-0  me-4">
-                                                    @if (Session::get('locale') == 'hi')
-                                                        {{ __('messages.know_more') }}
-                                                    @else
-                                                        {{ __('messages.know_more') }}
-                                                    @endif
-                                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="col mobile-width-30 ps-0">
+                                <div class="col-lg-12 mobile-width-30 ps-0">
                                     <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
                                         @if ($banners->public_url != '')
                                             <img src="{{ asset('resources/uploads/banner/' . $banners->public_url) }}"
@@ -139,11 +109,14 @@
                             @foreach($organizedDatas as $organizedData)
                                 @if($organizedData['metatag']->menu_slug == 'about-us')
                                     @if($organizedData['content'])
-                                        @if (Session::get('locale') == 'hi')
-                                            {!! $organizedData['content']->page_content_hi !!}
-                                        @else
-                                            {!! $organizedData['content']->page_content_en !!}
-                                        @endif
+                                        @php
+                                            $content_hi = $organizedData['content']->page_content_hi;
+                                            $content_en = $organizedData['content']->page_content_en;
+                                            $content = Session::get('locale') == 'hi' ? $content_hi : $content_en;
+                                            $trimmed_content = strlen($content) > 1060 ? substr($content, 0, 1060) . '...' : $content;
+                                        @endphp
+
+                                        {!! $trimmed_content !!}
                                     @else
                                         <span>Content not available ..</span>
                                     @endif
@@ -151,6 +124,7 @@
                             @endforeach
                         </p>
                     @endif
+
                     <div class="btn-wrap d-flex justify-content-center align-items-center">
                         <a href="{{ url('about-us') }}" class="btn btn-org-bdr">
                             @if (Session::get('locale') == 'hi')
@@ -858,9 +832,9 @@
                                         data-bs-target="#activity-tab-pane" type="button" role="tab"
                                         aria-controls="activity-tab-pane" aria-selected="true">
                                     @if (Session::get('locale') == 'hi')
-                                        {{ __('messages.Online_Presence') }}
+                                        {{ __('messages.Our_Activities') }}
                                     @else
-                                        {{ __('messages.Online_Presence') }}
+                                        {{ __('messages.Our_Activities') }}
                                     @endif
                                 </button>
                             </li>
