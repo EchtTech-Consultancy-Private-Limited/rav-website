@@ -219,7 +219,35 @@
                         <div class="col-md-8 col-lg-8 ">
                             <div class="about">
                                 @if (isset($content))
-                                    <h1>{{ $content }}</h1>
+                                    <h1>{{$formName??''}}</h1>
+                                    @if($dynamicFormData == 1)
+                                        <table style="width: 100%;">
+                                            <thead>
+                                            <tr>
+                                                <th>Sr.No.</th>
+                                                <th>Name</th>
+                                                <th>Designation</th>
+                                                <th>Email</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach ($content as $item)
+                                                @php
+                                                    $data = json_decode($item->content, true);
+                                                @endphp
+                                                <tr>
+                                                    <td>{{$loop->iteration}}</td>
+                                                    <td>{{ $data['name'] }}</td>
+                                                    <td>{{ $data['designation'] }}</td>
+                                                    <td>{{ $data['email'] }}</td>
+
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @else
+                                        {!! $content !!}
+                                    @endif
                                 @endif
                                 <h1>
                                     @if (isset($organizedData['metatag']->page_title_en) && !blank($organizedData['metatag']->page_title_en))
