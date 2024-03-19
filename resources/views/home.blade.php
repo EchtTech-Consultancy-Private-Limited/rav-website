@@ -454,10 +454,9 @@
                                                              class="img-fluid me-3">
                                                         <h3 class="address">
                                                             @if (Session::get('locale') == 'hi')
-                                                                {{ $events_management->description_hi }}
-                                                            @endif
-                                                            @if (Session::get('locale') == 'en')
-                                                                {{ $events_management->description_en }}
+                                                                {!! $events_management->description_hi !!}
+                                                            @else
+                                                                {!! $events_management->description_en !!}
                                                             @endif
                                                         </h3>
                                                     </div>
@@ -668,7 +667,7 @@
                                             @if (Session::get('locale') == 'hi')
                                                 <h2>{{ $dynamicContents->page_title_hi }}</h2>
                                                 {!! $dynamicContents->page_content_hi !!}
-                                            @elseif (Session::get('locale') == 'en')
+                                            @else
                                                 <h2>{{ $dynamicContents->page_title_en }}</h2>
                                                 {!! $dynamicContents->page_content_en !!}
                                             @endif
@@ -681,43 +680,44 @@
                             <div class="tab-pane fade" id="tenders-tab-pane" role="tabpanel"
                                  aria-labelledby="tenders-tab" tabindex="0">
                                 <div class="row">
-                                   <div class="col-lg-12">
-                                       <table class="dataTable">
-                                           <thead>
-                                           <tr>
-                                               <th>Sr.No.</th>
-                                               <th> Title</th>
-                                               <th>Published Date</th>
-                                               <th>Submission Date</th>
-                                               <th>Opening Date</th>
-                                               <th>View/Download</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody>
-                                           @foreach($tenders as $tender)
-                                               <tr>
-                                                   <td>{{ $loop->iteration }}</td>
-                                                   <td>
-                                                       @if (Session::get('locale') == 'hi')
-                                                           {{ $tender->title_name_hi }}
-                                                       @endif
-                                                       @if (Session::get('locale') == 'en')
-                                                           {{ $tender->title_name_en }}
-                                                       @endif
-                                                   </td>
-                                                   <td>{{ \Carbon\Carbon::parse($tender->start_date)->format('d F Y') }}</td>
-                                                   <td>{{ \Carbon\Carbon::parse($tender->end_date)->format('d F Y') }}</td>
-                                                   <td>{{ \Carbon\Carbon::parse($tender->opening_date)->format('d F Y') }}</td>
-                                                   <td>
-                                                       <a target="{{ $tender->tab_type == 1 ? '_blank' : ''  }}" class="link-primary" href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}">
-                                                           View
-                                                       </a>
-                                                   </td>
-                                               </tr>
-                                           @endforeach
-                                           </tbody>
-                                       </table>
-                                   </div>
+                                    <div class="col-lg-12">
+                                        <table class="dataTable">
+                                            <thead>
+                                            <tr>
+                                                <th>Sr.No.</th>
+                                                <th> Title</th>
+                                                <th>Published Date</th>
+                                                <th>Submission Date</th>
+                                                <th>Opening Date</th>
+                                                <th>View/Download</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($tenders as $tender)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>
+                                                        @if (Session::get('locale') == 'hi')
+                                                            {{ $tender->title_name_hi }}
+                                                        @else
+                                                            {{ $tender->title_name_en }}
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ \Carbon\Carbon::parse($tender->start_date)->format('d F Y') }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($tender->end_date)->format('d F Y') }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($tender->opening_date)->format('d F Y') }}</td>
+                                                    <td>
+                                                        <a target="{{ $tender->tab_type == 1 ? '_blank' : ''  }}"
+                                                           class="link-primary"
+                                                           href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}">
+                                                            View
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="thesis-tab-pane" role="tabpanel" aria-labelledby="thesis-tab"
@@ -730,14 +730,14 @@
                                                     @if (Session::get('locale') == 'hi')
                                                         <h2>{{ $thesisContents->page_title_hi }}</h2>
                                                         {!! $thesisContents->page_content_hi !!}
-                                                    @elseif (Session::get('locale') == 'en')
+                                                    @else
                                                         <h2>{{ $thesisContents->page_title_en }}</h2>
                                                         {!! $thesisContents->page_content_en !!}
                                                     @endif
-                                                    @else
-                                                   <div class="text-center">
-                                                       <h1>Content coming soon...</h1>
-                                                   </div>
+                                                @else
+                                                    <div class="text-center">
+                                                        <h1>Content coming soon...</h1>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>
@@ -747,23 +747,23 @@
                             <div class="tab-pane fade" id="information-tab-pane" role="tabpanel"
                                  aria-labelledby="information-tab" tabindex="0">
                                 <div class="row">
-                                   <div class="col-lg-12">
-                                       <div class="text-content">
-                                           @if(isset($rightToInfoContents))
-                                               @if (Session::get('locale') == 'hi')
-                                                   <h2>{{ $rightToInfoContents->page_title_hi }}</h2>
-                                                   {!! $rightToInfoContents->page_content_hi !!}
-                                               @elseif (Session::get('locale') == 'en')
-                                                   <h2>{{ $rightToInfoContents->page_title_en }}</h2>
-                                                   {!! $rightToInfoContents->page_content_en !!}
-                                               @endif
-                                           @else
-                                               <div class="text-center">
-                                                   <h1>Content coming soon...</h1>
-                                               </div>
-                                           @endif
-                                       </div>
-                                   </div>
+                                    <div class="col-lg-12">
+                                        <div class="text-content">
+                                            @if(isset($rightToInfoContents))
+                                                @if (Session::get('locale') == 'hi')
+                                                    <h2>{{ $rightToInfoContents->page_title_hi }}</h2>
+                                                    {!! $rightToInfoContents->page_content_hi !!}
+                                                @else
+                                                    <h2>{{ $rightToInfoContents->page_title_en }}</h2>
+                                                    {!! $rightToInfoContents->page_content_en !!}
+                                                @endif
+                                            @else
+                                                <div class="text-center">
+                                                    <h1>Content coming soon...</h1>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
