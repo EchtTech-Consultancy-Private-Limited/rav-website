@@ -24,7 +24,7 @@ class AddDepartmentValidation extends FormRequest
     public function rules()
     {
         return [
-            'name_en'=> 'required|email',
+            'name_en'=> 'required',
         ];
     }
     public function messages()
