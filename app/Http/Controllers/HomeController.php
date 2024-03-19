@@ -384,7 +384,19 @@ class HomeController extends Controller
                     } else if ($lastSlugs != null) {
                         return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'lastBred' => $lastBred, 'content' => $content, 'middelBred' => $middelBred, 'title_name' => $title_name]);
                     } elseif ($middelSlug != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name]);
+                        $menuID = $menus->uid;
+                        $pageContent = DB::table('form_designs_management')->where('website_menu_uid',$menuID)->first();
+                        $formName = "";
+                        $dynamicFormData = 0;
+                        if ($pageContent){
+                            $formId = $pageContent->uid;
+                            $content = DB::table('form_data_management')->where('form_design_id',$formId)->get(['content']);
+                            $dynamicFormData = 1;
+                            $formName = $pageContent->form_name;
+                        }
+
+//                        dd($content);
+                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name,'dynamicFormData'=>$dynamicFormData,'formName'=>$formName]);
                     } else {
                         return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
