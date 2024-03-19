@@ -28,6 +28,7 @@ function set_active1($route) {
     return Request::path() == $route ? 'active' : '';
 }
 require __DIR__ .'/cms_web.php';
+
 Artisan::call('cache:clear');
 Artisan::call('view:clear');
 Artisan::call('route:clear');
@@ -44,6 +45,6 @@ Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [H
 
 
 //default behaviour, always keep as last entry
-Route::any('{url}', function(){
-    return redirect('/');
-})->where('url', '.*');
+Route::any('{catchall}', function () {
+    abort(404);
+})->where('catchall', '.*');
