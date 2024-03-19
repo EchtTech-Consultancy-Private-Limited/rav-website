@@ -59,12 +59,7 @@
                     </li>
                     @endif
                     @endforeach
-                    <li> <a href="#"> Linking Policy </a></li>
-                    <li> <a href="#"> Privacy Policy </a></li>
-                    <li> <a href="#"> Disclaimer </a></li>
-                    <li> <a href="#"> Help </a></li>
-                    <li> <a href="#"> Cookies Policy </a></li>
-                    <li> <a href="#"> Terms & Conditions </a></li>
+
                 </ul>
                 @else
                 <h5>No menu available.</h5>

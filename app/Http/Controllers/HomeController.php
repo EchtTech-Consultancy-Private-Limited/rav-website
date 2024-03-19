@@ -16,7 +16,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tenders = DB::table('tender_management')
+                ->join('tender_details','tender_details.tender_id','=','tender_management.uid')
+                ->select('tender_management.*','tender_details.pdfimage_size as pdf_size','tender_details.file_extension','tender_details.public_url','tender_details.private_url','tender_details.tab_type')
+            ->get();
+//        dd($tenders);
+
+        return view('home',compact('tenders'));
     }
     /**
      * Show the form for creating a new resource.
@@ -84,6 +90,7 @@ class HomeController extends Controller
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
+
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
             App::setLocale($request->data);
@@ -278,7 +285,7 @@ class HomeController extends Controller
                     ->orderBy('created_at', 'asc')
                     ->orderBy('sort_order', 'ASC')
                     ->get();
-                // dd($dynamic_content_page_metatag); 
+                // dd($dynamic_content_page_metatag);
                 if (count($dynamic_content_page_metatag) > 0) {
                     $organizedData = [];
                     foreach ($dynamic_content_page_metatag as $dynamic_content_page_metatags) {
