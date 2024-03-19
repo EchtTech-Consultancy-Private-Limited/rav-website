@@ -28,6 +28,7 @@ function set_active1($route) {
     return Request::path() == $route ? 'active' : '';
 }
 require __DIR__ .'/cms_web.php';
+
 Artisan::call('cache:clear');
 Artisan::call('view:clear');
 Artisan::call('route:clear');
@@ -41,8 +42,8 @@ Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
 Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
 Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
+
 //default behaviour, always keep as last entry
 Route::any('{url}', function(){
-    return redirect('login');
+    return redirect('/');
 })->where('url', '.*');
-

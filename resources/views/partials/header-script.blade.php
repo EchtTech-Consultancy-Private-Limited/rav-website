@@ -6,9 +6,9 @@
     @show
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="{{ $metaDetails->meta_tag_description ?? 'RAV' }}">
-<meta name="keywords" content="{{ $metaDetails->meta_keywords ?? 'RAV' }}">
-<meta name="tag" content="{{ $metaDetails->meta_tag ?? 'RAV' }}">
+<meta name="description" content="{{ $metaDetails->meta_tag_description ?? 'Rashtriya Ayurveda Vidyapeeth (RAV)' }}">
+<meta name="keywords" content="{{ $metaDetails->meta_keywords ?? 'Rashtriya Ayurveda Vidyapeeth (RAV)' }}">
+<meta name="tag" content="{{ $metaDetails->meta_tag ?? 'Rashtriya Ayurveda Vidyapeeth (RAV)' }}">
 <link rel="stylesheet" href="{{ asset('assets/font-awesome-master/css/font-awesome.min.css') }}">
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet">
