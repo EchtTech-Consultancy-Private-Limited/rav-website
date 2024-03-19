@@ -3,6 +3,7 @@
     {{ __('RAV') }}
 @endsection
 @section('content')
+
     <section class="breadcrumb">
         {{-- banner start --}}
         @if (isset($organizedData['banner']) && $organizedData['banner'] != '')
@@ -18,7 +19,7 @@
         @endif
         {{-- banner end --}}
         <div class="breadcrumb-title">
-            <h3 class="title">{{ $title_name ?? '' }}</h3>
+            <h3 class="title">{{ $organizedData['metatag']->meta_title ?? '' }}</h3>
         </div>
         </div>
     </section>
@@ -44,7 +45,7 @@
                     @if (isset($middelBred))
                         <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
                     @endif
-                    <li>{{ $title_name ?? '' }}</li>
+                    <li>{{ $organizedData['metatag']->meta_title ?? '' }}</li>
                 </ul>
             </div>
         </div>
