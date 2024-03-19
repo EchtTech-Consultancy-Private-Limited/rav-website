@@ -1310,7 +1310,7 @@
                                                     @if (Session::get('locale') == 'hi')
                                                         <h2>{{ $awardsContents->page_title_hi }}</h2>
                                                         {!! $awardsContents->page_content_hi !!}
-                                                    @elseif (Session::get('locale') == 'en')
+                                                    @else
                                                         <h2>{{ $awardsContents->page_title_en }}</h2>
                                                         {!! $awardsContents->page_content_en !!}
                                                     @endif
