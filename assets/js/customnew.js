@@ -508,4 +508,3 @@ function setlang(value) {
  });
 }
 
-

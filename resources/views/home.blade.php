@@ -10,7 +10,7 @@
                     @foreach ($banner as $banners)
                         <div class="item">
                             <div class="row">
-                                <div class="col-lg-12 mobile-width-30 ps-0">
+                                <div class="col-lg-12">
                                     <div class="hero-slider-img" data-aos="fade-left" data-aos-duration="3000">
                                         @if ($banners->public_url != '')
                                             <img src="{{ asset('resources/uploads/banner/' . $banners->public_url) }}"
@@ -154,7 +154,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="about-us-card-back">
+                        <!-- <div class="about-us-card-back">
                             <h3 class="title-black-sm">
                                 What is Lorem Ipsum?
                             </h3>
@@ -162,7 +162,7 @@
                                 dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
                                 veniam cumque expedita rem at harum?</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -187,7 +187,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="about-us-card-back">
+                        <!-- <div class="about-us-card-back">
                             <h3 class="title-black-sm">
                                 What is Lorem Ipsum?
                             </h3>
@@ -195,7 +195,7 @@
                                 dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
                                 veniam cumque expedita rem at harum?</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -212,9 +212,12 @@
                                     <b>Secretary</b>
                                     Ministry of AYUSH
                                 </p>
+                                <p class="title-org">
+                                        <a href="#"> Know More</a>
+                                    </p>
                             </div>
                         </div>
-                        <div class="about-us-card-back">
+                        <!-- <div class="about-us-card-back">
                             <h3 class="title-black-sm">
                                 What is Lorem Ipsum?
                             </h3>
@@ -222,7 +225,7 @@
                                 dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
                                 veniam cumque expedita rem at harum?</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -244,7 +247,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="about-us-card-back">
+                        <!-- <div class="about-us-card-back">
                             <h3 class="title-black-sm">
                                 What is Lorem Ipsum?
                             </h3>
@@ -252,7 +255,7 @@
                                 dolorem
                                 optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
                                 veniam cumque expedita rem at harum?</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -816,6 +819,30 @@
                                 {{ __('messages.Online_Presence') }}
                             @endif
                         </p>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-4">
+                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
+                        <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
+                        <span class="total-no">
+                        1500
+                        </span>
+                        <p class="title">
+                        Total no of CME
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-4">
+                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
+                        <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
+                        <span class="total-no">
+                        61
+
+                        </span>
+                        <p class="title">
+                        Workshop & Training
+                        </p>
+                      
                     </div>
                 </div>
             </div>

@@ -9,11 +9,12 @@ $(document).ready(function() {
 $(document).ready(function () {
   function printCurrentDateTime() {
     var currentDate = new Date();
-    var months = [
-      "JANUARY", "FEBRUARY", "MARCH", "APRIL",
-      "MAY", "JUNE", "JULY", "AUGUST",
-      "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
+    const months = [
+      "january", "february", "march", "april",
+      "may", "june", "july", "august",
+      "september", "october", "november", "december"
     ];
+    
 
     var year = currentDate.getFullYear();
     var month = months[currentDate.getMonth()]; 
