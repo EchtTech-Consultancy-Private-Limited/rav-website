@@ -187,6 +187,32 @@
                                     </ul>
                                 </div>
                             @endif
+                            @if($isFooterMenu)
+                                @if(isset($footerMenu))
+                                    <div class="main-sidebar mt-3" id="main-sidebar">
+                                        <ul class="" id="newsTab" role="tablist">
+
+                                            <h3 class="heading-txt-styl">
+                                                Footer Menu
+                                            </h3>
+
+                                            @if (isset($footerMenu) && count($footerMenu) > 0)
+                                                @foreach ($footerMenu as $index => $fmenu)
+                                                    <li class="nav-item " role="presentation">
+                                                        <a href="{{ url($fmenu->url) }}" class="nav-link ">
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ $fmenu->name_hi }}
+                                                            @else
+                                                                {{ $fmenu->name_en }}
+                                                            @endif
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endif
                             @if (isset($quickLink) && count($quickLink) > 0)
                                 <ul class="nav-qm nav-tabs mt-3" id="newsTab" role="tablist">
                                     <h3 class=" quick-menu-head-stl text-center mt-1">
@@ -214,37 +240,42 @@
                                     @endforeach
                                 </ul>
                             @endif
+
+
                         </div>
                         {{-- side menu end --}}
                         <div class="col-md-8 col-lg-8 ">
                             <div class="about">
                                 @if (isset($content))
                                     <h1>{{$formName??''}}</h1>
-                                    @if($dynamicFormData == 1)
-                                        <table style="width: 100%;">
-                                            <thead>
-                                            <tr>
-                                                <th>Sr.No.</th>
-                                                <th>Name</th>
-                                                <th>Designation</th>
-                                                <th>Email</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach ($content as $item)
-                                                @php
-                                                    $data = json_decode($item->content, true);
-                                                @endphp
+                                    @if(isset($dynamicFormData))
+                                        @if($dynamicFormData == 1)
+                                            <table style="width: 100%;">
+                                                <thead>
                                                 <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{ $data['name'] }}</td>
-                                                    <td>{{ $data['designation'] }}</td>
-                                                    <td>{{ $data['email'] }}</td>
-
+                                                    <th>Sr.No.</th>
+                                                    <th>Name</th>
+                                                    <th>Designation</th>
+                                                    <th>Email</th>
                                                 </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                @foreach ($content as $item)
+                                                    @php
+                                                        $data = json_decode($item->content, true);
+                                                    @endphp
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{ $data['name'] }}</td>
+                                                        <td>{{ $data['designation'] }}</td>
+                                                        <td>{{ $data['email'] }}</td>
+
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        @endif
+
                                     @else
                                         {!! $content !!}
                                     @endif

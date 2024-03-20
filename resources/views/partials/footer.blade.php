@@ -58,7 +58,9 @@
                     </li>
                     @endif
                     @endforeach
-
+                    <li>
+                        <a href="{{ route('contact-us') }}">Contact us</a>
+                    </li>
                 </ul>
                 @else
                 <h5>No menu available.</h5>
