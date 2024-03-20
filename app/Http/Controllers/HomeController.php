@@ -99,6 +99,13 @@ class HomeController extends Controller
             // Handle the case when none of the slugs match
         }
         try {
+            $footerMenu = DB::table('website_menu_management')->where('menu_place',1)->get();
+            $currentMenuData = DB::table('website_menu_management')->where('url',$slug)->first();
+            $isFooter = false;
+            if ($currentMenuData->menu_place == 1){
+                $isFooter = true;
+            }
+
             if ($finalSlug != null) {
                 $finalUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
                 $lastUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($lastSlugs)->first();
@@ -152,6 +159,7 @@ class HomeController extends Controller
                     ->where('menu_uid', $menus->uid)
                     ->first();
                 if ($menus != '') {
+
                     $allmenus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
                     $firstParent = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', $menus->parent_id)->first();
                     if (!empty($firstParent)) {
@@ -184,6 +192,9 @@ class HomeController extends Controller
                     }
                 }
             } elseif ($middelSlug != null) {
+
+                $footerMenu = DB::table('website_menu_management')->where('menu_place',1)->get();
+
                 $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
                 $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middelSlug)->first();
                 $metaDetails = DB::table('dynamic_content_page_metatag')
@@ -271,6 +282,7 @@ class HomeController extends Controller
                         $title_name = $menus->name_en;
                     }
                 } else {
+
                     if (Session::get('Lang') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
@@ -317,13 +329,15 @@ class HomeController extends Controller
                         ];
                     }
                     if ($finalSlug != null) {
-                        return view('master-page', ['finalBred' => $finalBred, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'finalBred' => $finalBred, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else if ($lastSlugs != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } elseif ($middelSlug != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+
+
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
-                        return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'director-desk') {
                     $designation = DB::table('emp_depart_designations')
@@ -341,7 +355,7 @@ class HomeController extends Controller
                             ->orderBy('short_order', 'ASC')
                             ->where('publice_status', 1)
                             ->first();
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'Director' => $Director]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'Director' => $Director]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'employee-directory') {
                     $designationData = [];
@@ -371,7 +385,7 @@ class HomeController extends Controller
                         }
                         $sortedDesignationData = collect($designationData)->sortBy('department.short_order')->values()->all();
                         // return view('pages.employeeDirectory', ['sortedDesignationData' => $sortedDesignationData]);
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'sortedDesignationData' => $sortedDesignationData]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'sortedDesignationData' => $sortedDesignationData]);
                     }
                 } else {
                     if (Session::get('Lang') == 'hi') {
@@ -380,14 +394,16 @@ class HomeController extends Controller
                         $content = "<h1>Coming Soon...</h1>";
                     }
                     if ($finalSlug != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'finalBred' => $finalBred, 'lastBred' => $lastBred, 'content' => $content, 'title_name' => $title_name, 'metaDetails' => $metaDetails]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'finalBred' => $finalBred, 'lastBred' => $lastBred, 'content' => $content, 'title_name' => $title_name, 'metaDetails' => $metaDetails]);
                     } else if ($lastSlugs != null) {
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'lastBred' => $lastBred, 'content' => $content, 'middelBred' => $middelBred, 'title_name' => $title_name]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'lastBred' => $lastBred, 'content' => $content, 'middelBred' => $middelBred, 'title_name' => $title_name]);
                     } elseif ($middelSlug != null) {
+
                         $menuID = $menus->uid;
                         $pageContent = DB::table('form_designs_management')->where('website_menu_uid',$menuID)->first();
                         $formName = "";
                         $dynamicFormData = 0;
+
                         if ($pageContent){
                             $formId = $pageContent->uid;
                             $content = DB::table('form_data_management')->where('form_design_id',$formId)->get(['content']);
@@ -395,10 +411,10 @@ class HomeController extends Controller
                             $formName = $pageContent->form_name;
                         }
 
-//                        dd($content);
-                        return view('master-page', ['parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name,'dynamicFormData'=>$dynamicFormData,'formName'=>$formName]);
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name,'dynamicFormData'=>$dynamicFormData,'formName'=>$formName]);
                     } else {
-                        return view('master-page', ['quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+
+                        return view('master-page', ['isFooterMenu'=>$isFooter,'footerMenu'=>$footerMenu,'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {
