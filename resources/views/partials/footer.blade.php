@@ -31,6 +31,7 @@
     <div class="col-md-12">
         <div class="footer-nav">
             <ul>
+
                 @if (isset($footerMenu) && count($footerMenu) > 0)
                 <ul>
                     @foreach ($footerMenu->slice(0, 8) as $footerMenus)
@@ -59,7 +60,9 @@
                     </li>
                     @endif
                     @endforeach
-
+                    <li>
+                        <a href="{{ route('contact-us') }}">Contact us</a>
+                    </li>
                 </ul>
                 @else
                 <h5>No menu available.</h5>

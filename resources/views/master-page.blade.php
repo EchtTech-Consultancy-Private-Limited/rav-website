@@ -187,6 +187,32 @@
                                     </ul>
                                 </div>
                             @endif
+                            @if($isFooterMenu)
+                                @if(isset($footerMenu))
+                                    <div class="main-sidebar mt-3" id="main-sidebar">
+                                        <ul class="" id="newsTab" role="tablist">
+
+                                            <h3 class="heading-txt-styl">
+                                                Footer Menu
+                                            </h3>
+
+                                            @if (isset($footerMenu) && count($footerMenu) > 0)
+                                                @foreach ($footerMenu as $index => $fmenu)
+                                                    <li class="nav-item " role="presentation">
+                                                        <a href="{{ url($fmenu->url) }}" class="nav-link ">
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ $fmenu->name_hi }}
+                                                            @else
+                                                                {{ $fmenu->name_en }}
+                                                            @endif
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endif
                             @if (isset($quickLink) && count($quickLink) > 0)
                                 <ul class="nav-qm nav-tabs mt-3" id="newsTab" role="tablist">
                                     <h3 class=" quick-menu-head-stl text-center mt-1">
@@ -214,6 +240,8 @@
                                     @endforeach
                                 </ul>
                             @endif
+
+
                         </div>
                         {{-- side menu end --}}
                         <div class="col-md-8 col-lg-8 ">
