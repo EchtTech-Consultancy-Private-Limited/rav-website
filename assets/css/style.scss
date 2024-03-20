@@ -3783,3 +3783,13 @@ button.btn.side-mn-icn:hover {
     text-transform: capitalize;
     margin: 20px 0;
 }
+
+.addevent-box:hover {
+    background: #740048;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 5px;
+    h5, h6{
+      color: #fff;
+    }
+}
