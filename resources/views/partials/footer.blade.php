@@ -30,9 +30,7 @@
     @endif
     <div class="col-md-12">
         <div class="footer-nav">
-            <ul>
-
-                @if (isset($footerMenu) && count($footerMenu) > 0)
+        @if (isset($footerMenu) && count($footerMenu) > 0)
                 <ul>
                     @foreach ($footerMenu->slice(0, 8) as $footerMenus)
                     @php
@@ -67,7 +65,6 @@
                 @else
                 <h5>No menu available.</h5>
                 @endif
-            </ul>
         </div>
     </div>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
