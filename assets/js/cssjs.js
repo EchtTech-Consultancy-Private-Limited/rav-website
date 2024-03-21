@@ -23,8 +23,21 @@ $(document).ready(function(){
         }
     };
     
-   
+    // myFunction()
 });
 
+// sitcky header
 
 
+
+// var header = document.getElementById("myHeader");
+// console.log(header);
+//   let   sticky = header.offsetTop;
+//     console.log(sticky)
+//     function myFunction() {
+//     console.log(window.pageYOffset, 'pageYOffset')
+//     window.pageYOffset > sticky
+//         ? header.classList.add("sticky")
+//         : header.classList.remove("sticky");
+//         alert("workin fine");
+// }

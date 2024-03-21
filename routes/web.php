@@ -41,6 +41,8 @@ Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedba
 Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
 Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
 Route::view('/testView', 'pages.testView');
+Route::view('/photo-gallery', 'pages.photoGallery');
+Route::view('/video-gallery', 'pages.videoGallery');
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
 Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
 
