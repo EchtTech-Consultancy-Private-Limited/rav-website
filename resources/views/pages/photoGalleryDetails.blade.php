@@ -57,28 +57,28 @@
                     <div class="col-md-12 col-lg-12 ">
                         <div class="about">
                             <h1>
-                                Video Gallery
+                                Photo gallery 
                             </h1>
 
                             <div class="rs-blog main-home col-md-12">
                                 <div class="container1 row">
                                     <div class="col-md-6 position-relative">
                                         <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/kD67TY5m164?si=HydEEPYvinl2MGpM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                       <img src="{{ asset('assets/images/gallery/g1.jpg') }}" alt="gallery image"/>
                                         </div>
                                       
                                         <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/hUdu4xtHQa0?si=gecox5jv981uUfTY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        <img src="{{ asset('assets/images/gallery/g2.jpg') }}" alt="gallery image"/>
                                              
                                         </div>
                                         
                                         <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/PenWqIMK9Bw?si=XWywagNv9kWuhZP3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        <img src="{{ asset('assets/images/gallery/g3.jpg') }}" alt="gallery image"/>
                                         </div>
                                        
                                         
                                         <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/ZaWAK6jFPms?si=7vmGDTqndXrKizpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        <img src="{{ asset('assets/images/gallery/g4.jpg') }}" alt="gallery image"/>
                                         </div>
                                        
                                         
@@ -89,38 +89,34 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col-box-g">
-                                            <div class="row ps-0">
+                                           
 
-                                                <div class="col-md-3 mb-2">
+                                                <div class="column mb-2">
                                                     <img class="demo cursor fancybox-close active"
-                                                        src="https://i.ytimg.com/vi/w56E4soUvsk/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(1)" alt="">
+                                                        src="{{ asset('assets/images/gallery/g1.jpg') }}"
+                                                         onclick="currentSlide(1)" alt="">
                                                 </div>
 
-                                                <div class="col-md-3 mb-2">
+                                                <div class="column mb-2">
                                                     <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/zDpwAV0fgx8/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(2)" alt="">
+                                                        src="{{ asset('assets/images/gallery/g1.jpg') }}"
+                                                         onclick="currentSlide(2)" alt="">
                                                 </div>
 
-                                                <div class="col-md-3 mb-2">
+                                                <div class="column mb-2">
                                                     <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/Dxr8yM4_WqE/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(3)" alt="">
+                                                        src="{{ asset('assets/images/gallery/g2.jpg') }}"
+                                                         onclick="currentSlide(3)" alt="">
                                                 </div>
 
-                                                <div class="col-md-3 mb-2">
+                                                <div class="column mb-2">
                                                     <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/35D6WiiIDfk/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(4)" alt="">
+                                                        src="{{ asset('assets/images/gallery/g3.jpg') }}"
+                                                         onclick="currentSlide(4)" alt="">
                                                 </div>
 
-                                                <div class="col-md-3 mb-2">
-                                                    <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/fIFck_O_91o/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(5)" alt="">
-                                                </div>
-                                            </div>
+                                               
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -132,5 +128,8 @@
         </div>
     </section>
 </div>
+
+<script>
+    
 
 @endsection
