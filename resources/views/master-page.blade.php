@@ -333,7 +333,13 @@
                                                                     {{ $data['City'] }}
                                                                 @endif
                                                             </td>
-                                                            <td>{{ $data['state'] ?? $data['State'] }}</td>
+                                                            <td>
+                                                                @if (isset($data['state']))
+                                                                    {{ $data['state'] }}
+                                                                @elseif(isset($data['State']))
+                                                                    {{ $data['State'] }}
+                                                                @endif
+                                                                </td>
                                                             <td>
                                                                 @if (isset($data['text-1710910855287-0']))
                                                                     {{ $data['text-1710910855287-0'] ?? '' }}
