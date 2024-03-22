@@ -4339,4 +4339,17 @@ h2.dashboard-link {
   display: inline;
   padding: 9px 14px;
   border-radius: 7px;
+}
+
+h2.accordion-header {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.master .accordion-item {
+  margin: 20px;
+  padding: 0px;
+  border-radius: 39px;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
 }/*# sourceMappingURL=style.css.map */
