@@ -37,12 +37,14 @@ class HomeController extends Controller
             $galleryCategories = DB::table('gallery_management')->where('type',1)->get();
             $videosWithCategories = [];
             foreach ($galleryCategories as $item) {
-                $categoryImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
+                $videImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
+               if (isset($videImageData)) {
                 $videosWithCategories[] = [
-                    'video_id' => $categoryImageData->public_url,
+                    'video_id' => $videImageData->public_url,
                     'title_name_en' => $item->title_name_en,
                     'title_name_hi' => $item->title_name_hi
                 ];
+               }
             }
 
             // dd($videosWithCategories);
