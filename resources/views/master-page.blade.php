@@ -130,7 +130,9 @@
                                                                                                 <ul class="p-0 m-0 mt-3">
                                                                                                     @foreach ($childTree->children as $finalChild)
                                                                                                         @php
-                                                                                                            $finalChildUrl = $finalChild->url ?? '';
+                                                                                                            $finalChildUrl =
+                                                                                                                $finalChild->url ??
+                                                                                                                '';
                                                                                                         @endphp
                                                                                                         <li
                                                                                                             class="@if (request()->is($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl . '/' . $finalChildUrl)) qm-active @endif">
@@ -187,8 +189,8 @@
                                     </ul>
                                 </div>
                             @endif
-                            @if($isFooterMenu)
-                                @if(isset($footerMenu))
+                            @if ($isFooterMenu)
+                                @if (isset($footerMenu))
                                     <div class="main-sidebar mt-3" id="main-sidebar">
                                         <ul class="" id="newsTab" role="tablist">
 
@@ -247,35 +249,160 @@
                         <div class="col-md-8 col-lg-8 ">
                             <div class="about">
                                 @if (isset($content))
-                                    <h1>{{$formName??''}}</h1>
-                                    @if(isset($dynamicFormData))
-                                        @if($dynamicFormData == 1)
+                                    <h1>{{ $formName ?? '' }}</h1>
+                                    @if (isset($dynamicFormData))
+                                        @if ($dynamicFormData == 1)
                                             <table style="width: 100%;">
                                                 <thead>
-                                                <tr>
-                                                    <th>Sr.No.</th>
-                                                    <th>Name</th>
-                                                    <th>Designation</th>
-                                                    <th>Email</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th>Sr.No.</th>
+                                                        <th>Name</th>
+                                                        <th>Designation</th>
+                                                        <th>Email</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach ($content as $item)
-                                                    @php
-                                                        $data = json_decode($item->content, true);
-                                                    @endphp
-                                                    <tr>
-                                                        <td>{{$loop->iteration}}</td>
-                                                        <td>{{ $data['name'] }}</td>
-                                                        <td>{{ $data['designation'] }}</td>
-                                                        <td>{{ $data['email'] }}</td>
+                                                    @foreach ($content as $item)
+                                                        @php
+                                                            $data = json_decode($item->content, true);
+                                                        @endphp
+                                                        <tr>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ $data['name'] }}</td>
+                                                            <td>{{ $data['designation'] }}</td>
+                                                            <td>{{ $data['email'] }}</td>
 
-                                                    </tr>
-                                                @endforeach
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         @endif
+                                    @elseif(isset($allFormData))
+                                        {{-- @dd($title_name) --}}
+                                        <h1>{{ $title_name ?? '' }}</h1>
+                                        @php
+                                            $formContentData = [];
+                                        @endphp
 
+                                        @foreach ($allFormData as $formData)
+                                            @php
+                                                $decodedContent = json_decode($formData->content, true);
+                                                if ($decodedContent) {
+                                                    $formContentData[] = $decodedContent;
+                                                }
+                                            @endphp
+                                        @endforeach
+                                        {{-- @dd( $formContentData) --}}
+                                        <div class="table-responsive">
+                                            <table class="dataTable no-footer table-responsive" id="DataTables_Table_0"
+                                                aria-describedby="DataTables_Table_0_info">
+                                                <thead>
+                                                    <tr>
+                                                        <!-- Define your table headers here -->
+                                                        <th>Sr.No.</th>
+                                                        <th>Institute Name</th>
+                                                        <th>City</th>
+                                                        <th>State</th>
+                                                        <th>Qualification</th>
+                                                        <th>Year</th>
+                                                        <th>Title of Research</th>
+                                                        <th>Scholar Name</th>
+                                                        <th>Guide Name</th>
+                                                        <th>Co-Guide Name</th>
+                                                        @if ($title_name == 'Ph. D' || $title_name == 'Ph. D' || $title_name == 'P. G' || $title_name == 'M.D')
+                                                            <th>
+                                                                Discussion/Conclusion
+                                                            </th>
+                                                            <th>
+                                                                Functional Pharmacy
+                                                            </th>
+                                                        @endif
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($formContentData as $data)
+                                                        <tr>
+                                                            <td>
+                                                                {{ $loop->iteration }}
+                                                            </td>
+                                                            <td>{{ $data['institute-name'] ?? '' }}</td>
+                                                            <td>
+                                                                @if (isset($data['city']))
+                                                                {{ $data['city'] ?? '' }}
+                                                                @elseif(isset($data['City']))
+                                                                    {{ $data['City'] }}
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if (isset($data['state']))
+                                                                    {{ $data['state'] }}
+                                                                @elseif(isset($data['State']))
+                                                                    {{ $data['State'] }}
+                                                                @endif
+                                                                </td>
+                                                            <td>
+                                                                @if (isset($data['text-1710910855287-0']))
+                                                                    {{ $data['text-1710910855287-0'] ?? '' }}
+                                                                @elseif (isset($data['qualification-name']))
+                                                                    {{ $data['qualification-name'] }}
+                                                                @elseif(isset($data['qualificcation-name']))
+                                                                    {{ $data['qualificcation-name'] }}
+                                                                @elseif(isset($data['Name-Qualification']))
+                                                                    {{ $data['Name-Qualification'] }}
+                                                                @endif
+                                                            </td>
+                                                            <td>{{ $data['year'] ?? $data['Year'] }}</td>
+                                                            <td>
+                                                                @if (isset($data['title-of-research']))
+                                                                    {{ $data['title-of-research'] }}
+                                                                @elseif(isset($data['Title-Research']))
+                                                                    {{ $data['Title-Research'] }}
+                                                                @elseif(isset($data['research-title']))
+                                                                    {{ $data['research-title'] }}
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if (isset($data['schloar-name']))
+                                                                    {{ $data['schloar-name'] ?? '' }}
+                                                                @elseif(isset($data['text-1710931082891-0']))
+                                                                    {{ $data['text-1710931082891-0'] }}
+                                                                @elseif(isset($data['Schloar-Name']))
+                                                                    {{ $data['Schloar-Name'] }}
+                                                                @elseif(isset($data['Name-Schloar']))
+                                                                    {{ $data['Name-Schloar'] }}
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if (isset($data['Name-Guide']))
+                                                                    {{ $data['Name-Guide'] }}
+                                                                @elseif (isset($data['guide-name']))
+                                                                    {{ $data['guide-name'] }}
+                                                                @elseif (isset($data['Guide-Name']))
+                                                                    {{ $data['Guide-Name'] }}
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if (isset($data['Name-Co-Guide']))
+                                                                    {{ $data['Name-Co-Guide'] }}
+                                                                @elseif (isset($data['co-guide-name']))
+                                                                    {{ $data['co-guide-name'] }}
+                                                                @endif
+                                                            </td>
+                                                            @if ($title_name == 'Ph. D' || $title_name == 'Ph. D' || $title_name == 'P. G' || $title_name == 'M.D')
+                                                                <td>{{ $data['DiscussionConclusion'] ?? '' }}</td>
+                                                                <td>
+                                                                    @if (isset($data['Functional-Pharmacy']))
+                                                                        {{ $data['Functional-Pharmacy'] }}
+                                                                    @elseif (isset($data['working-pharmacy']))
+                                                                        {{ $data['working-pharmacy'] }}
+                                                                    @endif
+                                                                </td>
+                                                            @endif
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     @else
                                         {!! $content !!}
                                     @endif
