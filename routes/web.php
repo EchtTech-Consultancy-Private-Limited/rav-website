@@ -44,7 +44,7 @@ Route::get('/search', [SearchController::class, 'getSearchData'])->name('search'
 Route::view('/testView', 'pages.testView');
 Route::get('/photo-gallery',[GalleryController::class,"photoGallery"]);
 Route::view('/video-gallery', 'pages.videoGallery');
-Route::view('/photo-gallery-details', 'pages.photoGalleryDetails');
+Route::get('/photo-gallery-details/{id}', [GalleryController::class,"imageCategoryData"]);
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
 Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
 

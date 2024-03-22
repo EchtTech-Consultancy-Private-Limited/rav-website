@@ -64,7 +64,7 @@
                                     @foreach ($imageWithCategory as $item)
                                     <div class="col-md-4">
                                         <div class="blog-item">
-                                            <a href="{{url('/photo-gallery-details')}}"
+                                            <a href="{{url('/photo-gallery-details/'.$item['uid'])}}"
                                                 title="@if (Session::get('locale') == 'hi')
                                                 {{ $item['title_name_hi'] }}
                                                 @else

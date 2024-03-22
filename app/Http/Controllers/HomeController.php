@@ -23,7 +23,7 @@ class HomeController extends Controller
             ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
             ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
             ->get();
-            $galleryCategories = DB::table('gallery_management')->where('type',0)->get();
+            $galleryCategories = DB::table('gallery_management')->where('type',0)->where('status',3)->get();
             $imageWithCategory = [];
             foreach ($galleryCategories as $item) {
                 $categoryImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
@@ -34,7 +34,7 @@ class HomeController extends Controller
                 ];
             }
 
-            $galleryCategories = DB::table('gallery_management')->where('type',1)->get();
+            $galleryCategories = DB::table('gallery_management')->where('type',1)->where('status',3)->get();
             $videosWithCategories = [];
             foreach ($galleryCategories as $item) {
                 $videImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();

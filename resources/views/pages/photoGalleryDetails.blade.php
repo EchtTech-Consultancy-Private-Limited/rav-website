@@ -63,41 +63,37 @@
                             <div class="rs-blog main-home col-md-12">
                                 <div class="container1 row">
                                     <div class="col-md-6 position-relative">
-                                        <div class="mySlides" >
-                                       <img src="{{ asset('assets/images/gallery/g1.jpg') }}" alt="gallery image"/>
-                                        </div>
                                       
-                                        <div class="mySlides" >
-                                        <img src="{{ asset('assets/images/gallery/g2.jpg') }}" alt="gallery image"/>
-                                             
-                                        </div>
-                                        
-                                        <div class="mySlides" >
-                                        <img src="{{ asset('assets/images/gallery/g3.jpg') }}" alt="gallery image"/>
-                                        </div>
-                                       
-                                        
-                                        <div class="mySlides" >
-                                        <img src="{{ asset('assets/images/gallery/g4.jpg') }}" alt="gallery image"/>
-                                        </div>
-                                       
-                                        
-                                      
-                                        <a class="prev" onclick="plusSlides(-1)" tabindex="0">❮</a>
-                                        <a class="next" onclick="plusSlides(1)" tabindex="0">❯</a>
+                                            @foreach($imageWithCategory as $item)
+                                            <div class="mySlides">
+                                                <img src="{{ asset('resources/uploads/GalleryManagement/' . $item->public_url) ?? '' }}"  alt="gallery image"/>
+                                            </div>
+                                            @endforeach
+                    
+                                            <a class="prev" onclick="plusSlides(-1)" tabindex="0">❮</a>
+                                            <a class="next" onclick="plusSlides(1)" tabindex="0">❯</a>
+                                            {{-- <div class="mySlides" >
+                                                <img src="{{ asset('assets/images/gallery/g4.jpg') }}" alt="gallery image"/>
+                                                </div>
+                                               
+                                                
+                                              
+                                                <a class="prev" onclick="plusSlides(-1)" tabindex="0">❮</a>
+                                                <a class="next" onclick="plusSlides(1)" tabindex="0">❯</a> --}}
                                         
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col-box-g">
                                            
 
-                                                <div class="column mb-2">
-                                                    <img class="demo cursor fancybox-close active"
-                                                        src="{{ asset('assets/images/gallery/g1.jpg') }}"
-                                                         onclick="currentSlide(1)" alt="">
-                                                </div>
+                                            @foreach($imageWithCategory as $key => $item)
+                                            <div class="column mb-2">
+                                                <img class="demo cursor fancybox-close {{ $key == 0 ? 'active' : '' }}"
+                                                src="{{ asset('resources/uploads/GalleryManagement/' . $item->public_url) ?? '' }}" onclick="currentSlide({{ $key + 1 }})" alt="">
+                                            </div>
+                                            @endforeach
 
-                                                <div class="column mb-2">
+                                                {{-- <div class="column mb-2">
                                                     <img class="demo cursor fancybox-close"
                                                         src="{{ asset('assets/images/gallery/g1.jpg') }}"
                                                          onclick="currentSlide(2)" alt="">
@@ -113,7 +109,7 @@
                                                     <img class="demo cursor fancybox-close"
                                                         src="{{ asset('assets/images/gallery/g3.jpg') }}"
                                                          onclick="currentSlide(4)" alt="">
-                                                </div>
+                                                </div> --}}
 
                                                
                                            
