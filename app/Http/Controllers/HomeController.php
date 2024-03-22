@@ -23,7 +23,30 @@ class HomeController extends Controller
             ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
             ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
             ->get();
-        return view('home', compact('tenders'));
+            $galleryCategories = DB::table('gallery_management')->where('type',0)->get();
+            $imageWithCategory = [];
+            foreach ($galleryCategories as $item) {
+                $categoryImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
+                $imageWithCategory[] = [
+                    'image' => $categoryImageData->public_url,
+                    'title_name_en' => $item->title_name_en,
+                    'title_name_hi' => $item->title_name_hi
+                ];
+            }
+
+            $galleryCategories = DB::table('gallery_management')->where('type',1)->get();
+            $videosWithCategories = [];
+            foreach ($galleryCategories as $item) {
+                $categoryImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
+                $videosWithCategories[] = [
+                    'video_id' => $categoryImageData->public_url,
+                    'title_name_en' => $item->title_name_en,
+                    'title_name_hi' => $item->title_name_hi
+                ];
+            }
+
+            // dd($videosWithCategories);
+        return view('home', compact('tenders','videosWithCategories','imageWithCategory'));
     }
     /**
      * Show the form for creating a new resource.

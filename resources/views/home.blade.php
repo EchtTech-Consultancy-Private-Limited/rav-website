@@ -1305,31 +1305,24 @@
                                                     <div class="col-md-12">
                                                         <div class="rs-carousel owl-carousel nav-style2 gallery-carausel owl-theme"
                                                             id="photoGallerySlider">
-                                                            <div class="item team-item">
-                                                                <div class="gallery-box">
-                                                                <img src="{{ asset('assets/images/photo1.png') }}" alt="photo" class="img-fluid">
-                                                                    <div class="text-gallery">
-                                                                       Image Description
+                                                            @if (isset($imageWithCategory))
+                                                                @foreach ($imageWithCategory as $item)
+                                                                
+                                                                <div class="item team-item">
+                                                                    <div class="gallery-box">
+                                                                    <img src="{{ asset('resources/uploads/GalleryManagement/' . $item['image']) ?? '' }}" alt="photo" class="img-fluid">
+                                                                        <div class="text-gallery">
+                                                                            @if (Session::get('locale') == 'hi')
+                                                                            {{ $item['title_name_hi'] }}
+                                                                            @else
+                                                                            {{ $item['title_name_en'] }}
+                                                                            @endif
+                                                                          
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                           
-                                                            <div class="item team-item">
-                                                                <div class="gallery-box">
-                                                                <img src="{{ asset('assets/images/photo3.png') }}" alt="photo"  class="img-fluid">
-                                                                    <div class="text-gallery">
-                                                                       Image Description
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item team-item">
-                                                                <div class="gallery-box">
-                                                                <img src="{{ asset('assets/images/photo4.png') }}" alt="photo"  class="img-fluid">
-                                                                    <div class="text-gallery">
-                                                                       Image Description
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                @endforeach
+                                                            @endif
 
 
                                                         </div>
@@ -1372,17 +1365,17 @@
                                                     <div class="col-md-12">
                                                     <div class="rs-carousel owl-carousel nav-style2 gallery-carausel owl-theme"
                                                             id="videoGallerySlider">
-                                                            <div class="item team-item">
-                                                                <div class="gallery-box">
-                                                                <iframe width="100%" height="400" src="https://www.youtube.com/embed/kD67TY5m164?si=HydEEPYvinl2MGpM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                                            @if (isset($videosWithCategories))
+                                                                @foreach ($videosWithCategories as $item)
+                                                                <div class="item team-item">
+                                                                    <div class="gallery-box">
+                                                                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{ $item['video_id'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="item team-item">
-                                                                <div class="gallery-box">
-                                                                <iframe width="100%" height="400" src="https://www.youtube.com/embed/hUdu4xtHQa0?si=gecox5jv981uUfTY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                                                </div>
-                                                            </div>
-                                                           
+                                                                @endforeach
+                                                            @endif
+                                                            
+                                                          
 
 
                                                         </div>

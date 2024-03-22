@@ -118,7 +118,7 @@ class CommonComposer
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
 
-            $rightToInfoContents = DB::table('website_menu_management')->where('name_en','Right to Information Act RTI')
+            $rightToInfoContents = DB::table('website_menu_management')->where('url','right-to-information-act-rti')
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
