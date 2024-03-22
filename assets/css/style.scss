@@ -1250,7 +1250,7 @@ li.nav-item .active {
     background-color: #ff5200 !important;
     color: #fff !important;
     border: none;
-    padding: 8px !important;
+    padding: 8px 12px !important;
 }
 
 @media (max-width: 1440px) {
@@ -4178,23 +4178,29 @@ button.btn.side-mn-icn:hover {
 }
 .container1 .mySlides img {
     height: 400px;
+    width: 100%;
+    padding: 0;
+    border-radius: 10px;
 }
 .col-box-g .column img.demo.cursor {
     height: 110px !important;
 }
 .container1 .demo {
     opacity: 0.6;
+    padding: 0;
+    border-radius: 10px;
 }
 .container1 .cursor {
     cursor: pointer;
 }
 .col-box-g {
     border: 1px solid #ddd;
-    padding: 12px;
-    padding-right: 0;
+    padding: 10px 8px;
+    /* padding-right: 0; */
     height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
+    justify-content: center;
 }
 .container1 .next,
 .container1 .prev {
@@ -4235,6 +4241,7 @@ ul.overseas-client li .size {
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #ddd;
+    padding: 0px 0px 10px !important;
 }
 .col-box-g::-webkit-scrollbar {
     width: 7px;
@@ -4277,3 +4284,129 @@ li.nav-item.activemenu {
   background-color: transparent;
   // padding: 0;
 }
+
+.column {
+    width: 23%;
+    padding: 0;
+    margin: 11px;
+    max-height: 100px;
+    float: left;
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+
+
+// sociol media updates css start
+
+/* Social Media Feed */
+
+.social-box {
+    border: 1px solid #ece7e7;
+    background: #fff;
+    padding-bottom: 10px;
+    border-radius: 0 0 10px 10px;
+    height: 480px;
+    box-shadow: 0 2px 20px rgb(0 0 0);
+    margin: 30px 0 40px;
+    padding: 0;
+  }
+  
+  .social-box .plug-box {
+    padding: 5px 10px;
+    margin-top: 40px;
+    max-height: 432px;
+    overflow: hidden;
+  }
+  
+  .facebook-feed-content iframe {
+  /*  height: 295px !important*/
+  }
+  
+  .social-box {
+    position: relative;
+    transition: all .5s ease-in-out
+  }
+  
+  .social-box:hover {
+    box-shadow: none
+  }
+  
+  .social-box h2 {
+    font-size: 110% !important;
+    line-height: 55px;
+    margin: 10px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, .2);
+    width: calc(100% - 20px);
+    background-color: #277ed5;
+    border-radius: 0 0 5px 5px;
+    margin: 0 auto;
+    color: #fff
+  }
+  
+  .twitter-c {
+    background: #212121 !important
+  }
+  
+  .linkedin-c {
+    background: #0077b5 !important
+  }
+  
+  .social-box h2:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 0;
+    border-right: 10px solid #1a4f91;
+    border-top: 20px solid transparent;
+    border-bottom: 0 solid transparent
+  }
+  
+  .social-box h2:after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border-left: 10px solid #1a4f91;
+    border-top: 20px solid transparent;
+    border-bottom: 0 solid transparent
+  }
+  
+  .linkedinfeed img {
+    width: 100%;
+    height: 295px;
+    border-radius: 10px;
+    border: 1px solid #d2d2d2
+  }
+  
+  .sub-sec h2 .img-b {
+    width: 39px;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 100%;
+  }
+  .twitter-c {
+    background: #212121 !important;
+  }
+  
+  h2.instagram-c {
+    background: linear-gradient(45deg, #f09433 0, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  }
+  .twitter-tweet.twitter-tweet-rendered {
+    margin-top: 0 !important;
+    height: 438px;
+    overflow-x: hidden !important;
+  }
+// sociol media updates css end
