@@ -275,7 +275,6 @@
                                                 </tbody>
                                             </table>
                                         @endif
-
                                     @elseif(isset($allFormData))
                                     {{-- @dd($title_name) --}}
                                     <h1>{{ $title_name ?? '' }}</h1>

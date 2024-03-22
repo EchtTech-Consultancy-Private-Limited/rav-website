@@ -23,8 +23,6 @@ class HomeController extends Controller
             ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
             ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
             ->get();
-            
-
         return view('home', compact('tenders'));
     }
     /**
