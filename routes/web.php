@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
@@ -41,7 +42,7 @@ Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedba
 Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
 Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
 Route::view('/testView', 'pages.testView');
-Route::view('/photo-gallery', 'pages.photoGallery');
+Route::get('/photo-gallery',[GalleryController::class,"photoGallery"]);
 Route::view('/video-gallery', 'pages.videoGallery');
 Route::view('/photo-gallery-details', 'pages.photoGalleryDetails');
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');

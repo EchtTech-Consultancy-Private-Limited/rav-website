@@ -60,71 +60,34 @@
                                 Photo Gallery
                             </h1>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="blog-item">
-                                        <a href="{{url('/photo-gallery-details')}}"
-                                            title="Shramdan Activities Were Held at CPPRI Saharanpur as Part of The 'Ek Tarikh Ek Ghanta Ek Sath'"
-                                            tabindex="0">
-                                            <div class="image-part">
-                                            <img src="{{ asset('assets/images/gallery/g1.jpg') }}" alt="photo gallery">
-                                            </div>
-                                            <div class="blog-content b-t">
-                                                <h3 class="title" tabindex="0">
-                                                    Shramdan Activities Were Held at CPPRI Saharanpur as Part of The 'Ek
-                                                    Tarikh Ek Ghanta Ek Sath'
-                                                </h3>
-                                            </div>
-                                        </a>
+                                @if (isset($imageWithCategory))
+                                    @foreach ($imageWithCategory as $item)
+                                    <div class="col-md-4">
+                                        <div class="blog-item">
+                                            <a href="{{url('/photo-gallery-details')}}"
+                                                title="@if (Session::get('locale') == 'hi')
+                                                {{ $item['title_name_hi'] }}
+                                                @else
+                                                {{ $item['title_name_en'] }}
+                                                @endif"
+                                                tabindex="0">
+                                                <div class="image-part">
+                                                <img src="{{ asset('resources/uploads/GalleryManagement/' . $item['image']) ?? '' }}" alt="photo gallery">
+                                                </div>
+                                                <div class="blog-content b-t">
+                                                    <h3 class="title" tabindex="0">
+                                                        @if (Session::get('locale') == 'hi')
+                                                        {{ $item['title_name_hi'] }}
+                                                        @else
+                                                        {{ $item['title_name_en'] }}
+                                                        @endif
+                                                    </h3>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="blog-item">
-                                        <a href="{{url('/photo-gallery-details')}}"
-                                            title="Under The Ongoing  Special Campaign" tabindex="0">
-                                            <div class="image-part">
-                                            <img src="{{ asset('assets/images/gallery/g2.jpg') }}" alt="photo gallery">
-                                            </div>
-                                            <div class="blog-content b-t">
-                                                <h3 class="title" tabindex="0">
-                                                    Under The Ongoing Special Campaign
-                                                </h3>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="blog-item">
-                                        <a href="{{url('/photo-gallery-details')}}"
-                                            title="On 02.10.2023 Under The Ongoing Swachhata Hi Sewa (SHS) Campaign"
-                                            tabindex="0">
-                                            <div class="image-part">
-                                                <img src="{{ asset('assets/images/gallery/g3.jpg') }}" alt="photo gallery">
-                                            </div>
-                                            <div class="blog-content b-t">
-                                                <h3 class="title" tabindex="0">
-                                                    On 02.10.2023 Under The Ongoing Swachhata Hi Sewa (SHS) Campaign
-                                                </h3>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="blog-item">
-                                        <a href="{{url('/photo-gallery-details')}}"
-                                            title="Shri. M.P. Singh Director, ICFRE IWST, Bangalore and Dr. M.K. Gupta Director ,CPPRI Saharanpur Signed MoU for Technical Collaboration"
-                                            tabindex="0">
-                                            <div class="image-part">
-                                            <img src="{{ asset('assets/images/gallery/g4.jpg') }}" alt="photo gallery">
-                                            </div>
-                                            <div class="blog-content b-t">
-                                                <h3 class="title" tabindex="0">
-                                                    Shri. M.P. Singh Director, ICFRE IWST, Bangalore and Dr. M.K. Gupta
-                                                    Director ,CPPRI Saharanpur Signed MoU for Technical Collaboration
-                                                </h3>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @endif
                             </div>
 
                         </div>
