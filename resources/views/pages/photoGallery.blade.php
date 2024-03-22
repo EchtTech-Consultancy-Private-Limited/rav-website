@@ -62,12 +62,11 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="blog-item">
-                                        <a href="https://dev.cppri.staggings.in/photo-gallery-images/4acddfaa-c9a6-4f47-9c68-4853c1a2528a"
+                                        <a href="{{url('/photo-gallery-details')}}"
                                             title="Shramdan Activities Were Held at CPPRI Saharanpur as Part of The 'Ek Tarikh Ek Ghanta Ek Sath'"
                                             tabindex="0">
                                             <div class="image-part">
-                                                <img src="https://dev.cppri.staggings.in/resources/uploads/GalleryManagement/170728184669.jpg"
-                                                    alt="">
+                                            <img src="{{ asset('assets/images/gallery/g1.jpg') }}" alt="photo gallery">
                                             </div>
                                             <div class="blog-content b-t">
                                                 <h3 class="title" tabindex="0">
@@ -80,11 +79,10 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="blog-item">
-                                        <a href="https://dev.cppri.staggings.in/photo-gallery-images/5b780ca9-9117-42b5-903d-cb17e5f30891"
+                                        <a href="{{url('/photo-gallery-details')}}"
                                             title="Under The Ongoing  Special Campaign" tabindex="0">
                                             <div class="image-part">
-                                                <img src="https://dev.cppri.staggings.in/resources/uploads/GalleryManagement/170728167475.jpg"
-                                                    alt="">
+                                            <img src="{{ asset('assets/images/gallery/g2.jpg') }}" alt="photo gallery">
                                             </div>
                                             <div class="blog-content b-t">
                                                 <h3 class="title" tabindex="0">
@@ -96,12 +94,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="blog-item">
-                                        <a href="https://dev.cppri.staggings.in/photo-gallery-images/19086716-8bc8-47de-8bae-586dc3df65c5"
+                                        <a href="{{url('/photo-gallery-details')}}"
                                             title="On 02.10.2023 Under The Ongoing Swachhata Hi Sewa (SHS) Campaign"
                                             tabindex="0">
                                             <div class="image-part">
-                                                <img src="https://dev.cppri.staggings.in/resources/uploads/GalleryManagement/170728142097.jpg"
-                                                    alt="">
+                                                <img src="{{ asset('assets/images/gallery/g3.jpg') }}" alt="photo gallery">
                                             </div>
                                             <div class="blog-content b-t">
                                                 <h3 class="title" tabindex="0">
@@ -113,12 +110,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="blog-item">
-                                        <a href="https://dev.cppri.staggings.in/photo-gallery-images/58f69d43-cab4-4c77-b034-661e3e201531"
+                                        <a href="{{url('/photo-gallery-details')}}"
                                             title="Shri. M.P. Singh Director, ICFRE IWST, Bangalore and Dr. M.K. Gupta Director ,CPPRI Saharanpur Signed MoU for Technical Collaboration"
                                             tabindex="0">
                                             <div class="image-part">
-                                                <img src="https://dev.cppri.staggings.in/resources/uploads/GalleryManagement/170728028687.jpg"
-                                                    alt="">
+                                            <img src="{{ asset('assets/images/gallery/g4.jpg') }}" alt="photo gallery">
                                             </div>
                                             <div class="blog-content b-t">
                                                 <h3 class="title" tabindex="0">
