@@ -34,12 +34,14 @@ class GalleryController extends Controller
         $videos = [];
         foreach ($galleryCategories as $item) {
             $categoryImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
+          if ($categoryImageData) {
             $videos[] = [
                 'uid' => $item->uid,
-                'video_id' => $categoryImageData->public_url,
+                'video_id' => $categoryImageData->public_url ?? '',
                 'title_name_en' => $item->title_name_en,
                 'title_name_hi' => $item->title_name_hi
             ];
+          }
         }
         
         return view('pages.videoGallery',compact('videos'));
