@@ -130,7 +130,7 @@ h2.resp-tab-title:last-child {
     border: 1px solid #fff;
     /* border-bottom: 1px solid #ddd; */
     border-radius: 8px;
-    background-color: #ebebeb;
+    background-color: #ff52000a;
 }
 .main-sidebar .sl-accordion:hover .fl-accordion.menu-active a::before {
     color: var(--secondary-color) !important;}
