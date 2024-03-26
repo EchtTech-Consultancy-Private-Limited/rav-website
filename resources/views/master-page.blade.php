@@ -252,7 +252,8 @@
                                     <h1>{{ $formName ?? '' }}</h1>
                                     @if (isset($dynamicFormData))
                                         @if ($dynamicFormData == 1)
-                                            <table style="width: 100%;">
+                                        <table class="dataTable no-footer table-responsive" id="DataTables_Table_0"
+                                        aria-describedby="DataTables_Table_0_info">
                                                 <thead>
                                                     <tr>
                                                         <th>Sr.No.</th>
