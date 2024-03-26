@@ -4411,4 +4411,8 @@ table tbody th p strong {
 
 .dataTable.no-footer {
   display: table !important;
+}
+
+.tab-pane.fade .text-content {
+  padding: 0 !important;
 }/*# sourceMappingURL=style.css.map */
