@@ -125,78 +125,6 @@
                             @endforeach
                         </p>
                     @endif
-                </h2>
-            </div>
-            <div class="col-md-3">
-                <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                    <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation" class="img-fluid">
-                    <span class="total-no">
-                        1750
-                    </span>
-                    <p class="title">
-                        @if (Session::get('locale') == 'hi')
-                        {{ __('messages.Number_of_Graduates') }}
-                        @else
-                        {{ __('messages.Number_of_Graduates') }}
-                        @endif
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                    <img src="{{ asset('assets/images/programme.svg') }}" alt="programme" class="img-fluid">
-                    <span class="total-no">
-                        1
-                    </span>
-                    <p class="title">
-                        @if (Session::get('locale') == 'hi')
-                        {{ __('messages.Programme_Offerings') }}
-                        @else
-                        {{ __('messages.Programme_Offerings') }}
-                        @endif
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                    <img src="{{ asset('assets/images/research.svg') }}" alt="research" class="img-fluid">
-                    <span class="total-no">
-                        71
-                    </span>
-                    <p class="title">
-                        @if (Session::get('locale') == 'hi')
-                        {{ __('messages.Research_Initiatives') }}
-                        @else
-                        {{ __('messages.Research_Initiatives') }}
-                        @endif
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                    <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
-                    <span class="total-no">
-                        28
-                    </span>
-                    <p class="title">
-                        @if (Session::get('locale') == 'hi')
-                        {{ __('messages.Online_Presence') }}
-                        @else
-                        {{ __('messages.Online_Presence') }}
-                        @endif
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-3 mt-4">
-                <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                    <img src="{{ asset('assets/images/graduation.svg') }}" alt="presence" class="img-fluid">
-                    <span class="total-no">
-                        61
-
-                    </span>
-                    <p class="title">
-                        Workshop & Training
-                    </p>
 
                     <div class="btn-wrap d-flex justify-content-center align-items-center">
                         <a href="{{ url('about-us') }}" class="btn btn-org-bdr">
@@ -208,173 +136,197 @@
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 mt-4">
-                <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                    <img src="{{ asset('assets/images/programme.svg') }}" alt="presence" class="img-fluid">
-                    <span class="total-no">
-                        1500
-                    </span>
-                    <p class="title">
-                        Total no of CME
-                    </p>
+                <div class="col-md-3">
+                    <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
+                        <div class="about-us-card-front">
+                            <div class="img">
+                                <img src="{{ asset('assets/images/minister1.png') }}" alt="minister" class="img-fluid">
+                            </div>
+                            <div class="text-item">
+                                <h3 class="title">
+                                    Shri Sarbananda Sonowal
+                                </h3>
+                                <p class="desc">
+                                    <b>Hon’ble Cabinet minister</b>
+                                    of AYUSH, Government of India
+                                </p>
+                                <p class="title-org">
+                                    <a href="#"> Know More</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="about-us-card-back">
+                                <h3 class="title-black-sm">
+                                    What is Lorem Ipsum?
+                                </h3>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                    dolorem
+                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                    veniam cumque expedita rem at harum?</p>
+                            </div> -->
+                    </div>
                 </div>
-            </div>
-           
-        </div>
-    </div>
-</section>
-<section class="activity-wrap bg-purple ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="activity-tab common-tab">
-                    <ul class="nav nav-tabs" id="activityTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="activity-tab" data-bs-toggle="tab"
-                                data-bs-target="#activity-tab-pane" type="button" role="tab"
-                                aria-controls="activity-tab-pane" aria-selected="true">
-                                @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Our_Activities') }}
-                                @else
-                                {{ __('messages.Our_Activities') }}
-                                @endif
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="crav-tab" data-bs-toggle="tab" data-bs-target="#crav-tab-pane"
-                                type="button" role="tab" aria-controls="crav-tab-pane" aria-selected="false">
-                                @if (Session::get('locale') == 'hi')
-                                {{ __('messages.CRAV_Gurus') }}
-                                @else
-                                {{ __('messages.CRAV_Gurus') }}
-                                @endif
-                            </button>
-                        </li>
-                    </ul>
-                    <p class="title-white py-4">
-                        Dynamic activities encompassing holistic education,
-                        <br>
-                        research, seminars, and community engagement at Rashtriya Ayurveda Vidyapeeth
-                    </p>
-                    <div class="tab-content pt-4 mb-neg-20" id="activityTabContent">
-                        <div class="tab-pane fade show active" id="activity-tab-pane" role="tabpanel"
-                            aria-labelledby="activity-tab" tabindex="0">
-                            <div class="activity-slider">
-                                <div class="owl-carousel owl-theme" id="activitySlider">
-                                    <div class="item">
-                                        <div class="activity-slider-card">
-                                            <div class="row m-0">
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-img">
-                                                        <img src="{{ asset('assets/images/activity-slider1.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-content">
-                                                        <h3 class="title-black-sm">
-                                                            Gyanganga - Knowledge Voyage - A weekly Webinar Series
-                                                        </h3>
-                                                        <p class="desc">
-                                                            Gyanganga - Knowledge Voyage - A weekly Webinar Series
-                                                            Printer-friendly version
-                                                            Rashtriya Ayurveda Vidyapeeth (RAV) is organizing
-                                                            webinars series named "Gyan Ganga –a knowledge Voyage”
-                                                            every Thursday. The purpose of the webinar series is to
-                                                            disseminate authentic knowledge, information and doubt
-                                                            clearance on various topics among students and Ayurveda
-                                                            fraternity.It is our pleasure that on the occasion
-                                                            Padmabhushan Vaidya Devinder Triguna, President, G.B. of
-                                                            RAV, Vaidya Manoj Nesari, Advisor Ayurveda, Ministry of
-                                                            AYUSH, Vaidya Anupam Srivastava, Director RAV and
-                                                            eminent scholars of Ayurveda address the webinar and
-                                                            share their views.
-                                                        </p>
-                                                        <a href="#" class="read-more">
-                                                            <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                alt="read-more" class="img-fluid">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="activity-slider-card">
-                                            <div class="row m-0">
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-img">
-                                                        <img src="{{ asset('assets/images/activity-slider2.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-content">
-                                                        <h3 class="title-black-sm">
-                                                            Promotion of Ayurvedic Aahar
-                                                        </h3>
-                                                        <p class="desc">
-                                                            Towards achieving the objective of “Ek Bharat Shreshth
-                                                            Bharat” campaign by Government of India, Rashtriya
-                                                            Ayurved Vidyapeeth , New Delhi under guidance of
-                                                            Ministry of AYUSH is promoting “Region specific
-                                                            Ayurvediy Aahar”. In this regard Rashtriya Ayurved
-                                                            Vidyapeeth is commencing “ Is Saptah ka Aahar “ a weekly
-                                                            update series for updating general public on Health
-                                                            benefits of popular Ayurvedic Aahar belonging to
-                                                            particular state or region of India. The main objective
-                                                            of this series is to create awareness in public
-                                                            regarding health benefits associated with region
-                                                            specific Ayurvedic Aahar so as to enable them achieve &
-                                                            maintain good health. So, far the following details and
-                                                            videos have been uploaded.
-                                                        </p>
-                                                        <a href="#" class="read-more">
-                                                            <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                alt="read-more" class="img-fluid">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="activity-slider-card">
-                                            <div class="row m-0">
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-img">
-                                                        <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-content">
-                                                        <h3 class="title-black-sm">
-                                                            Gyanganga - Knowledge Voyage - A weekly Webinar Series
-                                                        </h3>
-                                                        <p class="desc">
-                                                            Gyanganga - Knowledge Voyage - A weekly Webinar Series
-                                                            Printer-friendly version
-                                                            Rashtriya Ayurveda Vidyapeeth (RAV) is organizing
-                                                            webinars series named "Gyan Ganga –a knowledge Voyage”
-                                                            every Thursday. The purpose of the webinar series is to
-                                                            disseminate authentic knowledge, information and doubt
-                                                            clearance on various topics among students and Ayurveda
-                                                            fraternity.It is our pleasure that on the occasion
-                                                            Padmabhushan Vaidya Devinder Triguna, President, G.B. of
-                                                            RAV, Vaidya Manoj Nesari, Advisor Ayurveda, Ministry of
-                                                            AYUSH, Vaidya Anupam Srivastava, Director RAV and
-                                                            eminent scholars of Ayurveda address the webinar and
-                                                            share their views.
-                                                        </p>
-                                                        <a href="#" class="read-more">
-                                                            <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                alt="read-more" class="img-fluid">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                <div class="col-md-3">
+                    <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
+                        <div class="about-us-card-front">
+                            <div class="img">
+                                <img src="{{ asset('assets/images/minister2.png') }}" alt="minister" class="img-fluid">
+                            </div>
+                            <div class="text-item">
+                                <h3 class="title">
+                                    Dr. Munjapara Mahendrabhai
+                                </h3>
+                                <p class="desc">
+                                    <b>Hon'ble Minister of State Ministry</b>
+                                    of AYUSH & Ministry of
+                                    Women
+                                    and Child
+                                    Developement
+                                </p>
+                                <p class="title-org">
+                                    <a href="#"> Know More</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="about-us-card-back">
+                                <h3 class="title-black-sm">
+                                    What is Lorem Ipsum?
+                                </h3>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                    dolorem
+                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                    veniam cumque expedita rem at harum?</p>
+                            </div> -->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
+                        <div class="about-us-card-front">
+                            <div class="img">
+                                <img src="{{ asset('assets/images/minister3.png') }}" alt="minister" class="img-fluid">
+                            </div>
+                            <div class="text-item">
+                                <h3 class="title">
+                                    Padmashree Vaidya Rajesh Kotecha
+                                </h3>
+                                <p class="desc">
+                                    <b>Secretary</b>
+                                    Ministry of AYUSH
+                                </p>
+                                <p class="title-org">
+                                    <a href="#"> Know More</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="about-us-card-back">
+                                <h3 class="title-black-sm">
+                                    What is Lorem Ipsum?
+                                </h3>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                    dolorem
+                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                    veniam cumque expedita rem at harum?</p>
+                            </div> -->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
+                        <div class="about-us-card-front">
+                            <div class="img">
+                                <img src="{{ asset('assets/images/minister4.png') }}" alt="minister" class="img-fluid">
+                            </div>
+                            <div class="text-item">
+                                <h3 class="title">
+                                    Dr. Vandana Siroha
+                                </h3>
+                                <p class="desc">
+                                    <b>Director</b>
+                                    AIIA, New Delhi
+                                </p>
+                                <p class="title-org">
+                                    <a href="#"> Know More</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="about-us-card-back">
+                                <h3 class="title-black-sm">
+                                    What is Lorem Ipsum?
+                                </h3>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                    dolorem
+                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                    veniam cumque expedita rem at harum?</p>
+                            </div> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="news-wrap">
+                        <div class="news-tab common-tab">
+                            <ul class="nav nav-tabs" id="newsTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="latestNews-tab" data-bs-toggle="tab"
+                                        data-bs-target="#latestNews-tab-pane" type="button" role="tab"
+                                        aria-controls="latestNews-tab-pane" aria-selected="true">Latest News
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="courses-tab" data-bs-toggle="tab"
+                                        data-bs-target="#courses-tab-pane" type="button" role="tab"
+                                        aria-controls="courses-tab-pane" aria-selected="false">
+                                        Admission to
+                                        Courses
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="cme-tab" data-bs-toggle="tab"
+                                        data-bs-target="#cme-tab-pane" type="button" role="tab"
+                                        aria-controls="cme-tab-pane" aria-selected="false">CME Scheme
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content pt-4" id="newsTabContent">
+                                <div class="tab-pane fade show active" id="latestNews-tab-pane" role="tabpanel"
+                                    aria-labelledby="latestNews-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="news-content-list">
+                                            <ul>
+                                                @if (isset($news_management) && count($news_management) > 0)
+                                                    @foreach ($news_management as $news_managements)
+                                                        @php
+                                                            $url =
+                                                                $news_managements->public_url ?? 'javascript:void(0)';
+                                                        @endphp
+                                                        <li>
+                                                            <a
+                                                                @if ($news_managements->tab_type == 1) target="_blank"
+                                                    onclick="return confirm('{{ $alertMessage }}')"
+                                                    href="{{ url($url) }}"
+                                                    @else
+                                                    href="{{ url($url) }}" @endif>
+                                                                <div class="date-wrap">
+                                                                    <h3 class="ln_date">
+                                                                        {{ date('d', strtotime($news_managements->start_date ?? now())) }}
+                                                                    </h3>
+                                                                    <span class="month">
+                                                                        {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                        <br>
+                                                                        {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                    </span>
+                                                                </div>
+                                                                <p class="desc">
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ $news_managements->title_name_hi ?? '' }}
+                                                                    @else
+                                                                        {{ $news_managements->title_name_en ?? '' }}
+                                                                    @endif
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                @else
+                                                    <h6>No News available.</h6>
+                                                @endif
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
