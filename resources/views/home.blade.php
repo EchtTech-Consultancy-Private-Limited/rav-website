@@ -667,6 +667,9 @@
                             </div>
                             <div class="tab-pane fade" id="tenders-tab-pane" role="tabpanel"
                                 aria-labelledby="tenders-tab" tabindex="0">
+                                <div>
+                                    <h2>Our Tender</h2>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <table class="dataTable">
