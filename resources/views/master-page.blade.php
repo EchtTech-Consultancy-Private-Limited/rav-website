@@ -216,7 +216,7 @@
                                 @endif
                             @endif
                             @if (isset($quickLink) && count($quickLink) > 0)
-                                <ul class="nav-qm nav-tabs mt-3" id="newsTab" role="tablist">
+                                <ul class="nav-qm nav-tabs" id="newsTab" role="tablist">
                                     <h3 class=" quick-menu-head-stl text-center mt-1">
                                         @if (Session::get('locale') == 'hi')
                                             जल्दी तैयार होने वाला मेनू

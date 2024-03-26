@@ -656,10 +656,10 @@
                                     <div class="col-lg-12 col-md-12">
                                         <div>
                                             @if (Session::get('locale') == 'hi')
-                                                <h2>{{ $dynamicContents->page_title_hi }}</h2>
+                                                <h2 class = "heading-black heading-black-md">{{ $dynamicContents->page_title_hi }}</h2>
                                                 {!! $dynamicContents->page_content_hi !!}
                                             @else
-                                                <h2>{{ $dynamicContents->page_title_en }}</h2>
+                                                <h2 class = "heading-black heading-black-md">{{ $dynamicContents->page_title_en }}</h2>
                                                 {!! $dynamicContents->page_content_en !!}
                                             @endif
 
@@ -671,7 +671,7 @@
                             <div class="tab-pane fade" id="tenders-tab-pane" role="tabpanel"
                                 aria-labelledby="tenders-tab" tabindex="0">
                                 <div>
-                                    <h2>Our Tender</h2>
+                                    <h2 class = "heading-black heading-black-md">Our Tender</h2>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -725,10 +725,10 @@
                                             <div>
                                                 @if (isset($thesisContents))
                                                     @if (Session::get('locale') == 'hi')
-                                                        <h2>{{ $thesisContents->page_title_hi }}</h2>
+                                                        <h2 class = "heading-black heading-black-md">{{ $thesisContents->page_title_hi }}</h2>
                                                         {!! $thesisContents->page_content_hi !!}
                                                     @else
-                                                        <h2>{{ $thesisContents->page_title_en }}</h2>
+                                                        <h2 class = "heading-black heading-black-md">{{ $thesisContents->page_title_en }}</h2>
                                                         {!! $thesisContents->page_content_en !!}
                                                     @endif
                                                 @else
@@ -748,10 +748,10 @@
                                         <div class="text-content">
                                             @if (isset($rightToInfoContents))
                                                 @if (Session::get('locale') == 'hi')
-                                                    <h2>{{ $rightToInfoContents->page_title_hi }}</h2>
+                                                    <h2 class = "heading-black heading-black-md">{{ $rightToInfoContents->page_title_hi }}</h2>
                                                     {!! $rightToInfoContents->page_content_hi !!}
                                                 @else
-                                                    <h2>{{ $rightToInfoContents->page_title_en }}</h2>
+                                                    <h2 class = "heading-black heading-black-md">{{ $rightToInfoContents->page_title_en }}</h2>
                                                     {!! $rightToInfoContents->page_content_en !!}
                                                 @endif
                                             @else
