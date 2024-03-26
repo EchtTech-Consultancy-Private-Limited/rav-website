@@ -277,7 +277,7 @@
                                                 </tbody>
                                             </table>
                                         @endif
-                                    @elseif(isset($allFormData))
+                                    @elseif(isset($allFormData) && count($allFormData) > 0)
                                         {{-- @dd($title_name) --}}
                                         <h1>{{ $title_name ?? '' }}</h1>
                                         @php

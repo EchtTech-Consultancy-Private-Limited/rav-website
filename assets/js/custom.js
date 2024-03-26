@@ -174,7 +174,7 @@ $('#photoGallerySlider').owlCarousel({
   }
 });
 $('#videoGallerySlider').owlCarousel({
-  loop: true,
+  loop: false,
   nav: true,
   dots: false,
   autoplay: false,
