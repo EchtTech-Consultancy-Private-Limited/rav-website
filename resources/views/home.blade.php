@@ -3,6 +3,8 @@
     {{ __('RAV') }}
 @endsection
 @section('content')
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0" nonce="cH10Ggr9"></script>
     <section class="hero-banner">
         <div class="hero-slider">
             <div class="owl-carousel owl-theme" id="heroSlider">
@@ -782,7 +784,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation" class="img-fluid">
                         <span class="total-no">
-                            12,458
+                            1750
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -797,7 +799,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/programme.svg') }}" alt="programme" class="img-fluid">
                         <span class="total-no">
-                            24
+                            1
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -812,7 +814,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/research.svg') }}" alt="research" class="img-fluid">
                         <span class="total-no">
-                            1213
+                            71
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -827,7 +829,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
                         <span class="total-no">
-                            686
+                            28
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -840,18 +842,7 @@
                 </div>
                 <div class="col-md-3 mt-4">
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            1500
-                        </span>
-                        <p class="title">
-                            Total no of CME
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3 mt-4">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
+                        <img src="{{ asset('assets/images/graduation.svg') }}" alt="presence" class="img-fluid">
                         <span class="total-no">
                             61
 
@@ -862,6 +853,19 @@
 
                     </div>
                 </div>
+                <div class="col-md-3 mt-4">
+                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
+                        <img src="{{ asset('assets/images/programme.svg') }}" alt="presence" class="img-fluid">
+                        <span class="total-no">
+                            1500
+                        </span>
+                        <p class="title">
+                            Total no of CME
+                        </p>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
