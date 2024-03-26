@@ -63,26 +63,17 @@
                             <div class="rs-blog main-home col-md-12">
                                 <div class="container1 row">
                                     <div class="col-md-6 position-relative">
-                                        <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/kD67TY5m164?si=HydEEPYvinl2MGpM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        @foreach ($videos as $video)
+                                        <div class="mySlides">
+                                            <iframe width="100%" height="400"
+                                                src="https://www.youtube.com/embed/{{ $video['video_id'] }}?rel=0"
+                                                title="YouTube video player" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
                                         </div>
-                                      
-                                        <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/hUdu4xtHQa0?si=gecox5jv981uUfTY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                             
-                                        </div>
+                                        @endforeach
+                                 
                                         
-                                        <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/PenWqIMK9Bw?si=XWywagNv9kWuhZP3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                        </div>
-                                       
-                                        
-                                        <div class="mySlides" >
-                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/ZaWAK6jFPms?si=7vmGDTqndXrKizpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                        </div>
-                                       
-                                        
-                                      
                                         <a class="prev" onclick="plusSlides(-1)" tabindex="0">❮</a>
                                         <a class="next" onclick="plusSlides(1)" tabindex="0">❯</a>
                                         
@@ -90,36 +81,15 @@
                                     <div class="col-md-6">
                                         <div class="col-box-g">
                                             <div class="row ps-0">
-
-                                                <div class="col-md-3 mb-2">
-                                                    <img class="demo cursor fancybox-close active"
-                                                        src="https://i.ytimg.com/vi/w56E4soUvsk/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(1)" alt="">
-                                                </div>
-
+                                                @foreach ($videos as $key => $video)
                                                 <div class="col-md-3 mb-2">
                                                     <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/zDpwAV0fgx8/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(2)" alt="">
+                                                        src="https://i.ytimg.com/vi/{{ $video['video_id'] }}/maxresdefault.jpg"
+                                                        style="width:100%" onclick="currentSlide({{ $key + 1 }})"
+                                                        alt="">
                                                 </div>
-
-                                                <div class="col-md-3 mb-2">
-                                                    <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/Dxr8yM4_WqE/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(3)" alt="">
-                                                </div>
-
-                                                <div class="col-md-3 mb-2">
-                                                    <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/35D6WiiIDfk/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(4)" alt="">
-                                                </div>
-
-                                                <div class="col-md-3 mb-2">
-                                                    <img class="demo cursor fancybox-close"
-                                                        src="https://i.ytimg.com/vi/fIFck_O_91o/maxresdefault.jpg"
-                                                        style="width:100%" onclick="currentSlide(5)" alt="">
-                                                </div>
+                                                @endforeach
+                                                
                                             </div>
                                         </div>
                                     </div>

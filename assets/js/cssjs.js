@@ -1,21 +1,26 @@
 $(document).ready(function(){
-    let table = $('table');
+    let tables = $('table');
   
-   
-    let tableWidth = table.width(); // Use width() instead of innerWidth()
-    let tableParentWidth = table.parent().width(); // Use width() instead of innerWidth()
-    
-    if(tableWidth > tableParentWidth){
-        table.css('display', 'block');
-    } else {
-        table.css('display', 'table');
-    }
+    console.log(tables);
+    tables.each(function() {
+        let tableWidth = $(this).width(); // Use outerWidth() instead of width()
+        let tableParentWidth = $(this).parent().width(); // Use width() instead of innerWidth()
+        console.log(tableWidth, tableParentWidth, "table width");
+        if(tableWidth >= tableParentWidth){
+            $(this).css('display', 'block');
+        } else {
+            $(this).css('display', 'table');
+            $(this).css('width', '100%');
+        }
+    }); // Iterate over each <table>
+
+
 
     // sociol icon offset
     window.onscroll = function() {
         let sociolIcon = $('.sticky-i');
         let offsetTop = window.pageYOffset;
-        console.log(offsetTop);
+        // console.log(offsetTop);
         if (offsetTop > 250) {
             sociolIcon.css('display', 'block');
         } else {

@@ -191,7 +191,7 @@
                             @endif
                             @if ($isFooterMenu)
                                 @if (isset($footerMenu))
-                                    <div class="main-sidebar mt-3" id="main-sidebar">
+                                    <div class="main-sidebar " id="main-sidebar">
                                         <ul class="" id="newsTab" role="tablist">
 
                                             <h3 class="heading-txt-styl">
