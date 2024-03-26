@@ -43,7 +43,7 @@ Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
 Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
 Route::view('/testView', 'pages.testView');
 Route::get('/photo-gallery',[GalleryController::class,"photoGallery"]);
-Route::view('/video-gallery', 'pages.videoGallery');
+Route::get('/video-gallery', [GalleryController::class,"videoGallery"]);
 Route::get('/photo-gallery-details/{id}', [GalleryController::class,"imageCategoryData"]);
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
 Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
