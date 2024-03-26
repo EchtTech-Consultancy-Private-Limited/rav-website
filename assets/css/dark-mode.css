@@ -55,4 +55,13 @@ h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav
 
 li.nav-item.active {
   background-color: #000;
+}
+
+.about-us-card p.title-org {
+  background: #000 !important;
+  border: 1px solid #fff;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  color: #fff;
 }/*# sourceMappingURL=dark-mode.css.map */
