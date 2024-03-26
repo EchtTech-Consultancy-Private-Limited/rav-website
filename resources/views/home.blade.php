@@ -779,7 +779,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation" class="img-fluid">
                         <span class="total-no">
-                            12,458
+                            1750
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -794,7 +794,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/programme.svg') }}" alt="programme" class="img-fluid">
                         <span class="total-no">
-                            24
+                            1
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -809,7 +809,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/research.svg') }}" alt="research" class="img-fluid">
                         <span class="total-no">
-                            1213
+                            71
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -824,7 +824,7 @@
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
                         <span class="total-no">
-                            686
+                            28
                         </span>
                         <p class="title">
                             @if (Session::get('locale') == 'hi')
@@ -833,6 +833,20 @@
                                 {{ __('messages.Online_Presence') }}
                             @endif
                         </p>
+                    </div>
+                </div>
+               
+                <div class="col-md-3 mt-4">
+                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
+                        <img src="{{ asset('assets/images/graduation.svg') }}" alt="presence" class="img-fluid">
+                        <span class="total-no">
+                            61
+
+                        </span>
+                        <p class="title">
+                            Workshop & Training
+                        </p>
+
                     </div>
                 </div>
                 <div class="col-md-3 mt-4">
@@ -844,19 +858,6 @@
                         <p class="title">
                             Total no of CME
                         </p>
-                    </div>
-                </div>
-                <div class="col-md-3 mt-4">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            61
-
-                        </span>
-                        <p class="title">
-                            Workshop & Training
-                        </p>
-
                     </div>
                 </div>
             </div>
