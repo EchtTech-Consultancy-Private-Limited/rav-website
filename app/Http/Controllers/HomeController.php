@@ -23,6 +23,7 @@ class HomeController extends Controller
             ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
             ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
             ->get();
+            
             $galleryCategories = DB::table('gallery_management')->where('type',0)->where('status',3)->get();
             $imageWithCategory = [];
             foreach ($galleryCategories as $item) {
@@ -47,8 +48,25 @@ class HomeController extends Controller
                }
             }
 
-            // dd($videosWithCategories);
-        return view('home', compact('tenders','videosWithCategories','imageWithCategory'));
+
+            $cmeScheme = DB::table('dynamic_content_page_metatag')
+            ->where('menu_slug','cme-scheme')
+            ->where('soft_delete', 0)
+            ->where('status', 3)
+            ->first();
+
+            $cmeSchemeContent = DB::table('dynamic_page_content')
+            ->wheredcpm_id($cmeScheme->uid)
+            ->where('soft_delete', 0)
+            ->first();
+
+            $cmeSchemePdf = DB::table('dynamic_content_page_pdf')
+            ->wheredcpm_id($cmeScheme->uid)
+            ->where('soft_delete', 0)
+            ->get();
+
+            // dd($cmeSchemePdf);
+        return view('home', compact('tenders','videosWithCategories','imageWithCategory','cmeSchemePdf'));
     }
     /**
      * Show the form for creating a new resource.

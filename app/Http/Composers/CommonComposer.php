@@ -122,6 +122,7 @@ class CommonComposer
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+                
             $awardsContents = DB::table('website_menu_management')->where('name_en','Awards')
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
