@@ -65,7 +65,7 @@ class HomeController extends Controller
             ->where('soft_delete', 0)
             ->get();
 
-            // dd($cmeSchemePdf);
+            // dd($videosWithCategories);
         return view('home', compact('tenders','videosWithCategories','imageWithCategory','cmeSchemePdf'));
     }
     /**
