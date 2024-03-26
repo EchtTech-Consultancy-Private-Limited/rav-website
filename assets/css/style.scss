@@ -667,7 +667,7 @@ li.nav-item .active {
 }
 
 .site-header .navbar-nav .nav-item .dropdown-menu {
-    top: 44px;
+    top: 48px;
     border-radius: 0;
     padding: 0;
     border: none;
@@ -1878,6 +1878,7 @@ section.client-wrap.ptb-100 {
 table {
     overflow: auto;
     max-height: 80vh;
+    scrollbar-width: thin;
 }
 
 table tr:nth-child(even) {
@@ -4442,4 +4443,72 @@ h2.accordion-header {
     border-radius: 39px;
     border: 1px solid #dee2e6;
     overflow: hidden;
+}
+ul.master-list-item{
+    list-style: none;
+}
+
+.photo-gallery-wrap .text-content{
+    h2{
+        // font-size: 1.575em;
+        font-weight: 600;
+        font-family: "Playfair Display";
+    letter-spacing: 0px;
+    color: #000000;
+    line-height: 1;
+    margin-bottom: 15px;
+    }
+}
+
+.subheading {
+    font-size: 19px;
+    color: #000;
+    margin-bottom: 15px;
+
+}
+.master .contentAccordion{
+    .accordion-item {
+        margin: 8px 5px;
+        padding: 0px;
+        border-radius: 0px;
+        border: 0;
+        overflow: hidden;
+    }
+     h2.accordion-header {
+        padding-top: 6px;
+        padding-bottom: 8px;
+    }
+}
+
+.contentAccordion .accordion-flush .accordion-item .accordion-button, .contentAccordion .accordion-flush .accordion-item .accordion-button.collapsed {
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    background: #ddd;
+    padding: 10px;
+    border-radius: 5px !important;
+    font-weight: 600;
+}
+.master .contentAccordion .accordion-body {
+    padding: 0 5px;
+}
+
+table {
+     tbody{
+        th{
+            p{
+                color: #fff;
+                strong{
+                    color: #fff;
+
+                }
+            }
+        }
+     }    
+}
+
+.dataTable.no-footer{
+    display: table !important;
 }
