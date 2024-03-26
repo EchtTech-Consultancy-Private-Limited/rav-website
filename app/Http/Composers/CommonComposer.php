@@ -127,6 +127,18 @@ class CommonComposer
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+                
+            $gyanGanga = DB::table('website_menu_management')->where('url','gyanganga-knowledge-voyage-a-weekly-webinar-series')
+                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+
+            $ayurAhar = DB::table('website_menu_management')->where('url','promotion-of-ayurvedic-aahar')
+                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+                // dd($ayurAhar);
+                
 
 
             // dd($organizedData);
@@ -144,7 +156,9 @@ class CommonComposer
                 'dynamicContents' => $dynamicContents,
                 'thesisContents' => $thesisContents,
                 'rightToInfoContents' => $rightToInfoContents,
-                'awardsContents' => $awardsContents
+                'awardsContents' => $awardsContents,
+                'gyanGanga' => $gyanGanga,
+                'ayurAhar' => $ayurAhar
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());

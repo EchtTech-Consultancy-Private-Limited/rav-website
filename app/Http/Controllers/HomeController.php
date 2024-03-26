@@ -134,7 +134,7 @@ class HomeController extends Controller
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
-
+            
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
             App::setLocale($request->data);
@@ -381,7 +381,7 @@ class HomeController extends Controller
                     } else if ($lastSlugs != null) {
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } elseif ($middelSlug != null) {
-
+                            
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
                         
