@@ -309,7 +309,12 @@
                                                         <th>Scholar Name</th>
                                                         <th>Guide Name</th>
                                                         <th>Co-Guide Name</th>
-                                                        @if ($title_name == 'Ph. D' || $title_name == 'Ph. D' || $title_name == 'P. G' || $title_name == 'M.D')
+                                                        @if (
+                                                            $title_name == 'Ph. D' ||
+                                                                $title_name == 'Ph. D' ||
+                                                                $title_name == 'P. G' ||
+                                                                $title_name == 'M.D' ||
+                                                                $title_name == 'Delhi')
                                                             <th>
                                                                 Discussion/Conclusion
                                                             </th>
@@ -325,10 +330,16 @@
                                                             <td>
                                                                 {{ $loop->iteration }}
                                                             </td>
-                                                            <td>{{ $data['institute-name'] ?? '' }}</td>
+                                                            <td>
+                                                                @if (isset($data['institute-name']))
+                                                                    {{ $data['institute-name'] ?? '' }}
+                                                                @elseif($data['name_of_college'])
+                                                                    {{ $data['name_of_college'] ?? '' }}
+                                                                @endif
+                                                            </td>
                                                             <td>
                                                                 @if (isset($data['city']))
-                                                                {{ $data['city'] ?? '' }}
+                                                                    {{ $data['city'] ?? '' }}
                                                                 @elseif(isset($data['City']))
                                                                     {{ $data['City'] }}
                                                                 @endif
@@ -339,7 +350,7 @@
                                                                 @elseif(isset($data['State']))
                                                                     {{ $data['State'] }}
                                                                 @endif
-                                                                </td>
+                                                            </td>
                                                             <td>
                                                                 @if (isset($data['text-1710910855287-0']))
                                                                     {{ $data['text-1710910855287-0'] ?? '' }}
@@ -349,6 +360,8 @@
                                                                     {{ $data['qualificcation-name'] }}
                                                                 @elseif(isset($data['Name-Qualification']))
                                                                     {{ $data['Name-Qualification'] }}
+                                                                @elseif(isset($data['name_of_qualification']))
+                                                                    {{ $data['name_of_qualification'] }}
                                                                 @endif
                                                             </td>
                                                             <td>{{ $data['year'] ?? $data['Year'] }}</td>
@@ -359,6 +372,8 @@
                                                                     {{ $data['Title-Research'] }}
                                                                 @elseif(isset($data['research-title']))
                                                                     {{ $data['research-title'] }}
+                                                                @elseif(isset($data['title_of_research']))
+                                                                    {{ $data['title_of_research'] }}
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -370,6 +385,8 @@
                                                                     {{ $data['Schloar-Name'] }}
                                                                 @elseif(isset($data['Name-Schloar']))
                                                                     {{ $data['Name-Schloar'] }}
+                                                                @elseif(isset($data['name_of_schloar']))
+                                                                    {{ $data['name_of_schloar'] }}
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -379,6 +396,8 @@
                                                                     {{ $data['guide-name'] }}
                                                                 @elseif (isset($data['Guide-Name']))
                                                                     {{ $data['Guide-Name'] }}
+                                                                @elseif (isset($data['name_of_guide']))
+                                                                    {{ $data['name_of_guide'] }}
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -386,15 +405,30 @@
                                                                     {{ $data['Name-Co-Guide'] }}
                                                                 @elseif (isset($data['co-guide-name']))
                                                                     {{ $data['co-guide-name'] }}
+                                                                @elseif (isset($data['name_of_co_guide']))
+                                                                    {{ $data['name_of_co_guide'] }}
                                                                 @endif
                                                             </td>
-                                                            @if ($title_name == 'Ph. D' || $title_name == 'Ph. D' || $title_name == 'P. G' || $title_name == 'M.D')
-                                                                <td>{{ $data['DiscussionConclusion'] ?? '' }}</td>
+                                                            @if (
+                                                                $title_name == 'Ph. D' ||
+                                                                    $title_name == 'Ph. D' ||
+                                                                    $title_name == 'P. G' ||
+                                                                    $title_name == 'M.D' ||
+                                                                    $title_name == 'Delhi')
+                                                                <td>
+                                                                    @if (isset($data['DiscussionConclusion']))
+                                                                        {{ $data['DiscussionConclusion'] }}
+                                                                    @elseif(isset($data['discussion_conclusion']))
+                                                                        {{ $data['discussion_conclusion'] }}
+                                                                    @endif
+                                                                </td>
                                                                 <td>
                                                                     @if (isset($data['Functional-Pharmacy']))
                                                                         {{ $data['Functional-Pharmacy'] }}
                                                                     @elseif (isset($data['working-pharmacy']))
                                                                         {{ $data['working-pharmacy'] }}
+                                                                    @elseif(isset($data['working_functional_pharmacy']))
+                                                                        {{ $data['working_functional_pharmacy'] }}
                                                                     @endif
                                                                 </td>
                                                             @endif
