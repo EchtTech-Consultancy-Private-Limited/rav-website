@@ -228,10 +228,10 @@
                                         @php
                                             $quickLinksurl = $quickLinks->url ?? 'javascript:void(0)';
                                         @endphp
-                                        <li class="nav-item nav-item-qm d-flex align-items-center @if (request()->is($quickLinksurl)) active @endif" role="presentation">
+                                        <li class="nav-item nav-item-qm d-flex align-items-center @if (request()->is($quickLinksurl)) active @endif"
+                                            role="presentation">
                                             <i class="fa fa-chevron-right" aria-hidden="true"></i> <a title="link"
-                                                href="{{ url($quickLinksurl) ?? '' }}"
-                                                class="nav-link ">
+                                                href="{{ url($quickLinksurl) ?? '' }}" class="nav-link ">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $quickLinks->name_hi ?? '' }}
                                                 @else
@@ -248,12 +248,67 @@
                         {{-- side menu end --}}
                         <div class="col-md-8 col-lg-8 ">
                             <div class="about">
+                                @if (isset($cabinetMinisterData) && $cabinetMinisterData != '')
+                                    <h1>{{ $title_name ?? '' }}</h1>
+                                    <div class="message-tab-img">
+                                        <a href="#" class="video-wrap">
+                                            <div class="video-img common-video-img">
+                                                {{-- <img src="../assets/images/sarbanada-sonowal.jpg" alt="video"
+                                                    class="img-fluid rounded rounded-4"> --}}
+                                                    
+
+                                                <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
+                                                    alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
+                                                    title=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
+                                                    loading="lazy" class="img-fluid rounded rounded-4">
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+                                    <h3 class="text-capitalize">{{ $cabinetMinisterData->fname_en }}
+                                        {{ $cabinetMinisterData->mname_en }}
+                                        {{ $cabinetMinisterData->lname_en }} </h3>
+                                    <p class="cabinate-minister">
+                                        {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}</p>
+                                    <div>
+                                        {!! $cabinetMinisterData->description_en !!}
+                                    </div>
+                                @endif
+                                @if (isset($stateMinister) && $stateMinister != '')
+                                    <h1>{{ $title_name ?? '' }}</h1>
+                                    <div class="message-tab-img">
+                                        <a href="#" class="video-wrap">
+                                            <div class="video-img common-video-img">
+                                                <img src="{{ asset('resources/uploads/empDirectory/' . $stateMinister->public_url) }}"
+                                                    alt=" {{ $stateMinister->fname_en }} {{ $stateMinister->mname_en }} {{ $stateMinister->lname_en }} "
+                                                    title=" {{ $stateMinister->fname_en }} {{ $stateMinister->mname_en }} {{ $stateMinister->lname_en }} "
+                                                    loading="lazy" class="img-fluid rounded rounded-4">
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+                                    <h3 class="text-capitalize">{{ $stateMinister->fname_en }}
+                                        {{ $stateMinister->mname_en }}
+                                        {{ $stateMinister->lname_en }} </h3>
+                                    <p class="cabinate-minister">
+                                        {{ getEmployeeDepartment($stateMinister->department_id) }}</p>
+                                    <div>
+                                        {!! $stateMinister->description_en !!}
+                                    </div>
+                                @endif
+
                                 @if (isset($content))
                                     <h1>{{ $formName ?? '' }}</h1>
                                     @if (isset($dynamicFormData))
                                         @if ($dynamicFormData == 1)
-                                        <table class="dataTable no-footer table-responsive" id="DataTables_Table_0"
-                                        aria-describedby="DataTables_Table_0_info">
+                                            <table class="dataTable no-footer table-responsive" id="DataTables_Table_0"
+                                                aria-describedby="DataTables_Table_0_info">
                                                 <thead>
                                                     <tr>
                                                         <th>Sr.No.</th>
@@ -315,7 +370,30 @@
                                                                 $title_name == 'Ph. D' ||
                                                                 $title_name == 'P. G' ||
                                                                 $title_name == 'M.D' ||
-                                                                $title_name == 'Delhi')
+                                                                $title_name == 'Delhi' ||
+                                                                $title_name == 'Goa' ||
+                                                                $title_name == 'Gujarat' ||
+                                                                $title_name == 'Himachal Pradesh' ||
+                                                                $title_name == 'Karnataka' ||
+                                                                $title_name == 'Kerala' ||
+                                                                $title_name == 'Madhya Pradesh' ||
+                                                                $title_name == 'Chhattisgarh' ||
+                                                                $title_name == 'Maharashtra' ||
+                                                                $title_name == 'Odisha' ||
+                                                                $title_name == 'Punjab' ||
+                                                                $title_name == 'Rajasthan' ||
+                                                                $title_name == ' Uttar Pradesh' ||
+                                                                $title_name == 'Uttarakhand' ||
+                                                                $title_name == 'RSBK Directory From 1951 to 1960' ||
+                                                                $title_name == 'RSBK Directory From 1961 to 1970' ||
+                                                                $title_name == 'RSBK Directory From 1971 to 1980' ||
+                                                                $title_name == 'RSBK Directory From 1981 to 1990' ||
+                                                                $title_name == 'RSBK Directory From 1991 to 2000' ||
+                                                                $title_name == 'RSBK Directory From 2001 to 2005' ||
+                                                                $title_name == 'RSBK Directory From 2006 to 2010' ||
+                                                                $title_name == 'RSBK Directory From 2011 to 2015' ||
+                                                                $title_name == 'RSBK Directory From 2016 to 2020' ||
+                                                                $title_name == 'RSBK Directory From 2021 to 2023')
                                                             <th>
                                                                 Discussion/Conclusion
                                                             </th>
@@ -415,7 +493,30 @@
                                                                     $title_name == 'Ph. D' ||
                                                                     $title_name == 'P. G' ||
                                                                     $title_name == 'M.D' ||
-                                                                    $title_name == 'Delhi')
+                                                                    $title_name == 'Delhi' ||
+                                                                    $title_name == 'Goa' ||
+                                                                    $title_name == 'Gujarat' ||
+                                                                    $title_name == 'Himachal Pradesh' ||
+                                                                    $title_name == 'Karnataka' ||
+                                                                    $title_name == 'Kerala' ||
+                                                                    $title_name == 'Madhya Pradesh' ||
+                                                                    $title_name == 'Chhattisgarh' ||
+                                                                    $title_name == 'Maharashtra' ||
+                                                                    $title_name == 'Odisha' ||
+                                                                    $title_name == 'Punjab' ||
+                                                                    $title_name == 'Rajasthan' ||
+                                                                    $title_name == ' Uttar Pradesh' ||
+                                                                    $title_name == 'Uttarakhand' ||
+                                                                    $title_name == 'RSBK Directory From 1951 to 1960' ||
+                                                                    $title_name == 'RSBK Directory From 1961 to 1970' ||
+                                                                    $title_name == 'RSBK Directory From 1971 to 1980' ||
+                                                                    $title_name == 'RSBK Directory From 1981 to 1990' ||
+                                                                    $title_name == 'RSBK Directory From 1991 to 2000' ||
+                                                                    $title_name == 'RSBK Directory From 2001 to 2005' ||
+                                                                    $title_name == 'RSBK Directory From 2006 to 2010' ||
+                                                                    $title_name == 'RSBK Directory From 2011 to 2015' ||
+                                                                    $title_name == 'RSBK Directory From 2016 to 2020' ||
+                                                                    $title_name == 'RSBK Directory From 2021 to 2023')
                                                                 <td>
                                                                     @if (isset($data['DiscussionConclusion']))
                                                                         {{ $data['DiscussionConclusion'] }}
@@ -438,6 +539,54 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    @elseif (isset($directorData) && $directorData != '')
+                                        <h1>{{ $title_name ?? '' }}</h1>
+                                        <div class="message-tab-img">
+                                            <a href="#" class="video-wrap">
+                                                <div class="video-img common-video-img">
+                                                    <img src="{{ asset('resources/uploads/empDirectory/' . $directorData->public_url) }}"
+                                                        alt=" {{ $directorData->fname_en }} {{ $directorData->mname_en }} {{ $directorData->lname_en }} "
+                                                        title=" {{ $directorData->fname_en }} {{ $directorData->mname_en }} {{ $directorData->lname_en }} "
+                                                        loading="lazy" class="img-fluid rounded rounded-4">
+
+                                                </div>
+                                            </a>
+                                        </div>
+
+
+
+                                        <h3 class="text-capitalize">{{ $directorData->fname_en }}
+                                            {{ $directorData->mname_en }}
+                                            {{ $directorData->lname_en }} </h3>
+                                        <p class="cabinate-minister">
+                                            {{ getEmployeeDepartment($directorData->department_id) }}</p>
+                                        <div>
+                                            {!! $directorData->description_en !!}
+                                        </div>
+                                    @elseif (isset($secretaryData) && $secretaryData != '')
+                                        <h1>{{ $title_name ?? '' }}</h1>
+                                        <div class="message-tab-img">
+                                            <a href="#" class="video-wrap">
+                                                <div class="video-img common-video-img">
+                                                    <img src="{{ asset('resources/uploads/empDirectory/' . $secretaryData->public_url) }}"
+                                                        alt=" {{ $secretaryData->fname_en }} {{ $secretaryData->mname_en }} {{ $secretaryData->lname_en }} "
+                                                        title=" {{ $secretaryData->fname_en }} {{ $secretaryData->mname_en }} {{ $secretaryData->lname_en }} "
+                                                        loading="lazy" class="img-fluid rounded rounded-4">
+
+                                                </div>
+                                            </a>
+                                        </div>
+
+
+
+                                        <h3 class="text-capitalize">{{ $secretaryData->fname_en }}
+                                            {{ $secretaryData->mname_en }}
+                                            {{ $secretaryData->lname_en }} </h3>
+                                        <p class="cabinate-minister">
+                                            {{ getEmployeeDepartment($secretaryData->department_id) }}</p>
+                                        <div>
+                                            {!! $secretaryData->description_en !!}
+                                        </div>
                                     @else
                                         {!! $content !!}
                                     @endif
@@ -451,15 +600,101 @@
                                         @endif
                                     @endif
                                 </h1>
-                                @if (isset($organizedData['content']->page_content_en) && !blank($organizedData['content']->page_content_en))
-                                    <p>
-                                        @if (Session::get('locale') == 'hi')
-                                            {!! $organizedData['content']->page_content_hi ?? '' !!}
-                                        @else
-                                            {!! $organizedData['content']->page_content_en ?? '' !!}
+                                @if (isset($governingBodyDepartments) && count($governingBodyDepartments) > 0)
+                                    @foreach ($governingBodyDepartments as $department)
+                                        @if ($department->name_en == 'Director')
+                                            @php
+                                                $employees = getEmployeeData($department->uid);
+                                            @endphp
+                                            @if (count($employees))
+                                                <div class="row d-flex justify-content-center">
+                                                    <h5 tabindex="0"><span
+                                                            tabindex="0">{{ $department->name_en ?? '' }}</span>
+                                                    </h5>
+                                                    @foreach ($employees as $employee)
+                                                        <div class="col-md-4">
+                                                            <div class="addevent-box top text-center mt-0">
+                                                                <a href="javascript:void(0)">
+
+                                                                </a><a href="javascript:void(0)">
+                                                                    <div class="profile-img">
+                                                                        <img src="{{ asset('resources/uploads/empDirectory/' . $employee->public_url) }}"
+                                                                            alt=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} "
+                                                                            title=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} "
+                                                                            loading="lazy">
+                                                                    </div>
+                                                                </a>
+
+                                                                <h5 tabindex="0"> {{ $employee->fname_en }}
+                                                                    {{ $employee->mname_en }}
+                                                                    {{ $employee->lname_en }}
+                                                                </h5>
+                                                                <h6 tabindex="0"> {{ $department->name_en }}
+                                                                </h6>
+                                                                <h6 tabindex="0">
+                                                                    {{ getEmployeeDesignation($employee->designation_id) }}
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
                                         @endif
-                                    </p>
+                                    @endforeach
+                                    @foreach ($governingBodyDepartments as $department)
+                                        @if ($department->name_en != 'Director')
+                                            @php
+                                                $employees = getEmployeeData($department->uid);
+                                            @endphp
+
+
+                                            @if (count($employees))
+                                                <div class="row d-flex justify-content-center">
+                                                    <h5 tabindex="0"><span
+                                                            tabindex="0">{{ $department->name_en ?? '' }}</span>
+                                                    </h5>
+                                                    @foreach ($employees as $employee)
+                                                        <div class="col-md-4">
+                                                            <div class="addevent-box top text-center mt-0">
+                                                                <a href="javascript:void(0)">
+
+                                                                </a><a href="javascript:void(0)">
+                                                                    <div class="profile-img">
+                                                                        <img src="{{ asset('resources/uploads/empDirectory/' . $employee->public_url) }}"
+                                                                            alt=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} "
+                                                                            title=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} "
+                                                                            loading="lazy">
+                                                                    </div>
+                                                                </a>
+
+                                                                <h5 tabindex="0"> {{ $employee->fname_en }}
+                                                                    {{ $employee->mname_en }}
+                                                                    {{ $employee->lname_en }}
+                                                                </h5>
+                                                                <h6 tabindex="0"> {{ $department->name_en }}
+                                                                </h6>
+                                                                <h6 tabindex="0">
+                                                                    {{ getEmployeeDesignation($employee->designation_id) }}
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @else
+                                    @if (isset($organizedData['content']->page_content_en) && !blank($organizedData['content']->page_content_en))
+                                        <p>
+                                            @if (Session::get('locale') == 'hi')
+                                                {!! $organizedData['content']->page_content_hi ?? '' !!}
+                                            @else
+                                                {!! $organizedData['content']->page_content_en ?? '' !!}
+                                            @endif
+                                        </p>
+                                    @endif
                                 @endif
+
                                 {{-- Photo Gallery start --}}
                                 @if (isset($organizedData['gallery']) && count($organizedData['gallery']) > 0)
                                     <div class="lightbox-photo-gallery">
@@ -472,7 +707,8 @@
                                                                 href="{{ asset('resources/uploads/PageContentGallery/' . $data->public_url) }}">
                                                                 <img src="{{ asset('resources/uploads/PageContentGallery/' . $data->public_url) }}"
                                                                     alt="{{ $data->image_title ?? '' }}"
-                                                                    title="{{ $data->image_title ?? '' }}" /></a></div>
+                                                                    title="{{ $data->image_title ?? '' }}" /></a>
+                                                        </div>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -496,7 +732,9 @@
                                                     <td>{{ $data->pdf_title ?? '' }}</td>
                                                     <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}</td>
                                                     <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
-                                                            download>View</a> <i class="fa fa-file-pdf-o text-danger"> </i>  ({{ $data->pdfimage_size ?? '' }})
+                                                            download>View</a> <i class="fa fa-file-pdf-o text-danger">
+                                                        </i>
+                                                        ({{ $data->pdfimage_size ?? '' }})
                                                     </td>
                                                 </tr>
                                             @endforeach

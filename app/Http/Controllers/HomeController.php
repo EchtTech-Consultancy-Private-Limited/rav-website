@@ -381,8 +381,15 @@ class HomeController extends Controller
                     } else if ($lastSlugs != null) {
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } elseif ($middelSlug != null) {
-                            
-                        return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        
+                        $governingBodyDepartments = [];
+                       if ($middelSlug == 'governing-body') {
+                        $governingBodyDepartments =  DB::table('emp_depart_designations')->where('parent_id',0)->get();
+                       }
+                   
+                 
+
+                        return view('master-page', ['governingBodyDepartments'=>$governingBodyDepartments,'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
                         
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
@@ -459,8 +466,24 @@ class HomeController extends Controller
                             $dynamicFormData = 1;
                             $formName = $pageContent->form_name;
                         }
+                        
+                        $cabinetMinisterData = "";
+                        if ($middelSlug == 'honourable-cabinet-minister') {
+                            $department = DB::table('emp_depart_designations')->where('name_en',"Union Cabinet Minister, Ministry of Ayush & Ministry of Ports, Shipping and Waterways")->where('parent_id',0)->first();
+                           $cabinetMinisterData = DB::table('employee_directories')->where('department_id',$department->uid)->first();
+                          
+                        }
 
-                        return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
+                        $stateMinister = "";
+                        if ($middelSlug == 'honourable-minister-of-state') {
+                            $department = DB::table('emp_depart_designations')->where('name_en',"Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id',0)->first();
+                            $stateMinister = DB::table('employee_directories')->where('department_id',$department->uid)->first();
+                            
+                        }
+                     
+                            
+                       
+                        return view('master-page', ['stateMinister'=>$stateMinister,'cabinetMinisterData'=>$cabinetMinisterData,'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
                         $formData = DB::table('website_menu_management')
                             ->join('form_designs_management', 'website_menu_management.uid', '=', 'form_designs_management.website_menu_uid')
@@ -476,7 +499,22 @@ class HomeController extends Controller
                             $allFormData = [];
                         }
 
-                        return view('master-page', ['allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                        $directorData = "";
+                        if ($slug == 'director') {
+                            $department = DB::table('emp_depart_designations')->where('name_en',"Director")->where('parent_id',0)->first();
+                            $directorData = DB::table('employee_directories')->where('department_id',$department->uid)->first();
+                            
+                        }
+
+                        $secretaryData = "";
+                        if ($slug == 'honourable-secretary') {
+                            $department = DB::table('emp_depart_designations')->where('name_en',"Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id',0)->first();
+                            $secretaryData = DB::table('employee_directories')->where('department_id',$department->uid)->first();
+                            
+                        }
+
+                            
+                        return view('master-page', ['secretaryData'=>$secretaryData,'directorData'=>$directorData,'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {
