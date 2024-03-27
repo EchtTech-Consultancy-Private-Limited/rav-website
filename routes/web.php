@@ -41,6 +41,7 @@ Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-u
 Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');
 Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
 Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
+
 Route::view('/testView', 'pages.testView');
 Route::get('/photo-gallery',[GalleryController::class,"photoGallery"]);
 Route::get('/video-gallery', [GalleryController::class,"videoGallery"]);
