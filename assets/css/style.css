@@ -3634,6 +3634,7 @@ button.btn.side-mn-icn:hover {
 
 .master .common-tab .nav-item .nav-link {
   border: none;
+  text-align: left;
 }
 
 .latest-news-slider .owl-item.active h6 {
