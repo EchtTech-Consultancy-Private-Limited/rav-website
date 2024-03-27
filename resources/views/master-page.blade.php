@@ -228,10 +228,10 @@
                                         @php
                                             $quickLinksurl = $quickLinks->url ?? 'javascript:void(0)';
                                         @endphp
-                                        <li class="nav-item nav-item-qm d-flex align-items-center" role="presentation">
+                                        <li class="nav-item nav-item-qm d-flex align-items-center @if (request()->is($quickLinksurl)) active @endif" role="presentation">
                                             <i class="fa fa-chevron-right" aria-hidden="true"></i> <a title="link"
                                                 href="{{ url($quickLinksurl) ?? '' }}"
-                                                class="nav-link @if (request()->is($quickLinksurl)) active @endif">
+                                                class="nav-link ">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $quickLinks->name_hi ?? '' }}
                                                 @else
@@ -568,9 +568,7 @@
                                                     <td>{{ $data->pdf_title ?? '' }}</td>
                                                     <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}</td>
                                                     <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
-                                                            download>View</a> <i class="fa fa-file-pdf-o">
-                                                            ({{ $data->pdfimage_size ?? '' }})
-                                                        </i>
+                                                            download>View</a> <i class="fa fa-file-pdf-o text-danger"> </i>  ({{ $data->pdfimage_size ?? '' }})
                                                     </td>
                                                 </tr>
                                             @endforeach

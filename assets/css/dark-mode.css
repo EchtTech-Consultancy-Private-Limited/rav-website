@@ -3,11 +3,11 @@ body, .header-top, .site-header .navbar, .bg-grey, .bg-purple, .site-footer, .me
   border-color: #000 !important;
 }
 
-a, .nav-link, .nav-link.active {
+a, .nav-link, .nav-link.active, .link-primary {
   color: #ffff00 !important;
 }
 
-h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav-link.active {
+h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav-link.active, .main-sidebar .nav-item a::before {
   color: #fff !important;
 }
 
@@ -33,16 +33,21 @@ h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav
   background: #292626;
 }
 
-.site-header .navbar-nav .nav-item .dropdown-menu li a {
-  background-color: #000;
+.site-header .navbar-nav .nav-item .dropdown-menu li a, table tr:nth-child(even), table th, div.dt-buttons > .dt-button, div.dt-buttons > div.dt-button-split .dt-button {
+  background-color: #000 !important;
 }
 
 .our-journey-card img {
   filter: inherit;
 }
 
-.activity-slider-content {
-  background: #000;
+.activity-slider-content, li.nav-item .active, .about, .master .side-tab1 .nav-qm, .quick-menu-head-stl, .main-sidebar, .common-tab .nav-item.active, .heading-txt-styl {
+  border: 1px solid #fff;
+  background: #000 !important;
+}
+
+.site-header .navbar {
+  border-top: 1px solid #fff !important;
 }
 
 .heading-red {
@@ -53,15 +58,49 @@ h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav
   color: #232323 !important;
 }
 
-li.nav-item.active {
+li.nav-item.active, .photo-gallery-wrap .text-content {
   background-color: #000;
 }
 
-.about-us-card p.title-org {
+.about-us-card p.title-org, .course-wrap, .course-list ul li .read-more, .new_gall_boxhead_change .content, .readon2 {
   background: #000 !important;
   border: 1px solid #fff;
 }
 
-tbody, td, tfoot, th, thead, tr {
+tbody, td, tfoot, th, thead, tr, .nav-item-qm i {
   color: #fff;
+}
+
+p strong, li strong {
+  color: #fff !important;
+}
+
+.btn-wrap .btn-org-bdr {
+  border: 1px solid #fff;
+}
+
+.activity-slider-card {
+  border-color: #fff;
+}
+
+.activity-slider-content .read-more, .latest-update-wrap .title-white, .main-sidebar ul li:hover, .main-sidebar ul li:last-child, .nav-item-qm:hover, .main-sidebar ul li:hover {
+  background-color: #000;
+  border: 1px solid #fff;
+}
+
+.event-list-content .tag, .event-slider #eventSlider .owl-nav .owl-next, .event-slider #eventSlider .owl-nav .owl-prev {
+  background: none;
+}
+
+.footer-bottom, .site-footer {
+  background-color: #000;
+  border-top: 1px solid #fff !important;
+}
+
+.site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before {
+  color: #fff;
+}
+
+.latest-update-wrap .title-white::after {
+  background-color: #fff !important;
 }/*# sourceMappingURL=dark-mode.css.map */
