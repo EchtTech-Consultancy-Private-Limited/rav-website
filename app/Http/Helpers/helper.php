@@ -47,3 +47,18 @@ if (! function_exists('getFileImage')) {
         return $base;
     }
 }
+
+if (!function_exists('getEmployeeData')) {
+    function getEmployeeData($departmentID){
+        $emp = DB::table('employee_directories')->where('department_id',$departmentID)->get();
+        return $emp;
+    }
+}
+
+
+if (!function_exists('getEmployeeDesignation')) {
+    function getEmployeeDesignation($employeeID){
+        $emp = DB::table('emp_depart_designations')->where('uid',$employeeID)->first();
+        return $emp->name_en;
+    }
+}

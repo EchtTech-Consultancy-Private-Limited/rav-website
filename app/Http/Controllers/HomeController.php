@@ -381,8 +381,15 @@ class HomeController extends Controller
                     } else if ($lastSlugs != null) {
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } elseif ($middelSlug != null) {
-                            
-                        return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        
+                        $governingBodyDepartments = [];
+                       if ($middelSlug == 'governing-body') {
+                        $governingBodyDepartments =  DB::table('emp_depart_designations')->where('parent_id',0)->get();
+                       }
+                   
+                    //    dd($governingBodyDepartments);
+
+                        return view('master-page', ['governingBodyDepartments'=>$governingBodyDepartments,'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
                         
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
@@ -460,6 +467,7 @@ class HomeController extends Controller
                             $formName = $pageContent->form_name;
                         }
 
+                       
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
                         $formData = DB::table('website_menu_management')

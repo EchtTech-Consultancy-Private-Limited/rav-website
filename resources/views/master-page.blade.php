@@ -252,8 +252,8 @@
                                     <h1>{{ $formName ?? '' }}</h1>
                                     @if (isset($dynamicFormData))
                                         @if ($dynamicFormData == 1)
-                                        <table class="dataTable no-footer table-responsive" id="DataTables_Table_0"
-                                        aria-describedby="DataTables_Table_0_info">
+                                            <table class="dataTable no-footer table-responsive" id="DataTables_Table_0"
+                                                aria-describedby="DataTables_Table_0_info">
                                                 <thead>
                                                     <tr>
                                                         <th>Sr.No.</th>
@@ -451,15 +451,87 @@
                                         @endif
                                     @endif
                                 </h1>
-                                @if (isset($organizedData['content']->page_content_en) && !blank($organizedData['content']->page_content_en))
-                                    <p>
-                                        @if (Session::get('locale') == 'hi')
-                                            {!! $organizedData['content']->page_content_hi ?? '' !!}
-                                        @else
-                                            {!! $organizedData['content']->page_content_en ?? '' !!}
+                                @if (isset($governingBodyDepartments) && count($governingBodyDepartments) > 0)
+                                    @foreach ($governingBodyDepartments as $department)
+                                        @if ($department->name_en == 'Director')
+                                            @php
+                                                $employees = getEmployeeData($department->uid);
+                                            @endphp
+                                            @if (count($employees))
+                                                <div class="row d-flex justify-content-center">
+                                                    <h5 tabindex="0"><span
+                                                            tabindex="0">{{ $department->name_en ?? '' }}</span></h5>
+                                                    @foreach ($employees as $employee)
+                                                        <div class="col-md-4">
+                                                            <div class="addevent-box top text-center mt-0">
+                                                                <a href="javascript:void(0)">
+
+                                                                </a><a href="javascript:void(0)">
+                                                                    <div class="profile-img">
+                                                                        <img src="{{ asset('resources/uploads/empDirectory/' . $employee->public_url) }}"
+                                                                            alt=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} "
+                                                                            title=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} " loading="lazy">
+                                                                    </div>
+                                                                </a>
+
+                                                                <h5 tabindex="0"> {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} </h5>
+                                                                <h6 tabindex="0"> {{ $department->name_en }}
+                                                                </h6>
+                                                                <h6 tabindex="0">{{ getEmployeeDesignation($employee->designation_id) }}</h6>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
                                         @endif
-                                    </p>
+                                    @endforeach
+                                    @foreach ($governingBodyDepartments as $department)
+                                        @if ($department->name_en != 'Director')
+                                            @php
+                                                $employees = getEmployeeData($department->uid);
+                                            @endphp
+
+
+                                            @if (count($employees))
+                                                <div class="row d-flex justify-content-center">
+                                                    <h5 tabindex="0"><span
+                                                            tabindex="0">{{ $department->name_en ?? '' }}</span></h5>
+                                                    @foreach ($employees as $employee)
+                                                        <div class="col-md-4">
+                                                            <div class="addevent-box top text-center mt-0">
+                                                                <a href="javascript:void(0)">
+
+                                                                </a><a href="javascript:void(0)">
+                                                                    <div class="profile-img">
+                                                                        <img src="{{ asset('resources/uploads/empDirectory/' . $employee->public_url) }}"
+                                                                        alt=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} "
+                                                                        title=" {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} " loading="lazy">
+                                                                    </div>
+                                                                </a>
+
+                                                                <h5 tabindex="0"> {{ $employee->fname_en }} {{ $employee->mname_en }} {{ $employee->lname_en }} </h5>
+                                                                <h6 tabindex="0"> {{ $department->name_en }}
+                                                                </h6>
+                                                                <h6 tabindex="0">{{ getEmployeeDesignation($employee->designation_id) }}</h6>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @else
+                                    @if (isset($organizedData['content']->page_content_en) && !blank($organizedData['content']->page_content_en))
+                                        <p>
+                                            @if (Session::get('locale') == 'hi')
+                                                {!! $organizedData['content']->page_content_hi ?? '' !!}
+                                            @else
+                                                {!! $organizedData['content']->page_content_en ?? '' !!}
+                                            @endif
+                                        </p>
+                                    @endif
                                 @endif
+
                                 {{-- Photo Gallery start --}}
                                 @if (isset($organizedData['gallery']) && count($organizedData['gallery']) > 0)
                                     <div class="lightbox-photo-gallery">
