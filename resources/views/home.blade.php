@@ -154,7 +154,7 @@
                                     of AYUSH, Government of India
                                 </p>
                                 <p class="title-org">
-                                    <a href="#"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-cabinet-minister') }}"> Know More</a>
                                 </p>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                                     Developement
                                 </p>
                                 <p class="title-org">
-                                    <a href="#"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-minister-of-state') }}"> Know More</a>
                                 </p>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                                     Ministry of AYUSH
                                 </p>
                                 <p class="title-org">
-                                    <a href="#"> Know More</a>
+                                    <a href="{{ url('honourable-secretary') }}"> Know More</a>
                                 </p>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                                     AIIA, New Delhi
                                 </p>
                                 <p class="title-org">
-                                    <a href="#"> Know More</a>
+                                    <a href="{{ url('director') }}"> Know More</a>
                                 </p>
                             </div>
                         </div>
