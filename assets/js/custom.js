@@ -133,7 +133,7 @@ $('#clientSlider-hindi').owlCarousel({
 
 
 $('#activitySlider').owlCarousel({
-  loop: true,
+  loop: false,
   nav: true,
   dots: false,
   autoplay: false,
@@ -404,30 +404,38 @@ play2.addEventListener("click", function () {
 
 // enable dark mode and light mode
 function setTheme() {
-  // var baseURL = $("meta[name='basepath']").attr('content');
-
+  let baseurl = window.location.origin;
+  const linkElement = document.getElementById('theme-style');
+ 
   if (document.getElementById('mode').checked) {
-    const linkElement = document.getElementById('theme-style');
-    linkElement.href = './assets/css/dark-mode.css';
-    // {{asset('assets/css/dark-mode.css')}}
-    // Store the theme preference in local storage
-    // localStorage.setItem('assets/css/dark-mode', theme);
-
-    // Set the initial theme based on local storage or default to 'light'
-    //   const initialTheme = localStorage.getItem('theme') || 'light';
-    //   setTheme(initialTheme);
-
+    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
+    document.cookie =  `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`; // Set cookie for dark mode
+  } else {
+    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
+    document.cookie = `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/style.css`; // Set cookie for light mode
   }
-
-  else {
-    const linkElement = document.getElementById('theme-style');
-    linkElement.href = `${'assets/css/style'}.css`;
-
-    // Store the theme preference in local storage
-    // localStorage.setItem('assets/css/style', theme);
-  }
-
 }
+
+// Function to retrieve theme from cookies on page load
+function getThemeFromCookies() {
+  const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split('=');
+    if (name === 'theme') {
+      return value; // Return the value of 'theme' cookie
+    }
+  }
+  return null; // Return null if 'theme' cookie is not found
+}
+
+// Call setTheme function on page load to set theme based on cookies
+window.onload = function() {
+  const theme = getThemeFromCookies();
+  if (theme === 'dark-mode') {
+    document.getElementById('mode').checked = true; // Check the checkbox for dark mode
+    setTheme(); // Apply the theme based on the retrieved value
+  }
+};
 
 // enable dark mode and light mode for inner pages
 function setinTheme() {

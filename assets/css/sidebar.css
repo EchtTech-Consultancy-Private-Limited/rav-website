@@ -80,6 +80,7 @@ h2.resp-tab-title:last-child {
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 14px; */
     box-shadow: 0px 0 3px #ddd;
     transition: 0.3s;
+    margin-bottom: 20px;
     background-color: #fff;}
 .main-sidebar:hover {
     box-shadow: 0px 10px 20px #e7e7e7;}
@@ -332,7 +333,7 @@ h2.resp-tab-title:last-child {
     margin: 0px !important;
     padding: 0 !important;}
 .main-sidebar ul li:last-child{
-    border-bottom: 0px !important;}
+    border-bottom: 0px ;}
 .main-sidebar .accordion-item a{
 	/* display: block; */
 	color: #000 ;

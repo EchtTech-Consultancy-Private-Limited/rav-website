@@ -1419,7 +1419,7 @@
                                                 <div class="sub-sec">
                                                     <h2 tabindex="0">
                                                         <span class="img-b"><img
-                                                                src="https://cppri.res.in/assets-cppri/images/facebook.png"
+                                                                src="{{asset('assets/images/facebook.png')}}"
                                                                 alt="icon"></span>
                                                         Facebook
                                                     </h2>
@@ -1443,7 +1443,7 @@
                                                 <div class="sub-sec">
                                                     <h2 class="instagram-c" tabindex="0">
                                                         <span class="img-b"><img
-                                                                src="https://cppri.res.in/assets-cppri/images/instagram.png"
+                                                                src="{{asset('assets/images/instagram.png')}}"
                                                                 alt="icon"></span>
                                                         Instagram
                                                     </h2>
@@ -1576,7 +1576,7 @@
                                                 <div class="sub-sec">
                                                     <h2 class="twitter-c" tabindex="0">
                                                         <span class="img-b"><img
-                                                                src="https://cppri.res.in/assets-cppri/images/twitter.png"
+                                                                src="{{asset('assets/images/twitter.png')}}"
                                                                 alt="icon"></span>
                                                         Twitter
                                                     </h2>

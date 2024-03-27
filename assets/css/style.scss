@@ -1241,16 +1241,19 @@ li.nav-item .active {
 }
 
 .common-tab .nav-item.active {
-    background-color: #ff5200 !important;
+    background-color: #ff5200 ;
     color: #fff !important;
     border: none;
+    i{
+        color: #fff;
+    }
 }
 .common-tab .nav-item.active a {
     color: #fff;
 }
 
 .common-tab .nav-link.active {
-    background-color: #ff5200 !important;
+    background-color: #ff5200 ;
     color: #fff !important;
     border: none;
     padding: 8px 12px !important;
@@ -2421,6 +2424,9 @@ p.desc {
     text-align: justify;
 }
 
+.site-header .navbar-nav  li a {
+    text-align: left ;
+}
 .site-header .navbar-nav .nav-item .dropdown-menu li a {
     font-size: 14px;
 }
@@ -3791,6 +3797,7 @@ button.btn.side-mn-icn:hover {
 .footer-bottom ul {
     display: flex;
     justify-content: end;
+    margin: 0;
 }
 .footer-bottom ul li {
     position: relative;
@@ -4513,7 +4520,7 @@ table {
 }
 
 .dataTable.no-footer{
-    display: table !important;
+    display: table ;
 }
 
 .tab-pane.fade {
