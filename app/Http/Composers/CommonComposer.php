@@ -138,10 +138,24 @@ class CommonComposer
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
                 // dd($ayurAhar);
+
+                $cravGurusData =  DB::table('website_menu_management')
+                ->whereIn('url', [
+                    'exploring-the-facts-covid-19',
+                    'new-initiative',
+                    'conduction-of-training-programs',
+                    'thesis-submitted-by-rav-students',
+                    'celebration-of-international-yoga-day-2023',
+                    'expert-talks-series-on-poshan-nutrition'
+                ])
+                ->join('dynamic_content_page_metatag', 'dynamic_content_page_metatag.menu_uid', '=', 'website_menu_management.uid')
+                ->join('dynamic_page_content', 'dynamic_page_content.dcpm_id', '=', 'dynamic_content_page_metatag.uid')
+                ->select('website_menu_management.url', 'dynamic_page_content.*', 'dynamic_content_page_metatag.*')
+                ->get();
                 
 
 
-            // dd($organizedData);
+            // dd($cravGurusData);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu,
              'banner' => $banner, 'news_management' => $news_management,
@@ -158,7 +172,8 @@ class CommonComposer
                 'rightToInfoContents' => $rightToInfoContents,
                 'awardsContents' => $awardsContents,
                 'gyanGanga' => $gyanGanga,
-                'ayurAhar' => $ayurAhar
+                'ayurAhar' => $ayurAhar,
+                'cravGurusData' => $cravGurusData
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());

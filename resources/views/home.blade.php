@@ -3,8 +3,9 @@
     {{ __('RAV') }}
 @endsection
 @section('content')
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0" nonce="cH10Ggr9"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0"
+        nonce="cH10Ggr9"></script>
     <section class="hero-banner">
         <div class="hero-slider">
             <div class="owl-carousel owl-theme" id="heroSlider">
@@ -158,14 +159,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                    <h3 class="title-black-sm">
-                                        What is Lorem Ipsum?
-                                    </h3>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                        dolorem
-                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                        veniam cumque expedita rem at harum?</p>
-                                </div> -->
+                                                <h3 class="title-black-sm">
+                                                    What is Lorem Ipsum?
+                                                </h3>
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                    dolorem
+                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                    veniam cumque expedita rem at harum?</p>
+                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -191,14 +192,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                    <h3 class="title-black-sm">
-                                        What is Lorem Ipsum?
-                                    </h3>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                        dolorem
-                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                        veniam cumque expedita rem at harum?</p>
-                                </div> -->
+                                                <h3 class="title-black-sm">
+                                                    What is Lorem Ipsum?
+                                                </h3>
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                    dolorem
+                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                    veniam cumque expedita rem at harum?</p>
+                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -221,14 +222,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                    <h3 class="title-black-sm">
-                                        What is Lorem Ipsum?
-                                    </h3>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                        dolorem
-                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                        veniam cumque expedita rem at harum?</p>
-                                </div> -->
+                                                <h3 class="title-black-sm">
+                                                    What is Lorem Ipsum?
+                                                </h3>
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                    dolorem
+                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                    veniam cumque expedita rem at harum?</p>
+                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -251,14 +252,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                    <h3 class="title-black-sm">
-                                        What is Lorem Ipsum?
-                                    </h3>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                        dolorem
-                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                        veniam cumque expedita rem at harum?</p>
-                                </div> -->
+                                                <h3 class="title-black-sm">
+                                                    What is Lorem Ipsum?
+                                                </h3>
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                    dolorem
+                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                    veniam cumque expedita rem at harum?</p>
+                                            </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -656,10 +657,12 @@
                                     <div class="col-lg-12 col-md-12">
                                         <div>
                                             @if (Session::get('locale') == 'hi')
-                                                <h2 class = "heading-black heading-black-md">{{ $dynamicContents->page_title_hi }}</h2>
+                                                <h2 class = "heading-black heading-black-md">
+                                                    {{ $dynamicContents->page_title_hi }}</h2>
                                                 {!! $dynamicContents->page_content_hi !!}
                                             @else
-                                                <h2 class = "heading-black heading-black-md">{{ $dynamicContents->page_title_en }}</h2>
+                                                <h2 class = "heading-black heading-black-md">
+                                                    {{ $dynamicContents->page_title_en }}</h2>
                                                 {!! $dynamicContents->page_content_en !!}
                                             @endif
 
@@ -725,10 +728,12 @@
                                             <div>
                                                 @if (isset($thesisContents))
                                                     @if (Session::get('locale') == 'hi')
-                                                        <h2 class = "heading-black heading-black-md">{{ $thesisContents->page_title_hi }}</h2>
+                                                        <h2 class = "heading-black heading-black-md">
+                                                            {{ $thesisContents->page_title_hi }}</h2>
                                                         {!! $thesisContents->page_content_hi !!}
                                                     @else
-                                                        <h2 class = "heading-black heading-black-md">{{ $thesisContents->page_title_en }}</h2>
+                                                        <h2 class = "heading-black heading-black-md">
+                                                            {{ $thesisContents->page_title_en }}</h2>
                                                         {!! $thesisContents->page_content_en !!}
                                                     @endif
                                                 @else
@@ -748,10 +753,12 @@
                                         <div class="text-content">
                                             @if (isset($rightToInfoContents))
                                                 @if (Session::get('locale') == 'hi')
-                                                    <h2 class = "heading-black heading-black-md">{{ $rightToInfoContents->page_title_hi }}</h2>
+                                                    <h2 class = "heading-black heading-black-md">
+                                                        {{ $rightToInfoContents->page_title_hi }}</h2>
                                                     {!! $rightToInfoContents->page_content_hi !!}
                                                 @else
-                                                    <h2 class = "heading-black heading-black-md">{{ $rightToInfoContents->page_title_en }}</h2>
+                                                    <h2 class = "heading-black heading-black-md">
+                                                        {{ $rightToInfoContents->page_title_en }}</h2>
                                                     {!! $rightToInfoContents->page_content_en !!}
                                                 @endif
                                             @else
@@ -949,7 +956,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="item">
                                             <div class="activity-slider-card">
                                                 <div class="row m-0">
@@ -989,7 +996,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                      
+
                                     </div>
                                 </div>
                             </div>
@@ -997,43 +1004,63 @@
                                 tabindex="0">
                                 <div class="activity-slider">
                                     <div class="owl-carousel owl-theme" id="cravSlider">
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider1') }}.png"
+                                        @foreach ($cravGurusData as $item)
+                                            <div class="item">
+                                                <div class="activity-slider-card">
+                                                    <div class="row m-0">
+                                                        <div class="col-md-6 p-0">
+                                                            <div class="activity-slider-img">
+                                                                @if ($loop->iteration == 1)
+                                                                    <img src="{{ asset('assets/images/activity-slider1.png') }}"
+                                                                        alt="activity-slider1" class="img-fluid">
+                                                                @elseif ($loop->iteration == 2)
+                                                                    <img src="{{ asset('assets/images/activity-slider2.png') }}"
+                                                                        alt="activity-slider1" class="img-fluid">
+                                                                @elseif ($loop->iteration == 3)
+                                                                    <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                        alt="activity-slider1" class="img-fluid">
+                                                                @elseif ($loop->iteration == 4)
+                                                                <img src="{{ asset('assets/images/activity-slider3.png') }}"
                                                                 alt="activity-slider1" class="img-fluid">
+                                                                @elseif ($loop->iteration == 5)
+                                                                <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                alt="activity-slider1" class="img-fluid">
+                                                                @elseif ($loop->iteration == 6)
+                                                                <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                alt="activity-slider1" class="img-fluid">
+                                                                @endif
+
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Exploring the Facts: Covid-19
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Exploring the Facts: Covid-19
-                                                                Printer-friendly version
-                                                                List of Webinars: Exploring the Facts: Covid-19
-                                                                The Corona virus COVID-19 pandemic is an emerging global
-                                                                health crisis and the greatest challenge faced so far
-                                                                with high rate of mortality throughout the globe. World
-                                                                is still scrambling to find a cure. Considering the
-                                                                utmost need for an affordable measure to prevent the
-                                                                disease as well as to boost the immune system, various
-                                                                Researches has been carried out by AYUSH Research
-                                                                Council to combat this Covid-19 Pandemic.
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
+                                                        <div class="col-md-6 p-0">
+                                                            <div class="activity-slider-content">
+                                                                <h3 class="title-black-sm">
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ $item->page_title_hi }}
+                                                                    @else
+                                                                        {{ $item->page_title_en }}
+                                                                    @endif
+                                                                </h3>
+                                                                <div class="desc">
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        <?php echo Str::limit(strip_tags($item->page_content_hi), 200); ?>
+                                                                    @else
+                                                                        <?php echo Str::limit(strip_tags($item->page_content_en), 200); ?>
+                                                                    @endif
+
+                                                                </div>
+                                                                <a href="#" class="read-more">
+                                                                    <img src="{{ asset('assets/images/read-more.svg') }}"
+                                                                        alt="read-more" class="img-fluid">
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item">
+                                        @endforeach
+
+                                        {{-- <div class="item">
                                             <div class="activity-slider-card">
                                                 <div class="row m-0">
                                                     <div class="col-md-6 p-0">
@@ -1194,7 +1221,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -1217,11 +1244,11 @@
                                 </button>
                             </li>
                             <!-- <li class="nav-item" role="presentation">
-                                    <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
-                                        data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
-                                        aria-selected="true">Our Photos
-                                    </button>
-                                </li> -->
+                                                <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
+                                                    aria-selected="true">Our Photos
+                                                </button>
+                                            </li> -->
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"
@@ -1489,7 +1516,8 @@
                                                                                 </g>
                                                                             </g>
                                                                         </g>
-                                                                    </svg></div>
+                                                                    </svg>
+                                                                </div>
                                                                 <div style="padding-top: 8px;">
                                                                     <div
                                                                         style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
