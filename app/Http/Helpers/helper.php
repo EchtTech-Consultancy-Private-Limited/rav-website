@@ -62,3 +62,10 @@ if (!function_exists('getEmployeeDesignation')) {
         return $emp->name_en;
     }
 }
+
+if (!function_exists('getEmployeeDepartment')) {
+    function getEmployeeDepartment($employeeID){
+        $emp = DB::table('emp_depart_designations')->where('uid',$employeeID)->first();
+        return $emp->name_en;
+    }
+}
