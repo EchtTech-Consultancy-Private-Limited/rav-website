@@ -118,17 +118,44 @@ class CommonComposer
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
 
-            $rightToInfoContents = DB::table('website_menu_management')->where('name_en','Right to Information Act RTI')
+            $rightToInfoContents = DB::table('website_menu_management')->where('url','right-to-information-act-rti')
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+                
             $awardsContents = DB::table('website_menu_management')->where('name_en','Awards')
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+                
+            $gyanGanga = DB::table('website_menu_management')->where('url','gyanganga-knowledge-voyage-a-weekly-webinar-series')
+                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+
+            $ayurAhar = DB::table('website_menu_management')->where('url','promotion-of-ayurvedic-aahar')
+                ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
+                ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
+                ->select('dynamic_page_content.*','dynamic_content_page_metatag.*')->first();
+                // dd($ayurAhar);
+
+                $cravGurusData =  DB::table('website_menu_management')
+                ->whereIn('url', [
+                    'exploring-the-facts-covid-19',
+                    'new-initiative',
+                    'conduction-of-training-programs',
+                    'thesis-submitted-by-rav-students',
+                    'celebration-of-international-yoga-day-2023',
+                    'expert-talks-series-on-poshan-nutrition'
+                ])
+                ->join('dynamic_content_page_metatag', 'dynamic_content_page_metatag.menu_uid', '=', 'website_menu_management.uid')
+                ->join('dynamic_page_content', 'dynamic_page_content.dcpm_id', '=', 'dynamic_content_page_metatag.uid')
+                ->select('website_menu_management.url', 'dynamic_page_content.*', 'dynamic_content_page_metatag.*')
+                ->get();
+                
 
 
-            // dd($organizedData);
+            // dd($gyanGanga);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu,
              'banner' => $banner, 'news_management' => $news_management,
@@ -143,7 +170,10 @@ class CommonComposer
                 'dynamicContents' => $dynamicContents,
                 'thesisContents' => $thesisContents,
                 'rightToInfoContents' => $rightToInfoContents,
-                'awardsContents' => $awardsContents
+                'awardsContents' => $awardsContents,
+                'gyanGanga' => $gyanGanga,
+                'ayurAhar' => $ayurAhar,
+                'cravGurusData' => $cravGurusData
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());

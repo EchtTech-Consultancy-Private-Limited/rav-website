@@ -47,19 +47,13 @@
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" id="myHeader">
     <div class="container-fluid">
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav">
-                <li class="nav-item" tabindex="0">
+                <li class="nav-item " tabindex="0">
                     <a class="nav-link active" aria-current="page" href="{{ url('/') }}" tabindex="-1">
-                        <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 22" width="25"
-                            height="22">
-                            <g>
-                                <path
-                                    d="m24.5 10.1l-11.2-9.8q-0.2-0.1-0.4-0.2-0.3-0.1-0.5-0.1-0.3 0-0.5 0.1-0.3 0.1-0.5 0.2l-11.1 9.8c-0.5 0.5-0.4 0.9 0.3 0.9h3.5v10q0 0.2 0 0.4 0.1 0.2 0.3 0.3 0.1 0.1 0.3 0.2 0.2 0.1 0.4 0.1h4.2v-6.6q0-0.2 0-0.4 0.1-0.2 0.3-0.3 0.1-0.2 0.3-0.2 0.2-0.1 0.4-0.1h4.2q0.2 0 0.4 0.1 0.2 0 0.3 0.2 0.2 0.1 0.2 0.3 0.1 0.2 0.1 0.4v6.6h4.2q0.2 0 0.4-0.1 0.2-0.1 0.3-0.2 0.2-0.1 0.2-0.3 0.1-0.2 0.1-0.4v-10h3.4c0.7 0 0.9-0.4 0.4-0.9z" />
-                            </g>
-                        </svg>
+                    <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
                 @if (isset($headerMenu) && count($headerMenu) > 0)
@@ -230,3 +224,24 @@
         </div>
     </div>
 </nav>
+<div class="sticky-i d-non">
+            <div class="sticky-icon">
+                <a href="https://www.facebook.com/vidyapeeth.delhi"
+                    onclick="return confirm('This link will take you to an external web site.')" target="_blank"
+                    class="Facebook" title="Facebook">
+                    <i class="fa fa-facebook-f"></i> Facebook
+                </a>
+                <a href="" class="Twitter" onclick="return confirm('This link will take you to an external web site.')"
+                    target="_blank" title="Twitter">
+                    <i class="fa fa-twitter" title="Twitter"></i> Twitter
+                </a>
+                <a href="" onclick="return confirm('This link will take you to an external web site.')"
+                    class="Instagram" target="_blank" title="Instagram">
+                    <i class="fa fa-instagram"></i> Instagram
+                </a>
+                <a href="" class="Youtube" onclick="return confirm('This link will take you to an external web site.')"
+                    target="_blank" title="Linkedin">
+                    <i class="fa fa-linkedin"></i> Linkedin
+                </a>
+            </div>
+        </div>

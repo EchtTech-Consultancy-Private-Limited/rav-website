@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
@@ -40,6 +41,11 @@ Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-u
 Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');
 Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
 Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
+
+Route::view('/testView', 'pages.testView');
+Route::get('/photo-gallery',[GalleryController::class,"photoGallery"]);
+Route::get('/video-gallery', [GalleryController::class,"videoGallery"]);
+Route::get('/photo-gallery-details/{id}', [GalleryController::class,"imageCategoryData"]);
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
 Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
 
@@ -47,3 +53,4 @@ Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [H
 Route::any('{url}', function(){
     return redirect('/');
 })->where('url', '.*');
+

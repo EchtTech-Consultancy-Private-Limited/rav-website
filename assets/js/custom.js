@@ -9,11 +9,12 @@ $(document).ready(function() {
 $(document).ready(function () {
   function printCurrentDateTime() {
     var currentDate = new Date();
-    var months = [
-      "JANUARY", "FEBRUARY", "MARCH", "APRIL",
-      "MAY", "JUNE", "JULY", "AUGUST",
-      "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
+    const months = [
+      "january", "february", "march", "april",
+      "may", "june", "july", "august",
+      "september", "october", "november", "december"
     ];
+    
 
     var year = currentDate.getFullYear();
     var month = months[currentDate.getMonth()]; 
@@ -132,7 +133,48 @@ $('#clientSlider-hindi').owlCarousel({
 
 
 $('#activitySlider').owlCarousel({
+  loop: false,
+  nav: true,
+  dots: false,
+  autoplay: false,
+  margin: 30,
+  responsive: {
+    0: {
+      items: 1,
+      nav: false,
+    },
+    600: {
+      items: 2,
+      nav: false,
+    },
+    1000: {
+      items: 2
+    }
+  }
+});
+
+$('#photoGallerySlider').owlCarousel({
   loop: true,
+  nav: false,
+  dots: false,
+  autoplay: false,
+  margin: 10,
+  responsive: {
+    0: {
+      items: 1,
+      nav: false,
+    },
+    600: {
+      items: 2,
+      nav: false,
+    },
+    1000: {
+      items: 2
+    }
+  }
+});
+$('#videoGallerySlider').owlCarousel({
+  loop: false,
   nav: true,
   dots: false,
   autoplay: false,
@@ -362,30 +404,38 @@ play2.addEventListener("click", function () {
 
 // enable dark mode and light mode
 function setTheme() {
-  // var baseURL = $("meta[name='basepath']").attr('content');
-
+  let baseurl = window.location.origin;
+  const linkElement = document.getElementById('theme-style');
+ 
   if (document.getElementById('mode').checked) {
-    const linkElement = document.getElementById('theme-style');
-    linkElement.href = './assets/css/dark-mode.css';
-    // {{asset('assets/css/dark-mode.css')}}
-    // Store the theme preference in local storage
-    // localStorage.setItem('assets/css/dark-mode', theme);
-
-    // Set the initial theme based on local storage or default to 'light'
-    //   const initialTheme = localStorage.getItem('theme') || 'light';
-    //   setTheme(initialTheme);
-
+    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
+    document.cookie =  `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`; // Set cookie for dark mode
+  } else {
+    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
+    document.cookie = `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/style.css`; // Set cookie for light mode
   }
-
-  else {
-    const linkElement = document.getElementById('theme-style');
-    linkElement.href = `${'assets/css/style'}.css`;
-
-    // Store the theme preference in local storage
-    // localStorage.setItem('assets/css/style', theme);
-  }
-
 }
+
+// Function to retrieve theme from cookies on page load
+function getThemeFromCookies() {
+  const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split('=');
+    if (name === 'theme') {
+      return value; // Return the value of 'theme' cookie
+    }
+  }
+  return null; // Return null if 'theme' cookie is not found
+}
+
+// Call setTheme function on page load to set theme based on cookies
+window.onload = function() {
+  const theme = getThemeFromCookies();
+  if (theme === 'dark-mode') {
+    document.getElementById('mode').checked = true; // Check the checkbox for dark mode
+    setTheme(); // Apply the theme based on the retrieved value
+  }
+};
 
 // enable dark mode and light mode for inner pages
 function setinTheme() {
@@ -560,3 +610,62 @@ $.each(navItemList, function(index, element) {
 
 
 });
+
+
+var owl_3 = $("#photoGallerySlider");
+$("#customNextBtn3").click(function () {
+    owl_3.trigger("next.owl.carousel", 500);
+}),
+    $("#customPreviousBtn3").click(function () {
+        owl_3.trigger("prev.owl.carousel", 500);
+    }),
+    $("#customPause3").click(function () {
+        owl_3.trigger("stop.owl.autoplay", 500);
+    }),
+    $("#customPlay3").click(function () {
+        owl_3.trigger("play.owl.autoplay", 500);
+    });
+owl_3 = $("#photoGallerySlider");
+$("#customNextBtn3").click(function () {
+    owl_3.trigger("next.owl.carousel", 500);
+}),
+    $("#customPreviousBtn3").click(function () {
+        owl_3.trigger("prev.owl.carousel", 500);
+    }),
+    $("#customPause3").click(function () {
+        owl_3.trigger("stop.owl.autoplay", 500);
+    }),
+    $("#customPlay3").click(function () {
+        owl_3.trigger("play.owl.autoplay", 500);
+    });
+var pause3 = document.querySelector("#customPause3"),
+    play3 = document.querySelector("#customPlay3");
+pause3.addEventListener("click", function () {
+    (play3.style.display = "block"), (pause3.style.display = "none");
+}),
+    play3.addEventListener("click", function () {
+        (play3.style.display = "none"), (pause3.style.display = "block");
+    });
+var owl_4 = $("#videoGallerySlider");
+$("#customNextBtn4").click(function () {
+    owl_4.trigger("next.owl.carousel", 500);
+}),
+    $("#customPreviousBtn4").click(function () {
+        owl_4.trigger("prev.owl.carousel", 500);
+    }),
+    $("#customPause4").click(function () {
+        owl_4.trigger("stop.owl.autoplay", 500);
+    }),
+    $("#customPlay4").click(function () {
+        owl_4.trigger("play.owl.autoplay", 500);
+    });
+var pause4 = document.querySelector("#customPause4"),
+    play4 = document.querySelector("#customPlay4");
+pause4.addEventListener("click", function () {
+    (play4.style.display = "block"), (pause4.style.display = "none");
+}),
+play4.addEventListener("click", function () {
+  (play4.style.display = "none"), (pause4.style.display = "block");
+})
+
+
