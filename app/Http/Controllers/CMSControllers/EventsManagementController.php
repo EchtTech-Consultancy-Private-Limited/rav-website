@@ -19,6 +19,7 @@ class EventsManagementController extends Controller
     protected $create = 'events-management.event_add';
     protected $edit = 'events-management.event-edit';
     protected $list = 'events-management.event_list';
+    protected $view = 'events-management.event_view';
 
     public function index()
     {
@@ -29,6 +30,9 @@ class EventsManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('event.edit', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['view'] = route('event.show', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('event-delete', ['id' => 'xxxx']);
@@ -90,9 +94,23 @@ class EventsManagementController extends Controller
      * @param  \App\Models\EventsManagement  $eventsManagement
      * @return \Illuminate\Http\Response
      */
-    public function show(EventsManagement $eventsManagement)
+    public function show(Request $request)
     {
-        //
+        
+       
+        $dataVal=DB::table('events_management')->where('uid',$request->id)->where('soft_delete','0')->first();
+        if($dataVal !=null){
+            $dataV =$dataVal;
+        }else{
+            return view('cms-view.errors.500');
+        }
+        $details=DB::table('events_details')->where('events_id',$request->id)->where('soft_delete','0')->get();
+
+        $data = new \StdClass;
+        $data->list = $dataV??'';
+        $data->details = $details??'';
+        
+        return view('cms-view.'.$this->view,['data'=>$data]);
     }
 
     /**

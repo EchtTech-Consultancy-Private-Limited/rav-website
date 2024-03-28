@@ -67,6 +67,8 @@ var KTvalidationCoreWebsiteSetting1= function() {
                        }, 1500);
                       
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                        toastr.error(
                           response.data.message.header_logo,
                           "Something went wrong!", 
@@ -75,6 +77,8 @@ var KTvalidationCoreWebsiteSetting1= function() {
                        }
                     })
                     .catch(function (error) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                              "Sorry, looks like there are some errors detected, please try again B.", 
                              "Something went wrong!", 
@@ -87,6 +91,8 @@ var KTvalidationCoreWebsiteSetting1= function() {
                              submitButton.disabled = false;
                        });
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                                 "All Field Required, please try again", 
                                 "Something went wrong!", 
@@ -166,6 +172,8 @@ var KTvalidationCoreWebsiteSetting2= function() {
                        }, 1500);
                       
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                        toastr.error(
                              response.data.message,
                           "Something went wrong!", 
@@ -174,6 +182,8 @@ var KTvalidationCoreWebsiteSetting2= function() {
                        }
                     })
                     .catch(function (error) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                              "Sorry, looks like there are some errors detected, please try again B.", 
                              "Something went wrong!", 
@@ -186,6 +196,8 @@ var KTvalidationCoreWebsiteSetting2= function() {
                              submitButton.disabled = false;
                        });
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                                 "All Field Required, please try again.", 
                                 "Something went wrong!", 
@@ -298,6 +310,8 @@ var KTvalidationCoreWebsiteSetting3= function() {
                        }, 1500);
                       
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                        toastr.error(
                           "Sorry, the information is incorrect, please try again.", 
                           "Something went wrong!", 
@@ -306,6 +320,8 @@ var KTvalidationCoreWebsiteSetting3= function() {
                        }
                     })
                     .catch(function (error) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                              "Sorry, looks like there are some errors detected, please try again B.", 
                              "Something went wrong!", 
@@ -318,6 +334,8 @@ var KTvalidationCoreWebsiteSetting3= function() {
                              submitButton.disabled = false;
                        });
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                                 "All Field Required, please try again.", 
                                 "Something went wrong!", 
@@ -419,6 +437,8 @@ var KTvalidationCoreWebsiteSetting4= function() {
                        }, 1500);
                       
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                        toastr.error(
                           response.data.message,  
                           "Something went wrong!", 
@@ -427,6 +447,8 @@ var KTvalidationCoreWebsiteSetting4= function() {
                        }
                     })
                     .catch(function (error) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                              "Sorry, looks like there are some errors detected, please try again B.", 
                              "Something went wrong!", 
@@ -439,6 +461,8 @@ var KTvalidationCoreWebsiteSetting4= function() {
                              submitButton.disabled = false;
                        });
                     } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
                           toastr.error(
                                 "All Field Required, please try again.", 
                                 "Something went wrong!", 

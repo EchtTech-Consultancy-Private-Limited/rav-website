@@ -10,7 +10,7 @@
 @endsection
 @push('post-scripts')
 <script src="{{ asset('public/form-js/account-settings-add.js') }}"></script>
-<script src="{{ asset('public/form-js/signin-methods.js') }}"></script>
+<script src="{{ asset('public/form-js/signin-file.js') }}"></script>
 @endpush
 @section('content')
 <input type="hidden" id="urlListData" data-info="{{ $crudUrlTemplate }}">
@@ -55,11 +55,11 @@
                                 <i class="ki-outline ki-profile-circle fs-4 me-1"></i> @isset(Auth::user()->role_name){{ Auth::user()->role_name }}@endisset
                                 </a>
                                 <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
-                                <i class="ki-outline ki-geolocation fs-4 me-1"></i> @isset(Auth::user()->email){{ Auth::user()->email }}@endisset
+                                <i class="ki-outline ki-sms fs-4 me-1"></i> @isset(Auth::user()->email){{ Auth::user()->email }}@endisset
                                 </a>
-                                <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                <!-- <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
                                 <i class="ki-outline ki-sms fs-4"></i>    @isset(Auth::user()->email){{ Auth::user()->email }}@endisset
-                                </a>
+                                </a> -->
                             </div>
                             <!--end::Info-->
                         </div>
@@ -77,24 +77,11 @@
                                 <!--begin::Number-->
                                 <div class="d-flex align-items-center">
                                     <i class="ki-outline ki-arrow-up fs-3 text-success me-2"></i>                                    
-                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="4500" data-kt-countup-prefix="$">0</div>
+                                    <div class="fs-2 fw-bold" data-kt-countup-value="{{ Request::header('CF-Connecting-IP', Request::ip()) }}" data-kt-countup-prefix="{{ Request::header('CF-Connecting-IP', Request::ip()) }}">{{ Request::header('CF-Connecting-IP', Request::ip()) }}</div>
                                 </div>
                                 <!--end::Number-->
                                 <!--begin::Label-->
-                                <div class="fw-semibold fs-6 text-gray-400">Earnings</div>
-                                <!--end::Label-->
-                                </div>
-                                <!--end::Stat-->
-                                <!--begin::Stat-->
-                                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
-                                <!--begin::Number-->
-                                <div class="d-flex align-items-center">
-                                    <i class="ki-outline ki-arrow-down fs-3 text-danger me-2"></i>                                    
-                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="80">0</div>
-                                </div>
-                                <!--end::Number-->
-                                <!--begin::Label-->
-                                <div class="fw-semibold fs-6 text-gray-400">Projects</div>
+                                <div class="fw-semibold fs-6 text-gray-400">Your Login IP</div>
                                 <!--end::Label-->
                                 </div>
                                 <!--end::Stat-->
@@ -103,13 +90,26 @@
                                 <!--begin::Number-->
                                 <div class="d-flex align-items-center">
                                     <i class="ki-outline ki-arrow-up fs-3 text-success me-2"></i>                                    
-                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="60" data-kt-countup-prefix="%">0</div>
+                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{$Visitors}}">{{$Visitors}}</div>
                                 </div>
-                                <!--end::Number-->                                
+                                <!--end::Number-->
                                 <!--begin::Label-->
-                                <div class="fw-semibold fs-6 text-gray-400">Success Rate</div>
+                                <div class="fw-semibold fs-6 text-gray-400">Your Website Visitors</div>
                                 <!--end::Label-->
                                 </div>
+                                <!--end::Stat-->
+                                <!--begin::Stat-->
+                                <!-- <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3"> -->
+                                <!--begin::Number-->
+                                <!-- <div class="d-flex align-items-center">
+                                    <i class="ki-outline ki-arrow-up fs-3 text-success me-2"></i>                                    
+                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="60" data-kt-countup-prefix="%">0</div>
+                                </div> -->
+                                <!--end::Number-->                                
+                                <!--begin::Label-->
+                                <!-- <div class="fw-semibold fs-6 text-gray-400">Success Rate</div> -->
+                                <!--end::Label-->
+                                <!-- </div> -->
                                 <!--end::Stat-->
                             </div>
                             <!--end::Stats-->
@@ -168,7 +168,7 @@
                                 <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                 <i class="ki-outline ki-pencil fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="avatar" accept=".png, .jpg, .jpeg"/>
+                                <input type="file" name="avatar" id="avatar" class="avatar" accept=".png, .jpg, .jpeg"/>
                                 <input type="hidden" name="avatar_remove"/>
                                 <!--end::Inputs-->
                                 </label>
@@ -179,7 +179,8 @@
                                 <!--end::Cancel-->
                                 <!--begin::Remove-->
                                 <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                                <i class="ki-outline ki-cross fs-2"></i>                            </span>
+                                    <i class="ki-outline ki-cross fs-2"></i>                           
+                                 </span>
                                 <!--end::Remove-->
                             </div>
                             <!--end::Image input-->
@@ -193,11 +194,11 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Company</label>
+                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Full Name</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row">
-                            <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="Company name" value="@isset(Auth::user()->role_name){{ Auth::user()->role_name }}@endisset" />
+                            <input type="text" name="user_name" id="user_name" class="form-control form-control-lg form-control-solid user_name" placeholder="user name" value="@isset(Auth::user()->role_name){{ Auth::user()->role_name }}@endisset" />
                         </div>
                         <!--end::Col-->
                     </div>
@@ -207,7 +208,7 @@
                     <!--begin::Actions-->
                     <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
-                    <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save Changes</button>
+                    <button type="submit" class="btn btn-primary submit-profile-btn" id="kt_account_profile_details_submit">Save</button>
                     </div>
                     <!--end::Actions-->
                 </form>
@@ -289,25 +290,25 @@
                                 <div class="col-lg-4">
                                 <div class="fv-row mb-0">
                                     <label for="currentpassword" class="form-label fs-6 fw-bold mb-3">Current Password</label>
-                                    <input type="password" class="form-control form-control-lg form-control-solid " name="currentpassword" id="currentpassword" />
+                                    <input type="password" class="form-control form-control-lg form-control-solid currentpassword" name="currentpassword" id="currentpassword" />
                                 </div>
                                 </div>
                                 <div class="col-lg-4">
                                 <div class="fv-row mb-0">
                                     <label for="newpassword" class="form-label fs-6 fw-bold mb-3">New Password</label>
-                                    <input type="password" class="form-control form-control-lg form-control-solid " name="newpassword" id="newpassword" />
+                                    <input type="password" class="form-control form-control-lg form-control-solid newpassword" name="newpassword" id="newpassword" />
                                 </div>
                                 </div>
                                 <div class="col-lg-4">
                                 <div class="fv-row mb-0">
                                     <label for="confirmpassword" class="form-label fs-6 fw-bold mb-3">Confirm New Password</label>
-                                    <input type="password" class="form-control form-control-lg form-control-solid " name="confirmpassword" id="confirmpassword" />
+                                    <input type="password" class="form-control form-control-lg form-control-solid confirmpassword" name="confirmpassword" id="confirmpassword" />
                                 </div>
                                 </div>
                             </div>
-                            <div class="form-text mb-5">Password must be at least 8 character and contain symbols</div>
-                            <div class="d-flex">
-                                <button id="kt_password_submit" type="button" class="btn btn-primary me-2 px-6">Update Password</button>
+                            <!-- <div class="form-text mb-5">Password must be at least 8 character and contain symbols</div> -->
+                            <div class="d-flex mb-5">
+                                <button id="kt_password_submit" type="button" class="btn btn-primary me-2 px-6 submit-password-btn">Update Password</button>
                                 <button id="kt_password_cancel" type="button" class="btn btn-color-gray-400 btn-active-light-primary px-6">Cancel</button>
                             </div>
                         </form>

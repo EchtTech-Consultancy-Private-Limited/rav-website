@@ -14,7 +14,9 @@
 .m-r--125 {
     margin-right: -125px
 }
-
+.w-40{
+   width: 40px !important;
+}
 .m-b--125 {
     margin-bottom: -125px
 }

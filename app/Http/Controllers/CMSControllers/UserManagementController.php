@@ -134,14 +134,17 @@ class UserManagementController extends Controller
             // if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             //     $crudUrlTemplate['update'] = route('user-update');
             // }
-            $crudUrlTemplate['update'] = route('user-update');
+            $crudUrlTemplate['update_account'] = route('account-update');
+            $crudUrlTemplate['password_change'] = route('password-update');
             $results = DB::table('users')->where('id', $request->id)->first();
+            $Visitors = DB::table('visiting_counters')->count();
             $roleType=DB::table('role_type_users')->select('role_type','uid')->where([['soft_delete','=','0']])->orderby('sort_order','asc')->get();
             
             return view('cms-view.'.$this->accountSetting,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $results,
-            'roleType' =>$roleType
+            'roleType' =>$roleType,
+            'Visitors' =>$Visitors??'00'
         ]);
     }
     /**

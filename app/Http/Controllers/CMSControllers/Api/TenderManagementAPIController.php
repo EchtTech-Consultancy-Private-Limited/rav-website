@@ -269,7 +269,7 @@ class TenderManagementAPIController extends Controller
                         }
                     }
                 }
-                }
+            }
             if($result == true)
             {
                 $notification =[

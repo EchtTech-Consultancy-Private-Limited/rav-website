@@ -23,50 +23,84 @@ class HomeController extends Controller
             ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
             ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
             ->get();
-            
-            $galleryCategories = DB::table('gallery_management')->where('type',0)->where('status',3)->get();
-            $imageWithCategory = [];
-            foreach ($galleryCategories as $item) {
-                $categoryImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
-                $imageWithCategory[] = [
-                    'image' => $categoryImageData->public_url,
-                    'title_name_en' => $item->title_name_en,
-                    'title_name_hi' => $item->title_name_hi
-                ];
-            }
 
-            $galleryCategories = DB::table('gallery_management')->where('type',1)->where('status',3)->get();
-            $videosWithCategories = [];
-            foreach ($galleryCategories as $item) {
-                $videImageData = DB::table('gallery_details')->where('gallery_id',$item->uid)->first();
-               if (isset($videImageData)) {
+        $galleryCategories = DB::table('gallery_management')->where('type', 0)->where('status', 3)->get();
+        $imageWithCategory = [];
+        foreach ($galleryCategories as $item) {
+            $categoryImageData = DB::table('gallery_details')->where('gallery_id', $item->uid)->first();
+            $imageWithCategory[] = [
+                'image' => $categoryImageData->public_url,
+                'title_name_en' => $item->title_name_en,
+                'title_name_hi' => $item->title_name_hi
+            ];
+        }
+
+        $galleryCategories = DB::table('gallery_management')->where('type', 1)->where('status', 3)->get();
+        $videosWithCategories = [];
+        foreach ($galleryCategories as $item) {
+            $videImageData = DB::table('gallery_details')->where('gallery_id', $item->uid)->first();
+            if (isset($videImageData)) {
                 $videosWithCategories[] = [
                     'video_id' => $videImageData->public_url,
                     'title_name_en' => $item->title_name_en,
                     'title_name_hi' => $item->title_name_hi
                 ];
-               }
             }
+        }
 
 
-            $cmeScheme = DB::table('dynamic_content_page_metatag')
-            ->where('menu_slug','cme-scheme')
+        $cmeScheme = DB::table('dynamic_content_page_metatag')
+            ->where('menu_slug', 'cme-scheme')
             ->where('soft_delete', 0)
             ->where('status', 3)
             ->first();
 
-            $cmeSchemeContent = DB::table('dynamic_page_content')
+        $cmeSchemeContent = DB::table('dynamic_page_content')
             ->wheredcpm_id($cmeScheme->uid)
             ->where('soft_delete', 0)
             ->first();
 
-            $cmeSchemePdf = DB::table('dynamic_content_page_pdf')
+        $cmeSchemePdf = DB::table('dynamic_content_page_pdf')
             ->wheredcpm_id($cmeScheme->uid)
             ->where('soft_delete', 0)
             ->get();
 
-            // dd($videosWithCategories);
-        return view('home', compact('tenders','videosWithCategories','imageWithCategory','cmeSchemePdf'));
+
+        $latestMessage = DB::table('website_menu_management')->where('url', 'message-from-president-g-b')->where('status', 3)->first();
+        $latestMessageMetaInfo = DB::table('dynamic_content_page_metatag')->where('menu_uid', $latestMessage->uid)->first();
+        $latestMessageContent = DB::table('dynamic_page_content')->where('dcpm_id', $latestMessageMetaInfo->uid)->first();
+        $latestMessageData = [];
+        if ($latestMessageContent) {
+            $latestMessageData = [
+                'page_title_en' => $latestMessageMetaInfo->page_title_en,
+                'page_title_hi' => $latestMessageMetaInfo->page_title_hi,
+                'page_content_en' => $latestMessageContent->page_content_en,
+                'page_content_hi' => $latestMessageContent->page_content_hi,
+                'url' => $latestMessage->url
+            ];
+        }
+
+
+        $department = DB::table('emp_depart_designations')->where('name_en', "Union Cabinet Minister, Ministry of Ayush & Ministry of Ports, Shipping and Waterways")->where('parent_id', 0)->first();
+        $cabinetMinisterData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+
+
+        $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id', 0)->first();
+        $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+
+
+        $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
+        $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+
+
+        $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
+        $secretaryData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+
+
+        $ourJournyData = DB::table('form_designs_management')->where('form_name','Our Successful Journey')->first();
+        $ourJournyData = DB::table('form_data_management')->where('form_design_id',$ourJournyData->uid)->get(['content']);
+
+        return view('home', compact('ourJournyData','secretaryData','directorData','stateMinister','cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
     }
     /**
      * Show the form for creating a new resource.
@@ -134,7 +168,7 @@ class HomeController extends Controller
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
-            
+
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
             App::setLocale($request->data);
@@ -151,7 +185,7 @@ class HomeController extends Controller
             }
 
             if ($finalSlug != null) {
-                
+
                 $finalUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
                 $lastUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($lastSlugs)->first();
                 $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middelSlug)->first();
@@ -195,7 +229,7 @@ class HomeController extends Controller
                 }
                 // dd($tree);
             } else if ($lastSlugs != null) {
-                
+
                 $lastUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
                 $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middelSlug)->first();
                 $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($lastSlugs)->first();
@@ -275,7 +309,7 @@ class HomeController extends Controller
                     }
                 }
             } else {
-                
+
                 $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
             }
             if ($menus != '') {
@@ -381,17 +415,17 @@ class HomeController extends Controller
                     } else if ($lastSlugs != null) {
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } elseif ($middelSlug != null) {
-                        
-                        $governingBodyDepartments = [];
-                       if ($middelSlug == 'governing-body') {
-                        $governingBodyDepartments =  DB::table('emp_depart_designations')->where('parent_id',0)->get();
-                       }
-                   
-                 
 
-                        return view('master-page', ['governingBodyDepartments'=>$governingBodyDepartments,'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        $governingBodyDepartments = [];
+                        if ($middelSlug == 'governing-body') {
+                            $governingBodyDepartments =  DB::table('emp_depart_designations')->where('parent_id', 0)->get();
+                        }
+
+
+
+                        return view('master-page', ['governingBodyDepartments' => $governingBodyDepartments, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
-                        
+
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'director-desk') {
@@ -443,7 +477,7 @@ class HomeController extends Controller
                         return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'sortedDesignationData' => $sortedDesignationData]);
                     }
                 } else {
-                    
+
                     if (Session::get('Lang') == 'hi') {
                         $content = "जल्द आ रहा है";
                     } else {
@@ -466,24 +500,22 @@ class HomeController extends Controller
                             $dynamicFormData = 1;
                             $formName = $pageContent->form_name;
                         }
-                        
+
                         $cabinetMinisterData = "";
                         if ($middelSlug == 'honourable-cabinet-minister') {
-                            $department = DB::table('emp_depart_designations')->where('name_en',"Union Cabinet Minister, Ministry of Ayush & Ministry of Ports, Shipping and Waterways")->where('parent_id',0)->first();
-                           $cabinetMinisterData = DB::table('employee_directories')->where('department_id',$department->uid)->first();
-                          
+                            $department = DB::table('emp_depart_designations')->where('name_en', "Union Cabinet Minister, Ministry of Ayush & Ministry of Ports, Shipping and Waterways")->where('parent_id', 0)->first();
+                            $cabinetMinisterData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
 
                         $stateMinister = "";
                         if ($middelSlug == 'honourable-minister-of-state') {
-                            $department = DB::table('emp_depart_designations')->where('name_en',"Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id',0)->first();
-                            $stateMinister = DB::table('employee_directories')->where('department_id',$department->uid)->first();
-                            
+                            $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id', 0)->first();
+                            $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
-                     
-                            
-                       
-                        return view('master-page', ['stateMinister'=>$stateMinister,'cabinetMinisterData'=>$cabinetMinisterData,'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
+
+
+
+                        return view('master-page', ['stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
                         $formData = DB::table('website_menu_management')
                             ->join('form_designs_management', 'website_menu_management.uid', '=', 'form_designs_management.website_menu_uid')
@@ -501,20 +533,18 @@ class HomeController extends Controller
 
                         $directorData = "";
                         if ($slug == 'director') {
-                            $department = DB::table('emp_depart_designations')->where('name_en',"Director")->where('parent_id',0)->first();
-                            $directorData = DB::table('employee_directories')->where('department_id',$department->uid)->first();
-                            
+                            $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
+                            $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
 
                         $secretaryData = "";
                         if ($slug == 'honourable-secretary') {
-                            $department = DB::table('emp_depart_designations')->where('name_en',"Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id',0)->first();
-                            $secretaryData = DB::table('employee_directories')->where('department_id',$department->uid)->first();
-                            
+                            $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
+                            $secretaryData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
 
-                            
-                        return view('master-page', ['secretaryData'=>$secretaryData,'directorData'=>$directorData,'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+
+                        return view('master-page', ['secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {

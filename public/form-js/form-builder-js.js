@@ -33,8 +33,13 @@ function saveForm(form) {
                     location.href = 'formbuilder-create'; // reload page
                  }, 1500);
                 }else{
+                    // if(data.message.form_name[0] !=''){
+                    //     var message= data.message.form_name[0];
+                    // }else{
+                    //     var message= data.message;
+                    // }
                     toastr.error(
-                        data.message.form_name[0], 
+                        data.message, 
                         "Something went wrong!", 
                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                     );
