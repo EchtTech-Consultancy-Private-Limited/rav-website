@@ -201,8 +201,8 @@
 
                                             @if (isset($footerMenu) && count($footerMenu) > 0)
                                                 @foreach ($footerMenu as $index => $fmenu)
-                                                    <li class="nav-item " role="presentation">
-                                                        <a href="{{ url($fmenu->url) }}" class="nav-link ">
+                                                    <li class="nav-item @if(request()->is($fmenu->url)) active @endif" role="presentation">
+                                                        <a href="{{ url($fmenu->url) }}" class="nav-link">
                                                             @if (Session::get('locale') == 'hi')
                                                                 {{ $fmenu->name_hi }}
                                                             @else
