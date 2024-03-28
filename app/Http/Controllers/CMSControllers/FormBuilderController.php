@@ -23,6 +23,7 @@ class FormBuilderController extends Controller
     protected $show = 'form-builder.form-show';
     protected $list = 'form-builder.form-list';
     protected $list_mapping = 'form-builder.form-list-mapping';
+    protected $list_formData = 'form-builder.form-data-list';
 
     public function __construct()
     {
@@ -130,6 +131,46 @@ class FormBuilderController extends Controller
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'formlist' => $formlist,
             'menulist' => $menulist
+        ]);
+    }
+
+    public function formDataIndex(){
+        $crudUrlTemplate = array();
+        // xxxx to be replaced with ext_id to create valid endpoint
+        if(isset($this->abortIfAccessNotAllowed()['create']) && $this->abortIfAccessNotAllowed()['create'] !=''){
+            $crudUrlTemplate['create'] = route('formMap-save');
+        }else{
+            $accessPermission = $this->checkAccessMessage();
+        }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['list'] = route('formData-list');
+        }
+        // if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+        //     $crudUrlTemplate['edit'] = route('formbuilder.edit', ['id' => 'xxxx']);
+        // }
+        // if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+        //     $crudUrlTemplate['view'] = route('formbuilder.show', ['id' => 'xxxx']);
+        // }
+        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('formdata-delete', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+            $crudUrlTemplate['approver'] = route('formdata-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['approver'] = '0';
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('formdata-approve', ['id' => 'xxxx']);
+        }else{
+            $crudUrlTemplate['publisher'] = '0';
+            
+        }
+        $formlist = DB::table('form_designs_management')->where('soft_delete','0')->get();
+
+
+        return view('cms-view.'.$this->list_formData,
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
+            'formlist' => $formlist,
         ]);
     }
     /**

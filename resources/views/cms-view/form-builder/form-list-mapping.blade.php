@@ -25,7 +25,7 @@
                         <div class="position-relative w-100">
                             <form id="kt_formMenuMapping_settings_general" class="form">
                                 <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_role_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_role_header" data-kt-scroll-wrappers="#kt_modal_add_role_scroll" data-kt-scroll-offset="300px">
-                                    <div class="row fv-row mb-10">
+                                    <div class="row fv-row">
                                         <div class="col-md-4">
                                             <div class="col-md-12">
                                                 <label class="fs-5 fw-bold form-label mb-2"><span class="required">Select Form Name</span></label>
@@ -35,7 +35,7 @@
                                                     <select class="form-select form-select-solid form_name" name="form_name" id="form_name" data-control="select2" data-placeholder="Select an option">
                                                         <option></option>
                                                         @foreach($formlist as $data)
-                                                            <option value="{{ $data->uid }}"><span>Form Name:<span> {{ $data->form_name  }}</option>
+                                                            <option value="{{ $data->uid }}"> {{ $data->form_name  }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
