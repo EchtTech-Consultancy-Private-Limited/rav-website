@@ -551,7 +551,7 @@
                                     <div class="col-md-12">
                                         <div class="message-tab-img">
                                             <a href="#" class="video-wrap">
-                                                <div class="video-img common-video-img">
+                                                <div class="video-img common-video-img ">
                                                     <img src="{{ asset('assets/images/massage.png') }}" alt="video"
                                                         class="img-fluid">
                                                 </div>
@@ -587,7 +587,7 @@
                                     <div class="col-md-3">
                                         <div class="message-tab-img">
                                             <a href="#" class="video-wrap">
-                                                <div class="video-img common-video-img">
+                                                <div class="video-img common-video-img m-0">
                                                     <img src="{{ asset('assets/images/sarbanada-sonowal.jpg') }}"
                                                         alt="video" class="img-fluid">
                                                 </div>
