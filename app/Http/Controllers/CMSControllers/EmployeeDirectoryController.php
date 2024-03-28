@@ -20,6 +20,8 @@ class EmployeeDirectoryController extends Controller
     protected $create = 'employee-directory.create-employee';
     protected $edit = 'employee-directory.edit-employee';
     protected $list = 'employee-directory.list-employee';
+    protected $view = 'employee-directory.view-employee';
+
     
     public function index()
     {
@@ -32,6 +34,9 @@ class EmployeeDirectoryController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('employeedirectory.edit', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['view'] = route('employeedirectory.show', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('employeedirectory-delete', ['id' => 'xxxx']);
@@ -107,9 +112,25 @@ class EmployeeDirectoryController extends Controller
      * @param  \App\Models\EmployeeDirectory  $employeeDirectory
      * @return \Illuminate\Http\Response
      */
-    public function show(EmployeeDirectory $employeeDirectory)
+    public function show(Request $request, EmployeeDirectory $employeeDirectory)
     {
-        //
+        $dataVal=DB::table('employee_directories as emp')
+                    ->select('emp.*','deprt.name_en as depart_name','desg.name_en as desig_name')
+                    ->join('emp_depart_designations as deprt','emp.department_id','=','deprt.uid')
+                    ->join('emp_depart_designations as desg','emp.designation_id','=','desg.uid')
+                    ->where('emp.uid',$request->id)
+                    ->where('emp.soft_delete','0')
+                    ->first();
+        if($dataVal !=null){
+            $dataV =$dataVal;
+        }else{
+            return view('cms-view.errors.500');
+        }
+
+        $data = new \StdClass;
+        $data->list = $dataV??'';
+        
+        return view('cms-view.'.$this->view,['data'=>$data]);
     }
 
     /**

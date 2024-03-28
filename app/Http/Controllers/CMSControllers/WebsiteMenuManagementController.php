@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CMSModels\WebsiteMenuManagement;
 use Illuminate\Http\Request;
 use App\Http\Traits\AccessModelTrait;
+use DB;
 
 class WebsiteMenuManagementController extends Controller
 {
@@ -18,6 +19,8 @@ class WebsiteMenuManagementController extends Controller
     protected $create = 'website-menu-management.menu-add';
     protected $edit = 'website-menu-management.menu-edit';
     protected $list = 'website-menu-management.menu-list';
+    protected $view = 'website-menu-management.menu_view';
+    protected $viewTree = 'website-menu-management.menu_tree';
 
     public function index()
     {
@@ -26,9 +29,9 @@ class WebsiteMenuManagementController extends Controller
         if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
             $crudUrlTemplate['list'] = route('menu-list');
         }
-        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
-            $crudUrlTemplate['view'] = route('user-list');
-        }
+        // if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+        //     $crudUrlTemplate['view'] = route('menu.show', ['id' => 'xxxx']);
+        // }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('menu.edit', ['id' => 'xxxx']);
         }
@@ -121,20 +124,69 @@ class WebsiteMenuManagementController extends Controller
      */
     public function show(WebsiteMenuManagement $websiteMenuManagement)
     {
-        $crudUrlTemplate = array();
-       // xxxx to be replaced with ext_id to create valid endpoint
-       $crudUrlTemplate['read'] = route('menu.menu-list');
-       $crudUrlTemplate['list'] = route('websitecoresetting-list');
-       $crudUrlTemplate['delete'] = route('websitecoresetting-list');
-       $crudUrlTemplate['view'] = route('websitecoresetting-list');
-       
-
-        return view('cms-view.'.$this->list, 
-        ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+            $crudUrlTemplate = array();
+        // xxxx to be replaced with ext_id to create valid endpoint
+        $crudUrlTemplate['read'] = route('menu.menu-list');
+        $crudUrlTemplate['list'] = route('websitecoresetting-list');
+        $crudUrlTemplate['delete'] = route('websitecoresetting-list');
+        $crudUrlTemplate['view'] = route('websitecoresetting-list');
         
-    ]);
+
+            return view('cms-view.'.$this->list, 
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+            
+        ]);
+    }
+    public function showMenu(Request $request, WebsiteMenuManagement $websiteMenuManagement)
+    {
+        $menu=DB::table('website_menu_management')->where('uid',$request->id)->where([['parent_id',0],['soft_delete','0']])->first();
+        //dd($menu);
+        $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('uid',$request->id)->get();
+        $menuName = $this->getMenuTree($menus, 0);
+        //dd($menuName);
+        if($menu !=null){
+            $dataV =$menu;
+        }else{
+            return view('cms-view.errors.500');
+        }
+        $details=DB::table('tender_details')->where('tender_id',$request->id)->where('soft_delete','0')->get();
+
+        $data = new \StdClass;
+        $data->list = $dataV??'';
+        $data->details = $details??'';
+        //dd($data);
+        return view('cms-view.'.$this->view,['data'=>$data]);
+    }
+    public function showMenuInTree(Request $request, WebsiteMenuManagement $websiteMenuManagement)
+    {
+        $menus = DB::table('website_menu_management')->whereIn('menu_place', [0,1,2,3,4,5])->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
+        $menuName = $this->getMenuTree($menus, 0);
+        //dd($menu);
+        if($menuName !=null){
+            $dataV =$menuName;
+        }else{
+            return view('cms-view.errors.500');
+        }
+        $data = new \StdClass;
+        $data->list = $dataV??'';
+        //dd($data);
+        return view('cms-view.'.$this->viewTree,['data'=>$data]);
     }
 
+    function getMenuTree($menus, $parentId)
+    {
+        $branch = array();
+        foreach ($menus as $menu) {
+            if ($menu->parent_id == $parentId) {
+                $children = $this->getMenuTree($menus, $menu->uid);
+                if ($children) {
+                    $menu->children = $children;
+                }
+                $branch[] = $menu;
+            }
+        }
+        return $branch;
+    }
     /**
      * Show the form for editing the specified resource.
      *

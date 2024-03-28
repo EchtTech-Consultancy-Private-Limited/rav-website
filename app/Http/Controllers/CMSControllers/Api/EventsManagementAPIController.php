@@ -214,12 +214,12 @@ class EventsManagementAPIController extends Controller
                 }
                 $result= DB::table('events_details')->where('uid',$value['uid'])->update([
                         'title' => $value['imagetitle'],
-                        'start_date'=> $value['startdate']??'',
-                        'end_date' => $value['enddate']??'',
-                        // 'public_url' => isset($name)?$name:$uid->public_url,
-                        // 'private_url' => isset($name)?$name:$uid->public_url,
-                        // 'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
-                        // 'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                        // 'start_date'=> $value['startdate']??'',
+                        // 'end_date' => $value['enddate']??'',
+                        'public_url' => isset($name)?$name:$uid->public_url,
+                        'private_url' => isset($name)?$name:$uid->public_url,
+                        'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
+                        'file_extension' => isset($extension)?$extension:$uid->file_extension,
                        // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                     ]);
                 }else{
@@ -245,8 +245,8 @@ class EventsManagementAPIController extends Controller
                     }
                 }
             }
-            }
-            
+        }
+        //dd($result);
         if($result == true)
         {
             $notification =[

@@ -19,6 +19,7 @@ class NewsManagementController extends Controller
     protected $create = 'news-management.news_add';
     protected $edit = 'news-management.news_edit';
     protected $list = 'news-management.news_list';
+    protected $view = 'news-management.news_view';
     
     public function index()
     {
@@ -29,6 +30,9 @@ class NewsManagementController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('news.edit', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['view'] = route('news.show', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('news-delete', ['id' => 'xxxx']);
@@ -91,9 +95,21 @@ class NewsManagementController extends Controller
      * @param  \App\Models\NewsManagement  $newsManagement
      * @return \Illuminate\Http\Response
      */
-    public function show(NewsManagement $newsManagement)
+    public function show(Request $request, NewsManagement $newsManagement)
     {
-        //
+        $dataVal=DB::table('news_management')->where('uid',$request->id)->where('soft_delete','0')->first();
+        if($dataVal !=null){
+            $dataV =$dataVal;
+        }else{
+            return view('cms-view.errors.500');
+        }
+        $details=DB::table('news_details')->where('news_id',$request->id)->where('soft_delete','0')->get();
+
+        $data = new \StdClass;
+        $data->list = $dataV??'';
+        $data->details = $details??'';
+        //dd($data);
+        return view('cms-view.'.$this->view,['data'=>$data]);
     }
 
     /**

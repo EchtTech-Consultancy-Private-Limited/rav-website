@@ -84,6 +84,8 @@ var KTAppUserEdit = function () {
                       }, 1500);
                       
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                       toastr.error(
                          response.data.email,
                         $('#loading').removeClass('loading'),

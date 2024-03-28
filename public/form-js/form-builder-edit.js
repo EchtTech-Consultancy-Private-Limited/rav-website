@@ -28,6 +28,7 @@ $(function() {
 
 
 function saveEditForm(form) {
+    var id = new URLSearchParams(window.location.search).get('id');
     $.ajax({
         type: 'post',
         headers: {
@@ -36,6 +37,7 @@ function saveEditForm(form) {
         url: crudUrlTemplate.update,
         data: {
             'content': form,
+            'id' :id,
             'form_name': $("#form_name").val(),
             "_token": $("meta[name='csrf-token']").attr("content"),
         },
@@ -50,11 +52,11 @@ function saveEditForm(form) {
                     if (history.scrollRestoration) {
                        history.scrollRestoration = 'manual';
                     }
-                    location.href = 'formbuilder-edit'; // reload page
+                    location.href = 'formbuilder-edit?id='+id; // reload page
                  }, 1500);
                 }else{
                     toastr.error(
-                        data.message.form_name[0], 
+                        data.message, 
                         "Something went wrong!", 
                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                     );
