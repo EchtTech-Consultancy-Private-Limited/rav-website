@@ -49,7 +49,6 @@
                 </ul>
             </div>
         </div>
-        
         <section class="master bg-grey">
             <div class="container">
                 <div class="news-tab common-tab side-tab1">

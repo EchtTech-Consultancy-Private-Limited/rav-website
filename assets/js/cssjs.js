@@ -1,4 +1,13 @@
 $(document).ready(function(){
+    let atab = $('.about h1');
+    atab.each( function() {
+        let atabContent = $(this).text().trim();
+        console.log(atabContent)
+     let checkAtabContent = `Ayurveda Training Accreditation Board (ATAB)`
+        if(atabContent == checkAtabContent){
+          $(this).addClass('width-80');
+        }
+    });
     // let tables = $('table');
   
     // console.log(tables);
@@ -48,6 +57,7 @@ tables.each(function() {
     };
     
     // myFunction()
+   
 });
 
 // sitcky header
@@ -65,3 +75,4 @@ tables.each(function() {
 //         : header.classList.remove("sticky");
 //         alert("workin fine");
 // }
+

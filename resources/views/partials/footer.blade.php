@@ -99,12 +99,12 @@
 <div class="footer-bottom">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-5 px-0">
+            <div class="col-md-6 px-0">
                 <div class="copyright-wrap">
                     <p> © Copyright 2023 <b>Rashtriya Ayurveda Vidyapeeth.</b> All Rights Reserved.</p>
                 </div>
             </div>
-            <div class="col-md-7 justify-content-end">
+            <div class="col-md-6 justify-content-end">
                 <ul>
                     <li>Last Updated - <span class="date"></span></li>
                     <li class="visitors"> Total Visitors: <span id="visitors">10</span> </a></li>
