@@ -231,7 +231,7 @@
                                         @endphp
                                         <li class="nav-item nav-item-qm d-flex align-items-center @if (request()->is($quickLinksurl)) active @endif"
                                             role="presentation">
-                                            <i class="fa fa-chevron-right" aria-hidden="true"></i> <a title="link"
+                                           <a title="link"
                                                 href="{{ url($quickLinksurl) ?? '' }}" class="nav-link ">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $quickLinks->name_hi ?? '' }}

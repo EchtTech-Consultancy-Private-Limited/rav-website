@@ -19,6 +19,7 @@ class TenderManagementController extends Controller
     protected $create = 'tenders-management.tenders_add';
     protected $edit = 'tenders-management.tenders_edit';
     protected $list = 'tenders-management.tenders_list';
+    protected $view = 'tenders-management.tender_view';
 
     public function index()
     {
@@ -28,7 +29,7 @@ class TenderManagementController extends Controller
             $crudUrlTemplate['list'] = route('tender-list');
         }
         if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
-            $crudUrlTemplate['view'] = route('tender-show', ['id' => 'xxxx']);
+            $crudUrlTemplate['view'] = route('tender.show', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('tender.edit', ['id' => 'xxxx']);
@@ -94,9 +95,21 @@ class TenderManagementController extends Controller
      * @param  \App\Models\TenderManagement  $tenderManagement
      * @return \Illuminate\Http\Response
      */
-    public function show(TenderManagement $tenderManagement)
+    public function show(Request $request, TenderManagement $tenderManagement)
     {
-        //
+        $dataVal=DB::table('tender_management')->where('uid',$request->id)->where('soft_delete','0')->first();
+        if($dataVal !=null){
+            $dataV =$dataVal;
+        }else{
+            return view('cms-view.errors.500');
+        }
+        $details=DB::table('tender_details')->where('tender_id',$request->id)->where('soft_delete','0')->get();
+
+        $data = new \StdClass;
+        $data->list = $dataV??'';
+        $data->details = $details??'';
+        
+        return view('cms-view.'.$this->view,['data'=>$data]);
     }
 
     /**

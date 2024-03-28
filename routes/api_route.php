@@ -47,6 +47,8 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::get('/list-ues',[UserManagementAPIController::class,'index'])->name('user-list');
             Route::get('/edit-ues/{id}',[UserManagementAPIController::class,'edit'])->name('user-edit');
             Route::post('/update-ues',[UserManagementAPIController::class,'update'])->name('user-update');
+            Route::post('/update-account',[UserManagementAPIController::class,'updateAccount'])->name('account-update');
+            Route::post('/update-password',[UserManagementAPIController::class,'updatePassword'])->name('password-update');
             Route::delete('/delete-ues/{id}',[UserManagementAPIController::class,'destroy'])->name('user-delete');
     
             /****** Roles Permission Setting role:Role */
@@ -257,6 +259,8 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/create-map',[FormBuilderAPIController::class,'storeMapping'])->name('formMap-save')->middleware('throttle:custom_Limit');
             Route::post('/create-fbd',[FormBuilderAPIController::class,'store'])->name('formbuilder-save')->middleware('throttle:custom_Limit');
             Route::get('/list-fbd',[FormBuilderAPIController::class,'index'])->name('formbuilder-list');
+            Route::get('/list-formData',[FormBuilderAPIController::class,'formDataIndexs'])->name('formData-list');
+            Route::delete('/delete-formdata/{id}',[FormBuilderAPIController::class,'formDataDestroy'])->name('formdata-delete');
             Route::get('/list-fmap',[FormBuilderAPIController::class,'formMappingIndex'])->name('formmap-list');
             Route::get('/edit-fbd/{id}',[FormBuilderAPIController::class,'edit'])->name('formbuilder-edit');
             Route::post('/update-fbd',[FormBuilderAPIController::class,'update'])->name('formbuilder-update');
@@ -293,6 +297,7 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/approve-cws/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsLogoApprovePublish'])->name('cws-approve');
             Route::post('/approve-menu/{id}',[CommonApprovalAPIController::class,'websiteMenuApprovePublish'])->name('menu-approve');
             Route::post('/approve-formbuilding/{id}',[CommonApprovalAPIController::class,'formBuildingApprovePublish'])->name('formbuilder-approve');
+            Route::post('/approve-formdata/{id}',[CommonApprovalAPIController::class,'formDataApprovePublish'])->name('formdata-approve');
             Route::post('/approve-mfu/{id}',[CommonApprovalAPIController::class,'manualFileUploadApprovePublish'])->name('mfu-approve');
             Route::post('/approve-newrole/{id}',[CommonApprovalAPIController::class,'newRoleApprovePublish'])->name('newrole-approve');
             Route::post('/approve-popupadvertising/{id}',[CommonApprovalAPIController::class,'popupAdvertisingApprovePublish'])->name('popupadvertising-approve');

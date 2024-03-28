@@ -20,6 +20,7 @@ class DynamicContentPageManagamentController extends Controller
     protected $create = 'dynamic-content-page-managament.content-page-add';
     protected $edit = 'dynamic-content-page-managament.content-page-edit';
     protected $list = 'dynamic-content-page-managament.content-page-list';
+    protected $view = 'dynamic-content-page-managament.content_page_view';
     
     public function index()
     {
@@ -30,6 +31,9 @@ class DynamicContentPageManagamentController extends Controller
         }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('contentpage.edit', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['view'] = route('contentpage.show', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
             $crudUrlTemplate['delete'] = route('pagemetatag-delete', ['id' => 'xxxx']);
@@ -103,9 +107,27 @@ class DynamicContentPageManagamentController extends Controller
      * @param  \App\Models\DynamicContentPageManagament  $dynamicContentPageManagament
      * @return \Illuminate\Http\Response
      */
-    public function show(DynamicContentPageManagament $dynamicContentPageManagament)
+    public function show(Request $request, DynamicContentPageManagament $dynamicContentPageManagament)
     {
-        //
+        $dataVal=DB::table('dynamic_content_page_metatag')->where('uid',$request->id)->where('soft_delete','0')->first();
+        if($dataVal !=null){
+            $dataV =$dataVal;
+        }else{
+            return view('cms-view.errors.500');
+        }
+        $dynamic_page_contents=DB::table('dynamic_page_content')->where('dcpm_id',$request->id)->where('soft_delete','0')->first();
+        $dynamic_page_banners=DB::table('dynamic_page_banner')->where('dcpm_id',$request->id)->where('soft_delete','0')->first();
+        $dynamic_content_page_pdfs=DB::table('dynamic_content_page_pdf')->where('dcpm_id',$request->id)->where('soft_delete','0')->get();
+        $dynamic_content_page_gallerys=DB::table('dynamic_content_page_gallery')->where('dcpm_id',$request->id)->where('soft_delete','0')->get();
+
+        $data = new \StdClass;
+        $data->basicinfo = $dataV??'';
+        $data->dynamic_page_content = $dynamic_page_contents??'';
+        $data->dynamic_page_banner = $dynamic_page_banners??'';
+        $data->dynamic_content_page_pdf = $dynamic_content_page_pdfs??'';
+        $data->dynamic_content_page_gallery = $dynamic_content_page_gallerys??'';
+        //dd($data);
+        return view('cms-view.'.$this->view,['data'=>$data]);
     }
 
     /**

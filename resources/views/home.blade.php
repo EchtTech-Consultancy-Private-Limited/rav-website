@@ -609,7 +609,7 @@
                                     <div class="col-md-3">
                                         <div class="message-tab-img">
                                             <a href="#" class="video-wrap">
-                                                <div class="video-img common-video-img">
+                                                <div class="video-img common-video-img m-0">
                                                     <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
                                                         alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
                                                         title=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "

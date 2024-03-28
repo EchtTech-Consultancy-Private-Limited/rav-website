@@ -1,9 +1,10 @@
 "use strict";
 var KTDatatablesBasicPaginations = function() {
 	var initTable1 = function() {
-		var table = $('#kt_datatable_tenders');
-		var $i=1;
+		var table = $('#kt_datatable_formDataList');
+        var $i=1;
 		// var columnList = JSON.parse(table.data('columnListData'));
+        var id = new URLSearchParams(window.location.search).get('formid');
 		var jsonURL = $('#urlListData').attr('data-info');
 		var crudUrlTemplate = JSON.parse(jsonURL);
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -19,14 +20,15 @@ var KTDatatablesBasicPaginations = function() {
 				"url": crudUrlTemplate.list,
 				"type": "GET",
 				"data": {
-					"_token": csrfToken
+                    "id":id,
+					"_token": csrfToken,
 				}
 			},
 			columns: [
 				{ "data": "uid" },
-				{ "data": "title_name_en" },
-				{ "data": "start_date" },
-				{ "data": "end_date" },
+				{ "data": "form_name" },
+				{ "data": "menu_name" },
+				{ "data": "content" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -42,16 +44,18 @@ var KTDatatablesBasicPaginations = function() {
 						var viewLinkHtml = '';
 						var editLinkHtml = '';
 						var deleteLinkHtml = '';
+						var approvalLinkHtml ='';
 						var dropdownHtml = '';
 
 						if (crudUrlTemplate.view !== undefined) {
 							viewLinkHtml = '<a href="' + crudUrlTemplate.view.replace("xxxx", full.uid) + 
-							'" class="btn btn-sm btn-clean btn-icon mr-2 track-click" data-track-name="datatable-js-employee-view-btn" title="View">\
-							<span class="svg-icon svg-icon-md">\
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>\
-							</span>\
+							'" class="btn btn-sm btn-clean btn-icon mr-2 track-click" data-track-name="datatable-js-employee-view-btn" title="Show The Form">\
+								<span class="svg-icon svg-icon-md">\
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>\
+								</span>\
 							</a>';
 						}
+
 						if (crudUrlTemplate.edit !== undefined) {
 							editLinkHtml = '<a href="'+ crudUrlTemplate.edit.replace("xxxx", full.uid) +'" class="btn btn-sm btn-clean btn-icon mr-2 track-click"\
 							data-track-name="datatable-js-employee-edit-btn" title="Edit">\
@@ -81,18 +85,33 @@ var KTDatatablesBasicPaginations = function() {
 								</span>\
 							</a>';
                         }
+						if (crudUrlTemplate.delete !== undefined) {
+							approvalLinkHtml = '<a href="'+ crudUrlTemplate.delete.replace("xxxx", full.uid) +'" class="btn btn-sm btn-clean btn-icon delete-single-record track-click"\
+							data-track-name="datatable-js-employee-delete-btn" title="Delete">\
+								<span class="svg-icon svg-icon-md">\
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
+											<rect x="0" y="0" width="24" height="24"/>\
+											<path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"/>\
+											<path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>\
+										</g>\
+									</svg>\
+								</span>\
+							</a>';
+                        }
                         
                         dropdownHtml = '' +
                             viewLinkHtml + ' &nbsp;'+
                             editLinkHtml + '&nbsp;'+
                             deleteLinkHtml + '&nbsp;';
+                            approvalLinkHtml + '&nbsp;';
 				
 						return dropdownHtml;
 					},
 				},
 				{
 					targets: 0,
-					title: 'ID',
+					// title: 'ID',
 					orderable: true,
 					visible: true,
 					responsivePriority: -2,
@@ -101,6 +120,23 @@ var KTDatatablesBasicPaginations = function() {
 					},
 				},
                 {
+					targets: -3,
+					orderable: true,
+					visible: true,
+					responsivePriority: -3,
+					render: function (data, type, full, meta) {
+                        const jsonArray = JSON.parse(`[${data}]`);
+                        var val = [];
+                        jsonArray.forEach(function(obj) {
+                            var keys = Object.keys(obj);
+                            keys.forEach(function(key) {
+                                val.push(obj[key]);
+                            });
+                        });
+                        return val;
+					},
+				},
+				{
 					targets: -2,
 					orderable: true,
 					responsivePriority: -2,
@@ -179,7 +215,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									history.scrollRestoration = 'manual';
 									}
-									location.href = 'tender-list'; // reload page
+									location.href = 'form-data-list?formid='+id; // reload page
 								}, 1500);
 
 							})
@@ -198,7 +234,6 @@ var KTDatatablesBasicPaginations = function() {
 						}
 					});
 				});
-
 				// bind delete link to click event
 				$(".delete-single-record").click(function (event) {
 					event.preventDefault();
@@ -229,7 +264,7 @@ var KTDatatablesBasicPaginations = function() {
 									if (history.scrollRestoration) {
 									   history.scrollRestoration = 'manual';
 									}
-									location.href = 'tender-list'; // reload page
+									location.href = 'form-data-list?formid='+id; // reload page
 								 }, 1500);
 
 							})
@@ -247,57 +282,6 @@ var KTDatatablesBasicPaginations = function() {
 							});     
 						}
 					});
-				});
-				// bind delete link to click event
-				$(".view-single-record").click(function (event) {
-					event.preventDefault();
-					var viewUrl = $(this).attr('href');
-					var rowId = $(this).data('rowid');
-					
-					// swal.fire({
-					// 	title: 'Are you sure?',
-					// 	text: "You won't be able to revert this!",
-					// 	type: 'success',
-					// 	showCancelButton: true,
-					// 	confirmButtonText: 'Yes, delete it!'
-					// }).then(function (result) {
-						//if (result.value) {
-						if (rowId) {
-							axios.get(viewUrl)
-							.then(function (response) {
-								// remove record row from DOM
-								console.log(response)
-								tableObject
-									.row(rowId)
-									.remove()
-									.draw();
-								toastr.success(
-									"Record has been deleted!", 
-									"deleted!", 
-									{timeOut: 0,showProgressbar: true, extendedTimeOut: 0,allow_dismiss: false, closeButton: true, closeDuration: 0}
-								 );
-								 setTimeout(function() {
-									if (history.scrollRestoration) {
-									   history.scrollRestoration = 'manual';
-									}
-									//location.href = 'tender-list'; // reload page
-								 }, 1500);
-
-							})
-							.catch(function (error) {
-								var errorMsg = 'Could not delete record. Try later.';
-								
-								if (error.response.status >= 400 && error.response.status <= 499)
-									errorMsg = error.response.data.message;
-
-								swal.fire(
-									'Error!',
-									errorMsg,
-									'error'
-								)
-							});     
-						}
-					//});
 				});
             }
 		});
