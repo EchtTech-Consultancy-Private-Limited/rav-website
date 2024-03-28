@@ -19,3 +19,4 @@
 <link href="{{ asset('assets-cms/cms_css/cms-css.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets-cms/cms_css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 <script>if (window.top != window.self) { window.top.location.replace(window.self.location.href);}</script>
+@stack('post-css')

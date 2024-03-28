@@ -81,7 +81,7 @@
                                 <!--end::Label-->  
                                 <!--end::Description-->
                                 <div class="fw-semibold fs-7 text-gray-600">                      
-                                {!! $data->dynamic_page_content->page_content_en !!}             
+                                {!! $data->dynamic_page_content->page_content_en ??'' !!}             
                                 </div>
                                 <!--end::Description-->   
                             </div>
@@ -92,8 +92,10 @@
                                 <div class="fw-semibold fs-7 text-gray-600 mb-1">Page Banner:</div>
                                 <!--end::Label-->  
                                 <!--end::Description-->
-                                <div class="fw-semibold fs-7 text-gray-600">                      
-                                    <img src="{{ asset('resources/uploads/pagebanner/'.$data->dynamic_page_banner->public_url ??'') }}" style="width: 250px;">             
+                                <div class="fw-semibold fs-7 text-gray-600">   
+                                    @if(isset($data->dynamic_page_banner->public_url))                   
+                                    <img src="{{ asset('resources/uploads/pagebanner/'.$data->dynamic_page_banner->public_url) }}" style="width: 250px;">  
+                                    @endif           
                                 </div>
                                 <!--end::Description-->   
                             </div>

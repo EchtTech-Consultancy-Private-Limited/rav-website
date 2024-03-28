@@ -153,6 +153,7 @@
                                     {{ $cabinetMinisterData->lname_en }}
                                 </h3>
                                 <p class="desc">
+                                    <b> {{ getEmployeeDesignation($cabinetMinisterData->designation_id) }}</b>
                                     {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                 </p>
                                 <p class="title-org">
@@ -185,6 +186,7 @@
                                     {{ $stateMinister->lname_en }}
                                 </h3>
                                 <p class="desc">
+                                    <b> {{ getEmployeeDesignation($stateMinister->designation_id) }}</b>
                                     {{ getEmployeeDepartment($stateMinister->department_id) }}
                                 </p>
                                 <p class="title-org">
@@ -217,6 +219,7 @@
                                     {{ $secretaryData->lname_en }}
                                 </h3>
                                 <p class="desc">
+                                    <b> {{ getEmployeeDesignation($secretaryData->designation_id) }}</b>
                                     {{ getEmployeeDepartment($secretaryData->department_id) }}
                                 </p>
                                 <p class="title-org">
@@ -250,6 +253,7 @@
                                     {{ $directorData->lname_en }}
                                 </h3>
                                 <p class="desc">
+                                    <b> {{ getEmployeeDesignation($directorData->designation_id) }}</b>
                                     {{ getEmployeeDepartment($directorData->department_id) }}
                                 </p>
                                 <p class="title-org">
@@ -701,9 +705,9 @@
                                                         <td>
                                                             <a target="{{ $tender->tab_type == 1 ? '_blank' : '' }}"
                                                                 class="link-primary"
-                                                                href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}">
+                                                                href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}" download>
                                                                 View
-                                                            </a>
+                                                            </a> <i class="fa fa-file-pdf-o">
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -959,7 +963,7 @@
                                                                     {!! Str::limit(strip_tags($gyanGanga->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="#" class="read-more">
+                                                            <a href="{{ url($gyanGanga->url) }}" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -994,7 +998,7 @@
                                                                     {!! Str::limit(strip_tags($ayurAhar->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="#" class="read-more">
+                                                            <a href="{{ url($ayurAhar->url) }}" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -1057,7 +1061,7 @@
                                                                     @endif
 
                                                                 </div>
-                                                                <a href="#" class="read-more">
+                                                                <a href="{{ $item->url }}" class="read-more">
                                                                     <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                         alt="read-more" class="img-fluid">
                                                                 </a>
