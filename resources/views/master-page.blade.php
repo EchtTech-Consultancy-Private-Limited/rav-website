@@ -49,7 +49,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <section class="master bg-grey">
             <div class="container">
                 <div class="news-tab common-tab side-tab1">
@@ -256,7 +256,7 @@
                                             <div class="video-img common-video-img">
                                                 {{-- <img src="../assets/images/sarbanada-sonowal.jpg" alt="video"
                                                     class="img-fluid rounded rounded-4"> --}}
-                                                    
+
 
                                                 <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
                                                     alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
@@ -588,6 +588,87 @@
                                         <div>
                                             {!! $secretaryData->description_en !!}
                                         </div>
+                                    @elseif (isset($tenders) && count($tenders) > 0)
+                                        <h1>{{ $title_name ?? '' }}</h1>
+                                        <table class="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr.No.</th>
+                                                    <th> Title</th>
+                                                    <th>Published Date</th>
+                                                    <th>Submission Date</th>
+                                                    <th>Opening Date</th>
+                                                    <th>View/Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($tenders as $tender)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ $tender->title_name_hi }}
+                                                            @else
+                                                                {{ $tender->title_name_en }}
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($tender->start_date)->format('d F Y') }}
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($tender->end_date)->format('d F Y') }}
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($tender->opening_date)->format('d F Y') }}
+                                                        </td>
+                                                        <td>
+                                                            <a target="{{ $tender->tab_type == 1 ? '_blank' : '' }}"
+                                                                class="link-primary"
+                                                                href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}"
+                                                                download>
+                                                                View
+                                                            </a> <i class="fa fa-file-pdf-o">
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @elseif (isset($careers) && count($careers) > 0)
+                                        <h1>{{ $title_name ?? '' }}</h1>
+                                        <table class="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr.No.</th>
+                                                    <th> Title</th>
+                                                    <th>Published Date</th>
+                                                    <th>Submission Date</th>
+                                                    <th>View/Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($careers as $career)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ $career->pdf_title }}
+                                                            @else
+                                                                {{ $career->pdf_title }}
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($career->career_start_date)->format('d F Y') }}
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($career->career_end_date)->format('d F Y') }}
+                                                        </td>
+                                                        <td>
+                                                            <a 
+                                                                class="link-primary"
+                                                                href="{{ asset('resources/uploads/CareerManagement/' . $career->public_url) }}"
+                                                                download>
+                                                                View
+                                                            </a> <i class="fa fa-file-pdf-o">
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     @else
                                         {!! $content !!}
                                     @endif
