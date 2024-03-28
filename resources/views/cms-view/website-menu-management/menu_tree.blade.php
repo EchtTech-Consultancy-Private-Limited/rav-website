@@ -9,7 +9,7 @@
  {{ __('Menu Tree') }}
 @endsection
 @push('post-scripts')
-<link href="{{ asset('assets-cms/cms_css/tree.scss') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets-cms/cms_css/tree.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 @section('content')
 <div class="post d-flex flex-column-fluid" id="kt_post">
