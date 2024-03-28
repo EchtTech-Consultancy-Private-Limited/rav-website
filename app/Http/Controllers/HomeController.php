@@ -99,6 +99,7 @@ class HomeController extends Controller
 
         $ourJournyData = DB::table('form_designs_management')->where('form_name','Our Successful Journey')->first();
         $ourJournyData = DB::table('form_data_management')->where('form_design_id',$ourJournyData->uid)->get(['content']);
+        
 
         return view('home', compact('ourJournyData','secretaryData','directorData','stateMinister','cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
     }
@@ -168,7 +169,7 @@ class HomeController extends Controller
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
-
+       
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
             App::setLocale($request->data);
@@ -542,9 +543,25 @@ class HomeController extends Controller
                             $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
                             $secretaryData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
+                        $tenders = [];
+                        if ($slug == "tenders") {
+                            $tenders = DB::table('tender_management')
+                            ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
+                            ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
+                            ->get();
+                        }
 
+                      $careers = [];
+                      if ($slug == "career") {
+                            $careers = DB::table('career_management')
+                            ->join('career_management_details', 'career_management_details.career_management_id', '=', 'career_management.uid')
+                            ->select('career_management.*','career_management.start_date as career_start_date','career_management.end_date as career_end_date','career_management_details.*')
+                            ->get();
+                      }
 
-                        return view('master-page', ['secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                    //   dd($careers);
+
+                        return view('master-page', ['careers'=>$careers,'tenders'=>$tenders,'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {
