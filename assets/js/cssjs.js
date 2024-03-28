@@ -1,18 +1,37 @@
 $(document).ready(function(){
-    let tables = $('table');
+    // let tables = $('table');
   
-    console.log(tables);
-    tables.each(function() {
-        let tableWidth = $(this).width(); // Use outerWidth() instead of width()
-        let tableParentWidth = $(this).parent().width(); // Use width() instead of innerWidth()
-        console.log(tableWidth, tableParentWidth, "table width");
-        if(tableWidth >= tableParentWidth){
-            $(this).css('display', 'block');
-        } else {
-            $(this).css('display', 'table');
-            $(this).css('width', '100%');
-        }
-    }); // Iterate over each <table>
+    // console.log(tables);
+    // tables.each(function() {
+    //     let tableWidth = $(this).width(); // Use outerWidth() instead of width()
+    //     let tableParentWidth = $(this).parent().width(); // Use width() instead of innerWidth()
+    //     console.log(tableWidth, tableParentWidth, "table width");
+    //     if(tableWidth >= tableParentWidth){
+    //         $(this).css('display', 'block');
+    //     } else {
+    //         $(this).css('display', 'table');
+    //         $(this).css('width', '100%');
+    //     }
+    // }); // Iterate over each <table>
+
+    let tables = $('table');
+
+tables.each(function() {
+    if ($(this).hasClass('dataTable')) {
+        return; // Skip tables with the class .datatable
+    }
+
+    let tableWidth = $(this).width(); // Use outerWidth() instead of width()
+    let tableParentWidth = $(this).parent().width(); // Use width() instead of innerWidth()
+
+    if (tableWidth >= tableParentWidth) {
+        $(this).css('display', 'block');
+    } else {
+        $(this).css('display', 'table');
+        $(this).css('width', '100%');
+    }
+});
+
 
 
 
