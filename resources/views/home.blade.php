@@ -143,15 +143,17 @@
                     <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
                         <div class="about-us-card-front">
                             <div class="img">
-                                <img src="{{ asset('assets/images/minister1.png') }}" alt="minister" class="img-fluid">
+                                <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
+                                    alt="minister" class="img-fluid">
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    Shri Sarbananda Sonowal
+                                    {{ $cabinetMinisterData->fname_en }}
+                                    {{ $cabinetMinisterData->mname_en }}
+                                    {{ $cabinetMinisterData->lname_en }}
                                 </h3>
                                 <p class="desc">
-                                    <b>Hon’ble Cabinet minister</b>
-                                    of AYUSH, Government of India
+                                    {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                 </p>
                                 <p class="title-org">
                                     <a href="{{ url('about-us/honourable-cabinet-minister') }}"> Know More</a>
@@ -159,32 +161,31 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                <h3 class="title-black-sm">
-                                                    What is Lorem Ipsum?
-                                                </h3>
-                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                    dolorem
-                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                    veniam cumque expedita rem at harum?</p>
-                                            </div> -->
+                                                    <h3 class="title-black-sm">
+                                                        What is Lorem Ipsum?
+                                                    </h3>
+                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                        dolorem
+                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                        veniam cumque expedita rem at harum?</p>
+                                                </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
                         <div class="about-us-card-front">
                             <div class="img">
-                                <img src="{{ asset('assets/images/minister2.png') }}" alt="minister" class="img-fluid">
+                                <img src="{{ asset('resources/uploads/empDirectory/' . $stateMinister->public_url) }}"
+                                    alt="minister" class="img-fluid">
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    Dr. Munjapara Mahendrabhai
+                                    {{ $stateMinister->fname_en }}
+                                    {{ $stateMinister->mname_en }}
+                                    {{ $stateMinister->lname_en }}
                                 </h3>
                                 <p class="desc">
-                                    <b>Hon'ble Minister of State Ministry</b>
-                                    of AYUSH & Ministry of
-                                    Women
-                                    and Child
-                                    Developement
+                                    {{ getEmployeeDepartment($stateMinister->department_id) }}
                                 </p>
                                 <p class="title-org">
                                     <a href="{{ url('about-us/honourable-minister-of-state') }}"> Know More</a>
@@ -192,74 +193,80 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                <h3 class="title-black-sm">
-                                                    What is Lorem Ipsum?
-                                                </h3>
-                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                    dolorem
-                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                    veniam cumque expedita rem at harum?</p>
-                                            </div> -->
+                                                    <h3 class="title-black-sm">
+                                                        What is Lorem Ipsum?
+                                                    </h3>
+                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                        dolorem
+                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                        veniam cumque expedita rem at harum?</p>
+                                                </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
                         <div class="about-us-card-front">
                             <div class="img">
-                                <img src="{{ asset('assets/images/minister3.png') }}" alt="minister" class="img-fluid">
+                                <img src="{{ asset('resources/uploads/empDirectory/' . $secretaryData->public_url) }}"
+                                    alt="minister" class="img-fluid">
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    Padmashree Vaidya Rajesh Kotecha
+                                    {{ $secretaryData->fname_en }}
+                                    {{ $secretaryData->mname_en }}
+                                    {{ $secretaryData->lname_en }}
                                 </h3>
                                 <p class="desc">
-                                    <b>Secretary</b>
-                                    Ministry of AYUSH
+                                    {{ getEmployeeDepartment($secretaryData->department_id) }}
                                 </p>
                                 <p class="title-org">
                                     <a href="{{ url('honourable-secretary') }}"> Know More</a>
                                 </p>
                             </div>
                         </div>
+
                         <!-- <div class="about-us-card-back">
-                                                <h3 class="title-black-sm">
-                                                    What is Lorem Ipsum?
-                                                </h3>
-                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                    dolorem
-                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                    veniam cumque expedita rem at harum?</p>
-                                            </div> -->
+                                                    <h3 class="title-black-sm">
+                                                        What is Lorem Ipsum?
+                                                    </h3>
+                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                        dolorem
+                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                        veniam cumque expedita rem at harum?</p>
+                                                </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
                         <div class="about-us-card-front">
                             <div class="img">
-                                <img src="{{ asset('assets/images/minister4.png') }}" alt="minister" class="img-fluid">
+                                <img src="{{ asset('resources/uploads/empDirectory/' . $directorData->public_url) }}"
+                                    alt="minister" class="img-fluid">
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    Dr. Vandana Siroha
+                                    {{ $directorData->fname_en }}
+                                    {{ $directorData->mname_en }}
+                                    {{ $directorData->lname_en }}
                                 </h3>
                                 <p class="desc">
-                                    <b>Director</b>
-                                    AIIA, New Delhi
+                                    {{ getEmployeeDepartment($directorData->department_id) }}
                                 </p>
                                 <p class="title-org">
                                     <a href="{{ url('director') }}"> Know More</a>
                                 </p>
                             </div>
                         </div>
+
                         <!-- <div class="about-us-card-back">
-                                                <h3 class="title-black-sm">
-                                                    What is Lorem Ipsum?
-                                                </h3>
-                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                    dolorem
-                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                    veniam cumque expedita rem at harum?</p>
-                                            </div> -->
+                                                    <h3 class="title-black-sm">
+                                                        What is Lorem Ipsum?
+                                                    </h3>
+                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                        dolorem
+                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                        veniam cumque expedita rem at harum?</p>
+                                                </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -553,11 +560,17 @@
                                             <a href="#" class="video-wrap">
                                                 <div class="video-img common-video-img">
                                                     @php
-                                                    $imgTag = \Illuminate\Support\Str::between($latestMessageData['page_content_en'], '<img', '>');
-                                                    $imgTag = '<img class="video-img common-video-img img-fluid"' . $imgTag;
-                                                    $imgTag = \Illuminate\Support\Str::before($imgTag, '>') . '>';
-                                                @endphp
-                                                {!! $imgTag !!}
+                                                        $imgTag = \Illuminate\Support\Str::between(
+                                                            $latestMessageData['page_content_en'],
+                                                            '<img',
+                                                            '>',
+                                                        );
+                                                        $imgTag =
+                                                            '<img class="video-img common-video-img img-fluid"' .
+                                                            $imgTag;
+                                                        $imgTag = \Illuminate\Support\Str::before($imgTag, '>') . '>';
+                                                    @endphp
+                                                    {!! $imgTag !!}
                                                 </div>
                                             </a>
                                         </div>
@@ -569,7 +582,10 @@
                                                 {{-- display content after remove html tags and add limit 400 --}}
                                                 @php
                                                     $content = strip_tags($latestMessageData['page_content_en']);
-                                                    $content = strlen($content) > 600 ? substr($content, 0, 600) . '...' : $content;
+                                                    $content =
+                                                        strlen($content) > 600
+                                                            ? substr($content, 0, 600) . '...'
+                                                            : $content;
                                                 @endphp
                                                 {!! $content !!}
                                             </p>
@@ -580,7 +596,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="ourMinisters-tab-pane" role="tabpanel"
@@ -591,9 +607,9 @@
                                             <a href="#" class="video-wrap">
                                                 <div class="video-img common-video-img">
                                                     <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
-                                                    alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
-                                                    title=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
-                                                    loading="lazy" class="img-fluid rounded rounded-4">
+                                                        alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
+                                                        title=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
+                                                        loading="lazy" class="img-fluid rounded rounded-4">
                                                 </div>
                                             </a>
                                         </div>
@@ -603,7 +619,7 @@
                                             <h2 class="heading-black heading-black-md">
                                                 {{ $cabinetMinisterData->fname_en }}
                                                 {{ $cabinetMinisterData->mname_en }}
-                                                {{ $cabinetMinisterData->lname_en }} 
+                                                {{ $cabinetMinisterData->lname_en }}
                                             </h2>
                                             <p class="title">
                                                 {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
@@ -615,10 +631,11 @@
                                                 @endphp
 
                                                 {!! $content !!}
-                                                  
+
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <a href="{{ url('about-us/honourable-cabinet-minister') }}" class="btn btn-org-bdr">
+                                                <a href="{{ url('about-us/honourable-cabinet-minister') }}"
+                                                    class="btn btn-org-bdr">
                                                     Read More
                                                 </a>
                                             </div>
@@ -763,7 +780,31 @@
                         @endif
                     </h2>
                 </div>
-                <div class="col-md-3">
+                @foreach ($ourJournyData as $journey)
+                    @php
+                        $content = json_decode($journey->content);
+                    @endphp
+                    <div class="col-md-3" style="margin-bottom: 25px;">
+                        <div class="our-journey-card my-md-0 my-2 mb-2">
+                            <img src="{{ asset('assets/images/' . $content->image_name) }}"
+                                alt="{{ $content->image_name }}" class="img-fluid">
+                            <span class="total-no counterNumber" counter="{{ $content->count }}">
+                                0
+                            </span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $content->{'user-content-title'} }}
+                                    @else
+                                        {{ $content->{'user-content-title'} }}
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                {{-- <div class="col-md-3">
                     <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
                         <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation" class="img-fluid">
                         <span class="total-no">
@@ -847,7 +888,7 @@
                         </p>
 
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -906,15 +947,15 @@
                                                         <div class="activity-slider-content">
                                                             <h3 class="title-black-sm">
                                                                 @if (Session::get('locale') == 'hi')
-                                                                {{ $gyanGanga->page_title_hi }}
-                                                            @else
-                                                                {{ $gyanGanga->page_title_en }}
-                                                            @endif
+                                                                    {{ $gyanGanga->page_title_hi }}
+                                                                @else
+                                                                    {{ $gyanGanga->page_title_en }}
+                                                                @endif
                                                             </h3>
                                                             <p class="desc">
                                                                 @if (Session::get('locale') == 'hi')
                                                                     {!! Str::limit(strip_tags($gyanGanga->page_content_hi), 200) !!}
-                                                                    @else
+                                                                @else
                                                                     {!! Str::limit(strip_tags($gyanGanga->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
@@ -941,15 +982,15 @@
                                                         <div class="activity-slider-content">
                                                             <h3 class="title-black-sm">
                                                                 @if (Session::get('locale') == 'hi')
-                                                                {{ $ayurAhar->page_title_hi }}
-                                                            @else
-                                                                {{ $ayurAhar->page_title_en }}
-                                                            @endif
+                                                                    {{ $ayurAhar->page_title_hi }}
+                                                                @else
+                                                                    {{ $ayurAhar->page_title_en }}
+                                                                @endif
                                                             </h3>
                                                             <p class="desc">
                                                                 @if (Session::get('locale') == 'hi')
                                                                     {!! Str::limit(strip_tags($ayurAhar->page_content_hi), 200) !!}
-                                                                    @else
+                                                                @else
                                                                     {!! Str::limit(strip_tags($ayurAhar->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
@@ -987,14 +1028,14 @@
                                                                     <img src="{{ asset('assets/images/activity-slider3.png') }}"
                                                                         alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 4)
-                                                                <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
+                                                                    <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                        alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 5)
-                                                                <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
+                                                                    <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                        alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 6)
-                                                                <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
+                                                                    <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                        alt="activity-slider1" class="img-fluid">
                                                                 @endif
 
                                                             </div>
@@ -1198,7 +1239,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="photo-wrap mt-pos-14">
         <div class="container">
             <div class="row">
@@ -1212,11 +1253,11 @@
                                 </button>
                             </li>
                             <!-- <li class="nav-item" role="presentation">
-                                                <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
-                                                    aria-selected="true">Our Photos
-                                                </button>
-                                            </li> -->
+                                                    <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
+                                                        aria-selected="true">Our Photos
+                                                    </button>
+                                                </li> -->
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"
@@ -1414,7 +1455,7 @@
                                                 <div class="sub-sec">
                                                     <h2 tabindex="0">
                                                         <span class="img-b"><img
-                                                                src="{{asset('assets/images/facebook.png')}}"
+                                                                src="{{ asset('assets/images/facebook.png') }}"
                                                                 alt="icon"></span>
                                                         Facebook
                                                     </h2>
@@ -1438,7 +1479,7 @@
                                                 <div class="sub-sec">
                                                     <h2 class="instagram-c" tabindex="0">
                                                         <span class="img-b"><img
-                                                                src="{{asset('assets/images/instagram.png')}}"
+                                                                src="{{ asset('assets/images/instagram.png') }}"
                                                                 alt="icon"></span>
                                                         Instagram
                                                     </h2>
@@ -1572,7 +1613,7 @@
                                                 <div class="sub-sec">
                                                     <h2 class="twitter-c" tabindex="0">
                                                         <span class="img-b"><img
-                                                                src="{{asset('assets/images/twitter.png')}}"
+                                                                src="{{ asset('assets/images/twitter.png') }}"
                                                                 alt="icon"></span>
                                                         Twitter
                                                     </h2>

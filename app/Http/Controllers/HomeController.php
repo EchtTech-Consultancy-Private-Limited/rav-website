@@ -84,8 +84,23 @@ class HomeController extends Controller
         $department = DB::table('emp_depart_designations')->where('name_en', "Union Cabinet Minister, Ministry of Ayush & Ministry of Ports, Shipping and Waterways")->where('parent_id', 0)->first();
         $cabinetMinisterData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
-        // dd($videosWithCategories);
-        return view('home', compact('cabinetMinisterData','latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
+
+        $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id', 0)->first();
+        $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+
+
+        $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
+        $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+
+
+        $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
+        $secretaryData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+
+
+        $ourJournyData = DB::table('form_designs_management')->where('form_name','Our Successful Journey')->first();
+        $ourJournyData = DB::table('form_data_management')->where('form_design_id',$ourJournyData->uid)->get(['content']);
+
+        return view('home', compact('ourJournyData','secretaryData','directorData','stateMinister','cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
     }
     /**
      * Show the form for creating a new resource.
