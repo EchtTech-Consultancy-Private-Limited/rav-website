@@ -503,7 +503,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="latestMassage-tab" data-bs-toggle="tab"
                                     data-bs-target="#latestMassage-tab-pane" type="button" role="tab"
-                                    aria-controls="latestMassage-tab-pane" aria-selected="true">Latest Massage
+                                    aria-controls="latestMassage-tab-pane" aria-selected="true">Latest Message
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -552,33 +552,35 @@
                                         <div class="message-tab-img">
                                             <a href="#" class="video-wrap">
                                                 <div class="video-img common-video-img">
-                                                    <img src="{{ asset('assets/images/massage.png') }}" alt="video"
-                                                        class="img-fluid">
+                                                    @php
+                                                    $imgTag = \Illuminate\Support\Str::between($latestMessageData['page_content_en'], '<img', '>');
+                                                    $imgTag = '<img class="video-img common-video-img img-fluid"' . $imgTag;
+                                                    $imgTag = \Illuminate\Support\Str::before($imgTag, '>') . '>';
+                                                @endphp
+                                                {!! $imgTag !!}
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="message-tab-content">
                                             <h2 class="heading-black heading-black-md">
-                                                Message From President,G.B
+                                                {{ $latestMessageData['page_title_en'] }}
                                             </h2>
-                                            <p class="title">
-                                                Vd. Devendra Triguna, President, Governing Body, RAV
-                                                <br>
-                                                <em>A Padmashree & Padmabhushan Awardee</em>
-                                            </p>
                                             <p class="desc">
-                                                In present era Ayurveda is torching the new horizon not even in our own
-                                                country but across the world as a holistic system of medicine. As per
-                                                the calculations, 90% of Asia’s population practice Ayurvedic
-                                                therapy....
+                                                {{-- display content after remove html tags and add limit 400 --}}
+                                                @php
+                                                    $content = strip_tags($latestMessageData['page_content_en']);
+                                                    $content = strlen($content) > 600 ? substr($content, 0, 600) . '...' : $content;
+                                                @endphp
+                                                {!! $content !!}
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <a href="#" class="btn btn-org-bdr">
+                                                <a href="{{ url($latestMessageData['url']) }}" class="btn btn-org-bdr">
                                                     Read More
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="ourMinisters-tab-pane" role="tabpanel"
@@ -588,8 +590,10 @@
                                         <div class="message-tab-img">
                                             <a href="#" class="video-wrap">
                                                 <div class="video-img common-video-img">
-                                                    <img src="{{ asset('assets/images/sarbanada-sonowal.jpg') }}"
-                                                        alt="video" class="img-fluid">
+                                                    <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
+                                                    alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
+                                                    title=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
+                                                    loading="lazy" class="img-fluid rounded rounded-4">
                                                 </div>
                                             </a>
                                         </div>
@@ -597,53 +601,24 @@
                                     <div class="col-md-9">
                                         <div class="message-tab-content">
                                             <h2 class="heading-black heading-black-md">
-                                                Shri Sarbananda Sonowal
+                                                {{ $cabinetMinisterData->fname_en }}
+                                                {{ $cabinetMinisterData->mname_en }}
+                                                {{ $cabinetMinisterData->lname_en }} 
                                             </h2>
                                             <p class="title">
-                                                Union Cabinet Minister Ministry of Ayush & Ministry of Ports, Shipping
-                                                and Waterways
+                                                {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                             </p>
                                             <p class="desc">
-                                                <b> Party Name:</b>
-                                                Bharatiya Janata Party(BJP)
-                                                <br>
-                                                <b> Father’s Name:</b>
-                                                Late Shri Jibeswar Sonowal
-                                                <br>
-                                                <b>Mother’s Name:</b>
-                                                Late Smt. Dineswari Sonowal
-                                                <br>
-                                                <b> Date of Birth:</b>
-                                                31st October, 1962
-                                                <br>
-                                                <b>Place of Birth:</b>
-                                                Mulukgaon, Distt. Dibrugarh (Assam)
-                                                <br>
-                                                <b> Marital Status:</b>
-                                                Unmarried
-                                                <br>
-                                                <b>Educational Qualifications:</b>
-                                                LLB., B.C.J, Educated at Dibrugarh
-                                                University and Gauhati University
-                                                <br>
-                                                <b>Permanent Address:</b>
-                                                1 No., Lakhimi Nagar, Near Auniati Sakha
-                                                Sattra, Mankatta Road, P.O. & P.S. Dibrugarh, Distt. Dibrugharh, Assam,
-                                                Pincode-786003
-                                                <br>
-                                                <br>
-                                                Positions Held
-                                                <br>
-                                                <b>2001-2004:</b>
-                                                Member, Assam Legislative Assembly
-                                                (Constituency-Moran)
-                                                <br>
-                                                <b>2004-2009:</b>
-                                                Elected to 14th Lok Sabha (Constituency- Dibrugharh)
-                                                <br>
+                                                @php
+                                                    $content = strip_tags($cabinetMinisterData->description_en);
+                                                    $content = Str::limit($content, 685);
+                                                @endphp
+
+                                                {!! $content !!}
+                                                  
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <a href="#" class="btn btn-org-bdr">
+                                                <a href="{{ url('about-us/honourable-cabinet-minister') }}" class="btn btn-org-bdr">
                                                     Read More
                                                 </a>
                                             </div>
@@ -930,22 +905,18 @@
                                                     <div class="col-md-6 p-0">
                                                         <div class="activity-slider-content">
                                                             <h3 class="title-black-sm">
-                                                                Gyanganga - Knowledge Voyage - A weekly Webinar Series
+                                                                @if (Session::get('locale') == 'hi')
+                                                                {{ $gyanGanga->page_title_hi }}
+                                                            @else
+                                                                {{ $gyanGanga->page_title_en }}
+                                                            @endif
                                                             </h3>
                                                             <p class="desc">
-                                                                Gyanganga - Knowledge Voyage - A weekly Webinar Series
-                                                                Printer-friendly version
-                                                                Rashtriya Ayurveda Vidyapeeth (RAV) is organizing
-                                                                webinars series named "Gyan Ganga –a knowledge Voyage”
-                                                                every Thursday. The purpose of the webinar series is to
-                                                                disseminate authentic knowledge, information and doubt
-                                                                clearance on various topics among students and Ayurveda
-                                                                fraternity.It is our pleasure that on the occasion
-                                                                Padmabhushan Vaidya Devinder Triguna, President, G.B. of
-                                                                RAV, Vaidya Manoj Nesari, Advisor Ayurveda, Ministry of
-                                                                AYUSH, Vaidya Anupam Srivastava, Director RAV and
-                                                                eminent scholars of Ayurveda address the webinar and
-                                                                share their views.
+                                                                @if (Session::get('locale') == 'hi')
+                                                                    {!! Str::limit(strip_tags($gyanGanga->page_content_hi), 200) !!}
+                                                                    @else
+                                                                    {!! Str::limit(strip_tags($gyanGanga->page_content_en), 200) !!}
+                                                                @endif
                                                             </p>
                                                             <a href="#" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
@@ -969,23 +940,18 @@
                                                     <div class="col-md-6 p-0">
                                                         <div class="activity-slider-content">
                                                             <h3 class="title-black-sm">
-                                                                Promotion of Ayurvedic Aahar
+                                                                @if (Session::get('locale') == 'hi')
+                                                                {{ $ayurAhar->page_title_hi }}
+                                                            @else
+                                                                {{ $ayurAhar->page_title_en }}
+                                                            @endif
                                                             </h3>
                                                             <p class="desc">
-                                                                Towards achieving the objective of “Ek Bharat Shreshth
-                                                                Bharat” campaign by Government of India, Rashtriya
-                                                                Ayurved Vidyapeeth , New Delhi under guidance of
-                                                                Ministry of AYUSH is promoting “Region specific
-                                                                Ayurvediy Aahar”. In this regard Rashtriya Ayurved
-                                                                Vidyapeeth is commencing “ Is Saptah ka Aahar “ a weekly
-                                                                update series for updating general public on Health
-                                                                benefits of popular Ayurvedic Aahar belonging to
-                                                                particular state or region of India. The main objective
-                                                                of this series is to create awareness in public
-                                                                regarding health benefits associated with region
-                                                                specific Ayurvedic Aahar so as to enable them achieve &
-                                                                maintain good health. So, far the following details and
-                                                                videos have been uploaded.
+                                                                @if (Session::get('locale') == 'hi')
+                                                                    {!! Str::limit(strip_tags($ayurAhar->page_content_hi), 200) !!}
+                                                                    @else
+                                                                    {!! Str::limit(strip_tags($ayurAhar->page_content_en), 200) !!}
+                                                                @endif
                                                             </p>
                                                             <a href="#" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
@@ -996,6 +962,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
 
                                     </div>
                                 </div>
@@ -1231,6 +1198,7 @@
             </div>
         </div>
     </section>
+    
     <section class="photo-wrap mt-pos-14">
         <div class="container">
             <div class="row">

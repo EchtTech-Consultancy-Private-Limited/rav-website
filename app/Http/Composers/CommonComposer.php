@@ -155,7 +155,7 @@ class CommonComposer
                 
 
 
-            // dd($cravGurusData);
+            // dd($gyanGanga);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu,
              'banner' => $banner, 'news_management' => $news_management,
