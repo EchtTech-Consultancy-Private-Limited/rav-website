@@ -705,7 +705,7 @@
                                                                 class="link-primary"
                                                                 href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}" download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o">
+                                                            </a> <i class="fa fa-file-pdf-o"> ({{ $tender->pdf_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach

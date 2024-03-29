@@ -623,7 +623,7 @@
                                                                 href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}"
                                                                 download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> </i>
+                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $tender->pdf_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -642,6 +642,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                               
                                                 @foreach ($careers as $career)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
@@ -662,7 +663,7 @@
                                                                 href="{{ asset('resources/uploads/CareerManagement/' . $career->public_url) }}"
                                                                 download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"></i>
+                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $career->pdfimage_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach

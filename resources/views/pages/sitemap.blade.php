@@ -30,6 +30,7 @@
                     <h1>RAV Website Link</h1>
                     <h2>Main menu</h2>
                     <ul class="site-map-menu">
+                        {{-- @dd($headerMenu) --}}
                         @if (isset($headerMenu) && count($headerMenu) > 0)
                             @foreach ($headerMenu as $headerMenus)
                                 @php
@@ -62,7 +63,7 @@
                                                                 @endif
                                                             </a>
                                                         @else
-                                                            <a href="{{ url($suburl) }}">
+                                                            <a href="{{ url($url.'/'.$suburl) }}">
                                                                 @if (Session::get('locale') == 'hi')
                                                                     {{ $subMenus->name_hi ?? '' }}
                                                                 @else
