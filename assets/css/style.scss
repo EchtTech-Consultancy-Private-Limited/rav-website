@@ -139,7 +139,7 @@ a {
 
 p,
 li {
-    font-size: 15px;
+    font-size: 14px;
     font-family: "Poppins";
     letter-spacing: 0px;
     color: #5a5a5a;
@@ -895,6 +895,7 @@ li.nav-item .active {
     right: 0;
     top: 0;
     bottom: 0;
+    border-radius: 100%;
 }
 
 .about-us-card .title {
@@ -1273,9 +1274,12 @@ color: #fff !important;
 .message-tab-img .video-wrap .video-img {
     overflow: hidden;
     border-radius: 15px;
-    border: 1px solid #ddd;
+    // border: 1px solid #ddd;
 }
 
+.master div#accordionExample .accordion-item{
+    padding: 0;
+}
 .message-tab-img .video-wrap .video-img:hover img {
     transform: scale(1.05);
 }
@@ -2073,7 +2077,7 @@ table th {
     letter-spacing: 0px;
     color: #000000;
     line-height: 1;
-    font-size: 1.8rem;
+    font-size: 24px;
     padding: 0px 1px 8px;
     margin-top: 6px;
 }
@@ -2552,7 +2556,7 @@ li.nav-item.nav-item-qm.d-flex.align-items-center:hover i {
     padding: 10px 0px;
     border-radius: 12px;
     color: #fff;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .qm-nav-active {
@@ -3714,7 +3718,11 @@ Image Section Css */
 }
 
 .scrollbar-style::-webkit-scrollbar-thumb {
-    background-color: #ddd; /* violet pour le thumb */
+    background-color: #ddd; 
+    border-radius: 10px !important;
+}
+.dataTable::-webkit-scrollbar-thumb {
+    background-color: red; 
     border-radius: 10px !important;
 }
 
@@ -4002,6 +4010,7 @@ button.btn.side-mn-icn:hover {
     max-width: initial;
     height: auto;
     border: 1px solid #ededed;
+    margin-bottom: 25px;
 }
 .addevent-box {
     max-width: 100%;
@@ -4012,12 +4021,18 @@ button.btn.side-mn-icn:hover {
     transition: 1.3s;
     height: 422px;
 }
-.profile-img img {
-    margin-bottom: 12px;
-    border-radius: 3px;
-    width: 100%;
-    background: none;
-    padding: 0;
+.profile-img{
+    height: 220px;
+    margin-bottom: 10px;
+    img {
+        margin-bottom: 12px;
+        border-radius: 3px;
+        width: 100%;
+        height: 100%;
+        background: none;
+        padding: 0;
+     
+    }
 }
 .addevent-box h5 {
     font-size: 15px;
@@ -4643,4 +4658,7 @@ div[aria-labelledby="cme-tab"] .dataTables_wrapper .dataTables_paginate span .pa
     border-bottom: 1px solid #b1b1b1;
     padding-bottom: 12px;
     margin-bottom: 6px;
+}
+i.fa.fa-file-pdf-o{
+    color: #fd1d1d;
 }
