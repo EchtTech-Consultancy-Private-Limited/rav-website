@@ -403,9 +403,7 @@
                                                                     <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}
                                                                     </td>
                                                                     <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
-                                                                            download>View</a> <i class="fa fa-file-pdf-o">
-                                                                            ({{ $data->pdfimage_size ?? '' }})
-                                                                        </i>
+                                                                            download>View</a> <i class="fa fa-file-pdf-o">   </i> ({{ $data->pdfimage_size ?? '' }})
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
