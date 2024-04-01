@@ -1023,19 +1023,19 @@
                                                         <div class="col-md-6 p-0">
                                                             <div class="activity-slider-img">
                                                                 @if ($loop->iteration == 1)
-                                                                    <img src="{{ asset('assets/images/activity-slider1.png') }}"
+                                                                    <img src="{{ asset('assets/images/activity-slider2.png') }}"
                                                                         alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 2)
-                                                                    <img src="{{ asset('assets/images/activity-slider2.png') }}"
+                                                                    <img src="{{ asset('assets/images/activity-slider3.png') }}"
                                                                         alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 3)
                                                                     <img src="{{ asset('assets/images/activity-slider3.png') }}"
                                                                         alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 4)
-                                                                    <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                    <img src="{{ asset('assets/images/activity-slider1.png') }}"
                                                                         alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 5)
-                                                                    <img src="{{ asset('assets/images/activity-slider3.png') }}"
+                                                                    <img src="{{ asset('assets/images/activity-slider1.png') }}"
                                                                         alt="activity-slider1" class="img-fluid">
                                                                 @elseif ($loop->iteration == 6)
                                                                     <img src="{{ asset('assets/images/activity-slider3.png') }}"
