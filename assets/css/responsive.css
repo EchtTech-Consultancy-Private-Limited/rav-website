@@ -66,6 +66,10 @@
     }
 }
 @media (min-width:991px){
+    .about-us-card {
+    transition: 0.5s ease-in-out !important;
+    min-height: 300px;
+}
     .header-top .header-top-left ul li:not(:last-child):after {
         content: "";
         width: 1px;
