@@ -231,15 +231,15 @@
                     class="Facebook" title="Facebook">
                     <i class="fa fa-facebook-f"></i> Facebook
                 </a>
-                <a href="" class="Twitter" onclick="return confirm('This link will take you to an external web site.')"
+                <a href="https://twitter.com/ravdelhi?lang=en" class="Twitter" onclick="return confirm('This link will take you to an external web site.')"
                     target="_blank" title="Twitter">
                     <i class="fa fa-twitter" title="Twitter"></i> Twitter
                 </a>
-                <a href="" onclick="return confirm('This link will take you to an external web site.')"
+                <a href="https://www.instagram.com/ravdelhi/" onclick="return confirm('This link will take you to an external web site.')"
                     class="Instagram" target="_blank" title="Instagram">
                     <i class="fa fa-instagram"></i> Instagram
                 </a>
-                <a href="" class="Youtube" onclick="return confirm('This link will take you to an external web site.')"
+                <a href="https://at.linkedin.com/company/rashtriya-ayurveda-vidyapeeth" class="Youtube" onclick="return confirm('This link will take you to an external web site.')"
                     target="_blank" title="Linkedin">
                     <i class="fa fa-linkedin"></i> Linkedin
                 </a>

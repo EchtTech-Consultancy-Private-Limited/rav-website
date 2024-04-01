@@ -92,9 +92,13 @@ p strong, li strong{
     background-color: #000;
     border-top: 1px solid #fff !important;
 }
-.site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before{
-    color: #fff;
+.site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before, .activity-slider-content .desc, .master .common-tab ul.nav-qm.nav-tabs .nav-item .nav-link::before, .dataTables_wrapper .dataTables_filter, #offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover{
+    color: #fff !important;
 }
 .latest-update-wrap .title-white::after{
     background-color: #fff !important;
+}
+
+#offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover{
+    background: #000 !important;
 }

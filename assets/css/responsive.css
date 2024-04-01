@@ -15,6 +15,12 @@
  
 }
 
+@media (max-width:1200px){
+    .activity-slider-content {
+        padding: 7px 25px !important;
+        height: 100%;
+    }
+}
 @media (max-width:1299px){
     .common-tab .nav-link {
         padding: 6px 5px !important;
@@ -26,10 +32,7 @@
        
         padding: 5px 7px !important;
     }
-    .activity-slider-content {
-        padding: 7px 25px;
-        height: 100%;
-    }
+   
     .footer-bottom ul li:not(:last-child)::after {
         content: "";
         width: 1px;
@@ -612,7 +615,7 @@
         margin: 10px auto 21px !important;
     }
     .activity-slider-content .desc {
-        font-size: 15px !important;
+        font-size: 13px !important;
     }
     .activity-slider-content .title-black-sm {
         font-size: 1em !important;

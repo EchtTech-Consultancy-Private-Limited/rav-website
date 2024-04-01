@@ -623,7 +623,7 @@
                                                                 href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}"
                                                                 download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> ({{ $tender->pdf_size ?? '' }})
+                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $tender->pdf_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -663,7 +663,7 @@
                                                                 href="{{ asset('resources/uploads/CareerManagement/' . $career->public_url) }}"
                                                                 download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> ({{ $career->pdfimage_size ?? '' }})
+                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $career->pdfimage_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -813,9 +813,8 @@
                                                 <tr>
                                                     <td>{{ $data->pdf_title ?? '' }}</td>
                                                     <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}</td>
-                                                    <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
-                                                            download>View</a> <i class="fa fa-file-pdf-o text-danger">
-                                                        </i>
+                                                    <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}" download>View</a>
+                                                     <i class="fa fa-file-pdf-o text-danger">   </i>
                                                         ({{ $data->pdfimage_size ?? '' }})
                                                     </td>
                                                 </tr>
