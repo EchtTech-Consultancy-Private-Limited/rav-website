@@ -22,6 +22,9 @@
     }
 }
 @media (max-width:1299px){
+    table#DataTables_Table_0{
+        display: block;
+    }
     .common-tab .nav-link {
         padding: 6px 5px !important;
     }
@@ -52,8 +55,14 @@
     }
     .footer-bottom ul li {
         color: #fff;
-        font-size: 13px;
+        font-size: 13px !important;
         padding: 0px 3px;
+    }
+    .addevent-box.top {
+        background: #fff !important;
+    }
+    .about{
+        background: none;
     }
 }
 @media (min-width:991px){
@@ -99,6 +108,10 @@
     }
     .header-top-left ul li a {
         margin-right: 0px;
+        font-size: 12px !important;
+    }
+    .dateTime{
+        font-size: 12px !important;
     }
     .accessbility-nav-link{
         display: none;
@@ -180,12 +193,7 @@
         height: 22px;
     }
     .activity-slider .owl-nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        position: absolute;
-        top: -43px;
-        right: 0;
+        top: -40px !important;
     }
     .activity-tab .owl-carousel .owl-nav {
         display: block !important;
@@ -253,8 +261,14 @@
     .btns div {
         font-size: 14px !important;
     }
+    .latest-news-slider .btns div {
+        padding: 10px 13px !important;
+    }
     .latest-news-slider .owl-carousel {
         height: auto;
+    }
+    .search-wrap .form-control {
+        margin-bottom: 6px;
     }
 
     .mobile-width-50 {
@@ -359,8 +373,40 @@
         margin-bottom: 10px;
     }
     .message-tab .nav {
-        border-radius: 20px;
+        border-radius: 20px !important;
         padding: 15px;
+        justify-content: left !important;
+    }
+    .common-tab .nav-item .nav-link {
+        border: 1px solid #d2d2d2;
+        margin: 0 5px 5px !important;
+    }
+    .activity-tab .nav {
+        /* justify-content: left !important; */
+    }
+    .activity-slider .owl-nav .owl-next, .activity-slider .owl-nav .owl-prev {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .photo-tab {
+        padding: 5rem 0;
+        margin: 50px 0 45px !important;
+    }
+    .gallery-lbox {
+        box-shadow: 0 0 30px #eee;
+        background: #fff;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    .site-footer {
+        padding: 30px 0px 0px !important;
+    }
+    .photo-wrap .tab-content{
+        padding: 0 !important;
+    }
+    .activity-slider .owl-nav {
+        top: -49px;
     }
     .master .message-tab .common-tab .nav-link {
         padding: 10px 12px;
@@ -454,11 +500,32 @@
     }
     .master .about {
         padding: 0 0px 0 0 !important;
+        background: none;
     }
     .breadcrumb h3 {
         font-size: 18px;
         padding: 0;
         text-align: center;
+    }
+    .profile-img {
+        max-height: 150px !important;
+    }
+    .profile-img img{
+        object-fit: cover;
+    }
+    .addevent-box h6 {
+        font-size: 12px !important;
+    }
+    .addevent-box.top {
+        min-height: 264px;
+    }
+    .addevent-box h6{
+        margin: 0;
+    }
+    .master h5{
+        text-align: center !important;
+        display: flex;
+        justify-content: center;
     }
     .breadcrumb .breadcrumb-title {
         width: 80%;
@@ -721,14 +788,21 @@
     .about-us-card-front {
         display: flex;
         align-items: center;
-        border: 1px solid #ddd;
-        border-radius: 10px 10px 0px 0px;
-        padding: 12px 5px;
-        border-bottom: 0;
+        
+    }
+    .common-tab .nav-item .nav-link {
+        border: 1px solid #d2d2d2;
+        margin: 0 5px 5px;
+    }
+    .about-us-card {
+        min-height: auto !important;
+    }
+    .common-tab .nav-link.active {
+        padding: 3px 8px !important;
     }
     .about-us-card .img {
-        width: 80px;
-        height: 80px;
+        width: 80px !important;
+        height: 80px !important;
         display: flex;
         margin: 0;
     }
