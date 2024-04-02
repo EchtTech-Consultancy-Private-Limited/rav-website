@@ -15,9 +15,9 @@
                 <a href="#" title="accessbility" > <b>T</b><sub><b>T</b></sub></a>
                 </button>
                 <ul class="dropdown-menu">
-                    <li>  <button class="text-increment-btn" onclick="decreaseFontSize()">A-</button></li>
-                    <li>  <button class="text-increment-btn" onclick="normaltext()">A</button></li>
-                    <li><button class="text-increment-btn" onclick="increaseFontSize()">A+</button></li>
+                    <li>  <button class="text-increment-btn" onclick="decreaseFontSize()" title="Decrease font size">A-</button></li>
+                    <li>  <button class="text-increment-btn" onclick="normaltext()" title="Normal font size">A</button></li>
+                    <li><button class="text-increment-btn" onclick="increaseFontSize()" title="Increase font size">A+</button></li>
                 </ul>
             </li>
              <li>
@@ -37,7 +37,7 @@
                     <label class="switch">
                         <input type="checkbox" class="switch-input" id="mode" onclick="setTheme()">
                         <span data-on="On" data-off="Off" class="switch-label"></span>
-                        <span class="switch-handle"></span>
+                        <span class="switch-handle" title="Change Contrast"></span>
                     </label>
                 </div>
             </li>
