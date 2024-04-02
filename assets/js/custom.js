@@ -136,19 +136,17 @@ $('#activitySlider').owlCarousel({
   loop: false,
   nav: true,
   dots: false,
-  autoplay: false,
+  autoplay: true,
   margin: 30,
   responsive: {
     0: {
       items: 1,
-      nav: false,
     },
     600: {
       items: 2,
-      nav: false,
     },
     1000: {
-      items: 2
+      items: 2,
     }
   }
 });

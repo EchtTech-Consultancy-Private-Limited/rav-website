@@ -694,7 +694,7 @@
                                                             tabindex="0">{{ $department->name_en ?? '' }}</span>
                                                     </h5>
                                                     @foreach ($employees as $employee)
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-4 col-6">
                                                             <div class="addevent-box top text-center mt-0">
                                                                 <a href="javascript:void(0)">
 
@@ -736,7 +736,7 @@
                                                             tabindex="0">{{ $department->name_en ?? '' }}</span>
                                                     </h5>
                                                     @foreach ($employees as $employee)
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-4 col-6">
                                                             <div class="addevent-box top text-center mt-0">
                                                                 <a href="javascript:void(0)">
 

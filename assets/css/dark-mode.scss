@@ -39,7 +39,7 @@ h1, h2, h3, h4, h6, p, li, span,button, .site-header .navbar-nav .nav-item .nav-
     filter: inherit;
     
 }
-.activity-slider-content, li.nav-item .active, .about, .master .side-tab1 .nav-qm, .quick-menu-head-stl, .main-sidebar, .common-tab .nav-item.active, .heading-txt-styl {
+.activity-slider-content, .about, .master .side-tab1 .nav-qm, .quick-menu-head-stl, .main-sidebar, .common-tab .nav-item.active, .heading-txt-styl {
    border: 1px solid #fff;
     background: #000 !important;
 }
@@ -95,10 +95,15 @@ p strong, li strong{
 .site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before, .activity-slider-content .desc, .master .common-tab ul.nav-qm.nav-tabs .nav-item .nav-link::before, .dataTables_wrapper .dataTables_filter, #offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover{
     color: #fff !important;
 }
-.latest-update-wrap .title-white::after{
-    background-color: #fff !important;
+.latest-update-wrap .title-white::after {
+    background-color: #000 !important;
+    border-left: 1px solid #fff;
 }
 
-#offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover{
+#offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, li.nav-item .active{
     background: #000 !important;
+}
+
+.latest-update-wrap .title-white::after {
+    width: 2px !important;
 }

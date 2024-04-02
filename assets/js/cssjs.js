@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 tables.each(function() {
     if ($(this).hasClass('dataTable')) {
-        return; // Skip tables with the class .datatable
+        return; 
     }
 
     let tableWidth = $(this).width(); // Use outerWidth() instead of width()
@@ -57,6 +57,9 @@ tables.each(function() {
     };
     
     // myFunction()
+
+    $("#activitySlider .owl-nav").removeAttr('disabled');
+
    
 });
 
