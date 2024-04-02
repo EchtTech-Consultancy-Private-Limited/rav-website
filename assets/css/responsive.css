@@ -81,6 +81,9 @@
       }
 }
 @media (max-width: 1366px) {
+    .about-us-card {
+        min-height: 22.4em !important;
+    }
     .common-tab .nav-link {
         font-size: 13px !important;
         padding: 10px ;

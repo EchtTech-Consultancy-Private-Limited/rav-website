@@ -26,9 +26,6 @@ $(document).ready(function(){
     let tables = $('table');
 
 tables.each(function() {
-    if ($(this).hasClass('dataTable')) {
-        return; 
-    }
 
     let tableWidth = $(this).width(); // Use outerWidth() instead of width()
     let tableParentWidth = $(this).parent().width(); // Use width() instead of innerWidth()

@@ -6,9 +6,9 @@
                     <a href="{{ route('/') }}">
                         @if (isset($website_core_settings) && $website_core_settings->header_logo != '')
                             <img src="{{ asset('resources/uploads/WebsiteCoreSettings/' . $website_core_settings->header_logo) }}"
-                                alt="logo" class="img-fluid">
+                                alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
                         @else
-                            <img src="{{ asset('/assets/images/rav-logo.png') }}" alt="logo" class="img-fluid">
+                            <img src="{{ asset('/assets/images/rav-logo.png') }}" alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
                         @endif
                     </a>
                 </div>
@@ -19,27 +19,27 @@
                         <form name="searchForm" action="{{ url('search') }}" method="get">
                             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                             <button class="btn btn-search" type="submit">
-                                <img src="{{ asset('assets/images/search.png') }}" alt="search" class="img-fluid">
+                                <img src="{{ asset('assets/images/search.png') }}" alt="search" class="img-fluid" title="search">
                             </button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
                         <a href="https://www.india.gov.in/" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank" class="me-4">
-                            <img src="{{ asset('assets/images/emblem.svg') }}" alt="emblem" class="img-fluid">
+                            <img src="{{ asset('assets/images/emblem.svg') }}" alt="emblem" title="emblem" class="img-fluid">
                         </a>
                         <a href="https://yoga.ayush.gov.in/" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank" class="me-4">
                             <img src="{{ asset('assets/images/international-yoga.svg') }}" alt="international-yoga"
-                                class="img-fluid">
+                                class="img-fluid" title = "ayush yoga">
                         </a>
                         <a href="https://amritmahotsav.nic.in/" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank" class="me-4">
-                            <img src="{{ asset('assets/images/aazadi.svg') }}" alt="aazadi" class="img-fluid">
+                            <img src="{{ asset('assets/images/aazadi.svg') }}" alt="aazadi" title="aazadi" class="img-fluid">
                         </a>
                         <a href="https://www.g20.org/en/" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank">
-                            <img src="{{ asset('assets/images/g20-india.svg') }}" alt="g20-india" class="img-fluid">
+                            <img src="{{ asset('assets/images/g20-india.svg') }}" alt="g20-india" title = "g20-india" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -233,15 +233,15 @@
                 </a>
                 <a href="https://twitter.com/ravdelhi?lang=en" class="Twitter" onclick="return confirm('This link will take you to an external web site.')"
                     target="_blank" title="Twitter">
-                    <i class="fa fa-twitter" title="Twitter"></i> Twitter
+                   <div class="twitter-icon"> <img src="{{asset('assets/images/twitter_icon.png')}}" alt="twitter" title="twitter"></div> Twitter </a> 
                 </a>
                 <a href="https://www.instagram.com/ravdelhi/" onclick="return confirm('This link will take you to an external web site.')"
                     class="Instagram" target="_blank" title="Instagram">
                     <i class="fa fa-instagram"></i> Instagram
                 </a>
                 <a href="https://at.linkedin.com/company/rashtriya-ayurveda-vidyapeeth" class="Youtube" onclick="return confirm('This link will take you to an external web site.')"
-                    target="_blank" title="Linkedin">
-                    <i class="fa fa-linkedin"></i> Linkedin
+                    target="_blank" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i> LinkedIn
                 </a>
             </div>
         </div>
