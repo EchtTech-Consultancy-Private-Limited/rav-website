@@ -388,7 +388,7 @@
                                                 @endforeach
 
                                                 @if (isset($cmeSchemePdf))
-                                                    <table class="dataTable">
+                                                    <table class="" id="cmeScheme" >
                                                         <thead>
                                                             <tr>
                                                                 <th> Title</th>
