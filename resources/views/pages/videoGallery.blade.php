@@ -28,7 +28,7 @@
         <div class="breadcrumbs-link-text">
             <ul>
                 <li>
-                    <a class="active" href="" tabindex="0">
+                    <a class="active" href="{{ url('/') }}" tabindex="0">
                         @if (Session::get('locale') == 'hi')
                         होम पेज
                         @else

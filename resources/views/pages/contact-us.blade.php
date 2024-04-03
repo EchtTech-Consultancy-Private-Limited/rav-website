@@ -9,7 +9,7 @@
         <img src="./assets/images/bredcrumb.jpg" alt="" />
       </div>
       <div class="breadcrumb-title">
-        <h3 class="title">Contact Us</h3>
+        <h3 class="title">Contact us</h3>
       </div>
     </div>
 </section>
@@ -18,9 +18,9 @@
       <div class="breadcrumbs-link-text">
         <ul>
           <li>
-            <a class="active" href="" tabindex="0"> Home </a>
+            <a class="active" href="{{ url('/') }}" tabindex="0"> Home </a>
           </li>
-          <li>Contact</li>
+          <li>Contact us</li>
         </ul>
       </div>
     </div>

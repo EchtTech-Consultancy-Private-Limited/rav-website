@@ -28,7 +28,7 @@
             <div class="breadcrumbs-link-text">
                 <ul>
                     <li>
-                        <a class="active" href="" tabindex="0">
+                        <a class="active" href="{{ url('/') }}" tabindex="0">
                             @if (Session::get('locale') == 'hi')
                                 होम पेज
                             @else
@@ -200,7 +200,8 @@
 
                                             @if (isset($footerMenu) && count($footerMenu) > 0)
                                                 @foreach ($footerMenu as $index => $fmenu)
-                                                    <li class="nav-item @if(request()->is($fmenu->url)) active @endif" role="presentation">
+                                                    <li class="nav-item @if (request()->is($fmenu->url)) active @endif"
+                                                        role="presentation">
                                                         <a href="{{ url($fmenu->url) }}" class="nav-link">
                                                             @if (Session::get('locale') == 'hi')
                                                                 {{ $fmenu->name_hi }}
@@ -230,7 +231,7 @@
                                         @endphp
                                         <li class="nav-item nav-item-qm d-flex align-items-center @if (request()->is($quickLinksurl)) active @endif"
                                             role="presentation">
-                                           <a title="link"
+                                           <a
                                                 href="{{ url($quickLinksurl) ?? '' }}" class="nav-link ">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $quickLinks->name_hi ?? '' }}
@@ -623,7 +624,8 @@
                                                                 href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}"
                                                                 download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $tender->pdf_size ?? '' }})
+                                                            </a> <i class="fa fa-file-pdf-o">
+                                                            </i>({{ $tender->pdf_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -642,7 +644,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               
+
                                                 @foreach ($careers as $career)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
@@ -658,12 +660,12 @@
                                                         <td>{{ \Carbon\Carbon::parse($career->career_end_date)->format('d F Y') }}
                                                         </td>
                                                         <td>
-                                                            <a 
-                                                                class="link-primary"
+                                                            <a class="link-primary"
                                                                 href="{{ asset('resources/uploads/CareerManagement/' . $career->public_url) }}"
                                                                 download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $career->pdfimage_size ?? '' }})
+                                                            </a> <i class="fa fa-file-pdf-o">
+                                                            </i>({{ $career->pdfimage_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -672,6 +674,10 @@
                                     @else
                                         {!! $content !!}
                                     @endif
+                                    @if (isset($rsbkDirectoryInstituteWise) && $rsbkDirectoryInstituteWise == 1)
+                                        {!! $content !!}
+                                    @endif
+
                                 @endif
                                 <h1>
                                     @if (isset($organizedData['metatag']->page_title_en) && !blank($organizedData['metatag']->page_title_en))
@@ -694,7 +700,7 @@
                                                             tabindex="0">{{ $department->name_en ?? '' }}</span>
                                                     </h5>
                                                     @foreach ($employees as $employee)
-                                                        <div class="col-md-4 col-6">
+                                                        <div class="col-md-4">
                                                             <div class="addevent-box top text-center mt-0">
                                                                 <a href="javascript:void(0)">
 
@@ -736,7 +742,7 @@
                                                             tabindex="0">{{ $department->name_en ?? '' }}</span>
                                                     </h5>
                                                     @foreach ($employees as $employee)
-                                                        <div class="col-md-4 col-6">
+                                                        <div class="col-md-4">
                                                             <div class="addevent-box top text-center mt-0">
                                                                 <a href="javascript:void(0)">
 
@@ -813,8 +819,9 @@
                                                 <tr>
                                                     <td>{{ $data->pdf_title ?? '' }}</td>
                                                     <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}</td>
-                                                    <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}" download>View</a>
-                                                     <i class="fa fa-file-pdf-o text-danger">   </i>
+                                                    <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
+                                                            download>View</a>
+                                                        <i class="fa fa-file-pdf-o text-danger"> </i>
                                                         ({{ $data->pdfimage_size ?? '' }})
                                                     </td>
                                                 </tr>

@@ -33,10 +33,10 @@ class GalleryController extends Controller
 
     public function videoGallery()
     {
-        $galleryCategories = DB::table('gallery_management')->where('type', 1)->where('status', 3)->get();
+        $galleryCategories = DB::table('gallery_management')->where('type', 1)->where('status', 3)->where('soft_delete', 0)->get();
         $videos = [];
         foreach ($galleryCategories as $item) {
-            $categoryImageData = DB::table('gallery_details')->where('gallery_id', $item->uid)->first();
+            $categoryImageData = DB::table('gallery_details')->where('gallery_id', $item->uid)->where('soft_delete', 0)->first();
             if ($categoryImageData) {
                 $videos[] = [
                     'uid' => $item->uid,
