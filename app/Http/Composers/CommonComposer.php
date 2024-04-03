@@ -105,7 +105,7 @@ class CommonComposer
                 ])
                 ->get();
             $newsLetter = DB::table('website_menu_management')->where('menu_place',2)
-                ->where('name_en','E-News Letter')->first();
+                ->where('url','e-news-letter')->first();
 
 
             $dynamicContents = DB::table('website_menu_management')->where('name_en','Alumni Corner')
