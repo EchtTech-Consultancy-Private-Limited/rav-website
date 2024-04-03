@@ -423,7 +423,7 @@ class HomeController extends Controller
                         }
 
 
-
+                                
                         return view('master-page', ['governingBodyDepartments' => $governingBodyDepartments, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
 
@@ -514,9 +514,12 @@ class HomeController extends Controller
                             $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
 
+                        $rsbkDirectoryInstituteWise = 0;
+                        if($middelSlug == 'rsbk-directory-institute-wise'){
+                            $rsbkDirectoryInstituteWise = 1;
+                        }
 
-
-                        return view('master-page', ['stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
+                        return view('master-page', ['rsbkDirectoryInstituteWise'=>$rsbkDirectoryInstituteWise,'stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
                         $formData = DB::table('website_menu_management')
                             ->join('form_designs_management', 'website_menu_management.uid', '=', 'form_designs_management.website_menu_uid')

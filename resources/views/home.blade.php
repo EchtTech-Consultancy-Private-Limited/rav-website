@@ -477,10 +477,11 @@
                     <div class="course-wrap">
                         <div class="course-list">
                             <ul>
+                                {{-- @dd($quickLinks) --}}
                                 @foreach ($quickLinks as $link)
                                     <li>
                                         {{ $link->name_en }}
-                                        <a href="{{ url('/' . $link->url) }}" class="read-more">
+                                        <a href="{{ url( $link->url) }}" class="read-more">
                                             <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                                 class="img-fluid">
                                         </a>
@@ -489,7 +490,7 @@
                                 @if (isset($newsLetter))
                                     <li>
                                         {{ $newsLetter->name_en }}
-                                        <a href="{{ url('/' . $link->url) }}" class="read-more">
+                                        <a href="{{ url( $newsLetter->url) }}" class="read-more">
                                             <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                                 class="img-fluid">
                                         </a>
