@@ -1683,59 +1683,59 @@
                     <div class="client-slider">
                         <div class="owl-carousel owl-theme" id="clientSlider">
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.india.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
                                     <img src="{{ asset('assets/images/india-gov.svg') }}" alt="india-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://data.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
                                     <img src="{{ asset('assets/images/data-gov.svg') }}" alt="data-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.mygov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
                                     <img src="{{ asset('assets/images/mygov.svg') }}" alt="mygov" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
                                     <img src="{{ asset('assets/images/digital-india.svg') }}" alt="digital-india"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://ayush.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
                                     <img src="{{ asset('assets/images/ministry-of-ayush.svg') }}"
                                         alt="ministry-of-ayush" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.india.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
                                     <img src="{{ asset('assets/images/india-gov.svg') }}" alt="india-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="#" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
                                     <img src="{{ asset('assets/images/data-gov.svg') }}" alt="data-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
                                     <img src="{{ asset('assets/images/mygov.svg') }}" alt="mygov" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
                                     <img src="{{ asset('assets/images/digital-india.svg') }}" alt="digital-india"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://ayush.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
                                     <img src="{{ asset('assets/images/ministry-of-ayush.svg') }}"
                                         alt="ministry-of-ayush" class="img-fluid">
                                 </a>

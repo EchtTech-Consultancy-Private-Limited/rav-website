@@ -59,7 +59,7 @@
         padding: 0px 3px;
     }
     .addevent-box.top {
-        background: #fff !important;
+        /* background: #fff !important; */
     }
     .about{
         background: none;
@@ -81,6 +81,12 @@
       }
 }
 @media (max-width: 1366px) {
+    .addevent-box h5 {
+        font-size: 14px !important;
+    }
+    .addevent-box h6 {
+        font-size: 13px !important;
+    }
     .about-us-card {
         min-height: 22.4em !important;
     }
