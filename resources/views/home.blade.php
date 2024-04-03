@@ -148,9 +148,15 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $cabinetMinisterData->fname_en }}
-                                    {{ $cabinetMinisterData->mname_en }}
-                                    {{ $cabinetMinisterData->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $cabinetMinisterData->fname_hi }}
+                                        {{ $cabinetMinisterData->mname_hi }}
+                                        {{ $cabinetMinisterData->lname_hi }}
+                                    @else
+                                        {{ $cabinetMinisterData->fname_en }}
+                                        {{ $cabinetMinisterData->mname_en }}
+                                        {{ $cabinetMinisterData->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($cabinetMinisterData->designation_id) }}</b>
@@ -162,14 +168,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -181,9 +187,15 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $stateMinister->fname_en }}
-                                    {{ $stateMinister->mname_en }}
-                                    {{ $stateMinister->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $stateMinister->fname_hi }}
+                                        {{ $stateMinister->mname_hi }}
+                                        {{ $stateMinister->lname_hi }}
+                                    @else
+                                        {{ $stateMinister->fname_en }}
+                                        {{ $stateMinister->mname_en }}
+                                        {{ $stateMinister->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($stateMinister->designation_id) }}</b>
@@ -195,14 +207,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -214,9 +226,15 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $secretaryData->fname_en }}
-                                    {{ $secretaryData->mname_en }}
-                                    {{ $secretaryData->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $secretaryData->fname_hi }}
+                                        {{ $secretaryData->mname_hi }}
+                                        {{ $secretaryData->lname_hi }}
+                                    @else
+                                        {{ $secretaryData->fname_en }}
+                                        {{ $secretaryData->mname_en }}
+                                        {{ $secretaryData->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($secretaryData->designation_id) }}</b>
@@ -229,14 +247,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -248,9 +266,15 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $directorData->fname_en }}
-                                    {{ $directorData->mname_en }}
-                                    {{ $directorData->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $directorData->fname_hi }}
+                                        {{ $directorData->mname_hi }}
+                                        {{ $directorData->lname_hi }}
+                                    @else
+                                        {{ $directorData->fname_en }}
+                                        {{ $directorData->mname_en }}
+                                        {{ $directorData->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($directorData->designation_id) }}</b>
@@ -263,14 +287,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -403,7 +427,8 @@
                                                                     <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}
                                                                     </td>
                                                                     <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
-                                                                            download>View</a> <i class="fa fa-file-pdf-o">   </i> ({{ $data->pdfimage_size ?? '' }})
+                                                                            download>View</a> <i class="fa fa-file-pdf-o">
+                                                                        </i> ({{ $data->pdfimage_size ?? '' }})
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -480,8 +505,12 @@
                                 {{-- @dd($quickLinks) --}}
                                 @foreach ($quickLinks as $link)
                                     <li>
-                                        {{ $link->name_en }}
-                                        <a href="{{ url( $link->url) }}" class="read-more">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $link->name_hi }}
+                                        @else
+                                            {{ $link->name_en }}
+                                        @endif
+                                        <a href="{{ url($link->url) }}" class="read-more">
                                             <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                                 class="img-fluid">
                                         </a>
@@ -489,8 +518,12 @@
                                 @endforeach
                                 @if (isset($newsLetter))
                                     <li>
-                                        {{ $newsLetter->name_en }}
-                                        <a href="{{ url( $newsLetter->url) }}" class="read-more">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $newsLetter->name_hi }}
+                                        @else
+                                            {{ $newsLetter->name_en }}
+                                        @endif
+                                        <a href="{{ url($newsLetter->url) }}" class="read-more">
                                             <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                                 class="img-fluid">
                                         </a>
@@ -579,6 +612,7 @@
                                         </div>
                                         <div class="message-tab-content">
                                             <h2 class="heading-black heading-black-md">
+                                                
                                                 {{ $latestMessageData['page_title_en'] }}
                                             </h2>
                                             <p class="desc">
@@ -620,9 +654,16 @@
                                     <div class="col-md-9">
                                         <div class="message-tab-content">
                                             <h2 class="heading-black heading-black-md">
-                                                {{ $cabinetMinisterData->fname_en }}
-                                                {{ $cabinetMinisterData->mname_en }}
-                                                {{ $cabinetMinisterData->lname_en }}
+                                                @if (Session::get('locale') == 'hi')
+                                                    {{ $cabinetMinisterData->fname_hi }}
+                                                    {{ $cabinetMinisterData->mname_hi }}
+                                                    {{ $cabinetMinisterData->lname_hi }}
+                                                @else
+                                                    {{ $cabinetMinisterData->fname_en }}
+                                                    {{ $cabinetMinisterData->mname_en }}
+                                                    {{ $cabinetMinisterData->lname_en }}
+                                                    
+                                                @endif
                                             </h2>
                                             <p class="title">
                                                 {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
@@ -704,9 +745,11 @@
                                                         <td>
                                                             <a target="{{ $tender->tab_type == 1 ? '_blank' : '' }}"
                                                                 class="link-primary"
-                                                                href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}" download>
+                                                                href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}"
+                                                                download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $tender->pdf_size ?? '' }})
+                                                            </a> <i class="fa fa-file-pdf-o">
+                                                            </i>({{ $tender->pdf_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -787,7 +830,7 @@
                     @php
                         $content = json_decode($journey->content);
                     @endphp
-                    <div class="col-md-3 mb-4" >
+                    <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2 ">
                             <img src="{{ asset('assets/images/' . $content->image_name) }}"
                                 alt="{{ $content->image_name }}" class="img-fluid">
@@ -1256,11 +1299,11 @@
                                 </button>
                             </li>
                             <!-- <li class="nav-item" role="presentation">
-                                                    <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
-                                                        aria-selected="true">Our Photos
-                                                    </button>
-                                                </li> -->
+                                                                <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
+                                                                    data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
+                                                                    aria-selected="true">Our Photos
+                                                                </button>
+                                                            </li> -->
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"
@@ -1684,59 +1727,79 @@
                     <div class="client-slider">
                         <div class="owl-carousel owl-theme" id="clientSlider">
                             <div class="item">
-                                <a href="https://www.india.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
+                                <a href="https://www.india.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/india-gov.svg') }}" alt="india-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="https://data.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
+                                <a href="https://data.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/data-gov.svg') }}" alt="data-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="https://www.mygov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
+                                <a href="https://www.mygov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/mygov.svg') }}" alt="mygov" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
+                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/digital-india.svg') }}" alt="digital-india"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="https://ayush.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target="_blank">
+                                <a href="https://ayush.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/ministry-of-ayush.svg') }}"
                                         alt="ministry-of-ayush" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="https://www.india.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
+                                <a href="https://www.india.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/india-gov.svg') }}" alt="india-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
+                                <a href="#" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/data-gov.svg') }}" alt="data-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
+                                <a href="" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/mygov.svg') }}" alt="mygov" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
+                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/digital-india.svg') }}" alt="digital-india"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="https://ayush.gov.in/" class="client-slider-img" onclick="return confirm('This link is external. Are you sure you want to proceed?')" target = "_blank">
+                                <a href="https://ayush.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/ministry-of-ayush.svg') }}"
                                         alt="ministry-of-ayush" class="img-fluid">
                                 </a>
