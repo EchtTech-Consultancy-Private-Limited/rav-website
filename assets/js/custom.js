@@ -1,10 +1,11 @@
 $(document).ready(function() {
   $('.dataTable').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-          'copy', 'excelFlash', 'excel', 'pdf', 'print'
-      ]
-  });
+    dom: 'lBfrtip', // Add 'l' to include length menu before the buttons
+    buttons: [ 'print' ],
+    lengthMenu: [[5,10,25, 50, 75, -1], [5,10,25, 50, 75, "All"]]
+});
+
+
 });
 $(document).ready(function () {
   function printCurrentDateTime() {
@@ -26,7 +27,7 @@ $(document).ready(function () {
     hours = hours % 12;
     hours = hours ? hours : 12;
     minutes = minutes < 10 ? '0' + minutes : minutes;
-    var formattedDateTime = `${day} ${month} ${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+    var formattedDateTime = `0${day} ${month} ${year} ${hours}:${minutes}:${seconds} ${ampm}`;
     let date = $('.dateTime');
     date.html(formattedDateTime);
   }
@@ -38,7 +39,7 @@ $(document).ready(function () {
     var year = currentDate.getFullYear();
     var month = currentDate.getMonth() + 1;
     var day = currentDate.getDate();
-    var formattedDateTime = `${day}-${month}-${year}`;
+    var formattedDateTime = `0${day}-0${month}-${year}`;
     let date = $('.date');
     date.html(formattedDateTime);
   }
@@ -136,19 +137,17 @@ $('#activitySlider').owlCarousel({
   loop: false,
   nav: true,
   dots: false,
-  autoplay: false,
+  autoplay: true,
   margin: 30,
   responsive: {
     0: {
       items: 1,
-      nav: false,
     },
     600: {
       items: 2,
-      nav: false,
     },
     1000: {
-      items: 2
+      items: 2,
     }
   }
 });

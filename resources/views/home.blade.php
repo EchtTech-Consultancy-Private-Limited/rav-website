@@ -706,7 +706,7 @@
                                                                 class="link-primary"
                                                                 href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}" download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> ({{ $tender->pdf_size ?? '' }})
+                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $tender->pdf_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -787,8 +787,8 @@
                     @php
                         $content = json_decode($journey->content);
                     @endphp
-                    <div class="col-md-3" style="margin-bottom: 25px;">
-                        <div class="our-journey-card my-md-0 my-2 mb-2">
+                    <div class="col-md-3 mb-4" >
+                        <div class="our-journey-card my-md-0 my-2 ">
                             <img src="{{ asset('assets/images/' . $content->image_name) }}"
                                 alt="{{ $content->image_name }}" class="img-fluid">
                             <span class="total-no counterNumber" counter="{{ $content->count }}">

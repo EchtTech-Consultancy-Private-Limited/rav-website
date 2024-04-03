@@ -370,7 +370,6 @@ strong {
 }
 
 li.nav-item .active {
-  padding: 13px 11px !important;
   background: #ff5200;
   color: #fff !important;
 }
@@ -610,6 +609,7 @@ li.nav-item .active {
 
 .site-header .navbar-nav .nav-item .nav-link.active {
   color: #ff5200;
+  padding: 13px;
 }
 
 .site-header .navbar-nav .nav-item .nav-link.active svg path {
@@ -807,7 +807,7 @@ li.nav-item .active {
   border: 1px solid #d6d6d6;
   border-radius: 20px;
   padding: 15px;
-  min-height: 20em;
+  min-height: 21.3em;
 }
 
 .about-us-card .img {
@@ -1198,11 +1198,11 @@ li.nav-item .active {
   color: #fff;
 }
 
-.common-tab .nav-link.active {
+.common-tab .nav-item .nav-link.active {
   background-color: #ff5200;
   color: #fff !important;
   border: none;
-  padding: 8px 12px !important;
+  padding: 8px 12px;
 }
 
 @media (max-width: 1440px) {
@@ -1455,6 +1455,7 @@ li.nav-item .active {
   -webkit-box-orient: vertical;
   white-space: normal;
   overflow: hidden;
+  text-align: left;
 }
 
 .activity-slider-content .read-more {
@@ -1491,6 +1492,10 @@ li.nav-item .active {
   position: absolute;
   top: -95px;
   right: 0;
+}
+
+.activity-slider .owl-nav {
+  display: block !important;
 }
 
 .activity-slider .owl-nav .owl-next,
@@ -1620,7 +1625,7 @@ section.client-wrap.ptb-100 {
 }
 
 .site-footer .copyright-wrap p {
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 0.9;
@@ -2277,11 +2282,12 @@ div#corner-tab-pane table {
 
 div.dt-buttons > .dt-button,
 div.dt-buttons > div.dt-button-split .dt-button {
-  padding: 0 12px !important;
+  padding: 6px 12px !important;
   background: #bc3434 !important;
   color: #fff !important;
   border: 1px solid #fff !important;
   border-radius: 5px !important;
+  margin: 0 !important;
 }
 
 .event-card .owl-carousel .owl-item img {
@@ -2444,7 +2450,7 @@ p.desc {
 }
 
 .about-us-card:hover {
-  padding: 0;
+  padding: 10px;
 }
 
 .about-us-card {
@@ -3344,6 +3350,9 @@ Image Section Css */
   font-size: 20px !important;
   font-family: "Oswald", sans-serif;
   transition: all 0.8s;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
 }
 
 .sticky-icon a:hover {
@@ -3366,7 +3375,7 @@ Image Section Css */
 }
 
 .Twitter {
-  background-color: #007ba8;
+  background-color: #000;
   color: #fff;
 }
 
@@ -3536,6 +3545,7 @@ Image Section Css */
 
 .dataTables_wrapper .dataTables_length select {
   padding: 0px !important;
+  margin: 0 10px;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -3594,7 +3604,6 @@ Image Section Css */
 
 .photo-wrap .tab-content {
   box-shadow: 0px 0px 22px #ddd;
-  padding: 10px 22px 0;
   border-radius: 12px;
   background-color: #fff;
 }
@@ -3682,7 +3691,7 @@ button.btn.side-mn-icn:hover {
 .footer-bottom ul li {
   position: relative;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   padding: 0px 10px;
 }
 
@@ -3983,7 +3992,7 @@ button.btn.side-mn-icn:hover {
 }
 
 .rs-carousel.nav-style2 .owl-nav {
-  display: block;
+  display: none;
   position: absolute;
   top: -80px;
   right: 0;
@@ -4564,4 +4573,60 @@ div[aria-labelledby=cme-tab] .dataTables_wrapper .dataTables_paginate span .pagi
 
 i.fa.fa-file-pdf-o {
   color: #fd1d1d;
+}
+
+.tab-pane .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background-color: rgba(141, 14, 92, 0.9098039216) !important;
+  color: #fff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate a.paginate_button.current {
+  background-color: rgba(141, 14, 92, 0.9098039216) !important;
+  color: #fff !important;
+}
+.dataTables_wrapper .dataTables_paginate a.paginate_button.current:hover {
+  color: #fff !important;
+}
+
+#cme-tab-pane table.dataTable.no-footer, div#tenders-tab-pane table.dataTable.no-footer {
+  display: table !important;
+}
+
+.twitter-icon {
+  width: 35px;
+  height: 35px;
+  padding: 7px;
+  background: #fff;
+  border-radius: 100%;
+  display: flex;
+  margin-right: 10px;
+}
+.twitter-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+h3 {
+  font-family: "Playfair Display";
+  letter-spacing: 0px;
+  color: #000000;
+  line-height: 1;
+  font-size: 24px;
+  padding: 0px 1px 8px;
+  margin-top: 6px;
+}
+
+.about p {
+  margin-bottom: 10px;
+  color: #000;
+  word-wrap: break-word;
+}
+.about p strong {
+  font-weight: 700 !important;
+}
+.about p strong strong {
+  white-space: nowrap;
+}
+.about p .accordion-button {
+  font-weight: 600;
 }/*# sourceMappingURL=style.css.map */
