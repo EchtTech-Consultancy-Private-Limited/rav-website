@@ -110,7 +110,7 @@
             </div>
             <div class="col-md-6 justify-content-end">
                 <ul>
-                    <li>Last Updated - <span class="date"></span></li>
+                    <li>Last Updated : <span class="date"></span></li>
                     <li class="visitors"> Total Visitors: <span id="visitors">{{ $total_visitors ?? 0 }}</span> </a></li>
                 </ul>
             </div>
