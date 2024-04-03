@@ -924,7 +924,7 @@
                                                                     {!! Str::limit(strip_tags($gyanGanga->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="{{ url($gyanGanga->url) }}" class="read-more">
+                                                            <a href="{{ url($gyanGanga->parent_url.'/'.$gyanGanga->url) }}" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -959,7 +959,7 @@
                                                                     {!! Str::limit(strip_tags($ayurAhar->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="{{ url($ayurAhar->url) }}" class="read-more">
+                                                            <a href="{{ url($ayurAhar->parent_url.'/'.$ayurAhar->url) }}" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -1022,7 +1022,7 @@
                                                                     @endif
 
                                                                 </div>
-                                                                <a href="{{ $item->url }}" class="read-more">
+                                                                <a href="{{ 'activities/'.$item->url }}" class="read-more">
                                                                     <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                         alt="read-more" class="img-fluid">
                                                                 </a>
@@ -1063,7 +1063,7 @@
                                     aria-controls="video-tab-pane" aria-selected="false">Gallery
                                 </button>
                             </li>
-                            
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="awards-tab" data-bs-toggle="tab"
                                     data-bs-target="#awards-tab-pane" type="button" role="tab"
