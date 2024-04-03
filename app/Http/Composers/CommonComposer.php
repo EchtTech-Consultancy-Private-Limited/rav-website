@@ -154,6 +154,14 @@ class CommonComposer
                 ->get();
                 
 
+                // visitors
+                $visitors = DB::table('visiting_counters')->get();
+                if (count($visitors) > 0){
+                    $visitors = count($visitors);
+                }else{
+                    $visitors = 0;
+                }
+
 
             // dd($gyanGanga);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
@@ -173,7 +181,8 @@ class CommonComposer
                 'awardsContents' => $awardsContents,
                 'gyanGanga' => $gyanGanga,
                 'ayurAhar' => $ayurAhar,
-                'cravGurusData' => $cravGurusData
+                'cravGurusData' => $cravGurusData,
+                'total_visitors' => $visitors
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
