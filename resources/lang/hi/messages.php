@@ -14,5 +14,6 @@ return [
     'Research_Initiatives'=>'अनुसंधान पहल',
     'Online_Presence'=>'ऑनलाइन उपस्थिति',
     'Our_Activities'=>'हमारी गतिविधियां',
+    'Know_More'=>'अधिक जानकारी',
     'CRAV_Gurus'=>'सी.आर.ए.वी गुरु'
 ];

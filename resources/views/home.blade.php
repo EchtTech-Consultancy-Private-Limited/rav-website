@@ -163,7 +163,13 @@
                                     {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('about-us/honourable-cabinet-minister') }}"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-cabinet-minister') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Know_More') }}
+                                        @else
+                                            {{ __('messages.Know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -202,7 +208,13 @@
                                     {{ getEmployeeDepartment($stateMinister->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('about-us/honourable-minister-of-state') }}"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-minister-of-state') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Know_More') }}
+                                        @else
+                                            {{ __('messages.Know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -241,7 +253,13 @@
                                     {{ getEmployeeDepartment($secretaryData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('honourable-secretary') }}"> Know More</a>
+                                    <a href="{{ url('honourable-secretary') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Know_More') }}
+                                        @else
+                                            {{ __('messages.Know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -281,7 +299,13 @@
                                     {{ getEmployeeDepartment($directorData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('director') }}"> Know More</a>
+                                    <a href="{{ url('director') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Know_More') }}
+                                        @else
+                                            {{ __('messages.Know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -665,7 +689,7 @@
                                                     {{ $cabinetMinisterData->fname_en }}
                                                     {{ $cabinetMinisterData->mname_en }}
                                                     {{ $cabinetMinisterData->lname_en }}
-                                                    
+
                                                 @endif
                                             </h2>
                                             <p class="title">
@@ -853,7 +877,7 @@
                     </div>
                 @endforeach
 
-            
+
 
             </div>
         </div>
@@ -1033,7 +1057,7 @@
                                             </div>
                                         @endforeach
 
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -1056,14 +1080,14 @@
                                     aria-controls="twitter-tab-pane" aria-selected="false">Social Media Updates
                                 </button>
                             </li>
-                      
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"
                                     aria-controls="video-tab-pane" aria-selected="false">Gallery
                                 </button>
                             </li>
-                            
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="awards-tab" data-bs-toggle="tab"
                                     data-bs-target="#awards-tab-pane" type="button" role="tab"

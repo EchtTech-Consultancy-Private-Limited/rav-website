@@ -1,5 +1,5 @@
 <?php
-  
+
 return [
     'sitemap' => 'Sitemap',
     'Skip-content' => "Skip to main content",
@@ -14,6 +14,7 @@ return [
     'Research_Initiatives'=>'Research Initiatives',
     'Online_Presence'=>'Online Presence',
     'Our_Activities'=>'Our Activities',
+    'Know_More'=>'Know More',
     'CRAV_Gurus'=>'CRAV Gurus'
 ];
 
