@@ -612,13 +612,16 @@
                                         </div>
                                         <div class="message-tab-content">
                                             <h2 class="heading-black heading-black-md">
-                                                
-                                                {{ $latestMessageData['page_title_en'] }}
+                                                @if (Session::get('locale') == 'hi')
+                                                    {{ $latestMessageData['page_title_hi'] }}
+                                                @else
+                                                    {{ $latestMessageData['page_title_en'] }}
+                                                @endif
                                             </h2>
                                             <p class="desc">
                                                 {{-- display content after remove html tags and add limit 400 --}}
                                                 @php
-                                                    $content = strip_tags($latestMessageData['page_content_en']);
+                                                    $content = strip_tags(Session::get('locale') == 'hi' ? $latestMessageData['page_content_hi'] : $latestMessageData['page_content_en'] );
                                                     $content =
                                                         strlen($content) > 600
                                                             ? substr($content, 0, 600) . '...'
@@ -670,7 +673,7 @@
                                             </p>
                                             <p class="desc">
                                                 @php
-                                                    $content = strip_tags($cabinetMinisterData->description_en);
+                                                    $content = strip_tags(Session::get('locale') == 'hi' ? $cabinetMinisterData->description_hi : $cabinetMinisterData->description_en);
                                                     $content = Str::limit($content, 685);
                                                 @endphp
 
@@ -710,7 +713,7 @@
                             <div class="tab-pane fade" id="tenders-tab-pane" role="tabpanel"
                                 aria-labelledby="tenders-tab" tabindex="0">
                                 <div>
-                                    <h2 class = "heading-black heading-black-md">Our Tender</h2>
+                                    <h2 class = "heading-black heading-black-md">Our Tenders</h2>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -850,91 +853,7 @@
                     </div>
                 @endforeach
 
-                {{-- <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation" class="img-fluid">
-                        <span class="total-no">
-                            1750
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Number_of_Graduates') }}
-                            @else
-                                {{ __('messages.Number_of_Graduates') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/programme.svg') }}" alt="programme" class="img-fluid">
-                        <span class="total-no">
-                            1
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Programme_Offerings') }}
-                            @else
-                                {{ __('messages.Programme_Offerings') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/research.svg') }}" alt="research" class="img-fluid">
-                        <span class="total-no">
-                            71
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Research_Initiatives') }}
-                            @else
-                                {{ __('messages.Research_Initiatives') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            28
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Online_Presence') }}
-                            @else
-                                {{ __('messages.Online_Presence') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3 mt-4">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/graduation.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            61
-
-                        </span>
-                        <p class="title">
-                            Workshop & Training
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-3 mt-4">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/programme.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            1500
-                        </span>
-                        <p class="title">
-                            Total no of CME
-                        </p>
-
-                    </div>
-                </div> --}}
+            
 
             </div>
         </div>
@@ -1114,168 +1033,7 @@
                                             </div>
                                         @endforeach
 
-                                        {{-- <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider2.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                New Initiative
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Towards achieving the objective of “Ek Bharat Shreshth
-                                                                Bharat” campaign by Government of India, Rashtriya
-                                                                Ayurved Vidyapeeth , New Delhi under guidance of
-                                                                Ministry of AYUSH.
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider1.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Conduction of Training Programs
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Conduction of Training Programs
-                                                                Printer-friendly version
-                                                                In order to cater the specific needs of teachers ,
-                                                                students and researchers in Ayurveda , RAV has initiated
-                                                                various training programs as per actual demand. Curently
-                                                                a training program on samhita based ayurvedic for
-                                                                teachers and another on Research Method, manuscript
-                                                                writing and career opportunity for PG scholars is
-                                                                operational.
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Theses Submitted by RAV Students
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Annexure-I: Thesis Submitted by RAV Students
-                                                                The details of thesis, subject wise, submitted by
-                                                                students of RAV :
-                                                                SUSHRUTA SAMHITA
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Celebration of International Yoga Day 2023
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Rashtriya Ayurveda Vidyapeet (RAV) Punjabi Bagh, Delhi
-                                                                commemorated the 9th International Day for Yoga 2023.
-                                                                This year, the theme for International Yoga Day is "Yoga
-                                                                for Vasudhaiva Kutumbakam," which beautifully
-                                                                encapsulates our collective aspiration for "One Earth,
-                                                                One Family, One Future." Dr. Vandana Siroha, Director,
-                                                                RAV “Remarked that Yoga is not just performing asanas,
-                                                                but a way of living a healthy life. The practice of
-                                                                doing yoga every day not only makes our body healthy but
-                                                                it even relaxes the mind and oozes out negativity”.
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Expert Talks Series on Poshan-Nutrition
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Expert Talks Series on Poshan-Nutrition
-                                                                Printer-friendly version
-                                                                Every year “National Nutrition Month” is celebrated in
-                                                                the month of September. Poshan Abhiyaan was launched by
-                                                                Hon. Prime Minister in the year 2018 on the occasion of
-                                                                International Women’s Day with an objective to combat
-                                                                malnutrition among pregnant women, lactating mothers,
-                                                                school childrens & adolescent girls.RAV is also
-                                                                celebrating Poshan Maah from “1st to 30th September
-                                                                2021.”
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -1298,18 +1056,14 @@
                                     aria-controls="twitter-tab-pane" aria-selected="false">Social Media Updates
                                 </button>
                             </li>
-                            <!-- <li class="nav-item" role="presentation">
-                                                                <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
-                                                                    data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
-                                                                    aria-selected="true">Our Photos
-                                                                </button>
-                                                            </li> -->
+                      
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"
                                     aria-controls="video-tab-pane" aria-selected="false">Gallery
                                 </button>
                             </li>
+                            
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="awards-tab" data-bs-toggle="tab"
                                     data-bs-target="#awards-tab-pane" type="button" role="tab"
