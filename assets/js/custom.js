@@ -407,12 +407,14 @@ function setTheme() {
   const linkElement = document.getElementById('theme-style');
  
   if (document.getElementById('mode').checked) {
-    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
     // document.cookie =  `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`; // local
+    // linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
+    linkElement.href = `${baseurl}/assets/css/dark-mode.css`;
     document.cookie =  `theme=light-mode;path=${baseurl}/assets/css/dark-mode.css`; // local
   } else {
-    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
     // document.cookie = `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/style.css`; // local Set cookie for light mode
+    // linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
+    linkElement.href = `${baseurl}/assets/css/style.css`;
     document.cookie = `theme=light-mode;path=${baseurl}/assets/css/style.css`; // Set cookie for light mode
   }
 }
