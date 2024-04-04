@@ -163,7 +163,13 @@
                                     {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('about-us/honourable-cabinet-minister') }}"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-cabinet-minister') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -202,7 +208,13 @@
                                     {{ getEmployeeDepartment($stateMinister->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('about-us/honourable-minister-of-state') }}"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-minister-of-state') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -241,7 +253,13 @@
                                     {{ getEmployeeDepartment($secretaryData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('honourable-secretary') }}"> Know More</a>
+                                    <a href="{{ url('honourable-secretary') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -281,7 +299,13 @@
                                     {{ getEmployeeDepartment($directorData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('director') }}"> Know More</a>
+                                    <a href="{{ url('director') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -304,21 +328,34 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="latestNews-tab" data-bs-toggle="tab"
                                         data-bs-target="#latestNews-tab-pane" type="button" role="tab"
-                                        aria-controls="latestNews-tab-pane" aria-selected="true">Latest News
+                                        aria-controls="latestNews-tab-pane" aria-selected="true">
+                                         @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Latest_News') }}
+                                        @else
+                                            {{ __('messages.Latest_News') }}
+                                        @endif
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="courses-tab" data-bs-toggle="tab"
                                         data-bs-target="#courses-tab-pane" type="button" role="tab"
                                         aria-controls="courses-tab-pane" aria-selected="false">
-                                        Admission to
-                                        Courses
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Admission_to_Courses') }}
+                                        @else
+                                            {{ __('messages.Admission_to_Courses') }}
+                                        @endif
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="cme-tab" data-bs-toggle="tab"
                                         data-bs-target="#cme-tab-pane" type="button" role="tab"
-                                        aria-controls="cme-tab-pane" aria-selected="false">CME Scheme
+                                        aria-controls="cme-tab-pane" aria-selected="false">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.CME_Scheme') }}
+                                        @else
+                                            {{ __('messages.CME_Scheme') }}
+                                        @endif
                                     </button>
                                 </li>
                             </ul>
@@ -362,7 +399,13 @@
                                                         </li>
                                                     @endforeach
                                                 @else
-                                                    <h6>No News available.</h6>
+                                                    <h6>
+                                                        @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.No_News_Available') }}
+                                                        @else
+                                                            {{ __('messages.No_News_Available') }}
+                                                        @endif
+                                                    </h6>
                                                 @endif
                                             </ul>
                                         </div>
@@ -382,7 +425,13 @@
                                                                 {!! $organizedData['content']->page_content_en !!}
                                                             @endif
                                                         @else
-                                                            <span>Content not available ..</span>
+                                                            <span>
+                                                                @if (Session::get('locale') == 'hi')
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @else
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @endif
+                                                            </span>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -406,18 +455,42 @@
                                                                 {!! $organizedData['content']->page_content_en !!}
                                                             @endif
                                                         @else
-                                                            <span>Content not available ..</span>
+                                                            <span> 
+                                                                @if (Session::get('locale') == 'hi')
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @else
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @endif
+                                                            </span>
                                                         @endif
                                                     @endif
                                                 @endforeach
 
                                                 @if (isset($cmeSchemePdf))
-                                                    <table class="dataTable">
+                                                    <table class="" id="cmeScheme" >
                                                         <thead>
                                                             <tr>
-                                                                <th> Title</th>
-                                                                <th> Date</th>
-                                                                <th> View/Download</th>
+                                                                <th>
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Title') }}
+                                                                    @else
+                                                                        {{ __('messages.Title') }}
+                                                                    @endif
+                                                                </th>
+                                                                <th>
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Date') }}
+                                                                    @else
+                                                                        {{ __('messages.Date') }}
+                                                                    @endif
+                                                                </th>
+                                                                <th> 
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.View/Download') }}
+                                                                    @else
+                                                                        {{ __('messages.View/Download') }}
+                                                                    @endif
+                                                                </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -447,7 +520,11 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="event-card">
                         <h2 class="heading-white mb-2">
-                            Our Events
+                            @if (Session::get('locale') == 'hi')
+                                {{ __('messages.Our_Events') }}
+                            @else
+                                {{ __('messages.Our_Events') }}
+                            @endif
                         </h2>
                         <div class="event-slider">
                             <div class="owl-carousel owl-theme" id="eventSlider">
@@ -462,7 +539,11 @@
                                                 @endif
                                                 <div class="event-list-content my-2">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="tag">Event Date</span>
+                                                        <span class="tag"> @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.Event_Date') }}
+                                                        @else
+                                                            {{ __('messages.Event_Date') }}
+                                                        @endif</span>
                                                     </div>
                                                     <div class="date-wrap">
                                                         <img src="{{ asset('assets/images/calendar.svg') }}"
@@ -474,7 +555,13 @@
                                                 </div>
                                                 <div class="event-list-content my-2">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="tag">Venue</span>
+                                                        <span class="tag"> 
+                                                            @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.Venue') }}
+                                                            @else
+                                                                {{ __('messages.Venue') }}
+                                                            @endif
+                                                        </span>
                                                     </div>
                                                     <div class="address-wrap">
                                                         <img src="{{ asset('assets/images/location.svg') }}"
@@ -492,7 +579,13 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <p>No events available..</p>
+                                    <p> 
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.No_Events_Available') }}
+                                        @else
+                                            {{ __('messages.No_Events_Available') }}
+                                        @endif
+                                    </p>
                                 @endif
                             </div>
                         </div>
@@ -546,43 +639,67 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="latestMassage-tab" data-bs-toggle="tab"
                                     data-bs-target="#latestMassage-tab-pane" type="button" role="tab"
-                                    aria-controls="latestMassage-tab-pane" aria-selected="true">Latest Message
+                                    aria-controls="latestMassage-tab-pane" aria-selected="true">
+                                     @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Latest_Message') }}
+                                    @else
+                                        {{ __('messages.Latest_Message') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="ourMinisters-tab" data-bs-toggle="tab"
                                     data-bs-target="#ourMinisters-tab-pane" type="button" role="tab"
                                     aria-controls="ourMinisters-tab-pane" aria-selected="false">
-                                    Meet Our
-                                    Ministers
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Meet_Our_Ministers') }}
+                                    @else
+                                        {{ __('messages.Meet_Our_Ministers') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="corner-tab" data-bs-toggle="tab"
                                     data-bs-target="#corner-tab-pane" type="button" role="tab"
-                                    aria-controls="corner-tab-pane" aria-selected="false">Alumni Corner
+                                    aria-controls="corner-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Alumni_Corner') }}
+                                    @else
+                                        {{ __('messages.Alumni_Corner') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="tenders-tab" data-bs-toggle="tab"
                                     data-bs-target="#tenders-tab-pane" type="button" role="tab"
-                                    aria-controls="tenders-tab-pane" aria-selected="false">Our Tenders
+                                    aria-controls="tenders-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Our_Tenders') }}
+                                    @else
+                                        {{ __('messages.Our_Tenders') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="thesis-tab" data-bs-toggle="tab"
                                     data-bs-target="#thesis-tab-pane" type="button" role="tab"
                                     aria-controls="thesis-tab-pane" aria-selected="false">
-                                    Thesis by RAV
-                                    students
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Thesis_by_RAV_Students') }}
+                                    @else
+                                        {{ __('messages.Thesis_by_RAV_Students') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="information-tab" data-bs-toggle="tab"
                                     data-bs-target="#information-tab-pane" type="button" role="tab"
                                     aria-controls="information-tab-pane" aria-selected="false">
-                                    Right to
-                                    Information
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Right_to_Information') }}
+                                    @else
+                                        {{ __('messages.Right_to_Information') }}
+                                    @endif
                                 </button>
                             </li>
                         </ul>
@@ -631,7 +748,11 @@
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
                                                 <a href="{{ url($latestMessageData['url']) }}" class="btn btn-org-bdr">
-                                                    Read More
+                                                    @if (Session::get('locale') == 'hi')
+                                                        {{ __('messages.Read_More') }}
+                                                    @else
+                                                        {{ __('messages.Read_More') }}
+                                                    @endif
                                                 </a>
                                             </div>
                                         </div>
@@ -665,7 +786,7 @@
                                                     {{ $cabinetMinisterData->fname_en }}
                                                     {{ $cabinetMinisterData->mname_en }}
                                                     {{ $cabinetMinisterData->lname_en }}
-                                                    
+
                                                 @endif
                                             </h2>
                                             <p class="title">
@@ -683,7 +804,11 @@
                                             <div class="btn-wrap d-flex align-items-center">
                                                 <a href="{{ url('about-us/honourable-cabinet-minister') }}"
                                                     class="btn btn-org-bdr">
-                                                    Read More
+                                                    @if (Session::get('locale') == 'hi')
+                                                        {{ __('messages.Read_More') }}
+                                                    @else
+                                                        {{ __('messages.Read_More') }}
+                                                    @endif
                                                 </a>
                                             </div>
                                         </div>
@@ -853,7 +978,7 @@
                     </div>
                 @endforeach
 
-            
+
 
             </div>
         </div>
@@ -1033,7 +1158,7 @@
                                             </div>
                                         @endforeach
 
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -1056,7 +1181,7 @@
                                     aria-controls="twitter-tab-pane" aria-selected="false">Social Media Updates
                                 </button>
                             </li>
-                      
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"

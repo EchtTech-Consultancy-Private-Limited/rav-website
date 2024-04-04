@@ -1232,7 +1232,7 @@ li.nav-item .active {
   overflow: hidden;
   border-radius: 15px;
   max-width: 300px;
-  margin: 0 20px 20px 0px;
+  margin: 0 20px 10px 0px;
 }
 
 .message-tab-img .video-wrap .video-img img {
@@ -1250,6 +1250,13 @@ li.nav-item .active {
   bottom: 0;
   width: 100%;
   height: 100%;
+}
+
+div#cmeScheme_wrapper div#cmeScheme_info {
+  width: 43%;
+}
+div#cmeScheme_wrapper div#cmeScheme_paginate {
+  width: 53%;
 }
 
 .message-tab-img .video-wrap .video-img img {
@@ -3329,6 +3336,10 @@ Image Section Css */
 }
 
 /* Sticky SOcial Icon Css */
+.sticky-i.d-non {
+  display: none;
+}
+
 .sticky-icon {
   z-index: 99;
   position: fixed;
@@ -3926,7 +3937,6 @@ button.btn.side-mn-icn:hover {
   display: table;
   padding: 10px 13px;
   color: #fff;
-  text-transform: capitalize;
   margin: 20px 0;
 }
 
@@ -4537,18 +4547,6 @@ table tbody th p strong {
   border: 1px solid transparent;
   background: rgba(99, 15, 67, 0.1098039216) !important;
   box-shadow: none;
-}
-
-div[aria-labelledby=cme-tab] .dataTables_wrapper .dataTables_paginate span .paginate_button:nth-child(3) {
-  display: none;
-}
-
-div[aria-labelledby=cme-tab] .dataTables_wrapper .dataTables_paginate span .paginate_button:nth-child(4) {
-  display: none;
-}
-
-div[aria-labelledby=cme-tab] .dataTables_wrapper .dataTables_paginate span .paginate_button:nth-child(5) {
-  display: none;
 }
 
 .about .row:has(.dashboard-link) {
