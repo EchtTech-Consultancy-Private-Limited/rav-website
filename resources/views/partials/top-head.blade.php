@@ -15,18 +15,18 @@
                 <a href="#" title="accessbility" > <b>T</b><sub><b>T</b></sub></a>
                 </button>
                 <ul class="dropdown-menu">
-                    <li>  <button class="text-increment-btn" onclick="decreaseFontSize()" title="Decrease font size">A-</button></li>
-                    <li>  <button class="text-increment-btn" onclick="normaltext()" title="Normal font size">A</button></li>
-                    <li><button class="text-increment-btn" onclick="increaseFontSize()" title="Increase font size">A+</button></li>
+                    <li>  <button class="text-increment-btn" onclick="decreaseFontSize()" title="Decrease font size" tabindex="0">A-</button></li>
+                    <li>  <button class="text-increment-btn" onclick="normaltext()" title="Normal font size" tabindex="0">A</button></li>
+                    <li><button class="text-increment-btn" onclick="increaseFontSize()" title="Increase font size" tabindex="0">A+</button></li>
                 </ul>
             </li>
              <li>
-                <div class="select-wrap">
-                    <img src="{{ asset('assets/images/globe.svg') }}" alt="globe" class="img-fluid">
-                    <select class="form-select language" id="language-eng" onchange="setlang(value);">
-                        <option value="en" @if (Session::get('locale')=='en' ) selected @endif>
+                <div class="select-wrap" >
+                    <img src="{{ asset('assets/images/globe.svg') }}" alt="globe" class="img-fluid" >
+                    <select class="form-select language" id="language-eng" onchange="setlang(value);" tabindex="0">
+                        <option value="en" @if (Session::get('locale')=='en' ) selected @endif tabindex="0">
                             English</option>
-                        <option value="hi" @if (Session::get('locale')=='hi' ) selected @endif>
+                        <option value="hi" @if (Session::get('locale')=='hi' ) selected @endif tabindex="0">
                             हिन्दी</option>
                     </select>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="theme-toggle">
                     <label class="switch">
                         <input type="checkbox" class="switch-input" id="mode" onclick="setTheme()">
-                        <span data-on="On" data-off="Off" class="switch-label"></span>
+                        <span data-on="On" data-off="Off" class="switch-label" tabindex="0"></span>
                         <span class="switch-handle" title="Change Contrast"></span>
                     </label>
                 </div>
