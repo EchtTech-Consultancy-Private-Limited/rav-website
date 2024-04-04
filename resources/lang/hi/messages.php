@@ -46,6 +46,7 @@ return [
     'All_Rights_Reserved'=>'सर्वाधिकार सुरक्षित.',
     'Last_Updated'=>'आखरी अपडेट :',
     'Total_Visitors'=>'कुल विज़िटर:',
+
     'Facebook'=>'फेसबुक',
     'Instagram'=>'इंस्टाग्राम',
     'Twitter'=>'ट्विटर',

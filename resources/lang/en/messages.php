@@ -46,6 +46,7 @@ return [
     'All_Rights_Reserved'=>'All Rights Reserved.',
     'Last_Updated'=>'Last Updated :',
     'Total_Visitors'=>'Total Visitors:',
+
     'Facebook'=>'Facebook',
     'Instagram'=>'Instagram',
     'Content_Coming_Soon'=>'Content Coming Soon...',
