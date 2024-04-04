@@ -169,7 +169,7 @@ class HomeController extends Controller
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
-       
+      
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
             App::setLocale($request->data);
@@ -562,9 +562,12 @@ class HomeController extends Controller
                             ->get();
                       }
 
-                    //   dd($careers);
+                      $middelBred = "";
+                    if ($slug == 'rsbk-directory-from-1951-to-1960' || $slug == 'rsbk-directory-from-1961-to-1970' || $slug == 'rsbk-directory-from-1971-to-1980' || $slug == 'rsbk-directory-from-1981-to-1990' || $slug == 'rsbk-directory-from-1991-to-2000' || $slug == 'rsbk-directory-from-2001-to-2010' || $slug == 'rsbk-directory-from-2011-to-2020' || $slug == 'rsbk-directory-from-2021-to-2023') {
+                        $middelBred = "Rsbk e-directory";
+                    }
 
-                        return view('master-page', ['careers'=>$careers,'tenders'=>$tenders,'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                        return view('master-page', ['middelBred'=>$middelBred,'careers'=>$careers,'tenders'=>$tenders,'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {
