@@ -33,5 +33,18 @@ return [
     'Read_More'=>'और पढ़ें',
     'Alumni_Corner'=>'पूर्व छात्र कॉर्नर',
     'Our_Tenders'=>'हमारे टेंडर',
+    'Dynamic_activities_encompassing_holistic_education'=>'समग्र शिक्षा को शामिल करने वाली गतिशील गतिविधियाँ,',
+    'research_seminars_and_community'=>'राष्ट्रीय आयुर्वेद विद्यापीठ में अनुसंधान, सेमिनार और सामुदायिक सहभागिता',
+    'Social_Media_Updates'=>'सोशल मीडिया अपडेट',
+    'Gallery'=>'गैलरी',
+    'Awards'=>'पुरस्कार',
+    'Photo_Gallery'=>'फोटो गैलरी',
+    'View_All'=>'सभी को देखें',
+    'Video_Gallery'=>'वीडियो गैलरी',
+    '©_Copyright'=>'© कॉपीराइट',
+    'Rashtriya_Ayurveda_Vidyapeeth'=>'राष्ट्रीय आयुर्वेद विद्यापीठट.',
+    'All_Rights_Reserved'=>'सर्वाधिकार सुरक्षित.',
+    'Last_Updated'=>'आखरी अपडेट :',
+    'Total_Visitors'=>'कुल विज़िटर:',
     'CRAV_Gurus'=>'सी.आर.ए.वी गुरु'
 ];
