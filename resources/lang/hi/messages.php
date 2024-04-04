@@ -47,5 +47,9 @@ return [
     'Last_Updated'=>'आखरी अपडेट :',
     'Total_Visitors'=>'कुल विज़िटर:',
 
+    'Facebook'=>'फेसबुक',
+    'Instagram'=>'इंस्टाग्राम',
+    'Twitter'=>'ट्विटर',
+    'Content_Coming_Soon'=>'Content Coming Soon...',
     'CRAV_Gurus'=>'सी.आर.ए.वी गुरु'
 ];
