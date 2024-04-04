@@ -84,7 +84,7 @@
                                             <li class="env">
                                                 <a href="javascript:void(0)"
                                                     onclick="return confirm('{{ $alertMessage }}')" target="_blank">
-                                                    @if (Session::get('Lang') == 'hi')
+                                                    @if (Session::get('locale') == 'hi')
                                                         {{ $subMenus->name_hi ?? '' }}
                                                     @else
                                                         {{ $subMenus->name_en ?? '' }}
@@ -93,7 +93,7 @@
                                         @else
                                             <li class="dropdown nav-item menu-subdropdown">
                                                 <a href="javascript:void();" class="dropdown-item">
-                                                    @if (Session::get('Lang') == 'hi')
+                                                    @if (Session::get('locale') == 'hi')
                                                         {{ $subMenus->name_hi ?? '' }}
                                                     @else
                                                         {{ $subMenus->name_en ?? '' }}
@@ -113,7 +113,7 @@
                                                             <a class="dropdown-item" href="{{ url($ChildMenusurlfixed) }}"
                                                                 onclick="return confirm('{{ $alertMessage }}')"
                                                                 target="_blank">
-                                                                @if (Session::get('Lang') == 'hi')
+                                                                @if (Session::get('locale') == 'hi')
                                                                     {{ $ChildMenus->name_hi ?? '' }}
                                                                 @else
                                                                     {{ $ChildMenus->name_en ?? '' }}
@@ -122,7 +122,7 @@
                                                         @else
                                                         <li class="env sub-menu-drop-g">
                                                             <a href="{{ url($ChildMenusurlfixed) }}" class="sub-menu-drop-f dropdown-item">
-                                                                @if (Session::get('Lang') == 'hi')
+                                                                @if (Session::get('locale') == 'hi')
                                                                     {{ $ChildMenus->name_hi ?? '' }}
                                                                 @else
                                                                     {{ $ChildMenus->name_en ?? '' }}
@@ -135,7 +135,7 @@
                                                         <li>
                                                             <a class="dropdown-item" onclick="return confirm('{{ $alertMessage }}')"
                                                                 target="_blank" href="{{ $ChildMenusurl ?? '' }}">
-                                                                @if (Session::get('Lang') == 'hi')
+                                                                @if (Session::get('locale') == 'hi')
                                                                     {{ $ChildMenus->name_hi ?? '' }}
                                                                 @else
                                                                     {{ $ChildMenus->name_en ?? '' }}
@@ -145,7 +145,7 @@
                                                     @else
                                                         <li>
                                                             <a class="dropdown-item" href="{{ url($url . '/' . $subMenusurl . '/' . $ChildMenusurl) ?? '' }}">
-                                                                @if (Session::get('Lang') == 'hi')
+                                                                @if (Session::get('locale') == 'hi')
                                                                     {{ $ChildMenus->name_hi ?? '' }}
                                                                 @else
                                                                     {{ $ChildMenus->name_en ?? '' }}
@@ -163,7 +163,7 @@
                                             <li>
                                                 <a onclick="return confirm('{{ $alertMessage }}')" target="_blank"
                                                     href="{{ $subMenusurl ?? '' }}">
-                                                    @if (Session::get('Lang') == 'hi')
+                                                    @if (Session::get('locale') == 'hi')
                                                         {{ $subMenus->name_hi ?? '' }}
                                                     @else
                                                         {{ $subMenus->name_en ?? '' }}
@@ -173,7 +173,7 @@
                                         @else                                       
                                             <li><a class="dropdown-item"
                                                     href="{{ url($url . '/' . $subMenusurl) ?? '' }}">
-                                                    @if (Session::get('Lang') == 'hi')
+                                                    @if (Session::get('locale') == 'hi')
                                                         {{ $subMenus->name_hi ?? '' }}
                                                     @else
                                                         {{ $subMenus->name_en ?? '' }}
