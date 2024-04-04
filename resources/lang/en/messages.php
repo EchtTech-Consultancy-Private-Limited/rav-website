@@ -46,6 +46,11 @@ return [
     'All_Rights_Reserved'=>'All Rights Reserved.',
     'Last_Updated'=>'Last Updated :',
     'Total_Visitors'=>'Total Visitors:',
+    'Facebook'=>'Facebook',
+    'Instagram'=>'Instagram',
+    'View_this_post_on_Instagram'=>'View this post on Instagram',
+    'Shared_post'=>'Shared post',
+    'Twitter'=>'Twitter',
     'CRAV_Gurus'=>'CRAV Gurus'
 ];
 

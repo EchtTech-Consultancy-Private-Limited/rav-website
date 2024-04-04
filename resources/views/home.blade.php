@@ -1421,7 +1421,11 @@
                                                         <span class="img-b"><img
                                                                 src="{{ asset('assets/images/facebook.png') }}"
                                                                 alt="icon"></span>
-                                                        Facebook
+                                                        @if (Session::get('locale') == 'hi')
+                                                                {{ __('messages.Facebook') }}
+                                                        @else
+                                                                {{ __('messages.Facebook') }}
+                                                        @endif
                                                     </h2>
                                                 </div>
                                                 <div class="plug-box facebook-feed-content text-center">
@@ -1430,9 +1434,16 @@
                                                         data-small-header="true" data-adapt-container-width="true"
                                                         data-hide-cover="false" data-show-facepile="true">
                                                         <blockquote cite="https://www.facebook.com/ravdelhi"
-                                                            class="fb-xfbml-parse-ignore"><a
-                                                                href="https://www.facebook.com/ravdelhi">Rashtriya Ayurved
-                                                                Vidyapeeth</a></blockquote>
+                                                            class="fb-xfbml-parse-ignore">
+                                                            <a
+                                                                href="https://www.facebook.com/ravdelhi">
+                                                                 @if (Session::get('locale') == 'hi')
+                                                                    {{ __('messages.Rashtriya_Ayurveda_Vidyapeeth') }}
+                                                                @else
+                                                                    {{ __('messages.Rashtriya_Ayurveda_Vidyapeeth') }}
+                                                                @endif
+                                                            </a>
+                                                        </blockquote>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1445,7 +1456,11 @@
                                                         <span class="img-b"><img
                                                                 src="{{ asset('assets/images/instagram.png') }}"
                                                                 alt="icon"></span>
-                                                        Instagram
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ __('messages.Instagram') }}
+                                                            @else
+                                                                {{ __('messages.Instagram') }}
+                                                            @endif
                                                     </h2>
                                                 </div>
                                                 <div class="plug-box linkedinfeed">
@@ -1579,7 +1594,11 @@
                                                         <span class="img-b"><img
                                                                 src="{{ asset('assets/images/twitter.png') }}"
                                                                 alt="icon"></span>
-                                                        Twitter
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ __('messages.Twitter') }}
+                                                            @else
+                                                                {{ __('messages.Twitter') }}
+                                                            @endif
                                                     </h2>
                                                 </div>
                                                 <div class="plug-box twitter-feed-content p-2">
