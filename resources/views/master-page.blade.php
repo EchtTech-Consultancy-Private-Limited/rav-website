@@ -45,7 +45,7 @@
                     @if (isset($middelBred))
                         <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
                     @endif
-                    <li>{{ $organizedData['metatag']->meta_title ?? '' }}</li>
+                    <li>{{ $organizedData['metatag']->meta_title ?? $title_name }}</li>
                 </ul>
             </div>
         </div>
