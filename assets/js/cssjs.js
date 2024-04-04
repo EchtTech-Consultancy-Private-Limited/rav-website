@@ -42,16 +42,16 @@ tables.each(function() {
 
 
     // sociol icon offset
-    window.onscroll = function() {
-        let sociolIcon = $('.sticky-i');
-        let offsetTop = window.pageYOffset;
-        // console.log(offsetTop);
-        if (offsetTop > 250) {
-            sociolIcon.css('display', 'block');
-        } else {
-            sociolIcon.css('display', 'none');
-        }
-    };
+    // window.onscroll = function() {
+    //     let sociolIcon = $('.sticky-i');
+    //     let offsetTop = window.pageYOffset;
+    //     // console.log(offsetTop);
+    //     if (offsetTop > 250) {
+    //         sociolIcon.css('display', 'block');
+    //     } else {
+    //         sociolIcon.css('display', 'none');
+    //     }
+    // };
     
     // myFunction()
 
@@ -76,3 +76,54 @@ tables.each(function() {
 //         alert("workin fine");
 // }
 
+let img = $('img')
+img.each(function(){
+    let titleContent = $(this)
+    let title = titleContent.attr('title')
+    if(title!==undefined){
+        let word = title.split(' ');
+        let capitalizeWord = word.map(function(item){
+            return item.charAt(0).toUpperCase() + item.slice(1)
+        })
+        let capitalizedTitle = capitalizeWord.join(' ');
+        titleContent.attr('title', capitalizedTitle);
+    }
+    // let word = title.split(' ');
+    // console.log(word)
+})
+
+let accessbility = $(".header-top-content .header-top-right .acees-style1 button.dropdown-toggle");
+accessbility.on('focus', function(){
+    accessbility.click();
+})
+
+$(document).ready(function(){
+    $("select#language-eng").on("focus", function(){
+        $(this).click();
+        console.log("select clicked");
+    });
+
+    var selectBox = $("#language-eng");
+
+    // Attach a focus event handler to the <select> element
+    selectBox.on("focus", function() {
+        // Trigger a click event when the <select> element receives focus
+        $(this).open();
+        // alert("clicked")
+    });
+
+    // $(document).on("keydown", function(event) {
+    //     // Check if the pressed key is the tab key (key code 9)
+    //     if (event.keyCode === 9 && selectBox.is(":focus")) {
+    //         // Trigger a click event on the select box to open it
+    //         selectBox.click();
+    //     }
+    // });
+
+    $("[data-bs-target='#offcanvasRight']").on('foucus',  function () {
+        $("[data-bs-target='#offcanvasRight']").trigger('click');
+        alert("Focused!");
+    } );
+});
+
+// lang.
