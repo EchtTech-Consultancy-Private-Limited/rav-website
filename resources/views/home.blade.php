@@ -455,7 +455,7 @@
                                                                 {!! $organizedData['content']->page_content_en !!}
                                                             @endif
                                                         @else
-                                                            <span> 
+                                                            <span>
                                                                 @if (Session::get('locale') == 'hi')
                                                                     {{ __('messages.Content_not_available') }}
                                                                 @else
@@ -484,7 +484,7 @@
                                                                         {{ __('messages.Date') }}
                                                                     @endif
                                                                 </th>
-                                                                <th> 
+                                                                <th>
                                                                     @if (Session::get('locale') == 'hi')
                                                                         {{ __('messages.View/Download') }}
                                                                     @else
@@ -555,7 +555,7 @@
                                                 </div>
                                                 <div class="event-list-content my-2">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="tag"> 
+                                                        <span class="tag">
                                                             @if (Session::get('locale') == 'hi')
                                                             {{ __('messages.Venue') }}
                                                             @else
@@ -579,7 +579,7 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <p> 
+                                    <p>
                                         @if (Session::get('locale') == 'hi')
                                             {{ __('messages.No_Events_Available') }}
                                         @else
@@ -1013,9 +1013,17 @@
                             </li>
                         </ul>
                         <p class="title-white py-4">
-                            Dynamic activities encompassing holistic education,
+                            @if (Session::get('locale') == 'hi')
+                                {{ __('messages.Dynamic_activities_encompassing_holistic_education') }}
+                            @else
+                                {{ __('messages.Dynamic_activities_encompassing_holistic_education') }}
+                            @endif
                             <br>
-                            research, seminars, and community engagement at Rashtriya Ayurveda Vidyapeeth
+                            @if (Session::get('locale') == 'hi')
+                                {{ __('messages.research_seminars_and_community') }}
+                            @else
+                                {{ __('messages.research_seminars_and_community') }}
+                            @endif
                         </p>
                         <div class="tab-content pt-4 mb-neg-20" id="activityTabContent">
                             <div class="tab-pane fade show active" id="activity-tab-pane" role="tabpanel"
@@ -1178,21 +1186,36 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="twitter-tab" data-bs-toggle="tab"
                                     data-bs-target="#twitter-tab-pane" type="button" role="tab"
-                                    aria-controls="twitter-tab-pane" aria-selected="false">Social Media Updates
+                                    aria-controls="twitter-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Social_Media_Updates') }}
+                                    @else
+                                        {{ __('messages.Social_Media_Updates') }}
+                                    @endif
                                 </button>
                             </li>
 
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"
-                                    aria-controls="video-tab-pane" aria-selected="false">Gallery
+                                    aria-controls="video-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Gallery') }}
+                                    @else
+                                        {{ __('messages.Gallery') }}
+                                    @endif
                                 </button>
                             </li>
 
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="awards-tab" data-bs-toggle="tab"
                                     data-bs-target="#awards-tab-pane" type="button" role="tab"
-                                    aria-controls="awards-tab-pane" aria-selected="false">Awards
+                                    aria-controls="awards-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Awards') }}
+                                    @else
+                                        {{ __('messages.Awards') }}
+                                    @endif
                                 </button>
                             </li>
                         </ul>
@@ -1250,7 +1273,11 @@
                                                         <div class="content">
                                                             <div class="sec-title3 text-center  ">
                                                                 <h2 class="title mb-10">
-                                                                    Photo gallery
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Photo_Gallery') }}
+                                                                    @else
+                                                                        {{ __('messages.Photo_Gallery') }}
+                                                                    @endif
                                                                 </h2>
                                                             </div>
                                                         </div>
@@ -1286,7 +1313,11 @@
                                                             <div class="btn-part  text-center">
                                                                 <a class="readon2" href="{{ url('/photo-gallery') }}"
                                                                     rel="noopener noreferrer">
-                                                                    view all
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.View_All') }}
+                                                                    @else
+                                                                        {{ __('messages.View_All') }}
+                                                                    @endif
                                                                 </a>
                                                             </div>
                                                             <div class="btns">
@@ -1311,7 +1342,11 @@
                                                         <div class="content">
                                                             <div class="sec-title3 text-center ">
                                                                 <h2 class="title mb-10">
-                                                                    Video Gallery
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Video_Gallery') }}
+                                                                    @else
+                                                                        {{ __('messages.Video_Gallery') }}
+                                                                    @endif
                                                                 </h2>
                                                             </div>
                                                         </div>
@@ -1345,7 +1380,11 @@
                                                                 <a class="readon2 mt-2"
                                                                     href="{{ url('/video-gallery') }}"
                                                                     rel="noopener noreferrer" tabindex="0">
-                                                                    View All
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.View_All') }}
+                                                                    @else
+                                                                        {{ __('messages.View_All') }}
+                                                                    @endif
                                                                 </a>
                                                             </div>
                                                             <div class="btns">

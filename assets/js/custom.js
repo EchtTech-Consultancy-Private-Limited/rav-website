@@ -19,7 +19,11 @@ $('#cmeScheme').DataTable({
     $('#cmeScheme')
   } );
   
-
+  $('[title]').each(function(){
+    var title = $(this).attr('title');
+    var capitalizedTitle = title.charAt(0).toUpperCase() + title.slice(1);
+    $(this).attr('title', capitalizedTitle);
+});
 
 });
 $(document).ready(function () {
@@ -600,7 +604,7 @@ function setlang(value) {
 // Tabindex js
 
 $(document).ready(function(){
-    $("p, h1, h2, h3, h4, h5, h6,.dropdown, button,.about-t,h2.title,.desc-text-title,.desc, .copyright-text").attr('tabindex' , '0');
+    $("p, h1, h2, h3, h4, h5, h6,.dropdown, button,.about-t,h2.title,.desc-text-title,.desc, .copyright-text, select").attr('tabindex' , '0');
 
     // $('.dropdown').on('focus',()=>{
     //     $('.dropdown').addClass('show-dropdown');

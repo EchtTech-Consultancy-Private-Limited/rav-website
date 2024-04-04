@@ -33,6 +33,19 @@ return [
     'Read_More'=>'Read More',
     'Alumni_Corner'=>'Alumni Corner',
     'Our_Tenders'=>'Our Tenders',
+    'Dynamic_activities_encompassing_holistic_education'=>'Dynamic activities encompassing holistic education,',
+    'research_seminars_and_community'=>'research, seminars, and community engagement at Rashtriya Ayurveda Vidyapeeth',
+    'Social_Media_Updates'=>'Social Media Updates',
+    'Gallery'=>'Gallery',
+    'Awards'=>'Awards',
+    'Photo_Gallery'=>'Photo Gallery',
+    'View_All'=>'View All',
+    'Video_Gallery'=>'Video Gallery',
+    '©_Copyright'=>'© Copyright',
+    'Rashtriya_Ayurveda_Vidyapeeth'=>'Rashtriya Ayurveda Vidyapeeth.',
+    'All_Rights_Reserved'=>'All Rights Reserved.',
+    'Last_Updated'=>'Last Updated :',
+    'Total_Visitors'=>'Total Visitors:',
     'CRAV_Gurus'=>'CRAV Gurus'
 ];
 
