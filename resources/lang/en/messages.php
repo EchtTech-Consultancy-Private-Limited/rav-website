@@ -50,6 +50,7 @@ return [
     'Instagram'=>'Instagram',
     'View_this_post_on_Instagram'=>'View this post on Instagram',
     'Shared_post'=>'Shared post',
+    'Content_Coming_Soon'=>'Content Coming Soon...',
     'Twitter'=>'Twitter',
     'CRAV_Gurus'=>'CRAV Gurus'
 ];

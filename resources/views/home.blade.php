@@ -1643,7 +1643,13 @@
                                                     @endif
                                                 @else
                                                     <div class="text-center">
-                                                        <h1>Content coming soon...</h1>
+                                                        <h1>  
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ __('messages.Content_Coming_Soon') }}
+                                                            @else
+                                                                {{ __('messages.Content_Coming_Soon') }}
+                                                            @endif
+                                                        </h1>
                                                     </div>
                                                 @endif
                                             </div>
