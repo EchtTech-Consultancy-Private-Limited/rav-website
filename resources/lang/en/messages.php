@@ -46,6 +46,7 @@ return [
     'All_Rights_Reserved'=>'All Rights Reserved.',
     'Last_Updated'=>'Last Updated :',
     'Total_Visitors'=>'Total Visitors:',
+
     'CRAV_Gurus'=>'CRAV Gurus'
 ];
 

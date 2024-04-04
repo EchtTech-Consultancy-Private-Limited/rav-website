@@ -46,5 +46,6 @@ return [
     'All_Rights_Reserved'=>'सर्वाधिकार सुरक्षित.',
     'Last_Updated'=>'आखरी अपडेट :',
     'Total_Visitors'=>'कुल विज़िटर:',
+
     'CRAV_Gurus'=>'सी.आर.ए.वी गुरु'
 ];
