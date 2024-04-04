@@ -48,8 +48,6 @@ return [
     'Total_Visitors'=>'कुल विज़िटर:',
     'Facebook'=>'फेसबुक',
     'Instagram'=>'इंस्टाग्राम',
-    'View_this_post_on_Instagram'=>'इंस्टाग्राम पर यह पोस्ट देखें',
-    'Shared_post'=>'साझा की गई पोस्ट',
     'Twitter'=>'ट्विटर',
     'Content_Coming_Soon'=>'Content Coming Soon...',
     'CRAV_Gurus'=>'सी.आर.ए.वी गुरु'
