@@ -1,9 +1,9 @@
 <?php
 
-if (! function_exists('humanFilesize')) {
+if (!function_exists('humanFilesize')) {
     function humanFilesize($size, $precision = 2)
     {
-        $units = ['B','kB','MB','GB','TB','PB','EB','ZB','YB'];
+        $units = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         $step = 1024;
         $i = 0;
 
@@ -11,15 +11,15 @@ if (! function_exists('humanFilesize')) {
             $size = $size / $step;
             $i++;
         }
-        
-        return round($size, $precision).$units[$i];
+
+        return round($size, $precision) . $units[$i];
     }
 }
 
 /**
  * Checks if the uploaded document is an image
  */
-if (! function_exists('isFileImage')) {
+if (!function_exists('isFileImage')) {
     function isFileImage($filename)
     {
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -30,8 +30,9 @@ if (! function_exists('isFileImage')) {
     }
 }
 
-if (! function_exists('generateRandomAdditionExpression')) {
-    function generateRandomAdditionExpression() {
+if (!function_exists('generateRandomAdditionExpression')) {
+    function generateRandomAdditionExpression()
+    {
         $num1 = rand(1, 10);
         $num2 = rand(1, 10);
         $captchaExpression = "$num1 + $num2";
@@ -40,32 +41,42 @@ if (! function_exists('generateRandomAdditionExpression')) {
     }
 }
 
-if (! function_exists('getFileImage')) {
-    function getFileImage($foldername,$filename) {
-        $base = base64_encode(asset(env('IMAGE_FILE_FOLDER')."/{$foldername}/{$filename}"));    
+if (!function_exists('getFileImage')) {
+    function getFileImage($foldername, $filename)
+    {
+        $base = base64_encode(asset(env('IMAGE_FILE_FOLDER') . "/{$foldername}/{$filename}"));
         //$fullpath=asset(env('IMAGE_FILE_FOLDER')."/{$foldername}/{$filename}");
         return $base;
     }
 }
 
 if (!function_exists('getEmployeeData')) {
-    function getEmployeeData($departmentID){
-        $emp = DB::table('employee_directories')->where('department_id',$departmentID)->get();
+    function getEmployeeData($departmentID)
+    {
+        $emp = DB::table('employee_directories')->where('department_id', $departmentID)->get();
         return $emp;
     }
 }
 
 
 if (!function_exists('getEmployeeDesignation')) {
-    function getEmployeeDesignation($employeeID){
-        $emp = DB::table('emp_depart_designations')->where('uid',$employeeID)->first();
-        return $emp->name_en;
+    function getEmployeeDesignation($employeeID)
+    {
+        $emp = DB::table('emp_depart_designations')->where('uid', $employeeID)->first();
+        if (Session::get('locale') == 'hi')
+            return $emp->name_hi;
+        else
+            return $emp->name_en;
     }
 }
 
 if (!function_exists('getEmployeeDepartment')) {
-    function getEmployeeDepartment($employeeID){
-        $emp = DB::table('emp_depart_designations')->where('uid',$employeeID)->first();
+    function getEmployeeDepartment($employeeID)
+    {
+        $emp = DB::table('emp_depart_designations')->where('uid', $employeeID)->first();
+        if (Session::get('locale') == 'hi')
+            return $emp->name_hi;
+        else
         return $emp->name_en;
     }
 }

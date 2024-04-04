@@ -148,28 +148,40 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $cabinetMinisterData->fname_en }}
-                                    {{ $cabinetMinisterData->mname_en }}
-                                    {{ $cabinetMinisterData->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $cabinetMinisterData->fname_hi }}
+                                        {{ $cabinetMinisterData->mname_hi }}
+                                        {{ $cabinetMinisterData->lname_hi }}
+                                    @else
+                                        {{ $cabinetMinisterData->fname_en }}
+                                        {{ $cabinetMinisterData->mname_en }}
+                                        {{ $cabinetMinisterData->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($cabinetMinisterData->designation_id) }}</b>
                                     {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('about-us/honourable-cabinet-minister') }}"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-cabinet-minister') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -181,28 +193,40 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $stateMinister->fname_en }}
-                                    {{ $stateMinister->mname_en }}
-                                    {{ $stateMinister->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $stateMinister->fname_hi }}
+                                        {{ $stateMinister->mname_hi }}
+                                        {{ $stateMinister->lname_hi }}
+                                    @else
+                                        {{ $stateMinister->fname_en }}
+                                        {{ $stateMinister->mname_en }}
+                                        {{ $stateMinister->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($stateMinister->designation_id) }}</b>
                                     {{ getEmployeeDepartment($stateMinister->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('about-us/honourable-minister-of-state') }}"> Know More</a>
+                                    <a href="{{ url('about-us/honourable-minister-of-state') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -214,29 +238,41 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $secretaryData->fname_en }}
-                                    {{ $secretaryData->mname_en }}
-                                    {{ $secretaryData->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $secretaryData->fname_hi }}
+                                        {{ $secretaryData->mname_hi }}
+                                        {{ $secretaryData->lname_hi }}
+                                    @else
+                                        {{ $secretaryData->fname_en }}
+                                        {{ $secretaryData->mname_en }}
+                                        {{ $secretaryData->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($secretaryData->designation_id) }}</b>
                                     {{ getEmployeeDepartment($secretaryData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('honourable-secretary') }}"> Know More</a>
+                                    <a href="{{ url('honourable-secretary') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -248,29 +284,41 @@
                             </div>
                             <div class="text-item">
                                 <h3 class="title">
-                                    {{ $directorData->fname_en }}
-                                    {{ $directorData->mname_en }}
-                                    {{ $directorData->lname_en }}
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $directorData->fname_hi }}
+                                        {{ $directorData->mname_hi }}
+                                        {{ $directorData->lname_hi }}
+                                    @else
+                                        {{ $directorData->fname_en }}
+                                        {{ $directorData->mname_en }}
+                                        {{ $directorData->lname_en }}
+                                    @endif
                                 </h3>
                                 <p class="desc">
                                     <b> {{ getEmployeeDesignation($directorData->designation_id) }}</b>
                                     {{ getEmployeeDepartment($directorData->department_id) }}
                                 </p>
                                 <p class="title-org">
-                                    <a href="{{ url('director') }}"> Know More</a>
+                                    <a href="{{ url('director') }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.know_More') }}
+                                        @else
+                                            {{ __('messages.know_More') }}
+                                        @endif
+                                    </a>
                                 </p>
                             </div>
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                    <h3 class="title-black-sm">
-                                                        What is Lorem Ipsum?
-                                                    </h3>
-                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                        dolorem
-                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                        veniam cumque expedita rem at harum?</p>
-                                                </div> -->
+                                                                <h3 class="title-black-sm">
+                                                                    What is Lorem Ipsum?
+                                                                </h3>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                    dolorem
+                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                    veniam cumque expedita rem at harum?</p>
+                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -280,21 +328,34 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="latestNews-tab" data-bs-toggle="tab"
                                         data-bs-target="#latestNews-tab-pane" type="button" role="tab"
-                                        aria-controls="latestNews-tab-pane" aria-selected="true">Latest News
+                                        aria-controls="latestNews-tab-pane" aria-selected="true">
+                                         @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Latest_News') }}
+                                        @else
+                                            {{ __('messages.Latest_News') }}
+                                        @endif
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="courses-tab" data-bs-toggle="tab"
                                         data-bs-target="#courses-tab-pane" type="button" role="tab"
                                         aria-controls="courses-tab-pane" aria-selected="false">
-                                        Admission to
-                                        Courses
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.Admission_to_Courses') }}
+                                        @else
+                                            {{ __('messages.Admission_to_Courses') }}
+                                        @endif
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="cme-tab" data-bs-toggle="tab"
                                         data-bs-target="#cme-tab-pane" type="button" role="tab"
-                                        aria-controls="cme-tab-pane" aria-selected="false">CME Scheme
+                                        aria-controls="cme-tab-pane" aria-selected="false">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.CME_Scheme') }}
+                                        @else
+                                            {{ __('messages.CME_Scheme') }}
+                                        @endif
                                     </button>
                                 </li>
                             </ul>
@@ -338,7 +399,13 @@
                                                         </li>
                                                     @endforeach
                                                 @else
-                                                    <h6>No News available.</h6>
+                                                    <h6>
+                                                        @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.No_News_Available') }}
+                                                        @else
+                                                            {{ __('messages.No_News_Available') }}
+                                                        @endif
+                                                    </h6>
                                                 @endif
                                             </ul>
                                         </div>
@@ -358,7 +425,13 @@
                                                                 {!! $organizedData['content']->page_content_en !!}
                                                             @endif
                                                         @else
-                                                            <span>Content not available ..</span>
+                                                            <span>
+                                                                @if (Session::get('locale') == 'hi')
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @else
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @endif
+                                                            </span>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -382,18 +455,42 @@
                                                                 {!! $organizedData['content']->page_content_en !!}
                                                             @endif
                                                         @else
-                                                            <span>Content not available ..</span>
+                                                            <span>
+                                                                @if (Session::get('locale') == 'hi')
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @else
+                                                                    {{ __('messages.Content_not_available') }}
+                                                                @endif
+                                                            </span>
                                                         @endif
                                                     @endif
                                                 @endforeach
 
                                                 @if (isset($cmeSchemePdf))
-                                                    <table class="dataTable">
+                                                    <table class="" id="cmeScheme" >
                                                         <thead>
                                                             <tr>
-                                                                <th> Title</th>
-                                                                <th> Date</th>
-                                                                <th> View/Download</th>
+                                                                <th>
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Title') }}
+                                                                    @else
+                                                                        {{ __('messages.Title') }}
+                                                                    @endif
+                                                                </th>
+                                                                <th>
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Date') }}
+                                                                    @else
+                                                                        {{ __('messages.Date') }}
+                                                                    @endif
+                                                                </th>
+                                                                <th>
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.View/Download') }}
+                                                                    @else
+                                                                        {{ __('messages.View/Download') }}
+                                                                    @endif
+                                                                </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -403,7 +500,8 @@
                                                                     <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}
                                                                     </td>
                                                                     <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
-                                                                            download>View</a> <i class="fa fa-file-pdf-o">   </i> ({{ $data->pdfimage_size ?? '' }})
+                                                                            download>View</a> <i class="fa fa-file-pdf-o">
+                                                                        </i> ({{ $data->pdfimage_size ?? '' }})
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -422,7 +520,11 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="event-card">
                         <h2 class="heading-white mb-2">
-                            Our Events
+                            @if (Session::get('locale') == 'hi')
+                                {{ __('messages.Our_Events') }}
+                            @else
+                                {{ __('messages.Our_Events') }}
+                            @endif
                         </h2>
                         <div class="event-slider">
                             <div class="owl-carousel owl-theme" id="eventSlider">
@@ -437,7 +539,11 @@
                                                 @endif
                                                 <div class="event-list-content my-2">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="tag">Event Date</span>
+                                                        <span class="tag"> @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.Event_Date') }}
+                                                        @else
+                                                            {{ __('messages.Event_Date') }}
+                                                        @endif</span>
                                                     </div>
                                                     <div class="date-wrap">
                                                         <img src="{{ asset('assets/images/calendar.svg') }}"
@@ -449,7 +555,13 @@
                                                 </div>
                                                 <div class="event-list-content my-2">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="tag">Venue</span>
+                                                        <span class="tag">
+                                                            @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.Venue') }}
+                                                            @else
+                                                                {{ __('messages.Venue') }}
+                                                            @endif
+                                                        </span>
                                                     </div>
                                                     <div class="address-wrap">
                                                         <img src="{{ asset('assets/images/location.svg') }}"
@@ -467,7 +579,13 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <p>No events available..</p>
+                                    <p>
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ __('messages.No_Events_Available') }}
+                                        @else
+                                            {{ __('messages.No_Events_Available') }}
+                                        @endif
+                                    </p>
                                 @endif
                             </div>
                         </div>
@@ -477,10 +595,15 @@
                     <div class="course-wrap">
                         <div class="course-list">
                             <ul>
+                                {{-- @dd($quickLinks) --}}
                                 @foreach ($quickLinks as $link)
                                     <li>
-                                        {{ $link->name_en }}
-                                        <a href="{{ url('/' . $link->url) }}" class="read-more">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $link->name_hi }}
+                                        @else
+                                            {{ $link->name_en }}
+                                        @endif
+                                        <a href="{{ url($link->url) }}" class="read-more">
                                             <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                                 class="img-fluid">
                                         </a>
@@ -488,8 +611,12 @@
                                 @endforeach
                                 @if (isset($newsLetter))
                                     <li>
-                                        {{ $newsLetter->name_en }}
-                                        <a href="{{ url('/' . $link->url) }}" class="read-more">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $newsLetter->name_hi }}
+                                        @else
+                                            {{ $newsLetter->name_en }}
+                                        @endif
+                                        <a href="{{ url($newsLetter->url) }}" class="read-more">
                                             <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
                                                 class="img-fluid">
                                         </a>
@@ -512,43 +639,67 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="latestMassage-tab" data-bs-toggle="tab"
                                     data-bs-target="#latestMassage-tab-pane" type="button" role="tab"
-                                    aria-controls="latestMassage-tab-pane" aria-selected="true">Latest Message
+                                    aria-controls="latestMassage-tab-pane" aria-selected="true">
+                                     @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Latest_Message') }}
+                                    @else
+                                        {{ __('messages.Latest_Message') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="ourMinisters-tab" data-bs-toggle="tab"
                                     data-bs-target="#ourMinisters-tab-pane" type="button" role="tab"
                                     aria-controls="ourMinisters-tab-pane" aria-selected="false">
-                                    Meet Our
-                                    Ministers
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Meet_Our_Ministers') }}
+                                    @else
+                                        {{ __('messages.Meet_Our_Ministers') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="corner-tab" data-bs-toggle="tab"
                                     data-bs-target="#corner-tab-pane" type="button" role="tab"
-                                    aria-controls="corner-tab-pane" aria-selected="false">Alumni Corner
+                                    aria-controls="corner-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Alumni_Corner') }}
+                                    @else
+                                        {{ __('messages.Alumni_Corner') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="tenders-tab" data-bs-toggle="tab"
                                     data-bs-target="#tenders-tab-pane" type="button" role="tab"
-                                    aria-controls="tenders-tab-pane" aria-selected="false">Our Tenders
+                                    aria-controls="tenders-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Our_Tenders') }}
+                                    @else
+                                        {{ __('messages.Our_Tenders') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="thesis-tab" data-bs-toggle="tab"
                                     data-bs-target="#thesis-tab-pane" type="button" role="tab"
                                     aria-controls="thesis-tab-pane" aria-selected="false">
-                                    Thesis by RAV
-                                    students
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Thesis_by_RAV_Students') }}
+                                    @else
+                                        {{ __('messages.Thesis_by_RAV_Students') }}
+                                    @endif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="information-tab" data-bs-toggle="tab"
                                     data-bs-target="#information-tab-pane" type="button" role="tab"
                                     aria-controls="information-tab-pane" aria-selected="false">
-                                    Right to
-                                    Information
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Right_to_Information') }}
+                                    @else
+                                        {{ __('messages.Right_to_Information') }}
+                                    @endif
                                 </button>
                             </li>
                         </ul>
@@ -578,12 +729,16 @@
                                         </div>
                                         <div class="message-tab-content">
                                             <h2 class="heading-black heading-black-md">
-                                                {{ $latestMessageData['page_title_en'] }}
+                                                @if (Session::get('locale') == 'hi')
+                                                    {{ $latestMessageData['page_title_hi'] }}
+                                                @else
+                                                    {{ $latestMessageData['page_title_en'] }}
+                                                @endif
                                             </h2>
                                             <p class="desc">
                                                 {{-- display content after remove html tags and add limit 400 --}}
                                                 @php
-                                                    $content = strip_tags($latestMessageData['page_content_en']);
+                                                    $content = strip_tags(Session::get('locale') == 'hi' ? $latestMessageData['page_content_hi'] : $latestMessageData['page_content_en'] );
                                                     $content =
                                                         strlen($content) > 600
                                                             ? substr($content, 0, 600) . '...'
@@ -593,7 +748,11 @@
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
                                                 <a href="{{ url($latestMessageData['url']) }}" class="btn btn-org-bdr">
-                                                    Read More
+                                                    @if (Session::get('locale') == 'hi')
+                                                        {{ __('messages.Read_More') }}
+                                                    @else
+                                                        {{ __('messages.Read_More') }}
+                                                    @endif
                                                 </a>
                                             </div>
                                         </div>
@@ -619,16 +778,23 @@
                                     <div class="col-md-9">
                                         <div class="message-tab-content">
                                             <h2 class="heading-black heading-black-md">
-                                                {{ $cabinetMinisterData->fname_en }}
-                                                {{ $cabinetMinisterData->mname_en }}
-                                                {{ $cabinetMinisterData->lname_en }}
+                                                @if (Session::get('locale') == 'hi')
+                                                    {{ $cabinetMinisterData->fname_hi }}
+                                                    {{ $cabinetMinisterData->mname_hi }}
+                                                    {{ $cabinetMinisterData->lname_hi }}
+                                                @else
+                                                    {{ $cabinetMinisterData->fname_en }}
+                                                    {{ $cabinetMinisterData->mname_en }}
+                                                    {{ $cabinetMinisterData->lname_en }}
+
+                                                @endif
                                             </h2>
                                             <p class="title">
                                                 {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                             </p>
                                             <p class="desc">
                                                 @php
-                                                    $content = strip_tags($cabinetMinisterData->description_en);
+                                                    $content = strip_tags(Session::get('locale') == 'hi' ? $cabinetMinisterData->description_hi : $cabinetMinisterData->description_en);
                                                     $content = Str::limit($content, 685);
                                                 @endphp
 
@@ -638,7 +804,11 @@
                                             <div class="btn-wrap d-flex align-items-center">
                                                 <a href="{{ url('about-us/honourable-cabinet-minister') }}"
                                                     class="btn btn-org-bdr">
-                                                    Read More
+                                                    @if (Session::get('locale') == 'hi')
+                                                        {{ __('messages.Read_More') }}
+                                                    @else
+                                                        {{ __('messages.Read_More') }}
+                                                    @endif
                                                 </a>
                                             </div>
                                         </div>
@@ -668,7 +838,7 @@
                             <div class="tab-pane fade" id="tenders-tab-pane" role="tabpanel"
                                 aria-labelledby="tenders-tab" tabindex="0">
                                 <div>
-                                    <h2 class = "heading-black heading-black-md">Our Tender</h2>
+                                    <h2 class = "heading-black heading-black-md">Our Tenders</h2>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -703,9 +873,11 @@
                                                         <td>
                                                             <a target="{{ $tender->tab_type == 1 ? '_blank' : '' }}"
                                                                 class="link-primary"
-                                                                href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}" download>
+                                                                href="{{ asset('resources/uploads/TenderManagement/' . $tender->public_url) }}"
+                                                                download>
                                                                 View
-                                                            </a> <i class="fa fa-file-pdf-o"> </i>({{ $tender->pdf_size ?? '' }})
+                                                            </a> <i class="fa fa-file-pdf-o">
+                                                            </i>({{ $tender->pdf_size ?? '' }})
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -786,7 +958,7 @@
                     @php
                         $content = json_decode($journey->content);
                     @endphp
-                    <div class="col-md-3 mb-4" >
+                    <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2 ">
                             <img src="{{ asset('assets/images/' . $content->image_name) }}"
                                 alt="{{ $content->image_name }}" class="img-fluid">
@@ -806,91 +978,7 @@
                     </div>
                 @endforeach
 
-                {{-- <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation" class="img-fluid">
-                        <span class="total-no">
-                            1750
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Number_of_Graduates') }}
-                            @else
-                                {{ __('messages.Number_of_Graduates') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/programme.svg') }}" alt="programme" class="img-fluid">
-                        <span class="total-no">
-                            1
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Programme_Offerings') }}
-                            @else
-                                {{ __('messages.Programme_Offerings') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/research.svg') }}" alt="research" class="img-fluid">
-                        <span class="total-no">
-                            71
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Research_Initiatives') }}
-                            @else
-                                {{ __('messages.Research_Initiatives') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/presence.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            28
-                        </span>
-                        <p class="title">
-                            @if (Session::get('locale') == 'hi')
-                                {{ __('messages.Online_Presence') }}
-                            @else
-                                {{ __('messages.Online_Presence') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3 mt-4">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/graduation.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            61
 
-                        </span>
-                        <p class="title">
-                            Workshop & Training
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-3 mt-4">
-                    <div class="our-journey-card my-md-0 my-2" data-aos="flip-left" data-aos-duration="3000">
-                        <img src="{{ asset('assets/images/programme.svg') }}" alt="presence" class="img-fluid">
-                        <span class="total-no">
-                            1500
-                        </span>
-                        <p class="title">
-                            Total no of CME
-                        </p>
-
-                    </div>
-                </div> --}}
 
             </div>
         </div>
@@ -925,9 +1013,17 @@
                             </li>
                         </ul>
                         <p class="title-white py-4">
-                            Dynamic activities encompassing holistic education,
+                            @if (Session::get('locale') == 'hi')
+                                {{ __('messages.Dynamic_activities_encompassing_holistic_education') }}
+                            @else
+                                {{ __('messages.Dynamic_activities_encompassing_holistic_education') }}
+                            @endif
                             <br>
-                            research, seminars, and community engagement at Rashtriya Ayurveda Vidyapeeth
+                            @if (Session::get('locale') == 'hi')
+                                {{ __('messages.research_seminars_and_community') }}
+                            @else
+                                {{ __('messages.research_seminars_and_community') }}
+                            @endif
                         </p>
                         <div class="tab-content pt-4 mb-neg-20" id="activityTabContent">
                             <div class="tab-pane fade show active" id="activity-tab-pane" role="tabpanel"
@@ -961,7 +1057,7 @@
                                                                     {!! Str::limit(strip_tags($gyanGanga->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="{{ url($gyanGanga->url) }}" class="read-more">
+                                                            <a href="{{ url($gyanGanga->parent_url.'/'.$gyanGanga->url) }}" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -996,7 +1092,7 @@
                                                                     {!! Str::limit(strip_tags($ayurAhar->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="{{ url($ayurAhar->url) }}" class="read-more">
+                                                            <a href="{{ url($ayurAhar->parent_url.'/'.$ayurAhar->url) }}" class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -1059,7 +1155,7 @@
                                                                     @endif
 
                                                                 </div>
-                                                                <a href="{{ $item->url }}" class="read-more">
+                                                                <a href="{{ 'activities/'.$item->url }}" class="read-more">
                                                                     <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                         alt="read-more" class="img-fluid">
                                                                 </a>
@@ -1070,168 +1166,7 @@
                                             </div>
                                         @endforeach
 
-                                        {{-- <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider2.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                New Initiative
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Towards achieving the objective of “Ek Bharat Shreshth
-                                                                Bharat” campaign by Government of India, Rashtriya
-                                                                Ayurved Vidyapeeth , New Delhi under guidance of
-                                                                Ministry of AYUSH.
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider1.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Conduction of Training Programs
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Conduction of Training Programs
-                                                                Printer-friendly version
-                                                                In order to cater the specific needs of teachers ,
-                                                                students and researchers in Ayurveda , RAV has initiated
-                                                                various training programs as per actual demand. Curently
-                                                                a training program on samhita based ayurvedic for
-                                                                teachers and another on Research Method, manuscript
-                                                                writing and career opportunity for PG scholars is
-                                                                operational.
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Theses Submitted by RAV Students
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Annexure-I: Thesis Submitted by RAV Students
-                                                                The details of thesis, subject wise, submitted by
-                                                                students of RAV :
-                                                                SUSHRUTA SAMHITA
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Celebration of International Yoga Day 2023
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Rashtriya Ayurveda Vidyapeet (RAV) Punjabi Bagh, Delhi
-                                                                commemorated the 9th International Day for Yoga 2023.
-                                                                This year, the theme for International Yoga Day is "Yoga
-                                                                for Vasudhaiva Kutumbakam," which beautifully
-                                                                encapsulates our collective aspiration for "One Earth,
-                                                                One Family, One Future." Dr. Vandana Siroha, Director,
-                                                                RAV “Remarked that Yoga is not just performing asanas,
-                                                                but a way of living a healthy life. The practice of
-                                                                doing yoga every day not only makes our body healthy but
-                                                                it even relaxes the mind and oozes out negativity”.
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="activity-slider-card">
-                                                <div class="row m-0">
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-img">
-                                                            <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                                alt="activity-slider1" class="img-fluid">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="activity-slider-content">
-                                                            <h3 class="title-black-sm">
-                                                                Expert Talks Series on Poshan-Nutrition
-                                                            </h3>
-                                                            <p class="desc">
-                                                                Expert Talks Series on Poshan-Nutrition
-                                                                Printer-friendly version
-                                                                Every year “National Nutrition Month” is celebrated in
-                                                                the month of September. Poshan Abhiyaan was launched by
-                                                                Hon. Prime Minister in the year 2018 on the occasion of
-                                                                International Women’s Day with an objective to combat
-                                                                malnutrition among pregnant women, lactating mothers,
-                                                                school childrens & adolescent girls.RAV is also
-                                                                celebrating Poshan Maah from “1st to 30th September
-                                                                2021.”
-                                                            </p>
-                                                            <a href="#" class="read-more">
-                                                                <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                    alt="read-more" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
+
                                     </div>
                                 </div>
                             </div>
@@ -1251,25 +1186,36 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="twitter-tab" data-bs-toggle="tab"
                                     data-bs-target="#twitter-tab-pane" type="button" role="tab"
-                                    aria-controls="twitter-tab-pane" aria-selected="false">Social Media Updates
+                                    aria-controls="twitter-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Social_Media_Updates') }}
+                                    @else
+                                        {{ __('messages.Social_Media_Updates') }}
+                                    @endif
                                 </button>
                             </li>
-                            <!-- <li class="nav-item" role="presentation">
-                                                    <button class="nav-link " id="photo-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#photo-tab-pane" type="button" role="tab" aria-controls="photo-tab-pane"
-                                                        aria-selected="true">Our Photos
-                                                    </button>
-                                                </li> -->
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="video-tab" data-bs-toggle="tab"
                                     data-bs-target="#video-tab-pane" type="button" role="tab"
-                                    aria-controls="video-tab-pane" aria-selected="false">Gallery
+                                    aria-controls="video-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Gallery') }}
+                                    @else
+                                        {{ __('messages.Gallery') }}
+                                    @endif
                                 </button>
                             </li>
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="awards-tab" data-bs-toggle="tab"
                                     data-bs-target="#awards-tab-pane" type="button" role="tab"
-                                    aria-controls="awards-tab-pane" aria-selected="false">Awards
+                                    aria-controls="awards-tab-pane" aria-selected="false">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ __('messages.Awards') }}
+                                    @else
+                                        {{ __('messages.Awards') }}
+                                    @endif
                                 </button>
                             </li>
                         </ul>
@@ -1327,7 +1273,11 @@
                                                         <div class="content">
                                                             <div class="sec-title3 text-center  ">
                                                                 <h2 class="title mb-10">
-                                                                    Photo gallery
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Photo_Gallery') }}
+                                                                    @else
+                                                                        {{ __('messages.Photo_Gallery') }}
+                                                                    @endif
                                                                 </h2>
                                                             </div>
                                                         </div>
@@ -1363,7 +1313,11 @@
                                                             <div class="btn-part  text-center">
                                                                 <a class="readon2" href="{{ url('/photo-gallery') }}"
                                                                     rel="noopener noreferrer">
-                                                                    view all
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.View_All') }}
+                                                                    @else
+                                                                        {{ __('messages.View_All') }}
+                                                                    @endif
                                                                 </a>
                                                             </div>
                                                             <div class="btns">
@@ -1388,7 +1342,11 @@
                                                         <div class="content">
                                                             <div class="sec-title3 text-center ">
                                                                 <h2 class="title mb-10">
-                                                                    Video Gallery
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.Video_Gallery') }}
+                                                                    @else
+                                                                        {{ __('messages.Video_Gallery') }}
+                                                                    @endif
                                                                 </h2>
                                                             </div>
                                                         </div>
@@ -1422,7 +1380,11 @@
                                                                 <a class="readon2 mt-2"
                                                                     href="{{ url('/video-gallery') }}"
                                                                     rel="noopener noreferrer" tabindex="0">
-                                                                    View All
+                                                                    @if (Session::get('locale') == 'hi')
+                                                                        {{ __('messages.View_All') }}
+                                                                    @else
+                                                                        {{ __('messages.View_All') }}
+                                                                    @endif
                                                                 </a>
                                                             </div>
                                                             <div class="btns">
@@ -1683,59 +1645,79 @@
                     <div class="client-slider">
                         <div class="owl-carousel owl-theme" id="clientSlider">
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.india.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/india-gov.svg') }}" alt="india-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://data.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/data-gov.svg') }}" alt="data-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.mygov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/mygov.svg') }}" alt="mygov" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/digital-india.svg') }}" alt="digital-india"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://ayush.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target="_blank">
                                     <img src="{{ asset('assets/images/ministry-of-ayush.svg') }}"
                                         alt="ministry-of-ayush" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.india.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/india-gov.svg') }}" alt="india-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="#" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/data-gov.svg') }}" alt="data-gov"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/mygov.svg') }}" alt="mygov" class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://www.digitalindia.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/digital-india.svg') }}" alt="digital-india"
                                         class="img-fluid">
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="#" class="client-slider-img">
+                                <a href="https://ayush.gov.in/" class="client-slider-img"
+                                    onclick="return confirm('This link is external. Are you sure you want to proceed?')"
+                                    target = "_blank">
                                     <img src="{{ asset('assets/images/ministry-of-ayush.svg') }}"
                                         alt="ministry-of-ayush" class="img-fluid">
                                 </a>

@@ -105,7 +105,7 @@ class CommonComposer
                 ])
                 ->get();
             $newsLetter = DB::table('website_menu_management')->where('menu_place',2)
-                ->where('name_en','E-News Letter')->first();
+                ->where('url','e-news-letter')->first();
 
 
             $dynamicContents = DB::table('website_menu_management')->where('name_en','Alumni Corner')
@@ -132,12 +132,20 @@ class CommonComposer
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*','website_menu_management.url')->first();
+              
 
             $ayurAhar = DB::table('website_menu_management')->where('url','promotion-of-ayurvedic-aahar')
                 ->join('dynamic_content_page_metatag','dynamic_content_page_metatag.menu_uid','=','website_menu_management.uid')
                 ->join('dynamic_page_content','dynamic_page_content.dcpm_id','=','dynamic_content_page_metatag.uid')
                 ->select('dynamic_page_content.*','dynamic_content_page_metatag.*','website_menu_management.url')->first();
                 // dd($ayurAhar);
+                if ($gyanGanga) {
+                    $menuUid = $gyanGanga->menu_uid;
+                    $parentId = DB::table('website_menu_management')->where('uid',$menuUid)->first(['parent_id']);
+                    $parentMenu = DB::table('website_menu_management')->where('uid',$parentId->parent_id)->first(['url']);
+                      $gyanGanga->parent_url = $parentMenu->url;
+                      $ayurAhar->parent_url = $parentMenu->url;
+                  }
 
                 $cravGurusData =  DB::table('website_menu_management')
                 ->whereIn('url', [
@@ -153,6 +161,14 @@ class CommonComposer
                 ->select('website_menu_management.url', 'dynamic_page_content.*', 'dynamic_content_page_metatag.*','website_menu_management.url')
                 ->get();
                 
+
+                // visitors
+                $visitors = DB::table('visiting_counters')->get();
+                if (count($visitors) > 0){
+                    $visitors = count($visitors);
+                }else{
+                    $visitors = 0;
+                }
 
 
             // dd($gyanGanga);
@@ -173,7 +189,8 @@ class CommonComposer
                 'awardsContents' => $awardsContents,
                 'gyanGanga' => $gyanGanga,
                 'ayurAhar' => $ayurAhar,
-                'cravGurusData' => $cravGurusData
+                'cravGurusData' => $cravGurusData,
+                'total_visitors' => $visitors
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());

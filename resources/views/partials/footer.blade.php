@@ -101,13 +101,43 @@
         <div class="row align-items-center">
             <div class="col-md-6 px-0">
                 <div class="copyright-wrap">
-                    <p> © Copyright 2023 <b>Rashtriya Ayurveda Vidyapeeth.</b> All Rights Reserved.</p>
+                    <p>@if (Session::get('locale') == 'hi')
+                            {{ __('messages.©_Copyright') }}
+                        @else
+                            {{ __('messages.©_Copyright') }}
+                        @endif
+                    <?php
+                        echo date("Y");
+                    ?>
+                    <b>@if (Session::get('locale') == 'hi')
+                            {{ __('messages.Rashtriya_Ayurveda_Vidyapeeth') }}
+                        @else
+                            {{ __('messages.Rashtriya_Ayurveda_Vidyapeeth') }}
+                        @endif
+                    </b>@if (Session::get('locale') == 'hi')
+                             {{ __('messages.All_Rights_Reserved') }}
+                        @else
+                             {{ __('messages.All_Rights_Reserved') }}
+                        @endif
+                    </p>
                 </div>
             </div>
             <div class="col-md-6 justify-content-end">
                 <ul>
-                    <li>Last Updated - <span class="date"></span></li>
-                    <li class="visitors"> Total Visitors: <span id="visitors">10</span> </a></li>
+                    <li>
+                        @if (Session::get('locale') == 'hi')
+                             {{ __('messages.Last_Updated') }}
+                        @else
+                             {{ __('messages.Last_Updated') }}
+                        @endif <span class="date"></span></li>
+                    <li class="visitors">
+                        @if (Session::get('locale') == 'hi')
+                            {{ __('messages.Total_Visitors') }}
+                        @else
+                            {{ __('messages.Total_Visitors') }}
+                        @endif
+                        <span id="visitors">{{ $total_visitors ?? 0 }}</span> </a>
+                    </li>
                 </ul>
             </div>
         </div>

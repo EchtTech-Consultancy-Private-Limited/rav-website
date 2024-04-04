@@ -97,11 +97,11 @@ class HomeController extends Controller
         $secretaryData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
-        $ourJournyData = DB::table('form_designs_management')->where('form_name','Our Successful Journey')->first();
-        $ourJournyData = DB::table('form_data_management')->where('form_design_id',$ourJournyData->uid)->get(['content']);
-        
+        $ourJournyData = DB::table('form_designs_management')->where('form_name', 'Our Successful Journey')->first();
+        $ourJournyData = DB::table('form_data_management')->where('form_design_id', $ourJournyData->uid)->get(['content']);
 
-        return view('home', compact('ourJournyData','secretaryData','directorData','stateMinister','cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
+
+        return view('home', compact('ourJournyData', 'secretaryData', 'directorData', 'stateMinister', 'cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
     }
     /**
      * Show the form for creating a new resource.
@@ -169,7 +169,7 @@ class HomeController extends Controller
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
-       
+
         if (in_array("set-language", $slugsToCheck)) {
             session()->put('Lang', $request->data);
             App::setLocale($request->data);
@@ -514,9 +514,12 @@ class HomeController extends Controller
                             $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
 
+                        $rsbkDirectoryInstituteWise = 0;
+                        if ($middelSlug == 'rsbk-directory-institute-wise') {
+                            $rsbkDirectoryInstituteWise = 1;
+                        }
 
-
-                        return view('master-page', ['stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
+                        return view('master-page', ['rsbkDirectoryInstituteWise' => $rsbkDirectoryInstituteWise, 'stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
                         $formData = DB::table('website_menu_management')
                             ->join('form_designs_management', 'website_menu_management.uid', '=', 'form_designs_management.website_menu_uid')
@@ -546,22 +549,60 @@ class HomeController extends Controller
                         $tenders = [];
                         if ($slug == "tenders") {
                             $tenders = DB::table('tender_management')
-                            ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
-                            ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
-                            ->get();
+                                ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
+                                ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
+                                ->get();
                         }
 
-                      $careers = [];
-                      if ($slug == "career") {
+                        $careers = [];
+                        if ($slug == "career") {
                             $careers = DB::table('career_management')
-                            ->join('career_management_details', 'career_management_details.career_management_id', '=', 'career_management.uid')
-                            ->select('career_management.*','career_management.start_date as career_start_date','career_management.end_date as career_end_date','career_management_details.*')
-                            ->get();
-                      }
+                                ->join('career_management_details', 'career_management_details.career_management_id', '=', 'career_management.uid')
+                                ->select('career_management.*', 'career_management.start_date as career_start_date', 'career_management.end_date as career_end_date', 'career_management_details.*')
+                                ->get();
+                        }
 
-                    //   dd($careers);
+                        $middelBred = "";
 
-                        return view('master-page', ['careers'=>$careers,'tenders'=>$tenders,'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                        $states = [
+                            'delhi',
+                            'goa',
+                            'gujarat',
+                            'himachal Pradesh',
+                            'karnataka',
+                            'kerala',
+                            'madhya Pradesh',
+                            'chhattisgarh',
+                            'maharashtra',
+                            'odisha',
+                            'punjab',
+                            'rajasthan',
+                            'uttar Pradesh',
+                            'uttarakhand',
+                        ];
+
+                        $specialSlugs = [
+                            'rsbk-directory-from-1951-to-1960',
+                            'rsbk-directory-from-1961-to-1970',
+                            'rsbk-directory-from-1971-to-1980',
+                            'rsbk-directory-from-1981-to-1990',
+                            'rsbk-directory-from-1991-to-2000',
+                            'rsbk-directory-from-2001-to-2010',
+                            'rsbk-directory-from-2011-to-2020',
+                            'rsbk-directory-from-2021-to-2023',
+                            'm-pharma',
+                            'm-d',
+                            'p-g',
+                            'ph-d',
+                        ];
+
+                        if (in_array($slug, $states) || in_array($slug, $specialSlugs)) {
+                            $middelBred = "Rsbk e-directory";
+                        }
+
+
+
+                        return view('master-page', ['middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {

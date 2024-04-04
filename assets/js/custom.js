@@ -1,9 +1,24 @@
 $(document).ready(function() {
+
   $('.dataTable').DataTable({
     dom: 'lBfrtip', // Add 'l' to include length menu before the buttons
     buttons: [ 'print' ],
-    lengthMenu: [[5,10,25, 50, 75, -1], [5,10,25, 50, 75, "All"]]
+    lengthMenu: [[5,10,25, 50, 75, -1], [5,10,25, 50, 75, "All"]],
+   
 });
+$('#cmeScheme').DataTable({
+      dom: 'lBfrtip', // Add 'l' to include length menu before the buttons
+      // "pagingType": "full_numbers",
+      buttons: [ 'print' ],
+      lengthMenu: [[5,10,25, 50, 75, -1], [5,10,25, 50, 75, "All"]],
+      
+    });
+    // $.fn.DataTable.ext.pager.numbers_length = 4;
+
+  window.onload( function(){
+    $('#cmeScheme')
+  } );
+  
 
 
 });
@@ -407,11 +422,15 @@ function setTheme() {
   const linkElement = document.getElementById('theme-style');
  
   if (document.getElementById('mode').checked) {
-    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
-    document.cookie =  `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`; // Set cookie for dark mode
+    // document.cookie =  `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`; // local
+    // linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
+    linkElement.href = `${baseurl}/assets/css/dark-mode.css`;
+    document.cookie =  `theme=light-mode;path=${baseurl}/assets/css/dark-mode.css`; // local
   } else {
-    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
-    document.cookie = `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/style.css`; // Set cookie for light mode
+    // document.cookie = `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/style.css`; // local Set cookie for light mode
+    // linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
+    linkElement.href = `${baseurl}/assets/css/style.css`;
+    document.cookie = `theme=light-mode;path=${baseurl}/assets/css/style.css`; // Set cookie for light mode
   }
 }
 

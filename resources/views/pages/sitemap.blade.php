@@ -30,6 +30,11 @@
                     <h1>RAV Website Link</h1>
                     <h2>Main menu</h2>
                     <ul class="site-map-menu">
+                        <li class="first leaf">
+                            <a href="{{ url('/') }}">
+                                Home
+                            </a>
+                        </li>
                         {{-- @dd($headerMenu) --}}
                         @if (isset($headerMenu) && count($headerMenu) > 0)
                             @foreach ($headerMenu as $headerMenus)
@@ -63,7 +68,7 @@
                                                                 @endif
                                                             </a>
                                                         @else
-                                                            <a href="{{ url($url.'/'.$suburl) }}">
+                                                            <a href="{{ url($url . '/' . $suburl) }}">
                                                                 @if (Session::get('locale') == 'hi')
                                                                     {{ $subMenus->name_hi ?? '' }}
                                                                 @else
@@ -104,7 +109,7 @@
                         @else
                             <h5>No menu available.</h5>
                         @endif
-                    </ul>                    
+                    </ul>
                     <h2>
                         Footer Menu
                     </h2>
