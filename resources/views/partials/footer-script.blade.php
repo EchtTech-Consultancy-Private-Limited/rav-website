@@ -2,6 +2,7 @@
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('assets/js/aos.js') }}"></script>
+<script src="{{ asset('assets/js/darkMode.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/sidebar.js') }}"></script>
 <script src="{{ asset('assets/js/cssjs.js') }}"></script>
@@ -33,3 +34,4 @@
        animate();
     });
 </script>
+

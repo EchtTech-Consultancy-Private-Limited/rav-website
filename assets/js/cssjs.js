@@ -119,11 +119,26 @@ $(document).ready(function(){
     //         selectBox.click();
     //     }
     // });
+    console.log(  $("[data-bs-target='#offcanvasRight']"))
+    let offcanvasli = $("#offcanvasli");
+    let offcanvasRight = $('#offcanvasRight');
+    
+    $("[data-bs-target='#offcanvasRight']").one('focus', function () {
+        $("[data-bs-target='#offcanvasRight']").click();
+    });
+    
+    
+    $("#offcanvasli").on('focus', function () {
+        // Delay removing focus from [data-bs-target='#offcanvasRight'] to ensure focus is not immediately reassigne
+            $("[data-bs-target='#offcanvasRight']").blur();
+        $('.rotate-icon').click();
+     
 
-    $("[data-bs-target='#offcanvasRight']").on('foucus',  function () {
-        $("[data-bs-target='#offcanvasRight']").trigger('click');
-        alert("Focused!");
-    } );
+    });
+    
+    
 });
+
+
 
 // lang.
