@@ -13,7 +13,6 @@ class TenderManagement extends Model
 
     protected $primaryKey = 'uid';
 
-    protected $table = 'tender_management';
-
+    protected $table = 'tender_management';	
 
 }

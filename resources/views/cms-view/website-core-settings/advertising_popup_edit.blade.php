@@ -51,7 +51,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid popupadvertising_title" name="popupadvertising_title" id="popupadvertising_title" value="{{$popupAdvertising->title_name_en }}" />
                      <!--end::Input-->
@@ -69,7 +69,7 @@
                       </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="file" class="form-control form-control-solid popupadvertising_file" name="popupadvertising_file" id="popupadvertising_file" accept="image/*" />
                      <!--end::Input-->
@@ -81,7 +81,7 @@
                   <div class="col-md-3 text-md-end">
                      <!--begin::Label-->
                      <label class="fs-6 fw-semibold form-label mt-3">
-                        <span>Select From Date -> TO Date</span>
+                        <span>Select From Date & TO Date</span>
                         <span class="ms-1"  data-bs-toggle="tooltip" title="Set keywords for the store separated by a comma." >
                         <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>           
                       </label>
@@ -108,7 +108,7 @@
                       </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
                               <!--begin::Preview existing avatar-->
                               <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('resources/uploads/popupadvertising/') }}/<?php echo $popupAdvertising->images ?>);"></div>
@@ -166,6 +166,4 @@
       </div>
       <!--end:::Tab content-->
    </div>
-   <!--end::Card body-->
-</div>
 @endsection

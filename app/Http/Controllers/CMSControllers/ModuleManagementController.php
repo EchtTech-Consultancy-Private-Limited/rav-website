@@ -109,7 +109,7 @@ class ModuleManagementController extends Controller
         if($results){
             $result = $results;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
         return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),'data'=> $result]);

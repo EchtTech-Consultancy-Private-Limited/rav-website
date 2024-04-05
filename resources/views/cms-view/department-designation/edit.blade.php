@@ -37,28 +37,65 @@
             <!--begin::Form-->
             <form class="forms-sample row col-md-12" id="kt_departmentEdit_settings_general" enctype="multipart/form-data">
                @csrf
-               <!--begin::Heading-->
-               <div class="row mb-7">
-                  <div class="col-md-9 offset-md-3">
-                     <h2>Settings</h2>
-                  </div>
-               </div>
-               <div id="co"></div>
-               <!--end::Heading-->
+               @if(isset($type) && $type == 'designation')
                <!--begin::Input group-->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
                      <!--begin::Label-->
                      <label class="fs-6 fw-semibold form-label mt-3">
-                        <span class="required">Department OR Designation Name</span>
+                        <span class="required">Select Department</span>
+                        <span class="ms-1" data-bs-toggle="tooltip" title="Require Department .." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-7">
+                     <select class="form-select form-select-solid deprt_id" name="deprt_id" id="deprt_id" data-control="select2" data-placeholder="Select an option">
+                        <option></option>
+                        @foreach($department as $departments)
+                           @if($departments->uid == $data->parent_id)
+                              <option value="{{ $departments->uid }}" selected>{{ $departments->name_en  }}</option>
+                           @else
+                              <option value="{{ $departments->uid }}">{{ $departments->name_en  }}</option>
+                           @endif
+                        @endforeach
+                     </select>
+                  </div>
+               </div>
+               <!--end::Input group-->
+               @endif
+               <!--begin::Input group-->
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="required">Department OR Designation Name (In English)</span>
                         <span class="ms-1"  data-bs-toggle="tooltip" title="Require Department Name." >
                         <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid departmentName" value="{{ $data->name_en }}" name="departmentName" id="departmentName" />
+                     <!--end::Input-->
+                  </div>
+               </div>
+               <!--end::Input group-->
+               <!--begin::Input group-->
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="required">Department OR Designation Name (In Hindi)</span>
+                        <span class="ms-1"  data-bs-toggle="tooltip" title="Require Department Name." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-7">
+                     <!--begin::Input-->
+                     <input type="text" class="form-control form-control-solid departmentName_hi" value="{{ $data->name_hi }}" name="departmentName_hi" id="departmentName_hi" />
                      <!--end::Input-->
                   </div>
                </div>

@@ -59,12 +59,6 @@
             <!--begin::Form-->
             <form class="forms-sample row col-md-12" id="kt_core_website_settings_form" enctype="multipart/form-data">
                @csrf
-               <!--begin::Heading-->
-               <div class="row mb-7">
-                  <div class="col-md-9 offset-md-3">
-                     <h2>Logo Settings</h2>
-                  </div>
-               </div>
                <div id="co"></div>
                <!--end::Heading-->
                <!--begin::Input group-->
@@ -77,7 +71,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid logo_title" name="logo_title" id="logo_title_error" />
                      <!--end::Input-->
@@ -95,7 +89,7 @@
                       </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="file" class="form-control form-control-solid header_logo" name="header_logo" id="header_logo_error" accept="image/*" />
                      <!--end::Input-->
@@ -129,7 +123,6 @@
                <!--begin::Heading-->
                <div class="row mb-7">
                   <div class="d-flex flex-column gap-7 gap-lg-8">
-                     <h2>Footer Content</h2>
                            <div>
                               <!--begin::Label-->
                               <label class="form-label required">Description (English)</label>
@@ -163,7 +156,7 @@
                               <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            </label>
                               <!--end::Label-->
                            </div>
-                           <div class="col-md-9">
+                           <div class="col-md-7">
                               <!--begin::Input-->
                               <input type="text" class="form-control form-control-solid locate_map_link" name="locate_map_link" id="locate_map_link" value="" placeholder="https://..."  />
                               <!--end::Input-->
@@ -196,13 +189,6 @@
             <!--begin::Form-->
             <form id="kt_social_link_settings_form" class="form" method="POST" enctype="multipart/form-data">
                @csrf
-               <!--begin::Heading-->
-               <div class="row mb-7">
-                  <div class="col-md-9 offset-md-3">
-                     <h2>Social Link</h2>
-                  </div>
-               </div>
-               <!--end::Heading-->
                <!--begin::Input group-->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
@@ -213,7 +199,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid google_link" name="google_link" id="google_link_error" value="" placeholder="https://..."  />
                      <!--end::Input-->
@@ -230,7 +216,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid linkedin" name="linkedin" id="linkedin_error" value="" placeholder="https://..."  />
                      <!--end::Input-->
@@ -246,7 +232,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid facebook" name="facebook" id="facebook_error" value="" placeholder="https://..."  />
                      <!--end::Input-->
@@ -261,7 +247,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid twitter" name="twitter" id="twitter_error" value="" placeholder="https://..."  />
                      <!--end::Input-->
@@ -277,7 +263,7 @@
                   </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid instagram" name="instagram" id="instagram_error" value="" placeholder="https://..." />
                      <!--end::Input-->
@@ -293,7 +279,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid github" name="github" id="github_error" value="" placeholder="https://..."   />
                      <!--end::Input-->
@@ -326,14 +312,6 @@
             <!--begin::Form-->
             <form class="forms-sample row col-md-12" id="kt_popupadvertising_settings_form" enctype="multipart/form-data">
                @csrf
-               <!--begin::Heading-->
-               <div class="row mb-7">
-                  <div class="col-md-9 offset-md-3">
-                     <h2>Advertising Popup Settings</h2>
-                  </div>
-               </div>
-               <div id="co"></div>
-               <!--end::Heading-->
                <!--begin::Input group-->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
@@ -345,7 +323,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid popupadvertising_title" name="popupadvertising_title" id="popupadvertising_title" />
                      <!--end::Input-->
@@ -363,7 +341,7 @@
                       </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="file" class="form-control form-control-solid popupadvertising_file" name="popupadvertising_file" id="popupadvertising_file" accept="image/*" />
                      <!--end::Input-->
@@ -375,7 +353,7 @@
                   <div class="col-md-3 text-md-end">
                      <!--begin::Label-->
                      <label class="fs-6 fw-semibold form-label mt-3">
-                        <span>Select From Date -> TO Date</span>
+                        <span>Select From Date & TO Date</span>
                         <span class="ms-1"  data-bs-toggle="tooltip" title="Set keywords for the store separated by a comma." >
                         <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>           
                       </label>

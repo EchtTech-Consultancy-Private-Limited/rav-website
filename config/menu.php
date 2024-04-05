@@ -29,5 +29,7 @@ return[
         'documentation' => 'Documentation',
         'purchasewWorkscommittee' => 'Purchase/Works/Committee',
         'rtiapplicationresponses ' => 'RTI Application & Responses',
-        'formbuilder ' => 'Form Builder'
+        'formbuilder ' => 'Form Builder',
+        'privategovClient'=> 'Private & Govt Clients',
+        'homepagesection' =>'Home Page Section'
 ];

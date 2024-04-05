@@ -13,7 +13,7 @@
                      <!--begin::Mobile logo-->
                      <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                         <a href="{{ route('dashboard') }}" class="d-lg-none">
-                        @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
+                        @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1' || isset(Auth::user()->role_id) == '2' && Auth::user()->role_id == '2')
                            <img alt="Logo" src="{{ asset('assets-cms/logo-light.png') }}" class="h-25px"/>
                         @else
                         <p>{{ env('COMPANY_NAME') }}</p>
