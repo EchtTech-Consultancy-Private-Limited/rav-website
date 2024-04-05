@@ -1723,6 +1723,14 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="btns">
+                            <div id="customPreviousBtn5"><i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </div>
+                            <div id="customPause5"><i class="fa fa-pause" aria-hidden="true"></i></div>
+                            <div id="customPlay5" class="customPlay2"><i class="fa fa-play" aria-hidden="true"></i>
+                            </div>
+                            <div id="customNextBtn5"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -235,9 +235,10 @@ $('#cravSlider').owlCarousel({
 
 $('#clientSlider').owlCarousel({
   loop: true,
-  nav: false,
+  nav: true,
   dots: false,
   autoplay: true,
+  navText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"],
   margin: 15,
   responsive: {
     0: {
@@ -252,8 +253,9 @@ $('#clientSlider').owlCarousel({
     },
     1000: {
       items: 6,
-      nav: false,
+      nav: true,
       dots: false,
+      navText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]
 
     }
   }
@@ -370,7 +372,7 @@ $('#customPlay').click(function () {
 
 var pause1 = document.querySelector("#customPause");
 var play1 = document.querySelector("#customPlay");
-console.log(play1)
+
 pause1.addEventListener("click", function () {
   play1.style.display = "block";
   pause1.style.display = "none"
@@ -410,33 +412,13 @@ pause2.addEventListener("click", function () {
   pause2.style.display = "none"
   console.log("hello world")
 });
-console.log("hellow world")
 play2.addEventListener("click", function () {
   play2.style.display = "none";
   pause2.style.display = "block"
 });
 
-
-
-
-
 // enable dark mode and light mode
-function setTheme() {
-  let baseurl = window.location.origin;
-  const linkElement = document.getElementById('theme-style');
- 
-  if (document.getElementById('mode').checked) {
-    // document.cookie =  `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`; // local
-    // linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
-    linkElement.href = `${baseurl}/assets/css/dark-mode.css`;
-    document.cookie =  `theme=light-mode;path=${baseurl}/assets/css/dark-mode.css`; // local
-  } else {
-    // document.cookie = `theme=light-mode;path=${baseurl}/rav-website/rav-website/assets/css/style.css`; // local Set cookie for light mode
-    // linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
-    linkElement.href = `${baseurl}/assets/css/style.css`;
-    document.cookie = `theme=light-mode;path=${baseurl}/assets/css/style.css`; // Set cookie for light mode
-  }
-}
+
 
 // Function to retrieve theme from cookies on page load
 function getThemeFromCookies() {
@@ -450,32 +432,6 @@ function getThemeFromCookies() {
   return null; // Return null if 'theme' cookie is not found
 }
 
-// Call setTheme function on page load to set theme based on cookies
-window.onload = function() {
-  const theme = getThemeFromCookies();
-  if (theme === 'dark-mode') {
-    document.getElementById('mode').checked = true; // Check the checkbox for dark mode
-    setTheme(); // Apply the theme based on the retrieved value
-  }
-};
-
-// enable dark mode and light mode for inner pages
-function setinTheme() {
-
-  if (document.getElementById('in-mode').checked) {
-    const linkElement = document.getElementById('theme-style');
-    linkElement.href = '../assets/css/dark-mode.css';
-  }
-
-  else {
-    const linkElement = document.getElementById('theme-style');
-    linkElement.href = `${'assets/css/style'}.css`;
-
-    // Store the theme preference in local storage
-    // localStorage.setItem('assets/css/style', theme);
-  }
-
-}
 
 
 
@@ -636,29 +592,29 @@ $.each(navItemList, function(index, element) {
 
 var owl_3 = $("#photoGallerySlider");
 $("#customNextBtn3").click(function () {
-    owl_3.trigger("next.owl.carousel", 500);
+    owl_3.trigger("next.owl.carousel");
 }),
     $("#customPreviousBtn3").click(function () {
-        owl_3.trigger("prev.owl.carousel", 500);
+        owl_3.trigger("prev.owl.carousel");
     }),
     $("#customPause3").click(function () {
-        owl_3.trigger("stop.owl.autoplay", 500);
+        owl_3.trigger("stop.owl.autoplay");
     }),
     $("#customPlay3").click(function () {
-        owl_3.trigger("play.owl.autoplay", 500);
+        owl_3.trigger("play.owl.autoplay");
     });
 owl_3 = $("#photoGallerySlider");
 $("#customNextBtn3").click(function () {
-    owl_3.trigger("next.owl.carousel", 500);
+    owl_3.trigger("next.owl.carousel");
 }),
     $("#customPreviousBtn3").click(function () {
-        owl_3.trigger("prev.owl.carousel", 500);
+        owl_3.trigger("prev.owl.carousel");
     }),
     $("#customPause3").click(function () {
-        owl_3.trigger("stop.owl.autoplay", 500);
+        owl_3.trigger("stop.owl.autoplay");
     }),
     $("#customPlay3").click(function () {
-        owl_3.trigger("play.owl.autoplay", 500);
+        owl_3.trigger("play.owl.autoplay");
     });
 var pause3 = document.querySelector("#customPause3"),
     play3 = document.querySelector("#customPlay3");
@@ -670,24 +626,40 @@ pause3.addEventListener("click", function () {
     });
 var owl_4 = $("#videoGallerySlider");
 $("#customNextBtn4").click(function () {
-    owl_4.trigger("next.owl.carousel", 500);
+    owl_4.trigger("next.owl.carousel");
 }),
     $("#customPreviousBtn4").click(function () {
-        owl_4.trigger("prev.owl.carousel", 500);
+        owl_4.trigger("prev.owl.carousel");
     }),
     $("#customPause4").click(function () {
-        owl_4.trigger("stop.owl.autoplay", 500);
-    }),
-    $("#customPlay4").click(function () {
-        owl_4.trigger("play.owl.autoplay", 500);
+        owl_4.trigger("stop.owl.autoplay");
     });
-var pause4 = document.querySelector("#customPause4"),
-    play4 = document.querySelector("#customPlay4");
-pause4.addEventListener("click", function () {
-    (play4.style.display = "block"), (pause4.style.display = "none");
+
+
+var owl_5 = $("#clientSlider");
+$("#customNextBtn5").click(function () {
+    owl_5.trigger("next.owl.carousel");
 }),
-play4.addEventListener("click", function () {
-  (play4.style.display = "none"), (pause4.style.display = "block");
+    $("#customPreviousBtn5").click(function () {
+        owl_5.trigger("prev.owl.carousel");
+    }),
+    $("#customPause5").click(function () {
+        owl_5.trigger("stop.owl.autoplay");
+    });
+
+var pause5 = document.querySelector("#customPause5"),
+    play5 = document.querySelector("#customPlay5");
+pause5.addEventListener("click", function () {
+    (play5.style.display = "block"), (pause5.style.display = "none");
+}),
+play5.addEventListener("click", function () {
+  (play5.style.display = "none"), (pause5.style.display = "block");
 })
 
 
+$("#customPreviousBtn5").click(function () {
+  owl_5.trigger("prev.owl.carousel");
+}),
+$("#customPause5").click(function () {
+  owl_5.trigger("stop.owl.autoplay");
+});

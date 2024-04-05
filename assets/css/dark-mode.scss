@@ -104,9 +104,18 @@ p strong, li strong{
     background: #000 !important;
 }
 
+.accordion-button{
+    background: #000 !important;
+    border: 1px solid #fff !important;
+}
+
 .latest-update-wrap .title-white::after {
     width: 2px !important;
 }
 .addevent-box h5 {
     color: #fff !important;
+}
+
+.header-top-right ul li .text-increment-btn:hover{
+    color: #000 !important;
 }

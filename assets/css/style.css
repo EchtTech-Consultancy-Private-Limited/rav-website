@@ -492,6 +492,23 @@ li.nav-item .active {
   border-radius: 6px;
 }
 
+.header-top-right ul li .theme-toggle .switch-label.darkButton::before {
+  opacity: 0 !important;
+}
+
+.header-top-right ul li .theme-toggle .switch-label.darkButton::after {
+  opacity: 1 !important;
+}
+
+.header-top-right ul li .theme-toggle .switch-input:checked ~ .switch-label.darkButton:before {
+  opacity: 0;
+}
+
+.header-top-right ul li .theme-toggle .switch-handle.switchDarkButton {
+  left: auto !important;
+  right: 5px !important;
+}
+
 .header-top-right ul li .theme-toggle .switch-input:checked ~ .switch-label {
   background: #fff;
 }
@@ -4631,4 +4648,49 @@ h3 {
 
 [title] {
   text-transform: capitalize !important;
+}
+
+.client-slider {
+  position: relative;
+}
+.client-slider .owl-nav {
+  position: absolute;
+  top: 37%;
+  width: 100%;
+}
+.client-slider .owl-nav button {
+  position: absolute;
+  border: 1px solid #c7c2c2 !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.client-slider .owl-nav button:hover {
+  background-color: #ff5200;
+}
+.client-slider .owl-nav button:hover i {
+  color: #fff;
+}
+.client-slider .owl-nav button i {
+  font-size: 30px;
+}
+.client-slider .owl-nav button.owl-prev {
+  left: -60px;
+}
+.client-slider .owl-nav button.owl-next {
+  right: -60px;
+}
+.client-slider .btns {
+  position: static !important;
+  justify-content: end;
+}
+.client-slider .btns div {
+  background-color: transparent;
+}
+.client-slider .btns div i {
+  color: #000;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus-visible {
+  outline: none;
 }/*# sourceMappingURL=style.css.map */
