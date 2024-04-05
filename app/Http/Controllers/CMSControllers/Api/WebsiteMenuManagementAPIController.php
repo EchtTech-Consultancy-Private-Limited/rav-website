@@ -48,6 +48,11 @@ class WebsiteMenuManagementAPIController extends Controller
      */
     public function store(Request $request)
     {
+        if(isset(explode(':',$request->url)[0]) && explode(':',$request->url)[0] == 'https' || explode(':',$request->url)[0] == 'http'){
+            $patterns = '/\s+/';
+        }else{
+            $patterns = array('/\s+/','/&/', '/;/', '/#/','/</','/>/','/\"/','/\(/','/\)/','/{/','/}/','/\`/','/\[/','/\]/','/\=/','/\//','/:/');
+        }
         $exitValue = WebsiteMenuManagement::where([['name_en', $request->name_en],['soft_delete',0]])->count() > 0;
        // $max_size = $document->getMaxFileSize() / 1024 / 1024;
         if($exitValue == 'false'){
@@ -79,8 +84,8 @@ class WebsiteMenuManagementAPIController extends Controller
                             'menu_place' => isset($request->menu_place)?$request->menu_place:'0',
                             'sort_order' => $request->sort_order,
                             'tab_type' => $request->tab_type,
-                            'url' => preg_replace('/\s+/', '-', isset($request->url)?strtolower($request->url):'0'),
-                            'footer_url' => preg_replace('/\s+/', '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),
+                            'url' => trim(preg_replace($patterns, '-', isset($request->url)?strtolower($request->url):'0'),'-'),
+                            'footer_url' => trim(preg_replace($patterns, '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),'-'),
                             'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
                             'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
                         ]);
@@ -142,11 +147,17 @@ class WebsiteMenuManagementAPIController extends Controller
     {
          //dd($request->all());
         try{
+            
+            if(isset(explode(':',$request->url)[0]) && explode(':',$request->url)[0] == 'https' || explode(':',$request->url)[0] == 'http'){
+                $patterns = '/\s+/';
+            }else{
+                $patterns = array('/\s+/','/&/', '/;/', '/#/','/</','/>/','/\"/','/\(/','/\)/','/{/','/}/','/\`/','/\[/','/\]/','/\=/','/\//','/:/');
+            }
             $validator=Validator::make($request->all(),
                 [
                 'name_en'=>'required',
                 'sort_order'=>'required',
-            // 'url'=>'required'
+                //'parent_id'=>'required'
             ]);
             if($validator->fails())
             {
@@ -162,10 +173,10 @@ class WebsiteMenuManagementAPIController extends Controller
                         'menu_place' => isset($request->menu_place)?$request->menu_place:'0',
                         'sort_order' => $request->sort_order,
                         'tab_type' => $request->tab_type,
-                        'url' => preg_replace('/\s+/', '-', isset($request->url)?strtolower($request->url):'0'),
-                        'footer_url' => preg_replace('/\s+/', '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),
+                        'url' => trim(preg_replace($patterns, '-', isset($request->url)?strtolower($request->url):'0'),'-'),
+                        'footer_url' => trim(preg_replace($patterns, '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),'-'),
                         //'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
-                        //'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
+                        'parent_id' => $request->parent_id??'0',
                         'status' => 1,
                     ]);
                 

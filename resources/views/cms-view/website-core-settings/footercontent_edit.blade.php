@@ -43,7 +43,6 @@
                <!--begin::Heading-->
                <div class="row mb-7">
                   <div class="d-flex flex-column gap-7 gap-lg-8">
-                     <h2>Footer Content</h2>
                            <div>
                               <!--begin::Label-->
                               <label class="form-label required">Description (English)</label>
@@ -109,6 +108,4 @@
       </div>
       <!--end:::Tab content-->
    </div>
-   <!--end::Card body-->
-</div>
 @endsection

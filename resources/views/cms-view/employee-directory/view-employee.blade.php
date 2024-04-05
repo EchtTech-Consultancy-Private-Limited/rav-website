@@ -21,15 +21,15 @@
                         <div class="m-0">
                             <div class="me-7 mb-4">
                                 <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                                    @if(file_exists(asset('resources/uploads/userImage/'.$data->list->public_url)))
-                                    <img src="{{ (file_exists(asset('resources/uploads/userImage/'.$data->list->public_url)))  }}"  class="image-input-wrapper w-125px h-125px mb-4">
+                                    @if(is_file(asset('resources/uploads/empDirectory/'.$data->list->public_url)))
+                                        <img src="{{ asset('resources/uploads/empDirectory/'.$data->list->public_url)  }}"  class="image-input-wrapper w-125px h-125px mb-4">
                                     @else
-                                    <span class="symbol-label font-size-h10 font-weight-bold">
-                                        {{ strtoupper(substr(isset($data->list->fname_en)?$data->list->fname_en:'', 0, 1)).strtoupper(substr(isset($data->list->mname_en)?$data->list->mname_en:'', 0, 1)).strtoupper(substr(isset($data->list->lname_en)?$data->list->lname_en:'', 0, 1))  }}   
-                                    </span>
+                                        <span class="symbol-label font-size-h10 font-weight-bold">
+                                            {{ strtoupper(substr(isset($data->list->fname_en)?$data->list->fname_en:'', 0, 1)).strtoupper(substr(isset($data->list->mname_en)?$data->list->mname_en:'', 0, 1)).strtoupper(substr(isset($data->list->lname_en)?$data->list->lname_en:'', 0, 1))  }}   
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
-                            @endif
                             <!--begin::Label-->
                             <div class="fw-bold fs-3 text-gray-800">{{ $data->list->fname_en ??'' }} {{ $data->list->mname_en ??'' }} {{ $data->list->lname_en ??'' }} 
                                 ({{ $data->list->fname_hi ??'' }} {{ $data->list->mname_hi ??'' }} {{ $data->list->lname_hi ??'' }})</div>

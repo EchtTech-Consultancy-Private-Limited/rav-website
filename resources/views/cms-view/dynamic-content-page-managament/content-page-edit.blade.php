@@ -66,7 +66,7 @@
             <form id="kt_basic_information_form" class="form">
                <!--begin::Heading-->
                <!-- <div class="row mb-7">
-                  <div class="col-md-9 offset-md-3">
+                  <div class="col-md-7 offset-md-3">
                      <h2>Basic Information</h2>
                   </div>
                </div> -->
@@ -83,7 +83,7 @@
                      <!--end::Label-->
                   </div>
                   <?php //dd($data->pageContent[0]->pageTitle->page_title_en); ?>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <select class="form-select form-select-solid menu_id" name="menu_id" id="menu_id" data-control="select2" data-placeholder="Select an page title">
                            <option></option>
@@ -109,7 +109,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_en" id="page_title_en" name="page_title_en" value="{{$data->pageContent[0]->pageTitle->page_title_en}}" />
                      <!--end::Input-->
@@ -125,7 +125,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_hi" id="page_title_hi" name="page_title_hi" value="{{$data->pageContent[0]->pageTitle->page_title_hi}}" />
                      <!--end::Input-->
@@ -141,7 +141,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_title" id="meta_title" name="meta_title" value="{{$data->pageContent[0]->pageTitle->meta_title}}" />
                      <!--end::Input-->
@@ -157,7 +157,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_tag" id="meta_tag" name="meta_tag" value="{{$data->pageContent[0]->pageTitle->meta_tag}}" />
                      <!--end::Input-->
@@ -175,7 +175,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <textarea class="form-control form-control-solid" name="meta_description">{{$data->pageContent[0]->pageTitle->meta_tag_description}}</textarea>
                      <!--end::Input-->
@@ -193,7 +193,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="meta_keywords" value="{{$data->pageContent[0]->pageTitle->meta_keywords}}" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -209,7 +209,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="number" class="form-control form-control-solid" name="sort_order" value="{{$data->pageContent[0]->pageTitle->sort_order}}" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -225,7 +225,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="custom_url" value="{{$data->pageContent[0]->pageTitle->custom_slug}}" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->

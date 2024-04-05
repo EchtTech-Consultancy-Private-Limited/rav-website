@@ -202,7 +202,7 @@ class FormBuilderController extends Controller
         if($results){
             $result = $results;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
        
         return view('cms-view.'.$this->show,

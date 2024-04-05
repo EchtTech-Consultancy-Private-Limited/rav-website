@@ -33,6 +33,8 @@ use App\Http\Controllers\CMSControllers\RtiApplicationResponsesController;
 use App\Http\Controllers\CMSControllers\PurchaseWorksCommitteeController;
 use App\Http\Controllers\CMSControllers\FormBuilderController;
 use App\Http\Controllers\CMSControllers\ManualFileUploadController;
+use App\Http\Controllers\CMSControllers\PrivateGovernmentClientsController;
+use App\Http\Controllers\CMSControllers\HomePageSectionsDesignController;
 
 
 /*
@@ -79,6 +81,7 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
     Route::prefix('user')->group(function(){
         Route::get('/user-create', [UserManagementController::class, 'create'])->name('user.create');
         Route::get('/user-list', [UserManagementController::class, 'index'])->name('user.list');
+        Route::get('/user-show', [UserManagementController::class, 'show'])->name('user.show');
         Route::get('/user-edit', [UserManagementController::class, 'edit'])->name('user.edit');
         Route::get('/account-view', [UserManagementController::class, 'accountSettingsEdit'])->name('accountsettings.edit');
     });
@@ -250,6 +253,19 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/maunalfileupload-list', [ManualFileUploadController::class, 'index'])->name('mfu.list');
     });
 
+    Route::prefix('pgcs')->group(function(){
+        Route::get('/pgcs-create', [PrivateGovernmentClientsController::class, 'create'])->name('pgcs.create');
+        Route::get('/pgcs-edit', [PrivateGovernmentClientsController::class, 'edit'])->name('pgcs.edit');
+        Route::get('/pgcs-list', [PrivateGovernmentClientsController::class, 'index'])->name('pgcs.list');
+    });
+    Route::prefix('homepagesection')->group(function(){
+        Route::get('/homepagesection-create', [HomePageSectionsDesignController::class, 'create'])->name('homepagesection.create');
+        Route::get('/homepagesection-edit', [HomePageSectionsDesignController::class, 'edit'])->name('homepagesection.edit');
+        Route::get('/homepagesection-list', [HomePageSectionsDesignController::class, 'index'])->name('homepagesection.list');
+        Route::get('/newsection-create', [HomePageSectionsDesignController::class, 'createSection'])->name('newsection.create');
+        Route::get('/newsection-edit', [HomePageSectionsDesignController::class, 'editNewSections'])->name('newsection.edit');
+        Route::get('/newsection-list', [HomePageSectionsDesignController::class, 'indexNewSections'])->name('newsection.list');
+    });
 });
 
 require __DIR__ .'/api_route.php';
