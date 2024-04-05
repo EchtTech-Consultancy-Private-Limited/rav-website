@@ -1329,12 +1329,12 @@ color: #fff !important;
 }
 
 div#cmeScheme_wrapper{
-    div#cmeScheme_info{
-      width: 43%;
-    }
-    div#cmeScheme_paginate{
-width: 53%;
-    }
+//     div#cmeScheme_info{
+//       width: 43%;
+//     }
+//     div#cmeScheme_paginate{
+// width: 53%;
+//     }
 }
 .message-tab-img .video-wrap .video-img img {
     width: 100%;
@@ -4266,6 +4266,7 @@ button.btn.side-mn-icn:hover {
 }
 .col-box-g .column img.demo.cursor {
     height: 110px !important;
+    width: 100%;
 }
 .container1 .demo {
     opacity: 0.6;
@@ -4583,7 +4584,7 @@ table {
      tbody{
         th{
             p{
-                color: #fff;
+                color: #fff !important;
                 strong{
                     color: #fff;
 
