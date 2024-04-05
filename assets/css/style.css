@@ -3901,6 +3901,7 @@ button.btn.side-mn-icn:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #0d6efd;
 }
 
 .addevent-box.top {
