@@ -1270,13 +1270,6 @@ li.nav-item .active {
   height: 100%;
 }
 
-div#cmeScheme_wrapper div#cmeScheme_info {
-  width: 43%;
-}
-div#cmeScheme_wrapper div#cmeScheme_paginate {
-  width: 53%;
-}
-
 .message-tab-img .video-wrap .video-img img {
   width: 100%;
   transition: transform 2s;
@@ -4146,6 +4139,7 @@ button.btn.side-mn-icn:hover {
 
 .col-box-g .column img.demo.cursor {
   height: 110px !important;
+  width: 100%;
 }
 
 .container1 .demo {
@@ -4475,7 +4469,7 @@ ul.master-list-item li {
 }
 
 table tbody th p {
-  color: #fff;
+  color: #fff !important;
 }
 table tbody th p strong {
   color: #fff;
