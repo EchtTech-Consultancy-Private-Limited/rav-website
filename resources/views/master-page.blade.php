@@ -98,82 +98,6 @@
                                                                 aria-labelledby="flush-headingOne_0"
                                                                 data-bs-parent="#sidebarDropdown_0">
                                                                 <div class="accordion-body p-0">
-<<<<<<< HEAD
-                                                                    <ul class='p-0 m-0 mt-3'>
-                                                                        @foreach ($trees->children as $k => $childTree)
-                                                                            @php
-                                                                                $chiltreeUrl = $childTree->url ?? '';
-                                                                            @endphp
-                                                                            @if (isset($childTree->children) && count($childTree->children) > 0)
-                                                                                <li class="accordion accordion-flush position-relative fl-accordion"
-                                                                                    id="fl_sidebarDropdown_{{ $k }}">
-                                                                                    <div class="accordion-item">
-                                                                                        <div class="list-start"
-                                                                                            id="fl_flush_headingOne_{{ $k }}">
-                                                                                            <a class="nav-link collapsed"
-                                                                                                type="button"
-                                                                                                data-bs-toggle="collapse"
-                                                                                                data-bs-target="#fl_flush_collapseOne_{{ $k }}"
-                                                                                                aria-expanded="false"
-                                                                                                aria-controls="fl_flush_collapseOne_{{ $k }}"
-                                                                                                tabindex="0">
-                                                                                                @if (Session::get('Lang') == 'hi')
-                                                                                                    {{ $childTree->name_hi ?? '' }}
-                                                                                                @else
-                                                                                                    {{ $childTree->name_en ?? '' }}
-                                                                                                @endif
-                                                                                            </a>
-                                                                                        </div>
-                                                                                        <div id="fl_flush_collapseOne_{{ $k }}"
-                                                                                            class="accordion-collapse collapse"
-                                                                                            aria-labelledby="fl_flush_headingOne_{{ $k }}"
-                                                                                            data-bs-parent="#fl_sidebarDropdown_{{ $k }}">
-                                                                                            <div class="accordion-body p-0">
-                                                                                                <ul class="p-0 m-0 mt-3">
-                                                                                                    @foreach ($childTree->children as $finalChild)
-                                                                                                        @php
-                                                                                                            $finalChildUrl =
-                                                                                                                $finalChild->url ??
-                                                                                                                '';
-                                                                                                        @endphp
-                                                                                                        <li
-                                                                                                            class="@if (request()->is($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl . '/' . $finalChildUrl)) qm-active @endif">
-                                                                                                            <a
-                                                                                                                href="{{ url($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl . '/' . $finalChildUrl) }}">
-                                                                                                                @if (Session::get('Lang') == 'hi')
-                                                                                                                    {{ $finalChild->name_hi ?? '' }}
-                                                                                                                @else
-                                                                                                                    {{ $finalChild->name_en ?? '' }}
-                                                                                                                @endif
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                    @endforeach
-                                                                                                    <!-- nested layer -->
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </li>
-                                                                            @else
-                                                                                <li
-                                                                                    class="@if (request()->is($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl)) qm-active @endif">
-                                                                                    <a href="{{ url($parentMenuUrl . '/' . $treesUrl . '/' . $chiltreeUrl) }}"
-                                                                                        class="">
-                                                                                        @if (Session::get('Lang') == 'hi')
-                                                                                            {{ $childTree->name_hi ?? '' }}
-                                                                                        @else
-                                                                                            {{ $childTree->name_en ?? '' }}
-                                                                                        @endif
-                                                                                    </a>
-                                                                                </li>
-                                                                            @endif
-                                                                        @endforeach
-
-                                                                        <li>nested menu</li>
-                                                                        <li>nested menu</li>
-                                                                        <li>nested menu</li>
-                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus maxime hic laudantium perferendis id cumque architecto mollitia exercitationem, sunt nulla nihil sint voluptatibus! Explicabo, quam voluptates. Magnam labore temporibus dolore!</p>
-=======
                                                                     <ul class="p-0 m-0 mt-3">
                                                                         <li><a href="{{ url('m-pharma') }}">M. Pharma</a>
                                                                         </li>
@@ -181,7 +105,6 @@
                                                                         <li><a href="{{ url('p-g') }}">P. G</a></li>
                                                                         <li><a href="{{ url('ph-d') }}">Ph. D</a></li>
                                                                         <!-- Add more submenu items as needed -->
->>>>>>> a1ca823d2d58afb69e34d208557f9629f4df7c92
                                                                     </ul>
                                                                 </div>
 
