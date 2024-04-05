@@ -30,10 +30,10 @@ function setCookie(name, value, days) {
     
     if (document.getElementById('mode').checked) {
       setCookie('theme', 'dark-mode', 1); // Set cookie for dark mode
-      linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
+      linkElement.href = `${baseurl}/assets/css/dark-mode.css`;
     } else {
       setCookie('theme', 'light-mode', 1); // Set cookie for light mode
-      linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
+      linkElement.href = `${baseurl}/assets/css/style.css`;
     }
     $('.header-top-right ul li .theme-toggle .switch-label').removeClass('darkButton');
     $('.header-top-right ul li .theme-toggle .switch-handle').removeClass('switchDarkButton');
@@ -42,14 +42,14 @@ function setCookie(name, value, days) {
   let darkMode = getCookie('theme'); // Retrieve the value of the 'theme' cookie
   console.log(darkMode, "last cookie value");
   if (darkMode === "dark-mode") { // Use strict equality comparison
-    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/dark-mode.css`;
+    linkElement.href = `${baseurl}/assets/css/dark-mode.css`;
     
     $('.header-top-right ul li .theme-toggle .switch-label').addClass('darkButton')
     $('.header-top-right ul li .theme-toggle .switch-handle').addClass('switchDarkButton')
     
     
   } else {
-    linkElement.href = `${baseurl}/rav-website/rav-website/assets/css/style.css`;
+    linkElement.href = `${baseurl}/assets/css/style.css`;
     $('.header-top-right ul li .theme-toggle .switch-label').removeClass('darkButton');
     $('.header-top-right ul li .theme-toggle .switch-handle').removeClass('switchDarkButton');
   }
