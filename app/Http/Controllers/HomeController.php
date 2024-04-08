@@ -171,7 +171,7 @@ class HomeController extends Controller
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
 
         if (in_array("set-language", $slugsToCheck)) {
-            session()->put('Lang', $request->data);
+            session()->put('locale', $request->data);
             App::setLocale($request->data);
             return response()->json(['data' => $request->data, 'success' => true]);
         } else {
