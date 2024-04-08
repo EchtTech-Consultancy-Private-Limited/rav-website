@@ -72,6 +72,7 @@ class PrivateGovernmentClientsAPIController extends Controller
                 [
                 'tabtype'=>'required',
                 'title_name_en'=>'required',
+                'logo_url'=>'required',
                 'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:max_width=230,max_height=80"
             ]);
             if($validator->fails())
@@ -104,6 +105,7 @@ class PrivateGovernmentClientsAPIController extends Controller
                         'end_date' => $request->enddate,
                         'public_url' => $newname,
                         'private_url' => $newname,
+                        'url' => $request->logo_url,
                     // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                     ]);
                 
@@ -197,6 +199,7 @@ class PrivateGovernmentClientsAPIController extends Controller
                     'end_date' => $request->enddate,
                     'public_url' => $newname,
                     'private_url' => $newname,
+                    'url' => $request->logo_url,
                     'status' => 1,
                     // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                     ]);

@@ -146,10 +146,10 @@ class HomePageSectionsDesignAPIController extends Controller
     }
     public function storeNewSections(Request $request)
         {
-
-            $exitValue = DB::table('home_page_sections_list')->where([['title_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-            
-            if($exitValue == false){
+            //dd($request->section_name_en);
+            $exitValue = DB::table('home_page_sections_list')->where([['title_en', $request->section_name_en],['soft_delete',0]])->count();
+            //dd($exitValue);
+            if($exitValue != 0){
                 $notification =[
                     'status'=>201,
                     'message'=>'This is duplicate value.'

@@ -241,6 +241,30 @@
                                         <input class="form-control mb-2 instagram" type="url" placeholder="https?://.*" pattern="https?://.*" name="instagram" value="{{ $data->instagram }}" />
                                         <!--end::Input-->
                                     </div>
+                                    <div class="col-md-12 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2">Address/Place</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input class="form-control mb-2 short_order" type="text" placeholder="address..." name="address" value="{{ $data->address }}" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <div class="col-md-3 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2">Date of Birth</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input class="form-control mb-2 short_order" type="date" placeholder="Number..." name="dob" value="{{ $data->date_of_birth }}" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <div class="col-md-3 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2">Date of Death</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input class="form-control mb-2 short_order" type="date" placeholder="Number..." name="dod" value="{{ $data->date_of_death }}" />
+                                        <!--end::Input-->
+                                    </div>
                                     <div class="col-md-3 fv-row">
                                         <!--begin::Label-->
                                         <label class="fs-6 fw-semibold mb-2">Sort Order</label>

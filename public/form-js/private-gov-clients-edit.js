@@ -22,6 +22,17 @@ var KTApppgcsSave = function () {
                             },
                          },
                    },
+                   logo_url: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This url is you have fill http or https url'
+                        },
+                        regexp: {
+                           regexp: /^(http|https):\/\//,
+                           message: 'This field can consist of http or https url only'
+                              },
+                        },
+                  },
                  //   image: {
                  //         validators: {
                  //            notEmpty: {
