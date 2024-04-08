@@ -114,15 +114,24 @@
                               <div class="text-muted fs-7">A title name is required and recommended to be unique.</div>
                               <!--end::Description-->
                            </div>
+                           <div class="mb-10 fv-row">
+                              <!--begin::Label-->
+                              <label class="required form-label">URL (Logo Link)</label>
+                              <!--end::Label-->
+                              <!--begin::Input-->
+                              <div class="col-md-12">
+                                 <input type="text" name="logo_url" class="form-control mb-2 logo_url" id="logo_url" placeholder="https://..." value="{{$data->url??''}}" />
+                              </div>
+                           </div>
                            <div data-repeater-item class="form-group row">
                                 <!--begin::Input-->
                                 <div class="col-md-4">
                                 <label class="required form-label mw-100 w-100">Logo Title/Alt</label>
-                                    <input type="text" class="form-control mw-100 w-100" name="title" placeholder="title Name" value="{{$data->title_alt}}" />
+                                    <input type="text" class="form-control mw-100 w-100" name="title" placeholder="title Name" value="{{$data->title_alt ?? ''}}" />
                                 </div>
                                 <div class="col-md-4">
                                 <label class="required form-label mw-100 w-100">Sort Order</label>
-                                    <input type="number" class="form-control mw-100 w-100" name="sort_order" placeholder="sort order"  value="{{$data->sort_order}}"/>
+                                    <input type="number" class="form-control mw-100 w-100" name="sort_order" placeholder="sort order"  value="{{$data->sort_order??''}}"/>
                                 </div>
                                 <div class="col-md-4">
                                 <label class="required form-label mw-100 w-100">Image Format (230px * 80px)

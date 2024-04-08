@@ -286,20 +286,13 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::post('/update-homepagesection',[HomePageSectionsDesignAPIController::class,'update'])->name('homepagesection-update');
             Route::delete('/delete-homepagesection/{id}',[HomePageSectionsDesignAPIController::class,'destroy'])->name('homepagesection-delete');
             
-            /****** Home Page Section hps:Home Page Section*/
+            /****** New Section ns:New Section*/
             Route::post('/create-newsection',[HomePageSectionsDesignAPIController::class,'storeNewSections'])->name('newsection-save')->middleware('throttle:custom_Limit');
             Route::get('/list-newsectionlist',[HomePageSectionsDesignAPIController::class,'indexNewSections'])->name('newsections-list');
             Route::get('/edit-newsection/{id}',[HomePageSectionsDesignAPIController::class,'edit'])->name('newsection-edit');
             Route::post('/update-newsection',[HomePageSectionsDesignAPIController::class,'updateNewSection'])->name('newsection-update');
             Route::delete('/delete-newsection/{id}',[HomePageSectionsDesignAPIController::class,'destroyNewSection'])->name('newsection-delete');
 
-            /****** New Section ns:New Section */
-            Route::post('/create-mfu',[HomePageSectionsDesignAPIController::class,'store'])->name('mfu-save')->middleware('throttle:custom_Limit');
-            Route::get('/list-mfu',[HomePageSectionsDesignAPIController::class,'index'])->name('mfu-list');
-            Route::get('/edit-mfu/{id}',[HomePageSectionsDesignAPIController::class,'edit'])->name('mfu-edit');
-            Route::post('/update-mfu',[HomePageSectionsDesignAPIController::class,'update'])->name('mfu-update');
-            Route::delete('/delete-mfu/{id}',[HomePageSectionsDesignAPIController::class,'destroy'])->name('mfu-delete');
-            Route::post('/delete-pdf-mfu',[HomePageSectionsDesignAPIController::class,'deletePDFIMG'])->name('mfu-pdf-delete');
 
             /****** Asset Approver Route*/
             /****** Recent Activity rc:Recent Activity*/

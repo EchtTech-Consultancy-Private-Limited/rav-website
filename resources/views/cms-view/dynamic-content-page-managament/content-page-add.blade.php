@@ -470,6 +470,55 @@
                            </select>
                         </div>
                      </div>
+                     <div class="d-flex flex-column mb-15 fv-row">
+                     <!--begin::Label-->
+                     <div class="fs-5 fw-bold form-label mb-3">
+                        Custom fields 
+
+                        <span class="ms-2 cursor-pointer" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Add custom fields to the billing invoice.">
+                           <i class="ki-outline ki-information fs-7"></i>                </span>
+                     </div>
+                     <!--end::Label-->
+
+                     <!--begin::Table wrapper-->
+                     <div class="table-responsive">
+                        <!--begin::Table-->
+                        <table id="kt_create_new_custom_fields" class="table align-middle table-row-dashed fw-semibold fs-6 gy-5">
+                           <!--begin::Table head-->
+                           <thead>
+                                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                    <th class="pt-0">Field Name</th>
+                                    <th class="pt-0">Field Value</th>
+                                    <th class="pt-0 text-end">Remove</th>
+                                 </tr>
+                           </thead>
+                           <!--end::Table head-->
+
+                           <!--begin::Table body-->
+                           <tbody>
+                                 <tr>
+                                    <td>
+                                       <input type="text" class="form-control form-control-solid" name="row-name" value=""/>
+                                    </td>
+                                    <td>
+                                       <input type="text" class="form-control form-control-solid" name="row-value" value=""/>
+                                    </td>
+                                    <td class="text-end">
+                                       <button type="button" class="btn btn-icon btn-flex btn-active-light-primary w-30px h-30px me-3" data-kt-action="field_remove">
+                                             <i class="ki-outline ki-trash fs-3"></i>                                </button>
+                                    </td>
+                                 </tr>
+                           </tbody>
+                           <!--end::Table body-->
+                        </table>
+                        <!--end:Table-->
+                     </div>
+                     <!--end::Table wrapper-->
+
+                     <!--begin::Add custom field-->
+                     <button type="button" class="btn btn-light-primary me-auto" id="kt_create_new_custom_fields_add">Add custom field</button>
+                     <!--end::Add custom field-->
+               </div>
                      <!--begin::Input group-->
                      <!--begin::News-->
                      <!-- <div class="card-header">
