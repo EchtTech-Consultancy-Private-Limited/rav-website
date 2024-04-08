@@ -89,7 +89,7 @@ class HomeController extends Controller
         $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
-        $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
+        $department = DB::table('emp_depart_designations')->where('name_en', "RAV Director")->where('parent_id', 0)->first();
         $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
@@ -537,7 +537,7 @@ class HomeController extends Controller
                         $middelBred = "";
                         $directorData = "";
                         if ($slug == 'director') {
-                            $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
+                            $department = DB::table('emp_depart_designations')->where('name_en', "RAV Director")->where('parent_id', 0)->first();
                             $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                             
                         }
