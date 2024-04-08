@@ -1171,11 +1171,20 @@
                                                                     @endif
 
                                                                 </div>
+                                                                @if ($item->page_title_en == "Thesis Submitted by RAV Students")
+                                                                <a href="{{ 'activities/thesis-submitted-by-rav-student' }}"
+                                                                    class="read-more">
+                                                                    <img src="{{ asset('assets/images/read-more.svg') }}"
+                                                                        alt="read-more" class="img-fluid">
+                                                                </a>
+                                                                @else
                                                                 <a href="{{ 'activities/' . $item->url }}"
                                                                     class="read-more">
                                                                     <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                         alt="read-more" class="img-fluid">
                                                                 </a>
+                                                                @endif
+                                                               
                                                             </div>
                                                         </div>
                                                     </div>
