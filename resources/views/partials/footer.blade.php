@@ -82,22 +82,23 @@
         </div>
         <div class="offcanvas-body">
             @if (isset($toogleMenu) && count($toogleMenu) > 0)
-                <ul>
-                    @foreach ($toogleMenu as $toogleMenus)
-                        @php
-                            $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
-                        @endphp
-                        <li class="nav-item my-2">
-                            <a class="nav-link an-hove-sidemenu" href="{{ url($toogleMenuurl) ?? '' }}">
-                                @if (Session::get('locale') == 'hi')
-                                    {{ $toogleMenus->name_hi ?? '' }}
-                                @else
-                                    {{ $toogleMenus->name_en ?? '' }}
-                                @endif
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+            <ul>
+                @foreach ($toogleMenu as $toogleMenus)
+                @php
+                $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
+                @endphp
+                <li class="nav-item my-2">
+                    <a class="nav-link an-hove-sidemenu" href="{{ url($toogleMenuurl) ?? '' }}">
+                        @if (Session::get('locale') == 'hi')
+                        {{ $toogleMenus->name_hi ?? '' }}
+                        @else
+                        {{ $toogleMenus->name_en ?? '' }}
+                        @endif
+                    </a>
+                </li>
+                @endforeach
+                <li class="" id="offcanvasli" tabindex="0"></li>
+            </ul>
             @endif
         </div>
     </div>

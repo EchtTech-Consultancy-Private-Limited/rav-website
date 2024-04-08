@@ -180,7 +180,7 @@ class DynamicContentPageManagamentController extends Controller
         if(!empty($datas)){
             $datas1 = $datas;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
         $objectpass = new \stdclass;
         $objectpass->pageContent = $datas1;

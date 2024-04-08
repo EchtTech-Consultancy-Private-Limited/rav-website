@@ -94,7 +94,7 @@ var KTAppEmployeeDirectoryEdit = function () {
                            message: 'This field is required'
                         },
                         regexp: {
-                           regexp: /^[0-9]{10,15}$/,
+                           regexp: /^[0-9][\d|\.|\,|\-|\ ]{10,15}$/,
                            message: 'The value is require minimum 10 and maximum 15 Number'
                         },
                      },
@@ -105,7 +105,7 @@ var KTAppEmployeeDirectoryEdit = function () {
                            message: 'This field is required'
                         },
                         regexp: {
-                           regexp: /^[0-9]{2,8}$/,
+                           regexp: /^[A-Za-z0-9-'][\d|\.|\,|\-|\:|\(|\)|\ ]{2,18}$/,
                            message: 'The value is require minimum 2 and maximum 8 Number'
                         },
                      },

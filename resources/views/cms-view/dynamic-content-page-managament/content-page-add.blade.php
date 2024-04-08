@@ -83,7 +83,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <select class="form-select form-select-solid menu_id" name="menu_id" id="menu_id" data-control="select2" data-placeholder="Select an page title">
                            <option></option>
@@ -104,7 +104,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_en" id="page_title_en" name="page_title_en" value="" />
                      <!--end::Input-->
@@ -120,7 +120,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_hi" id="page_title_hi" name="page_title_hi" value="" />
                      <!--end::Input-->
@@ -136,7 +136,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_title" id="meta_title" name="meta_title" value="" />
                      <!--end::Input-->
@@ -152,7 +152,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_tag" id="meta_tag" name="meta_tag" value="" />
                      <!--end::Input-->
@@ -170,7 +170,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <textarea class="form-control form-control-solid" name="meta_description"></textarea>
                      <!--end::Input-->
@@ -188,7 +188,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="meta_keywords" value="" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -204,7 +204,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="number" class="form-control form-control-solid" name="sort_order" value="" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -220,7 +220,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="custom_url" value="" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -346,7 +346,7 @@
                <div class="card card-flush py-4">
                   <div class="card-body pt-0">
                      <div class="card-body pt-0">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id1" name="pageTitle_id1" id="pageTitle_id1" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
@@ -460,7 +460,7 @@
                <div class="card card-flush py-4">
                   <div class="card-body pt-0">
                      <div class="card-body pt-0">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id2" name="pageTitle_id2" id="pageTitle_id2" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
@@ -568,7 +568,7 @@
                <div class="card card-flush py-4">
                   <div class="card-body pt-0">
                      <div class="card-body pt-0">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id3" name="pageTitle_id3" id="pageTitle_id3" data-control="select2" data-placeholder="Select an page title">
                               <option></option>

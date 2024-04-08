@@ -126,7 +126,7 @@ class PurchaseWorksCommitteeController extends Controller
         if($results){
             $result = $results;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
         $assetType=DB::table('purchase_works_committees_type')->select('pwc_type','uid')->where([['soft_delete','=','0']])->orderby('sort_order','asc')->get();
         

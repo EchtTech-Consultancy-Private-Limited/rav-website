@@ -275,7 +275,7 @@
                         </div>
                         {{-- side menu end --}}
                         <div class="col-md-8 col-lg-8 ">
-                            <div class="about">
+                            <div class="about" id="about-us">
                                 @if (isset($cabinetMinisterData) && $cabinetMinisterData != '')
                                     <h1>{{ $title_name ?? '' }}</h1>
                                     <div class="message-tab-img">

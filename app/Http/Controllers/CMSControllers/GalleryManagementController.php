@@ -177,7 +177,7 @@ class GalleryManagementController extends Controller
         if($results){
             $result = $results;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
         if($results->type == 1){
             $fileName = $this->editVideo;
