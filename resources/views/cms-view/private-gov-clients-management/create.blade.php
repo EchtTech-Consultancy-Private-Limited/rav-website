@@ -114,6 +114,15 @@
                               <div class="text-muted fs-7">A title name is required and recommended to be unique.</div>
                               <!--end::Description-->
                            </div>
+                           <div class="mb-10 fv-row">
+                              <!--begin::Label-->
+                              <label class="required form-label">URL (Logo Link)</label>
+                              <!--end::Label-->
+                              <!--begin::Input-->
+                              <div class="col-md-12">
+                                 <input type="text" name="logo_url" class="form-control mb-2 logo_url" id="logo_url" placeholder="https://..." value="" />
+                              </div>
+                           </div>
                            <div data-repeater-item class="form-group row">
                                 <!--begin::Input-->
                                 <div class="col-md-4">
