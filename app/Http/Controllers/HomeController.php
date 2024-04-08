@@ -534,11 +534,12 @@ class HomeController extends Controller
                         } else {
                             $allFormData = [];
                         }
-
+                        $middelBred = "";
                         $directorData = "";
                         if ($slug == 'director') {
                             $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
                             $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+                            
                         }
 
                         $secretaryData = "";
@@ -562,7 +563,7 @@ class HomeController extends Controller
                                 ->get();
                         }
 
-                        $middelBred = "";
+                       
 
                         $states = [
                             'delhi',
@@ -587,7 +588,8 @@ class HomeController extends Controller
                             'rsbk-directory-from-1971-to-1980',
                             'rsbk-directory-from-1981-to-1990',
                             'rsbk-directory-from-1991-to-2000',
-                            'rsbk-directory-from-2001-to-2010',
+                            'rsbk-directory-from-2001-to-2005',
+                            'rsbk-directory-from-2006-to-2010',
                             'rsbk-directory-from-2011-to-2015',
                             'rsbk-directory-from-2016-to-2020',
                             'rsbk-directory-from-2021-to-2023',
@@ -663,5 +665,11 @@ class HomeController extends Controller
                 $tree = [];
             }
         }
+    }
+
+    public function newsDetails($id){
+        $news = DB::table('news_management')->where('uid',$id)->first();
+        $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
+        return view('pages.news-details',compact('news','quickLink'));
     }
 }

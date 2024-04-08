@@ -57,9 +57,9 @@
                         </li>
                     @elseif ($trees->url == 'rsbk-directory-state-wise')
                         <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif"
-                            id="sidebarDropdown_0">
+                            id="sidebarDropdown_1">
                             <div class="accordion-item border-0">
-                                <div class="list-start" id="flush-headingOne_0">
+                                <div class="list-start" id="flush-headingOne_1">
                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"
                                         class="nav-link {{ request()->is('delhi') ||
                                         request()->is('goa') ||
@@ -119,7 +119,7 @@
                                     request()->is('uttarakhand')
                                         ? 'show'
                                         : '' }}"
-                                    aria-labelledby="flush-headingOne_0" data-bs-parent="#sidebarDropdown_0">
+                                    aria-labelledby="flush-headingOne_1" data-bs-parent="#sidebarDropdown_1">
                                     <div class="accordion-body p-0">
                                         <ul class="p-0 m-0 mt-3">
                                             <li class="{{ request()->is('delhi') ? 'qm-active' : '' }}"><a

@@ -44,7 +44,9 @@
                         <li><a>{{ ucfirst(strtolower($lastBred)) ?? '' }}</a></li>
                     @endif
                     @if (isset($middelBred))
+                        @if ($middelBred != "")
                         <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
+                        @endif
                     @endif
                     <li>{{ $organizedData['metatag']->meta_title ?? $title_name }}</li>
                 </ul>
@@ -275,7 +277,7 @@
                         </div>
                         {{-- side menu end --}}
                         <div class="col-md-8 col-lg-8 ">
-                            <div class="about" id="about-us">
+                            <div class="about">
                                 @if (isset($cabinetMinisterData) && $cabinetMinisterData != '')
                                     <h1>{{ $title_name ?? '' }}</h1>
                                     <div class="message-tab-img">
