@@ -18,7 +18,10 @@
                     <div class="search-wrap me-4">
                         <form name="searchForm" action="{{ url('/search') }}" method="get">
                             <input class="form-control" type="search" name="search_key" id="search_key"
-                            value="{{ request('search_key') ?? '' }}" placeholder="Search" aria-label="Search">
+                            value="{{ request('search_key') ?? '' }}" placeholder="Search" aria-label="Search" >
+                            @error('search_key')
+                                <span id="searchValidationErrorLabel" class="text-danger">{{ $message }}</span>
+                            @enderror
                             <button class="btn btn-search" type="submit">
                                 <img src="{{ asset('assets/images/search.png') }}" alt="search" class="img-fluid" title="search">
                             </button>
