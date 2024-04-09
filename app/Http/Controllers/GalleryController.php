@@ -20,7 +20,8 @@ class GalleryController extends Controller
                 'title_name_hi' => $item->title_name_hi
             ];
         }
-        return view('pages.photoGallery', compact('imageWithCategory'));
+        $title_name = 'Photo Gallery';
+        return view('pages.photoGallery', compact('imageWithCategory', 'title_name'));
     }
 
     public function imageCategoryData($id)
@@ -28,7 +29,8 @@ class GalleryController extends Controller
         $galleryCategories = DB::table('gallery_management')->where('type', 0)->where('status', 3)->where('uid', $id)->where('soft_delete', 0)->first();
         $imageWithCategory = DB::table('gallery_details')->where('gallery_id', $galleryCategories->uid)->where('soft_delete', 0)->get();
         //    dd($imageWithCategory);
-        return view('pages.photoGalleryDetails', compact('imageWithCategory'));
+        $title_name = "Photo Gallery";
+        return view('pages.photoGalleryDetails', compact('imageWithCategory', 'title_name'));
     }
 
     public function videoGallery()
@@ -46,7 +48,7 @@ class GalleryController extends Controller
                 ];
             }
         }
-
-        return view('pages.videoGallery', compact('videos'));
+        $title_name = 'Video Gallery';
+        return view('pages.videoGallery', compact('videos', 'title_name'));
     }
 }

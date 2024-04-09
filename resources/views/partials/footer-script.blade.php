@@ -14,6 +14,11 @@
 
 
 <script>
+  $("#search_key").on("keyup", function() {
+    $("#searchValidationErrorLabel").hide();
+
+  });
+
     const counters = document.querySelectorAll('.counterNumber');
     const speed = 200;
 

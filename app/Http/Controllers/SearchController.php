@@ -13,6 +13,12 @@ class SearchController extends Controller
      */
     public function getSearchData(Request $request)
     {
+        $request->validate([
+            'search_key' => 'required',
+        ],[
+            'search_key.required' => 'Please enter a search keyword',
+        
+        ]);
         $keyword = $request->search_key;
         $databaseName = env('DB_DATABASE');
         $tables = DB::select("SHOW TABLES FROM $databaseName");

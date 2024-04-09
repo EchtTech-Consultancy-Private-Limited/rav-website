@@ -19,7 +19,7 @@
     @endif
     {{-- banner end --}}
     <div class="breadcrumb-title">
-        <h3 class="title">{{ $organizedData['metatag']->meta_title ?? '' }}</h3>
+        <h3 class="title">{{ $organizedData['metatag']->meta_title ?? $title_name }}</h3>
     </div>
     </div>
 </section>
@@ -45,7 +45,7 @@
                 @if (isset($middelBred))
                 <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
                 @endif
-                <li>{{ $organizedData['metatag']->meta_title ?? '' }}</li>
+                <li>{{ $organizedData['metatag']->meta_title ?? $title_name }}</li>
             </ul>
         </div>
     </div>

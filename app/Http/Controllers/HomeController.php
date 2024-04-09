@@ -509,6 +509,7 @@ class HomeController extends Controller
                         }
 
                         $stateMinister = "";
+
                         if ($middelSlug == 'honourable-minister-of-state') {
                             $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id', 0)->first();
                             $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
@@ -539,7 +540,6 @@ class HomeController extends Controller
                         if ($slug == 'director') {
                             $department = DB::table('emp_depart_designations')->where('name_en', "RAV Director")->where('parent_id', 0)->first();
                             $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
-                            
                         }
 
                         $secretaryData = "";
@@ -563,7 +563,7 @@ class HomeController extends Controller
                                 ->get();
                         }
 
-                       
+
 
                         $states = [
                             'delhi',
@@ -593,23 +593,46 @@ class HomeController extends Controller
                             'rsbk-directory-from-2011-to-2015',
                             'rsbk-directory-from-2016-to-2020',
                             'rsbk-directory-from-2021-to-2023',
+                        ];
+
+                        $qualificationSlugs = [
                             'm-pharma',
                             'm-d',
                             'p-g',
                             'ph-d',
                         ];
+
                         $displayRsbkMenu = 0;
-                        if (in_array($slug, $states) || in_array($slug, $specialSlugs)) {
-                            $middelBred = "Rsbk e-directory";
+                        $lastBred = null;
+
+                        if (in_array($slug, $states)) {
+                            $lastBred = "Rsbk e-directory";
                             $displayRsbkMenu = 1;
+                            $middelBred = "RSBK Directory State Wise";
+                        } elseif (in_array($slug, $specialSlugs)) {
+                            $lastBred = "Rsbk e-directory";
+                            $displayRsbkMenu = 1;
+                            $middelBred = "RSBK Directory Year Wise";
+                        } elseif (in_array($slug, $qualificationSlugs)) {
+                            $lastBred = "Rsbk e-directory";
+                            $displayRsbkMenu = 1;
+                            $middelBred = "RSBK Directory Qualification Wise";
+                        } else {
+                            $lastBred = "";
                         }
 
-                        $tree = $this->getRsbkDirectoryMenu('rsbk-e-directory','rsbk-directory-year-wise');
-                        $parentMenut = $this->getRsbkDirectoryMenu('rsbk-e-directory','rsbk-directory-year-wise');
 
+                        // if (in_array($slug, $states) || in_array($slug, $specialSlugs)) {
+                        //     $middelBred = "Rsbk e-directory";
+                        //     $displayRsbkMenu = 1;
+                        // }
 
+                        $tree = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
+                        $parentMenut = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
 
-                        return view('master-page', ['tree'=>$tree,'parentMenut'=>$parentMenut,'displayRsbkMenu'=>$displayRsbkMenu,'middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                        
+
+                        return view('master-page', ['lastBred'=>$lastBred,'tree' => $tree, 'parentMenut' => $parentMenut, 'displayRsbkMenu' => $displayRsbkMenu, 'middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {
@@ -629,7 +652,8 @@ class HomeController extends Controller
         }
     }
 
-    public function getRsbkDirectoryMenu($slug,$middelSlug){
+    public function getRsbkDirectoryMenu($slug, $middelSlug)
+    {
         $footerMenu = DB::table('website_menu_management')->where('menu_place', 1)->get();
 
         $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
@@ -667,9 +691,10 @@ class HomeController extends Controller
         }
     }
 
-    public function newsDetails($id){
-        $news = DB::table('news_management')->where('uid',$id)->first();
+    public function newsDetails($id)
+    {
+        $news = DB::table('news_management')->where('uid', $id)->first();
         $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
-        return view('pages.news-details',compact('news','quickLink'));
+        return view('pages.news-details', compact('news', 'quickLink'));
     }
 }
