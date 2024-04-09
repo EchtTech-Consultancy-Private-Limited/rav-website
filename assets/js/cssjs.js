@@ -119,7 +119,7 @@ $(document).ready(function(){
     //         selectBox.click();
     //     }
     // });
-    console.log(  $("[data-bs-target='#offcanvasRight']"))
+ 
     let offcanvasli = $("#offcanvasli");
     let offcanvasRight = $('#offcanvasRight');
     
@@ -136,9 +136,18 @@ $(document).ready(function(){
 
     });
     
+  
     
+let th = $('th');
+th.each((a, item) => {
+    let dateArr = $(item).text().toLowerCase().split(' ');
+    let containsDate = dateArr.includes('date');
+    if (containsDate) {
+        let index = $(item).index() + 1; // Index of corresponding td in the same row
+        $(`td:nth-child(${index})`).css('white-space', 'nowrap');
+    }
 });
-
+});
 
 
 // lang.
