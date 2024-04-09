@@ -243,7 +243,7 @@ class WebsiteCoreSettingsController extends Controller
             $popupAdvertising = $popupAdvertisings;
             $formCall = 'advertising_popup_edit';
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
         return view('cms-view.website-core-settings.'.$formCall,
         [

@@ -66,7 +66,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid menuName_en" name="menuName_en" id="menuName_en" value="" />
                   </div>
                </div>
@@ -78,7 +78,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid menuName_hi" name="menuName_hi" id="menuName_hi" value="" />
                   </div>
                </div>
@@ -90,7 +90,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid url" name="url" id="url" value="" />
                   </div>
                </div>
@@ -102,7 +102,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="number" class="form-control form-control-solid shortorder" name="shortorder" id="shortorder" value="" />
                   </div>
                </div>
@@ -114,7 +114,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid footer_url" name="footer_url" id="footer_url" value="" />
                   </div>
                </div>
@@ -244,7 +244,7 @@
                      <span class="ms-1"  data-bs-toggle="tooltip" title="Set theme style for the store." >
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                      <div class="w-100">
                         <select class="form-select form-select-solid menu_id" name="menu_id" id="menu_id" data-control="select2" data-placeholder="Select an option">
                            <option></option>
@@ -262,7 +262,7 @@
                      <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." >
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid submenuName_en" name="submenuName_en" id="submenuName_en" value="" />
                   </div>
                </div>
@@ -273,7 +273,7 @@
                      <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." >
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid submenuName_hi" name="submenuName_hi" id="submenuName_hi" value="" />
                   </div>
                </div>
@@ -285,7 +285,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid url1" name="url" id="url" value="" />
                   </div>
                </div>
@@ -297,7 +297,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="number" class="form-control form-control-solid shortorder1" name="shortorder" id="shortorder" value="" />
                   </div>
                </div>
@@ -367,7 +367,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                      <div class="w-100">
                         <!--begin::Select2-->
                         <select class="form-select form-select-solid submenu_id" name="submenu_id" data-control="select2" data-placeholder="Select an option">
@@ -385,7 +385,7 @@
                      <span class="required">Sub Sub Menu Name (In English)</span>
                      <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." ><i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid sub_sub_menu_en" name="sub_sub_menu_en" id="sub_sub_menu_en" value="" />
                   </div>
                </div>
@@ -395,7 +395,7 @@
                      <span class="required">उप उप मेनू नाम (हिन्दी में)</span>
                      <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." ><i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid sub_sub_menu_hi" name="sub_sub_menu_hi" id="sub_sub_menu_hi" value="" />
                   </div>
                </div>
@@ -407,7 +407,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid url2" name="url" id="url" value="" />
                   </div>
                </div>
@@ -419,7 +419,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="number" class="form-control form-control-solid shortorder2" name="shortorder" id="shortorder" value="" />
                   </div>
                </div>
@@ -489,7 +489,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                      <div class="w-100">
                         <!--begin::Select2-->
                         <select class="form-select form-select-solid subsubmenu_id" name="subsubmenu_id" data-control="select2" data-placeholder="Select an option">
@@ -507,7 +507,7 @@
                      <span class="required">Sub Sub Sub Menu Name (In English)</span>
                      <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." ><i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid sub_sub_sub_menu_en" name="sub_sub_sub_menu_en" value="" />
                   </div>
                </div>
@@ -517,7 +517,7 @@
                      <span class="required">उप उप उप मेनू नाम (हिन्दी में)</span>
                      <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." ><i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span></label>
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid sub_sub_sub_menu_hi" name="sub_sub_sub_menu_hi" value="" />
                   </div>
                </div>
@@ -529,7 +529,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="text" class="form-control form-control-solid url3" name="url" id="url" value="" />
                   </div>
                </div>
@@ -541,7 +541,7 @@
                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-6">
                      <input type="number" class="form-control form-control-solid shortorder3" name="shortorder" id="shortorder" value="" />
                   </div>
                </div>

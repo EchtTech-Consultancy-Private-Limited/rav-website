@@ -8,7 +8,7 @@
 @section('breadcrumbs')
  {{ __('Menu Tree') }}
 @endsection
-@push('post-scripts')
+@push('post-css')
 <link href="{{ asset('assets-cms/cms_css/tree.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 @section('content')

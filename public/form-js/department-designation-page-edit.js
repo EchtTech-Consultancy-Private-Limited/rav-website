@@ -22,6 +22,17 @@ var KTvalidationEditDepartment= function() {
                             },
                         },
                     },
+                    departmentName_hi: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This field is required'
+                            },
+                            // regexp: {
+                            //     regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
+                            //     message: 'This field can consist of alphabetical characters, spaces, digits only'
+                            // },
+                        },
+                    },
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -40,6 +51,8 @@ var KTvalidationEditDepartment= function() {
                    $('#loading-content').addClass('loading-content');
                  axios.post(crudUrlTemplate.update+'?id='+id, {
                        name_en: $('.departmentName').val(),
+                       name_hi: $('.departmentName_hi').val(),
+                       parent_id: $('.deprt_id').val(),
                     })
                     .then(function (response) {
                     if (response.data.status ==200) {

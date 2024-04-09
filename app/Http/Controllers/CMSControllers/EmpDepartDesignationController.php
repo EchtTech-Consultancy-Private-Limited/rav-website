@@ -106,6 +106,7 @@ class EmpDepartDesignationController extends Controller
      */
     public function edit(Request $request, EmpDepartDesignation $empDepartDesignation)
     {
+        $departList=EmpDepartDesignation::where([['soft_delete','0'],['parent_id','0']])->get();
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['update'] = route('departmentdesignation-update');
         }
@@ -113,12 +114,19 @@ class EmpDepartDesignationController extends Controller
         if($results){
             $result = $results;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
+        }
+        if($results->parent_id == 0){
+            $types = 'department';
+        }else{
+            $types = 'designation';
         }
         //dd($result);
         return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
+            'department'=>$departList,
+            'type' =>$types,
         ]);
     }
 

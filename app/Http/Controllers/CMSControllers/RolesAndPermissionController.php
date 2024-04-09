@@ -203,7 +203,7 @@ class RolesAndPermissionController extends Controller
         if(isset($datas)){
             $data = $datas;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
         //dd($datas);
         return view('cms-view.roles-and-permission.role-edit',

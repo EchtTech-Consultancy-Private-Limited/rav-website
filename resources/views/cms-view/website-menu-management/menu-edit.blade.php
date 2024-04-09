@@ -37,6 +37,29 @@
             <!--begin::Form-->
             <form id="kt_settings_menu_form" class="form" method="post">
                @csrf
+               @if(isset($types) && $types == 1)
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                     <span class="required">Menu Name Select</span>
+                     <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." >
+                     <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                  </div>
+                  <div class="col-md-7">
+                  <select class="form-select form-select-solid menu_id" name="menu_id" id="menu_id" data-control="select2" data-placeholder="Select an option">
+                        <option></option>
+                        @foreach($menulist as $menus)
+                           @if($Editmenu->parent_id == $menus->uid)
+                                 <option value="{{ $menus->uid }}" selected>{{ $menus->name_en  }} ({{ $menus->name_hi }})</option>
+                           @else
+                                 <option value="{{ $menus->uid }}">{{ $menus->name_en  }} ({{ $menus->name_hi }})</option>
+                           @endif
+                        @endforeach
+                     </select>
+                  </div>
+               </div>
+               @endif
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
                      <label class="fs-6 fw-semibold form-label mt-3">

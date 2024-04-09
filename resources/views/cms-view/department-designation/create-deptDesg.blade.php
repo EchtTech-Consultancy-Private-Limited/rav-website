@@ -58,15 +58,33 @@
                   <div class="col-md-3 text-md-end">
                      <!--begin::Label-->
                      <label class="fs-6 fw-semibold form-label mt-3">
-                        <span class="required">Department Name</span>
+                        <span class="required">Department Name (In English)</span>
                         <span class="ms-1"  data-bs-toggle="tooltip" title="Require Department Name." >
                         <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid departmentName" name="departmentName" id="departmentName" />
+                     <!--end::Input-->
+                  </div>
+               </div>
+               <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="required">Department Name (In Hindi)</span>
+                        <span class="ms-1"  data-bs-toggle="tooltip" title="Require Department Name." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-7">
+                     <!--begin::Input-->
+                     <input type="text" class="form-control form-control-solid departmentName_hi" name="departmentName_hi" id="departmentName_hi" />
                      <!--end::Input-->
                   </div>
                </div>
@@ -115,7 +133,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <select class="form-select form-select-solid deprt_id" name="deprt_id" id="deprt_id" data-control="select2" data-placeholder="Select an option">
                         <option></option>
                         @foreach($department as $departments)
@@ -130,15 +148,33 @@
                   <div class="col-md-3 text-md-end">
                      <!--begin::Label-->
                      <label class="fs-6 fw-semibold form-label mt-3">
-                        <span class="required">Designation Name</span>
+                        <span class="required">Designation Name (In English)</span>
                         <span class="ms-1" data-bs-toggle="tooltip" title="Require Designation Name.." >
                         <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid designationName" name="designationName" id="designationName" />
+                     <!--end::Input-->
+                  </div>
+               </div>
+               <!--end::Input group-->
+               <!--begin::Input group-->
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="required">Designation Name (In Hindi)</span>
+                        <span class="ms-1" data-bs-toggle="tooltip" title="Require Designation Name.." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-7">
+                     <!--begin::Input-->
+                     <input type="text" class="form-control form-control-solid designationName_hi" name="designationName_hi" id="designationName_hi" />
                      <!--end::Input-->
                   </div>
                </div>

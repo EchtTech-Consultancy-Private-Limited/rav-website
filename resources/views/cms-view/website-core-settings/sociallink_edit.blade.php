@@ -40,13 +40,6 @@
             <!--begin::Form-->
             <form id="kt_social_link_update_form" class="form" method="POST" enctype="multipart/form-data">
                @csrf
-               <!--begin::Heading-->
-               <div class="row mb-7">
-                  <div class="col-md-9 offset-md-3">
-                     <h2>Social Link</h2>
-                  </div>
-               </div>
-               <!--end::Heading-->
                <!--begin::Input group-->
                <div class="row fv-row mb-7">
                   <div class="col-md-3 text-md-end">
@@ -156,20 +149,13 @@
                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
                         </button>
-                        <!--end::Button-->
                      </div>
                   </div>
                </div>
-               <!--end::Action buttons-->
             </form>
             <!--end::Form-->            
          </div>
          @endif
-         <!--end:::Tab pane-->
-         
       </div>
-      <!--end:::Tab content-->
    </div>
-   <!--end::Card body-->
-</div>
 @endsection

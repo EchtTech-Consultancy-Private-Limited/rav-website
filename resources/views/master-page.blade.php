@@ -19,7 +19,8 @@
         @endif
         {{-- banner end --}}
         <div class="breadcrumb-title">
-            <h3 class="title">{{ $organizedData['metatag']->meta_title ?? '' }}</h3>
+            <h3 class="title">{{ isset($organizedData['metatag']->meta_title) ? $organizedData['metatag']->meta_title : $title_name }}
+            </h3>
         </div>
         </div>
     </section>
@@ -43,7 +44,9 @@
                         <li><a>{{ ucfirst(strtolower($lastBred)) ?? '' }}</a></li>
                     @endif
                     @if (isset($middelBred))
+                        @if ($middelBred != "")
                         <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
+                        @endif
                     @endif
                     <li>{{ $organizedData['metatag']->meta_title ?? $title_name }}</li>
                 </ul>
@@ -77,7 +80,7 @@
                                                     $treesUrl = $trees->url ?? '';
                                                 @endphp
                                                 @if ($trees->url == 'rsbk-directory-qualification-wise')
-                                                    <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif"
+                                                    <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) qm-active @endif"
                                                         id="sidebarDropdown_0">
                                                         <div class="accordion-item border-0">
                                                             <div class="list-start" id="flush-headingOne_0">
@@ -94,7 +97,7 @@
                                                                 </a>
                                                             </div>
                                                             <div id="flush-collapseOne_0"
-                                                                class="accordion-collapse collapse @if (request()->is($parentMenuUrl . '/' . $treesUrl)) show @endif"
+                                                                class="accordion-collapse collapse"
                                                                 aria-labelledby="flush-headingOne_0"
                                                                 data-bs-parent="#sidebarDropdown_0">
                                                                 <div class="accordion-body p-0">
@@ -113,7 +116,7 @@
 
                                                     </li>
                                                 @elseif ($trees->url == 'rsbk-directory-state-wise')
-                                                    <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif"
+                                                    <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) qm-active @endif"
                                                         id="sidebarDropdown_0">
                                                         <div class="accordion-item border-0">
                                                             <div class="list-start" id="flush-headingOne_0">
@@ -130,7 +133,7 @@
                                                                 </a>
                                                             </div>
                                                             <div id="flush-collapseOne_1"
-                                                                class="accordion-collapse collapse @if (request()->is($parentMenuUrl . '/' . $treesUrl)) show @endif"
+                                                                class="accordion-collapse collapse"
                                                                 aria-labelledby="flush-headingOne_0"
                                                                 data-bs-parent="#sidebarDropdown_0">
                                                                 <div class="accordion-body p-0">
@@ -158,7 +161,7 @@
 
                                                     </li>
                                                     @elseif ($trees->url == 'rsbk-directory-year-wise')
-                                                    <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) active @endif"
+                                                    <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) qm-active @endif"
                                                         id="sidebarDropdown_0">
                                                         <div class="accordion-item border-0">
                                                             <div class="list-start" id="flush-headingOne_0">
@@ -175,7 +178,7 @@
                                                                 </a>
                                                             </div>
                                                             <div id="flush-collapseOne_2"
-                                                                class="accordion-collapse collapse @if (request()->is($parentMenuUrl . '/' . $treesUrl)) show @endif"
+                                                                class="accordion-collapse collapse"
                                                                 aria-labelledby="flush-headingOne_0"
                                                                 data-bs-parent="#sidebarDropdown_0">
                                                                 <div class="accordion-body p-0">
@@ -274,7 +277,7 @@
                         </div>
                         {{-- side menu end --}}
                         <div class="col-md-8 col-lg-8 ">
-                            <div class="about" id="about-us">
+                            <div class="about">
                                 @if (isset($cabinetMinisterData) && $cabinetMinisterData != '')
                                     <h1>{{ $title_name ?? '' }}</h1>
                                     <div class="message-tab-img">
