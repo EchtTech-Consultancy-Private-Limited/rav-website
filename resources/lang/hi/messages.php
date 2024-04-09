@@ -46,10 +46,10 @@ return [
     'All_Rights_Reserved'=>'सर्वाधिकार सुरक्षित.',
     'Last_Updated'=>'आखरी अपडेट :',
     'Total_Visitors'=>'कुल विज़िटर:',
-
     'Facebook'=>'फेसबुक',
     'Instagram'=>'इंस्टाग्राम',
     'Twitter'=>'ट्विटर',
-    'Content_Coming_Soon'=>'Content Coming Soon...',
+    'Content_Coming_Soon'=>'सामग्री जल्द ही आ रही है...',
+    'Home'=>'होम',
     'CRAV_Gurus'=>'सी.आर.ए.वी गुरु'
 ];
