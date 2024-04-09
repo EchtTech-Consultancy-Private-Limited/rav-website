@@ -118,7 +118,7 @@ h2.resp-tab-title:last-child {
     border-radius: 4px;
     }
 .main-sidebar ul li:last-child:hover {
-    border-bottom: 1px solid var(--secondary-color) !important;}
+    border-bottom: 1px solid var(--secondary-color) ;}
     
 .main-sidebar ul li:has(.show) {
     background-color: #fff;
@@ -175,7 +175,7 @@ h2.resp-tab-title:last-child {
     display: flex;
     width: 100%;
     padding-right: 11px;
-    align-items: center;}
+    align-items: center;    background: #ffffff8a;}
 .main-sidebar .accordion-item .nav-link.collapsed::after {
     right: 0px;
     top: 3px;
@@ -209,7 +209,7 @@ h2.resp-tab-title:last-child {
 .main-sidebar li:hover .list-start a::before {
     /* color: var(--secondary-color) !important; */}
 .main-sidebar .sl-accordion:hover .list-start a::before {
-    color: var(--secondary-color) !important;}
+    color: var(--secondary-color) ;}
 .main-sidebar .sl-accordion.menu-accordion-click:hover .list-start a::before {
     color: var(--secondary-color) !important;}
 .main-sidebar .sl-accordion.menu-active:hover .list-start a::before {
@@ -232,8 +232,7 @@ h2.resp-tab-title:last-child {
     color: #000 !important;}
 .sl-accordion:hover .accordion a {
     color: #fff;}
-.main-sidebar ul .accordion:hover .nav-link.collapsed{
-	color: #333 !important;}
+
 .main-sidebar ul .accordion.sl-accordion.menu-accordion-click:hover .nav-link.collapsed{
 	color: #000 !important;}
 .main-sidebar .accordion:hover a{

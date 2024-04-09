@@ -46,6 +46,14 @@ h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav
   background: #000 !important;
 }
 
+.common-tab .nav-item.active a {
+  color: #fff !important;
+}
+
+.common-tab .nav-item.active {
+  border: 1px solid #ffff00;
+}
+
 .site-header .navbar {
   border-top: 1px solid #fff !important;
 }
@@ -97,7 +105,7 @@ p strong, li strong {
   border-top: 1px solid #fff !important;
 }
 
-.site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before, .activity-slider-content .desc, .master .common-tab ul.nav-qm.nav-tabs .nav-item .nav-link::before, .dataTables_wrapper .dataTables_filter, #offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover {
+.site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before, .activity-slider-content .desc, .master .common-tab ul.nav-qm.nav-tabs .nav-item .nav-link::before, .dataTables_wrapper .dataTables_filter, #offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, .main-sidebar .list-start a::before {
   color: #fff !important;
 }
 
@@ -106,11 +114,11 @@ p strong, li strong {
   border-left: 1px solid #fff;
 }
 
-#offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, li.nav-item .active {
+#offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, li.nav-item .active, .main-sidebar .accordion-item .nav-link.collapsed {
   background: #000 !important;
 }
 
-.accordion-button, .event-card, .contact .contact-item:hover, .contact .contact-item, .contact .contact-item .icon i {
+.accordion-button, .event-card, .contact .contact-item:hover, .contact .contact-item, .contact .contact-item .icon i, .main-sidebar ul li:has(.show) {
   background: #000 !important;
   border: 1px solid #fff !important;
 }
@@ -119,10 +127,40 @@ p strong, li strong {
   width: 2px !important;
 }
 
-.addevent-box h5 {
+.addevent-box h5, .main-sidebar .sl-accordion:hover .list-start a::before {
   color: #fff !important;
 }
 
 .header-top-right ul li .text-increment-btn:hover {
+  color: #000 !important;
+}
+
+.main-sidebar .list-start a::before {
+  content: "\f101";
+  font-family: "fontAwesome";
+  color: #FFF !important;
+  margin-right: 10px;
+  font-size: 18px;
+  margin-top: 0px;
+}
+
+.main-sidebar ul li:last-child:hover {
+  border-bottom: 1px solid #ffff00 !important;
+}
+
+.main-sidebar ul li:last-child {
+  border-bottom: 1px solid #ffff00 !important;
+}
+
+.main-sidebar ul li:hover, .main-sidebar ul li:hover {
+  border: 1px solid #ffff00 !important;
+}
+
+.main-sidebar ul li:has(.show) {
+  background-color: #fff;
+}
+
+.table-responsive .dataTables_wrapper .dataTables_paginate a.paginate_button.current {
+  background-color: #fff !important;
   color: #000 !important;
 }/*# sourceMappingURL=dark-mode.css.map */
