@@ -1,8 +1,22 @@
 <div class="header-top-content">
     <div class="header-top-left">
         <ul>
-            <li> <a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://www.india.gov.in/" >Goverment of India</a></li>
-            <li><a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://ayushmanbharat.mp.gov.in/">Ayushman Bharat</a></li>
+            <li> <a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://www.india.gov.in/" >
+                    @if (Session::get('locale') == 'hi')
+                        {{'भारत सरकार'}}
+                    @else
+                        {{'Goverment of India'}}
+                    @endif
+                </a>
+            </li>
+            <li><a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://ayushmanbharat.mp.gov.in/">
+                    @if (Session::get('locale') == 'hi')
+                        {{'आयुष्मान भारत'}}
+                    @else
+                        {{'Ayushman Bharat'}}
+                    @endif
+                </a>
+            </li>
             <li><span class="dateTime"></span></li>
         </ul>
     </div>

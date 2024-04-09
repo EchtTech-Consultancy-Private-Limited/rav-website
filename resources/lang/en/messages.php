@@ -51,6 +51,8 @@ return [
     'Content_Coming_Soon'=>'Content Coming Soon...',
     'Twitter'=>'Twitter',
     'Home'=>'Home',
+    'Goverment_of_India'=>'Government of India',
+    'Ayushman_Bharat'=>'Ayushman Bharat',
     'CRAV_Gurus'=>'CRAV Gurus'
 ];
 
