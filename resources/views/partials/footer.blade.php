@@ -150,10 +150,6 @@
                         @endif
                         <span id="visitors">{{ $total_visitors ?? 0 }}</span> </a>
                     </li>
-
-                    <li class="visitors"> Total Visitors: <span id="visitors">{{ $total_visitors ?? 0 }}</span> </a>
-                    </li>
-
                 </ul>
             </div>
         </div>
