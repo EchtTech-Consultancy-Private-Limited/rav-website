@@ -1476,6 +1476,7 @@ div#cmeScheme_wrapper{
     -webkit-box-orient: vertical;
     white-space: normal;
     overflow: hidden;
+    text-align: left;
 }
 
 .activity-tab .title-white {
@@ -4816,4 +4817,14 @@ h3 {
 
 div#customPreviousBtn5, div#customNextBtn5{
     display: none;
+}
+
+.main-body.searchPage{
+    h2{
+        font-size: 26px;
+        margin-top: 30px;
+    }
+    h5{
+        font-size: 17px;
+    }
 }
