@@ -160,7 +160,11 @@ p strong, li strong {
   background-color: #fff;
 }
 
-.table-responsive .dataTables_wrapper .dataTables_paginate a.paginate_button.current {
+.table-responsive .dataTables_wrapper .dataTables_paginate a.paginate_button.current, .poshakAhaar .card p {
   background-color: #fff !important;
   color: #000 !important;
+}
+
+b {
+  color: #fff !important;
 }/*# sourceMappingURL=dark-mode.css.map */
