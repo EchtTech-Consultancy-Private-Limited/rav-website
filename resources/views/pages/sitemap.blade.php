@@ -32,7 +32,11 @@
                     <ul class="site-map-menu">
                         <li class="first leaf">
                             <a href="{{ url('/') }}">
-                                Home
+                                @if (Session::get('locale') == 'hi')
+                                    {{ __('messages.Home') }}
+                                @else
+                                    {{ __('messages.Home') }}
+                                @endif
                             </a>
                         </li>
                         {{-- @dd($headerMenu) --}}
