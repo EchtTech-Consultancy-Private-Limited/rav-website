@@ -22,7 +22,7 @@
                             <div class="accordion-item border-0">
                                 <div class="list-start" id="flush-headingOne_0">
                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"
-                                        class="nav-link {{ request()->is('m-pharma') || request()->is('m-d') || request()->is('p-g') || request()->is('ph-d') ? 'qm-active' : 'collapsed' }}"
+                                        class="nav-link {{ request()->is('m-pharma') || request()->is('m-d') || request()->is('p-g') || request()->is('ph-d') ? '' : 'collapsed' }}"
                                         data-bs-toggle="collapse" data-bs-target="#flush-collapseOne_0"
                                         aria-expanded="{{ request()->is('m-pharma') || request()->is('m-d') || request()->is('p-g') || request()->is('ph-d') ? 'true' : 'false' }}"
                                         aria-controls="flush-collapseOne" tabindex="0">
@@ -75,7 +75,7 @@
                                         request()->is('rajasthan') ||
                                         request()->is('uttar-pradesh') ||
                                         request()->is('uttarakhand')
-                                            ? 'qm-active'
+                                            ? ''
                                             : 'collapsed' }}"
                                         data-bs-toggle="collapse" data-bs-target="#flush-collapseOne_1"
                                         aria-expanded="{{ request()->is('delhi') ||
@@ -165,7 +165,7 @@
                             <div class="accordion-item border-0">
                                 <div class="list-start" id="flush-headingOne_3">
                                     <a href="{{ url($parentMenuUrl . '/' . $treesUrl) }}"
-                                        class="nav-link {{ request()->is('rsbk-directory-from-1951-to-1960') || request()->is('rsbk-directory-from-1961-to-1970') || request()->is('rsbk-directory-from-1971-to-1980') || request()->is('rsbk-directory-from-1981-to-1990') || request()->is('rsbk-directory-from-1991-to-2000') || request()->is('rsbk-directory-from-2001-to-2005') || request()->is('rsbk-directory-from-2006-to-2010') || request()->is('rsbk-directory-from-2011-to-2015') || request()->is('rsbk-directory-from-2016-to-2020') || request()->is('rsbk-directory-from-2021-to-2023') ? 'qm-active' : 'collapsed' }}"
+                                        class="nav-link {{ request()->is('rsbk-directory-from-1951-to-1960') || request()->is('rsbk-directory-from-1961-to-1970') || request()->is('rsbk-directory-from-1971-to-1980') || request()->is('rsbk-directory-from-1981-to-1990') || request()->is('rsbk-directory-from-1991-to-2000') || request()->is('rsbk-directory-from-2001-to-2005') || request()->is('rsbk-directory-from-2006-to-2010') || request()->is('rsbk-directory-from-2011-to-2015') || request()->is('rsbk-directory-from-2016-to-2020') || request()->is('rsbk-directory-from-2021-to-2023') ? '' : 'collapsed' }}"
                                         data-bs-toggle="collapse" data-bs-target="#flush-collapseOne_3"
                                         aria-expanded="{{ request()->is('rsbk-directory-from-1951-to-1960') || request()->is('rsbk-directory-from-1961-to-1970') || request()->is('rsbk-directory-from-1971-to-1980') || request()->is('rsbk-directory-from-1981-to-1990') || request()->is('rsbk-directory-from-1991-to-2000') || request()->is('rsbk-directory-from-2001-to-2005') || request()->is('rsbk-directory-from-2006-to-2010') || request()->is('rsbk-directory-from-2011-to-2015') || request()->is('rsbk-directory-from-2016-to-2020') || request()->is('rsbk-directory-from-2021-to-2023') ? 'true' : 'false' }}"
                                         aria-controls="flush-collapseOne" tabindex="0">

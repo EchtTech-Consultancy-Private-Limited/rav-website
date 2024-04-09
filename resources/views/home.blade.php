@@ -70,13 +70,13 @@
                                     @endphp
                                     <div class="item">
                                         <p>
-                                           <a href="{{ url($url ?? 'javascript:void(0)') }}">
-                                            @if (Session::get('locale') == 'hi')
-                                            {{ $news_managements->title_name_hi ?? '' }}
-                                        @else
-                                            {{ $news_managements->title_name_en ?? '' }}
-                                        @endif
-                                           </a>
+                                            <a href="{{ url($url ?? 'javascript:void(0)') }}">
+                                                @if (Session::get('locale') == 'hi')
+                                                    {{ $news_managements->title_name_hi ?? '' }}
+                                                @else
+                                                    {{ $news_managements->title_name_en ?? '' }}
+                                                @endif
+                                            </a>
                                         </p>
                                     </div>
                                 @endforeach
@@ -181,14 +181,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                                        <h3 class="title-black-sm">
-                                                                            What is Lorem Ipsum?
-                                                                        </h3>
-                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                            dolorem
-                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                            veniam cumque expedita rem at harum?</p>
-                                                                    </div> -->
+                                                                                <h3 class="title-black-sm">
+                                                                                    What is Lorem Ipsum?
+                                                                                </h3>
+                                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                    dolorem
+                                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                    veniam cumque expedita rem at harum?</p>
+                                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -226,14 +226,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                                        <h3 class="title-black-sm">
-                                                                            What is Lorem Ipsum?
-                                                                        </h3>
-                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                            dolorem
-                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                            veniam cumque expedita rem at harum?</p>
-                                                                    </div> -->
+                                                                                <h3 class="title-black-sm">
+                                                                                    What is Lorem Ipsum?
+                                                                                </h3>
+                                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                    dolorem
+                                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                    veniam cumque expedita rem at harum?</p>
+                                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -272,14 +272,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                                        <h3 class="title-black-sm">
-                                                                            What is Lorem Ipsum?
-                                                                        </h3>
-                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                            dolorem
-                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                            veniam cumque expedita rem at harum?</p>
-                                                                    </div> -->
+                                                                                <h3 class="title-black-sm">
+                                                                                    What is Lorem Ipsum?
+                                                                                </h3>
+                                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                    dolorem
+                                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                    veniam cumque expedita rem at harum?</p>
+                                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -318,14 +318,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                                        <h3 class="title-black-sm">
-                                                                            What is Lorem Ipsum?
-                                                                        </h3>
-                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                            dolorem
-                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                            veniam cumque expedita rem at harum?</p>
-                                                                    </div> -->
+                                                                                <h3 class="title-black-sm">
+                                                                                    What is Lorem Ipsum?
+                                                                                </h3>
+                                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                    dolorem
+                                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                    veniam cumque expedita rem at harum?</p>
+                                                                            </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -968,13 +968,100 @@
                 <div class="col-md-12">
                     <h2 class="heading-black heading-black-lg text-center pb-5">
                         @if (Session::get('locale') == 'hi')
-                            {{ __('messages.Our_Successful_Journey') }}
+                        हमारी सफल यात्रा
                         @else
-                            {{ __('messages.Our_Successful_Journey') }}
+                        Our Successful Journey
                         @endif
                     </h2>
                 </div>
-                @foreach ($ourJournyData as $journey)
+                @if (isset($ourJournyData) && $ourJournyData != '')
+                    @foreach ($ourJournyData as $journey)
+                        @php
+                            $content = json_decode($journey->content);
+                           
+                        @endphp
+                        <div class="col-md-3 mb-4">
+                            <div class="our-journey-card my-md-0 my-2 ">
+                                <img src="{{ $content->image_name }}"
+                                    alt="{{ $content->image_name }}" class="img-fluid">
+                                <span class="total-no counterNumber" counter="{{ $content->Count }}">
+                                    0
+                                </span>
+                                <div class="d-flex justify-content-center">
+                                    <p class="title">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $content->{'user-content-title-hi'} }}
+                                        @else
+                                            {{ $content->{'user-content-title'} }}
+                                        @endif
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/research.svg') }}" alt="research.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="71">71</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Research Initiatives</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="1750">1750</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Total Number of CRAV..</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/programme.svg') }}" alt="programme.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="1500">1500</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Total No of CME..</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/presence.svg') }}" alt="presence.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="28">28</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Total Seminar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="61">61</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Workshop &amp; Training</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/programme.svg') }}" alt="programme.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="1">1</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Program Offering</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                {{-- @foreach ($ourJournyData as $journey)
                     @php
                         $content = json_decode($journey->content);
                     @endphp
@@ -996,7 +1083,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 
 
 

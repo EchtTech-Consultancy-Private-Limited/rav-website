@@ -1,21 +1,7 @@
 <div class="row">
     <div class="col-md-4">
-        {{-- <a href="{{ route('/') }}">
-            @if (isset($website_core_settings) && $website_core_settings->header_logo != '')
-                <img src="{{ asset('resources/uploads/WebsiteCoreSettings/' . $website_core_settings->header_logo) }}"
-                    alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
-            @else
-                <img src="{{ asset('/assets/images/rav-logo.png') }}" alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
-            @endif
-        </a> --}}
         <div class="footer-logo">
-            @if (isset($website_core_settings) && $website_core_settings->footer_logo != '')
-            <img src="{{ asset('resources/uploads/WebsiteCoreSettings/' . $website_core_settings->footer_logo) }}"
-                alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
-        @else
-            <img src="{{ asset('/assets/images/rav-logo.png') }}" alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
-        @endif
-            {{-- <img src="{{ asset('assets/images/rav-logo-white.png') }}" alt="logo" class="img-fluid"> --}}
+            <img src="{{ asset('assets/images/rav-logo-white.png') }}" alt="logo" class="img-fluid">
         </div>
     </div>
     @if (isset($social_links) && $social_links != '')

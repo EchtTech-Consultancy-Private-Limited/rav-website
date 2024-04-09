@@ -98,7 +98,9 @@ class HomeController extends Controller
 
 
         $ourJournyData = DB::table('form_designs_management')->where('form_name', 'Our Successful Journey')->first();
-        $ourJournyData = DB::table('form_data_management')->where('form_design_id', $ourJournyData->uid)->get(['content']);
+        if ($ourJournyData) {
+            $ourJournyData = DB::table('form_data_management')->where('form_design_id', $ourJournyData->uid)->get(['content']);
+        }
 
 
         return view('home', compact('ourJournyData', 'secretaryData', 'directorData', 'stateMinister', 'cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
@@ -316,57 +318,57 @@ class HomeController extends Controller
             }
             if ($menus != '') {
                 if ($finalSlug != null) {
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $finalBred = $finalUrl->name_hi;
                     } else {
                         $finalBred = $finalUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $lastBred = $middelUrl->name_hi;
                     } else {
                         $lastBred = $middelUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $middelBred = $lastUrl->name_hi;
                     } else {
                         $middelBred = $lastUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } else if ($lastSlugs != null) {
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $lastBred = $lastUrl->name_hi;
                     } else {
                         $lastBred = $lastUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $middelBred = $middelUrl->name_hi;
                     } else {
                         $middelBred = $middelUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } elseif ($middelSlug != null) {
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $middelBred = $middelUrl->name_hi;
                     } else {
                         $middelBred = $middelUrl->name_en;
                         // dd($middelBred);
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } else {
 
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
@@ -429,7 +431,7 @@ class HomeController extends Controller
                     } else {
 
                         $tree = [];
-                        $parentMenut = [];
+                        $parentMenut = "";
                         if ($slug == 'about-us') {
                             $middelSlug = 'our-objective';
                             $footerMenu = DB::table('website_menu_management')->where('menu_place', 1)->get();
@@ -523,7 +525,7 @@ class HomeController extends Controller
                     }
                 } else {
 
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $content = "जल्द आ रहा है";
                     } else {
                         $content = "<h1>Coming Soon...</h1>";
@@ -650,17 +652,36 @@ class HomeController extends Controller
                         $lastBred = null;
 
                         if (in_array($slug, $states)) {
-                            $lastBred = "Rsbk e-directory";
+                            if (Session::get('locale') == 'hi') {
+                                $lastBred = "आरएसबीके ई-डायरेक्टरी";
+                                $middelBred = "आरएसबीके डायरेक्टरी राज्यवार";
+                            } else {
+                                $lastBred = "Rsbk e-directory";
+                                $middelBred = "RSBK Directory State Wise";
+                            }
+
+
                             $displayRsbkMenu = 1;
-                            $middelBred = "RSBK Directory State Wise";
                         } elseif (in_array($slug, $specialSlugs)) {
-                            $lastBred = "Rsbk e-directory";
+
                             $displayRsbkMenu = 1;
-                            $middelBred = "RSBK Directory Year Wise";
+                            if (Session::get('locale') == 'hi') {
+                                $lastBred = "आरएसबीके ई-डायरेक्टरी";
+                                $middelBred = "आरएसबीके डायरेक्टरी वर्षवार";
+                            } else {
+                                $lastBred = "Rsbk e-directory";
+                                $middelBred = "RSBK Directory Year Wise";
+                            }
                         } elseif (in_array($slug, $qualificationSlugs)) {
-                            $lastBred = "Rsbk e-directory";
+
                             $displayRsbkMenu = 1;
-                            $middelBred = "RSBK Directory Qualification Wise";
+                            if (Session::get('locale') == 'hi') {
+                                $lastBred = "आरएसबीके ई-डायरेक्टरी";
+                                $middelBred = "आरएसबीके डायरेक्टरी योग्यता वार";
+                            } else {
+                                $lastBred = "Rsbk e-directory";
+                                $middelBred = "RSBK Directory Qualification Wise";
+                            }
                         } else {
                             $lastBred = "";
                         }
