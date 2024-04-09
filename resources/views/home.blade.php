@@ -968,9 +968,9 @@
                 <div class="col-md-12">
                     <h2 class="heading-black heading-black-lg text-center pb-5">
                         @if (Session::get('locale') == 'hi')
-                            {{ __('messages.Our_Successful_Journey') }}
+                        हमारी सफल यात्रा
                         @else
-                            {{ __('messages.Our_Successful_Journey') }}
+                        Our Successful Journey
                         @endif
                     </h2>
                 </div>
