@@ -978,18 +978,19 @@
                     @foreach ($ourJournyData as $journey)
                         @php
                             $content = json_decode($journey->content);
+                           
                         @endphp
                         <div class="col-md-3 mb-4">
                             <div class="our-journey-card my-md-0 my-2 ">
-                                <img src="{{ asset('assets/images/' . $content->image_name) }}"
+                                <img src="{{ $content->image_name }}"
                                     alt="{{ $content->image_name }}" class="img-fluid">
-                                <span class="total-no counterNumber" counter="{{ $content->count }}">
+                                <span class="total-no counterNumber" counter="{{ $content->Count }}">
                                     0
                                 </span>
                                 <div class="d-flex justify-content-center">
                                     <p class="title">
                                         @if (Session::get('locale') == 'hi')
-                                            {{ $content->{'user-content-title'} }}
+                                            {{ $content->{'user-content-title-hi'} }}
                                         @else
                                             {{ $content->{'user-content-title'} }}
                                         @endif
@@ -1001,7 +1002,7 @@
                 @else
                     <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2">
-                            <img src="http://localhost/rav-website/assets/images/research.svg" alt="research.svg"
+                            <img src="{{ asset('assets/images/research.svg') }}" alt="research.svg"
                                 class="img-fluid" />
                             <span class="total-no counterNumber" counter="71">71</span>
                             <div class="d-flex justify-content-center">
@@ -1011,7 +1012,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2">
-                            <img src="http://localhost/rav-website/assets/images/graduation.svg" alt="graduation.svg"
+                            <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation.svg"
                                 class="img-fluid" />
                             <span class="total-no counterNumber" counter="1750">1750</span>
                             <div class="d-flex justify-content-center">
@@ -1021,7 +1022,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2">
-                            <img src="http://localhost/rav-website/assets/images/programme.svg" alt="programme.svg"
+                            <img src="{{ asset('assets/images/programme.svg') }}" alt="programme.svg"
                                 class="img-fluid" />
                             <span class="total-no counterNumber" counter="1500">1500</span>
                             <div class="d-flex justify-content-center">
@@ -1031,7 +1032,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2">
-                            <img src="http://localhost/rav-website/assets/images/presence.svg" alt="presence.svg"
+                            <img src="{{ asset('assets/images/presence.svg') }}" alt="presence.svg"
                                 class="img-fluid" />
                             <span class="total-no counterNumber" counter="28">28</span>
                             <div class="d-flex justify-content-center">
@@ -1041,7 +1042,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2">
-                            <img src="http://localhost/rav-website/assets/images/graduation.svg" alt="graduation.svg"
+                            <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation.svg"
                                 class="img-fluid" />
                             <span class="total-no counterNumber" counter="61">61</span>
                             <div class="d-flex justify-content-center">
@@ -1051,7 +1052,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="our-journey-card my-md-0 my-2">
-                            <img src="http://localhost/rav-website/assets/images/programme.svg" alt="programme.svg"
+                            <img src="{{ asset('assets/images/programme.svg') }}" alt="programme.svg"
                                 class="img-fluid" />
                             <span class="total-no counterNumber" counter="1">1</span>
                             <div class="d-flex justify-content-center">
