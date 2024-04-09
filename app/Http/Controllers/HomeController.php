@@ -429,7 +429,7 @@ class HomeController extends Controller
                     } else {
 
                         $tree = [];
-                        $parentMenut = [];
+                        $parentMenut = "";
                         if ($slug == 'about-us') {
                             $middelSlug = 'our-objective';
                             $footerMenu = DB::table('website_menu_management')->where('menu_place', 1)->get();

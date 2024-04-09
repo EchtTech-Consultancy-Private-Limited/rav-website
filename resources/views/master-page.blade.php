@@ -61,7 +61,7 @@
                             {{-- @dd($tree); --}}
                             @if (isset($displayRsbkMenu) && $displayRsbkMenu == 1)
                                 <x-rsbk-directory-menu />
-                            @elseif (isset($parentMenut) && $parentMenut != '' && !isset($displayRsbkMenu))
+                            @elseif (isset($parentMenut) && $parentMenut != '' && !isset($displayRsbkMenu) )
                                 <div class="main-sidebar" id="main-sidebar">
                                     <ul>
                                         @if ($parentMenut != '' && isset($parentMenut))
