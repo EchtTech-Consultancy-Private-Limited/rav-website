@@ -64,13 +64,19 @@
                         <div class="owl-carousel owl-theme" id="latest-news-slider">
                             @if (isset($news_management) && count($news_management) > 0)
                                 @foreach ($news_management as $news_managements)
+                                    @php
+                                        $url =
+                                            $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
+                                    @endphp
                                     <div class="item">
                                         <p>
+                                           <a href="{{ url($url ?? 'javascript:void(0)') }}">
                                             @if (Session::get('locale') == 'hi')
-                                                {{ $news_managements->title_name_hi ?? '' }}
-                                            @else
-                                                {{ $news_managements->title_name_en ?? '' }}
-                                            @endif
+                                            {{ $news_managements->title_name_hi ?? '' }}
+                                        @else
+                                            {{ $news_managements->title_name_en ?? '' }}
+                                        @endif
+                                           </a>
                                         </p>
                                     </div>
                                 @endforeach
@@ -175,14 +181,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                                    <h3 class="title-black-sm">
-                                                                        What is Lorem Ipsum?
-                                                                    </h3>
-                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                        dolorem
-                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                        veniam cumque expedita rem at harum?</p>
-                                                                </div> -->
+                                                                        <h3 class="title-black-sm">
+                                                                            What is Lorem Ipsum?
+                                                                        </h3>
+                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                            dolorem
+                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                            veniam cumque expedita rem at harum?</p>
+                                                                    </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -220,14 +226,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                                    <h3 class="title-black-sm">
-                                                                        What is Lorem Ipsum?
-                                                                    </h3>
-                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                        dolorem
-                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                        veniam cumque expedita rem at harum?</p>
-                                                                </div> -->
+                                                                        <h3 class="title-black-sm">
+                                                                            What is Lorem Ipsum?
+                                                                        </h3>
+                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                            dolorem
+                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                            veniam cumque expedita rem at harum?</p>
+                                                                    </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -266,14 +272,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                                    <h3 class="title-black-sm">
-                                                                        What is Lorem Ipsum?
-                                                                    </h3>
-                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                        dolorem
-                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                        veniam cumque expedita rem at harum?</p>
-                                                                </div> -->
+                                                                        <h3 class="title-black-sm">
+                                                                            What is Lorem Ipsum?
+                                                                        </h3>
+                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                            dolorem
+                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                            veniam cumque expedita rem at harum?</p>
+                                                                    </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -312,14 +318,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                                    <h3 class="title-black-sm">
-                                                                        What is Lorem Ipsum?
-                                                                    </h3>
-                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                        dolorem
-                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                        veniam cumque expedita rem at harum?</p>
-                                                                </div> -->
+                                                                        <h3 class="title-black-sm">
+                                                                            What is Lorem Ipsum?
+                                                                        </h3>
+                                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                            dolorem
+                                                                            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                            veniam cumque expedita rem at harum?</p>
+                                                                    </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -368,39 +374,39 @@
                                             <ul>
                                                 @if (isset($news_management) && count($news_management) > 0)
                                                     @foreach ($news_management as $news_managements)
-                                                       {{-- // if current date is greater then end_date then it will not display --}}
+                                                        {{-- // if current date is greater then end_date then it will not display --}}
                                                         @if (date('Y-m-d') <= $news_managements->end_date)
-                                                        @php
-                                                        $url =
-                                                            $news_managements->public_url ??
-                                                            'news-details/' . $news_managements->uid;
-                                                    @endphp
-                                                    <li>
-                                                        <a
-                                                            @if ($news_managements->tab_type == 1) target="_blank"
+                                                            @php
+                                                                $url =
+                                                                    $news_managements->public_url ??
+                                                                    'news-details/' . $news_managements->uid;
+                                                            @endphp
+                                                            <li>
+                                                                <a
+                                                                    @if ($news_managements->tab_type == 1) target="_blank"
                                                 onclick="return confirm('{{ $alertMessage }}')"
                                                 href="{{ url($url) }}"
                                                 @else
                                                 href="{{ url($url) }}" @endif>
-                                                            <div class="date-wrap">
-                                                                <h3 class="ln_date">
-                                                                    {{ date('d', strtotime($news_managements->start_date ?? now())) }}
-                                                                </h3>
-                                                                <span class="month">
-                                                                    {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }}
-                                                                    <br>
-                                                                    {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
-                                                                </span>
-                                                            </div>
-                                                            <p class="desc">
-                                                                @if (Session::get('locale') == 'hi')
-                                                                    {{ $news_managements->title_name_hi ?? '' }}
-                                                                @else
-                                                                    {{ $news_managements->title_name_en ?? '' }}
-                                                                @endif
-                                                            </p>
-                                                        </a>
-                                                    </li>
+                                                                    <div class="date-wrap">
+                                                                        <h3 class="ln_date">
+                                                                            {{ date('d', strtotime($news_managements->start_date ?? now())) }}
+                                                                        </h3>
+                                                                        <span class="month">
+                                                                            {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                            <br>
+                                                                            {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                        </span>
+                                                                    </div>
+                                                                    <p class="desc">
+                                                                        @if (Session::get('locale') == 'hi')
+                                                                            {{ $news_managements->title_name_hi ?? '' }}
+                                                                        @else
+                                                                            {{ $news_managements->title_name_en ?? '' }}
+                                                                        @endif
+                                                                    </p>
+                                                                </a>
+                                                            </li>
                                                         @endif
                                                     @endforeach
                                                 @else
@@ -1171,20 +1177,20 @@
                                                                     @endif
 
                                                                 </div>
-                                                                @if ($item->page_title_en == "Thesis Submitted by RAV Students")
-                                                                <a href="{{ 'activities/thesis-submitted-by-rav-student' }}"
-                                                                    class="read-more">
-                                                                    <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                        alt="read-more" class="img-fluid">
-                                                                </a>
+                                                                @if ($item->page_title_en == 'Thesis Submitted by RAV Students')
+                                                                    <a href="{{ 'activities/thesis-submitted-by-rav-student' }}"
+                                                                        class="read-more">
+                                                                        <img src="{{ asset('assets/images/read-more.svg') }}"
+                                                                            alt="read-more" class="img-fluid">
+                                                                    </a>
                                                                 @else
-                                                                <a href="{{ 'activities/' . $item->url }}"
-                                                                    class="read-more">
-                                                                    <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                        alt="read-more" class="img-fluid">
-                                                                </a>
+                                                                    <a href="{{ 'activities/' . $item->url }}"
+                                                                        class="read-more">
+                                                                        <img src="{{ asset('assets/images/read-more.svg') }}"
+                                                                            alt="read-more" class="img-fluid">
+                                                                    </a>
                                                                 @endif
-                                                               
+
                                                             </div>
                                                         </div>
                                                     </div>
