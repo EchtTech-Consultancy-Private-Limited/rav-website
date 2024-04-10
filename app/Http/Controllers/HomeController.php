@@ -687,21 +687,11 @@ class HomeController extends Controller
                             $lastBred = "";
                         }
 
-
-                        // if (in_array($slug, $states) || in_array($slug, $specialSlugs)) {
-                        //     $middelBred = "Rsbk e-directory";
-                        //     $displayRsbkMenu = 1;
-                        // }
-
                         $tree = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
                         $parentMenut = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
-                        $finalBred = "";
-                        if ($slug == 'career') {
-                            $finalBred = "Career";
-                        }
+                        
 
-
-                        return view('master-page', ['finalBred'=>$finalBred,'lastBred' => $lastBred, 'tree' => $tree, 'parentMenut' => $parentMenut, 'displayRsbkMenu' => $displayRsbkMenu, 'middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                        return view('master-page', ['lastBred' => $lastBred, 'tree' => $tree, 'parentMenut' => $parentMenut, 'displayRsbkMenu' => $displayRsbkMenu, 'middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {

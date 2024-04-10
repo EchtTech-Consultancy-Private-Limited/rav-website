@@ -42,10 +42,14 @@
                         <li><a>{{ ucfirst(strtolower($title_name)) ?? '' }}</a></li>
                     @else
                         @if (isset($finalBred))
-                            <li><a>{{ ucfirst(strtolower($finalBred)) ?? '' }}</a></li>
+                           @if ($finalBred != '')
+                           <li><a>{{ ucfirst(strtolower($finalBred)) ?? '' }}</a></li>
+                           @endif
                         @endif
                         @if (isset($lastBred))
+                            @if ($lastBred != '')
                             <li><a>{{ ucfirst(strtolower($lastBred)) ?? '' }}</a></li>
+                            @endif
                         @endif
                         @if (isset($middelBred))
                             @if ($middelBred != '')
