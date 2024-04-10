@@ -31,12 +31,14 @@ class RsbkDirectoryMenu extends Component
 
         $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
         $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middleSlug)->first();
-        $metaDetails = DB::table('dynamic_content_page_metatag')
+
+        
+        if ($menus != '') {
+            $metaDetails = DB::table('dynamic_content_page_metatag')
             ->where('soft_delete', 0)
             ->where('status', 3)
             ->where('menu_uid', $menus->uid)
             ->first();
-        if ($menus != '') {
             $allmenus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
             $parentMenu = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', $menus->parent_id)->first();
             if (!empty($parentMenu)) {

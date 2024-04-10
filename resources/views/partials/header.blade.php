@@ -59,7 +59,7 @@
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav">
                 <li class="nav-item " tabindex="0">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}" tabindex="-1">
+                    <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page" href="{{ url('/') }}" tabindex="-1">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
