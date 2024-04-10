@@ -49,7 +49,7 @@
             </ul>
         </div>
     </div>
-    <section class="master bg-grey">
+    <section class="master bg-grey" id="main-content">
         <div class="container">
             <div class="news-tab common-tab side-tab1">
                 <div class="row">
