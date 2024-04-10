@@ -17,7 +17,7 @@
                     @endif
                 </a>
             </li>
-            <li><span class="dateTime"></span></li>
+            <li><span class="dateTime" tabindex="0"></span></li>
         </ul>
     </div>
     <div class="header-top-right">

@@ -17,14 +17,17 @@
                 <div class="logo-right">
                     <div class="search-wrap me-4">
                         <form name="searchForm" action="{{ url('/search') }}" method="get">
-                            <input class="form-control" type="search" name="search_key" id="search_key"
-                            value="{{ $errors->has('search_key') ? '' :  request('search_key') ?? '' }}" placeholder="Search" aria-label="Search" >
-                            @error('search_key')
-                                <span id="searchValidationErrorLabel" class="text-danger">{{ $message }}</span>
-                            @enderror
+                          <div class="position-relative">
+                          <input class="form-control" type="search" name="search_key" id="search_key"
+                            value="{{ request('search_key') ?? '' }}" placeholder="Search" aria-label="Search" >
+                          
                             <button class="btn btn-search" type="submit">
                                 <img src="{{ asset('assets/images/search.png') }}" alt="search" class="img-fluid" title="search">
                             </button>
+                          </div>
+                            @error('search_key')
+                                <span id="searchValidationErrorLabel" class="text-danger">{{ $message }}</span>
+                            @enderror
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
