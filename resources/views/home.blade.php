@@ -61,30 +61,36 @@
                 </div>
                 <div class="col-md-9 p-0">
                     <div class="latest-news-slider">
-                        <div class="owl-carousel owl-theme" id="latest-news-slider">
-                            @if (isset($news_management) && count($news_management) > 0)
+                    <div class="latest_news_marquee marquee-vertical" data-speed="40">
+                        <div class="marquee-wrapper">
+                            <div class="marquee-content">
+                                <div class="float-left d-inline-block ">
+                                @if (isset($news_management) && count($news_management) > 0)
                                 @foreach ($news_management as $news_managements)
                                     @php
                                         $url =
                                             $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
                                     @endphp
-                                    <div class="item">
-                                        <p>
-                                            <a href="{{ url($url ?? 'javascript:void(0)') }}">
+                                    <span>
+                                    <a href="{{ url($url ?? 'javascript:void(0)') }}">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $news_managements->title_name_hi ?? '' }}
                                                 @else
                                                     {{ $news_managements->title_name_en ?? '' }}
                                                 @endif
                                             </a>
-                                        </p>
-                                    </div>
-                                @endforeach
+                                    </span>
+                                    @endforeach
                             @else
                                 <h6>No News available.</h6>
                             @endif
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="btns">
+                    </div>
+                       
+                        <div class="btns d-none">
                             <div id="customPreviousBtn1">
                                 <i class="fa fa-angle-left" aria-hidden="true"></i>
                             </div>
@@ -94,9 +100,7 @@
                             <div id="customPlay1" class="customPlay">
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </div>
-                            <div id="customNextBtn1">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
