@@ -980,24 +980,26 @@
                             $content = json_decode($journey->content);
                            
                         @endphp
-                        <div class="col-md-3 mb-4">
-                            <div class="our-journey-card my-md-0 my-2 ">
-                                <img src="{{ $content->image_name }}"
-                                    alt="{{ $content->image_name }}" class="img-fluid">
-                                <span class="total-no counterNumber" counter="{{ $content->Count }}">
-                                    0
-                                </span>
-                                <div class="d-flex justify-content-center">
-                                    <p class="title">
-                                        @if (Session::get('locale') == 'hi')
-                                            {{ $content->{'user-content-title-hi'} }}
-                                        @else
-                                            {{ $content->{'user-content-title'} }}
-                                        @endif
-                                    </p>
-                                </div>
+                    @if (!empty($content))
+                       <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2 ">
+                            <img src="{{ $content->image_name }}"
+                                alt="{{ $content->image_name }}" class="img-fluid">
+                            <span class="total-no counterNumber" counter="{{ $content->Count }}">
+                                0
+                            </span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title">
+                                    @if (Session::get('locale') == 'hi')
+                                        {{ $content->{'user-content-title-hi'} }}
+                                    @else
+                                        {{ $content->{'user-content-title'} }}
+                                    @endif
+                                </p>
                             </div>
                         </div>
+                    </div>
+                       @endif
                     @endforeach
                 @else
                     <div class="col-md-3 mb-4">
