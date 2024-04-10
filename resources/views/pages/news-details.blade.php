@@ -56,7 +56,7 @@
                 </ul>
             </div>
         </div>
-        <section class="master bg-grey">
+        <section class="master bg-grey" id="main-content">
             <div class="container">
                 <div class="row">
                     {{-- side menu start --}}
