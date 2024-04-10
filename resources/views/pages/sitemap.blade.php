@@ -72,7 +72,14 @@
                                                                 @endif
                                                             </a>
                                                         @else
-                                                            <a href="{{ url($url . '/' . $suburl) }}">
+                                                            <a
+                                                                href="@if ($subMenus->name_en == 'RSBK Directory Qualification Wise') {{ url('m-pharma') }}
+                                                                @elseif($subMenus->name_en == 'RSBK Directory State Wise')
+                                                                {{ url('delhi') }}
+                                                                @elseif($subMenus->name_en == 'RSBK Directory Year Wise')
+                                                                {{ url('rsbk-directory-from-1951-to-1960') }}
+                                                                @else
+                                                                {{ url($url . '/' . $suburl) }} @endif">
                                                                 @if (Session::get('locale') == 'hi')
                                                                     {{ $subMenus->name_hi ?? '' }}
                                                                 @else
@@ -151,23 +158,23 @@
                     @endif
                     <h2>Toggle Menu</h2>
                     @if (isset($toogleMenu) && count($toogleMenu) > 0)
-                    <ul class="site-map-menu">
-                        @foreach ($toogleMenu as $toogleMenus)
-                        @php
-                        $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
-                        @endphp
-                        <li class="first leaf">
-                            <a href="{{ url($toogleMenuurl) ?? '' }}">
-                                @if (Session::get('locale') == 'hi')
-                                {{ $toogleMenus->name_hi ?? '' }}
-                                @else
-                                {{ $toogleMenus->name_en ?? '' }}
-                                @endif
-                            </a>
-                        </li>
-                        @endforeach
-                       
-                    </ul>
+                        <ul class="site-map-menu">
+                            @foreach ($toogleMenu as $toogleMenus)
+                                @php
+                                    $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
+                                @endphp
+                                <li class="first leaf">
+                                    <a href="{{ url($toogleMenuurl) ?? '' }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $toogleMenus->name_hi ?? '' }}
+                                        @else
+                                            {{ $toogleMenus->name_en ?? '' }}
+                                        @endif
+                                    </a>
+                                </li>
+                            @endforeach
+
+                        </ul>
                     @endif
                 </div>
             </div>
