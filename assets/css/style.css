@@ -616,11 +616,6 @@ li.nav-item .active {
   padding: 13px 0;
 }
 
-@media (max-width: 1440px) {
-  .site-header .navbar-nav .nav-item .nav-link {
-    font-size: 0.875em;
-  }
-}
 .site-header .navbar-nav .nav-item .nav-link svg path {
   fill: #ffffff;
 }
