@@ -105,7 +105,7 @@ p strong, li strong {
   border-top: 1px solid #fff !important;
 }
 
-.site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before, .activity-slider-content .desc, .master .common-tab ul.nav-qm.nav-tabs .nav-item .nav-link::before, .dataTables_wrapper .dataTables_filter, #offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, .main-sidebar .list-start a::before {
+.site-header .navbar-nav .nav-item .dropdown-menu li a::before, .master .master-list-item li::before, .activity-slider-content .desc, .dataTables_wrapper .dataTables_filter, #offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, .main-sidebar .list-start a::before {
   color: #fff !important;
 }
 
@@ -149,7 +149,7 @@ p strong, li strong {
 }
 
 .main-sidebar ul li:last-child {
-  border-bottom: 1px solid #ffff00 !important;
+  border-bottom: 1px solid #fff !important;
 }
 
 .main-sidebar ul li:hover, .main-sidebar ul li:hover {
@@ -167,4 +167,43 @@ p strong, li strong {
 
 b {
   color: #fff !important;
+}
+
+.main-sidebar .sl-accordion:has(.show) {
+  border-bottom: 1px solid #fff !important;
+  border-radius: 4px;
+}
+
+.main-sidebar .accordion.menu-active:hover .nav-link.collapsed, .main-sidebar .sl-accordion.menu-active:hover .list-start a::before {
+  color: #fff !important;
+}
+
+.main-sidebar .qm-active {
+  background-color: #fff !important;
+}
+
+.main-sidebar .qm-active a, .main-sidebar .qm-active i {
+  color: #000 !important;
+}
+
+.main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:has(.show) {
+  border-bottom: 1px solid #fff !important;
+  border-radius: 4px;
+}
+
+.main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:has(.show):hover {
+  border-bottom: 1px solid #ffff00 !important;
+  border-radius: 4px;
+}
+
+.main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .nav-link.collapsed, .main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .list-start a::before {
+  color: #fff !important;
+}
+
+.master .side-tab1 .nav-qm li.nav-item.nav-item-qm.active {
+  background: #fff !important;
+}
+
+.master .side-tab1 .nav-qm li.nav-item.nav-item-qm.active a, .master .common-tab ul.nav-qm.nav-tabs .nav-item .nav-link::before {
+  color: #000 !important;
 }/*# sourceMappingURL=dark-mode.css.map */
