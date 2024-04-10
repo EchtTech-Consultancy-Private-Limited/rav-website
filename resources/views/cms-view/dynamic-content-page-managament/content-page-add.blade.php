@@ -458,9 +458,11 @@
             <form id="kt_page_pdf_form" class="form">
                <!--begin::Input group-->
                <div class="card card-flush py-4">
-                  <div class="card-body pt-0">
-                     <div class="card-body pt-0">
-                        <div class="col-md-10">
+                  <div class="card-body p-0">
+                     <div class="row">
+                        <div class="col-md-9">
+                        <div class="card-body p-0">
+                        <div class="col-md-11">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id2" name="pageTitle_id2" id="pageTitle_id2" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
@@ -470,55 +472,7 @@
                            </select>
                         </div>
                      </div>
-                     <div class="d-flex flex-column mb-15 fv-row">
-                     <!--begin::Label-->
-                     <div class="fs-5 fw-bold form-label mb-3">
-                        Custom fields 
-
-                        <span class="ms-2 cursor-pointer" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Add custom fields to the billing invoice.">
-                           <i class="ki-outline ki-information fs-7"></i>                </span>
-                     </div>
-                     <!--end::Label-->
-
-                     <!--begin::Table wrapper-->
-                     <div class="table-responsive">
-                        <!--begin::Table-->
-                        <table id="kt_create_new_custom_fields" class="table align-middle table-row-dashed fw-semibold fs-6 gy-5">
-                           <!--begin::Table head-->
-                           <thead>
-                                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                    <th class="pt-0">Field Name</th>
-                                    <th class="pt-0">Field Value</th>
-                                    <th class="pt-0 text-end">Remove</th>
-                                 </tr>
-                           </thead>
-                           <!--end::Table head-->
-
-                           <!--begin::Table body-->
-                           <tbody>
-                                 <tr>
-                                    <td>
-                                       <input type="text" class="form-control form-control-solid" name="row-name" value=""/>
-                                    </td>
-                                    <td>
-                                       <input type="text" class="form-control form-control-solid" name="row-value" value=""/>
-                                    </td>
-                                    <td class="text-end">
-                                       <button type="button" class="btn btn-icon btn-flex btn-active-light-primary w-30px h-30px me-3" data-kt-action="field_remove">
-                                             <i class="ki-outline ki-trash fs-3"></i>                                </button>
-                                    </td>
-                                 </tr>
-                           </tbody>
-                           <!--end::Table body-->
-                        </table>
-                        <!--end:Table-->
-                     </div>
-                     <!--end::Table wrapper-->
-
-                     <!--begin::Add custom field-->
-                     <button type="button" class="btn btn-light-primary me-auto" id="kt_create_new_custom_fields_add">Add custom field</button>
-                     <!--end::Add custom field-->
-               </div>
+                   
                      <!--begin::Input group-->
                      <!--begin::News-->
                      <!-- <div class="card-header">
@@ -528,7 +482,7 @@
                      </div> -->
                      <!--end::Card header-->
                      <!--begin::Card body-->
-                     <div class="card-body pt-0">
+                     <div class="card-body p-0 mt-5 pt-3">
                         <!--begin::Input group-->
                         <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
                            <!--begin::Repeater-->
@@ -536,28 +490,37 @@
                               <!--begin::Form group-->
                               <div class="form-group">
                                  <div data-repeater-list="kt_PagePdf_add_multiple_options" class="d-flex flex-column gap-3">
-                                    <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                    <div data-repeater-item class="form-group row align-items-center">
                                        <!--begin::Input-->
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">Pdf Title</label>
-                                       <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
+                                      <div class="col-md-8">
+                                       <div class="row">
+                                       <div class="col-md-4">
+                                          <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                          <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
                                        </div>
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">Start Date</label>
-                                       <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
+                                       <div class="col-md-4">
+                                          <label class="required form-label mw-100 w-200px">Start Date</label>
+                                          <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
                                        </div>
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">End Date</label>
-                                       <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
+                                       <div class="col-md-4">
+                                          <label class="required form-label mw-100 w-200px">End Date</label>
+                                          <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
                                        </div>
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">Pdf Format (.PDF)</label> 
-                                       <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="image" accept=".pdf" />
                                        </div>
+                                      </div>
+                                       <div class="col-md-4 d-flex align-items-end">
+                                        <div>
+                                        <label class="required form-label mw-100 w-200px">Pdf Format (.PDF)</label> 
+                                          <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="image" accept=".pdf" />
+                                        </div>
                                        <!--end::Input-->
-                                       <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                          <i class="ki-outline ki-cross fs-1"></i>
-                                        </button>
+                                       <div class="ml-2 mb-3">
+                                          <label class="form-label mt-34"></label> 
+                                          <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                             <i class="ki-outline ki-cross fs-1"></i>
+                                          </button>
+                                        </div>
+                                        </div>
                                     </div>
                                  </div>
                               </div>
@@ -574,6 +537,44 @@
                         </div>
                         <!--end::Input group-->
                      </div>
+                        </div>
+                        <div class="col-md-3">
+                              <div class="card-body p-0 pt-4 mt-5">
+                              <!--begin::Input group-->
+                              <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
+                                 <!--begin::Repeater-->
+                                 <div id="kt_tablehead_add_multiple_options">
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                       <div data-repeater-list="kt_tablehead_add_multiple_options" class="d-flex flex-column gap-3">
+                                          <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                             <!--begin::Input-->
+                                             <div>
+                                                <input type="text" class="form-control mw-100 w-200px" name="tablehead" placeholder="Table Head Name" />
+                                             </div>
+                                             <!--end::Input-->
+                                             <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                                <i class="ki-outline ki-cross fs-1"></i>
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group mt-5">
+                                       <button type="button" data-repeater-create class="btn btn-sm btn-light-primary">
+                                          <i class="ki-outline ki-plus fs-2"></i> Add Table Head
+                                       </button>
+                                    </div>
+                                    <!--end::Form group-->
+                                 </div>
+                                 <!--end::Repeater-->
+                              </div>
+                              <!--end::Input group-->
+                           </div>
+                        </div>
+                     </div>
+                    
                      <!--end::Card header-->
                   
                      <!--end::Variations-->

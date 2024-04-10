@@ -236,6 +236,9 @@ class DynamicContentPageManagamentAPIController extends Controller
     }
     public function pagePdf(Request $request)
     {
+       if(isset($request->kt_tablehead_add_multiple_options[0]['tablehead']) && $request->kt_tablehead_add_multiple_options[0]['tablehead'] !=null){
+            $jsonData = json_encode($request->kt_tablehead_add_multiple_options);
+       }
         try{
             $validator=Validator::make($request->all(),
                 [
@@ -268,6 +271,7 @@ class DynamicContentPageManagamentAPIController extends Controller
                     'file_extension' => $extension,
                     'public_url' => $name,
                     'private_url' => $name,
+                    'table_head'=>$jsonData??'0',
                     'dcpm_id' => $request->pageTitle_id2,
                 ]);
             }
@@ -541,6 +545,13 @@ class DynamicContentPageManagamentAPIController extends Controller
     }
     public function updatePagePdf(Request $request)
     {
+        
+        if(isset($request->kt_tablehead_add_multiple_options[0]['tablehead']) && $request->kt_tablehead_add_multiple_options[0]['tablehead'] !=null){
+            $jsonData = json_encode($request->kt_tablehead_add_multiple_options);
+        }else{
+            $jsonData = json_encode($request->kt_tablehead_add_multiple_options);
+        }
+        //dd($jsonData);
         try{
             $validator=Validator::make($request->all(),
                 [
@@ -556,8 +567,8 @@ class DynamicContentPageManagamentAPIController extends Controller
                 ];
             }
             else{
-            foreach($request->kt_PagePdf_add_multiple_options as $key=>$value)
-            {
+                foreach($request->kt_PagePdf_add_multiple_options as $key=>$value)
+                {
                 if(!empty($value['uid'])){
                     $uid=DB::table('dynamic_content_page_pdf')->where('uid',$value['uid'])->first();
                     if(!empty($value['uid']) && !empty($value['image'])){
@@ -574,17 +585,16 @@ class DynamicContentPageManagamentAPIController extends Controller
                             'private_url' => isset($name)?$name:$uid->public_url,
                             'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                             'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                            'table_head'=>$jsonData??'0',
+                        ]);
+                    }else{
+                    $result=DB::table('dynamic_content_page_pdf')->where('uid',$value['uid'])->update([
+                            'pdf_title' => $value['pdftitle'],
+                            'start_date' => $value['startdate'],
+                            'end_date' => $value['enddate'],
+                            'table_head'=>$jsonData??'0',
                         ]);
                     }
-                    $result=DB::table('dynamic_content_page_pdf')->where('uid',$value['uid'])->update([
-                        'pdf_title' => $value['pdftitle'],
-                        'start_date' => $value['startdate'],
-                        'end_date' => $value['enddate'],
-                        // 'public_url' => isset($name)?$name:$uid->public_url,
-                        // 'private_url' => isset($name)?$name:$uid->public_url,
-                        // 'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
-                        // 'file_extension' => isset($extension)?$extension:$uid->file_extension,
-                    ]);
                 }else{
                     if(!empty($value['image'])){
                         $size = $this->getFileSize($value['image']->getSize());
@@ -601,11 +611,11 @@ class DynamicContentPageManagamentAPIController extends Controller
                             'file_extension' => $extension,
                             'public_url' => $name,
                             'private_url' => $name,
+                            'table_head'=>$jsonData??'0',
                             'dcpm_id'=> $request->id
                         ]);
                     }
                 }
-                
             }
             if($result == true)
             {

@@ -164,6 +164,7 @@ class DynamicContentPageManagamentController extends Controller
                $content_pdf= DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metacontents->uid)->where('soft_delete','0')->get();
                 if($content_pdf){
                     $newData->content_pdf = $content_pdf;
+                    $newData->tableHead = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metacontents->uid)->where('soft_delete','0')->first()->table_head??'0';
                 }
                 $content_gallery= DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metacontents->uid)->where('soft_delete','0')->get();
                 if($content_gallery){
@@ -177,6 +178,7 @@ class DynamicContentPageManagamentController extends Controller
                 }
            $datas[] = $newData;
         }
+        
         if(!empty($datas)){
             $datas1 = $datas;
         }else{
@@ -184,6 +186,7 @@ class DynamicContentPageManagamentController extends Controller
         }
         $objectpass = new \stdclass;
         $objectpass->pageContent = $datas1;
+        
         //dd($objectpass);
         return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),'data'=> $objectpass,'pageTitle'=>$pageTitle,'menuName'=>$menu]);
