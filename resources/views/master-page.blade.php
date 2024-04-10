@@ -56,7 +56,7 @@
                                 <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
                             @endif
                         @endif
-                        <li>{{ $organizedData['metatag']->meta_title ?? $title_name }}</li>
+                        <li>{{  $title_name ?? $organizedData['metatag']->meta_title }}</li>
                     @endif
 
                 </ul>

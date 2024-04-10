@@ -2565,14 +2565,15 @@ p.desc {
 }
 
 .nav-item-qm:hover {
-    background-color: #92065c !important;
-    border-radius: 14px;
-    color: #fff;
+    // background-color: #92065c !important;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #92065c;
 }
 
 li.nav-item.nav-item-qm.d-flex.align-items-center:hover a,
 li.nav-item.nav-item-qm.d-flex.align-items-center:hover i {
-    color: #fff;
+    color: #0f0f0f;
 }
 
 .nav-qm {
@@ -4613,7 +4614,7 @@ table {
 .master .common-tab ul.nav-qm.nav-tabs .nav-item {
     &:hover{
         .nav-link::before{
-            color: #fff;
+            color: #630f43;
         }
     }
     .nav-link{
@@ -4629,7 +4630,12 @@ table {
         }
     }
 }
-
+li.nav-item.nav-item-qm.active:hover a {
+    color: #fff  !important;
+}
+li.nav-item.nav-item-qm.active {
+    background: #630f43 !important;
+}
 // datatable style 
 
 .dataTables_wrapper .dataTables_length{display:flex;align-items:center!important}
