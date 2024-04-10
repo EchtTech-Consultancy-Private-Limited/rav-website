@@ -568,6 +568,7 @@ class HomeController extends Controller
 
                         return view('master-page', ['rsbkDirectoryInstituteWise' => $rsbkDirectoryInstituteWise, 'stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
+                        
                         $formData = DB::table('website_menu_management')
                             ->join('form_designs_management', 'website_menu_management.uid', '=', 'form_designs_management.website_menu_uid')
                             ->where('website_menu_management.url', $slug)
@@ -686,16 +687,9 @@ class HomeController extends Controller
                             $lastBred = "";
                         }
 
-
-                        // if (in_array($slug, $states) || in_array($slug, $specialSlugs)) {
-                        //     $middelBred = "Rsbk e-directory";
-                        //     $displayRsbkMenu = 1;
-                        // }
-
                         $tree = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
                         $parentMenut = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
-
-
+                        
 
                         return view('master-page', ['lastBred' => $lastBred, 'tree' => $tree, 'parentMenut' => $parentMenut, 'displayRsbkMenu' => $displayRsbkMenu, 'middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }

@@ -22,7 +22,7 @@
     </div>
     <div class="header-top-right">
         <ul class="d-flex align-items-center">
-            <li class="acees-style1"> <a href="#about-us" title="Skip to main Content" ><i class="fa fa-arrow-up"></i> </a></li>
+            <li class="acees-style1"> <a href="#main-content" title="Skip to main Content" ><i class="fa fa-arrow-up"></i> </a></li>
             <li class="acees-style1"> <a href="{{route('screen-reader-access')}}" title="Screen Reader Access"> <i class="fa fa-volume-up"></i></a></li>
             <li class="dropdown acees-style1 acees-style2">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

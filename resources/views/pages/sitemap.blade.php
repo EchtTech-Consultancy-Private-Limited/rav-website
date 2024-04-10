@@ -24,7 +24,7 @@
                 </ul>
             </div>
         </div>
-        <section class="sitemap bg-grey" id="about">
+        <section class="sitemap bg-grey" id="main-content">
             <div class="container">
                 <div class="master">
                     <h1>RAV Website Link</h1>
@@ -149,7 +149,26 @@
                     @else
                         <h5>No menu available.</h5>
                     @endif
-
+                    <h2>Toggle Menu</h2>
+                    @if (isset($toogleMenu) && count($toogleMenu) > 0)
+                    <ul class="site-map-menu">
+                        @foreach ($toogleMenu as $toogleMenus)
+                        @php
+                        $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
+                        @endphp
+                        <li class="first leaf">
+                            <a href="{{ url($toogleMenuurl) ?? '' }}">
+                                @if (Session::get('locale') == 'hi')
+                                {{ $toogleMenus->name_hi ?? '' }}
+                                @else
+                                {{ $toogleMenus->name_en ?? '' }}
+                                @endif
+                            </a>
+                        </li>
+                        @endforeach
+                       
+                    </ul>
+                    @endif
                 </div>
             </div>
         </section>

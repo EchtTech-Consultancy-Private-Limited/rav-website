@@ -13,7 +13,7 @@
             </div>
         </div>
     </section>
-    <div class="main-body searchPage">
+    <div class="main-body searchPage" id="main-content">
         <div class="container breadcrumbs-link">
             <div class="breadcrumbs-link-text">
                 <ul>
@@ -29,7 +29,7 @@
                 <form name="searchForm" action="{{ url('/search') }}" method="get" class="row info1 mb-20 p-0">
                 <div class="search-box">
                       <input type="search" name="search_key" id="search_key"
-                        value="{{ request('search_key') ?? '' }}" class="col-md-4" required placeholder="Search here...">
+                        value="{{ $errors->has('search_key') ? '' :  request('search_key') ?? '' }}" class="col-md-4" required placeholder="Search here...">
                    
                         <button class="more gallery-more-btn" type="submit">Search</button>
                     </div>
