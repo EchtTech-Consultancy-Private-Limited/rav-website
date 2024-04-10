@@ -149,5 +149,55 @@ th.each((a, item) => {
 });
 });
 
+let secondlayerSidebar = $('li.accordion.accordion-flush.position-relative.sl-accordion');
+let activeAccordion = $('.accordion-collapse.collapse');
 
+secondlayerSidebar.each(function(){
+    let item = $(this);
+  let activeChildAccordion = item.children().children()
+    item.click(function(){
+        if (item.hasClass("qm-active")) {
+            activeChildAccordion.each(function(){
+                console.log($(this))
+                item.removeClass('qm-active');
+                if($(this).hasClass('.show')){
+                    alert("working fine")
+                }
+            }, 1000)
+        } 
+    })
+})
+
+// let secondlayerSidebar = $('li.accordion.accordion-flush.position-relative.sl-accordion');
+// let activeAccordion = $('.accordion-collapse.collapse');
+
+// activeAccordion.on('click', function() {
+//     let clickedAccordion = $(this);
+//     if (clickedAccordion.hasClass('show')) {
+//         secondlayerSidebar.removeClass('qm-active');
+//     }
+// });
+
+
+// activeAccordion.each((index, item) => {
+//     console.log(item)
+//     $(item).on('click', () => {
+//         if ($(item).hasClass("show")) {
+//             $(secondlayerSidebar[index]).removeClass("qm-active");
+//         } else {
+//             // Add qm-active class to corresponding second-layer sidebar item
+//             $(secondlayerSidebar[index]).addClass("qm-active");
+//         }
+//         alert("working fine")
+//     });
+// });
+
+
+
+// $('li.accordion.accordion-flush.position-relative.sl-accordion').each((index, item) => {
+//     const activeAccordion = $('.accordion-collapse.collapse.show');
+//     if ($(item).hasClass('qm-active') && activeAccordion[index]) {
+//         $(item).removeClass('qm-active');
+//     }
+// });
 // lang.

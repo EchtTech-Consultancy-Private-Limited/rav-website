@@ -46,7 +46,7 @@ $(document).ready(function () {
     hours = hours % 12;
     hours = hours ? hours : 12;
     minutes = minutes < 10 ? '0' + minutes : minutes;
-    var formattedDateTime = `0${day} ${month} ${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+    var formattedDateTime = `${day.toString().length >=2 ? day: '0'+day} ${month.toString().length >=2 ? month: '0'+month} ${year} ${hours}:${minutes}:${seconds} ${ampm}`;
     let date = $('.dateTime');
     date.html(formattedDateTime);
   }
@@ -58,9 +58,10 @@ $(document).ready(function () {
     var year = currentDate.getFullYear();
     var month = currentDate.getMonth() + 1;
     var day = currentDate.getDate();
-    var formattedDateTime = `0${day}-0${month}-${year}`;
+    var formattedDateTime = `${day.toString().length >=1 ? day: '0'+day}-${month.toString().length >=2 ? month: '0'+month}-${year}`;
     let date = $('.date');
     date.html(formattedDateTime);
+   
   }
 
   printCurrentDate();

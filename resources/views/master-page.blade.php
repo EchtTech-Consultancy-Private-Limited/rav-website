@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-    {{ __('RAV') }}
+    {{ $title_name ?? __('RAV') }}
 @endsection
 @section('content')
 
@@ -19,7 +19,8 @@
         @endif
         {{-- banner end --}}
         <div class="breadcrumb-title">
-            <h3 class="title">{{ isset($organizedData['metatag']->meta_title) ? $organizedData['metatag']->meta_title : $title_name }}
+            <h3 class="title">
+                {{ isset($organizedData['metatag']->meta_title) ? $organizedData['metatag']->meta_title : $title_name }}
             </h3>
         </div>
         </div>
@@ -37,22 +38,31 @@
                             @endif
                         </a>
                     </li>
-                    @if (isset($finalBred))
-                        <li><a>{{ ucfirst(strtolower($finalBred)) ?? '' }}</a></li>
-                    @endif
-                    @if (isset($lastBred))
-                        <li><a>{{ ucfirst(strtolower($lastBred)) ?? '' }}</a></li>
-                    @endif
-                    @if (isset($middelBred))
-                        @if ($middelBred != "")
-                        <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
+                    @if ($title_name == 'Career' || $title_name == 'Vacancy' || $title_name == 'Tenders')
+                        <li><a>{{ ucfirst(strtolower($title_name)) ?? '' }}</a></li>
+                    @else
+                        @if (isset($finalBred))
+                           @if ($finalBred != '')
+                           <li><a>{{ ucfirst(strtolower($finalBred)) ?? '' }}</a></li>
+                           @endif
                         @endif
+                        @if (isset($lastBred))
+                            @if ($lastBred != '')
+                            <li><a>{{ ucfirst(strtolower($lastBred)) ?? '' }}</a></li>
+                            @endif
+                        @endif
+                        @if (isset($middelBred))
+                            @if ($middelBred != '')
+                                <li><a>{{ ucfirst(strtolower($middelBred)) ?? '' }}</a></li>
+                            @endif
+                        @endif
+                        <li>{{  $title_name ?? $organizedData['metatag']->meta_title }}</li>
                     @endif
-                    <li>{{ $organizedData['metatag']->meta_title ?? $title_name }}</li>
+
                 </ul>
             </div>
         </div>
-        <section class="master bg-grey">
+        <section class="master bg-grey" id="main-content">
             <div class="container">
                 <div class="news-tab common-tab side-tab1">
                     <div class="row">
@@ -61,7 +71,7 @@
                             {{-- @dd($tree); --}}
                             @if (isset($displayRsbkMenu) && $displayRsbkMenu == 1)
                                 <x-rsbk-directory-menu />
-                            @elseif (isset($parentMenut) && $parentMenut != '' && !isset($displayRsbkMenu) )
+                            @elseif (isset($parentMenut) && $parentMenut != '' && !isset($displayRsbkMenu))
                                 <div class="main-sidebar" id="main-sidebar">
                                     <ul>
                                         @if ($parentMenut != '' && isset($parentMenut))
@@ -141,17 +151,28 @@
                                                                         <li><a href="{{ url('delhi') }}">Delhi</a></li>
                                                                         <li><a href="{{ url('goa') }}">Goa</a></li>
                                                                         <li><a href="{{ url('gujarat') }}">Gujarat</a></li>
-                                                                        <li><a href="{{ url('himachal-pradesh') }}">Himachal Pradesh</a></li>
-                                                                        <li><a href="{{ url('karnataka') }}">Karnataka</a></li>
+                                                                        <li><a href="{{ url('himachal-pradesh') }}">Himachal
+                                                                                Pradesh</a></li>
+                                                                        <li><a href="{{ url('karnataka') }}">Karnataka</a>
+                                                                        </li>
                                                                         <li><a href="{{ url('kerala') }}">Kerala</a></li>
-                                                                        <li><a href="{{ url('madhya-pradesh') }}">Madhya Pradesh</a></li>
-                                                                        <li><a href="{{ url('chhattisgarh') }}">Chhattisgarh</a></li>
-                                                                        <li><a href="{{ url('maharashtra') }}">Maharashtra</a></li>
+                                                                        <li><a href="{{ url('madhya-pradesh') }}">Madhya
+                                                                                Pradesh</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('chhattisgarh') }}">Chhattisgarh</a>
+                                                                        </li>
+                                                                        <li><a
+                                                                                href="{{ url('maharashtra') }}">Maharashtra</a>
+                                                                        </li>
                                                                         <li><a href="{{ url('odisha') }}">Odisha</a></li>
                                                                         <li><a href="{{ url('punjab') }}">Punjab</a></li>
-                                                                        <li><a href="{{ url('rajasthan') }}">Rajasthan</a></li>
-                                                                        <li><a href="{{ url('uttar-pradesh') }}">Uttar Pradesh</a></li>
-                                                                        <li><a href="{{ url('uttarakhand') }}">Uttarakhand</a></li>
+                                                                        <li><a href="{{ url('rajasthan') }}">Rajasthan</a>
+                                                                        </li>
+                                                                        <li><a href="{{ url('uttar-pradesh') }}">Uttar
+                                                                                Pradesh</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('uttarakhand') }}">Uttarakhand</a>
+                                                                        </li>
                                                                         <!-- Add more submenu items as needed -->
                                                                     </ul>
                                                                 </div>
@@ -160,7 +181,7 @@
 
 
                                                     </li>
-                                                    @elseif ($trees->url == 'rsbk-directory-year-wise')
+                                                @elseif ($trees->url == 'rsbk-directory-year-wise')
                                                     <li class="accordion accordion-flush position-relative sl-accordion @if (request()->is($parentMenuUrl . '/' . $treesUrl)) qm-active @endif"
                                                         id="sidebarDropdown_0">
                                                         <div class="accordion-item border-0">
@@ -183,16 +204,36 @@
                                                                 data-bs-parent="#sidebarDropdown_0">
                                                                 <div class="accordion-body p-0">
                                                                     <ul class="p-0 m-0 mt-3">
-                                                                        <li><a href="{{ url('rsbk-directory-from-1951-to-1960') }}">RSBK Directory From 1951 to 1960</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-1961-to-1970') }}">RSBK Directory From 1961 to 1970</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-1971-to-1980') }}">RSBK Directory From 1971 to 1980</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-1981-to-1990') }}">RSBK Directory From 1981 to 1990</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-1991-to-2000') }}">RSBK Directory From 1991 to 2000</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-2001-to-2005') }}">RSBK Directory From 2001 to 2005</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-2006-to-2010') }}">RSBK Directory From 2006 to 2010</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-2011-to-2015') }}">RSBK Directory From 2011 to 2015</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-2016-to-2020') }}">RSBK Directory From 2016 to 2020</a></li>
-                                                                        <li><a href="{{ url('rsbk-directory-from-2021-to-2023') }}">RSBK Directory From 2021 to 2023</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-1951-to-1960') }}">RSBK
+                                                                                Directory From 1951 to 1960</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-1961-to-1970') }}">RSBK
+                                                                                Directory From 1961 to 1970</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-1971-to-1980') }}">RSBK
+                                                                                Directory From 1971 to 1980</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-1981-to-1990') }}">RSBK
+                                                                                Directory From 1981 to 1990</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-1991-to-2000') }}">RSBK
+                                                                                Directory From 1991 to 2000</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-2001-to-2005') }}">RSBK
+                                                                                Directory From 2001 to 2005</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-2006-to-2010') }}">RSBK
+                                                                                Directory From 2006 to 2010</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-2011-to-2015') }}">RSBK
+                                                                                Directory From 2011 to 2015</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-2016-to-2020') }}">RSBK
+                                                                                Directory From 2016 to 2020</a></li>
+                                                                        <li><a
+                                                                                href="{{ url('rsbk-directory-from-2021-to-2023') }}">RSBK
+                                                                                Directory From 2021 to 2023</a></li>
                                                                         <!-- Add more submenu items as needed -->
                                                                     </ul>
                                                                 </div>

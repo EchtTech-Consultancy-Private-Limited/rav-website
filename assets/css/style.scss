@@ -409,7 +409,7 @@ li.nav-item .active {
 }
 .site-header .navbar-nav .nav-item .nav-link {
     i {
-        font-size: 22px;
+        font-size: 27px;
     }
 }
 .header-top-right ul li .text-increment-btn {
@@ -660,12 +660,12 @@ li.nav-item .active {
     color: #ffffff;
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 13px 0;
 }
 
 @media (max-width: 1440px) {
     .site-header .navbar-nav .nav-item .nav-link {
-        font-size: 0.875em;
+        // font-size: 0.875em;
     }
 }
 .site-header .navbar-nav .nav-item .nav-link svg path {
@@ -1476,6 +1476,7 @@ div#cmeScheme_wrapper{
     -webkit-box-orient: vertical;
     white-space: normal;
     overflow: hidden;
+    text-align: left;
 }
 
 .activity-tab .title-white {
@@ -2564,14 +2565,15 @@ p.desc {
 }
 
 .nav-item-qm:hover {
-    background-color: #92065c !important;
-    border-radius: 14px;
-    color: #fff;
+    // background-color: #92065c !important;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #92065c;
 }
 
 li.nav-item.nav-item-qm.d-flex.align-items-center:hover a,
 li.nav-item.nav-item-qm.d-flex.align-items-center:hover i {
-    color: #fff;
+    color: #0f0f0f;
 }
 
 .nav-qm {
@@ -4612,7 +4614,7 @@ table {
 .master .common-tab ul.nav-qm.nav-tabs .nav-item {
     &:hover{
         .nav-link::before{
-            color: #fff;
+            color: #630f43;
         }
     }
     .nav-link{
@@ -4628,7 +4630,12 @@ table {
         }
     }
 }
-
+li.nav-item.nav-item-qm.active:hover a {
+    color: #fff  !important;
+}
+li.nav-item.nav-item-qm.active {
+    background: #630f43 !important;
+}
 // datatable style 
 
 .dataTables_wrapper .dataTables_length{display:flex;align-items:center!important}
@@ -4816,4 +4823,14 @@ h3 {
 
 div#customPreviousBtn5, div#customNextBtn5{
     display: none;
+}
+
+.main-body.searchPage{
+    h2{
+        font-size: 26px;
+        margin-top: 30px;
+    }
+    h5{
+        font-size: 17px;
+    }
 }

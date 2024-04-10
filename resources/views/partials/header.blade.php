@@ -17,14 +17,17 @@
                 <div class="logo-right">
                     <div class="search-wrap me-4">
                         <form name="searchForm" action="{{ url('/search') }}" method="get">
-                            <input class="form-control" type="search" name="search_key" id="search_key"
+                          <div class="position-relative">
+                          <input class="form-control" type="search" name="search_key" id="search_key"
                             value="{{ request('search_key') ?? '' }}" placeholder="Search" aria-label="Search" >
-                            @error('search_key')
-                                <span id="searchValidationErrorLabel" class="text-danger">{{ $message }}</span>
-                            @enderror
+                          
                             <button class="btn btn-search" type="submit">
                                 <img src="{{ asset('assets/images/search.png') }}" alt="search" class="img-fluid" title="search">
                             </button>
+                          </div>
+                            @error('search_key')
+                                <span id="searchValidationErrorLabel" class="text-danger">{{ $message }}</span>
+                            @enderror
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
@@ -56,18 +59,47 @@
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav">
                 <li class="nav-item " tabindex="0">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}" tabindex="-1">
+                    <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page" href="{{ url('/') }}" tabindex="-1">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
                 @if (isset($headerMenu) && count($headerMenu) > 0)
+                {{-- @dd($headerMenu) --}}
                     @foreach ($headerMenu as $headerMenus)
                         @php
                             $url = $headerMenus->url ?? 'javascript:void(0)';
                         @endphp
                         @if (isset($headerMenus->children) && count($headerMenus->children) > 0)
                             <li class="nav-item dropdown ">
-                                <a class="nav-link an-hove" href="javascript:void(0)" aria-expanded="false" tabindex = "-1">
+                                <a class="nav-link an-hove {{ (request()->is($url.'*') || 
+                                    (request()->is('m-pharma') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('m-d') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('p-g') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('ph-d') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('delhi') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('goa') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('gujarat') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('himachal-pradesh') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('karnataka') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('kerala') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('madhya-pradesh') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('chhattisgarh') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('maharashtra') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('odisha') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('punjab') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rajasthan') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('uttar-pradesh') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('uttarakhand') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-1951-to-1960') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-1961-to-1970') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-1971-to-1980') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-1981-to-1990') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-1991-to-2000') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-2001-to-2005') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-2006-to-2010') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-2011-to-2015') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-2016-to-2020') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') || 
+                                    (request()->is('rsbk-directory-from-2021-to-2023') && $headerMenus->name_en == 'RSBK E-Directory' && $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका')) ? 'active' : '' }}" href="javascript:void(0)" aria-expanded="false" tabindex = "-1">
                                     @if (Session::get('locale') == 'hi')
                                         {{ $headerMenus->name_hi ?? '' }}
                                     @else
@@ -203,7 +235,7 @@
                                         @endif
                                     </a>
                                 @else
-                                    <a class="nav-link an-hove" href="{{ url($url) ??''}}" aria-expanded="false">
+                                    <a class="nav-link an-hove {{ request()->is($url.'*') ? 'active' : '' }}" href="{{ url($url) ??''}}" aria-expanded="false">
                                         @if (Session::get('locale') == 'hi')
                                             {{ $headerMenus->name_hi ?? '' }}
                                         @else
