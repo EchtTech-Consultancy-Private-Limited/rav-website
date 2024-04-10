@@ -24,7 +24,7 @@
                 </ul>
             </div>
         </div>
-        <section class="sitemap bg-grey" id="about">
+        <section class="sitemap bg-grey" id="main-content">
             <div class="container">
                 <div class="master">
                     <h1>RAV Website Link</h1>

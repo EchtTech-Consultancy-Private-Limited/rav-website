@@ -103,7 +103,7 @@
             </div>
         </div>
     </section>
-    <section class="about-us ptb-100" id="about-us">
+    <section class="about-us ptb-100" id="main-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12" data-aos="fade-up" data-aos-duration="3000">
