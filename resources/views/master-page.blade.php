@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-    {{ __('RAV') }}
+    {{ $title_name ?? __('RAV') }}
 @endsection
 @section('content')
 
