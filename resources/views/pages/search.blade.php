@@ -13,7 +13,7 @@
             </div>
         </div>
     </section>
-    <div class="main-body">
+    <div class="main-body searchPage">
         <div class="container breadcrumbs-link">
             <div class="breadcrumbs-link-text">
                 <ul>

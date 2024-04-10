@@ -332,7 +332,8 @@ h2.resp-tab-title:last-child {
     margin: 0px !important;
     padding: 0 !important;}
 .main-sidebar ul li:last-child{
-    border-bottom: 0px ;}
+    /* border-bottom: 0px ; */
+}
 .main-sidebar .accordion-item a{
 	/* display: block; */
 	color: #000 ;
