@@ -2346,6 +2346,8 @@ div.dt-buttons > div.dt-button-split .dt-button {
 
 .latest-news-slider {
   position: relative;
+  overflow: hidden;
+  margin-left: 17px;
 }
 
 .latest-news-slider p {
@@ -4705,4 +4707,19 @@ div#customPreviousBtn5, div#customNextBtn5 {
 }
 .main-body.searchPage h5 {
   font-size: 17px;
+}
+
+.latest_news_marquee a::before {
+  content: "\f101";
+  font-family: fontAwesome;
+  color: red;
+  font-size: 14px;
+  margin-right: 0;
+}
+
+.latest_news_marquee a {
+  color: #333;
+  line-height: 37px;
+  font-size: 13px;
+  margin-right: 20px;
 }/*# sourceMappingURL=style.css.map */
