@@ -114,7 +114,7 @@ h2.resp-tab-title:last-child {
     margin-top: 5px;}
 .main-sidebar .sl-accordion:has(.show) {
     border: 1px solid var(--secondary-color);
-    border-bottom: 1px solid var(--secondary-color) !important;
+    border-bottom: 1px solid var(--secondary-color) ;
     border-radius: 4px;
     }
 .main-sidebar ul li:last-child:hover {
@@ -378,7 +378,7 @@ display: flex;}
 .main-sidebar .fl-accordion.menu-active.fl-accordion-active:hover a{
 	/* color: #fff !important; */}
 .main-sidebar .accordion-item ul .qm-active:hover a{
-	color: #fff !important;}
+	color: #fff ;}
 .main-sidebar .accordion:hover a{
 	color: #000;}
 .main-sidebar .accordion .accordion li{

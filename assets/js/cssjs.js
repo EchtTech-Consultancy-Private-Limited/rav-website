@@ -159,3 +159,45 @@ ayushAhar.each(function(){
 
     item.text(text)
 })
+
+$("#search_key").on("keyup", function() {
+    $("#searchValidationErrorLabel").hide();
+
+  });
+
+    const counters = document.querySelectorAll('.counterNumber');
+    const speed = 200;
+
+    counters.forEach( counter => {
+       const animate = () => {
+          const value = +counter.getAttribute('counter');
+          const data = +counter.innerText;
+
+          const time = value / speed;
+         if(data < value) {
+              counter.innerText = Math.ceil(data + time);
+              setTimeout(animate, 1);
+            }else{
+              counter.innerText = value;
+            }
+       }
+
+       animate();
+    });
+
+  $(document).ready(function(){
+    $(".latest_news_marquee").marquee({
+    speed: 5e3,
+    gap: 5,
+    delayBeforeStart: 0,
+    direction: "left",
+    duplicated: !0,
+    pauseOnHover: !0,
+  } );
+})
+let lang = $('.language').val();
+if(lang == 'hi'){
+    $('.sticky-icon a').css('width', "155px")
+}else{
+    $('.sticky-icon a').css('width', "160px")
+}
