@@ -164,6 +164,10 @@ b{
     border-bottom: 1px solid #fff !important;
     border-radius: 4px;
 }
+.main-sidebar .sl-accordion:has(.show):hover {
+    border-bottom: 1px solid #ffff00 !important;
+    border-radius: 4px;
+}
 
 .main-sidebar .accordion.menu-active:hover .nav-link.collapsed, .main-sidebar .sl-accordion.menu-active:hover .list-start a::before {
     color: #fff !important;
@@ -182,9 +186,9 @@ b{
 }
 
 .main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:has(.show):hover {
- 
     border-bottom: 1px solid #ffff00 !important;
     border-radius: 4px;
+    border-color: #ffff00 !important;
 }
 
 .main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .nav-link.collapsed, .main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .list-start a::before, .latest_news_marquee a::before, i.fa.fa-file-pdf-o, .client-slider .btns div i, h5, td, td td, td td td{
@@ -222,4 +226,25 @@ b{
 
 .search-page nav[role=navigation] div:nth-child(2) div span[aria-current=page] span{
     background-color: #000 !important;
+}
+.our-journey-card:hover{
+    border-color:#FFF !important;
+}
+
+.master h5 span, li.accordion.accordion-flush.position-relative.sl-accordion.menu-active{
+background:#000 !important;
+    border:1px solid #fff !important; 
+}
+.addevent-box:hover{
+    background-color: #fff !important;
+}
+.addevent-box:hover h5, .addevent-box:hover h6{
+    color: #000 !important;
+}
+.main-sidebar .accordion-item ul .qm-active:hover a {
+    color: #000 !important;
+}
+
+.site-footer .footer-nav ul li a:hover {
+    color: #FFF !important;
 }
