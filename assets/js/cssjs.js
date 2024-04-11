@@ -197,7 +197,7 @@ $("#search_key").on("keyup", function() {
 })
 let lang = $('.language').val();
 if(lang == 'hi'){
-    $('.sticky-icon a').css('width', "155px")
+    $('.sticky-icon a').css('width', "160px")
 }else{
     $('.sticky-icon a').css('width', "160px")
 }
