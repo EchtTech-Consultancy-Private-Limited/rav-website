@@ -3369,7 +3369,8 @@ Image Section Css */
   transition: all 0.8s;
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  margin-right: 2px;
+  width: 160px;
 }
 
 .sticky-icon a:hover {

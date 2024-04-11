@@ -195,3 +195,9 @@ $("#search_key").on("keyup", function() {
     pauseOnHover: !0,
   } );
 })
+let lang = $('.language').val();
+if(lang == 'hi'){
+    $('.sticky-icon a').css('width', "155px")
+}else{
+    $('.sticky-icon a').css('width', "160px")
+}
