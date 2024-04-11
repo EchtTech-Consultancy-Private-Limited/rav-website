@@ -4722,4 +4722,8 @@ div#customPreviousBtn5, div#customNextBtn5 {
   line-height: 37px;
   font-size: 13px;
   margin-right: 20px;
+}
+
+.poshakAhaar .card p {
+  text-transform: capitalize;
 }/*# sourceMappingURL=style.css.map */

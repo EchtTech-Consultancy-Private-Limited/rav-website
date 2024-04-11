@@ -114,11 +114,11 @@ p strong, li strong {
   border-left: 1px solid #fff;
 }
 
-#offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, li.nav-item .active, .main-sidebar .accordion-item .nav-link.collapsed {
+#offcanvasRight, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .our-journey-card:hover, .nav-item-qm:hover, li.nav-item .active, .main-sidebar .accordion-item .nav-link.collapsed, .hero-slider .btns, h2.dashboard-link {
   background: #000 !important;
 }
 
-.accordion-button, .event-card, .contact .contact-item:hover, .contact .contact-item, .contact .contact-item .icon i, .main-sidebar ul li:has(.show) {
+.accordion-button, .event-card, .contact .contact-item:hover, .contact .contact-item, .contact .contact-item .icon i, .main-sidebar ul li:has(.show), .search-page nav[role=navigation] div:nth-child(2) div p, .search-box button, .sticky-icon a {
   background: #000 !important;
   border: 1px solid #fff !important;
 }
@@ -196,7 +196,7 @@ b {
   border-radius: 4px;
 }
 
-.main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .nav-link.collapsed, .main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .list-start a::before {
+.main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .nav-link.collapsed, .main-sidebar li.accordion.accordion-flush.sl-accordion.menu-active:hover .list-start a::before, .latest_news_marquee a::before, i.fa.fa-file-pdf-o, .client-slider .btns div i, h5, td, td td, td td td {
   color: #fff !important;
 }
 
@@ -206,4 +206,30 @@ b {
 
 .master .side-tab1 .nav-qm li.nav-item.nav-item-qm.active a, .master .common-tab ul.nav-qm.nav-tabs .nav-item .nav-link::before {
   color: #000 !important;
+}
+
+.tab-pane .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+.accordion-button::after {
+  filter: invert(1) !important;
+}
+
+.about td, .about td td, .about td td td {
+  color: #fff !important;
+}
+
+.about .dataTables_wrapper .dataTables_paginate a.paginate_button.current {
+  background-color: #FFF !important;
+  color: #000 !important;
+}
+
+.bg-white {
+  background-color: #000 !important;
+}
+
+.search-page nav[role=navigation] div:nth-child(2) div span[aria-current=page] span {
+  background-color: #000 !important;
 }/*# sourceMappingURL=dark-mode.css.map */
