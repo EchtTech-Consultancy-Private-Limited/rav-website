@@ -64,17 +64,6 @@ tables.each(function() {
 
 
 
-// var header = document.getElementById("myHeader");
-// console.log(header);
-//   let   sticky = header.offsetTop;
-//     console.log(sticky)
-//     function myFunction() {
-//     console.log(window.pageYOffset, 'pageYOffset')
-//     window.pageYOffset > sticky
-//         ? header.classList.add("sticky")
-//         : header.classList.remove("sticky");
-//         alert("workin fine");
-// }
 
 let img = $('img')
 img.each(function(){
@@ -112,13 +101,7 @@ $(document).ready(function(){
         // alert("clicked")
     });
 
-    // $(document).on("keydown", function(event) {
-    //     // Check if the pressed key is the tab key (key code 9)
-    //     if (event.keyCode === 9 && selectBox.is(":focus")) {
-    //         // Trigger a click event on the select box to open it
-    //         selectBox.click();
-    //     }
-    // });
+
  
     let offcanvasli = $("#offcanvasli");
     let offcanvasRight = $('#offcanvasRight');
@@ -166,4 +149,13 @@ secondlayerSidebar.each(function(){
             }, 1000)
         } 
     })
+})
+
+
+let ayushAhar = $('.poshakAhaar .card p');
+ayushAhar.each(function(){
+    let item = $(this);
+    let text = item.text().toLowerCase();
+
+    item.text(text)
 })
