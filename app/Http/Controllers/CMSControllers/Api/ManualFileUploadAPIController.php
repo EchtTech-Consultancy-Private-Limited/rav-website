@@ -71,7 +71,7 @@ class ManualFileUploadAPIController extends Controller
             $validator=Validator::make($request->all(),
                 [
                 'title_name'=>'required',
-                'file_path' => "required|mimes:jpeg,bmp,png,gif,svg,pdf,doc,csv,xlsx,xls,docx,ppt,odt,ods,odp|max:2048"
+                'file_path' => "required|mimes:jpeg,bmp,png,gif,svg,pdf,doc,csv,xlsx,xls,docx,ppt,odt,ods,odp|max:10240"
             ]);
             if($validator->fails())
             {

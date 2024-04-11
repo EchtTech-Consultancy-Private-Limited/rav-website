@@ -200,21 +200,29 @@ class WebsiteMenuManagementController extends Controller
             $crudUrlTemplate['update'] = route('menu-update');
         }
 
-        $Editmenus=WebsiteMenuManagement::select('*')->where('uid',$request->id)->first();
+        $Editmenus=WebsiteMenuManagement::select('name_en','name_hi','url','sort_order','footer_url','menu_place','tab_type','parent_id')
+                     ->where('uid',$request->id)->first();
 
-        $menu=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0']])->where('parent_id','0')->get();
+        $menuList=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0'],['parent_id','0']])->get();
         $Submenu=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0']])->whereNot('parent_id', '0')->get();
         //dd($Editmenu);
         if($Editmenus){
             $Editmenu = $Editmenus;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
+        if(isset($Editmenus->parent_id) && $Editmenus->parent_id ==0 ){
+            $type = '0';
+        }else{
+            $type = '1';
+        }
+       
         return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
-            'menu'=> $menu,
+            'menulist'=> $menuList,
             'Submenu'=>$Submenu,
-            'Editmenu' =>$Editmenu
+            'Editmenu' =>$Editmenu,
+            'types' =>$type
         ]);
     }
     // function getMenuTree($menus,$parentId){

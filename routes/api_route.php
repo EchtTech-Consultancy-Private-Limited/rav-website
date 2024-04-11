@@ -28,6 +28,8 @@ use App\Http\Controllers\CMSControllers\Api\RtiApplicationResponsesAPIController
 use App\Http\Controllers\CMSControllers\Api\CommonApprovalAPIController;
 use App\Http\Controllers\CMSControllers\Api\FormBuilderAPIController;
 use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
+use App\Http\Controllers\CMSControllers\Api\PrivateGovernmentClientsAPIController;
+use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
 
 
 /***************************** API URL Use For Data Migrate With DB*************************************** */
@@ -161,6 +163,7 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::delete('/delete-gl/{id}',[GalleryManagementAPIController::class,'destroy'])->name('photovideo-delete');
             /* multiple row delete!!!*/
             Route::post('/gallery-multiple',[GalleryManagementAPIController::class,'deleteMutiData'])->name('gallery-multiple');
+           
             /****** Banner Setting bn:Banner*/
             Route::post('/create-bn',[HomePageBannerAPIController::class,'store'])->name('banner-save')->middleware('throttle:custom_Limit');
             Route::get('/list-bn',[HomePageBannerAPIController::class,'index'])->name('banner-list');
@@ -269,7 +272,28 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::get('/form-edit',[FormBuilderAPIController::class,'showEdit'])->name('formbuilder-edit');
             // Route::post('/formdata-save',[FormBuilderAPIController::class,'saveFormData'])->name('formbuilder-saveformData');
 
+            /****** Private Govt. Client Setting pgcs:Private Govt. Client Setting*/
+            Route::post('/create-pgcs',[PrivateGovernmentClientsAPIController::class,'store'])->name('pgcs-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-pgcs',[PrivateGovernmentClientsAPIController::class,'index'])->name('pgcs-list');
+            Route::get('/edit-pgcs/{id}',[PrivateGovernmentClientsAPIController::class,'edit'])->name('pgcs-edit');
+            Route::post('/update-pgcs',[PrivateGovernmentClientsAPIController::class,'update'])->name('pgcs-update');
+            Route::delete('/delete-pgcs/{id}',[PrivateGovernmentClientsAPIController::class,'destroy'])->name('pgcs-delete');
             
+            /****** Home Page Section hps:Home Page Section*/
+            Route::post('/create-homepagesection',[HomePageSectionsDesignAPIController::class,'store'])->name('homepagesection-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-homepagesection',[HomePageSectionsDesignAPIController::class,'index'])->name('homepagesection-list');
+            Route::get('/edit-homepagesection/{id}',[HomePageSectionsDesignAPIController::class,'edit'])->name('homepagesection-edit');
+            Route::post('/update-homepagesection',[HomePageSectionsDesignAPIController::class,'update'])->name('homepagesection-update');
+            Route::delete('/delete-homepagesection/{id}',[HomePageSectionsDesignAPIController::class,'destroy'])->name('homepagesection-delete');
+            
+            /****** New Section ns:New Section*/
+            Route::post('/create-newsection',[HomePageSectionsDesignAPIController::class,'storeNewSections'])->name('newsection-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-newsectionlist',[HomePageSectionsDesignAPIController::class,'indexNewSections'])->name('newsections-list');
+            Route::get('/edit-newsection/{id}',[HomePageSectionsDesignAPIController::class,'edit'])->name('newsection-edit');
+            Route::post('/update-newsection',[HomePageSectionsDesignAPIController::class,'updateNewSection'])->name('newsection-update');
+            Route::delete('/delete-newsection/{id}',[HomePageSectionsDesignAPIController::class,'destroyNewSection'])->name('newsection-delete');
+
+
             /****** Asset Approver Route*/
             /****** Recent Activity rc:Recent Activity*/
             Route::post('/approve-rcta/{id}',[CommonApprovalAPIController::class,'recentActivityApprovePublish'])->name('recentactivity-approve');
@@ -301,6 +325,9 @@ use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
             Route::post('/approve-mfu/{id}',[CommonApprovalAPIController::class,'manualFileUploadApprovePublish'])->name('mfu-approve');
             Route::post('/approve-newrole/{id}',[CommonApprovalAPIController::class,'newRoleApprovePublish'])->name('newrole-approve');
             Route::post('/approve-popupadvertising/{id}',[CommonApprovalAPIController::class,'popupAdvertisingApprovePublish'])->name('popupadvertising-approve');
+            Route::post('/approve-pgcs/{id}',[CommonApprovalAPIController::class,'privateGovernmentClientsApprovePublish'])->name('pgcs-approve');
+            Route::post('/approve-homepagesection/{id}',[CommonApprovalAPIController::class,'homePageSectionDesignApprovePublish'])->name('homepagesection-approve');
+            Route::post('/approve-newsection/{id}',[CommonApprovalAPIController::class,'newSectionsApprovePublish'])->name('newsection-approve');
     
         });
     });

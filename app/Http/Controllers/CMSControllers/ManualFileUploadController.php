@@ -118,7 +118,7 @@ class ManualFileUploadController extends Controller
         if($results){
             $result = $results;
         }else{
-            abort(404);
+            return view('cms-view.errors.500');
         }
         //dd($result);
         return view('cms-view.'.$this->edit,

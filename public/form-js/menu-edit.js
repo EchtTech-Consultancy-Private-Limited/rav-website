@@ -29,6 +29,13 @@ var KTvalidationMenu1= function() {
                             },
                         },
                     },
+                    menu_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This field is required'
+                            },
+                        },
+                    },
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -46,6 +53,7 @@ var KTvalidationMenu1= function() {
                     $('#loading').addClass('loading');
                     $('#loading-content').addClass('loading-content');
                  axios.post(crudUrlTemplate.update+'?id='+id, {
+                       parent_id: $('.menu_id').val(),
                        name_en: $('.menuName_en').val(),
                        name_hi: $('.menuName_hi').val(),
                        menu_place: $("input[type='radio'][name='menu_place']:checked").val(),

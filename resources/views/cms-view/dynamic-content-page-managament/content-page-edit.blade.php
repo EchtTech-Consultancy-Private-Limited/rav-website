@@ -66,7 +66,7 @@
             <form id="kt_basic_information_form" class="form">
                <!--begin::Heading-->
                <!-- <div class="row mb-7">
-                  <div class="col-md-9 offset-md-3">
+                  <div class="col-md-7 offset-md-3">
                      <h2>Basic Information</h2>
                   </div>
                </div> -->
@@ -83,7 +83,7 @@
                      <!--end::Label-->
                   </div>
                   <?php //dd($data->pageContent[0]->pageTitle->page_title_en); ?>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <select class="form-select form-select-solid menu_id" name="menu_id" id="menu_id" data-control="select2" data-placeholder="Select an page title">
                            <option></option>
@@ -109,7 +109,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_en" id="page_title_en" name="page_title_en" value="{{$data->pageContent[0]->pageTitle->page_title_en}}" />
                      <!--end::Input-->
@@ -125,7 +125,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_hi" id="page_title_hi" name="page_title_hi" value="{{$data->pageContent[0]->pageTitle->page_title_hi}}" />
                      <!--end::Input-->
@@ -141,7 +141,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_title" id="meta_title" name="meta_title" value="{{$data->pageContent[0]->pageTitle->meta_title}}" />
                      <!--end::Input-->
@@ -157,7 +157,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_tag" id="meta_tag" name="meta_tag" value="{{$data->pageContent[0]->pageTitle->meta_tag}}" />
                      <!--end::Input-->
@@ -175,7 +175,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <textarea class="form-control form-control-solid" name="meta_description">{{$data->pageContent[0]->pageTitle->meta_tag_description}}</textarea>
                      <!--end::Input-->
@@ -193,7 +193,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="meta_keywords" value="{{$data->pageContent[0]->pageTitle->meta_keywords}}" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -209,7 +209,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="number" class="form-control form-control-solid" name="sort_order" value="{{$data->pageContent[0]->pageTitle->sort_order}}" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -225,7 +225,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="custom_url" value="{{$data->pageContent[0]->pageTitle->custom_slug}}" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -355,7 +355,7 @@
                <div class="card card-flush py-4">
                   <div class="card-body pt-0">
                      <div class="card-body pt-0">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id1" name="pageTitle_id1" id="pageTitle_id1" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
@@ -391,10 +391,6 @@
                            <div id="kt_Pagegallery_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 
-                                
-                                 
-                                 
                                  <div data-repeater-list="kt_Pagegallery_add_multiple_options" class="d-flex flex-column gap-2">
                                     @if(count($data->pageContent[0]->content_gallery)>0)
                                     @foreach($data->pageContent[0]->content_gallery as $gallery)
@@ -511,9 +507,11 @@
             <form id="kt_page_pdf_form" class="form">
                <!--begin::Input group-->
                <div class="card card-flush py-4">
-                  <div class="card-body pt-0">
-                     <div class="card-body pt-0">
-                        <div class="col-md-12">
+                  <div class="card-body p-0">
+                     <div class="row">
+                        <div class="col-md-9">
+                        <div class="card-body p-0">
+                        <div class="col-md-11">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id2" name="pageTitle_id2" id="pageTitle_id2" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
@@ -527,6 +525,7 @@
                            </select>
                         </div>
                      </div>
+                   
                      <!--begin::Input group-->
                      <!--begin::News-->
                      <!-- <div class="card-header">
@@ -536,7 +535,7 @@
                      </div> -->
                      <!--end::Card header-->
                      <!--begin::Card body-->
-                     <div class="card-body pt-0">
+                     <div class="card-body p-0 mt-5 pt-3">
                         <!--begin::Input group-->
                         <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
                            <!--begin::Repeater-->
@@ -548,22 +547,22 @@
                                  @foreach($data->pageContent[0]->content_pdf as $contentPdf)
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
-                                       <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{ $contentPdf->uid }}" />
+                                          <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{ $contentPdf->uid }}" />
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">Pdf Title</label>
-                                       <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" value="{{ $contentPdf->pdf_title }}" />
+                                          <label class="required form-label mw-100 w-175px">Pdf Title</label>
+                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" value="{{ $contentPdf->pdf_title }}" />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">Start Date</label>
-                                       <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value="{{ $contentPdf->start_date }}"  />
+                                          <label class="required form-label mw-100 w-175px">Start Date</label>
+                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value="{{ $contentPdf->start_date }}"  />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">End Date</label>
-                                       <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value="{{ $contentPdf->end_date }}"  />
+                                          <label class="required form-label mw-100 w-175px">End Date</label>
+                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value="{{ $contentPdf->end_date }}"  />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">Pdf Format</label>
-                                       <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="image" accept=".pdf" />
+                                          <label class="required form-label mw-100 w-175px">Pdf Format</label>
+                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="image" accept=".pdf" />
                                        </div>
                                        <!--end::Input-->
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
@@ -581,20 +580,20 @@
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">Pdf Title</label>
-                                       <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" value="" />
+                                          <label class="required form-label mw-100 w-175px">Pdf Title</label>
+                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" placeholder="pdf title Name" value="" />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">Start Date</label>
-                                       <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value=""  />
+                                          <label class="required form-label mw-100 w-175px">Start Date</label>
+                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" placeholder="" value=""  />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">End Date</label>
-                                       <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value=""  />
+                                          <label class="required form-label mw-100 w-175px">End Date</label>
+                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" placeholder="" value=""  />
                                        </div>
                                        <div>
-                                       <label class="required form-label mw-100 w-175px">Pdf Format</label>
-                                       <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="image" accept=".pdf" />
+                                          <label class="required form-label mw-100 w-175px">Pdf Format</label>
+                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="image" accept=".pdf" />
                                        </div>
                                        <!--end::Input-->
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
@@ -617,6 +616,59 @@
                         </div>
                         <!--end::Input group-->
                      </div>
+                        </div>
+                        <div class="col-md-3">
+                              <div class="card-body p-0 pt-4 mt-5">
+                              <!--begin::Input group-->
+                              <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
+                                 <!--begin::Repeater-->
+                                 <div id="kt_tablehead_add_multiple_options">
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                       <div data-repeater-list="kt_tablehead_add_multiple_options" class="d-flex flex-column gap-3">
+                                       @if(isset($data->pageContent[0]->tableHead) && $data->pageContent[0]->tableHead !=0)
+                                       @foreach(json_decode($data->pageContent[0]->tableHead) as $key=>$contentPdf)
+                                          <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                             <!--begin::Input-->
+                                             <div>
+                                                <input type="text" class="form-control mw-100 w-200px" name="tablehead" value="{{$contentPdf->tablehead??''}}" placeholder="Table Head Name" />
+                                             </div>
+                                             <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                                <i class="ki-outline ki-cross fs-1"></i>
+                                             </button>
+                                             <!--end::Input-->
+                                          </div>
+                                          @endforeach
+                                          @else
+                                          <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                             <!--begin::Input-->
+                                             <div>
+                                                <input type="text" class="form-control mw-100 w-200px" name="tablehead" value="" placeholder="Table Head Name" />
+                                             </div>
+                                             <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                                <i class="ki-outline ki-cross fs-1"></i>
+                                             </button>
+                                             <!--end::Input-->
+                                          </div>
+                                          @endif
+                                       </div>
+                                    </div>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group mt-5">
+                                       <button type="button" data-repeater-create class="btn btn-sm btn-light-primary">
+                                          <i class="ki-outline ki-plus fs-2"></i> Add Table Head
+                                       </button>
+                                    </div>
+                                    <!--end::Form group-->
+                                 </div>
+                                 <!--end::Repeater-->
+                              </div>
+                              <!--end::Input group-->
+                           </div>
+                        </div>
+                     </div>
+                    
                      <!--end::Card header-->
                   
                      <!--end::Variations-->

@@ -3,7 +3,8 @@
     {{ __('RAV') }}
 @endsection
 @section('content')
-    <div id="fb-root"></div>
+    <div id="fb-root">
+    </div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0"
         nonce="cH10Ggr9"></script>
     <section class="hero-banner">
@@ -60,24 +61,36 @@
                 </div>
                 <div class="col-md-9 p-0">
                     <div class="latest-news-slider">
-                        <div class="owl-carousel owl-theme" id="latest-news-slider">
-                            @if (isset($news_management) && count($news_management) > 0)
+                    <div class="latest_news_marquee marquee-vertical" data-speed="40">
+                        <div class="marquee-wrapper">
+                            <div class="marquee-content">
+                                <div class="float-left d-inline-block ">
+                                @if (isset($news_management) && count($news_management) > 0)
                                 @foreach ($news_management as $news_managements)
-                                    <div class="item">
-                                        <p>
-                                            @if (Session::get('locale') == 'hi')
-                                                {{ $news_managements->title_name_hi ?? '' }}
-                                            @else
-                                                {{ $news_managements->title_name_en ?? '' }}
-                                            @endif
-                                        </p>
-                                    </div>
-                                @endforeach
+                                    @php
+                                        $url =
+                                            $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
+                                    @endphp
+                                    <span>
+                                    <a href="{{ url($url ?? 'javascript:void(0)') }}">
+                                                @if (Session::get('locale') == 'hi')
+                                                    {{ $news_managements->title_name_hi ?? '' }}
+                                                @else
+                                                    {{ $news_managements->title_name_en ?? '' }}
+                                                @endif
+                                            </a>
+                                    </span>
+                                    @endforeach
                             @else
                                 <h6>No News available.</h6>
                             @endif
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="btns">
+                    </div>
+                       
+                        <div class="btns d-none">
                             <div id="customPreviousBtn1">
                                 <i class="fa fa-angle-left" aria-hidden="true"></i>
                             </div>
@@ -87,16 +100,14 @@
                             <div id="customPlay1" class="customPlay">
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </div>
-                            <div id="customNextBtn1">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="about-us ptb-100" id="about-us">
+    <section class="about-us ptb-100" id="main-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12" data-aos="fade-up" data-aos-duration="3000">
@@ -174,14 +185,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                                <h3 class="title-black-sm">
-                                                                    What is Lorem Ipsum?
-                                                                </h3>
-                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                    dolorem
-                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                    veniam cumque expedita rem at harum?</p>
-                                                            </div> -->
+                                                                                    <h3 class="title-black-sm">
+                                                                                        What is Lorem Ipsum?
+                                                                                    </h3>
+                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                        dolorem
+                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                        veniam cumque expedita rem at harum?</p>
+                                                                                </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -219,14 +230,14 @@
                             </div>
                         </div>
                         <!-- <div class="about-us-card-back">
-                                                                <h3 class="title-black-sm">
-                                                                    What is Lorem Ipsum?
-                                                                </h3>
-                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                    dolorem
-                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                    veniam cumque expedita rem at harum?</p>
-                                                            </div> -->
+                                                                                    <h3 class="title-black-sm">
+                                                                                        What is Lorem Ipsum?
+                                                                                    </h3>
+                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                        dolorem
+                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                        veniam cumque expedita rem at harum?</p>
+                                                                                </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -265,14 +276,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                                <h3 class="title-black-sm">
-                                                                    What is Lorem Ipsum?
-                                                                </h3>
-                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                    dolorem
-                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                    veniam cumque expedita rem at harum?</p>
-                                                            </div> -->
+                                                                                    <h3 class="title-black-sm">
+                                                                                        What is Lorem Ipsum?
+                                                                                    </h3>
+                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                        dolorem
+                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                        veniam cumque expedita rem at harum?</p>
+                                                                                </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -311,14 +322,14 @@
                         </div>
 
                         <!-- <div class="about-us-card-back">
-                                                                <h3 class="title-black-sm">
-                                                                    What is Lorem Ipsum?
-                                                                </h3>
-                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                    dolorem
-                                                                    optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                    veniam cumque expedita rem at harum?</p>
-                                                            </div> -->
+                                                                                    <h3 class="title-black-sm">
+                                                                                        What is Lorem Ipsum?
+                                                                                    </h3>
+                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+                                                                                        dolorem
+                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+                                                                                        veniam cumque expedita rem at harum?</p>
+                                                                                </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -329,7 +340,7 @@
                                     <button class="nav-link active" id="latestNews-tab" data-bs-toggle="tab"
                                         data-bs-target="#latestNews-tab-pane" type="button" role="tab"
                                         aria-controls="latestNews-tab-pane" aria-selected="true">
-                                         @if (Session::get('locale') == 'hi')
+                                        @if (Session::get('locale') == 'hi')
                                             {{ __('messages.Latest_News') }}
                                         @else
                                             {{ __('messages.Latest_News') }}
@@ -367,36 +378,40 @@
                                             <ul>
                                                 @if (isset($news_management) && count($news_management) > 0)
                                                     @foreach ($news_management as $news_managements)
-                                                        @php
-                                                            $url =
-                                                                $news_managements->public_url ?? 'javascript:void(0)';
-                                                        @endphp
-                                                        <li>
-                                                            <a
-                                                                @if ($news_managements->tab_type == 1) target="_blank"
-                                                    onclick="return confirm('{{ $alertMessage }}')"
-                                                    href="{{ url($url) }}"
-                                                    @else
-                                                    href="{{ url($url) }}" @endif>
-                                                                <div class="date-wrap">
-                                                                    <h3 class="ln_date">
-                                                                        {{ date('d', strtotime($news_managements->start_date ?? now())) }}
-                                                                    </h3>
-                                                                    <span class="month">
-                                                                        {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }}
-                                                                        <br>
-                                                                        {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
-                                                                    </span>
-                                                                </div>
-                                                                <p class="desc">
-                                                                    @if (Session::get('locale') == 'hi')
-                                                                        {{ $news_managements->title_name_hi ?? '' }}
-                                                                    @else
-                                                                        {{ $news_managements->title_name_en ?? '' }}
-                                                                    @endif
-                                                                </p>
-                                                            </a>
-                                                        </li>
+                                                        {{-- // if current date is greater then end_date then it will not display --}}
+                                                        @if (date('Y-m-d') <= $news_managements->end_date)
+                                                            @php
+                                                                $url =
+                                                                    $news_managements->public_url ??
+                                                                    'news-details/' . $news_managements->uid;
+                                                            @endphp
+                                                            <li>
+                                                                <a
+                                                                    @if ($news_managements->tab_type == 1) target="_blank"
+                                                onclick="return confirm('{{ $alertMessage }}')"
+                                                href="{{ url($url) }}"
+                                                @else
+                                                href="{{ url($url) }}" @endif>
+                                                                    <div class="date-wrap">
+                                                                        <h3 class="ln_date">
+                                                                            {{ date('d', strtotime($news_managements->start_date ?? now())) }}
+                                                                        </h3>
+                                                                        <span class="month">
+                                                                            {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                            <br>
+                                                                            {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                        </span>
+                                                                    </div>
+                                                                    <p class="desc">
+                                                                        @if (Session::get('locale') == 'hi')
+                                                                            {{ $news_managements->title_name_hi ?? '' }}
+                                                                        @else
+                                                                            {{ $news_managements->title_name_en ?? '' }}
+                                                                        @endif
+                                                                    </p>
+                                                                </a>
+                                                            </li>
+                                                        @endif
                                                     @endforeach
                                                 @else
                                                     <h6>
@@ -467,7 +482,7 @@
                                                 @endforeach
 
                                                 @if (isset($cmeSchemePdf))
-                                                    <table class="" id="cmeScheme" >
+                                                    <table class="" id="cmeScheme">
                                                         <thead>
                                                             <tr>
                                                                 <th>
@@ -539,11 +554,13 @@
                                                 @endif
                                                 <div class="event-list-content my-2">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="tag"> @if (Session::get('locale') == 'hi')
-                                                            {{ __('messages.Event_Date') }}
-                                                        @else
-                                                            {{ __('messages.Event_Date') }}
-                                                        @endif</span>
+                                                        <span class="tag">
+                                                            @if (Session::get('locale') == 'hi')
+                                                                {{ __('messages.Event_Date') }}
+                                                            @else
+                                                                {{ __('messages.Event_Date') }}
+                                                            @endif
+                                                        </span>
                                                     </div>
                                                     <div class="date-wrap">
                                                         <img src="{{ asset('assets/images/calendar.svg') }}"
@@ -557,7 +574,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <span class="tag">
                                                             @if (Session::get('locale') == 'hi')
-                                                            {{ __('messages.Venue') }}
+                                                                {{ __('messages.Venue') }}
                                                             @else
                                                                 {{ __('messages.Venue') }}
                                                             @endif
@@ -640,7 +657,7 @@
                                 <button class="nav-link active" id="latestMassage-tab" data-bs-toggle="tab"
                                     data-bs-target="#latestMassage-tab-pane" type="button" role="tab"
                                     aria-controls="latestMassage-tab-pane" aria-selected="true">
-                                     @if (Session::get('locale') == 'hi')
+                                    @if (Session::get('locale') == 'hi')
                                         {{ __('messages.Latest_Message') }}
                                     @else
                                         {{ __('messages.Latest_Message') }}
@@ -738,7 +755,11 @@
                                             <p class="desc">
                                                 {{-- display content after remove html tags and add limit 400 --}}
                                                 @php
-                                                    $content = strip_tags(Session::get('locale') == 'hi' ? $latestMessageData['page_content_hi'] : $latestMessageData['page_content_en'] );
+                                                    $content = strip_tags(
+                                                        Session::get('locale') == 'hi'
+                                                            ? $latestMessageData['page_content_hi']
+                                                            : $latestMessageData['page_content_en'],
+                                                    );
                                                     $content =
                                                         strlen($content) > 600
                                                             ? substr($content, 0, 600) . '...'
@@ -786,7 +807,6 @@
                                                     {{ $cabinetMinisterData->fname_en }}
                                                     {{ $cabinetMinisterData->mname_en }}
                                                     {{ $cabinetMinisterData->lname_en }}
-
                                                 @endif
                                             </h2>
                                             <p class="title">
@@ -794,7 +814,11 @@
                                             </p>
                                             <p class="desc">
                                                 @php
-                                                    $content = strip_tags(Session::get('locale') == 'hi' ? $cabinetMinisterData->description_hi : $cabinetMinisterData->description_en);
+                                                    $content = strip_tags(
+                                                        Session::get('locale') == 'hi'
+                                                            ? $cabinetMinisterData->description_hi
+                                                            : $cabinetMinisterData->description_en,
+                                                    );
                                                     $content = Str::limit($content, 685);
                                                 @endphp
 
@@ -948,13 +972,102 @@
                 <div class="col-md-12">
                     <h2 class="heading-black heading-black-lg text-center pb-5">
                         @if (Session::get('locale') == 'hi')
-                            {{ __('messages.Our_Successful_Journey') }}
+                            हमारी सफल यात्रा
                         @else
-                            {{ __('messages.Our_Successful_Journey') }}
+                            Our Successful Journey
                         @endif
                     </h2>
                 </div>
-                @foreach ($ourJournyData as $journey)
+                @if (isset($ourJournyData) && $ourJournyData != '')
+                    @foreach ($ourJournyData as $journey)
+                        @php
+                            $content = json_decode($journey->content);
+
+                        @endphp
+                        @if (!empty($content))
+                            <div class="col-md-3 mb-4">
+                                <div class="our-journey-card my-md-0 my-2 ">
+                                    <img src="{{ $content->image_name }}" alt="{{ $content->image_name }}"
+                                        class="img-fluid">
+                                    <span class="total-no counterNumber" counter="{{ $content->Count }}">
+                                        0
+                                    </span>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="title">
+                                            @if (Session::get('locale') == 'hi')
+                                                {{ $content->{'user-content-title-hi'} }}
+                                            @else
+                                                {{ $content->{'user-content-title'} }}
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                @else
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/research.svg') }}" alt="research.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="71">71</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Research Initiatives</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="1750">1750</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Total Number of CRAV..</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/programme.svg') }}" alt="programme.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="1500">1500</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Total No of CME..</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/presence.svg') }}" alt="presence.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="28">28</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Total Seminar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/graduation.svg') }}" alt="graduation.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="61">61</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Workshop &amp; Training</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="our-journey-card my-md-0 my-2">
+                            <img src="{{ asset('assets/images/programme.svg') }}" alt="programme.svg"
+                                class="img-fluid" />
+                            <span class="total-no counterNumber" counter="1">1</span>
+                            <div class="d-flex justify-content-center">
+                                <p class="title" tabindex="0">Program Offering</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                {{-- @foreach ($ourJournyData as $journey)
                     @php
                         $content = json_decode($journey->content);
                     @endphp
@@ -976,7 +1089,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 
 
 
@@ -1057,7 +1170,8 @@
                                                                     {!! Str::limit(strip_tags($gyanGanga->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="{{ url($gyanGanga->parent_url.'/'.$gyanGanga->url) }}" class="read-more">
+                                                            <a href="{{ url($gyanGanga->parent_url . '/' . $gyanGanga->url) }}"
+                                                                class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -1092,7 +1206,8 @@
                                                                     {!! Str::limit(strip_tags($ayurAhar->page_content_en), 200) !!}
                                                                 @endif
                                                             </p>
-                                                            <a href="{{ url($ayurAhar->parent_url.'/'.$ayurAhar->url) }}" class="read-more">
+                                                            <a href="{{ url($ayurAhar->parent_url . '/' . $ayurAhar->url) }}"
+                                                                class="read-more">
                                                                 <img src="{{ asset('assets/images/read-more.svg') }}"
                                                                     alt="read-more" class="img-fluid">
                                                             </a>
@@ -1155,10 +1270,20 @@
                                                                     @endif
 
                                                                 </div>
-                                                                <a href="{{ 'activities/'.$item->url }}" class="read-more">
-                                                                    <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                        alt="read-more" class="img-fluid">
-                                                                </a>
+                                                                @if ($item->page_title_en == 'Thesis Submitted by RAV Students')
+                                                                    <a href="{{ 'activities/thesis-submitted-by-rav-student' }}"
+                                                                        class="read-more">
+                                                                        <img src="{{ asset('assets/images/read-more.svg') }}"
+                                                                            alt="read-more" class="img-fluid">
+                                                                    </a>
+                                                                @else
+                                                                    <a href="{{ 'activities/' . $item->url }}"
+                                                                        class="read-more">
+                                                                        <img src="{{ asset('assets/images/read-more.svg') }}"
+                                                                            alt="read-more" class="img-fluid">
+                                                                    </a>
+                                                                @endif
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1422,9 +1547,9 @@
                                                                 src="{{ asset('assets/images/facebook.png') }}"
                                                                 alt="icon"></span>
                                                         @if (Session::get('locale') == 'hi')
-                                                                {{ __('messages.Facebook') }}
+                                                            {{ __('messages.Facebook') }}
                                                         @else
-                                                                {{ __('messages.Facebook') }}
+                                                            {{ __('messages.Facebook') }}
                                                         @endif
                                                     </h2>
                                                 </div>
@@ -1435,9 +1560,8 @@
                                                         data-hide-cover="false" data-show-facepile="true">
                                                         <blockquote cite="https://www.facebook.com/ravdelhi"
                                                             class="fb-xfbml-parse-ignore">
-                                                            <a
-                                                                href="https://www.facebook.com/ravdelhi">
-                                                                 @if (Session::get('locale') == 'hi')
+                                                            <a href="https://www.facebook.com/ravdelhi">
+                                                                @if (Session::get('locale') == 'hi')
                                                                     {{ __('messages.Rashtriya_Ayurveda_Vidyapeeth') }}
                                                                 @else
                                                                     {{ __('messages.Rashtriya_Ayurveda_Vidyapeeth') }}
@@ -1456,11 +1580,11 @@
                                                         <span class="img-b"><img
                                                                 src="{{ asset('assets/images/instagram.png') }}"
                                                                 alt="icon"></span>
-                                                            @if (Session::get('locale') == 'hi')
-                                                                {{ __('messages.Instagram') }}
-                                                            @else
-                                                                {{ __('messages.Instagram') }}
-                                                            @endif
+                                                        @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.Instagram') }}
+                                                        @else
+                                                            {{ __('messages.Instagram') }}
+                                                        @endif
                                                     </h2>
                                                 </div>
                                                 <div class="plug-box linkedinfeed">
@@ -1594,11 +1718,11 @@
                                                         <span class="img-b"><img
                                                                 src="{{ asset('assets/images/twitter.png') }}"
                                                                 alt="icon"></span>
-                                                            @if (Session::get('locale') == 'hi')
-                                                                {{ __('messages.Twitter') }}
-                                                            @else
-                                                                {{ __('messages.Twitter') }}
-                                                            @endif
+                                                        @if (Session::get('locale') == 'hi')
+                                                            {{ __('messages.Twitter') }}
+                                                        @else
+                                                            {{ __('messages.Twitter') }}
+                                                        @endif
                                                     </h2>
                                                 </div>
                                                 <div class="plug-box twitter-feed-content p-2">
@@ -1643,7 +1767,7 @@
                                                     @endif
                                                 @else
                                                     <div class="text-center">
-                                                        <h1>  
+                                                        <h1>
                                                             @if (Session::get('locale') == 'hi')
                                                                 {{ __('messages.Content_Coming_Soon') }}
                                                             @else
@@ -1747,6 +1871,14 @@
                                         alt="ministry-of-ayush" class="img-fluid">
                                 </a>
                             </div>
+                        </div>
+                        <div class="btns">
+                            <div id="customPreviousBtn5"><i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </div>
+                            <div id="customPause5"><i class="fa fa-pause" aria-hidden="true"></i></div>
+                            <div id="customPlay5" class="customPlay2"><i class="fa fa-play" aria-hidden="true"></i>
+                            </div>
+                            <div id="customNextBtn5"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
                         </div>
                     </div>
                 </div>

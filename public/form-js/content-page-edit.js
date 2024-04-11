@@ -444,9 +444,26 @@ var KTAppBasicInformationSave = function () {
        }
     });
  }
+ const initFormRepeater2 = () => {
+   $('#kt_tablehead_add_multiple_options').repeater({
+      initEmpty: false,
+      // defaultValues: {
+      //     'text-input': 'foo'
+      // },
+      show: function () {
+            $(this).slideDown();
+            // Init select2 on new repeated items
+            initConditionsSelect2();
+      },
+      hide: function (deleteElement) {
+            $(this).slideUp(deleteElement);
+      }
+   });
+}
  return {
          init: function () {
              initFormRepeater1();
+             initFormRepeater2();
              _officeAdd3 = $('#kt_page_pdf_form');
              _handleOfficeAddForm3();
              submitButton = document.querySelector('#kt_add_pagepdf_submit');

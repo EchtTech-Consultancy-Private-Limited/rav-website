@@ -64,17 +64,6 @@ tables.each(function() {
 
 
 
-// var header = document.getElementById("myHeader");
-// console.log(header);
-//   let   sticky = header.offsetTop;
-//     console.log(sticky)
-//     function myFunction() {
-//     console.log(window.pageYOffset, 'pageYOffset')
-//     window.pageYOffset > sticky
-//         ? header.classList.add("sticky")
-//         : header.classList.remove("sticky");
-//         alert("workin fine");
-// }
 
 let img = $('img')
 img.each(function(){
@@ -112,18 +101,61 @@ $(document).ready(function(){
         // alert("clicked")
     });
 
-    // $(document).on("keydown", function(event) {
-    //     // Check if the pressed key is the tab key (key code 9)
-    //     if (event.keyCode === 9 && selectBox.is(":focus")) {
-    //         // Trigger a click event on the select box to open it
-    //         selectBox.click();
-    //     }
-    // });
 
-    $("[data-bs-target='#offcanvasRight']").on('foucus',  function () {
-        $("[data-bs-target='#offcanvasRight']").trigger('click');
-        alert("Focused!");
-    } );
+ 
+    let offcanvasli = $("#offcanvasli");
+    let offcanvasRight = $('#offcanvasRight');
+    
+    $("[data-bs-target='#offcanvasRight']").one('focus', function () {
+        $("[data-bs-target='#offcanvasRight']").click();
+    });
+    
+    
+    $("#offcanvasli").on('focus', function () {
+        // Delay removing focus from [data-bs-target='#offcanvasRight'] to ensure focus is not immediately reassigne
+            $("[data-bs-target='#offcanvasRight']").blur();
+        $('.rotate-icon').click();
+     
+
+    });
+    
+  
+    
+let th = $('th');
+th.each((a, item) => {
+    let dateArr = $(item).text().toLowerCase().split(' ');
+    let containsDate = dateArr.includes('date');
+    if (containsDate) {
+        let index = $(item).index() + 1; // Index of corresponding td in the same row
+        $(`td:nth-child(${index})`).css('white-space', 'nowrap');
+    }
+});
 });
 
-// lang.
+let secondlayerSidebar = $('li.accordion.accordion-flush.position-relative.sl-accordion');
+let activeAccordion = $('.accordion-collapse.collapse');
+
+secondlayerSidebar.each(function(){
+    let item = $(this);
+  let activeChildAccordion = item.children().children()
+    item.click(function(){
+        if (item.hasClass("qm-active")) {
+            activeChildAccordion.each(function(){
+                console.log($(this))
+                item.removeClass('qm-active');
+                if($(this).hasClass('.show')){
+                    alert("working fine")
+                }
+            }, 1000)
+        } 
+    })
+})
+
+
+let ayushAhar = $('.poshakAhaar .card p');
+ayushAhar.each(function(){
+    let item = $(this);
+    let text = item.text().toLowerCase();
+
+    item.text(text)
+})

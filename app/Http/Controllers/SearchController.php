@@ -13,37 +13,54 @@ class SearchController extends Controller
      */
     public function getSearchData(Request $request)
     {
+        $request->validate([
+            'search_key' => 'required',
+        ],[
+            'search_key.required' => 'Please enter a search keyword',
+        
+        ]);
         $keyword = $request->search_key;
         $databaseName = env('DB_DATABASE');
         $tables = DB::select("SHOW TABLES FROM $databaseName");
         $finalArray = collect();
+        
         foreach ($tables as $table) {
             $tableName = current($table);
             $searchResults = [];
-            if (Schema::hasColumns($tableName, ['title_name_en', 'title_name_hi', 'description_en', 'description_hi'])) {
+            if (Schema::hasColumns($tableName, ['title_name_en', 'title_name_hi', 'description_en', 'description_hi','soft_delete'])) {
                 $searchResults = array_merge($searchResults, DB::table($tableName)->where('title_name_en', 'like', '%' . $keyword . '%')
                     ->orWhere('title_name_hi', 'like', '%' . $keyword . '%')
                     ->orWhere('description_en', 'like', '%' . $keyword . '%')
                     ->orWhere('description_hi', 'like', '%' . $keyword . '%')
+                    ->where('soft_delete', 0)
                     ->get()->toArray());
             }
-            if (Schema::hasColumns($tableName, ['title_name_en', 'title_name_hi'])) {
+           
+            if (Schema::hasColumns($tableName, ['title_name_en', 'title_name_hi','soft_delete'])) {
                 $searchResults = array_merge($searchResults, DB::table($tableName)->where('title_name_en', 'like', '%' . $keyword . '%')
                     ->orWhere('title_name_hi', 'like', '%' . $keyword . '%')
+                    ->where('soft_delete', 0)
                     ->get()->toArray());
             }
-            if (Schema::hasColumns('dynamic_content_page_metatag', ['page_title_en', 'page_title_hi', 'meta_tag_description'])) {
+            
+            if (Schema::hasColumns('dynamic_content_page_metatag', ['page_title_en', 'page_title_hi', 'meta_tag_description','soft_delete'])) {
                 $searchResults = array_merge($searchResults, DB::table('dynamic_content_page_metatag')->where('page_title_en', 'like', '%' . $keyword . '%')
                     ->orWhere('page_title_hi', 'like', '%' . $keyword . '%')
                     ->orWhere('meta_tag_description', 'like', '%' . $keyword . '%')
+                    ->where('soft_delete', 0)
                     ->get()->toArray());
             }
-            if (Schema::hasColumns('website_menu_management', ['name_en', 'name_hi'])) {
+            
+            if (Schema::hasColumns('website_menu_management', ['name_en', 'name_hi','soft_delete'])) {
                 $searchResults = array_merge($searchResults, DB::table('website_menu_management')->where('name_en', 'like', '%' . $keyword . '%')
                     ->orWhere('name_hi', 'like', '%' . $keyword . '%')
+                    ->where('soft_delete', 0)
                     ->get()->toArray());
             }
-            foreach ($searchResults as $item) {               
+            
+            foreach ($searchResults as $item) {    
+                           
+               if ($item->soft_delete == 0) {
                 if (isset($item->title_name_en) || isset($item->page_title_en) || isset($item->name_en)) {
                     if(isset($item->footer_url) && $item->footer_url != 0){
                         $finalArray->push([
@@ -53,9 +70,9 @@ class SearchController extends Controller
                         ]);
                     }
                     if(isset($item->menu_uid)){
-                        $mainMenu = DB::table('website_menu_management')->where('uid',$item->menu_uid)->first();                     
+                        $mainMenu = DB::table('website_menu_management')->where('uid',$item->menu_uid)->where('soft_delete', 0)->first();                     
                         if(isset($mainMenu->parent_id) && $mainMenu->parent_id != 0){
-                            $parentMenu = DB::table('website_menu_management')->where('uid',$mainMenu->parent_id)->first();                    
+                            $parentMenu = DB::table('website_menu_management')->where('uid',$mainMenu->parent_id)->where('soft_delete', 0)->first();                    
                             $link = $parentMenu->url?$parentMenu->url.'/'.$mainMenu->url: '';
                             $finalArray->push([
                                 'link' => $link ?? '',
@@ -64,9 +81,9 @@ class SearchController extends Controller
                             ]);
                         }
                     }elseif(isset($item->parent_id)){                      
-                        $mainMenu = DB::table('website_menu_management')->where('parent_id',$item->parent_id)->first();  
+                        $mainMenu = DB::table('website_menu_management')->where('parent_id',$item->parent_id)->where('soft_delete', 0)->first();  
                         if(isset($mainMenu->parent_id) && $mainMenu->parent_id != 0){
-                            $parentMenu = DB::table('website_menu_management')->where('uid',$mainMenu->parent_id)->first();
+                            $parentMenu = DB::table('website_menu_management')->where('uid',$mainMenu->parent_id)->where('soft_delete', 0)->first();
                             $link = $parentMenu->url?$parentMenu->url.'/'.$mainMenu->url: '';
                             $finalArray->push([
                                 'link' => $link ?? '',
@@ -111,6 +128,7 @@ class SearchController extends Controller
                         'description' => $item->description_hi ?? $item->meta_tag_description ?? '',
                     ]);
                 }
+               }
             } 
         }               
         // Paginate the final array

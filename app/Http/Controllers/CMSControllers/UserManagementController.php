@@ -21,6 +21,7 @@ class UserManagementController extends Controller
     protected $create = 'user-management.user-add';
     protected $edit = 'user-management.user-edit';
     protected $list = 'user-management.user-list';
+    protected $view = 'user-management.user-view';
     protected $accountSetting = 'account-setting.account-update';
 
     public function __construct()
@@ -41,7 +42,7 @@ class UserManagementController extends Controller
             $crudUrlTemplate['list'] = route('user-list');
         }
         if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
-            $crudUrlTemplate['view'] = route('user-list');
+            $crudUrlTemplate['view'] = route('user.show', ['id' => 'xxxx']);
         }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('user.edit', ['id' => 'xxxx']);
@@ -97,9 +98,16 @@ class UserManagementController extends Controller
      * @param  \App\Models\UserManagement  $userManagement
      * @return \Illuminate\Http\Response
      */
-    public function show(UserManagement $userManagement)
+    public function show(Request $request, UserManagement $userManagement)
     {
-        //
+        $dataVal=DB::table('users')->where('id',$request->id)->where('soft_delete','0')->first();
+        if($dataVal !=null){
+            $dataV =$dataVal;
+        }else{
+            return view('cms-view.errors.500');
+        }
+
+        return view('cms-view.'.$this->view,['data'=>$dataV??'']);
     }
 
     /**
@@ -120,7 +128,7 @@ class UserManagementController extends Controller
             if($results){
                 $result = $results;
             }else{
-                abort(404);
+                return view('cms-view.errors.500');
             }
             return view('cms-view.'.$this->edit,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
@@ -142,9 +150,9 @@ class UserManagementController extends Controller
             
             return view('cms-view.'.$this->accountSetting,
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
-            'data'=> $results,
-            'roleType' =>$roleType,
-            'Visitors' =>$Visitors??'00'
+                'data'=> $results,
+                'roleType' =>$roleType,
+                'Visitors' =>$Visitors??'00'
         ]);
     }
     /**

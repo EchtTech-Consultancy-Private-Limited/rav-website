@@ -89,7 +89,7 @@ class HomeController extends Controller
         $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
-        $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
+        $department = DB::table('emp_depart_designations')->where('name_en', "RAV Director")->where('parent_id', 0)->first();
         $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
@@ -98,7 +98,9 @@ class HomeController extends Controller
 
 
         $ourJournyData = DB::table('form_designs_management')->where('form_name', 'Our Successful Journey')->first();
-        $ourJournyData = DB::table('form_data_management')->where('form_design_id', $ourJournyData->uid)->get(['content']);
+        if ($ourJournyData) {
+            $ourJournyData = DB::table('form_data_management')->where('form_design_id', $ourJournyData->uid)->get(['content']);
+        }
 
 
         return view('home', compact('ourJournyData', 'secretaryData', 'directorData', 'stateMinister', 'cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
@@ -168,10 +170,11 @@ class HomeController extends Controller
     }
     public function getContentAllPages(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
+
         $slugsToCheck = [$lastSlugs, $middelSlug, $finalSlug, $finallastSlug];
 
         if (in_array("set-language", $slugsToCheck)) {
-            session()->put('Lang', $request->data);
+            session()->put('locale', $request->data);
             App::setLocale($request->data);
             return response()->json(['data' => $request->data, 'success' => true]);
         } else {
@@ -315,57 +318,57 @@ class HomeController extends Controller
             }
             if ($menus != '') {
                 if ($finalSlug != null) {
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $finalBred = $finalUrl->name_hi;
                     } else {
                         $finalBred = $finalUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $lastBred = $middelUrl->name_hi;
                     } else {
                         $lastBred = $middelUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $middelBred = $lastUrl->name_hi;
                     } else {
                         $middelBred = $lastUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } else if ($lastSlugs != null) {
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $lastBred = $lastUrl->name_hi;
                     } else {
                         $lastBred = $lastUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $middelBred = $middelUrl->name_hi;
                     } else {
                         $middelBred = $middelUrl->name_en;
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } elseif ($middelSlug != null) {
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $middelBred = $middelUrl->name_hi;
                     } else {
                         $middelBred = $middelUrl->name_en;
                         // dd($middelBred);
                     }
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
                     }
                 } else {
 
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $title_name = $menus->name_hi;
                     } else {
                         $title_name = $menus->name_en;
@@ -427,7 +430,50 @@ class HomeController extends Controller
                         return view('master-page', ['governingBodyDepartments' => $governingBodyDepartments, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } else {
 
-                        return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
+                        $tree = [];
+                        $parentMenut = "";
+                        if ($slug == 'about-us') {
+                            $middelSlug = 'our-objective';
+                            $footerMenu = DB::table('website_menu_management')->where('menu_place', 1)->get();
+
+                            $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
+                            $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middelSlug)->first();
+                            $metaDetails = DB::table('dynamic_content_page_metatag')
+                                ->where('soft_delete', 0)
+                                ->where('status', 3)
+                                ->where('menu_uid', $menus->uid)
+                                ->first();
+                            if ($menus != '') {
+                                $allmenus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
+                                $parentMenut = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', $menus->parent_id)->first();
+                                if (!empty($parentMenut)) {
+                                    foreach ($allmenus as $menu) {
+                                        if ($menu->parent_id == $parentMenut->uid) {
+                                            $menu->children = [];
+                                            foreach ($allmenus as $childMenu) {
+                                                if ($childMenu->parent_id == $menu->uid) {
+                                                    $childMenu->children = [];
+                                                    foreach ($allmenus as $grandchildMenu) {
+                                                        if ($grandchildMenu->parent_id == $childMenu->uid) {
+                                                            $childMenu->children[] = $grandchildMenu;
+                                                        }
+                                                    }
+                                                    $menu->children[] = $childMenu;
+                                                }
+                                            }
+                                            $tree[] = $menu;
+                                        }
+                                    }
+                                } else {
+                                    $parentMenut = '';
+                                    $tree = [];
+                                }
+                            }
+                        }
+
+
+
+                        return view('master-page', ['tree' => $tree, 'parentMenut' => $parentMenut, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'director-desk') {
                     $designation = DB::table('emp_depart_designations')
@@ -479,7 +525,7 @@ class HomeController extends Controller
                     }
                 } else {
 
-                    if (Session::get('Lang') == 'hi') {
+                    if (Session::get('locale') == 'hi') {
                         $content = "जल्द आ रहा है";
                     } else {
                         $content = "<h1>Coming Soon...</h1>";
@@ -509,6 +555,7 @@ class HomeController extends Controller
                         }
 
                         $stateMinister = "";
+
                         if ($middelSlug == 'honourable-minister-of-state') {
                             $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id', 0)->first();
                             $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
@@ -521,6 +568,7 @@ class HomeController extends Controller
 
                         return view('master-page', ['rsbkDirectoryInstituteWise' => $rsbkDirectoryInstituteWise, 'stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
+                        
                         $formData = DB::table('website_menu_management')
                             ->join('form_designs_management', 'website_menu_management.uid', '=', 'form_designs_management.website_menu_uid')
                             ->where('website_menu_management.url', $slug)
@@ -534,10 +582,10 @@ class HomeController extends Controller
                         } else {
                             $allFormData = [];
                         }
-
+                        $middelBred = "";
                         $directorData = "";
                         if ($slug == 'director') {
-                            $department = DB::table('emp_depart_designations')->where('name_en', "Director")->where('parent_id', 0)->first();
+                            $department = DB::table('emp_depart_designations')->where('name_en', "RAV Director")->where('parent_id', 0)->first();
                             $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
                         }
 
@@ -562,22 +610,22 @@ class HomeController extends Controller
                                 ->get();
                         }
 
-                        $middelBred = "";
+
 
                         $states = [
                             'delhi',
                             'goa',
                             'gujarat',
-                            'himachal Pradesh',
+                            'himachal-pradesh',
                             'karnataka',
                             'kerala',
-                            'madhya Pradesh',
+                            'madhya-pradesh',
                             'chhattisgarh',
                             'maharashtra',
                             'odisha',
                             'punjab',
                             'rajasthan',
-                            'uttar Pradesh',
+                            'uttar-pradesh',
                             'uttarakhand',
                         ];
 
@@ -587,22 +635,63 @@ class HomeController extends Controller
                             'rsbk-directory-from-1971-to-1980',
                             'rsbk-directory-from-1981-to-1990',
                             'rsbk-directory-from-1991-to-2000',
-                            'rsbk-directory-from-2001-to-2010',
-                            'rsbk-directory-from-2011-to-2020',
+                            'rsbk-directory-from-2001-to-2005',
+                            'rsbk-directory-from-2006-to-2010',
+                            'rsbk-directory-from-2011-to-2015',
+                            'rsbk-directory-from-2016-to-2020',
                             'rsbk-directory-from-2021-to-2023',
+                        ];
+
+                        $qualificationSlugs = [
                             'm-pharma',
                             'm-d',
                             'p-g',
                             'ph-d',
                         ];
 
-                        if (in_array($slug, $states) || in_array($slug, $specialSlugs)) {
-                            $middelBred = "Rsbk e-directory";
+                        $displayRsbkMenu = 0;
+                        $lastBred = null;
+
+                        if (in_array($slug, $states)) {
+                            if (Session::get('locale') == 'hi') {
+                                $lastBred = "आरएसबीके ई-डायरेक्टरी";
+                                $middelBred = "आरएसबीके डायरेक्टरी राज्यवार";
+                            } else {
+                                $lastBred = "Rsbk e-directory";
+                                $middelBred = "RSBK Directory State Wise";
+                            }
+
+
+                            $displayRsbkMenu = 1;
+                        } elseif (in_array($slug, $specialSlugs)) {
+
+                            $displayRsbkMenu = 1;
+                            if (Session::get('locale') == 'hi') {
+                                $lastBred = "आरएसबीके ई-डायरेक्टरी";
+                                $middelBred = "आरएसबीके डायरेक्टरी वर्षवार";
+                            } else {
+                                $lastBred = "Rsbk e-directory";
+                                $middelBred = "RSBK Directory Year Wise";
+                            }
+                        } elseif (in_array($slug, $qualificationSlugs)) {
+
+                            $displayRsbkMenu = 1;
+                            if (Session::get('locale') == 'hi') {
+                                $lastBred = "आरएसबीके ई-डायरेक्टरी";
+                                $middelBred = "आरएसबीके डायरेक्टरी योग्यता वार";
+                            } else {
+                                $lastBred = "Rsbk e-directory";
+                                $middelBred = "RSBK Directory Qualification Wise";
+                            }
+                        } else {
+                            $lastBred = "";
                         }
 
+                        $tree = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
+                        $parentMenut = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
+                        
 
-
-                        return view('master-page', ['middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                        return view('master-page', ['lastBred' => $lastBred, 'tree' => $tree, 'parentMenut' => $parentMenut, 'displayRsbkMenu' => $displayRsbkMenu, 'middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
                     }
                 }
             } else {
@@ -620,5 +709,51 @@ class HomeController extends Controller
             \Log::error('An unexpected exception occurred: ' . $e->getMessage());
             return view('pages.error');
         }
+    }
+
+    public function getRsbkDirectoryMenu($slug, $middelSlug)
+    {
+        $footerMenu = DB::table('website_menu_management')->where('menu_place', 1)->get();
+
+        $middelUrl = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($slug)->first();
+        $menus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->whereurl($middelSlug)->first();
+        $metaDetails = DB::table('dynamic_content_page_metatag')
+            ->where('soft_delete', 0)
+            ->where('status', 3)
+            ->where('menu_uid', $menus->uid)
+            ->first();
+        if ($menus != '') {
+            $allmenus = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
+            $parentMenut = DB::table('website_menu_management')->where('soft_delete', 0)->where('status', 3)->where('uid', $menus->parent_id)->first();
+            if (!empty($parentMenut)) {
+                foreach ($allmenus as $menu) {
+                    if ($menu->parent_id == $parentMenut->uid) {
+                        $menu->children = [];
+                        foreach ($allmenus as $childMenu) {
+                            if ($childMenu->parent_id == $menu->uid) {
+                                $childMenu->children = [];
+                                foreach ($allmenus as $grandchildMenu) {
+                                    if ($grandchildMenu->parent_id == $childMenu->uid) {
+                                        $childMenu->children[] = $grandchildMenu;
+                                    }
+                                }
+                                $menu->children[] = $childMenu;
+                            }
+                        }
+                        $tree[] = $menu;
+                    }
+                }
+            } else {
+                $parentMenut = '';
+                $tree = [];
+            }
+        }
+    }
+
+    public function newsDetails($id)
+    {
+        $news = DB::table('news_management')->where('uid', $id)->first();
+        $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
+        return view('pages.news-details', compact('news', 'quickLink'));
     }
 }

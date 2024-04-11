@@ -22,6 +22,9 @@
     }
 }
 @media (max-width:1299px){
+    .dataTables_wrapper .dataTables_length label {
+        margin: 0 10px 0 0;
+    }
     table#DataTables_Table_0{
         display: block;
     }
@@ -735,6 +738,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+    .about-us-card {
+        min-height: 24.7em !important;
+    }
     .master .about {
         padding: 0 0px 0 0px !important;
     }

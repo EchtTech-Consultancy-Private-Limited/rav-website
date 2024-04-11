@@ -1,18 +1,32 @@
 <div class="header-top-content">
     <div class="header-top-left">
         <ul>
-            <li> <a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://www.india.gov.in/" >Goverment of India</a></li>
-            <li><a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://ayushmanbharat.mp.gov.in/">Ayushman Bharat</a></li>
-            <li><span class="dateTime"></span></li>
+            <li> <a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://www.india.gov.in/" >
+                    @if (Session::get('locale') == 'hi')
+                        {{'भारत सरकार'}}
+                    @else
+                        {{'Goverment of India'}}
+                    @endif
+                </a>
+            </li>
+            <li><a onclick="return confirm('{{ $alertMessage }}')" target="_blank" href="https://ayushmanbharat.mp.gov.in/">
+                    @if (Session::get('locale') == 'hi')
+                        {{'आयुष्मान भारत'}}
+                    @else
+                        {{'Ayushman Bharat'}}
+                    @endif
+                </a>
+            </li>
+            <li><span class="dateTime" tabindex="0"></span></li>
         </ul>
     </div>
     <div class="header-top-right">
         <ul class="d-flex align-items-center">
-            <li class="acees-style1"> <a href="#about-us" title="Skip to main Content" ><i class="fa fa-arrow-up"></i> </a></li>
+            <li class="acees-style1"> <a href="#main-content" title="Skip to main Content" ><i class="fa fa-arrow-up"></i> </a></li>
             <li class="acees-style1"> <a href="{{route('screen-reader-access')}}" title="Screen Reader Access"> <i class="fa fa-volume-up"></i></a></li>
             <li class="dropdown acees-style1 acees-style2">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <a href="#" title="accessbility" > <b>T</b><sub><b>T</b></sub></a>
+                <a href="#" title="Accessbility" > <b>T</b><sub><b>T</b></sub></a>
                 </button>
                 <ul class="dropdown-menu">
                     <li>  <button class="text-increment-btn" onclick="decreaseFontSize()" title="Decrease font size" tabindex="0">A-</button></li>

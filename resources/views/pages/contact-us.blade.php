@@ -24,7 +24,7 @@
         </ul>
       </div>
     </div>
-<section class="bg-grey" id="about">
+<section class="bg-grey" id="main-content">
   <div class="container ">
     <div class="main-title">
       <h2 class="heading-black heading-black-lg text-center pb-5">

@@ -83,7 +83,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <select class="form-select form-select-solid menu_id" name="menu_id" id="menu_id" data-control="select2" data-placeholder="Select an page title">
                            <option></option>
@@ -104,7 +104,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_en" id="page_title_en" name="page_title_en" value="" />
                      <!--end::Input-->
@@ -120,7 +120,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid page_title_hi" id="page_title_hi" name="page_title_hi" value="" />
                      <!--end::Input-->
@@ -136,7 +136,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_title" id="meta_title" name="meta_title" value="" />
                      <!--end::Input-->
@@ -152,7 +152,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid meta_tag" id="meta_tag" name="meta_tag" value="" />
                      <!--end::Input-->
@@ -170,7 +170,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <textarea class="form-control form-control-solid" name="meta_description"></textarea>
                      <!--end::Input-->
@@ -188,7 +188,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="meta_keywords" value="" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -204,7 +204,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="number" class="form-control form-control-solid" name="sort_order" value="" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -220,7 +220,7 @@
                      </label>
                      <!--end::Label-->
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                      <!--begin::Input-->
                      <input type="text" class="form-control form-control-solid" name="custom_url" value="" data-kt-ecommerce-settings-type="tagify" />
                      <!--end::Input-->
@@ -346,7 +346,7 @@
                <div class="card card-flush py-4">
                   <div class="card-body pt-0">
                      <div class="card-body pt-0">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id1" name="pageTitle_id1" id="pageTitle_id1" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
@@ -458,9 +458,11 @@
             <form id="kt_page_pdf_form" class="form">
                <!--begin::Input group-->
                <div class="card card-flush py-4">
-                  <div class="card-body pt-0">
-                     <div class="card-body pt-0">
-                        <div class="col-md-12">
+                  <div class="card-body p-0">
+                     <div class="row">
+                        <div class="col-md-9">
+                        <div class="card-body p-0">
+                        <div class="col-md-11">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id2" name="pageTitle_id2" id="pageTitle_id2" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
@@ -470,6 +472,7 @@
                            </select>
                         </div>
                      </div>
+                   
                      <!--begin::Input group-->
                      <!--begin::News-->
                      <!-- <div class="card-header">
@@ -479,7 +482,7 @@
                      </div> -->
                      <!--end::Card header-->
                      <!--begin::Card body-->
-                     <div class="card-body pt-0">
+                     <div class="card-body p-0 mt-5 pt-3">
                         <!--begin::Input group-->
                         <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
                            <!--begin::Repeater-->
@@ -487,28 +490,37 @@
                               <!--begin::Form group-->
                               <div class="form-group">
                                  <div data-repeater-list="kt_PagePdf_add_multiple_options" class="d-flex flex-column gap-3">
-                                    <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                    <div data-repeater-item class="form-group row align-items-center">
                                        <!--begin::Input-->
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">Pdf Title</label>
-                                       <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
+                                      <div class="col-md-8">
+                                       <div class="row">
+                                       <div class="col-md-4">
+                                          <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                          <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
                                        </div>
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">Start Date</label>
-                                       <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
+                                       <div class="col-md-4">
+                                          <label class="required form-label mw-100 w-200px">Start Date</label>
+                                          <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
                                        </div>
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">End Date</label>
-                                       <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
+                                       <div class="col-md-4">
+                                          <label class="required form-label mw-100 w-200px">End Date</label>
+                                          <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
                                        </div>
-                                       <div>
-                                       <label class="required form-label mw-100 w-200px">Pdf Format (.PDF)</label> 
-                                       <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="image" accept=".pdf" />
                                        </div>
+                                      </div>
+                                       <div class="col-md-4 d-flex align-items-end">
+                                        <div>
+                                        <label class="required form-label mw-100 w-200px">Pdf Format (.PDF)</label> 
+                                          <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="image" accept=".pdf" />
+                                        </div>
                                        <!--end::Input-->
-                                       <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                          <i class="ki-outline ki-cross fs-1"></i>
-                                        </button>
+                                       <div class="ml-2 mb-3">
+                                          <label class="form-label mt-34"></label> 
+                                          <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                             <i class="ki-outline ki-cross fs-1"></i>
+                                          </button>
+                                        </div>
+                                        </div>
                                     </div>
                                  </div>
                               </div>
@@ -525,6 +537,44 @@
                         </div>
                         <!--end::Input group-->
                      </div>
+                        </div>
+                        <div class="col-md-3">
+                              <div class="card-body p-0 pt-4 mt-5">
+                              <!--begin::Input group-->
+                              <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
+                                 <!--begin::Repeater-->
+                                 <div id="kt_tablehead_add_multiple_options">
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                       <div data-repeater-list="kt_tablehead_add_multiple_options" class="d-flex flex-column gap-3">
+                                          <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                             <!--begin::Input-->
+                                             <div>
+                                                <input type="text" class="form-control mw-100 w-200px" name="tablehead" placeholder="Table Head Name" />
+                                             </div>
+                                             <!--end::Input-->
+                                             <button type="button"id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                                <i class="ki-outline ki-cross fs-1"></i>
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group mt-5">
+                                       <button type="button" data-repeater-create class="btn btn-sm btn-light-primary">
+                                          <i class="ki-outline ki-plus fs-2"></i> Add Table Head
+                                       </button>
+                                    </div>
+                                    <!--end::Form group-->
+                                 </div>
+                                 <!--end::Repeater-->
+                              </div>
+                              <!--end::Input group-->
+                           </div>
+                        </div>
+                     </div>
+                    
                      <!--end::Card header-->
                   
                      <!--end::Variations-->
@@ -568,7 +618,7 @@
                <div class="card card-flush py-4">
                   <div class="card-body pt-0">
                      <div class="card-body pt-0">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                            <label class="required form-label">Select Page TItle</label>
                            <select class="form-select form-select-solid pageTitle_id3" name="pageTitle_id3" id="pageTitle_id3" data-control="select2" data-placeholder="Select an page title">
                               <option></option>
