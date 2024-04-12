@@ -890,7 +890,7 @@ li.nav-item .active {
     border: 1px solid #d6d6d6;
     border-radius: 20px;
     padding: 15px;
-    min-height: 21.3em;
+    min-height: 22.2em;
 }
 
 .about-us-card .img {
@@ -3413,6 +3413,9 @@ Image Section Css */
     color: #fff;
     border-bottom: 1px solid #fff;
     line-height: 35px;
+    &:focus{
+        color: #fff !important;
+    }
 }
 
 .an-hove-sidemenu:hover {
