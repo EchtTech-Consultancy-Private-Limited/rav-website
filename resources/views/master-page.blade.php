@@ -20,7 +20,7 @@
         {{-- banner end --}}
         <div class="breadcrumb-title">
             <h3 class="title">
-                {{ isset($organizedData['metatag']->meta_title) ? $organizedData['metatag']->meta_title : $title_name }}
+                 {{  $title_name ?? $organizedData['metatag']->meta_title }} 
             </h3>
         </div>
         </div>
