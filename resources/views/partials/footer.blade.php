@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-md-4">
         <div class="footer-logo">
+            <a href="{{ route('/')}}">
             <img src="{{ asset('assets/images/rav-logo-white.png') }}" alt="logo" class="img-fluid">
+            </a>
         </div>
     </div>
     @if (isset($social_links) && $social_links != '')

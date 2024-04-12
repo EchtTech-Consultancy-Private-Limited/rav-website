@@ -341,26 +341,48 @@
 <div class="sticky-i d-non">
     <div class="sticky-icon">
         <a href="https://www.facebook.com/vidyapeeth.delhi"
-            onclick="return confirm('This link will take you to an external web site.')" target="_blank"
+            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" target="_blank"
             class="Facebook" title="Facebook">
-            <i class="fa fa-facebook-f"></i> Facebook
+            <i class="fa fa-facebook-f"></i>     
+            @if (Session::get('locale') == 'hi')
+                {{ 'फेसबुक' }}
+            @else
+                {{'Facebook'}}
+            @endif
         </a>
         <a href="https://twitter.com/ravdelhi?lang=en" class="Twitter"
-            onclick="return confirm('This link will take you to an external web site.')" target="_blank"
+            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" target="_blank"
             title="Twitter">
             <div class="twitter-icon"> <img src="{{ asset('assets/images/twitter_icon.png') }}" alt="twitter"
-                    title="twitter"></div> Twitter
+                    title="twitter"></div> 
+                    @if (Session::get('locale') == 'hi')
+                        {{ 'ट्विटर' }}
+                    @else
+                        {{'Twitter'}}
+                    @endif
+
         </a>
         </a>
         <a href="https://www.instagram.com/ravdelhi/"
-            onclick="return confirm('This link will take you to an external web site.')" class="Instagram"
+            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" class="Instagram"
             target="_blank" title="Instagram">
-            <i class="fa fa-instagram"></i> Instagram
+            <i class="fa fa-instagram"></i> 
+            @if (Session::get('locale') == 'hi')
+                        {{ 'इंस्टाग्राम' }}
+                    @else
+                        {{'Instagram'}}
+                    @endif
+
         </a>
-        <a href="https://at.linkedin.com/company/rashtriya-ayurveda-vidyapeeth" class="Youtube"
-            onclick="return confirm('This link will take you to an external web site.')" target="_blank"
-            title="LinkedIn">
-            <i class="fa fa-linkedin"></i> LinkedIn
+        <a href="https://at.linkedin.com/company/rashtriya-ayurveda-vidyapeeth" class="Youtube" 
+   onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" target="_blank"   title="LinkedIn">
+
+            <i class="fa fa-linkedin"></i>
+            @if (Session::get('locale') == 'hi')
+                        {{ 'लिंक्डइन' }}
+                    @else
+                        {{'LinkedIn'}}
+                    @endif
         </a>
     </div>
 </div>

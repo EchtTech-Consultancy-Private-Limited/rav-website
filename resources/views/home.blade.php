@@ -61,30 +61,36 @@
                 </div>
                 <div class="col-md-9 p-0">
                     <div class="latest-news-slider">
-                        <div class="owl-carousel owl-theme" id="latest-news-slider">
-                            @if (isset($news_management) && count($news_management) > 0)
+                    <div class="latest_news_marquee marquee-vertical" data-speed="40">
+                        <div class="marquee-wrapper">
+                            <div class="marquee-content">
+                                <div class="float-left d-inline-block ">
+                                @if (isset($news_management) && count($news_management) > 0)
                                 @foreach ($news_management as $news_managements)
                                     @php
                                         $url =
                                             $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
                                     @endphp
-                                    <div class="item">
-                                        <p>
-                                            <a href="{{ url($url ?? 'javascript:void(0)') }}">
+                                    <span>
+                                    <a href="{{ url($url ?? 'javascript:void(0)') }}">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $news_managements->title_name_hi ?? '' }}
                                                 @else
                                                     {{ $news_managements->title_name_en ?? '' }}
                                                 @endif
                                             </a>
-                                        </p>
-                                    </div>
-                                @endforeach
+                                    </span>
+                                    @endforeach
                             @else
                                 <h6>No News available.</h6>
                             @endif
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="btns">
+                    </div>
+                       
+                        <div class="btns d-none">
                             <div id="customPreviousBtn1">
                                 <i class="fa fa-angle-left" aria-hidden="true"></i>
                             </div>
@@ -94,9 +100,7 @@
                             <div id="customPlay1" class="customPlay">
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </div>
-                            <div id="customNextBtn1">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -332,10 +336,10 @@
                     <div class="news-wrap">
                         <div class="news-tab common-tab">
                             <ul class="nav nav-tabs" id="newsTab" role="tablist">
-                                <li class="nav-item" role="presentation">
+                                <li class="nav-item" role="presentation" tabindex="0">
                                     <button class="nav-link active" id="latestNews-tab" data-bs-toggle="tab"
                                         data-bs-target="#latestNews-tab-pane" type="button" role="tab"
-                                        aria-controls="latestNews-tab-pane" aria-selected="true">
+                                        aria-controls="latestNews-tab-pane" aria-selected="true" tabindex="0">
                                         @if (Session::get('locale') == 'hi')
                                             {{ __('messages.Latest_News') }}
                                         @else
@@ -343,10 +347,10 @@
                                         @endif
                                     </button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                <li class="nav-item" role="presentation" tabindex="0">
                                     <button class="nav-link" id="courses-tab" data-bs-toggle="tab"
                                         data-bs-target="#courses-tab-pane" type="button" role="tab"
-                                        aria-controls="courses-tab-pane" aria-selected="false">
+                                        aria-controls="courses-tab-pane" aria-selected="false" tabindex="0">
                                         @if (Session::get('locale') == 'hi')
                                             {{ __('messages.Admission_to_Courses') }}
                                         @else
@@ -354,10 +358,10 @@
                                         @endif
                                     </button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                <li class="nav-item" role="presentation" tabindex="0">
                                     <button class="nav-link" id="cme-tab" data-bs-toggle="tab"
                                         data-bs-target="#cme-tab-pane" type="button" role="tab"
-                                        aria-controls="cme-tab-pane" aria-selected="false">
+                                        aria-controls="cme-tab-pane" aria-selected="false" tabindex="0">
                                         @if (Session::get('locale') == 'hi')
                                             {{ __('messages.CME_Scheme') }}
                                         @else
@@ -649,10 +653,10 @@
                 <div class="col-md-12">
                     <div class="message-tab common-tab">
                         <ul class="nav nav-tabs" id="messageTab" role="tablist">
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" tabindex="0">
                                 <button class="nav-link active" id="latestMassage-tab" data-bs-toggle="tab"
                                     data-bs-target="#latestMassage-tab-pane" type="button" role="tab"
-                                    aria-controls="latestMassage-tab-pane" aria-selected="true">
+                                    aria-controls="latestMassage-tab-pane" aria-selected="true" tabindex="0">
                                     @if (Session::get('locale') == 'hi')
                                         {{ __('messages.Latest_Message') }}
                                     @else
@@ -660,10 +664,10 @@
                                     @endif
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" tabindex="0">
                                 <button class="nav-link" id="ourMinisters-tab" data-bs-toggle="tab"
                                     data-bs-target="#ourMinisters-tab-pane" type="button" role="tab"
-                                    aria-controls="ourMinisters-tab-pane" aria-selected="false">
+                                    aria-controls="ourMinisters-tab-pane" aria-selected="false" tabindex="0">
                                     @if (Session::get('locale') == 'hi')
                                         {{ __('messages.Meet_Our_Ministers') }}
                                     @else
@@ -671,10 +675,10 @@
                                     @endif
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" tabindex="0">
                                 <button class="nav-link" id="corner-tab" data-bs-toggle="tab"
                                     data-bs-target="#corner-tab-pane" type="button" role="tab"
-                                    aria-controls="corner-tab-pane" aria-selected="false">
+                                    aria-controls="corner-tab-pane" aria-selected="false" tabindex="0">
                                     @if (Session::get('locale') == 'hi')
                                         {{ __('messages.Alumni_Corner') }}
                                     @else
@@ -682,10 +686,10 @@
                                     @endif
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" tabindex="0">
                                 <button class="nav-link" id="tenders-tab" data-bs-toggle="tab"
                                     data-bs-target="#tenders-tab-pane" type="button" role="tab"
-                                    aria-controls="tenders-tab-pane" aria-selected="false">
+                                    aria-controls="tenders-tab-pane" aria-selected="false" tabindex="0">
                                     @if (Session::get('locale') == 'hi')
                                         {{ __('messages.Our_Tenders') }}
                                     @else
@@ -693,10 +697,10 @@
                                     @endif
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" tabindex="0">
                                 <button class="nav-link" id="thesis-tab" data-bs-toggle="tab"
                                     data-bs-target="#thesis-tab-pane" type="button" role="tab"
-                                    aria-controls="thesis-tab-pane" aria-selected="false">
+                                    aria-controls="thesis-tab-pane" aria-selected="false" tabindex="0">
                                     @if (Session::get('locale') == 'hi')
                                         {{ __('messages.Thesis_by_RAV_Students') }}
                                     @else
@@ -704,10 +708,10 @@
                                     @endif
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" tabindex="0">
                                 <button class="nav-link" id="information-tab" data-bs-toggle="tab"
                                     data-bs-target="#information-tab-pane" type="button" role="tab"
-                                    aria-controls="information-tab-pane" aria-selected="false">
+                                    aria-controls="information-tab-pane" aria-selected="false" tabindex="0">
                                     @if (Session::get('locale') == 'hi')
                                         {{ __('messages.Right_to_Information') }}
                                     @else
@@ -724,7 +728,7 @@
                                     <div class="col-md-12">
                                         <div class="message-tab-img">
                                             <a href="#" class="video-wrap">
-                                                <div class="video-img common-video-img">
+                                                <div class="video-img common-video-img" tabindex="0">
                                                     @php
                                                         $imgTag = \Illuminate\Support\Str::between(
                                                             $latestMessageData['page_content_en'],
@@ -740,15 +744,15 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="message-tab-content">
-                                            <h2 class="heading-black heading-black-md">
+                                        <div class="message-tab-content" tabindex="0">
+                                            <h2 class="heading-black heading-black-md" tabindex="0">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $latestMessageData['page_title_hi'] }}
                                                 @else
                                                     {{ $latestMessageData['page_title_en'] }}
                                                 @endif
                                             </h2>
-                                            <p class="desc">
+                                            <p class="desc" tabindex="0">
                                                 {{-- display content after remove html tags and add limit 400 --}}
                                                 @php
                                                     $content = strip_tags(
@@ -764,7 +768,7 @@
                                                 {!! $content !!}
                                             </p>
                                             <div class="btn-wrap d-flex align-items-center">
-                                                <a href="{{ url($latestMessageData['url']) }}" class="btn btn-org-bdr">
+                                                <a href="{{ url($latestMessageData['url']) }}" class="btn btn-org-bdr" tabindex="0">
                                                     @if (Session::get('locale') == 'hi')
                                                         {{ __('messages.Read_More') }}
                                                     @else
@@ -781,8 +785,8 @@
                                 aria-labelledby="ourMinisters-tab" tabindex="0">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <div class="message-tab-img">
-                                            <a href="#" class="video-wrap">
+                                        <div class="message-tab-img" tabindex="0">
+                                            <a href="#" class="video-wrap" tabindex="0">
                                                 <div class="video-img common-video-img m-0">
                                                     <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
                                                         alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
@@ -793,8 +797,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="message-tab-content">
-                                            <h2 class="heading-black heading-black-md">
+                                        <div class="message-tab-content" tabindex="0">
+                                            <h2 class="heading-black heading-black-md" tabindex="0">
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $cabinetMinisterData->fname_hi }}
                                                     {{ $cabinetMinisterData->mname_hi }}
@@ -805,10 +809,10 @@
                                                     {{ $cabinetMinisterData->lname_en }}
                                                 @endif
                                             </h2>
-                                            <p class="title">
+                                            <p class="title" tabindex="0">
                                                 {{ getEmployeeDepartment($cabinetMinisterData->department_id) }}
                                             </p>
-                                            <p class="desc">
+                                            <p class="desc" tabindex="0">
                                                 @php
                                                     $content = strip_tags(
                                                         Session::get('locale') == 'hi'
@@ -821,8 +825,8 @@
                                                 {!! $content !!}
 
                                             </p>
-                                            <div class="btn-wrap d-flex align-items-center">
-                                                <a href="{{ url('about-us/honourable-cabinet-minister') }}"
+                                            <div class="btn-wrap d-flex align-items-center" tabindex="0">
+                                                <a href="{{ url('about-us/honourable-cabinet-minister') }}" tabindex="0"
                                                     class="btn btn-org-bdr">
                                                     @if (Session::get('locale') == 'hi')
                                                         {{ __('messages.Read_More') }}
@@ -839,13 +843,13 @@
                                 tabindex="0">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
-                                        <div>
+                                        <div tabindex="0">
                                             @if (Session::get('locale') == 'hi')
-                                                <h2 class = "heading-black heading-black-md">
+                                                <h2 class = "heading-black heading-black-md" tabindex="0">
                                                     {{ $dynamicContents->page_title_hi }}</h2>
                                                 {!! $dynamicContents->page_content_hi !!}
                                             @else
-                                                <h2 class = "heading-black heading-black-md">
+                                                <h2 class = "heading-black heading-black-md" tabindex="0">
                                                     {{ $dynamicContents->page_title_en }}</h2>
                                                 {!! $dynamicContents->page_content_en !!}
                                             @endif
@@ -862,7 +866,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <table class="dataTable">
+                                        <table class="dataTable" tabindex="0">
                                             <thead>
                                                 <tr>
                                                     <th>Sr.No.</th>
@@ -911,19 +915,19 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div>
-                                            <div>
+                                            <div tabindex="0">
                                                 @if (isset($thesisContents))
                                                     @if (Session::get('locale') == 'hi')
-                                                        <h2 class = "heading-black heading-black-md">
+                                                        <h2 class = "heading-black heading-black-md" tabindex="0">
                                                             {{ $thesisContents->page_title_hi }}</h2>
                                                         {!! $thesisContents->page_content_hi !!}
                                                     @else
-                                                        <h2 class = "heading-black heading-black-md">
+                                                        <h2 class = "heading-black heading-black-md" tabindex="0">
                                                             {{ $thesisContents->page_title_en }}</h2>
                                                         {!! $thesisContents->page_content_en !!}
                                                     @endif
                                                 @else
-                                                    <div class="text-center">
+                                                    <div class="text-center" tabindex="0">
                                                         <h1>Content coming soon...</h1>
                                                     </div>
                                                 @endif
@@ -939,11 +943,11 @@
                                         <div class="text-content">
                                             @if (isset($rightToInfoContents))
                                                 @if (Session::get('locale') == 'hi')
-                                                    <h2 class = "heading-black heading-black-md">
+                                                    <h2 class = "heading-black heading-black-md" tabindex="0">
                                                         {{ $rightToInfoContents->page_title_hi }}</h2>
                                                     {!! $rightToInfoContents->page_content_hi !!}
                                                 @else
-                                                    <h2 class = "heading-black heading-black-md">
+                                                    <h2 class = "heading-black heading-black-md" tabindex="0">
                                                         {{ $rightToInfoContents->page_title_en }}</h2>
                                                     {!! $rightToInfoContents->page_content_en !!}
                                                 @endif
