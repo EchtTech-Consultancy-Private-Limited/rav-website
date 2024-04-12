@@ -131,6 +131,23 @@ th.each((a, item) => {
     }
 });
 });
+$(document).ready(function(){
+    
+let paginationNext = $('a.paginate_button.next');
+console.log(paginationNext.text())
+
+$('.dataTables_wrapper .dataTables_paginate .paginate_button.next').on('click', () => {
+    $('th').each((index, th) => {
+        let dateArr = $(th).text().toLowerCase().split(' ');
+        let containsDate = dateArr.includes('date');
+        if (containsDate) {
+            let index = $(th).index() + 1; // Index of corresponding td in the same row
+            $(`td:nth-child(${index})`).css('white-space', 'nowrap');
+        }
+    });
+});
+
+})
 
 let secondlayerSidebar = $('li.accordion.accordion-flush.position-relative.sl-accordion');
 let activeAccordion = $('.accordion-collapse.collapse');
