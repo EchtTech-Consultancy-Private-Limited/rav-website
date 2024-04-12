@@ -20,7 +20,7 @@
         {{-- banner end --}}
         <div class="breadcrumb-title">
             <h3 class="title">
-                {{ isset($organizedData['metatag']->meta_title) ? $organizedData['metatag']->meta_title : $title_name }}
+                 {{  $title_name ?? $organizedData['metatag']->meta_title }} 
             </h3>
         </div>
         </div>
@@ -682,11 +682,11 @@
                                                                 {{ $tender->title_name_en }}
                                                             @endif
                                                         </td>
-                                                        <td>{{ \Carbon\Carbon::parse($tender->start_date)->format('d F Y') }}
+                                                        <td class="text-nowrap">{{ \Carbon\Carbon::parse($tender->start_date)->format('d F Y') }}
                                                         </td>
-                                                        <td>{{ \Carbon\Carbon::parse($tender->end_date)->format('d F Y') }}
+                                                        <td class="text-nowrap">{{ \Carbon\Carbon::parse($tender->end_date)->format('d F Y') }}
                                                         </td>
-                                                        <td>{{ \Carbon\Carbon::parse($tender->opening_date)->format('d F Y') }}
+                                                        <td class="text-nowrap">{{ \Carbon\Carbon::parse($tender->opening_date)->format('d F Y') }}
                                                         </td>
                                                         <td>
                                                             <a target="{{ $tender->tab_type == 1 ? '_blank' : '' }}"
@@ -725,9 +725,9 @@
                                                                 {{ $career->pdf_title }}
                                                             @endif
                                                         </td>
-                                                        <td>{{ \Carbon\Carbon::parse($career->career_start_date)->format('d F Y') }}
+                                                        <td class="text-nowrap">{{ \Carbon\Carbon::parse($career->career_start_date)->format('d F Y') }}
                                                         </td>
-                                                        <td>{{ \Carbon\Carbon::parse($career->career_end_date)->format('d F Y') }}
+                                                        <td class="text-nowrap">{{ \Carbon\Carbon::parse($career->career_end_date)->format('d F Y') }}
                                                         </td>
                                                         <td>
                                                             <a class="link-primary"
@@ -888,7 +888,7 @@
                                             @foreach ($organizedData['pdf'] as $data)
                                                 <tr>
                                                     <td>{{ $data->pdf_title ?? '' }}</td>
-                                                    <td>{{ date('d F Y', strtotime($data->start_date ?? '')) }}</td>
+                                                    <td class="text-nowrap">{{ date('d F Y', strtotime($data->start_date ?? '')) }}</td>
                                                     <td><a href="{{ asset('resources/uploads/PageContentPdf/' . $data->public_url) }}"
                                                             download>View</a>
                                                         <i class="fa fa-file-pdf-o text-danger"> </i>
