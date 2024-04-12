@@ -9,7 +9,13 @@
         <img src="./assets/images/bredcrumb.jpg" alt="" />
       </div>
       <div class="breadcrumb-title">
-        <h3 class="title">Contact us</h3>
+        <h3 class="title">
+           @if (Session::get('locale') == 'hi')
+          संपर्क करें   
+          @else
+          Contact us 
+          @endif
+        </h3>
       </div>
     </div>
 </section>
@@ -18,9 +24,23 @@
       <div class="breadcrumbs-link-text">
         <ul>
           <li>
-            <a class="active" href="{{ url('/') }}" tabindex="0"> Home </a>
+            <a class="active" href="{{ url('/') }}" tabindex="0"> 
+               @if (Session::get('locale') == 'hi')
+                  होम
+                  
+              @else
+                  Home
+              @endif
+            </a>
           </li>
-          <li>Contact us</li>
+          <li>
+             @if (Session::get('locale') == 'hi')
+                संपर्क करें
+                
+            @else
+                Contact us
+            @endif
+          </li>
         </ul>
       </div>
     </div>
