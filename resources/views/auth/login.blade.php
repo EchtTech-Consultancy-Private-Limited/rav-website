@@ -45,7 +45,7 @@
                      <div class="number number-9">9</div>
                      <div class="number number-12">12</div>
                   </div> -->
-                  <img class="theme-light-show mx-auto mw-100 w-150px w-lg-200px mb-10 mb-lg-20" src="{{ asset(config('constants.default.logo_image')) }}" alt=""/>    
+                  <img class="theme-light-show mx-auto mw-100 w-150px w-lg-550px mb-10 mb-lg-20" src="{{ asset(config('constants.default.logo_image')) }}" alt=""/>    
                   <img class="theme-dark-show mx-auto mw-100 w-150px w-lg-200px mb-10 mb-lg-20" src="{{ asset(config('constants.default.logo_image')) }}" alt=""/>                 
                   <h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7"> 
                      CMS (Content Management System) Login
