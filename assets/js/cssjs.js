@@ -64,17 +64,6 @@ tables.each(function() {
 
 
 
-// var header = document.getElementById("myHeader");
-// console.log(header);
-//   let   sticky = header.offsetTop;
-//     console.log(sticky)
-//     function myFunction() {
-//     console.log(window.pageYOffset, 'pageYOffset')
-//     window.pageYOffset > sticky
-//         ? header.classList.add("sticky")
-//         : header.classList.remove("sticky");
-//         alert("workin fine");
-// }
 
 let img = $('img')
 img.each(function(){
@@ -112,13 +101,7 @@ $(document).ready(function(){
         // alert("clicked")
     });
 
-    // $(document).on("keydown", function(event) {
-    //     // Check if the pressed key is the tab key (key code 9)
-    //     if (event.keyCode === 9 && selectBox.is(":focus")) {
-    //         // Trigger a click event on the select box to open it
-    //         selectBox.click();
-    //     }
-    // });
+
  
     let offcanvasli = $("#offcanvasli");
     let offcanvasRight = $('#offcanvasRight');
@@ -148,6 +131,23 @@ th.each((a, item) => {
     }
 });
 });
+$(document).ready(function(){
+    
+let paginationNext = $('a.paginate_button.next');
+console.log(paginationNext.text())
+
+$('.dataTables_wrapper .dataTables_paginate .paginate_button.next').on('click', () => {
+    $('th').each((index, th) => {
+        let dateArr = $(th).text().toLowerCase().split(' ');
+        let containsDate = dateArr.includes('date');
+        if (containsDate) {
+            let index = $(th).index() + 1; // Index of corresponding td in the same row
+            $(`td:nth-child(${index})`).css('white-space', 'nowrap');
+        }
+    });
+});
+
+})
 
 let secondlayerSidebar = $('li.accordion.accordion-flush.position-relative.sl-accordion');
 let activeAccordion = $('.accordion-collapse.collapse');
@@ -168,36 +168,53 @@ secondlayerSidebar.each(function(){
     })
 })
 
-// let secondlayerSidebar = $('li.accordion.accordion-flush.position-relative.sl-accordion');
-// let activeAccordion = $('.accordion-collapse.collapse');
 
-// activeAccordion.on('click', function() {
-//     let clickedAccordion = $(this);
-//     if (clickedAccordion.hasClass('show')) {
-//         secondlayerSidebar.removeClass('qm-active');
-//     }
-// });
+let ayushAhar = $('.poshakAhaar .card p');
+ayushAhar.each(function(){
+    let item = $(this);
+    let text = item.text().toLowerCase();
 
+    item.text(text)
+})
 
-// activeAccordion.each((index, item) => {
-//     console.log(item)
-//     $(item).on('click', () => {
-//         if ($(item).hasClass("show")) {
-//             $(secondlayerSidebar[index]).removeClass("qm-active");
-//         } else {
-//             // Add qm-active class to corresponding second-layer sidebar item
-//             $(secondlayerSidebar[index]).addClass("qm-active");
-//         }
-//         alert("working fine")
-//     });
-// });
+$("#search_key").on("keyup", function() {
+    $("#searchValidationErrorLabel").hide();
 
+  });
 
+    const counters = document.querySelectorAll('.counterNumber');
+    const speed = 200;
 
-// $('li.accordion.accordion-flush.position-relative.sl-accordion').each((index, item) => {
-//     const activeAccordion = $('.accordion-collapse.collapse.show');
-//     if ($(item).hasClass('qm-active') && activeAccordion[index]) {
-//         $(item).removeClass('qm-active');
-//     }
-// });
-// lang.
+    counters.forEach( counter => {
+       const animate = () => {
+          const value = +counter.getAttribute('counter');
+          const data = +counter.innerText;
+
+          const time = value / speed;
+         if(data < value) {
+              counter.innerText = Math.ceil(data + time);
+              setTimeout(animate, 1);
+            }else{
+              counter.innerText = value;
+            }
+       }
+
+       animate();
+    });
+
+  $(document).ready(function(){
+    $(".latest_news_marquee").marquee({
+    speed: 5e3,
+    gap: 5,
+    delayBeforeStart: 0,
+    direction: "left",
+    duplicated: !0,
+    pauseOnHover: !0,
+  } );
+})
+let lang = $('.language').val();
+if(lang == 'hi'){
+    $('.sticky-icon a').css('width', "160px")
+}else{
+    $('.sticky-icon a').css('width', "160px")
+}

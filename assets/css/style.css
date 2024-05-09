@@ -820,7 +820,7 @@ li.nav-item .active {
   border: 1px solid #d6d6d6;
   border-radius: 20px;
   padding: 15px;
-  min-height: 21.3em;
+  min-height: 22.2em;
 }
 
 .about-us-card .img {
@@ -2346,6 +2346,8 @@ div.dt-buttons > div.dt-button-split .dt-button {
 
 .latest-news-slider {
   position: relative;
+  overflow: hidden;
+  margin-left: 17px;
 }
 
 .latest-news-slider p {
@@ -3261,6 +3263,9 @@ Image Section Css */
   border-bottom: 1px solid #fff;
   line-height: 35px;
 }
+.an-hove-sidemenu:focus {
+  color: #fff !important;
+}
 
 .an-hove-sidemenu:hover {
   color: #808080;
@@ -3367,7 +3372,8 @@ Image Section Css */
   transition: all 0.8s;
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  margin-right: 2px;
+  width: 160px;
 }
 
 .sticky-icon a:hover {
@@ -4705,4 +4711,23 @@ div#customPreviousBtn5, div#customNextBtn5 {
 }
 .main-body.searchPage h5 {
   font-size: 17px;
+}
+
+.latest_news_marquee a::before {
+  content: "\f101";
+  font-family: fontAwesome;
+  color: red;
+  font-size: 14px;
+  margin-right: 0;
+}
+
+.latest_news_marquee a {
+  color: #333;
+  line-height: 37px;
+  font-size: 13px;
+  margin-right: 20px;
+}
+
+.poshakAhaar .card p {
+  text-transform: capitalize;
 }/*# sourceMappingURL=style.css.map */

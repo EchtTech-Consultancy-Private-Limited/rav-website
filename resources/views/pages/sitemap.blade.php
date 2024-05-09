@@ -9,7 +9,13 @@
                 <img src="{{ asset('assets/images/bredcrumb.jpg') }}" alt="" />
             </div>
             <div class="breadcrumb-title">
-                <h3 class="title"> Sitemap</h3>
+                <h3 class="title">
+                    @if (Session::get('locale') == 'hi')
+                        साइटमैप
+                    @else
+                    Sitemap
+                    @endif
+                </h3>
             </div>
         </div>
     </section>
@@ -18,17 +24,41 @@
             <div class="breadcrumbs-link-text">
                 <ul>
                     <li>
-                        <a class="active" href="{{ route('/') }}" tabindex="0"> Home </a>
+                        <a class="active" href="{{ route('/') }}" tabindex="0"> 
+                            @if (Session::get('locale') == 'hi')
+                                होम
+                            @else
+                                Home
+                            @endif
+                        </a>
                     </li>
-                    <li>Sitemap</li>
+                    <li>
+                        @if (Session::get('locale') == 'hi')
+                        साइटमैप
+                    @else
+                    Sitemap
+                    @endif
+                    </li>
                 </ul>
             </div>
         </div>
         <section class="sitemap bg-grey" id="main-content">
             <div class="container">
                 <div class="master">
-                    <h1>RAV Website Link</h1>
-                    <h2>Main menu</h2>
+                    <h1>
+                        @if (Session::get('locale') == 'hi')
+                            आरएवी वेबसाइट लिंक
+                        @else
+                        RAV Website Link
+                        @endif
+                    </h1>
+                    <h2>
+                        @if (Session::get('locale') == 'hi')
+                            मुख्य मेनू
+                        @else
+                        Main Menu
+                        @endif
+                    </h2>
                     <ul class="site-map-menu">
                         <li class="first leaf">
                             <a href="{{ url('/') }}">
@@ -72,7 +102,14 @@
                                                                 @endif
                                                             </a>
                                                         @else
-                                                            <a href="{{ url($url . '/' . $suburl) }}">
+                                                            <a
+                                                                href="@if ($subMenus->name_en == 'RSBK Directory Qualification Wise') {{ url('m-pharma') }}
+                                                                @elseif($subMenus->name_en == 'RSBK Directory State Wise')
+                                                                {{ url('delhi') }}
+                                                                @elseif($subMenus->name_en == 'RSBK Directory Year Wise')
+                                                                {{ url('rsbk-directory-from-1951-to-1960') }}
+                                                                @else
+                                                                {{ url($url . '/' . $suburl) }} @endif">
                                                                 @if (Session::get('locale') == 'hi')
                                                                     {{ $subMenus->name_hi ?? '' }}
                                                                 @else
@@ -115,7 +152,11 @@
                         @endif
                     </ul>
                     <h2>
+                        @if (Session::get('locale') == 'hi')
+                            फुटर मेनू
+                        @else
                         Footer Menu
+                        @endif
                     </h2>
                     @if (isset($footerMenu) && count($footerMenu) > 0)
                         <ul class="site-map-menu">
@@ -149,25 +190,31 @@
                     @else
                         <h5>No menu available.</h5>
                     @endif
-                    <h2>Toggle Menu</h2>
+                    <h2>
+                        @if (Session::get('locale') == 'hi')
+                            टॉगल मेनू
+                        @else
+                        Toggle Menu
+                        @endif
+                    </h2>
                     @if (isset($toogleMenu) && count($toogleMenu) > 0)
-                    <ul class="site-map-menu">
-                        @foreach ($toogleMenu as $toogleMenus)
-                        @php
-                        $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
-                        @endphp
-                        <li class="first leaf">
-                            <a href="{{ url($toogleMenuurl) ?? '' }}">
-                                @if (Session::get('locale') == 'hi')
-                                {{ $toogleMenus->name_hi ?? '' }}
-                                @else
-                                {{ $toogleMenus->name_en ?? '' }}
-                                @endif
-                            </a>
-                        </li>
-                        @endforeach
-                       
-                    </ul>
+                        <ul class="site-map-menu">
+                            @foreach ($toogleMenu as $toogleMenus)
+                                @php
+                                    $toogleMenuurl = $toogleMenus->url ?? 'javascript:void(0)';
+                                @endphp
+                                <li class="first leaf">
+                                    <a href="{{ url($toogleMenuurl) ?? '' }}">
+                                        @if (Session::get('locale') == 'hi')
+                                            {{ $toogleMenus->name_hi ?? '' }}
+                                        @else
+                                            {{ $toogleMenus->name_en ?? '' }}
+                                        @endif
+                                    </a>
+                                </li>
+                            @endforeach
+
+                        </ul>
                     @endif
                 </div>
             </div>

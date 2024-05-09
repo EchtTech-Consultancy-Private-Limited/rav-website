@@ -26,7 +26,7 @@
             <li class="acees-style1"> <a href="{{route('screen-reader-access')}}" title="Screen Reader Access"> <i class="fa fa-volume-up"></i></a></li>
             <li class="dropdown acees-style1 acees-style2">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <a href="#" title="accessbility" > <b>T</b><sub><b>T</b></sub></a>
+                <a href="#" title="Accessbility" > <b>T</b><sub><b>T</b></sub></a>
                 </button>
                 <ul class="dropdown-menu">
                     <li>  <button class="text-increment-btn" onclick="decreaseFontSize()" title="Decrease font size" tabindex="0">A-</button></li>
