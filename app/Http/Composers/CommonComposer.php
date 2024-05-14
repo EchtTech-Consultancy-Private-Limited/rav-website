@@ -9,6 +9,7 @@ use App, Route, DB,Session;
 use Exception;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 // Call Helper
 
@@ -54,7 +55,14 @@ class CommonComposer
             $toogleMenu = DB::table('website_menu_management')->where('menu_place','2')->where('soft_delete','0')->orderby('sort_order','Asc')->get();
             $website_core_settings = DB::table('website_core_settings')->where('soft_delete', 0)->first();
             $events_management = DB::table('events_management')->where('status', 3)->where('soft_delete', 0)->latest('created_at')->get();
-
+            
+            $popupAdvertisings = DB::table('popup_advertisings')
+                                 ->where('start_date', '<=' , date_format(date_create(date('Y-m-d')),"Y-m-d"))
+                                 ->where('end_date', '>=', date_format(date_create(date('Y-m-d')),"Y-m-d"))
+                                  ->where('status', 3)
+                                  ->where('soft_delete', 0)
+                                  ->latest('created_at')->first();
+                                 
             $dynamic_content_page_metatag = DB::table('dynamic_content_page_metatag')
                     ->where('soft_delete', 0)
                     ->where('status', 3)
@@ -190,7 +198,8 @@ class CommonComposer
                 'gyanGanga' => $gyanGanga,
                 'ayurAhar' => $ayurAhar,
                 'cravGurusData' => $cravGurusData,
-                'total_visitors' => $visitors
+                'total_visitors' => $visitors,
+                'popupAdvertisings' =>$popupAdvertisings
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());

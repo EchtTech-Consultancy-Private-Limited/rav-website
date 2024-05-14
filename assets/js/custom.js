@@ -664,3 +664,27 @@ $("#customPreviousBtn5").click(function () {
 $("#customPause5").click(function () {
   owl_5.trigger("stop.owl.autoplay");
 });
+
+$(document).ready(function () {
+  getCookie("modalShownToday") ||
+      ($(".modal").each(function (e) {
+          $(this).on("show.bs.modal", function (e) {
+              var t = $(this).attr("data-easein");
+              "shake" == t ||
+              "pulse" == t ||
+              "tada" == t ||
+              "flash" == t ||
+              "bounce" == t ||
+              "swing" == t
+                  ? $(".modal-dialog").velocity("callout." + t)
+                  : $(".modal-dialog").velocity("transition." + t);
+          });
+      }),
+      setTimeout(function () {
+          $("#costumModal8").modal("show");
+      }, 1e3),
+      setCookie("modalShownToday", "true", 1));
+});
+setTimeout(function () {
+  $("#costumModal8").modal("show");
+}, 1e3)

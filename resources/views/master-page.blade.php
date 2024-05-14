@@ -389,21 +389,23 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                
                                                     @foreach ($content as $item)
                                                         @php
                                                             $data = json_decode($item->content, true);
                                                         @endphp
                                                         <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $data['name'] }}</td>
-                                                            <td>{{ $data['designation'] }}</td>
-                                                            <td>{{ $data['email'] }}</td>
+                                                            <td>{{ $loop->iteration??'' }}</td>
+                                                            <td>{{ $data['name']??'' }}</td>
+                                                            <td>{{ $data['designation']??'' }}</td>
+                                                            <td>{{ $data['email']??'' }}</td>
 
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         @endif
+                                       
                                     @elseif(isset($allFormData) && count($allFormData) > 0)
                                         {{-- @dd($title_name) --}}
                                         <h1>{{ $title_name ?? '' }}</h1>
@@ -744,9 +746,9 @@
                                     @else
                                         {!! $content !!}
                                     @endif
-                                    @if (isset($rsbkDirectoryInstituteWise) && $rsbkDirectoryInstituteWise == 1)
+                                    <!-- @if (isset($rsbkDirectoryInstituteWise) && $rsbkDirectoryInstituteWise == 1)
                                         {!! $content !!}
-                                    @endif
+                                    @endif -->
 
                                 @endif
                                 <h1>
