@@ -157,3 +157,17 @@
         </div>
     </div>
 </div>
+@if(isset($popupAdvertisings->images) && $popupAdvertisings->images !='')
+<div id="costumModal8" class="modal fade" data-bs-easein="shrinkIn" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"> <i
+                        class="fa fa-times" aria-hidden="true"></i> </button>
+                <img src="{{ asset('resources/uploads/popupadvertising/' . $popupAdvertisings->images) }}" data-id="show" alt="{{$popupAdvertisings->title_name_en??''}}"
+                    class="md-img show-model">
+            </div>
+        </div>
+    </div>
+</div>
+@endif

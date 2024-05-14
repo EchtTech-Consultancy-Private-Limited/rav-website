@@ -415,19 +415,30 @@ class HomeController extends Controller
                     }
                     if ($finalSlug != null) {
 
-                        return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'finalBred' => $finalBred, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        return view('master-page', ['isFooterMenu' => $isFooter,
+                                'footerMenu' => $footerMenu, 'finalBred' => $finalBred, 
+                                'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred,
+                                'middelBred' => $middelBred, 'quickLink' => $quickLink,
+                                'title_name' => $title_name, 'organizedData' => $organizedData, 
+                                'metaDetails' => $metaDetails]);
                     } else if ($lastSlugs != null) {
-                        return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        return view('master-page', ['isFooterMenu' => $isFooter,
+                                'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 
+                                'tree' => $tree, 'lastBred' => $lastBred, 'middelBred' => $middelBred,
+                                'quickLink' => $quickLink, 'title_name' => $title_name, 
+                                'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
                     } elseif ($middelSlug != null) {
 
                         $governingBodyDepartments = [];
                         if ($middelSlug == 'governing-body') {
                             $governingBodyDepartments =  DB::table('emp_depart_designations')->where('parent_id', 0)->get();
                         }
-
-
-
-                        return view('master-page', ['governingBodyDepartments' => $governingBodyDepartments, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData, 'metaDetails' => $metaDetails]);
+                        return view('master-page', ['governingBodyDepartments' => $governingBodyDepartments,
+                            'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 
+                            'parentMenut' => $parentMenut, 'tree' => $tree,
+                            'middelBred' => $middelBred, 'quickLink' => $quickLink, 
+                            'title_name' => $title_name, 'organizedData' => $organizedData,
+                            'metaDetails' => $metaDetails]);
                     } else {
 
                         $tree = [];
@@ -473,7 +484,11 @@ class HomeController extends Controller
 
 
 
-                        return view('master-page', ['tree' => $tree, 'parentMenut' => $parentMenut, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'organizedData' => $organizedData]);
+                        return view('master-page', ['tree' => $tree,
+                         'parentMenut' => $parentMenut, 'isFooterMenu' => $isFooter,
+                          'footerMenu' => $footerMenu, 'quickLink' => $quickLink,
+                           'title_name' => $title_name, 'organizedData' => $organizedData
+                        ]);
                     }
                 } elseif ($middelSlug != null && $middelSlug == 'director-desk') {
                     $designation = DB::table('emp_depart_designations')
@@ -521,7 +536,13 @@ class HomeController extends Controller
                         }
                         $sortedDesignationData = collect($designationData)->sortBy('department.short_order')->values()->all();
                         // return view('pages.employeeDirectory', ['sortedDesignationData' => $sortedDesignationData]);
-                        return view('master-page', ['isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'title_name' => $title_name, 'sortedDesignationData' => $sortedDesignationData]);
+                        return view('master-page', ['isFooterMenu' => $isFooter, 
+                        'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut,
+                         'tree' => $tree, 'middelBred' => $middelBred, 
+                         'quickLink' => $quickLink, 'title_name' => $title_name,
+                          'sortedDesignationData' => $sortedDesignationData
+                          ]
+                        );
                     }
                 } else {
 
@@ -565,8 +586,16 @@ class HomeController extends Controller
                         if ($middelSlug == 'rsbk-directory-institute-wise') {
                             $rsbkDirectoryInstituteWise = 1;
                         }
-
-                        return view('master-page', ['rsbkDirectoryInstituteWise' => $rsbkDirectoryInstituteWise, 'stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut, 'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink, 'middelBred' => $middelBred, 'content' => $content, 'title_name' => $title_name, 'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
+                        //dd($content);
+                        return view('master-page', [
+                            'rsbkDirectoryInstituteWise' => $rsbkDirectoryInstituteWise,
+                            'stateMinister' => $stateMinister, 'cabinetMinisterData' => $cabinetMinisterData,
+                            'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'parentMenut' => $parentMenut,
+                            'tree' => $tree, 'middelBred' => $middelBred, 'quickLink' => $quickLink,
+                            'middelBred' => $middelBred,
+                            'content' => $content,
+                            'title_name' => $title_name,
+                            'dynamicFormData' => $dynamicFormData, 'formName' => $formName]);
                     } else {
                         
                         $formData = DB::table('website_menu_management')
@@ -690,8 +719,13 @@ class HomeController extends Controller
                         $tree = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
                         $parentMenut = $this->getRsbkDirectoryMenu('rsbk-e-directory', 'rsbk-directory-year-wise');
                         
-
-                        return view('master-page', ['lastBred' => $lastBred, 'tree' => $tree, 'parentMenut' => $parentMenut, 'displayRsbkMenu' => $displayRsbkMenu, 'middelBred' => $middelBred, 'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter, 'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 'content' => $content,]);
+                        
+                        return view('master-page', ['lastBred' => $lastBred, 'tree' => $tree, 'parentMenut' => $parentMenut,
+                         'displayRsbkMenu' => $displayRsbkMenu, 'middelBred' => $middelBred, 
+                         'careers' => $careers, 'tenders' => $tenders, 'secretaryData' => $secretaryData, 
+                         'directorData' => $directorData, 'allFormData' => $allFormData, 'isFooterMenu' => $isFooter,
+                         'footerMenu' => $footerMenu, 'quickLink' => $quickLink, 'title_name' => $title_name, 
+                         'content' => $content,]);
                     }
                 }
             } else {
