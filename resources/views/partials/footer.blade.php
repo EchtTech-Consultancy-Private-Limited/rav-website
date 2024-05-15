@@ -164,7 +164,7 @@
             <div class="modal-body">
                 <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"> <i
                         class="fa fa-times" aria-hidden="true"></i> </button>
-                <a href="https://forms.gle/KXGG9tVD9Tp3zMvw8" target="_blank"><img src="{{ asset('resources/uploads/popupadvertising/' . $popupAdvertisings->images) }}" data-id="show" alt="{{$popupAdvertisings->title_name_en??''}}"
+                <a href="https://shorturl.at/DLTY3" target="_blank"><img src="{{ asset('resources/uploads/popupadvertising/' . $popupAdvertisings->images) }}" data-id="show" alt="{{$popupAdvertisings->title_name_en??''}}"
                     class="md-img show-model">
                 </a>
             </div>
