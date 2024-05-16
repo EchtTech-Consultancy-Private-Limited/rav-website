@@ -235,6 +235,7 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::get('/edit-rtia/{id}',[RtiAssetsAPIController::class,'edit'])->name('rtiassets-edit');
             Route::post('/update-rtia',[RtiAssetsAPIController::class,'update'])->name('rtiassets-update');
             Route::delete('/delete-rtia/{id}',[RtiAssetsAPIController::class,'destroy'])->name('rtiassets-delete');
+            Route::post('/delete-pdf-rti',[RtiAssetsAPIController::class,'deletePDFIMG'])->name('pdf-delete-rtiassets');
 
             /****** RTI Application Responses Setting rtiapplicationresponses:RTI Application Responses*/
             Route::post('/create-rtiapplicationresponses',[RtiApplicationResponsesAPIController::class,'store'])->name('rtiapplicationresponses-save')->middleware('throttle:custom_Limit');

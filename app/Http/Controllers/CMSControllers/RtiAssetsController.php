@@ -110,7 +110,7 @@ class RtiAssetsController extends Controller
         $crudUrlTemplate = array();
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['update'] = route('rtiassets-update');
-            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete');
+            $crudUrlTemplate['deletepdfimg'] = route('pdf-delete-rtiassets');
         }
 
         $results=DB::table('rti_assets')->where('uid',$request->id)->where([['soft_delete','=','0']])->first();
