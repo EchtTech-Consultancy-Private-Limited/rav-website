@@ -167,31 +167,34 @@
 
                             @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
                                 <div class="">
-                                    <table id="nsg_datatableForm" class="display common-table d-block table-responsive" style="width:100%">
+                                    <table id="" class="dataTable display common-table d-block table-responsive" style="width:100%">
                                     <thead>
                                             <tr>
                                                 @if(isset($pageData->formDataTableHead) && count($pageData->formDataTableHead)>0)
-                                                @foreach($pageData->formDataTableHead as $head)
-                                                    <th>
-                                                        {{  $head->label }}
-                                                    </th>
-                                                @endforeach
+                                                    @foreach($pageData->formDataTableHead as $head)
+                                                        <th>
+                                                            {{  $head->label }}
+                                                        </th>
+                                                    @endforeach
                                                 @endif
-                                                <th></th>
+                                                
                                             </tr>
                                     </thead>
                                     <tbody>
-                                    @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
-                                        @foreach($pageData->formbuilderdata as $formbuilderdatas)
+                                    @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata) > 0)
+                                            @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                                 <tr>
-                                                @foreach($formbuilderdatas as $key=>$value)
-                                                    @if($key !=null && $key !='')
-                                                    <td>{{$value}}</td>
-                                                    @endif
-                                                @endforeach
+                                                    @foreach($pageData->formDataTableHead as $head)
+                                                    @dd($head);
+                                                        <td>
+                                                            @if(isset($formbuilderdatas[$head->key]) && $formbuilderdatas[$head->key] !== null && $formbuilderdatas[$head->key] !== '')
+                                                                {{ $formbuilderdatas[$head->key] }}
+                                                            @endif
+                                                        </td>
+                                                    @endforeach
                                                 </tr>
-                                        @endforeach
-                                    @endif
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                     </table>
                                 </div>

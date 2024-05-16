@@ -757,6 +757,7 @@ class HomeController extends Controller
        }else{
             $slug = $slug1;
        }
+       
        $breadcum3 = DB::table('website_menu_management')->where('url',$slug3)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
        $breadcum2 = DB::table('website_menu_management')->where('url',$slug2)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
        $breadcum1 = DB::table('website_menu_management')->where('url',$slug1)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
@@ -765,6 +766,7 @@ class HomeController extends Controller
        if(Session::get('locale') == 'hi'){  $breadcums3 =$breadcum3->name_hi ?? ''; } else {  $breadcums3 =$breadcum3->name_en ?? '';  }
        
        $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
+      
        if(count($main_menu_slug)>0){
             foreach($main_menu_slug as $main_men){
                     $menu = new \stdClass;
@@ -788,8 +790,9 @@ class HomeController extends Controller
             $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->get();
             $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
         }
+        
         elseif($slug){
-           
+            
             $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
             if($single_menu !=null){
                 $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
@@ -798,10 +801,9 @@ class HomeController extends Controller
                 }
             }
         }
-       // dd($getForm);
        if(!empty($getForm)){
         foreach(json_decode($getForm->content) as $tableHead){
-                if($tableHead->label != 'Submit' && $tableHead->label != 'submit' && $tableHead->label != 'save' && $tableHead->label != 'Save'){
+                if($tableHead->label != 'Submit' && $tableHead->label != 'submit' && $tableHead->label != 'save' && $tableHead->label != 'Save' && $tableHead->label != 'Button' && $tableHead->label != 'button'){
                     $head[]=$tableHead;
                 }
             }
@@ -812,7 +814,6 @@ class HomeController extends Controller
             }
         }
         $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
-      // dd($dataForm);
         $data = new \stdClass;
         $data->metaDatas =$metaData??'';
         $data->pageContents =$pageContent??[];
