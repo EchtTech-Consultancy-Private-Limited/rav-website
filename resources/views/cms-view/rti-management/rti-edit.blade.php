@@ -171,27 +171,27 @@
                                     <label class="required form-label mw-100 w-175px" style="margin-left: 12px;">End Start</label>
                                     <label class="required form-label mw-100 w-175px">PDF Format</label>
                                     <div data-repeater-list="kt_rti_edit_multiple_options" class="d-flex flex-column gap-3">
-                                       @if(isset($pdfData))
-                                       @foreach($pdfData as $pdfDatas)
-                                       <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
-                                          <!--begin::Input-->
-                                          <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
-                                          <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->title }}" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
-                                          <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
-                                          <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
-                                          <!--end::Input-->
-                                          <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                             <i class="ki-outline ki-cross fs-1"></i> 
+                                       @if(isset($pdfData) && count($pdfData)>0)
+                                          @foreach($pdfData as $pdfDatas)
+                                          <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                             <!--begin::Input-->
+                                             <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
+                                             <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->title }}" />
+                                             <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
+                                             <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
+                                             <input type="file" class="form-control mw-100 w-175px checkmimepdf" name="pdfname" accept=".pdf" />
+                                             <!--end::Input-->
+                                             <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                                <i class="ki-outline ki-cross fs-1"></i> 
+                                             </button>
+                                             <a href="{{ asset('resources/uploads/TenderManagement/'.$pdfDatas->public_url) }}" target="_blank" download>
+                                                <i class="ki-outline ki-file fs-1"></i>
+                                             </a>
+                                          <button type="button" data-id="{{ $pdfDatas->uid }}" class="btn btn-sm btn-icon btn-light-danger delete-single-record" title="Data Delete">
+                                             <i class="ki-outline ki-trash fs-1"></i>
                                           </button>
-                                          <a href="{{ asset('resources/uploads/TenderManagement/'.$pdfDatas->public_url) }}" target="_blank" download>
-                                             <i class="ki-outline ki-file fs-1"></i>
-                                          </a>
-                                        <button type="button" data-id="{{ $pdfDatas->uid }}" class="btn btn-sm btn-icon btn-light-danger delete-single-record" title="Data Delete">
-                                          <i class="ki-outline ki-trash fs-1"></i>
-                                        </button>
-                                       </div>
-                                       @endforeach
+                                          </div>
+                                          @endforeach
                                        @else
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->

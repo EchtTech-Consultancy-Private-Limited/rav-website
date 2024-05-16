@@ -113,12 +113,53 @@
                                     <label class="required fs-6 fw-semibold mb-2">Opening Date</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input class="form-control form-control-solid openingdate" type="datetime-local" placeholder="" name="openingdate" value="{{$data->opening_date}}" />
+                                    <input class="form-control form-control-solid openingdate" type="datetime-local" placeholder="" name="openingdate" value="{{$data->opening_date??''}}" />
                                     <!--end::Input-->
                                  </div>
                                  <!--end::Col-->
                               </div>
                            </div>
+                           @if(config('particularAssets.tender_cost') == 'true' || config('particularAssets.tender_type') == 'true')
+                           <div class="fv-row mb-10">
+                              <div class="row g-9 mb-7">
+                                 @if(config('particularAssets.tender_cost') == 'true')
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="fs-6 fw-semibold mb-2">Est.Cost(RS.)</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid tender_cost" type="number" id="tender_cost" placeholder="" name="tender_cost" value="{{$data->tender_cost}}" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 @endif
+                                 <!--begin::Col-->
+                                 @if(config('particularAssets.tender_type') == 'true')
+                                    <div class="col-md-3 fv-row">
+                                       <!--begin::Label-->
+                                       <label class="required fs-6 fw-semibold mb-2">Tender Type</label>
+                                       <!--end::Label-->
+                                       <div class="w-100">
+                                       <select class="form-select form-select-solid tender_typeid" name="tender_typeid" id="tender_typeid" data-control="select2" data-placeholder="Select an option">
+                                          <option></option>
+                                          @if(isset($tendertype) && count($tendertype)>0)
+                                             @foreach($tendertype as $tendertypes)
+                                               @if($tendertypes->type_slug == $data->tender_typeid)
+                                                <option value="{{$tendertypes->type_slug}}" selected>{{$tendertypes->type_name_en}}</option>
+                                                @else
+                                                <option value="{{$tendertypes->type_slug}}">{{$tendertypes->type_name_en}}</option>
+                                                @endif
+                                             @endforeach
+                                          @endif
+                                       </select>
+                                    </div>
+                                 </div>
+                                 @endif
+                                 <!--end::Col-->
+                              </div>
+                           </div>
+                           @endif
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                               <!--begin::Label-->
@@ -128,7 +169,7 @@
                                  <!--end::Label-->
                               <!--begin::Input-->
                               <div class="col-md-12">
-                                 <input type="url" name="applyurl" class="form-control mb-2 applyurl" id="applyurl" placeholder="Apply URL.." value="{{$data->apply_url}}" />
+                                 <input type="url" name="applyurl" class="form-control mb-2 applyurl" id="applyurl" placeholder="Apply URL.." value="{{$data->apply_url??''}}" />
                               </div>
                               <!--end::Input-->
                               <!--begin::Description-->
@@ -214,54 +255,54 @@
                                  <!--begin::Form group-->
                                  <div class="form-group">
                                     <div data-repeater-list="kt_tender_add_multiple_options" class="d-flex flex-column gap-3">
-                                       @if(isset($pdfData))
-                                       @foreach($pdfData as $pdfDatas)
-                                       <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
-                                          <!--begin::Input-->
-                                          <div>
-                                             <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
-                                             <label class="required form-label mw-100 w-200px">Pdf Title</label>
-                                             <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
-                                          </div>
-                                          <!-- <div>
-                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
-                                             <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
-                                          </div>
-                                          <div>
-                                             <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
-                                             <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
-                                          </div> -->
-                                          <div>
-                                             <label class="required form-label mw-100 w-200px">PDF Format</label>
-                                             <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
-                                          </div>
-                                          
-                                          <!-- <div>
-                                             <label class="required form-label mw-100 w-200px">Opening Date</label>
-                                             <input class="form-control mw-100 w-200px form-control-solid ps-12 flatpickr-input" name="openingdate" value="{{$pdfDatas->opening_date }}" />
-                                          </div>
-                                          <div>
-                                             <label class="required form-label mw-100 w-200px">Apply URL</label>
-                                             <input type="url" class="form-control mw-100 w-200px" name="applyurl" value="{{$pdfDatas->apply_url }}" />
-                                          </div> -->
-                                          <!--end::Input-->
-                                          <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                             <i class="ki-outline ki-cross fs-1"></i> 
+                                       @if(isset($pdfData) && count($pdfData)>0)
+                                          @foreach($pdfData as $pdfDatas)
+                                          <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
+                                             <!--begin::Input-->
+                                             <div>
+                                                <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
+                                                <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')??''}} Title</label>
+                                                <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
+                                             </div>
+                                             <!-- <div>
+                                                <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
+                                                <input type="date" class="form-control mw-100 w-175px" name="startdate" value="{{$pdfDatas->start_date }}" />
+                                             </div>
+                                             <div>
+                                                <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
+                                                <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
+                                             </div> -->
+                                             <div>
+                                                <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')??''}} Format</label>
+                                                <input type="file" class="form-control mw-100 w-200px @if(env('PDF_MIME') == 'pdf') {{'checkmimepdf'}} @else {{'checkmime'}} @endif" name="pdfname" accept=".pdf" />
+                                             </div>
+                                             
+                                             <!-- <div>
+                                                <label class="required form-label mw-100 w-200px">Opening Date</label>
+                                                <input class="form-control mw-100 w-200px form-control-solid ps-12 flatpickr-input" name="openingdate" value="{{$pdfDatas->opening_date }}" />
+                                             </div>
+                                             <div>
+                                                <label class="required form-label mw-100 w-200px">Apply URL</label>
+                                                <input type="url" class="form-control mw-100 w-200px" name="applyurl" value="{{$pdfDatas->apply_url }}" />
+                                             </div> -->
+                                             <!--end::Input-->
+                                             <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                                <i class="ki-outline ki-cross fs-1"></i> 
+                                             </button>
+                                             <a href="{{ asset('resources/uploads/TenderManagement/'.$pdfDatas->public_url) }}" target="_blank" download>
+                                                <i class="ki-outline ki-file fs-1"></i>
+                                             </a>
+                                          <button type="button" data-id="{{ $pdfDatas->uid }}" class="btn btn-sm btn-icon btn-light-danger delete-single-record" title="Data Delete">
+                                             <i class="ki-outline ki-trash fs-1"></i>
                                           </button>
-                                          <a href="{{ asset('resources/uploads/TenderManagement/'.$pdfDatas->public_url) }}" target="_blank" download>
-                                             <i class="ki-outline ki-file fs-1"></i>
-                                          </a>
-                                        <button type="button" data-id="{{ $pdfDatas->uid }}" class="btn btn-sm btn-icon btn-light-danger delete-single-record" title="Data Delete">
-                                          <i class="ki-outline ki-trash fs-1"></i>
-                                        </button>
-                                          <!--end::Input-->
-                                       </div>
-                                       @endforeach
+                                             <!--end::Input-->
+                                          </div>
+                                          @endforeach
                                        @else
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
                                           <div>
-                                             <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                             <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')}} Title</label>
                                              <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
                                           </div>
                                           <div>
@@ -273,8 +314,8 @@
                                              <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="Tender Description" />
                                           </div>
                                           <div>
-                                             <label class="required form-label mw-100 w-200px">PDF Format</label>
-                                             <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
+                                             <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')}} Format</label>
+                                             <input type="file" class="form-control mw-100 w-200px @if(env('PDF_MIME') == 'pdf') {{'checkmimepdf'}} @else {{'checkmime'}} @endif" name="pdfname" accept=".pdf" />
                                           </div>
                                           <div>
                                              <label class="required form-label mw-100 w-200px">Opening Date</label>

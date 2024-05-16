@@ -47,7 +47,8 @@ Route::get('/photo-gallery',[GalleryController::class,"photoGallery"]);
 Route::get('/video-gallery', [GalleryController::class,"videoGallery"]);
 Route::get('/photo-gallery-details/{id}', [GalleryController::class,"imageCategoryData"]);
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
-Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
+//Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
+Route::get('/{slug1}/{slug2?}/{slug3?}', [HomeController::class, 'getAllPageContent']);
 
 //default behaviour, always keep as last entry
 Route::any('{url}', function(){
