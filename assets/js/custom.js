@@ -688,3 +688,17 @@ $(document).ready(function () {
 setTimeout(function () {
   $("#costumModal8").modal("show");
 }, 1e3)
+
+new DataTable('#rav_datatableForm', {
+  language: {
+      search: 'Search:',
+      lengthMenu: 'Show _MENU_ Entries',
+      info: 'Showing _START_ to _END_ of _TOTAL_ Entries',
+      infoEmpty: 'Showing 0 to 0 of 0 Entries',
+      infoFiltered: '(filtered from _MAX_ total Entries)',
+      infoPostFix: '',
+      loadingRecords: 'Loading...',
+      zeroRecords: 'No matching entries found',
+      emptyTable: 'No data available in table'
+    },
+});
