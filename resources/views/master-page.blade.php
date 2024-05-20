@@ -248,7 +248,7 @@
                                                         </th>
                                                     @endforeach
                                                 @endif
-                                                
+                                                <th></th>
                                             </tr>
                                     </thead>
                                     <tbody>
