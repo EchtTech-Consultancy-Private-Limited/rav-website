@@ -811,43 +811,45 @@ class HomeController extends Controller
                 $dataForm[]=json_decode($formdata->content);
             }
         }
+        $departmentEmployees = '';
+        if($slug2 == 'governing-body'){
+            $designationData = [];
+            $employees = DB::table('employee_directories')
+                ->where('status', 3)
+                ->where('soft_delete', 0)
+                ->orderByRaw('CASE WHEN short_order IS NULL THEN 1 ELSE 0 END, short_order ASC')
+                ->get();
+            if ($employees->isNotEmpty()) {
+                $departmentIds = $employees->pluck('department_id')->unique();
+                $designationIds = $employees->pluck('designation_id')->unique();
+                $departments = DB::table('emp_depart_designations')
+                    ->whereIn('uid', $departmentIds)
+                    ->pluck('name_en', 'uid');
+                $designations = DB::table('emp_depart_designations')
+                    ->whereIn('uid', $designationIds)
+                    ->pluck('name_en','uid'); // Changed from 'parent_id' to 'uid'
+                foreach ($employees as $employee) {
+                    $departmentName = $departments[$employee->department_id] ?? null;
+                    $designationName = $designations[$employee->designation_id] ?? null;
 
-        $designationData = [];
-        $employees = DB::table('employee_directories')
-            ->where('status', 3)
-            ->where('soft_delete', 0)
-            ->orderByRaw('CASE WHEN short_order IS NULL THEN 1 ELSE 0 END, short_order ASC')
-            ->get();
-        if ($employees->isNotEmpty()) {
-            $departmentIds = $employees->pluck('department_id')->unique();
-            $designationIds = $employees->pluck('designation_id')->unique();
-            $departments = DB::table('emp_depart_designations')
-                ->whereIn('uid', $departmentIds)
-                ->pluck('name_en', 'uid');
-            $designations = DB::table('emp_depart_designations')
-                ->whereIn('uid', $designationIds)
-                ->pluck('name_en','uid'); // Changed from 'parent_id' to 'uid'
-            foreach ($employees as $employee) {
-                $departmentName = $departments[$employee->department_id] ?? null;
-                $designationName = $designations[$employee->designation_id] ?? null;
+                    $designationData[] = [
+                        'data' => $employee,
+                        'department' => $departmentName,
+                        'designation' => $designationName,
+                    ];
+                }
+                // Define a custom comparison function for sorting by short_order
+                usort($designationData, function($a, $b) {
+                    $shortOrderA = $a['data']->short_order ?? PHP_INT_MAX;
+                    $shortOrderB = $b['data']->short_order ?? PHP_INT_MAX;
+                    return $shortOrderA <=> $shortOrderB;
+                });
 
-                $designationData[] = [
-                    'data' => $employee,
-                    'department' => $departmentName,
-                    'designation' => $designationName,
-                ];
+                $departmentEmployees = collect($designationData)
+                    ->sortBy(fn($item) => $item['short_order'] ?? PHP_INT_MAX)
+                    ->values()
+                    ->all();
             }
-            // Define a custom comparison function for sorting by short_order
-            usort($designationData, function($a, $b) {
-                $shortOrderA = $a['data']->short_order ?? PHP_INT_MAX;
-                $shortOrderB = $b['data']->short_order ?? PHP_INT_MAX;
-                return $shortOrderA <=> $shortOrderB;
-            });
-
-            $departmentEmployees = collect($designationData)
-                ->sortBy(fn($item) => $item['short_order'] ?? PHP_INT_MAX)
-                ->values()
-                ->all();
         }
 
         $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
