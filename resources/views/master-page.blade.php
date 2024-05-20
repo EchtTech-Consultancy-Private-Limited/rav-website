@@ -256,7 +256,6 @@
                                             @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                                 <tr>
                                                     @foreach($pageData->formDataTableHead as $head)
-                                                    @dd($head);
                                                         <td>
                                                             @if(isset($formbuilderdatas[$head->key]) && $formbuilderdatas[$head->key] !== null && $formbuilderdatas[$head->key] !== '')
                                                                 {{ $formbuilderdatas[$head->key] }}
