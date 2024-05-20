@@ -133,6 +133,77 @@
                                     @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi??'' !!} @else {!! $pageData->pageContents->page_content_en??'' !!} @endif
                                 @endif
                             </p>
+
+                            {{-- employee governing list --}}
+                            @if (isset($departmentEmployees) && $departmentEmployees != '')
+                            @foreach($departmentEmployees as $departmentEmployee)
+                            {{-- @dd($departmentEmployee['data']->short_order); --}}
+                                @if(!is_null($departmentEmployee['data']->short_order))
+                                    <div class="row d-flex justify-content-center">
+                                        <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span>
+                                        </h5>
+                                        <div class="col-md-4">
+                                            <div class="addevent-box top text-center mt-0">
+                                                <a href="javascript:void(0)">
+        
+                                                </a><a href="javascript:void(0)">
+                                                    <div class="profile-img">
+                                                        <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
+                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        loading="lazy" class="img-fluid rounded rounded-4">
+                                                    </div>
+                                                </a>
+        
+                                                <h5 tabindex="0">
+                                                    {{ $departmentEmployee['data']->fname_en }}
+                                                    {{ $departmentEmployee['data']->mname_en }}
+                                                    {{ $departmentEmployee['data']->lname_en }}</h5>
+                                                <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
+                                                <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
+                                                <h6 tabindex="0">
+                                                    
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @endforeach
+                                <div class="row d-flex justify-content-center">
+                                    <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span>
+                                    </h5>
+                                @foreach($departmentEmployees as $departmentEmployee)
+                                @if(is_null($departmentEmployee['data']->short_order))
+                                    
+                                        <div class="col-md-4">
+                                            <div class="addevent-box top text-center mt-0">
+                                                <a href="javascript:void(0)">
+        
+                                                </a><a href="javascript:void(0)">
+                                                    <div class="profile-img">
+                                                        <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
+                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        loading="lazy" class="img-fluid rounded rounded-4">
+                                                    </div>
+                                                </a>
+        
+                                                <h5 tabindex="0">
+                                                    {{ $departmentEmployee['data']->fname_en }}
+                                                    {{ $departmentEmployee['data']->mname_en }}
+                                                    {{ $departmentEmployee['data']->lname_en }}</h5>
+                                                <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
+                                                <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
+                                                <h6 tabindex="0">
+                                                    
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+	                        @endif
+                            {{-- END employee governing list --}}
                             @if(isset($pageData->pagePdfs) && count($pageData->pagePdfs)>0)
                             <table class="dataTable d-table" id="DataTables_Table_0"
                                 aria-describedby="DataTables_Table_0_info" style="display: block;">
