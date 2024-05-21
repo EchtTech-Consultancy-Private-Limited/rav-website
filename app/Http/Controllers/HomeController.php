@@ -873,7 +873,7 @@ class HomeController extends Controller
                         ->where('emp.soft_delete', 0)
                         ->first();
         }
-       // dd($honourableministerofstate);
+        //dd($dataForm);
 
         $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
         $data = new \stdClass;

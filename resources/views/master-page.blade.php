@@ -196,7 +196,7 @@
                                             <tr>
                                                 @foreach($formbuilderdatas as $key=>$value)
                                                 @if($key !=null && $key !='')
-                                                <td>{{$value}}</td>
+                                                <td>{{ $value ??''}}</td>
                                                 @endif
                                                 @endforeach
                                             </tr>
@@ -306,12 +306,12 @@
                                         </div>
                                     </a>
                                 </div>
-                                <h3 class="text-capitalize">{{ $honourablecabinetminister->name_en }} </h3>
+                                <h3 class="text-capitalize">@if(Session::get('locale') == 'hi') {{ $honourablecabinetminister->name_hi }} @else {{ $honourablecabinetminister->name_en }} @endif </h3>
                                 <p class="cabinate-minister">
                                     Union Cabinet Minister, Ministry of Ayush &amp; Ministry of Ports, Shipping and Waterways
                                 </p>
                                 <div>
-                                   {!! $honourablecabinetminister->description_en !!}
+                                @if(Session::get('locale') == 'hi') {!! $honourablecabinetminister->description_hi !!} @else {!! $honourablecabinetminister->description_en !!} @endif
                                 </div>
                             </div>
                             @endif
