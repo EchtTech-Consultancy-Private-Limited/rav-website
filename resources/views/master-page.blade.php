@@ -254,15 +254,13 @@
                                     <tbody>
                                     @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata) > 0)
                                             @foreach($pageData->formbuilderdata as $formbuilderdatas)
-                                                <tr>
-                                                    @foreach($pageData->formDataTableHead as $head)
-                                                        <td>
-                                                            @if(isset($formbuilderdatas[$head->key]) && $formbuilderdatas[$head->key] !== null && $formbuilderdatas[$head->key] !== '')
-                                                                {{ $formbuilderdatas[$head->key] }}
-                                                            @endif
-                                                        </td>
-                                                    @endforeach
-                                                </tr>
+                                            <tr>
+                                                @foreach($formbuilderdatas as $key=>$value)
+                                                    @if($key !=null && $key !='')
+                                                    <td>{{$value}}</td>
+                                                    @endif
+                                                @endforeach
+                                            </tr>
                                             @endforeach
                                         @endif
                                     </tbody>
