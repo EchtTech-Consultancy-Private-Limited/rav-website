@@ -222,13 +222,13 @@
                                             <tr>
                                                 <td class="text-center">{{$key+1}}</td>
                                                 <td>{{$pdfdata->pdf_title}}</td>
+                                                <td class="text-center">{{\Carbon\Carbon::parse($pdfdata->start_date)->format('d-M-Y')}}</td>
                                                 <td class="views-field views-field-field-amount-rs- download" data-label="
                                                 Request Doc">
                                                 <a href="{{ asset('resources/uploads/PageContentPdf/'.$pdfdata->public_url) }}" download="" tabindex="0" target="_blank">
                                                     Download
                                                 </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i>  <span class="size">({{$pdfdata->pdfimage_size}})</span>
                                                 </td>
-                                                <td class="text-center">{{\Carbon\Carbon::parse($pdfdata->start_date)->format('d-M-Y')}}</td>
                                             </tr>
                                         @endforeach
                                     @endif
