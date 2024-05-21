@@ -123,184 +123,236 @@
                         </ul>
                     </div>
                     @if(isset($pageData->metaDatas) && $pageData->metaDatas !='' || $pageData->metaDatas != null || isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
-                    <div class="col-md-8 col-lg-8">
-                        <div class="about">
-                            <h2 class="subheading">
-                            @if(Session::get('locale') == 'hi') {{ $pageData->metaDatas->page_title_hi??'' }} @else {{ $pageData->metaDatas->page_title_en??'' }} @endif
-                            </h2>
-                            <p>
-                                @if(isset($pageData->pageContents))
-                                    @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi??'' !!} @else {!! $pageData->pageContents->page_content_en??'' !!} @endif
-                                @endif
-                            </p>
+                        <div class="col-md-8 col-lg-8">
+                            <div class="about">
+                                <h2 class="subheading">
+                                    @if(Session::get('locale') == 'hi') {{ $pageData->metaDatas->page_title_hi??'' }} @else
+                                    {{ $pageData->metaDatas->page_title_en??'' }} @endif
+                                </h2>
+                                <p>
+                                    @if(isset($pageData->pageContents))
+                                    @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi??'' !!}
+                                    @else {!! $pageData->pageContents->page_content_en??'' !!} @endif
+                                    @endif
+                                </p>
 
-                            {{-- employee governing list --}}
-                            @if (isset($departmentEmployees) && $departmentEmployees != '')
-                            @foreach($departmentEmployees as $departmentEmployee)
-                            {{-- @dd($departmentEmployee['data']->short_order); --}}
-                                @if(!is_null($departmentEmployee['data']->short_order))
-                                    <div class="row d-flex justify-content-center">
-                                        <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span>
-                                        </h5>
-                                        <div class="col-md-4">
-                                            <div class="addevent-box top text-center mt-0">
-                                                <a href="javascript:void(0)">
-        
-                                                </a><a href="javascript:void(0)">
-                                                    <div class="profile-img">
-                                                        <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
-                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        loading="lazy" class="img-fluid rounded rounded-4">
-                                                    </div>
-                                                </a>
-        
-                                                <h5 tabindex="0">
-                                                    {{ $departmentEmployee['data']->fname_en }}
-                                                    {{ $departmentEmployee['data']->mname_en }}
-                                                    {{ $departmentEmployee['data']->lname_en }}</h5>
-                                                <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
-                                                <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
-                                                <h6 tabindex="0">
-                                                    
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                @endforeach
-                                <div class="row d-flex justify-content-center">
-                                    <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span>
-                                    </h5>
-                                @foreach($departmentEmployees as $departmentEmployee)
-                                @if(is_null($departmentEmployee['data']->short_order))
-                                    
-                                        <div class="col-md-4">
-                                            <div class="addevent-box top text-center mt-0">
-                                                <a href="javascript:void(0)">
-        
-                                                </a><a href="javascript:void(0)">
-                                                    <div class="profile-img">
-                                                        <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
-                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        loading="lazy" class="img-fluid rounded rounded-4">
-                                                    </div>
-                                                </a>
-        
-                                                <h5 tabindex="0">
-                                                    {{ $departmentEmployee['data']->fname_en }}
-                                                    {{ $departmentEmployee['data']->mname_en }}
-                                                    {{ $departmentEmployee['data']->lname_en }}</h5>
-                                                <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
-                                                <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
-                                                <h6 tabindex="0">
-                                                    
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-	                        @endif
-                            {{-- END employee governing list --}}
-                            @if(isset($pageData->pagePdfs) && count($pageData->pagePdfs)>0)
-                            <table class="dataTable d-table" id="DataTables_Table_0"
-                                aria-describedby="DataTables_Table_0_info" style="display: block;">
-                                <thead>
-                                    <tr>
-                                    @if(isset($pageData->pagePdfs[0]->table_head) && $pageData->pagePdfs[0]->table_head !=0)
-                                       @foreach(json_decode($pageData->pagePdfs[0]->table_head) as $head)
-                                          <th>{{$head->tablehead}}</th>
-                                       @endforeach
-                                    @endif
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if(isset($pageData->pagePdfs) && count($pageData->pagePdfs)>0)
-                                        @foreach($pageData->pagePdfs as $key=>$pdfdata)
-                                            <tr>
-                                                <td class="text-center">{{$key+1}}</td>
-                                                <td>{{$pdfdata->pdf_title}}</td>
-                                                <td class="text-center">{{\Carbon\Carbon::parse($pdfdata->start_date)->format('d-M-Y')}}</td>
-                                                <td class="views-field views-field-field-amount-rs- download" data-label="
-                                                Request Doc">
-                                                <a href="{{ asset('resources/uploads/PageContentPdf/'.$pdfdata->public_url) }}" download="" tabindex="0" target="_blank">
-                                                    Download
-                                                </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i>  <span class="size">({{$pdfdata->pdfimage_size}})</span>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
-                            </table>
-                            @endif
-
-                            @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
-                                <div class="">
-                                    <table id="" class="dataTable display common-table d-block table-responsive" style="width:100%">
+                                
+                                @if(isset($pageData->pagePdfs) && count($pageData->pagePdfs)>0)
+                                <table class="dataTable d-table" id="DataTables_Table_0"
+                                    aria-describedby="DataTables_Table_0_info" style="display: block;">
                                     <thead>
+                                        <tr>
+                                            @if(isset($pageData->pagePdfs[0]->table_head) &&
+                                            $pageData->pagePdfs[0]->table_head !=0)
+                                            @foreach(json_decode($pageData->pagePdfs[0]->table_head) as $head)
+                                            <th>{{$head->tablehead}}</th>
+                                            @endforeach
+                                            @endif
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if(isset($pageData->pagePdfs) && count($pageData->pagePdfs)>0)
+                                        @foreach($pageData->pagePdfs as $key=>$pdfdata)
+                                        <tr>
+                                            <td class="text-center">{{$key+1}}</td>
+                                            <td>{{$pdfdata->pdf_title}}</td>
+                                            <td class="text-center">
+                                                {{\Carbon\Carbon::parse($pdfdata->start_date)->format('d-M-Y')}}</td>
+                                            <td class="views-field views-field-field-amount-rs- download" data-label="
+                                                    Request Doc">
+                                                <a href="{{ asset('resources/uploads/PageContentPdf/'.$pdfdata->public_url) }}"
+                                                    download="" tabindex="0" target="_blank">
+                                                    Download
+                                                </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i> <span
+                                                    class="size">({{$pdfdata->pdfimage_size}})</span>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>
+                                @endif
+
+                                @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
+                                <div class="">
+                                    <table id="" class="dataTable display common-table d-block table-responsive"
+                                        style="width:100%">
+                                        <thead>
                                             <tr>
-                                                @if(isset($pageData->formDataTableHead) && count($pageData->formDataTableHead)>0)
-                                                    @foreach($pageData->formDataTableHead as $head)
-                                                        <th>
-                                                            {{  $head->label }}
-                                                        </th>
-                                                    @endforeach
+                                                @if(isset($pageData->formDataTableHead) &&
+                                                count($pageData->formDataTableHead)>0)
+                                                @foreach($pageData->formDataTableHead as $head)
+                                                <th>
+                                                    {{  $head->label }}
+                                                </th>
+                                                @endforeach
                                                 @endif
                                                 <th></th>
                                             </tr>
-                                    </thead>
-                                    <tbody>
-                                    @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata) > 0)
+                                        </thead>
+                                        <tbody>
+                                            @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata) > 0)
                                             @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                             <tr>
                                                 @foreach($formbuilderdatas as $key=>$value)
-                                                    @if($key !=null && $key !='')
-                                                    <td>{{$value}}</td>
-                                                    @endif
+                                                @if($key !=null && $key !='')
+                                                <td>{{$value}}</td>
+                                                @endif
                                                 @endforeach
                                             </tr>
                                             @endforeach
-                                        @endif
-                                    </tbody>
+                                            @endif
+                                        </tbody>
                                     </table>
                                 </div>
+                                @endif
+                            </div>
+                            @if(isset($pageData->pageGallerys) && count($pageData->pageGallerys)>0)
+                            <div class="about rs-blog main-home master">
+                                <h1>@if(Session::get('locale') == 'hi') {{ 'फोटो गैलरी' }} @else {{ 'Photo Gallery' }}
+                                    @endif</h1>
+                                <div class="row">
+                                    @foreach($pageData->pageGallerys as $key=>$pageGallery)
+                                    <div class="col-md-4">
+                                        <div class="blog-item">
+                                            <a href="https://www.ravdelhi.nic.in/photo-gallery-details/19fa693d-2dec-4282-ad87-e798f0dc4633"
+                                                title="Rashtriya Ayurveda Vidyapeeth" tabindex="0">
+                                                <div class="image-part">
+                                                    <img src="{{ asset('resources/uploads/PageContentGallery/'.$pageGallery->public_url) }}"
+                                                        alt="{{ $pageGallery->image_title??'' }}">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
                             @endif
-                        </div>
-                        @if(isset($pageData->pageGallerys) && count($pageData->pageGallerys)>0)
-                        <div class="about rs-blog main-home master">
-                            <h1>@if(Session::get('locale') == 'hi') {{ 'फोटो गैलरी' }} @else {{ 'Photo Gallery' }} @endif</h1>
-                            <div class="row">
-                            @foreach($pageData->pageGallerys as $key=>$pageGallery)
-                                <div class="col-md-4">
-                                    <div class="blog-item">
-                                        <a href="https://www.ravdelhi.nic.in/photo-gallery-details/19fa693d-2dec-4282-ad87-e798f0dc4633"
-                                            title="Rashtriya Ayurveda Vidyapeeth" tabindex="0">
-                                            <div class="image-part">
-                                                <img src="{{ asset('resources/uploads/PageContentGallery/'.$pageGallery->public_url) }}" alt="{{ $pageGallery->image_title??'' }}">
-                                            </div>
-                                        </a>
+                            {{--Start Governing Body --}}
+                            <div class="about">
+                                @if (isset($departmentEmployees) && $departmentEmployees != '')
+                                @foreach($departmentEmployees as $departmentEmployee)
+                                {{-- @dd($departmentEmployee['data']->short_order); --}}
+                                @if(!is_null($departmentEmployee['data']->short_order))
+                                <div class="row d-flex justify-content-center">
+                                    <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span>
+                                    </h5>
+                                    <div class="col-md-4">
+                                        <div class="addevent-box top text-center mt-0">
+                                            <a href="javascript:void(0)">
+
+                                            </a><a href="javascript:void(0)">
+                                                <div class="profile-img">
+                                                    <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
+                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        loading="lazy" class="img-fluid rounded rounded-4">
+                                                </div>
+                                            </a>
+
+                                            <h5 tabindex="0">
+                                                {{ $departmentEmployee['data']->fname_en }}
+                                                {{ $departmentEmployee['data']->mname_en }}
+                                                {{ $departmentEmployee['data']->lname_en }}</h5>
+                                            <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
+                                            <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
+                                            <h6 tabindex="0">
+
+                                            </h6>
+                                        </div>
                                     </div>
                                 </div>
-                            @endforeach
+                                @endif
+                                @endforeach
+                                <div class="row d-flex justify-content-center">
+                                    <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span></h5>
+                                    @foreach($departmentEmployees as $departmentEmployee)
+                                    @if(is_null($departmentEmployee['data']->short_order))
+                                    <div class="col-md-4">
+                                        <div class="addevent-box top text-center mt-0">
+                                            <a href="javascript:void(0)"></a>
+                                            <a href="javascript:void(0)">
+                                                <div class="profile-img">
+                                                    <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
+                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                        loading="lazy" class="img-fluid rounded rounded-4">
+                                                </div>
+                                            </a>
+                                            <h5 tabindex="0">
+                                                {{ $departmentEmployee['data']->fname_en }}
+                                                {{ $departmentEmployee['data']->mname_en }}
+                                                {{ $departmentEmployee['data']->lname_en }}</h5>
+                                                <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
+                                                <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
+                                                <h6 tabindex="0">
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                </div>
+                                @endif
                             </div>
+                            {{--End Governing Body --}}
+                            {{--Start Hon'ble Cabinet Minister --}}
+                            @if(isset($honourablecabinetminister) && $honourablecabinetminister !='')
+                            <div class="about">
+                                <div class="message-tab-img">
+                                    <a href="#" class="video-wrap">
+                                        <div class="video-img common-video-img">
+                                            <img src="{{ asset('resources/uploads/empDirectory/'.$honourablecabinetminister->public_url) }}"
+                                                alt="{{ $honourablecabinetminister->name_en }}" title="{{ $honourablecabinetminister->name_en }}" loading="lazy" class="img-fluid rounded rounded-4">
+                                        </div>
+                                    </a>
+                                </div>
+                                <h3 class="text-capitalize">{{ $honourablecabinetminister->name_en }} </h3>
+                                <p class="cabinate-minister">
+                                    Union Cabinet Minister, Ministry of Ayush &amp; Ministry of Ports, Shipping and Waterways
+                                </p>
+                                <div>
+                                   {!! $honourablecabinetminister->description_en !!}
+                                </div>
+                            </div>
+                            @endif
+                            {{-- End Hon'ble Cabinet Minister --}}
+
+                            {{--Start Hon'ble Minister of State --}}
+                            @if(isset($honourableministerofstate) && $honourableministerofstate !='')
+                            <div class="about">
+                                <div class="message-tab-img">
+                                    <a href="#" class="video-wrap">
+                                        <div class="video-img common-video-img">
+                                            <img src="{{ asset('resources/uploads/empDirectory/'.$honourableministerofstate->public_url) }}"
+                                                alt="{{ $honourableministerofstate->name_en }}" title="{{ $honourableministerofstate->name_en }}" loading="lazy"
+                                                class="img-fluid rounded rounded-4">
+                                        </div>
+                                    </a>
+                                </div>
+                                <h3 class="text-capitalize">@if(Session::get('locale') == 'hi') {{ $honourableministerofstate->name_hi }} @else {{ $honourableministerofstate->name_en }} @endif</h3>
+                                <p class="cabinate-minister">
+                                    Union Cabinet Minister, Ministry of Ayush &amp; Ministry of Ports, Shipping and Waterways
+                                </p>
+                                <div>
+                                    @if(Session::get('locale') == 'hi') {!! $honourableministerofstate->description_hi !!} @else {!! $honourableministerofstate->description_en !!} @endif
+                                </div>
+                            </div>
+                            @endif
+                            {{-- End Hon'ble Minister of State --}}
                         </div>
-                        @endif
-                    </div>
                     @else
                     <div class="col-md-8 col-lg-8">
                         <div class="about">
                             <h3 class="heading-red">
-                                @if(Session::get('locale') == 'hi') {{ 'जल्द ही आ रहा हूँ' }} @else {{ 'Coming Soon' }} @endif
+                                @if(Session::get('locale') == 'hi') {{ 'जल्द ही आ रहा हूँ' }} @else {{ 'Coming Soon' }}@endif
                             </h3>
                             <p class="desc-black">
                                 @if(Session::get('locale') == 'hi') {{ 'जल्द ही आ रहा हूँ' }} @else {{ 'Coming Soon' }} @endif
                             </p>
                         </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
     @endsection

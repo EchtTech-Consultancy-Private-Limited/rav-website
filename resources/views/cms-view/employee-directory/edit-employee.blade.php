@@ -196,7 +196,6 @@
                                         <!--end::Label-->
                                         <div class="min-h-200px mb-2 summernote kt_summernote_hi" id="kt_summernote_hi">{!! $data->description_hi !!}</div>
                                         <!--begin::Input-->
-                                        <!-- <textarea class="form-control mb-2 description_h" type="text" placeholder="" name="description_h">{!! $data->description_hi !!}</textarea> -->
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Col-->
