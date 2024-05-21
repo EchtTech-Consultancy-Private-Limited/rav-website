@@ -64,276 +64,66 @@
     <div class="container-fluid">
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav">
-                <li class="nav-item " tabindex="0">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
-                        href="{{ url('/') }}" tabindex="-1">
-                        <i class="fa fa-home" aria-hidden="true"></i>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}">
+                        <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 22" width="25"
+                            height="22">
+                            <g><path d="m24.5 10.1l-11.2-9.8q-0.2-0.1-0.4-0.2-0.3-0.1-0.5-0.1-0.3 0-0.5 0.1-0.3 0.1-0.5 0.2l-11.1 9.8c-0.5 0.5-0.4 0.9 0.3 0.9h3.5v10q0 0.2 0 0.4 0.1 0.2 0.3 0.3 0.1 0.1 0.3 0.2 0.2 0.1 0.4 0.1h4.2v-6.6q0-0.2 0-0.4 0.1-0.2 0.3-0.3 0.1-0.2 0.3-0.2 0.2-0.1 0.4-0.1h4.2q0.2 0 0.4 0.1 0.2 0 0.3 0.2 0.2 0.1 0.2 0.3 0.1 0.2 0.1 0.4v6.6h4.2q0.2 0 0.4-0.1 0.2-0.1 0.3-0.2 0.2-0.1 0.2-0.3 0.1-0.2 0.1-0.4v-10h3.4c0.7 0 0.9-0.4 0.4-0.9z" />
+                            </g>
+                        </svg>
                     </a>
                 </li>
-                @if (isset($headerMenu) && count($headerMenu) > 0)
-                    {{-- @dd($headerMenu) --}}
-                    @foreach ($headerMenu as $headerMenus)
-                        @php
-                            $url = $headerMenus->url ?? 'javascript:void(0)';
-                        @endphp
-                        @if (isset($headerMenus->children) && count($headerMenus->children) > 0)
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link an-hove {{ request()->is($url . '*') ||
-                                (request()->is('m-pharma') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('m-d') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('p-g') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('ph-d') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('delhi') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('goa') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('gujarat') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('himachal-pradesh') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('karnataka') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('kerala') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('madhya-pradesh') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('chhattisgarh') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('maharashtra') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('odisha') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('punjab') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rajasthan') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('uttar-pradesh') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('uttarakhand') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-1951-to-1960') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-1961-to-1970') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-1971-to-1980') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-1981-to-1990') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-1991-to-2000') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-2001-to-2005') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-2006-to-2010') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-2011-to-2015') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-2016-to-2020') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका') ||
-                                (request()->is('rsbk-directory-from-2021-to-2023') &&
-                                    $headerMenus->name_en == 'RSBK E-Directory' &&
-                                    $headerMenus->name_hi == 'आरएसबीके ई-निर्देशिका')
-                                    ? 'active'
-                                    : '' }}"
-                                    href="javascript:void(0)" aria-expanded="false" tabindex = "-1">
-                                    @if (Session::get('locale') == 'hi')
-                                        {{ $headerMenus->name_hi ?? '' }}
-                                    @else
-                                        {{ $headerMenus->name_en ?? '' }}
-                                    @endif
-                                    <img src="{{ asset('/assets/images/arrow-down.png') }}" alt="arrow"
-                                        class="img-fluid">
-                                </a>
-                                <ul class="dropdown-menu" tabindex = "0">
-                                    @if (isset($headerMenus->children) && count($headerMenus->children) > 0)
-                                        @foreach ($headerMenus->children as $subMenus)
-                                            @php
-                                                $subMenusurl = $subMenus->url ?? 'javascript:void(0)';
-                                            @endphp
-
-                                            @if (isset($subMenus->children) && count($subMenus->children) > 0)
-                                                @if ($subMenus->tab_type == 1)
-                                                    <li class="env">
-                                                        <a href="javascript:void(0)"
-                                                            onclick="return confirm('{{ $alertMessage }}')"
-                                                            target="_blank">
-                                                            @if (Session::get('locale') == 'hi')
-                                                                {{ $subMenus->name_hi ?? '' }}
-                                                            @else
-                                                                {{ $subMenus->name_en ?? '' }}
-                                                            @endif
-                                                        </a>
-                                                    @else
-                                                    <li class="dropdown nav-item menu-subdropdown">
-                                                        <a href="javascript:void();" class="dropdown-item">
-                                                            @if (Session::get('locale') == 'hi')
-                                                                {{ $subMenus->name_hi ?? '' }}
-                                                            @else
-                                                                {{ $subMenus->name_en ?? '' }}
-                                                            @endif
-                                                        </a>
-                                                @endif
-                                                <ul class="submenu dropdown-menu">
-                                                    @foreach ($subMenus->children as $ChildMenus)
-                                                        @php
-                                                            $ChildMenusurl = $ChildMenus->url ?? 'javascript:void(0)';
-                                                            $ChildMenusurlfixed =
-                                                                $ChildMenus->footer_url ?? 'javascript:void(0)';
-                                                        @endphp
-
-                                                        @if (isset($ChildMenus->children) && count($ChildMenus->children) > 0)
-                                                            @if ($ChildMenus->tab_type == 1)
-                                                                <li class="env sub-menu-drop-g">
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ url($ChildMenusurlfixed) }}"
-                                                                        onclick="return confirm('{{ $alertMessage }}')"
-                                                                        target="_blank">
-                                                                        @if (Session::get('locale') == 'hi')
-                                                                            {{ $ChildMenus->name_hi ?? '' }}
-                                                                        @else
-                                                                            {{ $ChildMenus->name_en ?? '' }}
-                                                                        @endif
-                                                                    </a>
-                                                                @else
-                                                                <li class="env sub-menu-drop-g">
-                                                                    <a href="{{ url($ChildMenusurlfixed) }}"
-                                                                        class="sub-menu-drop-f dropdown-item">
-                                                                        @if (Session::get('locale') == 'hi')
-                                                                            {{ $ChildMenus->name_hi ?? '' }}
-                                                                        @else
-                                                                            {{ $ChildMenus->name_en ?? '' }}
-                                                                        @endif
-                                                                    </a>
-                                                            @endif
-                            </li>
-                        @else
-                            @if ($ChildMenus->tab_type == 1)
-                                <li>
-                                    <a class="dropdown-item" onclick="return confirm('{{ $alertMessage }}')"
-                                        target="_blank" href="{{ $ChildMenusurl ?? '' }}">
-                                        @if (Session::get('locale') == 'hi')
-                                            {{ $ChildMenus->name_hi ?? '' }}
-                                        @else
-                                            {{ $ChildMenus->name_en ?? '' }}
-                                        @endif
-                                    </a>
-                                </li>
-                            @else
-                                <li>
-                                    <a class="dropdown-item"
-                                        href="{{ url($url . '/' . $subMenusurl . '/' . $ChildMenusurl) ?? '' }}">
-                                        @if (Session::get('locale') == 'hi')
-                                            {{ $ChildMenus->name_hi ?? '' }}
-                                        @else
-                                            {{ $ChildMenus->name_en ?? '' }}
-                                        @endif
-                                    </a>
-                                </li>
+            @if(isset($headerMenu) && count($headerMenu)>0)
+                @foreach($headerMenu as $firstmenu)
+                @php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
+                    <li class="nav-item dropdown">
+                        <a class="nav-link"
+                            href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url); } @endphp" 
+                            target="@php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                            onclick="@php if($firstmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
+                            aria-expanded="false">
+                            @if(Session::get('locale') == 'hi')  {{ $firstmenu->name_hi }} @else {{ $firstmenu->name_en }} @endif
+                            @if(isset($firstmenu->children) && count($firstmenu->children)>0)
+                                <img src="{{ asset('/assets/images/arrow-down.png') }}" alt="arrow" class="img-fluid" />
                             @endif
-                        @endif
-                    @endforeach
-            </ul>
-            </li>
-        @else
-            @if ($subMenus->tab_type == 1)
-                <li>
-                    <a onclick="return confirm('{{ $alertMessage }}')" target="_blank"
-                        href="{{ $subMenusurl ?? '' }}">
-                        @if (Session::get('locale') == 'hi')
-                            {{ $subMenus->name_hi ?? '' }}
-                        @else
-                            {{ $subMenus->name_en ?? '' }}
-                        @endif
-                    </a>
-                </li>
-            @else
-                <li><a class="dropdown-item"
-                        href="@if ($subMenus->name_en == 'RSBK Directory Qualification Wise') {{ url('m-pharma') }}
-                                                    @elseif($subMenus->name_en == 'RSBK Directory State Wise')
-                                                    {{ url('delhi') }}
-                                                    @elseif($subMenus->name_en =='RSBK Directory Year Wise')
-                                                    {{ url('rsbk-directory-from-1951-to-1960') }}
-                                                    @else
-                                                        {{ url($url . '/' . $subMenusurl) }} @endif">
-                        @if (Session::get('locale') == 'hi')
-                            {{ $subMenus->name_hi ?? '' }}
-                        @else
-                            {{ $subMenus->name_en ?? '' }}
-                        @endif
-                    </a>
-                </li>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @if(isset($firstmenu->children) && count($firstmenu->children)>0)
+                                @foreach($firstmenu->children as $secondmenu)
+                                    <li><a class="dropdown-item"
+                                        href="@php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'javascript:void(0)'; }else{  if(isset($secondmenu->tab_type) && $secondmenu->tab_type ==1){echo $secondmenu->url; }else{ echo url($firstmenu->url.'/'.$secondmenu->url); }	} @endphp"
+                                        target="@php if($secondmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                        onclick="@php if($secondmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
+                                        >
+                                        @if(Session::get('locale') == 'hi')  {{ $secondmenu->name_hi }} @else {{ $secondmenu->name_en }} @endif
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                       @if(isset($secondmenu->children) && count($secondmenu->children)>0)
+                                          @foreach($secondmenu->children as $thirdmenu)
+                                             <li><a class="dropdown-item"
+                                             href="
+                                             @php if(isset($thirdmenu->children) && count($thirdmenu->children)>0){ echo 'javascript:void(0)'; }else{  if(isset($thirdmenu->tab_type) && $thirdmenu->tab_type ==1){echo $thirdmenu->url; }else{ echo url($firstmenu->url.'/'.$secondmenu->url.'/'.$thirdmenu->url); }	} @endphp"
+                                             target="@php if($thirdmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                             onclick="@php if($thirdmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
+                                             >
+                                                @if(Session::get('locale') == 'hi')  {{ $thirdmenu->name_hi }} @else {{ $thirdmenu->name_en }} @endif
+                                             </a></li>
+                                          @endforeach
+                                       @endif
+                                    </ul>
+                                </li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </li>
+                @endforeach
             @endif
-            @endif
-            @endforeach
-        @else
-            <h5>No menu available.</h5>
-            @endif
-            </ul>
-            </li>
-        @else
-            <li class="nav-item " tabindex= "0">
-                @if ($headerMenus->tab_type == 1)
-                    <a class="nav-link an-hove" onclick="return confirm('{{ $alertMessage }}')" target="_blank"
-                        href="{{ url($url) ?? '' }}" aria-expanded="false" tabindex= "-1">
-                        @if (Session::get('locale') == 'hi')
-                            {{ $headerMenus->name_hi ?? '' }}
-                        @else
-                            {{ $headerMenus->name_en ?? '' }}
-                        @endif
-                    </a>
-                @else
-                    <a class="nav-link an-hove {{ request()->is($url . '*') ? 'active' : '' }}"
-                        href="{{ url($url) ?? '' }}" aria-expanded="false">
-                        @if (Session::get('locale') == 'hi')
-                            {{ $headerMenus->name_hi ?? '' }}
-                        @else
-                            {{ $headerMenus->name_en ?? '' }}
-                        @endif
-                    </a>
-                @endif
-            </li>
-            @endif
-            @endforeach
-        @else
-            <h5>No menu available.</h5>
-            @endif
-
-            @if (isset($toogleMenu) && count($toogleMenu) > 0)
+                @if (isset($toogleMenu) && count($toogleMenu) > 0)
                 <button class="btn side-mn-icn" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <i class="fa fa-bars fa-bars-m" aria-hidden="true"></i>
                 </button>
-            @endif
+                @endif
             </ul>
         </div>
     </div>

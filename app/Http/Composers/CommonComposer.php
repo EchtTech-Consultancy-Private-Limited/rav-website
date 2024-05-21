@@ -179,7 +179,7 @@ class CommonComposer
                 }
 
 
-            // dd($gyanGanga);
+            //dd($menuName);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu,
              'banner' => $banner, 'news_management' => $news_management,

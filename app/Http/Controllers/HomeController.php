@@ -812,7 +812,7 @@ class HomeController extends Controller
             }
         }
         $departmentEmployees = '';
-        if($slug2 == 'governing-body'){
+        if($slug == 'governing-body'){
             $designationData = [];
             $employees = DB::table('employee_directories')
                 ->where('status', 3)
@@ -851,6 +851,29 @@ class HomeController extends Controller
                     ->all();
             }
         }
+        if($slug == 'honourable-cabinet-minister'){
+            $honourablecabinetminister = DB::table('employee_directories as emp')
+                        ->select('emp.*','deprt.name_en as desi_name_en','deprt.name_hi as desi_name_hi',
+                            DB::raw("CONCAT(emp.fname_en, ' ',CASE WHEN emp.mname_en IS NOT NULL THEN emp.mname_en ELSE '' END, ' ', emp.lname_en) as name_en"),
+                            DB::raw("CONCAT(emp.fname_hi, ' ',CASE WHEN emp.mname_hi IS NOT NULL THEN emp.mname_hi ELSE '' END, ' ', emp.lname_hi) as name_hi"))
+                        ->leftjoin('emp_depart_designations as deprt','emp.designation_id','=','deprt.uid')
+                        ->where('deprt.uid', '46d1e4ec-209f-4410-9bf0-1bd676253853')
+                        ->where('emp.status', 3)
+                        ->where('emp.soft_delete', 0)
+                        ->first();
+        }
+        if($slug == 'honourable-minister-of-state'){
+            $honourableministerofstate = DB::table('employee_directories as emp')
+                        ->select('emp.*','deprt.name_en as desi_name_en','deprt.name_hi as desi_name_hi',
+                            DB::raw("CONCAT(emp.fname_en, ' ',CASE WHEN emp.mname_en IS NOT NULL THEN emp.mname_en ELSE '' END, ' ', emp.lname_en) as name_en"),
+                            DB::raw("CONCAT(emp.fname_hi, ' ',CASE WHEN emp.mname_hi IS NOT NULL THEN emp.mname_hi ELSE '' END, ' ', emp.lname_hi) as name_hi"))
+                        ->leftjoin('emp_depart_designations as deprt','emp.designation_id','=','deprt.uid')
+                        ->where('deprt.uid', '3943e904-7730-4774-a2a2-e1b6cacb85f3')
+                        ->where('emp.status', 3)
+                        ->where('emp.soft_delete', 0)
+                        ->first();
+        }
+        //dd($dataForm);
 
         $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
         $data = new \stdClass;
@@ -875,7 +898,9 @@ class HomeController extends Controller
                     'breadcum2' => $breadcums2,
                     'breadcum3' => $breadcums3,
                     'quickLink'=>$quickLink,
-                    'departmentEmployees' => $departmentEmployees
+                    'departmentEmployees' => $departmentEmployees??'',
+                    'honourablecabinetminister'=>$honourablecabinetminister??'',
+                    'honourableministerofstate'=>$honourableministerofstate??''
                 ]);
     }
     /** End 15-05-1024 */
