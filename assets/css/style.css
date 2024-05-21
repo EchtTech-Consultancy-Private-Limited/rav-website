@@ -2070,6 +2070,8 @@ table th {
   display: block;
   max-height: 100vh;
   scrollbar-width: thin;
+  table-layout: auto !important;
+  display: table !important;
 }
 
 .master table td {
@@ -4731,16 +4733,3 @@ div#customPreviousBtn5, div#customNextBtn5 {
 .poshakAhaar .card p {
   text-transform: capitalize;
 }/*# sourceMappingURL=style.css.map */
-
-.modal-body img {
-  width: 100%;
-}
-
-div#costumModal8 button.close{position:absolute;right:-18px;top:-18px;height:35px;width:35px;opacity:1;color:#fff;background:var(--secondary-color);border-radius:100%;text-align:center}
-.rs-blog.main-home.master .blog-item .image-part img {
-  height: 250px;
-  width: 100%;
-  padding: 0;
-  border-radius: 0;
-  object-fit: cover;
-}

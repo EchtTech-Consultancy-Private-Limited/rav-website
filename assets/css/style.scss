@@ -2125,6 +2125,8 @@ table th {
     display: block;
     max-height: 100vh;
     scrollbar-width: thin;
+    table-layout: auto !important;
+    display: table !important;
 }
 .master table td {
     border: 1px solid #ddd;
