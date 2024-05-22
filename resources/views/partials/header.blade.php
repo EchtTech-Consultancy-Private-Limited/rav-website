@@ -64,20 +64,17 @@
     <div class="container-fluid">
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}">
-                        <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 22" width="25"
-                            height="22">
-                            <g><path d="m24.5 10.1l-11.2-9.8q-0.2-0.1-0.4-0.2-0.3-0.1-0.5-0.1-0.3 0-0.5 0.1-0.3 0.1-0.5 0.2l-11.1 9.8c-0.5 0.5-0.4 0.9 0.3 0.9h3.5v10q0 0.2 0 0.4 0.1 0.2 0.3 0.3 0.1 0.1 0.3 0.2 0.2 0.1 0.4 0.1h4.2v-6.6q0-0.2 0-0.4 0.1-0.2 0.3-0.3 0.1-0.2 0.3-0.2 0.2-0.1 0.4-0.1h4.2q0.2 0 0.4 0.1 0.2 0 0.3 0.2 0.2 0.1 0.2 0.3 0.1 0.2 0.1 0.4v6.6h4.2q0.2 0 0.4-0.1 0.2-0.1 0.3-0.2 0.2-0.1 0.2-0.3 0.1-0.2 0.1-0.4v-10h3.4c0.7 0 0.9-0.4 0.4-0.9z" />
-                            </g>
-                        </svg>
+                <li class="nav-item " tabindex="0">
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
+                        href="{{ url('/') }}" tabindex="-1">
+                        <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
             @if(isset($headerMenu) && count($headerMenu)>0)
                 @foreach($headerMenu as $firstmenu)
                 @php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
                     <li class="nav-item dropdown">
-                        <a class="nav-link"
+                        <a class="nav-link @php if(isset($slug) && $firstmenu->url ==$slug){ echo 'active'; }else{ echo ''; } @endphp"
                             href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url); } @endphp" 
                             target="@php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                             onclick="@php if($firstmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
