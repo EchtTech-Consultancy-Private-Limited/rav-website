@@ -203,7 +203,7 @@ class WebsiteMenuManagementController extends Controller
         $Editmenus=WebsiteMenuManagement::select('name_en','name_hi','url','sort_order','footer_url','menu_place','tab_type','parent_id')
                      ->where('uid',$request->id)->first();
 
-        $menuList=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0'],['parent_id','0']])->get();
+        $menuList=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0']])->get();
         $Submenu=WebsiteMenuManagement::select('name_en','name_hi','uid')->where([['soft_delete','=','0']])->whereNot('parent_id', '0')->get();
         //dd($Editmenu);
         if($Editmenus){
