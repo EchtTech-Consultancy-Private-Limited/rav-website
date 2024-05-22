@@ -684,6 +684,71 @@ li.nav-item .active {
 .site-header .navbar-nav .nav-item .nav-link.dropdown-toggle::after {
     display: none;
 }
+.site-header{
+    .navbar-nav {
+        .dropdown-menu{
+            .dropdown-submenu-item{
+                position: relative;
+                a.dropdown-submenu-link{
+                    &::after{
+                        content: "\f105 ";
+                        font-family: "fontAwesome";
+                        position: absolute;
+                        right: 3px;
+                        font-weight: 100;
+                        font-size: 22px;
+                        line-height: 1;
+                        transform: rotate(90deg);
+                        margin-right: 3px;
+                       
+                    }
+                }
+              
+            }
+
+            li{
+                &:hover{
+                    ul.dropdown-submenu {
+                        display: block;
+                     }
+                     a.dropdown-submenu-link{
+                        &::after{
+                            content: "\f105 ";
+                            font-family: "fontAwesome";
+                            position: absolute;
+                            right: 3px;
+                            font-weight: 100;
+                            font-size: 22px;
+                            line-height: 1;
+                            transform: rotate(0);
+                            margin-right: 3px;
+                           
+                        }
+                    }
+                }
+            }
+        }
+        .nav-item {
+            ul.dropdown-submenu {
+                position: absolute;
+                right: -100%;
+                top: 0;
+                height: 100%;
+                width: 275px;
+                display: none;
+                li{
+                    position: relative;
+                    a{
+                        &:not(:last-child){
+                            border-bottom: 1px solid #ddd;
+                        }
+                    }
+                }
+            }
+    }
+       
+    }
+}
 
 .site-header .navbar-nav .nav-item .nav-link.dropdown-toggle img {
     margin-left: 5px;
@@ -695,11 +760,11 @@ li.nav-item .active {
     border-radius: 0;
     padding: 0;
     border: none;
-    width: 270px;
+    width: 275px;
 }
 
 .site-header .navbar-nav .nav-item .dropdown-menu li a {
-    padding: 7px 12px;
+    padding: 7px 16px 7px 7px;
     background-color: #fff;
     font-size: 14px !important;
     color: #282828;
@@ -2126,7 +2191,8 @@ table th {
     max-height: 100vh;
     scrollbar-width: thin;
     table-layout: auto !important;
-    display: table !important;
+    display: table ;
+    width: 100%;
 }
 .master table td {
     border: 1px solid #ddd;
