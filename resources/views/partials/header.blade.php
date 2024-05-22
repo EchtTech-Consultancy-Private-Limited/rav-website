@@ -5,12 +5,12 @@
                 <div class="logo-left">
                     <a href="{{ route('/') }}">
                         @if (isset($website_core_settings) && $website_core_settings->header_logo != '')
-                            <img src="{{ asset('resources/uploads/WebsiteCoreSettings/' . $website_core_settings->header_logo) }}"
-                                alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth"
-                                class="img-fluid">
+                        <img src="{{ asset('resources/uploads/WebsiteCoreSettings/' . $website_core_settings->header_logo) }}"
+                            alt="rashstriya  ayurveda vidyapeeth" title="rashstriya  ayurveda vidyapeeth"
+                            class="img-fluid">
                         @else
-                            <img src="{{ asset('/assets/images/rav-logo.png') }}" alt="rashstriya  ayurveda vidyapeeth"
-                                title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
+                        <img src="{{ asset('/assets/images/rav-logo.png') }}" alt="rashstriya  ayurveda vidyapeeth"
+                            title="rashstriya  ayurveda vidyapeeth" class="img-fluid">
                         @endif
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                                 </button>
                             </div>
                             @error('search_key')
-                                <span id="searchValidationErrorLabel" class="text-danger">{{ $message }}</span>
+                            <span id="searchValidationErrorLabel" class="text-danger">{{ $message }}</span>
                             @enderror
                         </form>
                     </div>
@@ -42,7 +42,7 @@
                         <a href="https://yoga.ayush.gov.in/" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank" class="me-4">
                             <img src="{{ asset('assets/images/international-yoga.svg') }}" alt="international-yoga"
-                                class="img-fluid" title = "ayush yoga">
+                                class="img-fluid" title="ayush yoga">
                         </a>
                         <a href="https://amritmahotsav.nic.in/" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank" class="me-4">
@@ -51,7 +51,7 @@
                         </a>
                         <a href="https://www.g20.org/en/" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank">
-                            <img src="{{ asset('assets/images/g20-india.svg') }}" alt="g20-india" title = "g20-india"
+                            <img src="{{ asset('assets/images/g20-india.svg') }}" alt="g20-india" title="g20-india"
                                 class="img-fluid">
                         </a>
                     </div>
@@ -70,51 +70,54 @@
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
-            @if(isset($headerMenu) && count($headerMenu)>0)
+                @if(isset($headerMenu) && count($headerMenu)>0)
                 @foreach($headerMenu as $firstmenu)
-                @php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
-                    <li class="nav-item dropdown">
-                        <a class="nav-link @php if(isset($slug) && $firstmenu->url ==$slug){ echo 'active'; }else{ echo ''; } @endphp"
-                            href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url); } @endphp" 
-                            target="@php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
-                            onclick="@php if($firstmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
-                            aria-expanded="false">
-                            @if(Session::get('locale') == 'hi')  {{ $firstmenu->name_hi }} @else {{ $firstmenu->name_en }} @endif
-                            @if(isset($firstmenu->children) && count($firstmenu->children)>0)
-                                <img src="{{ asset('/assets/images/arrow-down.png') }}" alt="arrow" class="img-fluid" />
-                            @endif
-                        </a>
-                        <ul class="dropdown-menu">
-                            @if(isset($firstmenu->children) && count($firstmenu->children)>0)
-                                @foreach($firstmenu->children as $secondmenu)
-                                    <li><a class="dropdown-item"
-                                        href="@php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'javascript:void(0)'; }else{  if(isset($secondmenu->tab_type) && $secondmenu->tab_type ==1){echo $secondmenu->url; }else{ echo url($firstmenu->url.'/'.$secondmenu->url); }	} @endphp"
-                                        target="@php if($secondmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
-                                        onclick="@php if($secondmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
-                                        >
-                                        @if(Session::get('locale') == 'hi')  {{ $secondmenu->name_hi }} @else {{ $secondmenu->name_en }} @endif
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                       @if(isset($secondmenu->children) && count($secondmenu->children)>0)
-                                          @foreach($secondmenu->children as $thirdmenu)
-                                             <li><a class="dropdown-item"
-                                             href="
+                @php if(Session::get('locale') == 'hi'){ $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले
+                जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; }
+                @endphp
+                <li class="nav-item dropdown">
+                    <a class="nav-link"
+                        href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url); } @endphp"
+                        target="@php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                        onclick="@php if($firstmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
+                        aria-expanded="false">
+                        @if(Session::get('locale') == 'hi') {{ $firstmenu->name_hi }} @else {{ $firstmenu->name_en }}
+                        @endif
+                        @if(isset($firstmenu->children) && count($firstmenu->children)>0)
+                        <img src="{{ asset('/assets/images/arrow-down.png') }}" alt="arrow" class="img-fluid" />
+                        @endif
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if(isset($firstmenu->children) && count($firstmenu->children)>0)
+                        @foreach($firstmenu->children as $secondmenu)
+                        <li class="dropdown-submenu-item"><a class="@php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'dropdown-submenu-link'; }else{ ''; } @endphp"
+                                href="@php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'javascript:void(0)'; }else{  if(isset($secondmenu->tab_type) && $secondmenu->tab_type ==1){echo $secondmenu->url; }else{ echo url($firstmenu->url.'/'.$secondmenu->url); }	} @endphp"
+                                target="@php if($secondmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                onclick="@php if($secondmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp">
+                                @if(Session::get('locale') == 'hi') {{ $secondmenu->name_hi }} @else
+                                {{ $secondmenu->name_en }} @endif
+                            </a>
+                            <ul class="dropdown-submenu">
+                                @if(isset($secondmenu->children) && count($secondmenu->children)>0)
+                                @foreach($secondmenu->children as $thirdmenu)
+                                <li><a class="dropdown-item"
+                                        href="
                                              @php if(isset($thirdmenu->children) && count($thirdmenu->children)>0){ echo 'javascript:void(0)'; }else{  if(isset($thirdmenu->tab_type) && $thirdmenu->tab_type ==1){echo $thirdmenu->url; }else{ echo url($firstmenu->url.'/'.$secondmenu->url.'/'.$thirdmenu->url); }	} @endphp"
-                                             target="@php if($thirdmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
-                                             onclick="@php if($thirdmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
-                                             >
-                                                @if(Session::get('locale') == 'hi')  {{ $thirdmenu->name_hi }} @else {{ $thirdmenu->name_en }} @endif
-                                             </a></li>
-                                          @endforeach
-                                       @endif
-                                    </ul>
-                                </li>
+                                        target="@php if($thirdmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                        onclick="@php if($thirdmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp">
+                                        @if(Session::get('locale') == 'hi') {{ $thirdmenu->name_hi }} @else
+                                        {{ $thirdmenu->name_en }} @endif
+                                    </a></li>
                                 @endforeach
-                            @endif
-                        </ul>
-                    </li>
+                                @endif
+                            </ul>
+                        </li>
+                        @endforeach
+                        @endif
+                    </ul>
+                </li>
                 @endforeach
-            @endif
+                @endif
                 @if (isset($toogleMenu) && count($toogleMenu) > 0)
                 <button class="btn side-mn-icn" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
@@ -128,48 +131,49 @@
 <div class="sticky-i d-non">
     <div class="sticky-icon">
         <a href="https://www.facebook.com/vidyapeeth.delhi"
-            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" target="_blank"
-            class="Facebook" title="Facebook">
-            <i class="fa fa-facebook-f"></i>     
+            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')"
+            target="_blank" class="Facebook" title="Facebook">
+            <i class="fa fa-facebook-f"></i>
             @if (Session::get('locale') == 'hi')
-                {{ 'फेसबुक' }}
+            {{ 'फेसबुक' }}
             @else
-                {{'Facebook'}}
+            {{'Facebook'}}
             @endif
         </a>
         <a href="https://twitter.com/ravdelhi?lang=en" class="Twitter"
-            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" target="_blank"
-            title="Twitter">
+            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')"
+            target="_blank" title="Twitter">
             <div class="twitter-icon"> <img src="{{ asset('assets/images/twitter_icon.png') }}" alt="twitter"
-                    title="twitter"></div> 
-                    @if (Session::get('locale') == 'hi')
-                        {{ 'ट्विटर' }}
-                    @else
-                        {{'Twitter'}}
-                    @endif
+                    title="twitter"></div>
+            @if (Session::get('locale') == 'hi')
+            {{ 'ट्विटर' }}
+            @else
+            {{'Twitter'}}
+            @endif
 
         </a>
         </a>
         <a href="https://www.instagram.com/ravdelhi/"
-            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" class="Instagram"
-            target="_blank" title="Instagram">
-            <i class="fa fa-instagram"></i> 
+            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')"
+            class="Instagram" target="_blank" title="Instagram">
+            <i class="fa fa-instagram"></i>
             @if (Session::get('locale') == 'hi')
-                        {{ 'इंस्टाग्राम' }}
-                    @else
-                        {{'Instagram'}}
-                    @endif
+            {{ 'इंस्टाग्राम' }}
+            @else
+            {{'Instagram'}}
+            @endif
 
         </a>
-        <a href="https://at.linkedin.com/company/rashtriya-ayurveda-vidyapeeth" class="Youtube" 
-   onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')" target="_blank"   title="LinkedIn">
+        <a href="https://at.linkedin.com/company/rashtriya-ayurveda-vidyapeeth" class="Youtube"
+            onclick="return confirm('@if(Session::get('locale') == 'hi'){{ 'यह लिंक आपको एक बाहरी वेबसाइट पर ले जाएगा.' }}@else{{ 'This link will take you to an external website.' }}@endif ')"
+            target="_blank" title="LinkedIn">
 
             <i class="fa fa-linkedin"></i>
             @if (Session::get('locale') == 'hi')
-                        {{ 'लिंक्डइन' }}
-                    @else
-                        {{'LinkedIn'}}
-                    @endif
+            {{ 'लिंक्डइन' }}
+            @else
+            {{'LinkedIn'}}
+            @endif
         </a>
     </div>
 </div>
