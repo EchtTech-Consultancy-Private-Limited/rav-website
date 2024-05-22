@@ -4736,3 +4736,15 @@ div#customPreviousBtn5, div#customNextBtn5 {
 .modal-body img {
   width: 100%;
 }
+div#costumModal8 button.close {
+  position: absolute;
+  right: -18px;
+  top: -18px;
+  height: 35px;
+  width: 35px;
+  opacity: 1;
+  color: #fff;
+  background: var(--secondary-color);
+  border-radius: 100%;
+  text-align: center;
+}
