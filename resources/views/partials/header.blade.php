@@ -64,9 +64,10 @@
     <div class="container-fluid">
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}">
-                    <i class="fa fa-home" aria-hidden="true"></i>
+                <li class="nav-item " tabindex="0">
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page"
+                        href="{{ url('/') }}" tabindex="-1">
+                        <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
                 @if(isset($headerMenu) && count($headerMenu)>0)
