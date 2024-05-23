@@ -175,19 +175,17 @@
 
                                 @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
                                 <div class="">
-                                    <table id="" class="dataTable display common-table d-block table-responsive"
+                                    <table id="" class="dataTable display common-table table-responsive"
                                         style="width:100%">
                                         <thead>
                                             <tr>
-                                                @if(isset($pageData->formDataTableHead) &&
-                                                count($pageData->formDataTableHead)>0)
-                                                @foreach($pageData->formDataTableHead as $head)
-                                                <th>
-                                                    {{  $head->label }}
-                                                </th>
-                                                @endforeach
+                                                @if(isset($pageData->formDataTableHead) && count($pageData->formDataTableHead)>0)
+                                                    @foreach($pageData->formDataTableHead as $head)
+                                                    <th>
+                                                        {{  $head->label }}
+                                                    </th>
+                                                    @endforeach
                                                 @endif
-                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -195,9 +193,9 @@
                                             @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                             <tr>
                                                 @foreach($formbuilderdatas as $key=>$value)
-                                                @if($key !=null && $key !='')
-                                                <td>{{ $value ??''}}</td>
-                                                @endif
+                                                    @if($value !=null && $value !='')
+                                                        <td>{{ $value ??''}}</td>
+                                                    @endif
                                                 @endforeach
                                             </tr>
                                             @endforeach
