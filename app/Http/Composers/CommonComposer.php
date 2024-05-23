@@ -179,11 +179,11 @@ class CommonComposer
                 }
 
 
-            //dd($menuName);
+            //dd($social_links);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu,
              'banner' => $banner, 'news_management' => $news_management,
-             'tender_management' => $tender_management,'social_links'=>$social_links,
+             'tender_management' => $tender_management,'social_links'=>$social_links??'',
              'alertMessage' =>$this->checkLanguage(),
              'website_core_settings'=>$website_core_settings,
              'toogleMenu'=>$toogleMenu,
