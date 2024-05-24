@@ -182,18 +182,19 @@
                                                 @if(isset($pageData->formDataTableHead) && count($pageData->formDataTableHead)>0)
                                                     @foreach($pageData->formDataTableHead as $head)
                                                     <th>
-                                                        {{  $head->label }}
+                                                        {{ $head->label }}
                                                     </th>
                                                     @endforeach
                                                 @endif
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            
                                             @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata) > 0)
                                             @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                             <tr>
                                                 @foreach($formbuilderdatas as $key=>$value)
-                                                    @if($value !=null && $value !='')
+                                                    @if(isset($value) && $value !=null && $value !='')
                                                         <td>{{ $value ??''}}</td>
                                                     @endif
                                                 @endforeach

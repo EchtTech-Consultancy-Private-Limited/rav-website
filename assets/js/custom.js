@@ -3,14 +3,14 @@ $(document).ready(function() {
   $('.dataTable').DataTable({
     dom: 'lBfrtip', // Add 'l' to include length menu before the buttons
     buttons: [ 'print' ],
-    lengthMenu: [[5,10,25, 50, 75, -1], [5,10,25, 50, 75, "All"]],
+    lengthMenu: [[10,25, 50, 75, -1], [10,25, 50, 75, "All"]],
    
 });
 $('#cmeScheme').DataTable({
       dom: 'lBfrtip', // Add 'l' to include length menu before the buttons
       // "pagingType": "full_numbers",
       buttons: [ 'print' ],
-      lengthMenu: [[5,10,25, 50, 75, -1], [5,10,25, 50, 75, "All"]],
+      lengthMenu: [[10,25, 50, 75, -1], [10,25, 50, 75, "All"]],
       
     });
     // $.fn.DataTable.ext.pager.numbers_length = 4;
