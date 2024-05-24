@@ -10,23 +10,38 @@
         <div class="col-md-8 d-flex justify-content-end align-items-end">
             <div class="sociallink-wrap">
                 <ul>
+                    <li>
                     @if ($social_links->facebook != '' && $social_links->facebook != 0)
                         <a href="{{ url($social_links->facebook) ?? '' }}" onclick="return confirm('{{ $alertMessage }}')"
                             target="_blank" class="Facebook" title="Facebook"><i class="fa fa-facebook"
                                 aria-hidden="true"></i>
                         </a>
                     @endif
+                 </li>
+                    <li> 
                     @if ($social_links->twitter != '' && $social_links->twitter != 0)
                         <a href="{{ url($social_links->twitter) ?? '' }}" class="Twitter"
                             onclick="return confirm('{{ $alertMessage }}')" target="_blank" title="Twitter">
                             <i class="fa fa-twitter" aria-hidden="true"></i> </a>
                     @endif
+                    </li>
+                    <li>
                     @if ($social_links->instagram != '' && $social_links->instagram != 0)
                         <a href="{{ url($social_links->instagram) ?? '' }}"
-                            onclick="return confirm('{{ $alertMessage }}')" class="Instagram" target="_blank"
+                            onclick="return confirm('{{ $alertMessage }}')" class="" target="_blank"
                             title="Instagram"> <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     @endif
+                    </li>
+                    <li> 
+                    @if ($social_links->linkedin != '' && $social_links->linkedin != 0)
+                    <a href="{{url($social_links->linkedin)}}"
+                            onclick="return confirm('{{ $alertMessage }}')" class="linkedin" target="_blank"
+                            title="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                    @endif
+                    </li>
+                    
                 </ul>
             </div>
         </div>
