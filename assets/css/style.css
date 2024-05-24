@@ -4776,10 +4776,12 @@ div#customPreviousBtn5, div#customNextBtn5 {
 
 .poshakAhaar .card p {
   text-transform: capitalize;
-}/*# sourceMappingURL=style.css.map */
+}
+
 .modal-body img {
   width: 100%;
 }
+
 div#costumModal8 button.close {
   position: absolute;
   right: -18px;
@@ -4791,4 +4793,4 @@ div#costumModal8 button.close {
   background: var(--secondary-color);
   border-radius: 100%;
   text-align: center;
-}
+}/*# sourceMappingURL=style.css.map */
