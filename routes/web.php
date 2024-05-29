@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 
@@ -28,12 +29,13 @@ function set_active1($route) {
     }
     return Request::path() == $route ? 'active' : '';
 }
-require __DIR__ .'/cms_web.php';
 
 Artisan::call('cache:clear');
 Artisan::call('view:clear');
 Artisan::call('route:clear');
 Artisan::call('config:clear');
+
+require __DIR__ .'/cms_web.php';
 
 Route::get('/set-language',[HomeController::class,'SetLang']);
 Route::get('/', [HomeController::class, 'index'])->name('/');
@@ -42,12 +44,10 @@ Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedba
 Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');
 Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
 Route::get('news-details/{id}', [HomeController::class, 'newsDetails'])->name('news-details');
-Route::view('/testView', 'pages.testView');
 Route::get('/photo-gallery',[GalleryController::class,"photoGallery"]);
 Route::get('/video-gallery', [GalleryController::class,"videoGallery"]);
 Route::get('/photo-gallery-details/{id}', [GalleryController::class,"imageCategoryData"]);
 Route::get('/screen-reader-access', [HomeController::class, 'screenReaderAccess'])->name('screen-reader-access');
-//Route::get('/{Slug}/{middelSlug?}/{lastSlug?}/{finalSlug?}/{finallastSlug?}', [HomeController::class, 'getContentAllPages']);
 Route::get('/{slug1}/{slug2?}/{slug3?}', [HomeController::class, 'getAllPageContent']);
 
 //default behaviour, always keep as last entry
