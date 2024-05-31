@@ -230,67 +230,38 @@
                             {{--Start Governing Body --}}
                             <div class="about">
                                 @if (isset($departmentEmployees) && $departmentEmployees != '')
-                                @foreach($departmentEmployees as $departmentEmployee)
-                                {{-- @dd($departmentEmployee['data']->short_order); --}}
-                                @if(!is_null($departmentEmployee['data']->short_order))
-                                <div class="row d-flex justify-content-center">
-                                    <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span>
-                                    </h5>
-                                    <div class="col-md-4">
-                                        <div class="addevent-box top text-center mt-0">
-                                            <a href="javascript:void(0)">
-
-                                            </a><a href="javascript:void(0)">
-                                                <div class="profile-img">
-                                                    <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
-                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        loading="lazy" class="img-fluid rounded rounded-4">
-                                                </div>
-                                            </a>
-
-                                            <h5 tabindex="0">
-                                                {{ $departmentEmployee['data']->fname_en }}
-                                                {{ $departmentEmployee['data']->mname_en }}
-                                                {{ $departmentEmployee['data']->lname_en }}</h5>
-                                            <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
-                                            <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
-                                            <h6 tabindex="0">
-
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @endforeach
-                                <div class="row d-flex justify-content-center">
-                                    <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span></h5>
                                     @foreach($departmentEmployees as $departmentEmployee)
-                                    @if(is_null($departmentEmployee['data']->short_order))
-                                    <div class="col-md-4">
-                                        <div class="addevent-box top text-center mt-0">
-                                            <a href="javascript:void(0)"></a>
-                                            <a href="javascript:void(0)">
-                                                <div class="profile-img">
-                                                    <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
-                                                        alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
-                                                        loading="lazy" class="img-fluid rounded rounded-4">
+                                        @if(!is_null($departmentEmployee['data']->short_order))
+                                        <div class="row d-flex justify-content-center">
+                                            <h5 tabindex="0"><span tabindex="0">{{ @$departmentEmployee['department'] }}</span></h5>
+                                            <div class="col-md-4">
+                                                <div class="addevent-box top text-center mt-0">
+                                                    <a href="javascript:void(0)">
+                                                        <div class="profile-img">
+                                                            <img src="{{ asset('resources/uploads/empDirectory/' . @$departmentEmployee['data']->public_url) }}"
+                                                                alt=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                                title=" {{ @$departmentEmployee['data']->fname_en }} {{ @$departmentEmployee['data']->mname_en }} {{ @$departmentEmployee['data']->lname_en }} "
+                                                                loading="lazy" class="img-fluid rounded rounded-4">
+                                                        </div>
+                                                    </a>
+                                                    <h5 tabindex="0">
+                                                    @if(Session::get('locale') == 'hi')
+                                                        {{ $departmentEmployee['data']->fname_hi }}
+                                                        {{ $departmentEmployee['data']->mname_hi }}
+                                                        {{ $departmentEmployee['data']->lname_hi }}
+                                                    @else
+                                                        {{ $departmentEmployee['data']->fname_en }}
+                                                        {{ $departmentEmployee['data']->mname_en }}
+                                                        {{ $departmentEmployee['data']->lname_en }}
+                                                    @endif
+                                                    </h5>
+                                                    <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
+                                                    <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
                                                 </div>
-                                            </a>
-                                            <h5 tabindex="0">
-                                                {{ $departmentEmployee['data']->fname_en }}
-                                                {{ $departmentEmployee['data']->mname_en }}
-                                                {{ $departmentEmployee['data']->lname_en }}</h5>
-                                                <h6 tabindex="0"> {{ @$departmentEmployee['department'] }}</h6>
-                                                <h6 tabindex="0"> {{ @$departmentEmployee['designation'] }}</h6>
-                                                <h6 tabindex="0">
-                                            </h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                    @endif
+                                        @endif
                                     @endforeach
-                                </div>
                                 @endif
                             </div>
                             {{--End Governing Body --}}
