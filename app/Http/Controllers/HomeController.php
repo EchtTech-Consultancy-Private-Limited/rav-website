@@ -85,8 +85,8 @@ class HomeController extends Controller
         $cabinetMinisterData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
-        $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of Ayush and Ministry of Women & Child Development.")->where('parent_id', 0)->first();
-        $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+        $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
+        $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->where('soft_delete',0)->first();
 
 
         $department = DB::table('emp_depart_designations')->where('name_en', "RAV Director")->where('parent_id', 0)->first();
@@ -102,7 +102,7 @@ class HomeController extends Controller
             $ourJournyData = DB::table('form_data_management')->where('form_design_id', $ourJournyData->uid)->get(['content']);
         }
 
-
+        // dd($stateMinister);
         return view('home', compact('ourJournyData', 'secretaryData', 'directorData', 'stateMinister', 'cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
     }
     /**

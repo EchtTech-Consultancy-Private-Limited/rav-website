@@ -109,7 +109,7 @@
     </section>
     <section class="about-us ptb-100" id="main-content">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-12" data-aos="fade-up" data-aos-duration="3000">
                     <h2 class="heading-black heading-black-lg text-center pb-4">
                         @if (Session::get('locale') == 'hi')
@@ -150,7 +150,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                     <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
                         <div class="about-us-card-front">
                             <div class="img">
@@ -194,7 +194,7 @@
                                                                                         veniam cumque expedita rem at harum?</p>
                                                                                 </div> -->
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-3">
                     <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
                         <div class="about-us-card-front">
@@ -207,11 +207,11 @@
                                     @if (Session::get('locale') == 'hi')
                                         {{ $stateMinister->fname_hi }}
                                         {{ $stateMinister->mname_hi }}
-                                        {{ $stateMinister->lname_hi }}
+                                        ({{ $stateMinister->lname_hi }})
                                     @else
                                         {{ $stateMinister->fname_en }}
                                         {{ $stateMinister->mname_en }}
-                                        {{ $stateMinister->lname_en }}
+                                        ({{ $stateMinister->lname_en }})
                                     @endif
                                 </h3>
                                 <p class="desc">
