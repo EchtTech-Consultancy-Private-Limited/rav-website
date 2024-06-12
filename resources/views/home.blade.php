@@ -68,11 +68,12 @@
                                 @if (isset($news_management) && count($news_management) > 0)
                                 @foreach ($news_management as $news_managements)
                                     @php
-                                        $url =
-                                            $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
+                                        $url = $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
                                     @endphp
                                     <span>
-                                    <a href="{{ url($url ?? 'javascript:void(0)') }}">
+                                    <a href="{{ url($url ?? 'javascript:void(0)') }}"
+                                     target="@php if(isset($news_managements->tab_type) && $news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                    >
                                                 @if (Session::get('locale') == 'hi')
                                                     {{ $news_managements->title_name_hi ?? '' }}
                                                 @else
@@ -81,15 +82,13 @@
                                             </a>
                                     </span>
                                     @endforeach
-                            @else
-                                <h6>No News available.</h6>
-                            @endif
-
+                                @else
+                                    <h6>No News available.</h6>
+                                @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                       
                         <div class="btns d-none">
                             <div id="customPreviousBtn1">
                                 <i class="fa fa-angle-left" aria-hidden="true"></i>

@@ -953,4 +953,10 @@ class HomeController extends Controller
         $quickLink = DB::table('website_menu_management')->where('menu_place', 4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
         return view('pages.news-details', compact('news', 'quickLink'));
     }
+
+    public function newsAllList(){
+        $news = DB::table('news_management')->where('uid', $id)->first();
+
+        return view('news-all-list');
+    }
 }
