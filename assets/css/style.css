@@ -4184,7 +4184,8 @@ button.btn.side-mn-icn:hover {
   width: 100%;
   padding: 0;
   border-radius: 10px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .col-box-g .column img.demo.cursor {
@@ -4794,4 +4795,20 @@ div#costumModal8 button.close {
   background: var(--secondary-color);
   border-radius: 100%;
   text-align: center;
+}
+
+.latest-news-view-all-btn {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  width: 115px;
+  background: #e7eff1;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about:has(.video-wrap) {
+  min-height: 325px;
 }/*# sourceMappingURL=style.css.map */

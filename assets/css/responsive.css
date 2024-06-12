@@ -119,6 +119,7 @@
 }
 
 @media (max-width: 768px) {
+
     .header-top {
         padding: 3px 0;
     }
@@ -140,9 +141,9 @@
     .event-list-content .date-wrap img {
         margin: 6px 0;
     }
-    .about-us-card{
-        padding: 0;
-        border: 0;
+  .about-us-card{
+        border: 1px solid #ddd;
+        padding: 7px;
     }
     .text-content {
         padding: 0 15px;
@@ -608,8 +609,10 @@
         height: 5px;
     }
     .about-us-card .title-org {
-        text-align: center;
+        text-align: left;
+        float: left;
     }
+    
     #latestMassage-tab-pane h2.heading-black.heading-black-md {
         margin: 8px 0;
     }
