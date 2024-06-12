@@ -134,7 +134,6 @@ th.each((a, item) => {
 $(document).ready(function(){
     
 let paginationNext = $('a.paginate_button.next');
-console.log(paginationNext.text())
 
 $('.dataTables_wrapper .dataTables_paginate .paginate_button.next').on('click', () => {
     $('th').each((index, th) => {
@@ -218,3 +217,19 @@ if(lang == 'hi'){
 }else{
     $('.sticky-icon a').css('width', "160px")
 }
+
+$(document).ready(function() {
+   
+    $('.cme_vertical_marquee').marquee({
+        direction: 'up',
+        speed: 1500,
+        delayBeforeStart: 0,
+        duplicated: true,
+        pauseOnHover: true
+    });
+
+    // $('#cme_vertical_marquee').marquee({
+    //     direction: 'up',
+    //     speed: 1500
+    //     });
+});

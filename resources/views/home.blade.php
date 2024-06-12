@@ -68,29 +68,28 @@
                                     @if (isset($news_management) && count($news_management) > 0)
                                     @foreach ($news_management as $news_managements)
                                     @php
-                                        $url = $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
+                                    $url = $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
                                     @endphp
                                     <span>
-                                    <a href="{{ url($url ?? 'javascript:void(0)') }}"
-                                     target="@php if(isset($news_managements->tab_type) && $news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
-                                    >
-                                                @if (Session::get('locale') == 'hi')
-                                                    {{ $news_managements->title_name_hi ?? '' }}
-                                                @else
-                                                    {{ $news_managements->title_name_en ?? '' }}
-                                                @endif
-                                            </a>
+                                        <a href="{{ url($url ?? 'javascript:void(0)') }}"
+                                            target="@php if(isset($news_managements->tab_type) && $news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
+                                            @if (Session::get('locale') == 'hi')
+                                            {{ $news_managements->title_name_hi ?? '' }}
+                                            @else
+                                            {{ $news_managements->title_name_en ?? '' }}
+                                            @endif
+                                        </a>
                                     </span>
                                     @endforeach
-                                @else
+                                    @else
                                     <h6>No News available.</h6>
-                                @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class=" latest-news-view-all-btn">
-                        <a class="readon2 " href="{{ route('news-list') }}" rel="noopener noreferrer">  View All </a>
+                    <div class=" latest-news-view-all-btn position-relative">
+                        <a class="readon2 " href="{{ route('news-list') }}" rel="noopener noreferrer"> View All </a>
                     </div>
                     <div class="btns d-none">
                         <div id="customPreviousBtn1">
@@ -371,12 +370,15 @@
                         </button>
                     </li>
                 </ul>
-                <div class="tab-content pt-4" id="newsTabContent">
-                    <div class="tab-pane fade show active" id="latestNews-tab-pane" role="tabpanel"
+                <div class="tab-content pt-4 cme-schme-container" id="newsTabContent">
+                    <div class="tab-pane fade show active cme-scheme" id="latestNews-tab-pane" role="tabpanel"
                         aria-labelledby="latestNews-tab" tabindex="0">
                         <div class="row">
                             <div class="news-content-list">
-                                <ul>
+                                <div class="cme_vertical_marquee marquee-vertical" style="height: 320px;" data-speed="50" id="cme_vertical_marquee" data-direction='up' data-pauseOnHover='true' >
+                                    <div class="marquee-wrapper">
+                                        <div class="marquee-content">
+                                        <ul>
                                     @if (isset($news_management) && count($news_management) > 0)
                                     @foreach ($news_management as $news_managements)
                                     {{-- // if current date is greater then end_date then it will not display --}}
@@ -423,9 +425,16 @@
                                         </h6>
                                         @endif
                                 </ul>
-                                    <div class="text-center">
-                                        <a class="readon2" href="{{ route('news-list') }}" rel="noopener noreferrer">   View All  </a>
+                                        </div>
+                                       
                                     </div>
+                                </div>
+                               
+
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <a class="readon2 position-absolute latest-news-view-all-btn2" href="{{ route('news-list') }}"
+                                    rel="noopener noreferrer"> View All </a>
                             </div>
                         </div>
                     </div>

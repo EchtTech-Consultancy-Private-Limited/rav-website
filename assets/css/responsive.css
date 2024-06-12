@@ -119,7 +119,9 @@
 }
 
 @media (max-width: 768px) {
-
+    .news-wrap:has(.cme-schme-container) {
+        padding: 10px 8px 29px !important;
+    }
     .header-top {
         padding: 3px 0;
     }
