@@ -4807,4 +4807,8 @@ div#costumModal8 button.close {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.about:has(.video-wrap) {
+  min-height: 325px;
 }/*# sourceMappingURL=style.css.map */

@@ -4956,3 +4956,7 @@ div#customPreviousBtn5, div#customNextBtn5{
     align-items: center;
     justify-content: center;
   }
+
+  .about:has(.video-wrap) {
+    min-height: 325px;
+}
