@@ -959,8 +959,8 @@ class HomeController extends Controller
     }
 
     public function newsAllList(){
-        // $news = DB::table('news_management')->where('uid', $id)->first();
+        $newsList = DB::table('news_management')->where([['status', 3],['soft_delete',0]])->get();
 
-        return view('pages.news-all-list');
+        return view('pages.news-all-list',['news'=>$newsList]);
     }
 }

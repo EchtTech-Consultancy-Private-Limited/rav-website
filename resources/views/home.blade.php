@@ -783,7 +783,7 @@
                                     <div class="message-tab-img" tabindex="0">
                                         <a href="#" class="video-wrap" tabindex="0">
                                             <div class="video-img common-video-img m-0">
-                                                <img src="{{ asset('resources/uploads/empDirectory/' . @if($cabinetMinisterData !='') $cabinetMinisterData->public_url; @else ''; @endif) }}"
+                                                <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
                                                     alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
                                                     title=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
                                                     loading="lazy" class="img-fluid rounded rounded-4">
