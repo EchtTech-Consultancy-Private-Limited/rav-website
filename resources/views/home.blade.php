@@ -424,7 +424,7 @@
                                         @endif
                                 </ul>
                                     <div class="text-center">
-                                        <a class="readon2" href="{{url('')}}" rel="noopener noreferrer">   View All  </a>
+                                        <a class="readon2" href="{{ route('news-list') }}" rel="noopener noreferrer">   View All  </a>
                                     </div>
                             </div>
                         </div>

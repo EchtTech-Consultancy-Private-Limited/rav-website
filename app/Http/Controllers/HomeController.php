@@ -955,8 +955,8 @@ class HomeController extends Controller
     }
 
     public function newsAllList(){
-        $news = DB::table('news_management')->where('uid', $id)->first();
+        // $news = DB::table('news_management')->where('uid', $id)->first();
 
-        return view('news-all-list');
+        return view('pages.news-all-list');
     }
 }
