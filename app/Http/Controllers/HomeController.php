@@ -81,8 +81,12 @@ class HomeController extends Controller
         }
 
 
-        $department = DB::table('emp_depart_designations')->where('name_en', "Union Cabinet Minister, Ministry of Ayush & Ministry of Ports, Shipping and Waterways")->where('parent_id', 0)->first();
-        $cabinetMinisterData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+        $department = DB::table('emp_depart_designations')->where('name_en', "Hon'ble Minister of State (Independent Charge)")->where('parent_id', 0)->first();
+        if(isset($department->uid) && $department->uid !=''){
+            $cabinetMinisterData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
+        }else{
+            $cabinetMinisterData = '..';
+        }
 
 
         $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
