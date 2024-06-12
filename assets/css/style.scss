@@ -4104,7 +4104,7 @@ button.btn.side-mn-icn:hover {
     text-align: left;
 }
 
-.news-wrap .tab-content {
+.news-wrap .tab-pane {
     max-height: 335px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -4959,4 +4959,46 @@ div#customPreviousBtn5, div#customNextBtn5{
 
   .about:has(.video-wrap) {
     min-height: 325px;
+}
+.tab-pane.cme-scheme{
+    height: 332px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+
+.tab-pane.cme-scheme .news-content-list {
+    max-height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    // scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #888; /* Firefox */
+}
+
+/* WebKit Browsers */
+.tab-pane.cme-scheme .news-content-list::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.tab-pane.cme-scheme .news-content-list::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.tab-pane.cme-scheme .news-content-list::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Roundness of the scrollbar thumb */
+    border: 2px solid #f1f1f1; /* Optional: Add border around the thumb */
+}
+.event-list-content .address-wrap .address a {
+    color: #fff;
+    text-decoration: underline;
+}
+.cme_vertical_marquee.marquee-vertical {
+    height: 300px !important;
+}
+.latest-news-view-all-btn{
+    .readon2{
+        top: 7px;
+    }
 }
