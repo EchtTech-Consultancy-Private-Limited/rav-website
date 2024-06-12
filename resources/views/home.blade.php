@@ -783,7 +783,7 @@
                                     <div class="message-tab-img" tabindex="0">
                                         <a href="#" class="video-wrap" tabindex="0">
                                             <div class="video-img common-video-img m-0">
-                                                <img src="{{ asset('resources/uploads/empDirectory/' . $cabinetMinisterData->public_url) }}"
+                                                <img src="{{ asset('resources/uploads/empDirectory/' . @if($cabinetMinisterData !='') $cabinetMinisterData->public_url; @else ''; @endif) }}"
                                                     alt=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
                                                     title=" {{ $cabinetMinisterData->fname_en }} {{ $cabinetMinisterData->mname_en }} {{ $cabinetMinisterData->lname_en }} "
                                                     loading="lazy" class="img-fluid rounded rounded-4">
@@ -821,7 +821,7 @@
 
                                         </p>
                                         <div class="btn-wrap d-flex align-items-center" tabindex="0">
-                                            <a href="{{ url('about-us/honourable-cabinet-minister') }}" tabindex="0"
+                                            <a href="{{ url('about-us/honourable-minister-of-state') }}" tabindex="0"
                                                 class="btn btn-org-bdr">
                                                 @if (Session::get('locale') == 'hi')
                                                 {{ __('messages.Read_More') }}
