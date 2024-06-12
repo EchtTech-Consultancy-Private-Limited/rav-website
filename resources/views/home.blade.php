@@ -85,30 +85,12 @@
                                 @else
                                     <h6>No News available.</h6>
                                 @endif
-                                    $url =
-                                    $news_managements->public_url ?? 'news-details/' . $news_managements->uid;
-                                    @endphp
-                                    <span>
-                                        <a href="{{ url($url ?? 'javascript:void(0)') }}">
-                                            @if (Session::get('locale') == 'hi')
-                                            {{ $news_managements->title_name_hi ?? '' }}
-                                            @else
-                                            {{ $news_managements->title_name_en ?? '' }}
-                                            @endif
-                                        </a>
-                                    </span>
-                                    @endforeach
-                                    @else
-                                    <h6>No News available.</h6>
-                                    @endif
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class=" latest-news-view-all-btn">
-
-                        <a class="readon2 " href="{{url('')}}" rel="noopener noreferrer">  View All   </a>
+                        <a class="readon2 " href="{{ route('news-list') }}" rel="noopener noreferrer">  View All </a>
                     </div>
                     <div class="btns d-none">
                         <div id="customPreviousBtn1">
