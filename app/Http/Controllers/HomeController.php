@@ -115,8 +115,10 @@ class HomeController extends Controller
 
         // dd($sectionZero);
         return view('home', compact('ourJournyData',
-             'secretaryData', 'directorData',
-              'stateMinister', 'cabinetMinisterData',
+            // 'secretaryData',
+              //'directorData',
+             // 'stateMinister', 
+              'cabinetMinisterData',
                'latestMessageData', 'tenders',
                 'videosWithCategories', 'imageWithCategory',
                  'cmeSchemePdf','sectionZero'));
