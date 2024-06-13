@@ -200,14 +200,6 @@
         @foreach($sectionZero as $sectionZeros)
             {!! $sectionZeros->content_en !!}
         @endforeach
-    @else
-    <div class="col-md-3">
-        <div class="about-us-card mtb-100 aos-init aos-animate" data-aos="flip-right" data-aos-duration="3000">
-            <div class="about-us-card-front">
-                
-            </div>
-        </div>
-    </div>
     @endif
     <!--end Hon'ble Secretary -->
     <div class="col-lg-6 col-md-12">
