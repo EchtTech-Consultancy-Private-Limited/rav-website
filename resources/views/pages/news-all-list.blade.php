@@ -3,7 +3,6 @@
 {{ __('RAV') }}
 @endsection
 @section('content')
-
 <section class="master bg-grey" id="main-content">
     <div class="container">
         <div class="about">
