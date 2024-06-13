@@ -88,9 +88,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" latest-news-view-all-btn position-relative">
+                    <!-- <div class=" latest-news-view-all-btn ">
                         <a class="readon2 " href="{{ route('news-list') }}" rel="noopener noreferrer"> View All </a>
-                    </div>
+                    </div> -->
                     <div class="btns d-none">
                         <div id="customPreviousBtn1">
                             <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -432,7 +432,7 @@
                                
 
                             </div>
-                            <div class="col-md-12 text-center">
+                            <div class="col-md-12 text-center d-flex justify-content-center p-1" >
                                 <a class="readon2 position-absolute latest-news-view-all-btn2" href="{{ route('news-list') }}"
                                     rel="noopener noreferrer"> View All </a>
                             </div>
