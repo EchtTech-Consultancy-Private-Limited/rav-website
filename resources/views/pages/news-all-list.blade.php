@@ -16,30 +16,20 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($news as $key=>$newses)
                 <tr>
-                    <td>column1</td>
-                    <td>column2</td>
-                    <td>column3</td>
-                    <td>column4</td>
+                    <td>{{ $key+1 }}</td>
+                    <td>{{ $newses->title_name_en  }}</td>
+                    <td>{{ $newses->start_date }}</td>
+                    <td>
+                        @if(isset($newses->public_url) && $newses->public_url !='')
+                            <a href="{{ $newses->public_url??'' }}" target="_blank">Click Here</a>
+                        @else
+                            N/A
+                        @endif
+                    </td>
                 </tr>
-                <tr>
-                    <td>column1</td>
-                    <td>column2</td>
-                    <td>column3</td>
-                    <td>column4</td>
-                </tr>
-                <tr>
-                    <td>column1</td>
-                    <td>column2</td>
-                    <td>column3</td>
-                    <td>column4</td>
-                </tr>
-                <tr>
-                    <td>column1</td>
-                    <td>column2</td>
-                    <td>column3</td>
-                    <td>column4</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
         </div>

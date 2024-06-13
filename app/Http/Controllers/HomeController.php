@@ -23,7 +23,14 @@ class HomeController extends Controller
             ->join('tender_details', 'tender_details.tender_id', '=', 'tender_management.uid')
             ->select('tender_management.*', 'tender_details.pdfimage_size as pdf_size', 'tender_details.file_extension', 'tender_details.public_url', 'tender_details.private_url', 'tender_details.tab_type')
             ->get();
-
+        $sectionZero = DB::table('home_page_sections_list as sl')
+            ->select('sd.*')
+            ->join('home_page_sections_designs_details as sd','sd.hpsi_id','=','sl.uid')
+            ->where('sl.sort_order',0)
+            ->where('sl.soft_delete', 0)
+            ->where('sl.status', 3)
+            ->orderBy('sd.sort_order', 'ASC')
+            ->get();
         $galleryCategories = DB::table('gallery_management')->where('type', 0)->where('status', 3)->get();
         $imageWithCategory = [];
         foreach ($galleryCategories as $item) {
@@ -106,8 +113,13 @@ class HomeController extends Controller
             $ourJournyData = DB::table('form_data_management')->where('form_design_id', $ourJournyData->uid)->get(['content']);
         }
 
-        // dd($stateMinister);
-        return view('home', compact('ourJournyData', 'secretaryData', 'directorData', 'stateMinister', 'cabinetMinisterData', 'latestMessageData', 'tenders', 'videosWithCategories', 'imageWithCategory', 'cmeSchemePdf'));
+        // dd($sectionZero);
+        return view('home', compact('ourJournyData',
+             'secretaryData', 'directorData',
+              'stateMinister', 'cabinetMinisterData',
+               'latestMessageData', 'tenders',
+                'videosWithCategories', 'imageWithCategory',
+                 'cmeSchemePdf','sectionZero'));
     }
     /**
      * Show the form for creating a new resource.
@@ -959,8 +971,9 @@ class HomeController extends Controller
     }
 
     public function newsAllList(){
-        $newsList = DB::table('news_management')->where([['status', 3],['soft_delete',0]])->get();
-
+        $newsList = DB::table('news_management')->where([['status', 3],['soft_delete',0]])->orderBy('created_at', 'desc')->get();
+        //$news_management = DB::table('news_management')->where('soft_delete', 0)->where('status', 3)->latest('created_at')->get();
+            
         return view('pages.news-all-list',['news'=>$newsList]);
     }
 }
