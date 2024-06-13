@@ -917,8 +917,8 @@ class HomeController extends Controller
                     'breadcum3' => $breadcums3,
                     'quickLink'=>$quickLink,
                     'departmentEmployees' => $departmentEmployees??'',
-                    'honourablecabinetminister'=>$honourablecabinetminister??'',
-                    'honourableministerofstate'=>$honourableministerofstate??''
+                  //  'honourablecabinetminister'=>$honourablecabinetminister??'',
+                   // 'honourableministerofstate'=>$honourableministerofstate??''
                 ]);
     }
     /** End 15-05-1024 */
