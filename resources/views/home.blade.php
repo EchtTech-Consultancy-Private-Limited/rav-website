@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <!-- <div class=" latest-news-view-all-btn ">
-                        <a class="readon2 " href="{{ route('news-list') }}" rel="noopener noreferrer"> View All </a>
+                        <a class="readon2 " href="{{ route('newslists') }}" rel="noopener noreferrer"> View All </a>
                     </div> -->
                     <div class="btns d-none">
                         <div id="customPreviousBtn1">
@@ -122,21 +122,20 @@
                 @if ($organizedDatas)
                 <p class="desc-grey text-justify">
                     @foreach ($organizedDatas as $organizedData)
-                    @if ($organizedData['metatag']->menu_slug == 'about-us')
-                    @if ($organizedData['content'])
-                    @php
-                    $content_hi = $organizedData['content']->page_content_hi;
-                    $content_en = $organizedData['content']->page_content_en;
-                    $content = Session::get('locale') == 'hi' ? $content_hi : $content_en;
-                    $trimmed_content =
-                    strlen($content) > 1060 ? substr($content, 0, 1060) . '...' : $content;
-                    @endphp
-
-                    {!! $trimmed_content !!}
-                    @else
-                    <span>Content not available ..</span>
-                    @endif
-                    @endif
+                        @if ($organizedData['metatag']->menu_slug == 'about-us')
+                            @if ($organizedData['content'])
+                                @php
+                                $content_hi = $organizedData['content']->page_content_hi;
+                                $content_en = $organizedData['content']->page_content_en;
+                                $content = Session::get('locale') == 'hi' ? $content_hi : $content_en;
+                                $trimmed_content =
+                                strlen($content) > 1060 ? substr($content, 0, 1060) . '...' : $content;
+                                @endphp
+                                {!! $trimmed_content !!}
+                                @else
+                                <span>Content not available ..</span>
+                            @endif
+                        @endif
                     @endforeach
                 </p>
                 @endif
@@ -186,153 +185,31 @@
         </div>
     </div>
     <!-- <div class="about-us-card-back">
-                                                                                    <h3 class="title-black-sm">
-                                                                                        What is Lorem Ipsum?
-                                                                                    </h3>
-                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                                        dolorem
-                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                                        veniam cumque expedita rem at harum?</p>
-                                                                                </div> -->
+        <h3 class="title-black-sm">
+            What is Lorem Ipsum?
+        </h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
+            dolorem
+            optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
+            veniam cumque expedita rem at harum?</p>
+    </div> -->
     </div>
     </div> --}}
+    <!--Start Hon'ble Secretary -->
+    @if(isset($sectionZero) && count($sectionZero)>0)
+        @foreach($sectionZero as $sectionZeros)
+            {!! $sectionZeros->content_en !!}
+        @endforeach
+    @else
     <div class="col-md-3">
-        <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
+        <div class="about-us-card mtb-100 aos-init aos-animate" data-aos="flip-right" data-aos-duration="3000">
             <div class="about-us-card-front">
-                <div class="img">
-                    <img src="{{ asset('resources/uploads/empDirectory/' . $stateMinister->public_url) }}"
-                        alt="minister" class="img-fluid">
-                </div>
-                <div class="text-item">
-                    <h3 class="title">
-                        @if (Session::get('locale') == 'hi')
-                        {{ $stateMinister->fname_hi }}
-                        {{ $stateMinister->mname_hi }}
-                        ({{ $stateMinister->lname_hi }})
-                        @else
-                        {{ $stateMinister->fname_en }}
-                        {{ $stateMinister->mname_en }}
-                        ({{ $stateMinister->lname_en }})
-                        @endif
-                    </h3>
-                    <p class="desc">
-                        <b> {{ getEmployeeDesignation($stateMinister->designation_id) }}</b>
-                        {{ getEmployeeDepartment($stateMinister->department_id) }}
-                    </p>
-                    <p class="title-org">
-                        <a href="{{ url('about-us/honourable-minister-of-state') }}">
-                            @if (Session::get('locale') == 'hi')
-                            {{ __('messages.know_More') }}
-                            @else
-                            {{ __('messages.know_More') }}
-                            @endif
-                        </a>
-                    </p>
-                </div>
+                
             </div>
-            <!-- <div class="about-us-card-back">
-                                                                                    <h3 class="title-black-sm">
-                                                                                        What is Lorem Ipsum?
-                                                                                    </h3>
-                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                                        dolorem
-                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                                        veniam cumque expedita rem at harum?</p>
-                                                                                </div> -->
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
-            <div class="about-us-card-front">
-                <div class="img">
-                    <img src="{{ asset('resources/uploads/empDirectory/' . $secretaryData->public_url) }}"
-                        alt="minister" class="img-fluid">
-                </div>
-                <div class="text-item">
-                    <h3 class="title">
-                        @if (Session::get('locale') == 'hi')
-                        {{ $secretaryData->fname_hi }}
-                        {{ $secretaryData->mname_hi }}
-                        {{ $secretaryData->lname_hi }}
-                        @else
-                        {{ $secretaryData->fname_en }}
-                        {{ $secretaryData->mname_en }}
-                        {{ $secretaryData->lname_en }}
-                        @endif
-                    </h3>
-                    <p class="desc">
-                        <b> {{ getEmployeeDesignation($secretaryData->designation_id) }}</b>
-                        {{ getEmployeeDepartment($secretaryData->department_id) }}
-                    </p>
-                    <p class="title-org">
-                        <a href="{{ url('honourable-secretary') }}">
-                            @if (Session::get('locale') == 'hi')
-                            {{ __('messages.know_More') }}
-                            @else
-                            {{ __('messages.know_More') }}
-                            @endif
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- <div class="about-us-card-back">
-                                                                                    <h3 class="title-black-sm">
-                                                                                        What is Lorem Ipsum?
-                                                                                    </h3>
-                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                                        dolorem
-                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                                        veniam cumque expedita rem at harum?</p>
-                                                                                </div> -->
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="about-us-card mtb-100" data-aos="flip-right" data-aos-duration="3000">
-            <div class="about-us-card-front">
-                <div class="img">
-                    <img src="{{ asset('resources/uploads/empDirectory/' . $directorData->public_url) }}" alt="minister"
-                        class="img-fluid">
-                </div>
-                <div class="text-item">
-                    <h3 class="title">
-                        @if (Session::get('locale') == 'hi')
-                        {{ $directorData->fname_hi }}
-                        {{ $directorData->mname_hi }}
-                        {{ $directorData->lname_hi }}
-                        @else
-                        {{ $directorData->fname_en }}
-                        {{ $directorData->mname_en }}
-                        {{ $directorData->lname_en }}
-                        @endif
-                    </h3>
-                    <p class="desc">
-                        <b> {{ getEmployeeDesignation($directorData->designation_id) }}</b>
-                        {{ getEmployeeDepartment($directorData->department_id) }}
-                    </p>
-                    <p class="title-org">
-                        <a href="{{ url('director') }}">
-                            @if (Session::get('locale') == 'hi')
-                            {{ __('messages.know_More') }}
-                            @else
-                            {{ __('messages.know_More') }}
-                            @endif
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- <div class="about-us-card-back">
-                                                                                    <h3 class="title-black-sm">
-                                                                                        What is Lorem Ipsum?
-                                                                                    </h3>
-                                                                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae mollitia nostrum at
-                                                                                        dolorem
-                                                                                        optio ad ipsam suscipit harum molestias? Laudantium, ipsa! Molestiae reiciendis beatae,
-                                                                                        veniam cumque expedita rem at harum?</p>
-                                                                                </div> -->
-        </div>
-    </div>
+    @endif
+    <!--end Hon'ble Secretary -->
     <div class="col-lg-6 col-md-12">
         <div class="news-wrap">
             <div class="news-tab common-tab">
@@ -379,63 +256,60 @@
                                     <div class="marquee-wrapper">
                                         <div class="marquee-content">
                                         <ul>
-                                    @if (isset($news_management) && count($news_management) > 0)
-                                    @foreach ($news_management as $news_managements)
-                                    {{-- // if current date is greater then end_date then it will not display --}}
-                                    @if (date('Y-m-d') <= $news_managements->end_date)
-                                        @php
-                                        $url =
-                                        $news_managements->public_url ??
-                                        'news-details/' . $news_managements->uid;
-                                        @endphp
-                                        <li>
-                                            <a @if ($news_managements->tab_type == 1) target="_blank"
-                                                onclick="return confirm('{{ $alertMessage }}')"
-                                                href="{{ url($url) }}"
+                                            @if (isset($news_management) && count($news_management) > 0)
+                                            @foreach ($news_management as $news_managements)
+                                            {{-- // if current date is greater then end_date then it will not display --}}
+                                            @if (date('Y-m-d') <= $news_managements->end_date)
+                                                @php
+                                                $url =
+                                                $news_managements->public_url ??
+                                                'news-details/' . $news_managements->uid;
+                                                @endphp
+                                                <li>
+                                                    <a @if ($news_managements->tab_type == 1) target="_blank"
+                                                        onclick="return confirm('{{ $alertMessage }}')"
+                                                        href="{{ url($url) }}"
+                                                        @else
+                                                        href="{{ url($url) }}" @endif>
+                                                        <div class="date-wrap">
+                                                            <h3 class="ln_date">
+                                                                {{ date('d', strtotime($news_managements->start_date ?? now())) }}
+                                                            </h3>
+                                                            <span class="month">
+                                                                {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                                <br>
+                                                                {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
+                                                            </span>
+                                                        </div>
+                                                        <p class="desc">
+                                                            @if (Session::get('locale') == 'hi')
+                                                            {{ $news_managements->title_name_hi ?? '' }}
+                                                            @else
+                                                            {{ $news_managements->title_name_en ?? '' }}
+                                                            @endif
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                @endif
+                                                @endforeach
                                                 @else
-                                                href="{{ url($url) }}" @endif>
-                                                <div class="date-wrap">
-                                                    <h3 class="ln_date">
-                                                        {{ date('d', strtotime($news_managements->start_date ?? now())) }}
-                                                    </h3>
-                                                    <span class="month">
-                                                        {{ $news_managements->start_date ? date('M', strtotime($news_managements->start_date)) : 'Default Value' }}
-                                                        <br>
-                                                        {{ $news_managements->start_date ? date('Y', strtotime($news_managements->start_date)) : 'Default Value' }}
-                                                    </span>
-                                                </div>
-                                                <p class="desc">
+                                                <h6>
                                                     @if (Session::get('locale') == 'hi')
-                                                    {{ $news_managements->title_name_hi ?? '' }}
+                                                    {{ __('messages.No_News_Available') }}
                                                     @else
-                                                    {{ $news_managements->title_name_en ?? '' }}
+                                                    {{ __('messages.No_News_Available') }}
                                                     @endif
-                                                </p>
-                                            </a>
-                                        </li>
-                                        @endif
-                                        @endforeach
-                                        @else
-                                        <h6>
-                                            @if (Session::get('locale') == 'hi')
-                                            {{ __('messages.No_News_Available') }}
-                                            @else
-                                            {{ __('messages.No_News_Available') }}
-                                            @endif
-                                        </h6>
-                                        @endif
-                                </ul>
+                                                </h6>
+                                                @endif
+                                            </ul>
                                         </div>
-                                       
                                     </div>
                                 </div>
-                               
-
                             </div>
-                            <!-- <div class="col-md-12 text-center d-flex justify-content-center p-1" >
-                                <a class="readon2 position-absolute latest-news-view-all-btn2" href="{{ route('news-list') }}"
+                            <div class="col-md-12 text-center d-flex justify-content-center p-1" >
+                                <a class="readon2 position-absolute latest-news-view-all-btn2" href="{{ route('newslists') }}"
                                     rel="noopener noreferrer"> View All </a>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="courses-tab-pane" role="tabpanel" aria-labelledby="courses-tab"
