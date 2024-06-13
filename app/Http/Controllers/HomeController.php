@@ -89,7 +89,7 @@ class HomeController extends Controller
         }
 
 
-        $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
+        $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
         $stateMinister = DB::table('employee_directories')->where('department_id', $department->uid)->where('soft_delete',0)->first();
 
 
@@ -97,7 +97,7 @@ class HomeController extends Controller
         $directorData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
-        $department = DB::table('emp_depart_designations')->where('name_en', "Secretary, Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
+        $department = DB::table('emp_depart_designations')->where('name_en', "Ministry of AYUSH, Government of India, New Delhi")->where('parent_id', 0)->first();
         $secretaryData = DB::table('employee_directories')->where('department_id', $department->uid)->first();
 
 
@@ -959,8 +959,8 @@ class HomeController extends Controller
     }
 
     public function newsAllList(){
-        // $news = DB::table('news_management')->where('uid', $id)->first();
+        $newsList = DB::table('news_management')->where([['status', 3],['soft_delete',0]])->get();
 
-        return view('pages.news-all-list');
+        return view('pages.news-all-list',['news'=>$newsList]);
     }
 }
