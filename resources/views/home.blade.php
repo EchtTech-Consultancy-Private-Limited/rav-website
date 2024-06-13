@@ -432,10 +432,10 @@
                                
 
                             </div>
-                            <div class="col-md-12 text-center d-flex justify-content-center p-1" >
+                            <!-- <div class="col-md-12 text-center d-flex justify-content-center p-1" >
                                 <a class="readon2 position-absolute latest-news-view-all-btn2" href="{{ route('news-list') }}"
                                     rel="noopener noreferrer"> View All </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="tab-pane fade" id="courses-tab-pane" role="tabpanel" aria-labelledby="courses-tab"
