@@ -200,6 +200,8 @@
         @foreach($sectionZero as $sectionZeros)
             {!! $sectionZeros->content_en !!}
         @endforeach
+    @else
+    <div class="col-md-3 mt-2"></div>
     @endif
     <!--end Hon'ble Secretary -->
     <div class="col-lg-6 col-md-12">
