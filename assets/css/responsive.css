@@ -193,7 +193,7 @@
         float: none !important;
         position: static !important;
         margin: auto !important;
-        width: 100%;
+        width: 100% !important;
     }
     table, table.dataTable{
         display: block !important;
