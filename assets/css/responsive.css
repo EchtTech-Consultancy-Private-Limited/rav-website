@@ -132,6 +132,9 @@
 }
 
 @media (max-width: 768px) {
+    .about-us-card .title-org a {
+        font-size: 12px;
+    }
     .site-header .navbar-nav .nav-item .dropdown-menu {
         width: 300px !important;
     }
