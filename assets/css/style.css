@@ -4539,7 +4539,7 @@ table tbody th p strong {
   padding: 0 !important;
 }
 .tab-pane.fade .photo-gallery-wrap .text-content {
-  padding: 0 47px 50px !important;
+  padding: 0 47px 50px;
 }
 
 .master .common-tab ul.nav-qm.nav-tabs .nav-item:hover .nav-link::before {

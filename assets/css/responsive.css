@@ -132,6 +132,9 @@
 }
 
 @media (max-width: 768px) {
+    .event-card .title-white {
+        padding: 6px 4px !important;
+    }
     .contact {
         padding: 0px 0 30px ;
     }
