@@ -184,12 +184,14 @@ strong {
     font-family: "Playfair Display";
     font-weight: 700;
     text-align: left !important;
+    line-height: 1.4;
 }
 
 .master .sub-subheading {
     font-size: 17px;
     color: #000;
     font-family: "Playfair Display";
+    line-height: 1.4;
 }
 
 .about ul {
@@ -2177,7 +2179,7 @@ table th {
     font-family: "Playfair Display";
     letter-spacing: 0px;
     color: #000000;
-    line-height: 1;
+    line-height: 1.4;
     font-size: 24px;
     padding: 0px 1px 8px;
     margin-top: 6px;
@@ -4810,7 +4812,7 @@ i.fa.fa-file-pdf-o{
     }
 }
 #cme-tab-pane table.dataTable.no-footer, div#tenders-tab-pane table.dataTable.no-footer{
-    display: table !important;
+    display: table ;
 }
 
 .twitter-icon{
