@@ -132,6 +132,13 @@
 }
 
 @media (max-width: 768px) {
+    .site-header .navbar-nav .nav-item .dropdown-menu {
+        width: 300px !important;
+    }
+    .site-header .navbar-nav .dropdown-menu li:hover ul.dropdown-submenu {
+        display: block;
+        margin-left: 15px !important;
+    }
     .event-card .title-white {
         padding: 6px 4px !important;
     }
