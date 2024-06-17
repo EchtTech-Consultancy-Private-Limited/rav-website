@@ -132,6 +132,9 @@
 }
 /* mobile responsive */
 @media (max-width: 767px) {
+    li.nav-item:has(a.nav-link.active) {
+        background: #ff5200;
+    }
     .bg-grey{
         background-color: #fff;
     }
