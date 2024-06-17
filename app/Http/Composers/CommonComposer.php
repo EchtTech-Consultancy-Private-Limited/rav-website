@@ -178,7 +178,6 @@ class CommonComposer
                     $visitors = 0;
                 }
 
-
             //dd($social_links);
             $view->with(['modelname' => $modelName, 'menu' => $menuData,
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu,
