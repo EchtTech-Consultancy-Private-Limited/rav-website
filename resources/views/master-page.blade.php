@@ -18,7 +18,7 @@
         <div class="breadcrumbs-link-text">
             <ul>
                 <li>
-                    <a class="active" href="" tabindex="0"> @if(Session::get('locale') == 'hi') {{ 'होम पेज' }} @else
+                    <a class="active" href="{{ route('/') }}" tabindex="0"> @if(Session::get('locale') == 'hi') {{ 'होम पेज' }} @else
                         {{ 'Home' }} @endif </a>
                 </li>
                 <li>

@@ -199,7 +199,8 @@ class CommonComposer
                 'ayurAhar' => $ayurAhar,
                 'cravGurusData' => $cravGurusData,
                 'total_visitors' => $visitors,
-                'popupAdvertisings' =>$popupAdvertisings
+                'popupAdvertisings' =>$popupAdvertisings,
+                'LastUpdateRecordDate'=> $this->getLastUpdateRecordDate()??'00-00-0000'
             ]);
         } catch (Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
@@ -230,6 +231,28 @@ class CommonComposer
         }else{
             return 'This link will take you to an external web site.';
         }
+    }
+    public function getLastUpdateRecordDate(){
+
+        $tables = DB::select("SHOW TABLES");
+        $latestUpdate = null;
+
+        foreach ($tables as $table) {
+            $tableName = array_values((array)$table)[0];
+
+            // Check if the table has an 'updated_at' column
+            $columns = DB::getSchemaBuilder()->getColumnListing($tableName);
+            if (in_array('updated_at', $columns)) {
+                $tableUpdate = DB::table($tableName)->max('updated_at');
+                if ($tableUpdate) {
+                    $tableUpdate = new Carbon($tableUpdate);
+                    if (!$latestUpdate || $tableUpdate->greaterThan($latestUpdate)) {
+                        $latestUpdate = $tableUpdate;
+                    }
+                }
+            }
+        }
+        return $latestUpdate;
     }
 
 }
