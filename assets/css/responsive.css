@@ -132,6 +132,9 @@
 }
 
 @media (max-width: 768px) {
+    .common-tab .main-sidebar .accordion .accordion-body ul {
+        margin: 14px 10px 0 20px !important;
+    }
     .about-us-card .title-org a {
         font-size: 12px;
     }
@@ -148,8 +151,9 @@
     .contact {
         padding: 0px 0 30px ;
     }
-    .main-sidebar .accordion:hover a {
+   .common-tab .main-sidebar .accordion:hover a {
         padding: 0 7px 0 10px !important;
+        padding-left: 10px !important;
     }
     .master .accordion-header button {
         padding: 7px 21px;

@@ -625,6 +625,15 @@ pause3.addEventListener("click", function () {
     play3.addEventListener("click", function () {
         (play3.style.display = "none"), (pause3.style.display = "block");
     });
+
+   let  play4 = document.querySelector("#customPlay4");
+    var pause4 = document.querySelector("#customPause4");
+pause4.addEventListener("click", function () {
+    (play4.style.display = "block"), (pause4.style.display = "none");
+}),
+    play4.addEventListener("click", function () {
+        (play4.style.display = "none"), (pause4.style.display = "block");
+    });
 var owl_4 = $("#videoGallerySlider");
 $("#customNextBtn4").click(function () {
     owl_4.trigger("next.owl.carousel");
