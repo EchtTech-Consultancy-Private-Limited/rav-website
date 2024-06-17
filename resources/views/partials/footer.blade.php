@@ -162,7 +162,7 @@
                             {{ __('messages.Last_Updated') }}
                         @else
                             {{ __('messages.Last_Updated') }}
-                        @endif <span class="date"></span>
+                        @endif <span class="">{{ $LastUpdateRecordDate->format('j F, Y') }}</span>
                     </li>
                     <li class="visitors">
                         @if (Session::get('locale') == 'hi')
