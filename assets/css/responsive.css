@@ -130,8 +130,33 @@
         justify-content: space-between;
     }
 }
-
-@media (max-width: 768px) {
+/* mobile responsive */
+@media (max-width: 767px) {
+    .bg-grey{
+        background-color: #fff;
+    }
+    .dataTables_wrapper .dataTables_filter input {
+        width: 148px;
+    }
+    .course-wrap {
+        display: block;
+    }
+    .footer-bottom ul li {
+        color: #fff;
+        font-size: 12px !important;
+        padding: 0px 3px;
+    }
+    .site-footer .copyright-wrap p {
+        font-size: 12px !important;
+    }
+    .footer-bottom ul li {
+        display: inline;
+        text-align: center;
+    }
+    .footer-bottom ul {
+        text-align: center;
+        display: block;
+    }
     .common-tab .main-sidebar .accordion .accordion-body ul {
         margin: 14px 10px 0 20px !important;
     }
@@ -316,7 +341,8 @@
         border-radius: 5px;
     }
     .site-header .logo-right {
-        align-items: self-start;
+        align-items: center;
+        margin-bottom: 5px;
     }
     .site-header .logo-wrap {
         padding: 20px 0 0;
@@ -519,7 +545,6 @@
     p,
     .desc {
         text-align: justify;
-        font-size: 13px !important;
         line-height: 1.7;
         margin-bottom: 10px;
     }
@@ -758,11 +783,7 @@
         height: 5px;
         width: auto;
     }
-    .about-us-card .title-org {
-        text-align: left;
-        float: left;
-    }
-    
+  
     #latestMassage-tab-pane h2.heading-black.heading-black-md {
         margin: 8px 0;
     }
@@ -795,6 +816,54 @@
         border-bottom: none !important;
     }
 }
+
+/* tab responsive */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .dataTables_wrapper .dataTables_filter input {
+        width: 150px;
+    }
+    
+    
+    .about .row:has(.dashboard-link) {
+        display: block !important;
+        float: none;
+        position: static;
+        padding-left: 12px;
+    }
+    .footer-bottom ul {
+        display: flex;
+        justify-content: center ;
+    }
+    .site-footer {
+        padding: 30px 0px 0px !important;
+    }
+    .about-us-card {
+        padding: 15px 5px 20px !important;
+    }
+    .latest-update-wrap .title-white {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 !important;
+    }
+    .activity-slider .owl-nav {
+        position: absolute;
+        top: -44%;
+    }
+    .activity-slider .owl-nav .owl-next, .activity-slider .owl-nav .owl-prev {
+        width: 40px;
+        height: 40px;
+    }
+    .common-tab .nav-link {
+        padding: 6px 10px !important;
+    }
+    .activity-slider-content {
+        padding: 7px 15px !important;
+    }
+}
+
+
 
 @media (min-width: 991px) and (max-width: 1366px) {
     .photo-gallery-img.img-auto img {
@@ -891,6 +960,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
     .about-us-card {
         min-height: 24.7em !important;
     }
@@ -917,18 +987,35 @@
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1607843137);
         border-radius: 10px 10px 0px 0px;
         border-bottom: 5px solid #ff5200;
-        height: 385px;
+        min-height: 290px;
     }
     .event-card {
         margin-bottom: 0px !important;
     }
 }
 
-@media (min-width: 480px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 767px) {
+    .site-header .logo-right {
+        margin: 10px 0;
+        align-items: center !important;
+    }
+    .about-us-card .title-org {
+        text-align: center;
+        float: none;
+    }
+
+    section.photo-wrap.mt-pos-14{
+        margin-top: 54rem;
+    }
+    
 }
 
 @media (max-width: 480px) {
-   
+    .about-us-card .title-org {
+        text-align: left;
+        float: left;
+    }
+    
     .site-header .logo-right .search-wrap form .btn-search {
         top: 33%;
     }
