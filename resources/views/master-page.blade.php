@@ -138,7 +138,7 @@
 
                                 
                                 @if(isset($pageData->pagePdfs) && count($pageData->pagePdfs)>0)
-                                <table class="dataTable d-table" id="DataTables_Table_0"
+                                <table class="dataTable " id="DataTables_Table_0"
                                     aria-describedby="DataTables_Table_0_info" style="display: block;">
                                     <thead>
                                         <tr>
