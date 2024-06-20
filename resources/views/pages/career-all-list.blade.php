@@ -16,14 +16,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($news as $key=>$newses)
+                @foreach($career as $key=>$careers)
                 <tr>
                     <td>{{ $key+1 }}</td>
-                    <td>{{ $newses->title_name_en  }}</td>
-                    <td>{{ $newses->start_date }}</td>
+                    <td>{{ $careers->title_name_en  }}</td>
+                    <td>{{ $careers->start_date }}</td>
                     <td>
-                        @if(isset($newses->public_url) && $newses->public_url !='')
-                            <a href="{{ asset('resources/uploads/NewsManagement/' .$newses->public_url)??'' }}" target="_blank">Click Here</a>
+                        @if(isset($careers->public_url) && $careers->public_url !='')
+                            <a href="{{ asset('resources/uploads/CareerManagement/' .$careers->public_url)??'' }}" target="_blank">Click Here</a>
                         @else
                             N/A
                         @endif
