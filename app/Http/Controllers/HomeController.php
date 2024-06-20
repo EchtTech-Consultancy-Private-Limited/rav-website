@@ -978,4 +978,15 @@ class HomeController extends Controller
             
         return view('pages.news-all-list',['news'=>$newsList]);
     }
+
+    public function careerData(){
+        $careerList = DB::table('career_management as cm')
+                        ->select('cm.*','cmd.public_url')
+                        ->leftjoin('career_management_details as cmd','cmd.career_management_id','=','cm.uid')
+                        ->where([['cm.status', 3],['cm.soft_delete',0]])
+                        ->orderBy('cm.created_at', 'desc')
+                        ->get();
+        //dd($careerList);            
+        return view('pages.career-all-list',['career'=>$careerList]);
+    }
 }
