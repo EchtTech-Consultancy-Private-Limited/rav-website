@@ -980,13 +980,15 @@ class HomeController extends Controller
     }
 
     public function careerData(){
-        $careerList = DB::table('career_management as cm')
-                        ->select('cm.*','cmd.public_url')
-                        ->leftjoin('career_management_details as cmd','cmd.career_management_id','=','cm.uid')
-                        ->where([['cm.status', 3],['cm.soft_delete',0]])
-                        ->orderBy('cm.created_at', 'desc')
-                        ->get();
-        //dd($careerList);            
-        return view('pages.career-all-list',['career'=>$careerList]);
+        $careerList = DB::table('career_management')->where([['status', 3],['soft_delete',0]])->orderBy('created_at', 'desc')->get();
+        foreach($careerList as $careerLists){
+            $data = new \stdClass;
+            $data = $careerLists;
+            $careerpdf = DB::table('career_management_details')->where([['career_management_id',$careerLists->uid],['soft_delete',0]])->orderBy('created_at', 'desc')->get();
+            $data->pdf =$careerpdf;
+            $finalData[] = $data;
+        }
+              //dd($finalData);         
+        return view('pages.career-all-list',['career'=>$finalData]);
     }
 }
