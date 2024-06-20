@@ -16,17 +16,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($news as $key=>$newses)
+                @foreach($career as $key=>$careers)
                 <tr>
                     <td>{{ $key+1 }}</td>
-                    <td>{{ $newses->title_name_en  }}</td>
-                    <td>{{ $newses->start_date }}</td>
+                    <td>{{ $careers->title_name_en  }}</td>
+                    <td>{{ $careers->start_date }}</td>
+                    
                     <td>
-                        @if(isset($newses->public_url) && $newses->public_url !='')
-                            <a href="{{ asset('resources/uploads/NewsManagement/' .$newses->public_url)??'' }}" target="_blank">Click Here</a>
+                    @foreach($careers->pdf as $pdfs)
+                        @if(isset($pdfs->public_url) && $pdfs->public_url !='')
+                            <a href="{{ asset('resources/uploads/CareerManagement/' .$pdfs->public_url)??'' }}" target="_blank">{{$pdfs->pdf_title}} @if(isset($careers->pdf) && count($careers->pdf)>1) | @endif</a>
                         @else
                             N/A
                         @endif
+                    @endforeach
                     </td>
                 </tr>
                 @endforeach

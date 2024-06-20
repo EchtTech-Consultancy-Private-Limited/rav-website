@@ -39,6 +39,7 @@ require __DIR__ .'/cms_web.php';
 
 Route::get('/set-language',[HomeController::class,'SetLang']);
 Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('/career', [HomeController::class, 'careerData'])->name('career');
 Route::get('/contact-us', [HomeController::class, 'contactUS'])->name('contact-us');
 Route::get('/feedback', [HomeController::class, 'feedbackSubmit'])->name('feedback');
 Route::get('/site-map', [HomeController::class, 'siteMap'])->name('site-map');

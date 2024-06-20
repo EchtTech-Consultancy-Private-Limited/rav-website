@@ -978,4 +978,17 @@ class HomeController extends Controller
             
         return view('pages.news-all-list',['news'=>$newsList]);
     }
+
+    public function careerData(){
+        $careerList = DB::table('career_management')->where([['status', 3],['soft_delete',0]])->orderBy('created_at', 'desc')->get();
+        foreach($careerList as $careerLists){
+            $data = new \stdClass;
+            $data = $careerLists;
+            $careerpdf = DB::table('career_management_details')->where([['career_management_id',$careerLists->uid],['soft_delete',0]])->orderBy('created_at', 'desc')->get();
+            $data->pdf =$careerpdf;
+            $finalData[] = $data;
+        }
+              //dd($finalData);         
+        return view('pages.career-all-list',['career'=>$finalData]);
+    }
 }
