@@ -59,11 +59,11 @@ h1, h2, h3, h4, h6, p, li, span, button, .site-header .navbar-nav .nav-item .nav
 }
 
 .heading-red {
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .hero-slider-content .title-black {
-  color: #232323 !important;
+  color: #fff !important;
 }
 
 li.nav-item.active, .photo-gallery-wrap .text-content {
