@@ -5022,3 +5022,8 @@ table{
         width: auto !important;
     }
 }
+
+table.dataTable tr td.add-devider a:not(:first-child):before {
+    content: '|';
+    padding: 0 7px 0 3px;
+}

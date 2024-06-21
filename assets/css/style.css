@@ -4872,4 +4872,9 @@ div#costumModal8 button.close {
 
 table img {
   width: auto !important;
+}
+
+table.dataTable tr td.add-devider a:not(:first-child):before {
+  content: "|";
+  padding: 0 7px 0 3px;
 }/*# sourceMappingURL=style.css.map */
