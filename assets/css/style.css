@@ -3592,7 +3592,7 @@ Image Section Css */
 .dataTables_wrapper .dataTables_filter {
   float: right;
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .dataTables_wrapper .dataTables_filter input {
@@ -3606,6 +3606,7 @@ Image Section Css */
 
 .dataTables_wrapper .dataTables_filter input {
   padding: 1px !important;
+  padding: 5px 0 !important;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -4576,6 +4577,7 @@ li.nav-item.nav-item-qm.active {
 .dataTables_wrapper .dataTables_length {
   display: flex;
   align-items: center !important;
+  margin-bottom: 5px;
 }
 
 .dataTables_wrapper .dataTables_length label {
