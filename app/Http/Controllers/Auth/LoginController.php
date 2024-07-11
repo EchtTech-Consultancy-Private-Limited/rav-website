@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Config;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use App\Http\Helpers\CustomCaptcha;
+use App\Http\Traits\SendMailTrait;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NCNCMail;
 
 class LoginController extends Controller
 {
+    use SendMailTrait;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -56,7 +60,16 @@ class LoginController extends Controller
      */
     public function showLoginForm(Request $request)
     {
+      /** use without Any API */
+      //$name = 'Brijesh';
+      //Mail::to('brijesh.mca12@gmail.co')->send(new NCNCMail($name));
+
+      /*** Below the code use only postmark API */
+      // $messageValues = new \stdClass;
+      // $messageValues->name = 'Brijesh';
+      // $this->sendMail(config("constants.app.mail_from_address"), 'brijesh.mca12@gmail.com', 'verify-email-ac', $messageValues);
       //dd(app('Illuminate\Http\Response')->status());
+
         $crudUrlTemplate['login'] = route('authenticate');
         $crudUrlTemplate['dashboard'] = route('dashboard');
         $tab = $request->input('tab');
@@ -66,8 +79,9 @@ class LoginController extends Controller
         $CustomCaptch = $CustomCaptchas->generateRandomAdditionExpression();
         Session::put('capcode', $CustomCaptch['answer']);
         return view('auth.login',
-            ['crudUrlTemplate' => $crudUrlTemplate,
-            'CustomCaptch' => $CustomCaptch
+            [
+            'crudUrlTemplate' => $crudUrlTemplate,
+            'CustomCaptch' => $CustomCaptch,
         ]);
     }
 
