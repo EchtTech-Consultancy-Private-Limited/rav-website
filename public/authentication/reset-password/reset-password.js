@@ -5,7 +5,6 @@ var KTAuthResetPassword = function () {
     var form;
     var submitButton;
     var validator;
-
     var handleForm = function (e) {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
         validator = FormValidation.formValidation(
@@ -35,7 +34,6 @@ var KTAuthResetPassword = function () {
             }
         );
     }
-
     var handleSubmitAjax = function (e) {
         // Handle form submit
         submitButton.addEventListener('click', function (e) {
@@ -58,7 +56,7 @@ var KTAuthResetPassword = function () {
                             toastr.success(
                                 "We have send a password reset link to your email!", 
                                 "Successfully reset link!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                              setTimeout(function() {
                                 if (history.scrollRestoration) {
@@ -71,14 +69,14 @@ var KTAuthResetPassword = function () {
                             toastr.error(
                                 'Sorry, '+error.response.data.message, 
                                 "email or password is incorrect", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                         }
                     }).catch(function (error) {
                         toastr.error(
                             'Sorry, '+error.response.data.message, 
                             "error", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                            {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                          );
                     }).then(() => {
                         // Hide loading indication
@@ -87,17 +85,16 @@ var KTAuthResetPassword = function () {
                         submitButton.disabled = false;
                     });
                 } else {
-                    // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     toastr.error(
                         "Sorry, looks like there are some errors detected, please try again.", 
                         "error", 
-                        {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                        {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                      );
                 }
             });
         });
     }
-
+    
     var isValidUrl = function(url) {
         try {
             new URL(url);
@@ -106,7 +103,6 @@ var KTAuthResetPassword = function () {
             return false;
         }
     }
-
     // Public Functions
     return {
         // public functions
@@ -124,7 +120,6 @@ var KTAuthResetPassword = function () {
         }
     };
 }();
-
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
     KTAuthResetPassword.init();
