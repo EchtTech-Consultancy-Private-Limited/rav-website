@@ -3,6 +3,8 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UniqueTitleNotSoftDeleted;
+use Illuminate\Http\Request;
 
 class EditUserValidation extends FormRequest
 {

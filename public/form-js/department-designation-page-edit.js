@@ -17,20 +17,20 @@ var KTvalidationEditDepartment= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,100}$/,
+                                message: 'This field can consist of alphabetical characters, spaces, max 300 characters only'
                             },
                         },
                     },
                     departmentName_hi: {
                         validators: {
                             notEmpty: {
-                                message: 'This field is required'
+                                message: 'यह फ़ील्ड आवश्यक है'
                             },
-                            // regexp: {
-                            //     regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                            //     message: 'This field can consist of alphabetical characters, spaces, digits only'
-                            // },
+                            regexp: {
+                                regexp: /^[-+.,@:\/&?'"=)( \u0900-\u097F\s]{1,100}$/,
+                                message: 'इस फ़ील्ड में केवल हिंदी अक्षर ही अनुमत हैं और अधिकतम 100 अक्षर की अनुमत है।'
+                            },
                         },
                     },
                 },
@@ -76,7 +76,7 @@ var KTvalidationEditDepartment= function() {
                        toastr.error(
                           response.data.message,
                           "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                        );
                        }
                     })
@@ -98,9 +98,9 @@ var KTvalidationEditDepartment= function() {
                         $('#loading').removeClass('loading');
                          $('#loading-content').removeClass('loading-content');
                           toastr.error(
-                                "Sorry, looks like there are some errors detected, please try again K.", 
-                                "Something went wrong!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                "Some fields are required", 
+                                "Something Require!",
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                        }
                  })

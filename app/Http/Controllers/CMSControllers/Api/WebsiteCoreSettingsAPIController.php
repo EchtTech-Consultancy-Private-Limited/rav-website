@@ -76,7 +76,46 @@ class WebsiteCoreSettingsAPIController extends Controller
             ],201);
         }
     }
-
+    public function indexSocialMediaCards()
+    {
+        
+        $data=DB::table('social_media_enbed')->where('soft_delete','0')->get();
+        $totalRecords = DB::table('social_media_enbed')->where('soft_delete','0')->count();
+        $resp = new \stdClass;
+        $resp->iTotalRecords = $totalRecords;
+        $resp->iTotalDisplayRecords = $totalRecords;
+        $resp->aaData = $data;
+        if($resp)
+            {
+                return response()->json($resp,200);
+            }
+            else{
+                return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
+    public function indexHeaderRightLogo()
+    {
+        
+        $data=DB::table('header_right_logo')->where('soft_delete','0')->get();
+        $totalRecords = DB::table('header_right_logo')->where('soft_delete','0')->count();
+        $resp = new \stdClass;
+        $resp->iTotalRecords = $totalRecords;
+        $resp->iTotalDisplayRecords = $totalRecords;
+        $resp->aaData = $data;
+        if($resp)
+            {
+                return response()->json($resp,200);
+            }
+            else{
+                return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.

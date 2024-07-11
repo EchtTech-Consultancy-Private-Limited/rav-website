@@ -105,8 +105,8 @@ var KTAppEmployeeDirectoryEdit = function () {
                            message: 'This field is required'
                         },
                         regexp: {
-                           regexp: /^[A-Za-z0-9-'][\d|\.|\,|\-|\:|\(|\)|\ ]{2,18}$/,
-                           message: 'The value is require minimum 2 and maximum 8 Number'
+                           regexp: /^[A-Za-z0-9-'][\d|\.|\,|\-|\:|\(|\)|\ ]{2,25}$/,
+                           message: 'The value is require minimum 2 and maximum 25 Number'
                         },
                      },
                   },
@@ -116,8 +116,8 @@ var KTAppEmployeeDirectoryEdit = function () {
                            message: 'This field is required'
                         },
                         regexp: {
-                           regexp: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                           message: 'The value is not a valid email address',
+                           regexp: /^(?=.{2,50}$)[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                           message: 'The value is not a valid email address, max 50 characters only',
                       },
                      },
                   },
@@ -148,7 +148,7 @@ var KTAppEmployeeDirectoryEdit = function () {
                       toastr.success(
                          "New update successfully!", 
                          "New Entry!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
@@ -163,18 +163,23 @@ var KTAppEmployeeDirectoryEdit = function () {
                       toastr.error(
                         response.data.message,
                         "Something went wrong!", 
-                        {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                        {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                        for (var field in error.response.data.errors) {
+                           if (error.response.data.errors.hasOwnProperty(field)) {
+                               error.response.data.errors[field].forEach(function (errorMessage) {
+                                   toastr.error(
+                                       errorMessage,
+                                       {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                    );
+                               });
+                           }
+                       }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -185,9 +190,9 @@ var KTAppEmployeeDirectoryEdit = function () {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                              "Some fields are required", 
+                              "Something Require!",
+                               {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })

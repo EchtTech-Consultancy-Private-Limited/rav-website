@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Http;
 
 use App\Models\CMSModels\NewsManagement;
 use Illuminate\Http\Request;
+use App\Http\Requests\News\AddNewsValidation;
+use App\Http\Requests\News\EditNewsValidation;
 use Ramsey\Uuid\Uuid;
 use App\Http\Traits\PdfImageSizeTrait;
 use DB,Validator;
@@ -48,29 +50,9 @@ class NewsManagementAPIController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddNewsValidation $request)
     {
-        $exitValue = NewsManagement::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+            try{
                 $extId =  Uuid::uuid4();
                 $result= NewsManagement::insert([
                         'uid' => $extId,
@@ -82,7 +64,7 @@ class NewsManagementAPIController extends Controller
                         'public_url' => $request->url,
                         'start_date'=> $request->startdate,
                         'end_date' => $request->enddate,
-                        'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
+                        'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('NEWS_ARCHIVEL')),
                     ]);
                 if(!empty($request->kt_news_add_multiple_options)){
                     foreach($request->kt_news_add_multiple_options as $key=>$value)
@@ -104,7 +86,7 @@ class NewsManagementAPIController extends Controller
                             'file_extension' => $extension??'',
                             'public_url' => $name,
                             'private_url' => $name,
-                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
+                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('NEWS_ARCHIVEL')),
                         ]);
                     }
                 }
@@ -123,11 +105,11 @@ class NewsManagementAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
+           
            }catch(Throwable $e){report($e);
             return false;
            }
-        }
+        
             return response()->json($notification);
         }
 
@@ -160,23 +142,9 @@ class NewsManagementAPIController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(EditNewsValidation $request)
     {
-       // dd($request->id);
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+            try{
                 $result= NewsManagement::where('uid',$request->id)->update([
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
@@ -259,7 +227,6 @@ class NewsManagementAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
            }catch(Throwable $e){report($e);
             return false;
            }

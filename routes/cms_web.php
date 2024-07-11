@@ -19,6 +19,7 @@ use App\Http\Controllers\CMSControllers\DynamicFormManagementController;
 use App\Http\Controllers\CMSControllers\GalleryManagementController;
 use App\Http\Controllers\CMSControllers\NewsManagementController;
 use App\Http\Controllers\CMSControllers\TenderManagementController;
+use App\Http\Controllers\CMSControllers\TenderTypeController;
 use App\Http\Controllers\CMSControllers\EventsManagementController;
 use App\Http\Controllers\CMSControllers\ModuleManagementController;
 use App\Http\Controllers\CMSControllers\SystemLogsController;
@@ -130,6 +131,8 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/logo-list', [WebSiteCoreSettingsController::class, 'indexLogo'])->name('logo.list');
         Route::get('/footercontent-list', [WebSiteCoreSettingsController::class, 'indexFooterContent'])->name('footercontent.list');
         Route::get('/sociallink-list', [WebSiteCoreSettingsController::class, 'indexSocialLink'])->name('sociallink.list');
+        Route::get('/socialmediacards-list', [WebSiteCoreSettingsController::class, 'indexSocialMediaCards'])->name('socialmediacards.list');
+        Route::get('/headerrightlogo-list', [WebSiteCoreSettingsController::class, 'indexHeaderRightLogo'])->name('headerrightlogo.list');
         Route::get('/advertisingpopup-list', [WebSiteCoreSettingsController::class, 'indexAdvertisingPopup'])->name('advertisingpopup.list');
     });
     
@@ -152,7 +155,13 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/tender-show', [TenderManagementController::class, 'show'])->name('tender.show');
         Route::get('/tender-list', [TenderManagementController::class, 'index'])->name('tender.list');
     });
-    
+    Route::prefix('tendertype')->group(function(){
+        Route::get('/tendertype-create', [TenderTypeController::class, 'create'])->name('tendertype.create');
+        Route::get('/tendertype-edit', [TenderTypeController::class, 'edit'])->name('tendertype.edit');
+        Route::get('/tendertype-show', [TenderTypeController::class, 'show'])->name('tendertype.show');
+        Route::get('/tendertype-list', [TenderTypeController::class, 'index'])->name('tendertype.list');
+    });
+
     Route::prefix('event')->group(function(){
         Route::get('/event-create', [EventsManagementController::class, 'create'])->name('event.create');
         Route::get('/event-edit', [EventsManagementController::class, 'edit'])->name('event.edit');
@@ -182,7 +191,7 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         //Route::get('/audittrail-create', [SystemLogsController::class, 'create'])->name('audittrail.create');
         Route::get('/contactus-list', [DataManagementController::class, 'contactUSIndex'])->name('datamanagement.list-contact');
         Route::get('/feedback-list', [DataManagementController::class, 'FeedbackIndex'])->name('datamanagement.list-feedback');
-        //Route::get('/audittrail-edit', [SystemLogsController::class, 'edit'])->name('audittrail.edit');
+        Route::get('/other-list', [DataManagementController::class, 'otherIndex'])->name('datamanagement.list-other');
     });
     
     Route::prefix('recentactivity')->group(function(){
@@ -216,9 +225,9 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
     });
     
     Route::prefix('rtiassets')->group(function(){
-        Route::get('/rtiassets-create', [RtiAssetsController::class, 'create'])->name('rtiassets.create');
-        Route::get('/rtiassets-list', [RtiAssetsController::class, 'index'])->name('rtiassets.list');
-        Route::get('/rtiassets-edit', [RtiAssetsController::class, 'edit'])->name('rtiassets.edit');
+            Route::get('/rtiassets-create', [RtiAssetsController::class, 'create'])->name('rtiassets.create');
+            Route::get('/rtiassets-list', [RtiAssetsController::class, 'index'])->name('rtiassets.list');
+            Route::get('/rtiassets-edit', [RtiAssetsController::class, 'edit'])->name('rtiassets.edit');
         });
 
     Route::prefix('rtiapplicationresponses')->group(function(){

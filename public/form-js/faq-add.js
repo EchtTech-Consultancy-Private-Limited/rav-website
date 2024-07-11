@@ -16,15 +16,19 @@ var KTAppFAQSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                               message: 'This field can consist of alphabetical characters, spaces, digits only'
+                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,200}$/,
+                               message: 'This field can consist of alphabetical characters, spaces, max 200 characters only'
                             },
                          },
                    },
                    question_hi: {
                          validators: {
                             notEmpty: {
-                               message: 'This field is required'
+                               message: 'यह फ़ील्ड आवश्यक है'
+                            },
+                            regexp: {
+                                regexp: /^[-+.,@:\/&?'"=)( \u0900-\u097F\s]{1,200}$/,
+                                message: 'इस फ़ील्ड में केवल हिंदी अक्षर ही अनुमत हैं और अधिकतम 200 अक्षर की अनुमत है।'
                             },
                          },
                    },
@@ -71,18 +75,23 @@ var KTAppFAQSave = function () {
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                     $('#loading').removeClass('loading');
                     $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                        for (var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                                toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                    );
+                            });
+                            }
+                        }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -93,9 +102,9 @@ var KTAppFAQSave = function () {
                     $('#loading').removeClass('loading');
                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                "Some fields are required", 
+                                "Something Require!",
+                               {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })
@@ -130,17 +139,7 @@ var KTAppFAQSave = function () {
                  if (result.value) {
                      document.getElementById('kt_faq_add_form').reset(); // Reset form			
                      $('#kt_modal_add_faq').modal('hide');
-                 } else if (result.dismiss === 'cancel') {
-                     Swal.fire({
-                         text: "Your form has not been cancelled!.",
-                         icon: "error",
-                         buttonsStyling: false,
-                         confirmButtonText: "Ok, got it!",
-                         customClass: {
-                             confirmButton: "btn btn-primary",
-                         }
-                     });
-                 }
+                 } 
              });
          });
  
@@ -164,17 +163,7 @@ var KTAppFAQSave = function () {
                  if (result.value) {
                      document.getElementById('kt_faq_add_form').reset(); // Reset form			
                      $('#kt_modal_add_faq').modal('hide');
-                 } else if (result.dismiss === 'cancel') {
-                     Swal.fire({
-                         text: "Your form has not been cancelled!.",
-                         icon: "error",
-                         buttonsStyling: false,
-                         confirmButtonText: "Ok, got it!",
-                         customClass: {
-                             confirmButton: "btn btn-primary",
-                         }
-                     });
-                 }
+                 } 
              });
          });
  return {

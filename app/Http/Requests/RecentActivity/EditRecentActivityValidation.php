@@ -3,6 +3,8 @@
 namespace App\Http\Requests\RecentActivity;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UniqueTitleNotSoftDeleted;
+use Illuminate\Http\Request;
 
 class EditRecentActivityValidation extends FormRequest
 {

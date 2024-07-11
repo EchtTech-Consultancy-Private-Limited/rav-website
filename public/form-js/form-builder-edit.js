@@ -58,7 +58,7 @@ function saveEditForm(form) {
                     toastr.error(
                         data.message, 
                         "Something went wrong!", 
-                        {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                        {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                     );
                     
                 }

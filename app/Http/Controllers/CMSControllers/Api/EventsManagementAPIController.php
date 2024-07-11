@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Http;
 
 use App\Models\CMSModels\EventsManagement;
 use Illuminate\Http\Request;
+use App\Http\Requests\Events\AddEventsValidation;
+use App\Http\Requests\Events\EditEventsValidation;
 use Ramsey\Uuid\Uuid;
 use App\Http\Traits\PdfImageSizeTrait;
 use DB, Validator;
@@ -48,30 +50,9 @@ class EventsManagementAPIController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddEventsValidation $request)
     {
-        $exitValue = EventsManagement::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
         try{
-        $validator=Validator::make($request->all(),
-            [
-            'tabtype'=>'required',
-            'eventtype'=>'required',
-            'title_name_en'=>'required',
-        ]);
-        if($validator->fails())
-        {
-            $notification =[
-                'status'=>201,
-                'message'=> $validator->errors()
-            ];
-        }
-        else{
             $extId =  Uuid::uuid4();
             $result= EventsManagement::insert([
                 'uid' => $extId,
@@ -82,7 +63,7 @@ class EventsManagementAPIController extends Controller
                 'description_hi' => $request->kt_description_hi,
                 'start_date'=> $request->startdate,
                 'end_date' => $request->enddate,
-                'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
+                'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('EVENT_ARCHIVEL')),
                 'event_type' => $request->eventtype,
             ]);
             if(!empty($request->kt_event_add_multiple_options)){
@@ -105,7 +86,7 @@ class EventsManagementAPIController extends Controller
                             'file_extension' => $extension??'',
                             'public_url' => $name,
                             'private_url' => $name,
-                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
+                            'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('EVENT_ARCHIVEL')),
                         ]);
                     }
                 }
@@ -124,11 +105,9 @@ class EventsManagementAPIController extends Controller
                     'message'=>'some error accoured.'
                 ];
              } 
-        }
        }catch(Throwable $e){report($e);
         return false;
        }
-    }
         return response()->json($notification);
     }
 
@@ -161,23 +140,9 @@ class EventsManagementAPIController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(EditEventsValidation $request)
     {
         try{
-        $validator=Validator::make($request->all(),
-            [
-            'tabtype'=>'required',
-            'eventtype'=>'required',
-            'title_name_en'=>'required',
-        ]);
-        if($validator->fails())
-        {
-            $notification =[
-                'status'=>201,
-                'message'=> $validator->errors()
-            ];
-        }
-        else{
             $result= EventsManagement::where('uid',$request->id)->update([
                 'tab_type' => $request->tabtype,
                 'title_name_en' => $request->title_name_en,
@@ -260,7 +225,6 @@ class EventsManagementAPIController extends Controller
                     'message'=>'some error accoured.'
                 ];
              } 
-        }
        }catch(Throwable $e){report($e);
         return false;
        }

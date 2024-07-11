@@ -3,6 +3,8 @@
 namespace App\Http\Requests\WebsiteCoreSettings;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UniqueTitleNotSoftDeleted;
+use Illuminate\Http\Request;
 
 class EditSocialLinkValidation extends FormRequest
 {

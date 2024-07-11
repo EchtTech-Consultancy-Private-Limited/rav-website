@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 use App\Models\CMSModels\DynamicContentPageManagament;
+use App\Http\Requests\PageContent\AddBasicInformationValidation;
+use App\Http\Requests\PageContent\EditBasicInformationValidation;
+use App\Http\Requests\PageContent\AddPageContentValidation;
+use App\Http\Requests\PageContent\EditPageContentValidation;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImagesMimesCheck;
 use Ramsey\Uuid\Uuid;
@@ -64,30 +68,9 @@ class DynamicContentPageManagamentAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function basicInformation(Request $request)
+    public function basicInformation(AddBasicInformationValidation $request)
     {
-        $exitValue = DB::table('dynamic_content_page_metatag')->where([['page_title_en', $request->page_title_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'page_title_en'=>'required',
-                'page_title_hi'=>'required',
-               /// 'is_parent'=>'required'
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
             
             $result=DB::table('dynamic_content_page_metatag')->insert([
                         'uid' => Uuid::uuid4(),
@@ -116,33 +99,22 @@ class DynamicContentPageManagamentAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }      
            }catch(Throwable $e)
            {
             report($e);
             return false;
            }
-        }
             return response()->json($notification);
     }
-    public function pageContent(Request $request)
+    public function pageContent(AddPageContentValidation $request)
     {
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'pageTitle_id'=>'required',
-                'kt_summernote_en'=>'required',
-               /// 'is_parent'=>'required'
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                
+            // if($request->kt_summernote_en !='<p><br></p>'){
+            //     $notification = [
+            //         'status'=>201,
+            //         'message'=>'page content empty.'
+            //     ];
+            // }
             $result=DB::table('dynamic_page_content')->insert([
                         'uid' => Uuid::uuid4(),
                         'page_content_en' => $request->kt_summernote_en,
@@ -163,7 +135,6 @@ class DynamicContentPageManagamentAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }      
            }catch(Throwable $e)
            {
             report($e);
@@ -352,24 +323,9 @@ class DynamicContentPageManagamentAPIController extends Controller
             return response()->json($notification);
     }
     //***** Update Content Pages Data********************** */
-    public function updateBasicInformation(Request $request)
+    public function updateBasicInformation(EditBasicInformationValidation $request)
     {
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'page_title_en'=>'required',
-                'page_title_hi'=>'required',
-               /// 'is_parent'=>'required'
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-            
             $result=DB::table('dynamic_content_page_metatag')->where('uid',$request->id)->update([
                         'menu_uid' => explode(',',$request->menu_id)[0],
                         'menu_slug' => explode(',',$request->menu_id)[1],
@@ -397,7 +353,6 @@ class DynamicContentPageManagamentAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }      
            }catch(Throwable $e)
            {
             report($e);
@@ -405,24 +360,9 @@ class DynamicContentPageManagamentAPIController extends Controller
            }
             return response()->json($notification);
     }
-    public function updatePageContent(Request $request)
+    public function updatePageContent(EditPageContentValidation $request)
     {
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'pageTitle_id'=>'required',
-                'kt_summernote_en'=>'required',
-               /// 'is_parent'=>'required'
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                
             $result=DB::table('dynamic_page_content')->where('dcpm_id',$request->id)->update([
                         'page_content_en' => $request->kt_summernote_en,
                         'page_content_hi' => $request->kt_summernote_hi,
@@ -442,7 +382,6 @@ class DynamicContentPageManagamentAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }      
            }catch(Throwable $e)
            {
             report($e);
@@ -452,8 +391,6 @@ class DynamicContentPageManagamentAPIController extends Controller
     }
     public function updatePageGallery(Request $request)
     {
-        
-
         try{
             $validator=Validator::make($request->all(),
                 [

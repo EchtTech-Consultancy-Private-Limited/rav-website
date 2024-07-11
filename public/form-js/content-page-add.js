@@ -10,17 +10,24 @@ var KTAppBasicInformationSave = function () {
              form,
              {
                 fields: {
+                  menu_id: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                     },
+                  },
                    page_title_en: {
-                         validators: {
-                            notEmpty: {
-                               message: 'This field is required'
-                            },
-                            regexp: {
-                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                               message: 'This field can consist of alphabetical characters, spaces, digits only'
-                            },
-                         },
-                   },
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                           regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,300}$/,
+                               message: 'This field can consist of alphabetical characters, spaces, max 300 characters only'
+                        },
+                     },
+                  },
                    page_title_hi: {
                          validators: {
                             notEmpty: {
@@ -52,7 +59,7 @@ var KTAppBasicInformationSave = function () {
                       toastr.success(
                          "New Basic Information added successfully!", 
                          "New Basic Information!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
@@ -67,18 +74,23 @@ var KTAppBasicInformationSave = function () {
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                        for (var field in error.response.data.errors) {
+                           if (error.response.data.errors.hasOwnProperty(field)) {
+                              error.response.data.errors[field].forEach(function (errorMessage) {
+                                 toastr.error(
+                                       errorMessage,
+                                       {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                    );
+                              });
+                           }
+                        }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -89,9 +101,9 @@ var KTAppBasicInformationSave = function () {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                              "Some fields are required", 
+                              "Something Require!", 
+                               {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })
@@ -159,7 +171,7 @@ var KTAppBasicInformationSave = function () {
                       toastr.success(
                          "New Page Content added successfully!", 
                          "New Page Content!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
@@ -174,18 +186,23 @@ var KTAppBasicInformationSave = function () {
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                        for (var field in error.response.data.errors) {
+                           if (error.response.data.errors.hasOwnProperty(field)) {
+                              error.response.data.errors[field].forEach(function (errorMessage) {
+                                 toastr.error(
+                                       errorMessage,
+                                       {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                    );
+                              });
+                           }
+                        }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -196,9 +213,9 @@ var KTAppBasicInformationSave = function () {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                              "Some fields are required", 
+                              "Something Require!", 
+                               {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })
@@ -272,7 +289,7 @@ var KTAppBasicInformationSave = function () {
                       toastr.success(
                          "New Page Gallery added successfully!", 
                          "New Page Gallery!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
@@ -288,18 +305,23 @@ var KTAppBasicInformationSave = function () {
                          response.data.message.imagetitle, 
                          response.data.message.image, 
                          "Something went wrong!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                        for (var field in error.response.data.errors) {
+                           if (error.response.data.errors.hasOwnProperty(field)) {
+                              error.response.data.errors[field].forEach(function (errorMessage) {
+                                 toastr.error(
+                                       errorMessage,
+                                       {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                    );
+                              });
+                           }
+                        }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -310,9 +332,9 @@ var KTAppBasicInformationSave = function () {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                              "Some fields are required", 
+                              "Something Require!",
+                               {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })
@@ -387,7 +409,7 @@ var KTAppBasicInformationSave = function () {
                       toastr.success(
                          "New Page Pdf added successfully!", 
                          "New Page Pdf!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
@@ -402,18 +424,23 @@ var KTAppBasicInformationSave = function () {
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                        for (var field in error.response.data.errors) {
+                           if (error.response.data.errors.hasOwnProperty(field)) {
+                              error.response.data.errors[field].forEach(function (errorMessage) {
+                                 toastr.error(
+                                       errorMessage,
+                                       {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                    );
+                              });
+                           }
+                        }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -424,9 +451,9 @@ var KTAppBasicInformationSave = function () {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                              "Some fields are required", 
+                              "Something Require!",
+                               {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })
@@ -518,7 +545,7 @@ var KTAppBasicInformationSave = function () {
                       toastr.success(
                          "New Page Banner added successfully!", 
                          "New Page Banner!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       setTimeout(function() {
                          if (history.scrollRestoration) {
@@ -533,18 +560,23 @@ var KTAppBasicInformationSave = function () {
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                        for (var field in error.response.data.errors) {
+                           if (error.response.data.errors.hasOwnProperty(field)) {
+                              error.response.data.errors[field].forEach(function (errorMessage) {
+                                 toastr.error(
+                                       errorMessage,
+                                       {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                    );
+                              });
+                           }
+                        }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -555,9 +587,9 @@ var KTAppBasicInformationSave = function () {
                      $('#loading').removeClass('loading');
                      $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                              "Some fields are required", 
+                              "Something Require!",
+                               {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })

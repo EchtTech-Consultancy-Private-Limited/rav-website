@@ -77,7 +77,7 @@ class WebsiteCoreSettingsController extends Controller
        }
        
        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
-             $crudUrlTemplate['delete'] = route('cws-delete', ['id' => 'xxxx']);
+             $crudUrlTemplate['delete'] = route('footer-delete', ['id' => 'xxxx']);
        }
        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
         $crudUrlTemplate['approver'] = route('footercontent-approve', ['id' => 'xxxx']);
@@ -107,7 +107,7 @@ class WebsiteCoreSettingsController extends Controller
        }
        
        if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
-            $crudUrlTemplate['delete'] = route('cws-delete', ['id' => 'xxxx']);
+            $crudUrlTemplate['delete'] = route('delete-sl', ['id' => 'xxxx']);
        }
        if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
         $crudUrlTemplate['approver'] = route('socialLink-approve', ['id' => 'xxxx']);
@@ -119,6 +119,66 @@ class WebsiteCoreSettingsController extends Controller
        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
 
        return view('cms-view.website-core-settings.sociallink_list',
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+        
+        ]);
+    }
+    public function indexSocialMediaCards(Request $request,$id=null)
+    {
+
+       $crudUrlTemplate = array();
+       // xxxx to be replaced with ext_id to create valid endpoint
+       if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
+            $crudUrlTemplate['list'] = route('socialmediacards-list');
+       }
+       
+       if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['edit'] = route('websitecoresetting.edit', ['id' => 'xxxx']);
+       }
+       
+       if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('delete-smc', ['id' => 'xxxx']);
+       }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('socialmediacards-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('socialmediacards-approve', ['id' => 'xxxx']);
+        }
+        
+       //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
+
+       return view('cms-view.website-core-settings.socialmediacards_list',
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+        
+        ]);
+    }
+    public function indexHeaderRightLogo(Request $request,$id=null)
+    {
+
+       $crudUrlTemplate = array();
+       // xxxx to be replaced with ext_id to create valid endpoint
+       if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
+            $crudUrlTemplate['list'] = route('rightheaderlogo-list');
+       }
+       
+       if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
+            $crudUrlTemplate['edit'] = route('websitecoresetting.edit', ['id' => 'xxxx']);
+       }
+       
+       if(isset($this->abortIfAccessNotAllowed()['delete']) && $this->abortIfAccessNotAllowed()['delete'] !=''){
+            $crudUrlTemplate['delete'] = route('delete-rhls', ['id' => 'xxxx']);
+       }
+       if(isset($this->abortIfAccessNotAllowed()['approver']) && $this->abortIfAccessNotAllowed()['approver'] !=''){
+        $crudUrlTemplate['approver'] = route('headerrightlogo-approve', ['id' => 'xxxx']);
+        }
+        if(isset($this->abortIfAccessNotAllowed()['publisher']) && $this->abortIfAccessNotAllowed()['publisher'] !=''){
+            $crudUrlTemplate['publisher'] = route('headerrightlogo-approve', ['id' => 'xxxx']);
+        }
+        
+       //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
+
+       return view('cms-view.website-core-settings.rightheaderlogo_list',
             ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
         
         ]);
@@ -168,6 +228,8 @@ class WebsiteCoreSettingsController extends Controller
             $crudUrlTemplate['create_footerContent'] = route('footer-save');
             $crudUrlTemplate['create_sociallink'] = route('socialLink-save');
             $crudUrlTemplate['create_popupadvertising'] = route('popupadvertising-save');
+            $crudUrlTemplate['create_socialmediacard'] = route('socialmediacard-save');
+            $crudUrlTemplate['create_headerrightlogo'] = route('headerrightlogo-save');
        }else{
             $accessPermission = $this->checkAccessMessage();
         }
@@ -224,12 +286,16 @@ class WebsiteCoreSettingsController extends Controller
             $crudUrlTemplate['update_footerContent'] = route('footer-update');
             $crudUrlTemplate['update_sociallink'] = route('socialLink-update');
             $crudUrlTemplate['update_popupAdvertisings'] = route('popupadvertising-update');
+            $crudUrlTemplate['update_socialmediacard'] = route('socialmediacard-update');
+            $crudUrlTemplate['update_headerrightlogo'] = route('headerrightlogo-update');
         }
 
        $datas = WebsiteCoreSettings::where('uid',$request->id)->first();
        $footerdatas = FooterManagement::where('uid',$request->id)->first();
        $sociallinkDatas = DB::table('social_links')->where('uid',$request->id)->first();
        $popupAdvertisings = DB::table('popup_advertisings')->where('uid',$request->id)->first();
+       $socialmediacards = DB::table('social_media_enbed')->where('uid',$request->id)->first();
+       $rightheaderlogo = DB::table('header_right_logo')->where('uid',$request->id)->first();
         if(isset($datas)){
             $Logodata = $datas;
             $formCall = 'websitecoresetting_edit';
@@ -242,6 +308,12 @@ class WebsiteCoreSettingsController extends Controller
         }elseif(isset($popupAdvertisings)){
             $popupAdvertising = $popupAdvertisings;
             $formCall = 'advertising_popup_edit';
+        }elseif(isset($socialmediacards)){
+            $socialmediacard = $socialmediacards;
+            $formCall = 'social_mediacards_edit';
+        }elseif(isset($rightheaderlogo)){
+            $rightheaderlogos = $rightheaderlogo;
+            $formCall = 'rightheaderlogo_edit';
         }else{
             return view('cms-view.errors.500');
         }
@@ -252,6 +324,8 @@ class WebsiteCoreSettingsController extends Controller
             'footerdata'=> isset($footerdata)?$footerdata:'',
             'sociallinkData'=> isset($sociallinkData)?$sociallinkData:'',
             'popupAdvertising'=> isset($popupAdvertising)?$popupAdvertising:'',
+            'socialmediacard'=> isset($socialmediacard)?$socialmediacard:'',
+            'rightheaderlogolist'=> isset($rightheaderlogos)?$rightheaderlogos:'',
         ]);
     }
 

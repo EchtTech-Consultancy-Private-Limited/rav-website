@@ -16,8 +16,8 @@ var KTAppUserSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                               message: 'This field can consist of alphabetical characters, spaces, digits only'
+                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,40}$/,
+                               message: 'This field can consist of alphabetical characters, spaces, max 40 characters only'
                             },
                          },
                    },
@@ -27,8 +27,8 @@ var KTAppUserSave = function () {
                                message: 'This field is required'
                             },
                              regexp: {
-                                 regexp: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                 message: 'The value is not a valid email address',
+                                 regexp: /^(?=.{2,50}$)[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                 message: 'The value is not a valid email address, max 50 characters only',
                             },
                          },
                    },
@@ -90,18 +90,23 @@ var KTAppUserSave = function () {
                       toastr.error(
                          response.data.email, 
                          "Something went wrong!", 
-                         {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                         {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                       );
                       }
                    })
                    .catch(function (error) {
                     $('#loading').removeClass('loading');
                     $('#loading-content').removeClass('loading-content');
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                    for(var field in error.response.data.errors) {
+                        if (error.response.data.errors.hasOwnProperty(field)) {
+                        error.response.data.errors[field].forEach(function (errorMessage) {
+                           toastr.error(
+                                    errorMessage,
+                                    {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                              );
+                        });
+                        }
+                     }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -112,9 +117,9 @@ var KTAppUserSave = function () {
                     $('#loading').removeClass('loading');
                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
-                               "Sorry, looks like there are some errors detected, please try again K.", 
-                               "Something went wrong!", 
-                               {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                "Some fields are required", 
+                                "Something Require!",
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                             );
                       }
                 })
@@ -125,7 +130,6 @@ var KTAppUserSave = function () {
  const cancelButton = document.getElementById('kt_modal_add_user').querySelector('[data-kt-users-modal-action="cancel"]');
      cancelButton.addEventListener('click', e => {
          e.preventDefault();
- 
          Swal.fire({
              text: "Are you sure you would like to cancel?",
              icon: "warning",
@@ -141,17 +145,7 @@ var KTAppUserSave = function () {
              if (result.value) {
                  document.getElementById('kt_modal_add_user_form').reset(); // Reset form			
                  $('#kt_modal_add_user').modal('hide');
-             } else if (result.dismiss === 'cancel') {
-                 Swal.fire({
-                     text: "Your form has not been cancelled!.",
-                     icon: "error",
-                     buttonsStyling: false,
-                     confirmButtonText: "Ok, got it!",
-                     customClass: {
-                         confirmButton: "btn btn-primary",
-                     }
-                 });
-             }
+             } 
          });
      });
  
@@ -175,16 +169,6 @@ var KTAppUserSave = function () {
              if (result.value) {
                  document.getElementById('kt_modal_add_user_form').reset(); // Reset form			
                  $('#kt_modal_add_user').modal('hide');
-             } else if (result.dismiss === 'cancel') {
-                 Swal.fire({
-                     text: "Your form has not been cancelled!.",
-                     icon: "error",
-                     buttonsStyling: false,
-                     confirmButtonText: "Ok, got it!",
-                     customClass: {
-                         confirmButton: "btn btn-primary",
-                     }
-                 });
              }
          });
      });

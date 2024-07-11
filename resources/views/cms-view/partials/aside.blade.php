@@ -108,11 +108,15 @@
             <span class="menu-link" ><span  class="menu-icon" ><i class="ki-outline ki-setting-2 fs-2"></i></span><span  class="menu-title" >{{ config('menu.websitecoresettings') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
             <div  class="menu-sub menu-sub-accordion menu-active-bg 
             {{ set_active(['websitecoresetting/websitecoresetting-create','websitecoresetting/logo-list',
-               'websitecoresetting/footercontent-list','websitecoresetting/sociallink-list','websitecoresetting/advertisingpopup-list']) }}
+               'websitecoresetting/footercontent-list','websitecoresetting/sociallink-list',
+               'websitecoresetting/advertisingpopup-list','websitecoresetting/socialmediacards-list'
+               ,'websitecoresetting/headerrightlogo-list']) }}
              {{ (request()->is('websitecoresetting/websitecoresetting-create/*')) ? 'show' : '' }}{{ (request()->is('websitecoresetting/logo-list/*')) ? 'show' : '' }}
             {{ (request()->is('websitecoresetting/footercontent-list/*')) ? 'show' : '' }}
             {{ (request()->is('websitecoresetting/sociallink-list/*')) ? 'show' : '' }}
+            {{ (request()->is('websitecoresetting/socialmediacards-list/*')) ? 'show' : '' }}
             {{ (request()->is('websitecoresetting/advertisingpopup-list/*')) ? 'show' : '' }}
+            {{ (request()->is('websitecoresetting/headerrightlogo-list/*')) ? 'show' : '' }}
             " >
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['websitecoresetting/websitecoresetting-create']) }} {{ (request()->is('websitecoresetting/websitecoresetting-create/*')) ? 'active' : '' }}"  href="{{ route('websitecoresetting.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Core Setting</span></a><!--end:Menu link-->
@@ -121,13 +125,19 @@
                   <a class="menu-link {{ set_active1(['websitecoresetting/advertisingpopup-list']) }} {{ (request()->is('websitecoresetting/advertisingpopup-list/*')) ? 'active' : '' }}"  href="{{ route('advertisingpopup.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Advertising Popup Listing</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
-                  <a class="menu-link {{ set_active1(['websitecoresetting/logo-list']) }} {{ (request()->is('websitecoresetting/logo-list/*')) ? 'active' : '' }}"  href="{{ route('logo.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Logo Listing</span></a><!--end:Menu link-->
+                  <a class="menu-link {{ set_active1(['websitecoresetting/logo-list']) }} {{ (request()->is('websitecoresetting/logo-list/*')) ? 'active' : '' }}"  href="{{ route('logo.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title">Header Footer Logo Listing</span></a><!--end:Menu link-->
+               </div>
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['websitecoresetting/headerrightlogo-list']) }} {{ (request()->is('websitecoresetting/headerrightlogo-list/*')) ? 'active' : '' }}"  href="{{ route('headerrightlogo.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title">Header Right Logo Listing</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['websitecoresetting/footercontent-list']) }} {{ (request()->is('websitecoresetting/footercontent-list/*')) ? 'active' : '' }}"  href="{{ route('footercontent.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Footer Content Listing</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['websitecoresetting/sociallink-list']) }} {{ (request()->is('websitecoresetting/sociallink-list/*')) ? 'active' : '' }}"  href="{{ route('sociallink.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Social Link Listing</span></a><!--end:Menu link-->
+               </div>
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['websitecoresetting/socialmediacards-list']) }} {{ (request()->is('websitecoresetting/socialmediacards-list/*')) ? 'active' : '' }}"  href="{{ route('socialmediacards.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Social Media Listing</span></a><!--end:Menu link-->
                </div>
             </div>
          </div>
@@ -260,9 +270,21 @@
                </div>
             </div>
          </div>
-         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'hover show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'hover show' : '' }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion 
+               {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list','tendertype/tendertype-list']) }} 
+               {{ (request()->is('tender/tender-create/*')) ? 'hover show' : '' }}
+               {{ (request()->is('tender/tender-list/*')) ? 'hover show' : '' }}
+               {{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'hover show' : '' }}
+               {{ (request()->is('tendertype/tendertype-list/*')) ? 'hover show' : '' }}
+               " >
             <span class="menu-link" ><span class="menu-icon" ><i class="ki-outline ki-element-12 fs-2"></i></span><span  class="menu-title" >{{ config('menu.tendersmanagement') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'show' : '' }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion 
+               {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list','tendertype/tendertype-list']) }} 
+               {{ (request()->is('tender/tender-create/*')) ? 'show' : '' }}
+               {{ (request()->is('tender/tender-list/*')) ? 'show' : '' }}
+               {{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'show' : '' }}
+               {{ (request()->is('tendertype/tendertype-list/*')) ? 'show' : '' }}
+               " >
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['tender/tender-create']) }} {{ (request()->is('tender/tender-create/*')) ? 'active' : '' }}" href="{{ route('tender.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Create</span></a><!--end:Menu link-->
                </div>
@@ -272,6 +294,11 @@
                @if(config('particularAssets.purchaseworkscommittee') == 'true')
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['purchaseworkscommittee/purchaseworkscommittee-list']) }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'active' : '' }}" href="{{ route('purchaseworkscommittee.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Purchase / Works / Committee</span></a><!--end:Menu link-->
+               </div>
+               @endif
+               @if(config('particularAssets.tender_type') == 'true')
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['tendertype/tendertype-list']) }}{{ (request()->is('tendertype/tendertype-list/*')) ? 'active' : '' }}" href="{{ route('tendertype.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Tender Type List</span></a><!--end:Menu link-->
                </div>
                @endif
             </div>
@@ -326,16 +353,28 @@
          <div  class="menu-item pt-5" >
             <div  class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Apps</span></div>
          </div>
-         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} {{ (request()->is('datamanagement/contactus-list/*')) ? 'hover show' : '' }}{{ (request()->is('datamanagement/feedback-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} 
+         {{ (request()->is('datamanagement/contactus-list/*')) ? 'hover show' : '' }}
+         {{ (request()->is('datamanagement/feedback-list/*')) ? 'hover show' : '' }}
+         {{ (request()->is('datamanagement/other-list/*')) ? 'hover show' : '' }}
+         " >
             <span class="menu-link" ><span  class="menu-icon" ><i class="ki-outline ki-information-4 fs-2"></i></span><span  class="menu-title" >{{ config('menu.datamanagement') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} {{ (request()->is('datamanagement/contactus-list/*')) ? 'show' : '' }}{{ (request()->is('datamanagement/feedback-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} 
+            {{ (request()->is('datamanagement/contactus-list/*')) ? 'show' : '' }}
+            {{ (request()->is('datamanagement/feedback-list/*')) ? 'show' : '' }}
+            {{ (request()->is('datamanagement/other-list/*')) ? 'show' : '' }}
+            " >
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['datamanagement/contactus-list']) }} {{ (request()->is('datamanagement/contactus-list/*')) ? 'active' : '' }}" href="{{ route('datamanagement.list-contact') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Contact List</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['datamanagement/list-feedback']) }} {{ (request()->is('datamanagement/list-feedback/*')) ? 'active' : '' }}" href="{{ route('datamanagement.list-feedback') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Feedback List</span></a><!--end:Menu link-->
                </div>
-               
+               @if(config('particularAssets.other_list') == 'true')
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['datamanagement/list-other']) }} {{ (request()->is('datamanagement/list-other/*')) ? 'active' : '' }}" href="{{ route('datamanagement.list-other') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Other List</span></a><!--end:Menu link-->
+               </div>
+               @endif
             </div>
          </div>
          @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')

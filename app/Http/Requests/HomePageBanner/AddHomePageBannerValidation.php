@@ -3,6 +3,8 @@
 namespace App\Http\Requests\HomePageBanner;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UniqueTitleNotSoftDeleted;
+use Illuminate\Http\Request;
 
 class AddHomePageBannerValidation extends FormRequest
 {
@@ -23,17 +25,27 @@ class AddHomePageBannerValidation extends FormRequest
      */
     public function rules()
     {
+        $imgsizeW = 'max_width='.env('BANNER_WIDTH')??'1900';
+        $imgsizeH = 'max_height='.env('BANNER_HEIGHT')??'500';
+        
         return [
+            'title_name_en'=>['required',
+                    new UniqueTitleNotSoftDeleted('home_page_banner_management', 'title_name_en', 'soft_delete'),
+            ],
             'tabtype'=> 'required',
-            'title_name_en'=> 'required',
-            'image'=> 'mimes:jpg,jpeg,gif,bmp,png',
+            'title_name_hi'=> 'required',
+            'image'=> "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:".$imgsizeW.','.$imgsizeH,
         ];
     }
     public function messages()
     {
+        $imgsizeW = 'max_width='.env('BANNER_WIDTH')??'1900';
+        $imgsizeH = 'max_height='.env('BANNER_HEIGHT')??'500';
         return [
-            'name_en.unique'=> 'Enter Unique Name.',
-
+            'title_name_en.unique'=> 'Enter Unique title Name.',
+            'title_name_en.required'=> 'English name is required.',
+            'title_name_hi.required'=> 'Hindi name is required.',
+            'image.dimensions'=> 'Image is required.'.$imgsizeW.','.$imgsizeH,
         ];
     }
 }

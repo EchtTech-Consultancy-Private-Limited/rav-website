@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Models\CMSModels\WebsiteMenuManagement;
 use Illuminate\Http\Request;
+use App\Http\Requests\WebsiteMenu\AddMainMenuValidation;
+use App\Http\Requests\WebsiteMenu\EditMenuValidation;
 use Ramsey\Uuid\Uuid;
 use Validator;
 use Carbon\Carbon;
@@ -46,70 +48,45 @@ class WebsiteMenuManagementAPIController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddMainMenuValidation $request)
     {
-        if(isset(explode(':',$request->url)[0]) && explode(':',$request->url)[0] == 'https' || explode(':',$request->url)[0] == 'http'){
-            $patterns = '/\s+/';
-        }else{
-            $patterns = array('/\s+/','/&/', '/;/', '/#/','/</','/>/','/\"/','/\(/','/\)/','/{/','/}/','/\`/','/\[/','/\]/','/\=/','/\//','/:/');
-        }
-        $exitValue = WebsiteMenuManagement::where([['name_en', $request->name_en],['soft_delete',0]])->count() > 0;
-       // $max_size = $document->getMaxFileSize() / 1024 / 1024;
-        if($exitValue == 'false'){
-            //DB::rollback();
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
-            try{
-                $validator=Validator::make($request->all(),
-                    [
-                    'name_en'=>'required',
-                    'sort_order'=>'required',
-                // 'url'=>'required'
-                ]);
-                if($validator->fails())
-                {
-                    $notification =[
-                        'status'=>201,
-                        'message'=> $validator->errors()
-                    ];
-                }
-                else{
-                    $result= WebsiteMenuManagement::insert([
-                            'uid' => Uuid::uuid4(),
-                            'name_en' => $request->name_en,
-                            'name_hi' => $request->name_hi,
-                            'menu_place' => isset($request->menu_place)?$request->menu_place:'0',
-                            'sort_order' => $request->sort_order,
-                            'tab_type' => $request->tab_type,
-                            'url' => trim(preg_replace($patterns, '-', isset($request->url)?strtolower($request->url):'0'),'-'),
-                            'footer_url' => trim(preg_replace($patterns, '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),'-'),
-                            'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
-                            'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
-                        ]);
-                    
-                if($result == true)
-                {
-                    $notification =[
-                        'status'=>200,
-                        'message'=>'Added successfully.'
-                    ];
-                }
-                else{
-                   // DB::rollback();
-                    $notification = [
-                            'status'=>201,
-                            'message'=>'some error accoured.'
-                        ];
-                    } 
-                }      
-            }catch(Throwable $e)
-            {
-                report($e);
-                return false;
+            if(isset(explode(':',$request->url)[0]) && explode(':',$request->url)[0] == 'https' || explode(':',$request->url)[0] == 'http'){
+                $patterns = '/\s+/';
+            }else{
+                $patterns = array('/\s+/','/&/', '/;/', '/#/','/</','/>/','/\"/','/\(/','/\)/','/{/','/}/','/\`/','/\[/','/\]/','/\=/','/\//','/:/');
             }
+            try{
+                $result= WebsiteMenuManagement::insert([
+                        'uid' => Uuid::uuid4(),
+                        'name_en' => $request->name_en,
+                        'name_hi' => $request->name_hi,
+                        'menu_place' => isset($request->menu_place)?$request->menu_place:'0',
+                        'sort_order' => $request->sort_order,
+                        'tab_type' => $request->tab_type,
+                        'url' => trim(preg_replace($patterns, '-', isset($request->url)?strtolower($request->url):'0'),'-'),
+                        'footer_url' => trim(preg_replace($patterns, '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),'-'),
+                        'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
+                        'parent_id' => isset($request->parent_id)?$request->parent_id:'0',
+                    ]);
+                
+            if($result == true)
+            {
+                $notification =[
+                    'status'=>200,
+                    'message'=>'Added successfully.'
+                ];
+            }
+            else{
+                // DB::rollback();
+                $notification = [
+                        'status'=>201,
+                        'message'=>'some error accoured.'
+                    ];
+                } 
+        }catch(Throwable $e)
+        {
+            report($e);
+            return false;
         }
         return response()->json($notification);
     }
@@ -143,9 +120,8 @@ class WebsiteMenuManagementAPIController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(EditMenuValidation $request)
     {
-         //dd($request->all());
         try{
             
             if(isset(explode(':',$request->url)[0]) && explode(':',$request->url)[0] == 'https' || explode(':',$request->url)[0] == 'http'){
@@ -153,33 +129,18 @@ class WebsiteMenuManagementAPIController extends Controller
             }else{
                 $patterns = array('/\s+/','/&/', '/;/', '/#/','/</','/>/','/\"/','/\(/','/\)/','/{/','/}/','/\`/','/\[/','/\]/','/\=/','/\//','/:/');
             }
-            $validator=Validator::make($request->all(),
-                [
-                'name_en'=>'required',
-                'sort_order'=>'required',
-                //'parent_id'=>'required'
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                $result= WebsiteMenuManagement::where('uid',$request->id)->update([
-                        'name_en' => $request->name_en,
-                        'name_hi' => $request->name_hi,
-                        'menu_place' => isset($request->menu_place)?$request->menu_place:'0',
-                        'sort_order' => $request->sort_order,
-                        'tab_type' => $request->tab_type,
-                        'url' => trim(preg_replace($patterns, '-', isset($request->url)?strtolower($request->url):'0'),'-'),
-                        'footer_url' => trim(preg_replace($patterns, '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),'-'),
-                        //'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
-                        'parent_id' => $request->parent_id??'0',
-                        'status' => 1,
-                    ]);
-                
+            $result= WebsiteMenuManagement::where('uid',$request->id)->update([
+                    'name_en' => $request->name_en,
+                    'name_hi' => $request->name_hi,
+                    'menu_place' => isset($request->menu_place)?$request->menu_place:'0',
+                    'sort_order' => $request->sort_order,
+                    'tab_type' => $request->tab_type,
+                    'url' => trim(preg_replace($patterns, '-', isset($request->url)?strtolower($request->url):'0'),'-'),
+                    'footer_url' => trim(preg_replace($patterns, '-', isset($request->footer_url)?strtolower($request->footer_url):'0'),'-'),
+                    //'is_parent' => isset($request->is_parent)?$request->is_parent:'0',
+                    'parent_id' => $request->parent_id??'0',
+                    'status' => 1,
+                ]);
             if($result == true)
             {
                 $notification =[
@@ -194,7 +155,6 @@ class WebsiteMenuManagementAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }      
         }catch(Throwable $e)
         {
             report($e);

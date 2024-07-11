@@ -3,6 +3,8 @@
 namespace App\Http\Requests\EmployeeDirectory;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UniqueTitleNotSoftDeleted;
+use Illuminate\Http\Request;
 
 class EditEmployeeDirectoryValidation extends FormRequest
 {

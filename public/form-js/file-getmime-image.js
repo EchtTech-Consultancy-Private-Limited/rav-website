@@ -7,27 +7,26 @@ $(document).on('change', '.checkmime', function(e){
    // console.log(e.target.files[0]);
     axios.post('../mimeimagecheck',formdata, {
         }).then(function (response) {
-            console.log(response)
         if (response.data.status ==200) {
             toastr.success(
                 "Matches file extension!", 
                 "Matches file Information!", 
-                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
             );
         } else {
             link.click();
             toastr.error(
                 response.data.message.file,
                 "Something went wrong!", 
-                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
             );
             }
         })
         .catch(function (error) {
                 toastr.error(
-                "Sorry, looks like there are some errors detected, please try again B", 
+                "Sorry, looks like there are some errors detected, please try again.", 
                 "Something went wrong!", 
-                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                 );
             }).then(() => {
                 // Hide loading indication

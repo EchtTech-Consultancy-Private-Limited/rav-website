@@ -177,7 +177,7 @@
                                           <input type="number" class="form-control mw-100 w-100" name="sort_order" placeholder="sort order" />
                                           </div>
                                           <div class="col-md-4">
-                                          <label class="required form-label mw-100 w-100">Image Format (1900px * 500px)</label>
+                                          <label class="required form-label mw-100 w-100">Image Format ({{ env('BANNER_WIDTH').'px'??'1900px' }} * {{ env('BANNER_HEIGHT').'px'??'500px' }})</label>
                                           <input type="file" class="form-control mw-100 w-100 image" id="image" name="image" accept="image/*" />
                                           <!--end::Input-->
                                           <!-- <button type="button" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">

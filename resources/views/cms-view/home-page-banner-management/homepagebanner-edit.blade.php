@@ -166,11 +166,10 @@
                                  <div class="form-group">
                                     <label class="required form-label mw-100 w-200px">Banner Title</label>
                                     <label class="required form-label mw-100 w-200px">Sort Order</label>
-                                    <label class="required form-label mw-100 w-200px">Image Format (1900px * 500px)</label>
+                                    <label class="required form-label mw-100 w-200px">Image Format ({{ env('BANNER_WIDTH').'px'??'1900px' }} * {{ env('BANNER_HEIGHT').'px'??'500px' }})</label>
                                     <div data-repeater-list="kt_tender_add_multiple_options" class="d-flex flex-column gap-3">
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
-                                          
                                           <input type="text" class="form-control mw-100 w-200px bannertitle" name="bannertitle" placeholder="banner title Name" value="{{ $data->banner_title  }}" />
                                           <input type="number" class="form-control mw-100 w-200px sort_order" name="sort_order" placeholder="sort order" value="{{ $data->sort_order  }}" />
                                           <input type="file" class="form-control mw-100 w-200px image" id="image" name="image" accept="image/*" />

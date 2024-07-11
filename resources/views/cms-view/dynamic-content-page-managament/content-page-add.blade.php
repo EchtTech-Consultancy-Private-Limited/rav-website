@@ -280,7 +280,7 @@
                      <!--end::Card header-->
                      <!--begin::Card body-->
                      <div class="card-body pt-0">
-                     <div>
+                        <div>
                            <!--begin::Label-->
                            <label class="form-label required">Description (English)</label>
                            <!--end::Label-->
@@ -304,11 +304,10 @@
                         </div>
                      </div>
                      <!--end::Card header-->
-                  
                      <!--end::Variations-->
-                     </div>
-                     <!--end::Card header-->
                   </div>
+                     <!--end::Card header-->
+               </div>
                   <!--end::Pricing-->
                <!--end::Input group-->
                <!--begin::Action buttons-->
@@ -317,7 +316,7 @@
                      <div class="d-flex">
                         <!--begin::Button-->
                         <button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">
-                        {{config('FormField.cancel_button')}}
+                           {{config('FormField.cancel_button')}}
                         </button>
                         <!--end::Button-->
                         <!--begin::Button-->
