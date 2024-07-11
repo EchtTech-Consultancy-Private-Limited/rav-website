@@ -211,12 +211,12 @@
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
                                        <div>
-                                          <label class="required form-label mw-100 w-200px">Image Title</label>
-                                          <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
+                                          <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')??''}} Title</label>
+                                          <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="{{env('PDF_TITLE')??''}} title Name" />
                                        </div>
                                        <div>
-                                          <label class="required form-label mw-100 w-200px">Image Format</label>
-                                          <input type="file" id="checkmime" class="form-control mw-100 w-200px checkmime" name="image" accept="image/*" />
+                                          <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')}} Format</label>
+                                          <input type="file" id="checkmime" class="form-control mw-100 w-200px @if(env('PDF_MIME') == 'pdf') {{'checkmimepdf'}} @else {{'checkmime'}} @endif" name="image" accept="{{env('PDF_MIME')??'image'}}/*" />
                                        </div>
                                        <!--end::Input-->
                                        <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">

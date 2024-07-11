@@ -78,6 +78,7 @@ class GalleryManagementAPIController extends Controller
                             'uid' => $extId,
                             'title_name_en' => $request->title_name_en,
                             'title_name_hi' => $request->title_name_hi,
+                            'year' => $request->gallery_year??'',
                             'type' => isset($request->type)?$request->type:'1',
                             //'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                         ]);
@@ -340,6 +341,7 @@ class GalleryManagementAPIController extends Controller
                 // $lastInsertID= TenderManagement::insertGetId([
                             'title_name_en' => $request->title_name_en,
                             'title_name_hi' => $request->title_name_hi,
+                            'year' => $request->gallery_year??'',
                             'type' => isset($request->type)?$request->type:'1',
                             'status' => 1,
                         ]);

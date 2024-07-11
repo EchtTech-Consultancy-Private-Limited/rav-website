@@ -136,6 +136,38 @@
                      <!--end::Input-->
                   </div>
                </div>
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="">You Tube</span>
+                        <span class="ms-1"  data-bs-toggle="tooltip" title="Set the title of the store for SEO." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-9">
+                     <!--begin::Input-->
+                     <input type="text" class="form-control form-control-solid youtube" name="youtube" id="youtube_error" value="{{ $sociallinkData->youtube ??'' }}" placeholder="https://..."   />
+                     <!--end::Input-->
+                  </div>
+               </div>
+               <div class="row fv-row mb-7">
+                  <div class="col-md-3 text-md-end">
+                     <!--begin::Label-->
+                     <label class="fs-6 fw-semibold form-label mt-3">
+                        <span class="">WhatsApp</span>
+                        <span class="ms-1" data-bs-toggle="tooltip" title="Set the title of the store for SEO." >
+                        <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i></span>            
+                     </label>
+                     <!--end::Label-->
+                  </div>
+                  <div class="col-md-9">
+                     <!--begin::Input-->
+                     <input type="text" class="form-control form-control-solid whatsapp" name="whatsapp" id="whatsapp_error" value="{{ $sociallinkData->whatsapp ??'' }}" placeholder="https://..."   />
+                     <!--end::Input-->
+                  </div>
+               </div>
                <!--end::Input group-->
                <!--begin::Input group-->
                <div class="row py-5">

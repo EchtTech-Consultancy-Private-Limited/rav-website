@@ -70,10 +70,14 @@ class GalleryManagementController extends Controller
         }else{
             $accessPermission = $this->checkAccessMessage();
         }
+        $now = date('Y');
+        $then = $now - 14;
+        $years = range( $now, $then );
 
         return view('cms-view.'.$this->create,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),    
-            'textMessage' =>$accessPermission??''
+            'textMessage' =>$accessPermission??'',
+            'years'=>$years,
          ]);
     }
 
@@ -185,11 +189,16 @@ class GalleryManagementController extends Controller
             $fileName = $this->edit;
         }
         //dd($result);
+        $now = date('Y');
+        $then = $now - 14;
+        $years = range( $now, $then );
+
         return view('cms-view.'.$fileName,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'data'=> $result,
             'pdfData' => isset($pdfimagesData)?$pdfimagesData:'',
-            'textMessage' =>$accessPermission??''
+            'textMessage' =>$accessPermission??'',
+            'years'=>$years,
         ]);
     }
 

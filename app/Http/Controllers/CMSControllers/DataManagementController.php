@@ -57,6 +57,23 @@ class DataManagementController extends Controller
         
         ]);
     }
+    public function otherIndex()
+    {
+        $crudUrlTemplate = array();
+
+        // xxxx to be replaced with ext_id to create valid endpoint
+        if(isset($this->abortIfAccessNotAllowed()['view']) && $this->abortIfAccessNotAllowed()['view'] !=''){
+            $crudUrlTemplate['list'] = route('other-list');
+        }
+        //$crudUrlTemplate['edit'] = route('dm-list-contactus');
+        //$crudUrlTemplate['delete'] = route('dm-list-contactus');
+        //$crudUrlTemplate['view'] = route('websitecoresetting.websitecoresetting-list');
+
+        return view('cms-view.commonPages.other-list',
+            ['crudUrlTemplate' =>  json_encode($crudUrlTemplate)
+        
+        ]);
+    }
     public function contactUSIndex()
     {
         $crudUrlTemplate = array();

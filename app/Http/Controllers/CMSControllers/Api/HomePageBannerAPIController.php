@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\CMSModels\HomePageBannerManagement;
 use Illuminate\Http\Request;
 use App\Http\Traits\PdfImageSizeTrait;
+use App\Http\Requests\HomePageBanner\AddHomePageBannerValidation;
 use Ramsey\Uuid\Uuid;
 use Validator;
 use Carbon\Carbon;
@@ -48,31 +49,9 @@ class HomePageBannerAPIController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddHomePageBannerValidation $request)
     {
-        $exitValue = HomePageBannerManagement::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
-        //dd($request->file('image'));
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-                'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:max_width=1900,max_height=500"
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
                 if($request->hasFile('image')){    
                     $size = $this->getFileSize($request->file('image')->getSize());
                     $extension = $request->file('image')->getClientOriginalExtension();
@@ -114,11 +93,10 @@ class HomePageBannerAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
+           // }
        }catch(Throwable $e){report($e);
         return false;
        }
-    }
         return response()->json($notification);
     }
 

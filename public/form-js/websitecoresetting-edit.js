@@ -17,8 +17,8 @@ var KTvalidationCoreWebsiteSetting1= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,40}$/,
+                                message: 'This field can consist of alphabetical characters, spaces, max 40 characters only'
                             },
                         },
                     },
@@ -72,18 +72,23 @@ var KTvalidationCoreWebsiteSetting1= function() {
                        toastr.error(
                           response.data.message.header_logo,
                           "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                        );
                        }
                     })
                     .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                          toastr.error(
-                             "Sorry, looks like there are some errors detected, please try again B.", 
-                             "Something went wrong!", 
-                             {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                          );
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
                        }).then(() => {
                              // Hide loading indication
                              submitButton.removeAttribute('data-kt-indicator');
@@ -94,9 +99,9 @@ var KTvalidationCoreWebsiteSetting1= function() {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
                           toastr.error(
-                                "Sorry, looks like there are some errors detected, please try again K.", 
-                                "Something went wrong!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                "Some fields are required", 
+                                "Something Require!",
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                        }
                  })

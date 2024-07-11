@@ -10,6 +10,8 @@ use App\Models\CMSModels\ManualFileUpload;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use App\Http\Traits\PdfImageSizeTrait;
+use App\Http\Requests\ManualFileUpload\AddManualFileUploadValidation;
+use App\Http\Requests\ManualFileUpload\EditManualFileUploadValidation;
 use DB, Validator;
 use Carbon\Carbon;
 
@@ -57,30 +59,9 @@ class ManualFileUploadAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddManualFileUploadValidation $request)
     {
-        $exitValue = ManualFileUpload::where([['title_name', $request->title_name],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
-        //dd($request->file('image'));
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'title_name'=>'required',
-                'file_path' => "required|mimes:jpeg,bmp,png,gif,svg,pdf,doc,csv,xlsx,xls,docx,ppt,odt,ods,odp|max:10240"
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+            try{
                 if($request->hasFile('file_path')){    
                     $size = $this->getFileSize($request->file('file_path')->getSize());
                     $extension = $request->file('file_path')->getClientOriginalExtension();
@@ -110,11 +91,9 @@ class ManualFileUploadAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
        }catch(Throwable $e){report($e);
         return false;
        }
-    }
         return response()->json($notification);
     }
 
@@ -147,23 +126,9 @@ class ManualFileUploadAPIController extends Controller
      * @param  \App\Models\ManualFileUpload  $manualFileUpload
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ManualFileUpload $manualFileUpload)
+    public function update(EditManualFileUploadValidation $request, ManualFileUpload $manualFileUpload)
     {
-        try{
-            
-            $validator=Validator::make($request->all(),
-                [
-                'title_name'=>'required',
-                //'file_path' => "required|mimes:jpeg,bmp,png,gif,svg|max:10000"
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+            try{
                 if($request->hasFile('file_path')){    
                     $size = $this->getFileSize($request->file('file_path')->getSize());
                     $extension = $request->file('file_path')->getClientOriginalExtension();
@@ -195,12 +160,11 @@ class ManualFileUploadAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
+           // }
        }catch(Throwable $e){report($e);
         return false;
        }
         return response()->json($notification);
-        
     }
 
     /**

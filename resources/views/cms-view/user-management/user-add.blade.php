@@ -42,7 +42,7 @@
                         <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('assets-cms/media/avatars/300-6.jpg') }});"></div>
                         <!--end::Preview existing avatar-->
                         <!--begin::Label-->
-                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change">
                            <i class="ki-outline ki-pencil fs-7"></i>
                            <!--begin::Inputs-->
                            <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
@@ -51,7 +51,7 @@
                         </label>
                         <!--end::Label-->
                         <!--begin::Cancel-->
-                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel">
                            <i class="ki-outline ki-cross fs-2"></i> 
                         </span>
                         <!--end::Cancel-->
@@ -63,7 +63,7 @@
                      </div>
                      <!--end::Image input-->
                      <!--begin::Hint-->
-                     <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                     <div class="fw-semibold fs-6 mt-2">Allowed file types: png, jpg, jpeg.</div>
                      <!--end::Hint-->
                   </div>
                   <!--end::Input group-->

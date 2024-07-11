@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Models\CMSModels\PrivateGovernmentClients;
 use Illuminate\Http\Request;
+use App\Http\Requests\PrivateGovtClientLogo\AddPrivateGovtClientLogoValidation;
+use App\Http\Requests\PrivateGovtClientLogo\EditPrivateGovtClientLogoValidation;
 use App\Http\Traits\AccessModelTrait;
 use Ramsey\Uuid\Uuid;
 use App\Http\Traits\PdfImageSizeTrait;
@@ -57,7 +59,7 @@ class PrivateGovernmentClientsAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddPrivateGovtClientLogoValidation $request)
     {
         $exitValue = PrivateGovernmentClients::where([['title_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
         if($exitValue == 'false'){
@@ -159,7 +161,7 @@ class PrivateGovernmentClientsAPIController extends Controller
      * @param  \App\Models\PrivateGovernmentClients  $PrivateGovernmentClients
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PrivateGovernmentClients $PrivateGovernmentClients)
+    public function update(EditPrivateGovtClientLogoValidation $request, PrivateGovernmentClients $PrivateGovernmentClients)
     {
         try{
             $validator=Validator::make($request->all(),

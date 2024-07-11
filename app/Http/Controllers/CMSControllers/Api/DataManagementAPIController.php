@@ -61,7 +61,25 @@ class DataManagementAPIController extends Controller
             ],201);
         }
     }
-
+    public function othersIndex()
+    {
+        $data=DB::table('register-for-ncnc')->get();
+        $totalRecords = DB::table('register-for-ncnc')->count();
+        $resp = new \stdClass;
+        $resp->iTotalRecords = $totalRecords;
+        $resp->iTotalDisplayRecords = $totalRecords;
+        $resp->aaData = $data;
+        if($resp)
+            {
+                return response()->json($resp,200);
+            }
+            else{
+                return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
     /**
      * Store analytics data.
      *

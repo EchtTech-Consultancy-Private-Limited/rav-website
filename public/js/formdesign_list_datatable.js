@@ -138,9 +138,9 @@ var KTDatatablesBasicPaginations = function() {
 						}
 						var status = {
 							"0": { 'title': 'Waiting For Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
-												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross'},
+												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approved','icontext':'ki-cross'},
 							"1": { 'title': 'Waiting For Approve', 'class': 'badge badge-light-danger fw-bold px-3 py-2 btn btn-danger border-radius-10',
-												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approve','icontext':'ki-cross' },
+												'classApprove':classApproved,'url':url_approver,'btncustomtext':'Approved','icontext':'ki-cross' },
 							"2": { 'title': 'Waiting For Publisher', 'class': 'badge badge-light-warning fw-bold px-3 py-2 btn btn-warning border-radius-10',
 												'classApprove':classApproved_publisher,'btncustomtext':'Waiting For Publisher',
 												'icontext':'ki-cross','url':url_publisher, },
@@ -186,7 +186,7 @@ var KTDatatablesBasicPaginations = function() {
 									.remove()
 									.draw();
 								toastr.success(
-									"Record has been "+textset+"!", 
+									"The record has been "+textset+" Successfully!",
 									textset+"!", 
 									{timeOut: 0,showProgressbar: true, extendedTimeOut: 0,allow_dismiss: false, closeButton: true, closeDuration: 0}
 								);

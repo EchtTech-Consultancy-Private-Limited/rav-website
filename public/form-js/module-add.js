@@ -89,18 +89,23 @@ var KTvalidationModule= function() {
                           response.data.message.name_en, 
                           response.data.message, 
                           "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true,progressBar:true, closeDuration: 0}
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true,progressBar:true, closeDuration: 0}
                        );
                        }
                     })
                     .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                          toastr.error(
-                             "Sorry, looks like there are some errors detected, please try again B.", 
-                             "Something went wrong!", 
-                             {timeOut: 0, extendedTimeOut: 0, closeButton: true,progressBar:true, closeDuration: 0}
-                          );
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
                        }).then(() => {
                              // Hide loading indication
                              submitButton.removeAttribute('data-kt-indicator');
@@ -111,9 +116,9 @@ var KTvalidationModule= function() {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
                           toastr.error(
-                                "Sorry, looks like there are some errors detected, please try again K.", 
-                                "Something went wrong!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                "Some fields are required", 
+                                "Something Require!", 
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                        }
                  })

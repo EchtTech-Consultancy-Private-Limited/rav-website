@@ -8,6 +8,7 @@ use App\Http\Controllers\CMSControllers\Api\RolesAndPermissionAPIController;
 use App\Http\Controllers\CMSControllers\Api\FooterManagementAPIController;
 use App\Http\Controllers\CMSControllers\Api\SocialLinksAPIController;
 use App\Http\Controllers\CMSControllers\Api\TenderManagementAPIController;
+use App\Http\Controllers\CMSControllers\Api\TenderTypeAPIController;
 use App\Http\Controllers\CMSControllers\Api\DynamicContentPageManagamentAPIController;
 use App\Http\Controllers\CMSControllers\Api\EventsManagementAPIController;
 use App\Http\Controllers\CMSControllers\Api\NewsManagementAPIController;
@@ -30,6 +31,8 @@ use App\Http\Controllers\CMSControllers\Api\FormBuilderAPIController;
 use App\Http\Controllers\CMSControllers\Api\ManualFileUploadAPIController;
 use App\Http\Controllers\CMSControllers\Api\PrivateGovernmentClientsAPIController;
 use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
+use App\Http\Controllers\CMSControllers\Api\SocialMediaCardsAPIController;
+use App\Http\Controllers\CMSControllers\Api\HeaderRightLogoAPIController;
 
 
 /***************************** API URL Use For Data Migrate With DB*************************************** */
@@ -86,6 +89,8 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::get('/list-logo',[WebsiteCoreSettingsAPIController::class,'indexLogo'])->name('logo-list');
             Route::get('/list-footercontent',[WebsiteCoreSettingsAPIController::class,'indexFooterContent'])->name('footercontent-list');
             Route::get('/list-sociallink',[WebsiteCoreSettingsAPIController::class,'indexSocialLink'])->name('sociallink-list');
+            Route::get('/list-socialmediacards',[WebsiteCoreSettingsAPIController::class,'indexSocialMediaCards'])->name('socialmediacards-list');
+            Route::get('/list-rightheaderlogo',[WebsiteCoreSettingsAPIController::class,'indexHeaderRightLogo'])->name('rightheaderlogo-list');
             Route::get('/edit-cws/{id}',[WebsiteCoreSettingsAPIController::class,'edit'])->name('cws-edit');
             Route::post('/update-headerLogo',[WebsiteCoreSettingsAPIController::class,'headerLogoUpdate'])->name('headerLogo-update');
             Route::delete('/delete-cws/{id}',[WebsiteCoreSettingsAPIController::class,'destroy'])->name('cws-delete');
@@ -102,7 +107,21 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::get('/list-sl',[SocialLinksAPIController::class,'index']);
             Route::get('/edit-sl/{id}',[SocialLinksAPIController::class,'edit']);
             Route::post('/update-sl',[SocialLinksAPIController::class,'update'])->name('socialLink-update');;
-            Route::delete('/delete-sl/{id}',[SocialLinksAPIController::class,'destroy']);
+            Route::delete('/delete-sl/{id}',[SocialLinksAPIController::class,'destroy'])->name('delete-sl');
+
+            /****** Website Social Media Cards Setting smc:social Link */
+            Route::post('/create-smc',[SocialMediaCardsAPIController::class,'store'])->name('socialmediacard-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-smc',[SocialMediaCardsAPIController::class,'index']);
+            Route::get('/edit-smc/{id}',[SocialMediaCardsAPIController::class,'edit']);
+            Route::post('/update-smc',[SocialMediaCardsAPIController::class,'update'])->name('socialmediacard-update');;
+            Route::delete('/delete-smc/{id}',[SocialMediaCardsAPIController::class,'destroy'])->name('delete-smc');
+
+            /****** Website Core Right Header Logo's rhls:Right Header Logo */
+            Route::post('/create-rhls',[HeaderRightLogoAPIController::class,'store'])->name('headerrightlogo-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-rhls',[HeaderRightLogoAPIController::class,'index']);
+            Route::get('/edit-rhls/{id}',[HeaderRightLogoAPIController::class,'edit']);
+            Route::post('/update-rhls',[HeaderRightLogoAPIController::class,'update'])->name('headerrightlogo-update');;
+            Route::delete('/delete-rhls/{id}',[HeaderRightLogoAPIController::class,'destroy'])->name('delete-rhls');
     
             /****** Module Setting mo:Module*/
             Route::post('/create-mo',[ModuleManagementAPIController::class,'store'])->name('module-save')->middleware('throttle:custom_Limit');
@@ -119,7 +138,15 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::post('/update-ten',[TenderManagementAPIController::class,'update'])->name('tender-update');
             Route::delete('/delete-ten/{id}',[TenderManagementAPIController::class,'destroy'])->name('tender-delete');
             Route::post('/delete-pdf-tender',[TenderManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete-tender');
-    
+           
+            /****** Tender Type tentype:tender type */
+            Route::post('/create-tentype',[TenderTypeAPIController::class,'store'])->name('tendertype-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-tentype',[TenderTypeAPIController::class,'index'])->name('tendertype-list');
+            Route::get('/edit-tentype/{id}',[TenderTypeAPIController::class,'edit'])->name('tendertype-edit');
+            Route::get('/show/{id}',[TenderTypeAPIController::class,'show'])->name('tendertype-show');
+            Route::post('/update-tentype',[TenderTypeAPIController::class,'update'])->name('tendertype-update');
+            Route::delete('/delete-tentype/{id}',[TenderTypeAPIController::class,'destroy'])->name('tendertype-delete');
+
     
             /****** Content Page Setting cpi: content page information */
             Route::post('/create-cpi',[DynamicContentPageManagamentAPIController::class,'basicInformation'])->name('pagemetatag-save')->middleware('throttle:custom_Limit');
@@ -189,7 +216,7 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             //Route::post('/create-faq',[DynamicPagesAPIController::class,'faqStore'])->name('faq-save');
             Route::get('/list-dmfeed',[DataManagementAPIController::class,'feedBackIndex'])->name('dm-list-feedback');
             Route::get('/list-dmcontact',[DataManagementAPIController::class,'contactUSIndex'])->name('dm-list-contactus');
-           // Route::get('/edit-faq/{id}',[DynamicPagesAPIController::class,'edit'])->name('faq-edit');
+           Route::get('/other-list',[DynamicPagesAPIController::class,'othersIndex'])->name('other-list');
             //Route::post('/update-faq/{id}',[DynamicPagesAPIController::class,'update'])->name('faq-update');
           //  Route::delete('/delete-faq/{id}',[DynamicPagesAPIController::class,'destroy'])->name('faq-delete');
     
@@ -314,9 +341,12 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::post('/approve-rti/{id}',[CommonApprovalAPIController::class,'rtiAssetsApprovePublish'])->name('rtiassets-approve');
             Route::post('/approve-aut/{id}',[CommonApprovalAPIController::class,'auditReportApprovePublish'])->name('aut-approve');
             Route::post('/approve-tender/{id}',[CommonApprovalAPIController::class,'tenderApprovePublish'])->name('tender-approve');
+            Route::post('/approve-tendertype/{id}',[CommonApprovalAPIController::class,'tenderTypeApprovePublish'])->name('tendertype-approve');
             Route::post('/approve-ue/{id}',[CommonApprovalAPIController::class,'userManagementApprovePublish'])->name('user-approve');
             Route::post('/approve-loginue/{id}',[CommonApprovalAPIController::class,'loginUserApprovePublish'])->name('loginuser-approve');
             Route::post('/approve-sociallink/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsSocialLinkApprovePublish'])->name('socialLink-approve');
+            Route::post('/approve-socialmediacards/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsSocialMediaCardsApprovePublish'])->name('socialmediacards-approve');
+            Route::post('/approve-headerrightlogo/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsHeaderRightLogoApprovePublish'])->name('headerrightlogo-approve');
             Route::post('/approve-logo/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsLogoApprovePublish'])->name('logo-approve');
             Route::post('/approve-footercontent/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsFooterContentApprovePublish'])->name('footercontent-approve');
             Route::post('/approve-cws/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsLogoApprovePublish'])->name('cws-approve');

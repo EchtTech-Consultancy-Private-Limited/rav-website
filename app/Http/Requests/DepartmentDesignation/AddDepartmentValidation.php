@@ -3,6 +3,7 @@
 namespace App\Http\Requests\DepartmentDesignation;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UniqueTitleNotSoftDeleted;
 
 class AddDepartmentValidation extends FormRequest
 {
@@ -24,13 +25,18 @@ class AddDepartmentValidation extends FormRequest
     public function rules()
     {
         return [
-            'name_en'=> 'required',
+            'name_en'=>['required',
+                    new UniqueTitleNotSoftDeleted('emp_depart_designations', 'name_en', 'soft_delete'),
+            ],
+            'name_hi'=> 'required',
         ];
     }
     public function messages()
     {
         return [
+            'name_en.required'=> 'Enter English Name.',
             'name_en.unique'=> 'Enter Unique Name.',
+            'name_hi.required'=> 'Enter Hindi Name.',
 
         ];
     }

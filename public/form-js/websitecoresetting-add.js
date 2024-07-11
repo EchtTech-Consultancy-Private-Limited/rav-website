@@ -16,8 +16,8 @@ var KTvalidationCoreWebsiteSetting1= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,40}$/,
+                                message: 'This field can consist of alphabetical characters, spaces, max 40 characters only'
                             },
                         },
                     },
@@ -50,7 +50,6 @@ var KTvalidationCoreWebsiteSetting1= function() {
                     $('#loading-content').addClass('loading-content');
                  axios.post(crudUrlTemplate.create_headerlogo,new FormData(form), {
                     }).then(function (response) {
-                       console.log(response.data.message);
                     if (response.data.status ==200) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
@@ -72,18 +71,23 @@ var KTvalidationCoreWebsiteSetting1= function() {
                        toastr.error(
                           response.data.message.header_logo,
                           "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                        );
                        }
                     })
                     .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                          toastr.error(
-                             "Sorry, looks like there are some errors detected, please try again B.", 
-                             "Something went wrong!", 
-                             {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                          );
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
                        }).then(() => {
                              // Hide loading indication
                              submitButton.removeAttribute('data-kt-indicator');
@@ -94,9 +98,9 @@ var KTvalidationCoreWebsiteSetting1= function() {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
                           toastr.error(
-                                "All Field Required, please try again", 
-                                "Something went wrong!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                "Some fields are required", 
+                                "Something Require!",
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                        }
                  })
@@ -128,8 +132,8 @@ var KTvalidationCoreWebsiteSetting2= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,40}$/,
+                                message: 'This field can consist of alphabetical characters, spaces, max 40 characters only'
                             },
                         },
                     },
@@ -175,20 +179,25 @@ var KTvalidationCoreWebsiteSetting2= function() {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
                        toastr.error(
-                             response.data.message,
-                          "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                            response.data.message,
+                            "Something went wrong!", 
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                        );
                        }
                     })
                     .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                          toastr.error(
-                             "Sorry, looks like there are some errors detected, please try again B.", 
-                             "Something went wrong!", 
-                             {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                          );
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
                        }).then(() => {
                              // Hide loading indication
                              submitButton.removeAttribute('data-kt-indicator');
@@ -201,7 +210,7 @@ var KTvalidationCoreWebsiteSetting2= function() {
                           toastr.error(
                                 "All Field Required, please try again.", 
                                 "Something went wrong!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                        }
                  })
@@ -291,6 +300,8 @@ var KTvalidationCoreWebsiteSetting3= function() {
                        twitter: $('.twitter').val(),
                        instagram: $('.instagram').val(),
                        github: $('.github').val(),
+                       youtube: $('.youtube').val(),
+                       whatsapp: $('.whatsapp').val(),
                     })
                     .then(function (response) {
 
@@ -315,18 +326,23 @@ var KTvalidationCoreWebsiteSetting3= function() {
                        toastr.error(
                           "Sorry, the information is incorrect, please try again.", 
                           "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                        );
                        }
                     })
                     .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                          toastr.error(
-                             "Sorry, looks like there are some errors detected, please try again B.", 
-                             "Something went wrong!", 
-                             {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                          );
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
                        }).then(() => {
                              // Hide loading indication
                              submitButton.removeAttribute('data-kt-indicator');
@@ -339,7 +355,7 @@ var KTvalidationCoreWebsiteSetting3= function() {
                           toastr.error(
                                 "All Field Required, please try again.", 
                                 "Something went wrong!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                        }
                  })
@@ -442,18 +458,23 @@ var KTvalidationCoreWebsiteSetting4= function() {
                        toastr.error(
                           response.data.message,  
                           "Something went wrong!", 
-                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                        );
                        }
                     })
                     .catch(function (error) {
                         $('#loading').removeClass('loading');
                         $('#loading-content').removeClass('loading-content');
-                          toastr.error(
-                             "Sorry, looks like there are some errors detected, please try again B.", 
-                             "Something went wrong!", 
-                             {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                          );
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
                        }).then(() => {
                              // Hide loading indication
                              submitButton.removeAttribute('data-kt-indicator');
@@ -466,7 +487,7 @@ var KTvalidationCoreWebsiteSetting4= function() {
                           toastr.error(
                                 "All Field Required, please try again.", 
                                 "Something went wrong!", 
-                                {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
                              );
                        }
                  })
@@ -481,9 +502,268 @@ var KTvalidationCoreWebsiteSetting4= function() {
         }
     };
 }();
+var KTvalidationCoreWebsiteSetting5= function() {
+    var jsonURL = $('#urlListData').attr('data-info');
+    var crudUrlTemplate = JSON.parse(jsonURL);
+    var _officeAdd4;
+    var _handleOfficeAddForm4 = function(e) {
+        var validation;
+        var form = document.getElementById('kt_socialmediacards_settings_form');
+        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+        validation = FormValidation.formValidation(
+            form,
+            {
+                fields: {
+                    linkedin_enbed: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This url is you have fill http or https url'
+                            },
+                            regexp: {
+                                regexp: /^(http|https):\/\//,
+                                message: 'This field can consist of http or https url only'
+                            },
+                        },
+                    },
+                    facebook_enbed: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This url is you have fill http or https url'
+                            },
+                            regexp: {
+                                regexp: /^(http|https):\/\//,
+                                message: 'This field can consist of http or https url only'
+                            },
+                        },
+                    },
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5()
+                }
+            }
+        );
+        $('.submit-coreWebsiteSetting-btn4').click( function(e) {
+            e.preventDefault();
+            validation.validate().then(function(status) {
+                if (status == 'Valid') {
+                    submitButton.setAttribute('data-kt-indicator', 'on');
+                    submitButton.disabled = true;
+                    //$('#examAddModal').modal('hide');
+                    $('#loading').addClass('loading');
+                    $('#loading-content').addClass('loading-content');
+                 axios.post(crudUrlTemplate.create_socialmediacard, {
+                       linkedin: $('.linkedin_enbed').val(),
+                       facebook: $('.facebook_enbed').val(),
+                       twitter: $('.twitter_enbed').val(),
+                       instagram: $('.instagram_enbed').val(),
+                       youtube: $('.youtube_enbed').val(),
+                    })
+                    .then(function (response) {
+
+                    if (response) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                       toastr.success(
+                          "New Social Media added successfully!", 
+                          "New Social Media!", 
+                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                       );
+                       setTimeout(function() {
+                          if (history.scrollRestoration) {
+                             history.scrollRestoration = 'manual';
+                          }
+                          location.href = 'websitecoresetting-create'; // reload page
+                       }, 1500);
+                      
+                    } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                       toastr.error(
+                          "Sorry, the information is incorrect, please try again.", 
+                          "Something went wrong!", 
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                       );
+                       }
+                    })
+                    .catch(function (error) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
+                       }).then(() => {
+                             // Hide loading indication
+                             submitButton.removeAttribute('data-kt-indicator');
+                             // Enable button
+                             submitButton.disabled = false;
+                       });
+                    } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                          toastr.error(
+                                "All Field Required, please try again.", 
+                                "Something went wrong!", 
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                             );
+                       }
+                 })
+              });
+        }
+
+    return {
+        init: function() {
+        _officeAdd4 = $('#kt_socialmediacards_settings_form');
+        _handleOfficeAddForm4();
+        submitButton = document.querySelector('#kt_coreWebsiteSetting_submit4');
+        }
+    };
+}();
+var KTvalidationCoreWebsiteSetting6= function() {
+    var jsonURL = $('#urlListData').attr('data-info');
+    var crudUrlTemplate = JSON.parse(jsonURL);
+    var _officeAdd6;
+    var _handleOfficeAddForm6 = function(e) {
+        var validation;
+        var form = document.getElementById('kt_header_rightLogo_form');
+        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+        validation = FormValidation.formValidation(
+            form,
+            {
+                fields: {
+                //  logo_title: {
+                //         validators: {
+                //             notEmpty: {
+                //                 message: 'This field is required'
+                //             },
+                //             regexp: {
+                //                 regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,40}$/,
+                //                 message: 'This field can consist of alphabetical characters, spaces, max 40 characters only'
+                //             },
+                //         },
+                //     },
+                //     header_logo: {
+                //         validators: {
+                //             notEmpty: {
+                //                 message: 'This field is required'
+                //             },
+                //             regexp: {
+                //                 regexp: /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i,
+                //                 message: 'This field can consist of png, jpeg, jpg, image only'
+                //             },
+                //         },
+                //     },
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5()
+                }
+            }
+        );
+        $('.submit-headerRightLogo-btn').click( function(e) {
+            e.preventDefault();
+            validation.validate().then(function(status) {
+                if (status == 'Valid') {
+                    submitButton.setAttribute('data-kt-indicator', 'on');
+                    submitButton.disabled = true;
+                    //$('#examAddModal').modal('hide');
+                    $('#loading').addClass('loading');
+                    $('#loading-content').addClass('loading-content');
+                 axios.post(crudUrlTemplate.create_headerrightlogo,new FormData(form), {
+                    }).then(function (response) {
+                    if (response.data.status ==200) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                       toastr.success(
+                          "New Right Header Logo added successfully!", 
+                          "New Right Header!", 
+                          {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                       );
+                       setTimeout(function() {
+                          if (history.scrollRestoration) {
+                             history.scrollRestoration = 'manual';
+                          }
+                          location.href = 'websitecoresetting-create?tab=hrl'; // reload page
+                       }, 1500);
+                      
+                    } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                       toastr.error(
+                          "Some fields are required", 
+                          "Something went wrong!", 
+                          {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                       );
+                       }
+                    })
+                    .catch(function (error) {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                        for(var field in error.response.data.errors) {
+                            if (error.response.data.errors.hasOwnProperty(field)) {
+                            error.response.data.errors[field].forEach(function (errorMessage) {
+                               toastr.error(
+                                        errorMessage,
+                                        {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                  );
+                            });
+                            }
+                         }
+                       }).then(() => {
+                             // Hide loading indication
+                             submitButton.removeAttribute('data-kt-indicator');
+                             // Enable button
+                             submitButton.disabled = false;
+                       });
+                    } else {
+                        $('#loading').removeClass('loading');
+                        $('#loading-content').removeClass('loading-content');
+                          toastr.error(
+                                "Some fields are required", 
+                                "Something Require!",
+                                {timeOut: 1, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                             );
+                       }
+                 })
+              });
+        }
+    const initFormRepeater = () => {
+            $('#kt_hedaerrightlogo_add_multiple_options').repeater({
+                initEmpty: false,
+                // defaultValues: {
+                //     'text-input': 'foo'
+                // },
+                show: function () {
+                    $(this).slideDown();
+                    // Init select2 on new repeated items
+                    initConditionsSelect2();
+                },
+                hide: function (deleteElement) {
+                    $(this).slideUp(deleteElement);
+                }
+            });
+        }
+    return {
+        init: function() {
+             initFormRepeater();
+            _officeAdd6 = $('#kt_header_rightLogo_form');
+        _handleOfficeAddForm6();
+        submitButton = document.querySelector('#kt_headerRightLogo_submit');
+        }
+    };
+}();
 jQuery(document).ready(function() {
   KTvalidationCoreWebsiteSetting1.init();
   KTvalidationCoreWebsiteSetting2.init();
   KTvalidationCoreWebsiteSetting3.init();
   KTvalidationCoreWebsiteSetting4.init();
+  KTvalidationCoreWebsiteSetting5.init();
+  KTvalidationCoreWebsiteSetting6.init();
 });

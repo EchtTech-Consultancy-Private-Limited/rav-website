@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 use App\Models\CMSModels\EmpDepartDesignation;
 use App\Http\Requests\DepartmentDesignation\AddDepartmentValidation;
+use App\Http\Requests\DepartmentDesignation\EditDepartmentValidation;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use DB, Validator;
@@ -56,15 +57,6 @@ class EmpDepartDesignationAPIController extends Controller
      */
     public function store(AddDepartmentValidation $request)
     {
-        $exitValue = EmpDepartDesignation::where([['name_en', $request->name_en],['soft_delete',0]])->count() > 0;
-       // $max_size = $document->getMaxFileSize() / 1024 / 1024;
-        if($exitValue == 'false'){
-            //DB::rollback();
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
             try{
                 $result= EmpDepartDesignation::insert([
                         'uid' => Uuid::uuid4(),
@@ -92,7 +84,7 @@ class EmpDepartDesignationAPIController extends Controller
                 report($e);
                 return false;
             }
-        }
+        //}
         return response()->json($notification);
     }
 
@@ -137,31 +129,19 @@ class EmpDepartDesignationAPIController extends Controller
      * @param  \App\Models\EmpDepartDesignation  $empDepartDesignation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmpDepartDesignation $empDepartDesignation)
+    public function update(EditDepartmentValidation $request, EmpDepartDesignation $empDepartDesignation)
     {
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
+            if($request->parent_id){
+                $parentId = $request->parent_id;
             }
-            else{
-                if($request->parent_id){
-                    $parentId = $request->parent_id;
-                }
-                $result= EmpDepartDesignation::where('uid',$request->id)->update([
-                    'name_en' => $request->name_en,
-                    'name_hi' => $request->name_hi,
-                    'parent_id' => $parentId??'0',
-                    'status' => 1,
-                ]);
-                
+            $result= EmpDepartDesignation::where('uid',$request->id)->update([
+                'name_en' => $request->name_en,
+                'name_hi' => $request->name_hi,
+                'parent_id' => $parentId??'0',
+                'status' => 1,
+            ]);
+            
             if($result == true)
             {
                 $notification =[
@@ -175,7 +155,6 @@ class EmpDepartDesignationAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
            }catch(Throwable $e){report($e);
             return false;
            }

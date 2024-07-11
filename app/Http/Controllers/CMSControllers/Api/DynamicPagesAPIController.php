@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Faq\AddFAQValidation;
+use App\Http\Requests\Faq\EditFAQValidation;
 use Ramsey\Uuid\Uuid;
 use DB, Validator;
 use Carbon\Carbon;
@@ -65,31 +67,9 @@ class DynamicPagesAPIController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function faqStore(Request $request)
+    public function faqStore(AddFAQValidation $request)
     {
-        $exitValue = DB::table('faq')->where([['question_en', $request->question_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
             try{
-            $validator=Validator::make($request->all(),
-                [
-                'question_en'=>'required',
-                //'eventtype'=>'required',
-                //'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                
                 $result= DB::table('faq')->insert([
                         'uid' => Uuid::uuid4(),
                         'question_en' => $request->question_en,
@@ -112,39 +92,24 @@ class DynamicPagesAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
+           
         }catch(Throwable $e){report($e);
             return false;
         }
-        }
+       
         return response()->json($notification);
     }
-    public function faqUpdate(Request $request)
+    public function faqUpdate(EditFAQValidation $request)
     {
         try{
-        $validator=Validator::make($request->all(),
-            [
-            'question_en'=>'required',
-            //'eventtype'=>'required',
-            //'title_name_en'=>'required',
-        ]);
-        if($validator->fails())
-        {
-            $notification =[
-                'status'=>201,
-                'message'=> $validator->errors()
-            ];
-        }
-        else{
-             
             $result= DB::table('faq')->where('uid',$request->id)->update([
                     'question_en' => $request->question_en,
                     'question_hi' => $request->question_hi,
                     'answer_en' => $request->kt_description_en,
                     'answer_hi' => $request->kt_description_hi,
+                    'status' => 0,
                    // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
                 ]);
-            
         if($result == true)
         {
             $notification =[
@@ -158,7 +123,6 @@ class DynamicPagesAPIController extends Controller
                     'message'=>'some error accoured.'
                 ];
              } 
-        }
        }catch(Throwable $e){report($e);
         return false;
        }

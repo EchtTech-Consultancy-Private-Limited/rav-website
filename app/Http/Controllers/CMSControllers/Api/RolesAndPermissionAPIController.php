@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Models\CMSModels\RolesAndPermission;
 use Illuminate\Http\Request;
+use App\Http\Requests\Roles\AddRoleValidation;
+use App\Http\Requests\Roles\EditRoleValidation;
 use Ramsey\Uuid\Uuid;
 use DB, Validator;
 use Carbon\Carbon;
@@ -140,36 +142,14 @@ class RolesAndPermissionAPIController extends Controller
         }
         return response()->json($notification);
     }
-    public function newRoleAdd(Request $request)
+    public function newRoleAdd(AddRoleValidation $request)
     {
-       // dd($request->all());
-        $exitValue = DB::table('role_type_users')->where([['role_type', $request->role_type],['soft_delete',0]])->count() > 0;
-        // $max_size = $document->getMaxFileSize() / 1024 / 1024;
-         if($exitValue == 'false'){
-             $notification =[
-                 'status'=>201,
-                 'message'=>'This is duplicate value.'
-             ];
-         }else{
             try{
-                $validator=Validator::make($request->all(),
-                    [
-                    'role_type'=>'required|unique:role_type_users',
-                ]);
-                if($validator->fails())
-                {
-                    //$status = 201;
-                    $notification =[
-                        'status'=>201,
-                        'message'=> $validator->errors()
-                    ];
-                }
-                else{
-                    $result= DB::table('role_type_users')->insert([
-                            'uid' => Uuid::uuid4(),
-                            'role_type' => $request->role_type,
-                            'sort_order' => $request->sort_order,
-                        ]);
+                $result= DB::table('role_type_users')->insert([
+                    'uid' => Uuid::uuid4(),
+                    'role_type' => $request->role_type,
+                    'sort_order' => $request->sort_order,
+                    ]);
                 if($result == true)
                 {
                     $notification =[
@@ -183,11 +163,9 @@ class RolesAndPermissionAPIController extends Controller
                             'message'=>'some error accoured.'
                         ];
                     } 
-                }      
             }catch(Throwable $e){report($e);
                 return false;
             }
-        }
         return response()->json($notification);
     }
     /**
@@ -267,32 +245,14 @@ class RolesAndPermissionAPIController extends Controller
         return response()->json($notification);
        }
     }
-    public function newRoleUpdate(Request $request)
+    public function newRoleUpdate(EditRoleValidation $request)
     {   
-        $data= DB::table('role_type_users')->where('uid',$request->id)->first();
-        if($data)
-         {
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'role_type'=>'required',
-                //'eventtype'=>'required',
-                //'title_name_en'=>'required',
+            $result= DB::table('role_type_users')->where('uid',$request->id)->update([
+                'role_type' => $request->role_type,
+                'sort_order' => $request->sort_order,
+                'status' => 1,
             ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                 
-                $result= DB::table('role_type_users')->where('uid',$request->id)->update([
-                        'role_type' => $request->role_type,
-                        'sort_order' => $request->sort_order
-                    ]);
-                
             if($result == true)
             {
                 $notification =[
@@ -306,12 +266,10 @@ class RolesAndPermissionAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
            }catch(Throwable $e){report($e);
             return false;
            }
             return response()->json($notification);
-        }
     }
 
     /**

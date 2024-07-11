@@ -79,6 +79,8 @@ class SocialLinksAPIController extends Controller
                             'twitter' => isset($request->twitter)?$request->twitter:'0',
                             'instagram' => isset($request->instagram)?$request->instagram:'0',
                             'github' => isset($request->github)?$request->github:'0',
+                            'youtube' => isset($request->youtube)?$request->youtube:'0',
+                            'whatsapp' => isset($request->whatsapp)?$request->whatsapp:'0',
                         ]);
                 if($result == true)
                 {
@@ -158,6 +160,8 @@ class SocialLinksAPIController extends Controller
                     'twitter' => $request->twitter,
                     'instagram' => $request->instagram,
                     'github' => $request->github,
+                    'youtube' => isset($request->youtube)?$request->youtube:'0',
+                    'whatsapp' => isset($request->whatsapp)?$request->whatsapp:'0',
                     'status' => 1,
                 ]);
             

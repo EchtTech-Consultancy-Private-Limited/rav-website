@@ -7,6 +7,8 @@ use App\Models\CMSModels\CareerManagement;
 use App\Http\Requests\ImagesMimesCheck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Career\AddCareerValidation;
+use App\Http\Requests\Career\EditCareerValidation;
 use Illuminate\Support\Facades\Cookie;
 use Ramsey\Uuid\Uuid;
 use App\Http\Traits\PdfImageSizeTrait;
@@ -57,31 +59,11 @@ class CareerManagementAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddCareerValidation $request)
     {
-        $exitValue = CareerManagement::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+            try{
                 $extId =  Uuid::uuid4();
-                $lastInsertID= CareerManagement::insertGetId([
+                $result= CareerManagement::insert([
                         'uid' => $extId,
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
@@ -129,11 +111,10 @@ class CareerManagementAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
+           
            }catch(Throwable $e){report($e);
             return false;
            }
-        }
             return response()->json($notification);
     }
 
@@ -176,22 +157,9 @@ class CareerManagementAPIController extends Controller
      * @param  \App\Models\CareerManagement  $careerManagement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CareerManagement $careerManagement)
+    public function update(EditCareerValidation $request, CareerManagement $careerManagement)
     {
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
                 $result=CareerManagement::where('uid',$request->id)->update([
                // $lastInsertID= TenderManagement::insertGetId([
                         'tab_type' => $request->tabtype,
@@ -272,7 +240,6 @@ class CareerManagementAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
            }catch(Throwable $e){report($e);
             return false;
            }

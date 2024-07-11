@@ -1005,85 +1005,13 @@
                             aria-labelledby="activity-tab" tabindex="0">
                             <div class="activity-slider">
                                 <div class="owl-carousel owl-theme" id="activitySlider">
-
-
+                                @foreach ($sectionOne as $item)
                                     <div class="item">
-                                        <div class="activity-slider-card">
-                                            <div class="row m-0">
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-img">
-                                                        <img src="{{ asset('assets/images/activity-slider1.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-content">
-                                                        <h3 class="title-black-sm">
-                                                            @if (Session::get('locale') == 'hi')
-                                                            {{ $gyanGanga->page_title_hi }}
-                                                            @else
-                                                            {{ $gyanGanga->page_title_en }}
-                                                            @endif
-                                                        </h3>
-                                                        <p class="desc">
-                                                            @if (Session::get('locale') == 'hi')
-                                                            {!! Str::limit(strip_tags($gyanGanga->page_content_hi), 200)
-                                                            !!}
-                                                            @else
-                                                            {!! Str::limit(strip_tags($gyanGanga->page_content_en), 200)
-                                                            !!}
-                                                            @endif
-                                                        </p>
-                                                        <a href="{{ url($gyanGanga->parent_url . '/' . $gyanGanga->url) }}"
-                                                            class="read-more">
-                                                            <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                alt="read-more" class="img-fluid">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="activity-slider-card"> 
+                                            @if (Session::get('locale') == 'hi') {!! $item->content_hi !!} @else {!! $item->content_en !!} @endif
                                         </div>
                                     </div>
-
-                                    <div class="item">
-                                        <div class="activity-slider-card">
-                                            <div class="row m-0">
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-img">
-                                                        <img src="{{ asset('assets/images/activity-slider2.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-content">
-                                                        <h3 class="title-black-sm">
-                                                            @if (Session::get('locale') == 'hi')
-                                                            {{ $ayurAhar->page_title_hi }}
-                                                            @else
-                                                            {{ $ayurAhar->page_title_en }}
-                                                            @endif
-                                                        </h3>
-                                                        <p class="desc">
-                                                            @if (Session::get('locale') == 'hi')
-                                                            {!! Str::limit(strip_tags($ayurAhar->page_content_hi), 200)
-                                                            !!}
-                                                            @else
-                                                            {!! Str::limit(strip_tags($ayurAhar->page_content_en), 200)
-                                                            !!}
-                                                            @endif
-                                                        </p>
-                                                        <a href="{{ url($ayurAhar->parent_url . '/' . $ayurAhar->url) }}"
-                                                            class="read-more">
-                                                            <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                alt="read-more" class="img-fluid">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
+                                @endforeach
                                 </div>
                             </div>
                         </div>
@@ -1091,72 +1019,13 @@
                             tabindex="0">
                             <div class="activity-slider">
                                 <div class="owl-carousel owl-theme" id="cravSlider">
-                                    @foreach ($cravGurusData as $item)
+                                @foreach ($sectionTwo as $item)
                                     <div class="item">
-                                        <div class="activity-slider-card">
-                                            <div class="row m-0">
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-img">
-                                                        @if ($loop->iteration == 1)
-                                                        <img src="{{ asset('assets/images/activity-slider2.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                        @elseif ($loop->iteration == 2)
-                                                        <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                        @elseif ($loop->iteration == 3)
-                                                        <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                        @elseif ($loop->iteration == 4)
-                                                        <img src="{{ asset('assets/images/activity-slider1.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                        @elseif ($loop->iteration == 5)
-                                                        <img src="{{ asset('assets/images/activity-slider1.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                        @elseif ($loop->iteration == 6)
-                                                        <img src="{{ asset('assets/images/activity-slider3.png') }}"
-                                                            alt="activity-slider1" class="img-fluid">
-                                                        @endif
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 p-0">
-                                                    <div class="activity-slider-content">
-                                                        <h3 class="title-black-sm">
-                                                            @if (Session::get('locale') == 'hi')
-                                                            {{ $item->page_title_hi }}
-                                                            @else
-                                                            {{ $item->page_title_en }}
-                                                            @endif
-                                                        </h3>
-                                                        <div class="desc">
-                                                            @if (Session::get('locale') == 'hi')
-                                                            <?php echo Str::limit(strip_tags($item->page_content_hi), 200); ?>
-                                                            @else
-                                                            <?php echo Str::limit(strip_tags($item->page_content_en), 200); ?>
-                                                            @endif
-
-                                                        </div>
-                                                        @if ($item->page_title_en == 'Thesis Submitted by RAV Students')
-                                                        <a href="{{ 'activities/thesis-submitted-by-rav-student' }}"
-                                                            class="read-more">
-                                                            <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                alt="read-more" class="img-fluid">
-                                                        </a>
-                                                        @else
-                                                        <a href="{{ 'activities/' . $item->url }}" class="read-more">
-                                                            <img src="{{ asset('assets/images/read-more.svg') }}"
-                                                                alt="read-more" class="img-fluid">
-                                                        </a>
-                                                        @endif
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="activity-slider-card"> 
+                                            @if (Session::get('locale') == 'hi') {!! $item->content_hi !!} @else {!! $item->content_en !!} @endif
                                         </div>
                                     </div>
-                                    @endforeach
-
-
+                                @endforeach
                                 </div>
                             </div>
                         </div>

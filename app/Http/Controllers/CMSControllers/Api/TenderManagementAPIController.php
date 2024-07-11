@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Http;
 
 use App\Models\CMSModels\TenderManagement;
 use Illuminate\Http\Request;
+use App\Http\Requests\Tenders\AddTendersValidation;
+use App\Http\Requests\Tenders\EditTendersValidation;
 use Ramsey\Uuid\Uuid;
 use App\Http\Traits\PdfImageSizeTrait;
 use DB, Validator;
@@ -48,35 +50,17 @@ class TenderManagementAPIController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddTendersValidation $request)
     {
-        $exitValue = TenderManagement::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
                 $extId =  Uuid::uuid4();
                 $result= TenderManagement::insertGetId([
                         'uid' => $extId,
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
                         'title_name_hi' => $request->title_name_hi,
+                        'tender_cost' => $request->tender_cost,
+                        'tender_typeid' => $request->tender_typeid,
                         'start_date'=> $request->startdate,
                         'end_date' => $request->enddate,
                         'opening_date' => $request->openingdate??'NULL',
@@ -124,11 +108,10 @@ class TenderManagementAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
            }catch(Throwable $e){report($e);
             return false;
            }
-        }
+       
             return response()->json($notification);
         }
 
@@ -202,6 +185,8 @@ class TenderManagementAPIController extends Controller
                         'title_name_hi' => $request->title_name_hi,
                         'start_date'=> $request->startdate,
                         'end_date' => $request->enddate,
+                        'tender_cost' => $request->tender_cost,
+                        'tender_typeid' => $request->tender_typeid,
                         'opening_date' => $request->openingdate??'NULL',
                         'apply_url' => $request->applyurl??'NULL',
                         'description_en' => $request->kt_description_en,

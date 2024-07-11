@@ -603,9 +603,8 @@
                   <!--end::Container-->
                </div>
                <!--end::Header-->
-      @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
+      <!-- @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
       <div class="app-engage " id="kt_app_engage">
-         <!--begin::Prebuilts toggle-->
          <a href="https://cms.staggings.in/login"
             target="_blank" class="app-engage-btn hover-dark">			
             <i class="ki-outline ki-abstract-41 fs-1 pt-1 mb-2"></i>Dev URL
@@ -620,4 +619,4 @@
             <i class="ki-outline ki-question fs-2 text-primary"></i>				
          </a>
       </div>
-      @endif
+      @endif -->

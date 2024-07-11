@@ -65,6 +65,23 @@
                               <div class="text-muted fs-7">A title name is required and recommended to be unique.</div>
                               <!--end::Description-->
                            </div>
+                           <div class="mb-10 fv-row mt-2">
+                              <!--begin::Label-->
+                              <label class="form-label">Select Year</label>
+                              <!--end::Label-->
+                              <!--begin::Input-->
+                              <select class="form-select form-select-solid gallery_year" name="gallery_year" id="gallery_year" data-control="select2" data-placeholder="Select an option">
+                                 <option></option>
+                                    @foreach($years as $v)
+                                    @if($v == $data->year)
+                                       <option value="{{$v}}" selected>{{$v}}</option>
+                                    @else
+                                       <option value="{{$v}}">{{$v}}</option>
+                                    @endif
+                                    @endforeach
+                              </select>
+                              <!--end::Input-->
+                           </div>
                      </div>
                   </div>
                </div>

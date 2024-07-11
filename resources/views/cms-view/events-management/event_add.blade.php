@@ -257,9 +257,11 @@
                                           <input type="file" class="form-control mw-100 w-200px checkmime" name="image" accept="image/*" />
                                        </div>
                                        <!--end::Input-->
-                                       <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                          <i class="ki-outline ki-cross fs-1"></i> 
-                                       </button>
+                                       <div>
+                                          <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                             <i class="ki-outline ki-cross fs-1"></i> 
+                                          </button>
+                                       </div>
                                     </div>
                                  </div>
                               </div>

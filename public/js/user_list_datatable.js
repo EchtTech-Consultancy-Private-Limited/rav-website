@@ -2,6 +2,7 @@
 var KTDatatablesBasicPaginations = function() {
 	var initTable1 = function() {
 		var table = $('#kt_datatable_user_list');
+		var $i=1;
 		// var columnList = JSON.parse(table.data('columnListData'));
 		var jsonURL = $('#urlListData').attr('data-info');
 		var crudUrlTemplate = JSON.parse(jsonURL);
@@ -91,6 +92,16 @@ var KTDatatablesBasicPaginations = function() {
 					},
 				},
 				{
+					targets: 0,
+					title: 'ID',
+					orderable: true,
+					visible: true,
+					responsivePriority: -2,
+					render: function (data, type, full, meta) {
+						return $i++;
+					},
+				},
+				{
 					targets: -2,
 					orderable: true,
 					responsivePriority: -2,
@@ -161,7 +172,7 @@ var KTDatatablesBasicPaginations = function() {
 									.remove()
 									.draw();
 								toastr.success(
-									"Record has been "+textset+"!", 
+									"The record has been "+textset+" Successfully!",
 									textset+"!", 
 									{timeOut: 0,showProgressbar: true, extendedTimeOut: 0,allow_dismiss: false, closeButton: true, closeDuration: 0}
 								);

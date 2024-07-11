@@ -3,6 +3,8 @@
 namespace App\Http\Requests\News;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UniqueTitleNotSoftDeleted;
+use Illuminate\Http\Request;
 
 class EditNewsValidation extends FormRequest
 {
@@ -13,7 +15,7 @@ class EditNewsValidation extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +23,32 @@ class EditNewsValidation extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(Request $request)
+    {
+        $Id = $request->get('id');
+        return [
+            'title_name_en'=> 'required|unique:news_management,title_name_en,'.$Id.',uid',
+            'tabtype'=> 'required',
+            'eventtype'=> 'required',
+            'startdate'=> 'required',
+            'enddate'=> 'required',
+           // 'kt_description_en'=> 'required',
+            //'kt_description_hi'=> 'required',
+        ];
+    }
+    public function messages()
     {
         return [
-            //
+            'tabtype.required'=> 'Select Tab Type',
+            'eventtype.required'=> 'Select Event Type',
+            'title_name_en.required'=> 'Enter Unique Title Name.',
+            'title_name_en.unique'=> 'Enter Title Name.',
+            'title_name_hi.required'=> 'Enter Hindi Title Name.',
+            'startdate.required'=> 'Enter start Date.',
+            'enddate.required'=> 'Enter End Date.',
+           // 'kt_description_en.required'=> 'Enter description English.',
+           // 'kt_description_hi.required'=> 'Enter description Hindi.',
+
         ];
     }
 }

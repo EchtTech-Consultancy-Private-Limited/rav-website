@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Http;
 
 use App\Models\CMSModels\RtiAssets;
 use Illuminate\Http\Request;
+use App\Http\Requests\RTIAssets\AddRTIAssetsValidation;
+use App\Http\Requests\RTIAssets\EditRTIAssetsValidation;
 use Ramsey\Uuid\Uuid;
 use App\Http\Traits\PdfImageSizeTrait;
 use DB, Validator;
@@ -55,29 +57,10 @@ class RtiAssetsAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddRTIAssetsValidation $request)
     {
-        $exitValue = RtiAssets::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+       
+            try{
                 $extId =  Uuid::uuid4();
                 $lastInsertID= RtiAssets::insertGetId([
                         'uid' => $extId,
@@ -126,11 +109,10 @@ class RtiAssetsAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
+          
            }catch(Throwable $e){report($e);
             return false;
            }
-        }
             return response()->json($notification);
     }
 
@@ -163,22 +145,9 @@ class RtiAssetsAPIController extends Controller
      * @param  \App\Models\RtiAssets  $rtiAssets
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RtiAssets $rtiAssets)
+    public function update(EditRTIAssetsValidation $request, RtiAssets $rtiAssets)
     {
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+            try{
                 $result=RtiAssets::where('uid',$request->id)->update([
                // $lastInsertID= TenderManagement::insertGetId([
                         'tab_type' => $request->tabtype,
@@ -257,7 +226,6 @@ class RtiAssetsAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                  } 
-            }
            }catch(Throwable $e){report($e);
             return false;
            }

@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 
 use App\Models\CMSModels\HomePageSectionsDesign;
 use Illuminate\Http\Request;
+use App\Http\Requests\HomeSection\AddHomeSectionValidation;
+use App\Http\Requests\HomeSection\EditHomeSectionValidation;
+use App\Http\Requests\HomeSectionDesign\AddHomeSectionDesignValidation;
+use App\Http\Requests\HomeSectionDesign\EditHomeSectionDesignValidation;
 use App\Http\Traits\PdfImageSizeTrait;
 use Ramsey\Uuid\Uuid;
 use Validator, DB;
@@ -82,48 +86,18 @@ class HomePageSectionsDesignAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddHomeSectionDesignValidation $request)
     {
-        // $exitValue = HomePageSectionsDesign::where([['title_name_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        // if($exitValue == 'false'){
-        //     $notification =[
-        //         'status'=>201,
-        //         'message'=>'This is duplicate value.'
-        //     ];
-        // }else{
-        //dd($request->file('image'));
         try{
             
-            if($request->kt_description_en != "<p><br></p>"){
-                $request['kt_description_en'] =$request->kt_description_en;
-            }else{
-                $request['kt_description_en'] = '';
-            }
-            $validator=Validator::make($request->all(),
-                [
-
-                'kt_description_en' => 'required',
-                'section_id'=>'required',
-                'sort_order'=>'required',
+            $result= DB::table('home_page_sections_designs_details')->insert([
+                    'uid' => Uuid::uuid4(),
+                    'hpsi_id' => $request->section_id,
+                    'content_en' => $request->kt_description_en,
+                    'content_hi' => $request->kt_description_hi??$request->kt_description_en,
+                    'url' => $request->url_link??'',
+                    'sort_order' => $request->sort_order,
             ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                $result= DB::table('home_page_sections_designs_details')->insert([
-                        'uid' => Uuid::uuid4(),
-                        'hpsi_id' => $request->section_id,
-                        'content_en' => $request->kt_description_en,
-                        'content_hi' => $request->kt_description_hi??$request->kt_description_en,
-                        'url' => $request->url_link,
-                        'sort_order' => $request->sort_order,
-                    // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
-                    ]);
-                
             if($result == true)
             {
                 $notification =[
@@ -137,25 +111,14 @@ class HomePageSectionsDesignAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
        }catch(Throwable $e){report($e);
         return false;
        }
     //}
         return response()->json($notification);
     }
-    public function storeNewSections(Request $request)
+    public function storeNewSections(AddHomeSectionValidation $request)
         {
-            //dd($request->section_name_en);
-            $exitValue = DB::table('home_page_sections_list')->where([['title_en', $request->section_name_en],['soft_delete',0]])->count();
-            //dd($exitValue);
-            if($exitValue != 0){
-                $notification =[
-                    'status'=>201,
-                    'message'=>'This is duplicate value.'
-                ];
-            }else{
-            //dd($request->file('image'));
             try{
                 $validator=Validator::make($request->all(),
                     [
@@ -163,14 +126,7 @@ class HomePageSectionsDesignAPIController extends Controller
                     'section_name_en'=>'required',
                     'section_name_hi'=>'required',
                 ]);
-                if($validator->fails())
-                {
-                    $notification =[
-                        'status'=>201,
-                        'message'=> $validator->errors()
-                    ];
-                }
-                else{
+               
                     $result= DB::table('home_page_sections_list')->insert([
                             'uid' => Uuid::uuid4(),
                             'title_en' => $request->section_name_en,
@@ -192,50 +148,26 @@ class HomePageSectionsDesignAPIController extends Controller
                             'message'=>'some error accoured.'
                         ];
                     } 
-                }
            }catch(Throwable $e){report($e);
             return false;
            }
-        }
             return response()->json($notification);
         }
-        public function updateNewSection(Request $request)
+        public function updateNewSection(EditHomeSectionValidation $request)
         {
-            // $exitValue = DB::table('home_page_sections_list')->where([['title_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-            // if($exitValue == 'false'){
-            //     $notification =[
-            //         'status'=>201,
-            //         'message'=>'This is duplicate value.'
-            //     ];
-            // }else{
-            //dd($request->file('image'));
             try{
-                $validator=Validator::make($request->all(),
-                    [
-                    'sort_order'=>'required',
-                    'section_name_en'=>'required',
-                    'section_name_hi'=>'required',
-                ]);
-                if($validator->fails())
-                {
-                    $notification =[
-                        'status'=>201,
-                        'message'=> $validator->errors()
-                    ];
-                }
-                else{
-                    $result= DB::table('home_page_sections_list')->where('uid',$request->id)->update([
-                            'title_en' => $request->section_name_en,
-                            'title_hi' => $request->section_name_hi,
-                            'sort_order' => $request->sort_order,
-                        // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
-                        ]);
+                $result= DB::table('home_page_sections_list')->where('uid',$request->id)->update([
+                        'title_en' => $request->section_name_en,
+                        'title_hi' => $request->section_name_hi,
+                        'sort_order' => $request->sort_order,
+                        'status' => 0,
+                    ]);
                     
                 if($result == true)
                 {
                     $notification =[
                         'status'=>200,
-                        'message'=>'Added successfully.'
+                        'message'=>'Update successfully.'
                     ];
                 }
                 else{
@@ -244,11 +176,9 @@ class HomePageSectionsDesignAPIController extends Controller
                             'message'=>'some error accoured.'
                         ];
                     } 
-                }
            }catch(Throwable $e){report($e);
             return false;
            }
-        //}
             return response()->json($notification);
         }
     /**
@@ -290,34 +220,18 @@ class HomePageSectionsDesignAPIController extends Controller
      * @param  \App\Models\HomePageSectionsDesign  $homePageSectionsDesign
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HomePageSectionsDesign $homePageSectionsDesign)
+    public function update(EditHomeSectionDesignValidation $request, HomePageSectionsDesign $homePageSectionsDesign)
     {
         try{
-            $request['kt_description_en'] =$request->kt_description_en;
-            $validator=Validator::make($request->all(),
-                [
-
-                'kt_description_en' => 'required',
-                'section_id'=>'required',
-                'sort_order'=>'required',
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
-                $result= DB::table('home_page_sections_designs_details')->where('uid',$request->id)->update([
-                        'hpsi_id' => $request->section_id,
-                        'content_en' => $request->kt_description_en,
-                        'content_hi' => $request->kt_description_hi??$request->kt_description_en,
-                        'url' => $request->url_link,
-                        'sort_order' => $request->sort_order,
-                    // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
-                    ]);
-                
+            $result= DB::table('home_page_sections_designs_details')->where('uid',$request->id)->update([
+                    'hpsi_id' => $request->section_id,
+                    'content_en' => $request->kt_description_en,
+                    'content_hi' => $request->kt_description_hi??$request->kt_description_en,
+                    'url' => $request->url_link,
+                    'sort_order' => $request->sort_order,
+                    'status'=>0,
+                // 'archivel_date' => Carbon::createFromFormat('Y-m-d',$request->enddate)->addDays(env('TENDER_ARCHIVEL')),
+                ]);
             if($result == true)
             {
                 $notification =[
@@ -331,11 +245,9 @@ class HomePageSectionsDesignAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
        }catch(Throwable $e){report($e);
         return false;
        }
-    //}
         return response()->json($notification);
     }
 
