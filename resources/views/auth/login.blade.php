@@ -59,47 +59,48 @@
             <div class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12">
                <div class="bg-body d-flex flex-column flex-center rounded-4 w-md-600px p-10">
                   <div class="d-flex flex-center flex-column align-items-stretch h-lg-100 w-md-400px">
-                     <div class="d-flex flex-center flex-column flex-column-fluid pb-15 pb-lg-20">
+                  <div class="d-flex flex-center flex-column flex-column-fluid pb-15 pb-lg-20">
                         <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="{{ $crudUrlTemplate['dashboard']}}" action="{{ $crudUrlTemplate['login']}}">
-                        @csrf
-                        <div class="text-center mb-11">
-                              <h1 class="text-dark fw-bolder mb-3">
-                                 Sign In
-                              </h1>
-                           </div>
-                           <!-- <div class="separator separator-content my-14">
-                              <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-                           </div> -->
-                           <div class="fv-row mb-8">
-                              <input type="text" placeholder="Email" name="email" value="" autocomplete="off" class="form-control bg-transparent email"/> 
-                           </div>
-                           <div class="fv-row mb-3" data-kt-password-meter="true">
-                              <input class="form-control bg-transparent password" type="password" placeholder="Password" name="password" autocomplete="off"/>
-                              <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
-                                 <i class="ki-outline ki-eye-slash fs-2"></i>                    
-                                 <i class="ki-outline ki-eye fs-2 d-none"></i>                
-                              </span>
-                           </div>
-                           <div class="d-flex flex-stack flex-wrap gap-6 fs-base fw-semibold mb-8">
-                              <div></div>
-                              <a href="{{ route('forget-user') }}" class="link-primary"> Forgot Password ?</a>
-                           </div>
-                           <div class="form-group mt-4 mb-4">
-                           <div class="form-group mt-4 mb-4">
-                              <div class="captcha-box d-flex align-item-center">
-                                 <label for="captcha" class="security-code">Security Code : <?php echo $CustomCaptch['expression']; ?> </label> <span class="equalto">=</span>
-                                 <input id="SecurityCode" type="text" class="form-control SecurityCode" placeholder="Enter Security Code" name="SecurityCode" required>
+                           @csrf
+                           <div class="text-center mb-11">
+                                 <h1 class="text-dark fw-bolder mb-3">
+                                    Sign In
+                                 </h1>
                               </div>
-                           </div>
-                           <div class="d-grid mb-7">
-                              <button type="submit" id="kt_sign_in_submit" class="btn btn-primary submit-login-btn">
-                                 <span class="indicator-label">Sign In</span>
-                                 <span class="indicator-progress">
-                                 Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                              <!-- <div class="separator separator-content my-14">
+                                 <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
+                              </div> -->
+                              <div class="fv-row mb-8">
+                                 <input type="text" placeholder="Email" name="email" value="" autocomplete="off" class="form-control bg-transparent email"/> 
+                              </div>
+                              <div class="fv-row mb-3" data-kt-password-meter="true">
+                                 <input class="form-control bg-transparent password" type="password" placeholder="Password" name="password" autocomplete="off"/>
+                                 <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                    <i class="ki-outline ki-eye-slash fs-2"></i>                    
+                                    <i class="ki-outline ki-eye fs-2 d-none"></i>                
                                  </span>
-                              </button>
-                           </div>
-                        </form>
+                              </div>
+                              
+                              <div class="form-group mt-4 mb-4">
+                              <div class="form-group mt-4 mb-4">
+                                 <div class="captcha-box d-flex align-item-center">
+                                    <label for="captcha" class="security-code">Security Code : <?php echo $CustomCaptch['expression']; ?> </label> <span class="equalto">=</span>
+                                    <input id="SecurityCode" type="text" class="form-control SecurityCode" placeholder="Enter Security Code" name="SecurityCode" required>
+                                 </div>
+                              </div>
+                              <div class="d-grid mb-7">
+                                 <button type="submit" id="kt_sign_in_submit" class="btn btn-primary submit-login-btn">
+                                    <span class="indicator-label">Sign In</span>
+                                    <span class="indicator-progress">
+                                    Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                                 </button>
+                              </div>
+                              <div class="d-flex flex-stack flex-wrap gap-6 fs-base fw-semibold mb-8">
+                                 <div></div>
+                                 <a href="{{ route('forget-user') }}" class="link-primary"> Forgot Password ?</a>
+                              </div>
+                           </form>
                      </div>
                   </div>
                </div>
