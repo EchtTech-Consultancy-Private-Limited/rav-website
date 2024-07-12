@@ -27,20 +27,21 @@ class EditPrivateGovtClientLogoValidation extends FormRequest
     {
         $Id = $request->get('id');
         return [
-            'question_en'=> 'required|unique:faq,question_en,'.$Id.',uid',
-            'question_hi'=> 'required',
-            'kt_description_en'=> 'required',
-            'kt_description_hi'=> 'required',
+            'title_name_en'=> 'required|unique:private_government_clients,title_en,'.$Id.',uid',
+            'tabtype'=> 'required',
+            'logo_url'=> 'required',
+            //'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:max_width=230,max_height=80"
         ];
     }
     public function messages()
     {
         return [
-            'title_name_en.required'=> 'Enter Unique Question Name.',
-            'title_name_en.unique'=> 'Enter Question Name.',
-            'question_hi.required'=> 'Enter Hindi Question Name.',
-            'kt_description_en.required'=> 'Enter description English.',
-            'kt_description_hi.required'=> 'Enter description Hindi.',
+            'tabtype.required'=> 'Select Tab Type',
+            'title_name_en.unique'=> 'Enter Unique title Name.',
+            'title_name_en.required'=> 'English name is required.',
+            'logo_url.required'=> 'Logo url is required.',
+           // 'image.dimensions'=> 'Image is required max_width=230,max_height=80',
+
         ];
     }
 }

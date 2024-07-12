@@ -21,13 +21,6 @@ var KTAppPhotoSave = function () {
                             },
                          },
                    },
-                   // title_name_en: {
-                   //       validators: {
-                   //          notEmpty: {
-                   //             message: 'This field is required'
-                   //          },
-                   //       },
-                   // },
                 },
                 plugins: {
                    trigger: new FormValidation.plugins.Trigger(),
@@ -138,9 +131,9 @@ var KTAppPhotoSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                               message: 'This field can consist of alphabetical characters, spaces, digits only'
-                            },
+                              regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,300}$/,
+                              message: 'This field can consist of alphabetical characters, spaces, max 300 characters only'
+                           },
                          },
                    },
                //     Video: {
