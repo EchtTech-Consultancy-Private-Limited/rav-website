@@ -61,30 +61,7 @@ class PrivateGovernmentClientsAPIController extends Controller
      */
     public function store(AddPrivateGovtClientLogoValidation $request)
     {
-        $exitValue = PrivateGovernmentClients::where([['title_en', $request->title_name_en],['soft_delete',0]])->count() > 0;
-        if($exitValue == 'false'){
-            $notification =[
-                'status'=>201,
-                'message'=>'This is duplicate value.'
-            ];
-        }else{
-        //dd($request->file('image'));
         try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-                'logo_url'=>'required',
-                'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:max_width=230,max_height=80"
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
                 if($request->hasFile('image')){    
                     $size = $this->getFileSize($request->file('image')->getSize());
                     $extension = $request->file('image')->getClientOriginalExtension();
@@ -98,8 +75,8 @@ class PrivateGovernmentClientsAPIController extends Controller
                         'uid' => Uuid::uuid4(),
                         'tab_type' => $request->tabtype,
                         'title_en' => $request->title_name_en,
-                        'title_hi' => $request->title_name_hi,
-                        'title_alt' => $request->title,
+                        'title_hi' => $request->title_name_hi??'',
+                        'title_alt' => $request->title??'',
                         'sort_order' => $request->sort_order,
                         "pdfimage_size" => isset($size)?$size:'0',
                         "file_extension" => isset($extension)?$extension:'0',
@@ -124,11 +101,11 @@ class PrivateGovernmentClientsAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
+           
        }catch(Throwable $e){report($e);
         return false;
        }
-    }
+    
         return response()->json($notification);
     }
 
@@ -163,21 +140,7 @@ class PrivateGovernmentClientsAPIController extends Controller
      */
     public function update(EditPrivateGovtClientLogoValidation $request, PrivateGovernmentClients $PrivateGovernmentClients)
     {
-        try{
-            $validator=Validator::make($request->all(),
-                [
-                'tabtype'=>'required',
-                'title_name_en'=>'required',
-                //'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:10000"
-            ]);
-            if($validator->fails())
-            {
-                $notification =[
-                    'status'=>201,
-                    'message'=> $validator->errors()
-                ];
-            }
-            else{
+            try{
                 if($request->hasFile('image')){    
                     $size = $this->getFileSize($request->file('image')->getSize());
                     $extension = $request->file('image')->getClientOriginalExtension();
@@ -219,7 +182,7 @@ class PrivateGovernmentClientsAPIController extends Controller
                         'message'=>'some error accoured.'
                     ];
                 } 
-            }
+           
        }catch(Throwable $e){report($e);
         return false;
        }
