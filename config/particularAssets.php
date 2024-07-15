@@ -2,8 +2,8 @@
 
 
 return [
-        'rtiapplicationresponses' => 'true',  //false
-        'purchaseworkscommittee' => 'true',  //false
+        'rtiapplicationresponses' => 'false',  //false
+        'purchaseworkscommittee' => 'false',  //false
         'tender_cost' => 'true',  //false
         'tender_type' => 'true'  //false
 ];

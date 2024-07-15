@@ -24,6 +24,7 @@
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_banner" rowspan="1" colspan="1">{{__('ID')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_banner" rowspan="1" colspan="1">{{__('Name')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_banner" rowspan="1" colspan="1">{{__('Banner')}}</th>
+                    <th class="sorting" tabindex="0" aria-controls="kt_datatable_banner" rowspan="1" colspan="1">{{__('Sort Order')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_banner" rowspan="1" colspan="1">{{__('Status')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_banner" rowspan="1" colspan="1">{{__('Action')}}</th>
                 </tr>

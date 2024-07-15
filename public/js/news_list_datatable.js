@@ -25,6 +25,8 @@ var KTDatatablesBasicPaginations = function() {
 			columns: [
 				{ "data": "uid" },
 				{ "data": "title_name_en" },
+				{ "data": "start_date" },
+				{ "data": "end_date" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -97,6 +99,22 @@ var KTDatatablesBasicPaginations = function() {
 					responsivePriority: -2,
 					render: function (data, type, full, meta) {
 						return $i++;
+					},
+				},
+				{
+					targets: 1,
+					title: 'Title Name',
+					orderable: true,
+					visible: true,
+					responsivePriority: -2,
+					render: function (data, type, full, meta) {
+						var displayText = data;
+						if (data != undefined && data.length > 13)
+						{
+						displayText = data.substring(0, 50) + '...';
+						return '<span title="' + data + '">' + displayText + '</span>';
+						}
+
 					},
 				},
                 {
