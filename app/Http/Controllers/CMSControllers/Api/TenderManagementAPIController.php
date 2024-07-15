@@ -52,9 +52,9 @@ class TenderManagementAPIController extends Controller
      */
     public function store(AddTendersValidation $request)
     {
-        try{
+            try{
                 $extId =  Uuid::uuid4();
-                $result= TenderManagement::insertGetId([
+                $result= TenderManagement::insert([
                         'uid' => $extId,
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,

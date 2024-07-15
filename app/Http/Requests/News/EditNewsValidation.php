@@ -29,7 +29,6 @@ class EditNewsValidation extends FormRequest
         return [
             'title_name_en'=> 'required|unique:news_management,title_name_en,'.$Id.',uid',
             'tabtype'=> 'required',
-            'eventtype'=> 'required',
             'startdate'=> 'required',
             'enddate'=> 'required',
            // 'kt_description_en'=> 'required',
@@ -40,7 +39,6 @@ class EditNewsValidation extends FormRequest
     {
         return [
             'tabtype.required'=> 'Select Tab Type',
-            'eventtype.required'=> 'Select Event Type',
             'title_name_en.required'=> 'Enter Unique Title Name.',
             'title_name_en.unique'=> 'Enter Title Name.',
             'title_name_hi.required'=> 'Enter Hindi Title Name.',

@@ -25,6 +25,7 @@ var KTDatatablesBasicPaginations = function() {
 				{ "data": "uid" },
 				{ "data": "title_name_en" },
 				{ "data": "public_url" },
+				{ "data": "sort_order" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -99,8 +100,24 @@ var KTDatatablesBasicPaginations = function() {
 						return $i++;
 					},
 				},
+				// {
+				// 	targets: -4,
+				// 	title: 'Title Name',
+				// 	orderable: true,
+				// 	visible: true,
+				// 	responsivePriority: -2,
+				// 	render: function (data, type, full, meta) {
+				// 		var displayText = data;
+				// 		if (data != undefined && data.length > 13)
+				// 		{
+				// 		displayText = data.substring(0, 50) + '...';
+				// 		return '<span title="' + data + '">' + displayText + '</span>';
+				// 		}
+
+				// 	},
+				// },
                 {
-					targets: -3,
+					targets: -4,
 					orderable: true,
 					render: function (data, type, full, meta) {
 						if(full.public_url != '')

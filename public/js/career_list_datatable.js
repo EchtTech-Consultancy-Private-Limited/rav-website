@@ -25,6 +25,8 @@ var KTDatatablesBasicPaginations = function() {
 			columns: [
 				{ "data": "uid" },
 				{ "data": "title_name_en" },
+				{ "data": "start_date" },
+				{ "data": "end_date" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -99,6 +101,7 @@ var KTDatatablesBasicPaginations = function() {
 						return $i++;
 					},
 				},
+				
                 {
 					targets: -2,
 					orderable: true,
