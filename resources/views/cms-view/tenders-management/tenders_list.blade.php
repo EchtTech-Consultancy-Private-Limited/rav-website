@@ -26,6 +26,7 @@
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_tenders" rowspan="1" colspan="1">{{__('Name')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_tenders" rowspan="1" colspan="1">{{__('Start Date')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_tenders" rowspan="1" colspan="1">{{__('End Date')}}</th>
+                    <th class="sorting" tabindex="0" aria-controls="kt_datatable_tenders" rowspan="1" colspan="1">{{__('Open Date')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_tenders" rowspan="1" colspan="1">{{__('Status')}}</th>
                     <th class="sorting" tabindex="0" aria-controls="kt_datatable_tenders" rowspan="1" colspan="1">{{__('Action')}}</th>
                 </tr>

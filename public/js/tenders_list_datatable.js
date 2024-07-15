@@ -27,6 +27,7 @@ var KTDatatablesBasicPaginations = function() {
 				{ "data": "title_name_en" },
 				{ "data": "start_date" },
 				{ "data": "end_date" },
+				{ "data": "opening_date" },
 				{ "data": "status" },
 				{ "data": "action" }
 			],
@@ -105,7 +106,6 @@ var KTDatatablesBasicPaginations = function() {
 					title: 'Title Name',
 					orderable: true,
 					visible: true,
-					responsivePriority: -2,
 					render: function (data, type, full, meta) {
 						var displayText = data;
 						if (data != undefined && data.length > 13)
