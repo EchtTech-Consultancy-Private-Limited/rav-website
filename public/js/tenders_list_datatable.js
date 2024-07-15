@@ -106,9 +106,10 @@ var KTDatatablesBasicPaginations = function() {
 					title: 'Title Name',
 					orderable: true,
 					visible: true,
+					responsivePriority: -2,
 					render: function (data, type, full, meta) {
 						var displayText = data;
-						if (data != undefined && data.length > 13)
+						if (data != undefined && data.length > 5)
 						{
 						displayText = data.substring(0, 50) + '...';
 						return '<span title="' + data + '">' + displayText + '</span>';
