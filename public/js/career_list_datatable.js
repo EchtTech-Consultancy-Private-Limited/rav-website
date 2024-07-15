@@ -101,7 +101,6 @@ var KTDatatablesBasicPaginations = function() {
 						return $i++;
 					},
 				},
-				
                 {
 					targets: -2,
 					orderable: true,
