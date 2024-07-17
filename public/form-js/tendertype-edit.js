@@ -17,8 +17,8 @@ var KTApptendertypesSave = function () {
                            message: 'This field is required'
                         },
                         regexp: {
-                           regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                           message: 'This field can consist of alphabetical characters, spaces, digits only'
+                           regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,40}$/,
+                           message: 'This field can consist of alphabetical characters, spaces, max 40 characters only'
                         },
                      },
                      },
@@ -28,8 +28,8 @@ var KTApptendertypesSave = function () {
                                  message: 'This field is required'
                               },
                               regexp: {
-                                 regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                 message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                 regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,40}$/,
+                                 message: 'This field can consist of alphabetical characters, spaces, max 40 characters only'
                               },
                         },
                      },
@@ -39,8 +39,8 @@ var KTApptendertypesSave = function () {
                                  message: 'This field is required'
                               },
                               regexp: {
-                              regexp: /^[0-9]$/,
-                              message: 'This field can consist of number characters, spaces, digits only'
+                                 regexp: /^-?\d{1,3}$/,
+                                 message: 'This field can consist of number characters only'
                            },
                         },
                      },

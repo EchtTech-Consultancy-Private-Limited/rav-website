@@ -16,8 +16,8 @@ var KTAppRoleUpdate = function () {
                               message: 'This field is required'
                            },
                            regexp: {
-                              regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                              message: 'This field can consist of alphabetical characters, spaces, digits only'
+                              regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,50}$/,
+                              message: 'This field can consist of alphabetical characters, spaces, max 50 characters only'
                            },
                         },
                   },

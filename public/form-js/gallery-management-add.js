@@ -57,6 +57,8 @@ var KTAppPhotoSave = function () {
                       }, 1500);
                       
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
@@ -65,11 +67,18 @@ var KTAppPhotoSave = function () {
                       }
                    })
                    .catch(function (error) {
-                         toastr.error(
-                            "Sorry, looks like there are some errors detected, please try again B.", 
-                            "Something went wrong!", 
-                            {timeOut: 0, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
-                         );
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
+                        for(var field in error.response.data.errors) {
+                           if (error.response.data.errors.hasOwnProperty(field)) {
+                           error.response.data.errors[field].forEach(function (errorMessage) {
+                              toastr.error(
+                                       errorMessage,
+                                       {timeOut: 2, extendedTimeOut: 0, closeButton: true, closeDuration: 0}
+                                 );
+                           });
+                           }
+                        }
                       }).then(() => {
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -77,6 +86,8 @@ var KTAppPhotoSave = function () {
                             submitButton.disabled = false;
                       });
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                               "Some fields are required", 
                               "Something Require!", 
@@ -188,6 +199,8 @@ var KTAppPhotoSave = function () {
                       }, 1500);
                       
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                       toastr.error(
                          "Sorry, the information is incorrect, please try again.", 
                          "Something went wrong!", 
@@ -196,6 +209,8 @@ var KTAppPhotoSave = function () {
                       }
                    })
                    .catch(function (error) {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                         for(var field in error.response.data.errors) {
                            if (error.response.data.errors.hasOwnProperty(field)) {
                            error.response.data.errors[field].forEach(function (errorMessage) {
@@ -213,6 +228,8 @@ var KTAppPhotoSave = function () {
                             submitButton.disabled = false;
                       });
                    } else {
+                     $('#loading').removeClass('loading');
+                     $('#loading-content').removeClass('loading-content');
                          toastr.error(
                               "Some fields are required", 
                               "Something Require!", 

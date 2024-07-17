@@ -11,15 +11,26 @@ var KTApppurchaseworkscommitteeSave = function () {
              form,
              {
                 fields: {
+                  order_contract_no: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                          regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,100}$/,
+                          message: 'This field can consist of alphabetical characters, spaces, max 100 characters only'
+                       },
+                     },
+                  },
                   title_name_en: {
                          validators: {
                             notEmpty: {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                               message: 'This field can consist of alphabetical characters, spaces, digits only'
-                            },
+                              regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,400}$/,
+                              message: 'This field can consist of alphabetical characters, spaces, max 400 characters only'
+                           },
                          },
                    },
                 },

@@ -92,15 +92,6 @@
                   <div class="card card-flush py-4">
                      <!--begin::Card body-->
                      <div class="card-body pt-0">
-                     <!--begin::Input group-->
-                     <!--begin::News-->
-                     <div class="card-header">
-                        <div class="card-title">
-                           <h2>Add Page Photo Gallery</h2>
-                        </div>
-                     </div>
-                     <!--end::Card header-->
-                     <!--begin::Card body-->
                      <div class="card-body pt-0">
                         <!--begin::Input group-->
                         <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
@@ -108,21 +99,37 @@
                            <div id="kt_photo_add_multiple_options">
                               <!--begin::Form group-->
                               <div class="form-group">
-                                 <label class="required form-label mw-100 w-200px">Image Title</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
-                                 <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
-                                 <label class="required form-label mw-100 w-200px">Image Format</label>
                                  <div data-repeater-list="kt_photo_add_multiple_options" class="d-flex flex-column gap-3">
                                     <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                        <!--begin::Input-->
-                                       <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
-                                       <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
-                                       <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
-                                       <input type="file" id="image" data-id="1" name="image" class="form-control mw-100 w-200px checkmime" accept="image/*"  />
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px">Image Title</label>
+                                          <input type="text" class="form-control mw-100 w-200px" name="imagetitle" placeholder="image title Name" />
+                                       </div>
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">Start Date</label>
+                                          <input type="date" class="form-control mw-100 w-200px" name="startdate" placeholder="" />
+                                       </div>
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px" style="margin-left: 12px;">End Date</label>
+                                          <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="" />
+                                       </div>
+                                       <div>
+                                          <label class="required form-label mw-100 w-200px">Image Format</label>
+                                          <input type="file" id="image" data-id="1" name="image" class="form-control mw-100 w-200px checkmime" accept="image/*"  />
+                                       </div>
+                                       <div class="mt-8">
+                                          <span class="ms-1" data-bs-toggle="tooltip" aria-label="Your payment statements may very based on selected position" data-bs-original-title="Your payment statements may very based on selected position" data-kt-initialized="1">
+                                             <i class="ki-outline ki-information fs-7"></i>                            
+                                          </span>
+                                          <input class="form-check-input showhomepage" type="checkbox" data-kt-check="true" name="showhomepage" data-kt-check-target="#kt_table_users .form-check-input" value="1">
+                                       </div>
                                        <!--end::Input-->
-                                       <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
-                                          <i class="ki-outline ki-cross fs-1"></i>
-                                        </button>
+                                       <div class="mt-8">
+                                          <button type="button" id="removeRow" data-repeater-delete class="btn btn-sm btn-icon btn-light-danger">
+                                             <i class="ki-outline ki-cross fs-1"></i>
+                                          </button>
+                                        </div>
                                     </div>
                                  </div>
                               </div>

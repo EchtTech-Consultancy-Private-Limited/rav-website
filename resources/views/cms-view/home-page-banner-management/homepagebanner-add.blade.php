@@ -174,7 +174,7 @@
                                           </div>
                                           <div class="col-md-4">
                                           <label class="required form-label mw-100 w-100">Sort Order</label>
-                                          <input type="number" class="form-control mw-100 w-100" name="sort_order" placeholder="sort order" />
+                                             <input type="number" class="form-control mw-100 w-100" name="sort_order" placeholder="sort order" />
                                           </div>
                                           <div class="col-md-4">
                                           <label class="required form-label mw-100 w-100">Image Format ({{ env('BANNER_WIDTH').'px'??'1900px' }} * {{ env('BANNER_HEIGHT').'px'??'500px' }})</label>

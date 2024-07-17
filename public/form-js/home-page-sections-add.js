@@ -27,9 +27,9 @@ var KTApphomepagesectionSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                              regexp: /^[0-9]*$/,
-                              message: 'The value is not a valid Number'
-                         },
+                              regexp: /^-?\d{1,3}$/,
+                              message: 'This field can consist of number characters only'
+                           },
                          },
                    },
                 },

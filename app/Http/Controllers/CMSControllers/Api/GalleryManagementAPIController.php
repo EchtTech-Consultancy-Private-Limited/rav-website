@@ -102,6 +102,7 @@ class GalleryManagementAPIController extends Controller
                                     'file_extension' => $extension??'',
                                     'public_url' => $name,
                                     'private_url' => $name,
+                                    'img_show_home' =>$value['showhomepage']??'0',
                                     'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                                 ]);
                                 }
@@ -181,6 +182,7 @@ class GalleryManagementAPIController extends Controller
                                     'file_extension' => '',
                                     'public_url' => $value['Video'],
                                     'private_url' => $value['Video'],
+                                    'img_show_home' =>$value['showhomepage']??'0',
                                     'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                                 ]);
                            // }
@@ -272,6 +274,7 @@ class GalleryManagementAPIController extends Controller
                                 'end_date' => $value['enddate']??'',
                                 'public_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
                                 'private_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
+                                'img_show_home' =>isset($value['showhomepage'])?$value['showhomepage']:$uid->img_show_home,
                                 //'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                                 //'file_extension' => isset($extension)?$extension:$uid->file_extension,
                                 'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
@@ -284,6 +287,7 @@ class GalleryManagementAPIController extends Controller
                             'end_date' => $value['enddate']??'',
                             'public_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
                             'private_url' => isset($value['Video'])?$value['Video']:$uid->public_url,
+                            'img_show_home' =>isset($value['showhomepage'])?$value['showhomepage']:$uid->img_show_home,
                             //'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                             //'file_extension' => isset($extension)?$extension:$uid->file_extension,
                             'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
@@ -300,6 +304,7 @@ class GalleryManagementAPIController extends Controller
                                     //'file_extension' => $extension??'',
                                     'public_url' => $value['Video'],
                                     'private_url' =>$value['Video'],
+                                    'img_show_home' =>$value['showhomepage']??'0',
                                     'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                                 ]);
                             }
@@ -365,6 +370,7 @@ class GalleryManagementAPIController extends Controller
                                     'private_url' => isset($name)?$name:$uid->public_url,
                                     'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                                     'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                                    'img_show_home' =>isset($value['showhomepage'])?$value['showhomepage']:$uid->img_show_home,
                                     'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
 
                                 ]);
@@ -377,6 +383,7 @@ class GalleryManagementAPIController extends Controller
                                 'private_url' => isset($name)?$name:$uid->public_url,
                                 'pdfimage_size' => isset($size)?$size:$uid->pdfimage_size,
                                 'file_extension' => isset($extension)?$extension:$uid->file_extension,
+                                'img_show_home' =>isset($value['showhomepage'])?$value['showhomepage']:$uid->img_show_home,
                                 'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                                 ]);
                             }else{
@@ -396,6 +403,7 @@ class GalleryManagementAPIController extends Controller
                                         'file_extension' => $extension??'',
                                         'public_url' => $name,
                                         'private_url' => $name,
+                                        'img_show_home' =>$value['showhomepage']??'0',
                                         'archivel_date' => Carbon::createFromFormat('Y-m-d',$value['enddate'])->addDays(env('TENDER_ARCHIVEL')),
                                     ]);
                                 }
