@@ -16,8 +16,8 @@ var KTvalidationMenu1= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,50}$/,
-                               message: 'This field can consist of alphabetical characters, spaces, max 50 characters only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,100}$/,
+                               message: 'This field can consist of alphabetical characters, spaces, max 100 characters only'
                             },
                         },
                     },
@@ -28,6 +28,17 @@ var KTvalidationMenu1= function() {
                             },
                         },
                     },
+                    shortorder: {
+                        validators: {
+                           notEmpty: {
+                              message: 'This field is required'
+                           },
+                           regexp: {
+                            regexp: /^-?\d{1,3}$/,
+                            message: 'This field can consist of number characters only'
+                         },
+                        },
+                     },
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -137,11 +148,22 @@ var KTvalidationMenu2= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,100}$/,
+                               message: 'This field can consist of alphabetical characters, spaces, max 100 characters only'
                             },
                         },
                     },
+                    shortorder: {
+                        validators: {
+                           notEmpty: {
+                              message: 'This field is required'
+                           },
+                           regexp: {
+                            regexp: /^-?\d{1,3}$/,
+                            message: 'This field can consist of number characters only'
+                         },
+                        },
+                     },
                     'menu_id': {
                           validators: {
                              notEmpty: {
@@ -258,11 +280,22 @@ var KTvalidationMenu3= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,100}$/,
+                               message: 'This field can consist of alphabetical characters, spaces, max 100 characters only'
                             },
                         },
                     },
+                    shortorder: {
+                        validators: {
+                           notEmpty: {
+                              message: 'This field is required'
+                           },
+                           regexp: {
+                            regexp: /^-?\d{1,3}$/,
+                            message: 'This field can consist of number characters only'
+                         },
+                        },
+                     },
                     'submenu_id': {
                           validators: {
                              notEmpty: {
@@ -379,11 +412,22 @@ var KTvalidationMenu4= function() {
                                 message: 'This field is required'
                             },
                             regexp: {
-                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                                message: 'This field can consist of alphabetical characters, spaces, digits only'
+                                regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,100}$/,
+                               message: 'This field can consist of alphabetical characters, spaces, max 100 characters only'
                             },
                         },
                     },
+                    shortorder: {
+                        validators: {
+                           notEmpty: {
+                              message: 'This field is required'
+                           },
+                           regexp: {
+                            regexp: /^-?\d{1,3}$/,
+                            message: 'This field can consist of number characters only'
+                         },
+                        },
+                     },
                     'subsubmenu_id': {
                           validators: {
                              notEmpty: {

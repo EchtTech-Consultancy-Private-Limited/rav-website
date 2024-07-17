@@ -100,6 +100,22 @@ var KTDatatablesBasicPaginations = function() {
 					},
 				},
 				{
+					targets: 1,
+					title: 'Title Name',
+					orderable: true,
+					visible: true,
+					responsivePriority: -2,
+					render: function (data, type, full, meta) {
+						var displayText = data;
+						if (data != undefined && data.length > 0)
+						{
+						displayText = data.substring(0, 50) + '...';
+						return '<span title="' + data + '">' + displayText + '</span>';
+						}
+
+					},
+				},
+				{
 					targets: -2,
 					orderable: true,
 					responsivePriority: -2,

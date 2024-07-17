@@ -17,9 +17,9 @@ var KTApppgcsSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                               message: 'This field can consist of alphabetical characters, spaces, digits only'
-                            },
+                              regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,400}$/,
+                              message: 'This field can consist of alphabetical characters, spaces, max 400 characters only'
+                           },
                          },
                    },
                    logo_url: {
@@ -33,6 +33,17 @@ var KTApppgcsSave = function () {
                               },
                         },
                   },
+                  sort_order: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                          regexp: /^-?\d{1,3}$/,
+                          message: 'This field can consist of number characters only'
+                       },
+                     },
+               },
                  //   image: {
                  //         validators: {
                  //            notEmpty: {

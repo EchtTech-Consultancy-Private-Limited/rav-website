@@ -16,9 +16,9 @@ var KTAppNewsSave = function () {
                                message: 'This field is required'
                             },
                             regexp: {
-                               regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]*$/,
-                               message: 'This field can consist of alphabetical characters, spaces, digits only'
-                            },
+                              regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,400}$/,
+                              message: 'This field can consist of alphabetical characters, spaces, max 400 characters only'
+                           },
                          },
                    },
                    title_name_hi: {
@@ -26,6 +26,10 @@ var KTAppNewsSave = function () {
                             notEmpty: {
                                message: 'This field is required'
                             },
+                            regexp: {
+                              regexp: /^[-+.,)@:\/&?''=""( A-Za-z0-9]{1,400}$/,
+                              message: 'This field can consist of alphabetical characters, spaces, max 400 characters only'
+                           },
                          },
                    },
                 },

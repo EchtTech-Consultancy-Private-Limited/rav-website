@@ -109,6 +109,17 @@ var KTAppEmployeeDirectorySave = function () {
                         },
                      },
                   },
+                  short_order: {
+                     validators: {
+                        notEmpty: {
+                           message: 'This field is required'
+                        },
+                        regexp: {
+                          regexp: /^-?\d{1,3}$/,
+                          message: 'This field can consist of number characters only'
+                       },
+                     },
+                  },
                   email: {
                      validators: {
                         notEmpty: {

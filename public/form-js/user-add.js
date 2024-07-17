@@ -35,7 +35,7 @@ var KTAppUserSave = function () {
                    user_role: {
                          validators: {
                             notEmpty: {
-                               message: 'This field is required'
+                               message: 'Please select at least one communication method'
                             },
                          },
                    },

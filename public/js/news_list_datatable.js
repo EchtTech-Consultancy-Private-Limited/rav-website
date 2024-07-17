@@ -109,7 +109,7 @@ var KTDatatablesBasicPaginations = function() {
 					responsivePriority: -2,
 					render: function (data, type, full, meta) {
 						var displayText = data;
-						if (data != undefined && data.length > 5)
+						if (data != undefined && data.length > 0)
 						{
 						displayText = data.substring(0, 50) + '...';
 						return '<span title="' + data + '">' + displayText + '</span>';
