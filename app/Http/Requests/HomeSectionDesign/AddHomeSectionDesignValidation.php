@@ -24,7 +24,7 @@ class AddHomeSectionDesignValidation extends FormRequest
      */
     public function rules(Request $request)
     {
-        dd($request->kt_description_en);
+       // dd($request->kt_description_en);
         if($request->kt_description_en != "<p><br></p>"){
             $request['kt_description_en'] =$request->kt_description_en;
         }else{

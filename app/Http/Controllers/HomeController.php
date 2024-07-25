@@ -418,7 +418,9 @@ class HomeController extends Controller
     }
 
     public function newsAllList(){
-        $newsList = DB::table('news_management')->where([['status', 3],['soft_delete',0]])->orderBy('created_at', 'desc')->get();
+        $currentDate= date('Y-m-d');
+        $newsList = DB::table('news_management')->where([['status', 3],['soft_delete',0]])
+                     ->whereDate('end_date', '>=', $currentDate)->orderBy('created_at', 'desc')->get();
         //$news_management = DB::table('news_management')->where('soft_delete', 0)->where('status', 3)->latest('created_at')->get();
             
         return view('pages.news-all-list',['news'=>$newsList]);

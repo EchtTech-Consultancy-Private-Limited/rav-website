@@ -44,20 +44,20 @@ class CommonComposer
             } else {
                 $modelName = DB::table('module_management')->where('soft_delete', '0')->orderBy('sort_order', 'asc')->get();
             }
-            $currentDate= date('Y-m-d');
+
             $banner = DB::table('home_page_banner_management')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
             $footerMenu = DB::table('website_menu_management')->whereIn('menu_place', [1, 3])->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
             $menus = DB::table('website_menu_management')->whereIn('menu_place', [0,3])->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
             $menuName = $this->getMenuTree($menus, 0);
             $news_management = DB::table('news_management')->where('soft_delete', 0)->where('status', 3)
-                                ->whereDate('end_date', '>=', $currentDate)->latest('created_at')->take(10)->get();
+                                ->whereDate('end_date', '>=', Carbon::now())->latest('created_at')->take(10)->get();
             $tender_management = DB::table('tender_management')->where('soft_delete', 0)->where('status', 3)
-                                ->whereDate('end_date', '>=', $currentDate)->latest('created_at')->get();
+                                ->whereDate('end_date', '>=', Carbon::now())->latest('created_at')->get();
             $social_links = DB::table('social_links')->where('soft_delete', 0)->where('status', 3)->first();
             $toogleMenu = DB::table('website_menu_management')->where('menu_place','2')->where('status', 3)->where('soft_delete','0')->orderby('sort_order','Asc')->get();
             $website_core_settings = DB::table('website_core_settings')->where('soft_delete', 0)->first();
             $events_management = DB::table('events_management')->where('status', 3)->where('soft_delete', 0)
-                             ->whereDate('end_date', '>=', $currentDate)->latest('created_at')->get();
+                             ->whereDate('end_date', '>=', Carbon::now())->latest('created_at')->get();
             
             $popupAdvertisings = DB::table('popup_advertisings')
                                  ->where('start_date', '<=' , date_format(date_create(date('Y-m-d')),"Y-m-d"))
